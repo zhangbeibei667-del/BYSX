@@ -1,0 +1,1898 @@
+[
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "具有",
+    "target_id": "G005",
+    "target_name": "益气补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H002",
+    "source_name": "西洋参",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H002",
+    "source_name": "西洋参",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "具有",
+    "target_id": "G005",
+    "target_name": "益气补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H004",
+    "source_name": "太子参",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H004",
+    "source_name": "太子参",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "具有",
+    "target_id": "G007",
+    "target_name": "补气升阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "具有",
+    "target_id": "G005",
+    "target_name": "益气补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H006",
+    "source_name": "白术",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H006",
+    "source_name": "白术",
+    "relation": "具有",
+    "target_id": "G032",
+    "target_name": "燥湿健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H006",
+    "source_name": "白术",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H007",
+    "source_name": "山药",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H007",
+    "source_name": "山药",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H007",
+    "source_name": "山药",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "具有",
+    "target_id": "G040",
+    "target_name": "调和诸药",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H009",
+    "source_name": "大枣",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H009",
+    "source_name": "大枣",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H009",
+    "source_name": "大枣",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H010",
+    "source_name": "蜂蜜",
+    "relation": "具有",
+    "target_id": "G001",
+    "target_name": "补气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H010",
+    "source_name": "蜂蜜",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "具有",
+    "target_id": "G005",
+    "target_name": "益气补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "具有",
+    "target_id": "G011",
+    "target_name": "解郁安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H013",
+    "source_name": "白芍",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H013",
+    "source_name": "白芍",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H013",
+    "source_name": "白芍",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H014",
+    "source_name": "阿胶",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H014",
+    "source_name": "阿胶",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H014",
+    "source_name": "阿胶",
+    "relation": "具有",
+    "target_id": "G028",
+    "target_name": "止血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H015",
+    "source_name": "何首乌",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H015",
+    "source_name": "何首乌",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H016",
+    "source_name": "龙眼肉",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H016",
+    "source_name": "龙眼肉",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H017",
+    "source_name": "枸杞子",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H017",
+    "source_name": "枸杞子",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H018",
+    "source_name": "麦冬",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H018",
+    "source_name": "麦冬",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H018",
+    "source_name": "麦冬",
+    "relation": "具有",
+    "target_id": "G013",
+    "target_name": "清热除烦",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H019",
+    "source_name": "沙参",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H019",
+    "source_name": "沙参",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H020",
+    "source_name": "玉竹",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H021",
+    "source_name": "百合",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H021",
+    "source_name": "百合",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H021",
+    "source_name": "百合",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H022",
+    "source_name": "女贞子",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H023",
+    "source_name": "龟甲",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H023",
+    "source_name": "龟甲",
+    "relation": "具有",
+    "target_id": "G010",
+    "target_name": "重镇安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H024",
+    "source_name": "酸枣仁",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H024",
+    "source_name": "酸枣仁",
+    "relation": "具有",
+    "target_id": "G002",
+    "target_name": "补血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H025",
+    "source_name": "远志",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H025",
+    "source_name": "远志",
+    "relation": "具有",
+    "target_id": "G012",
+    "target_name": "交通心肾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H025",
+    "source_name": "远志",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H026",
+    "source_name": "柏子仁",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H026",
+    "source_name": "柏子仁",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H027",
+    "source_name": "合欢皮",
+    "relation": "具有",
+    "target_id": "G011",
+    "target_name": "解郁安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H027",
+    "source_name": "合欢皮",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H028",
+    "source_name": "夜交藤",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H029",
+    "source_name": "茯神",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H029",
+    "source_name": "茯神",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H030",
+    "source_name": "朱砂",
+    "relation": "具有",
+    "target_id": "G010",
+    "target_name": "重镇安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H031",
+    "source_name": "磁石",
+    "relation": "具有",
+    "target_id": "G010",
+    "target_name": "重镇安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H031",
+    "source_name": "磁石",
+    "relation": "具有",
+    "target_id": "G038",
+    "target_name": "平肝息风",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H032",
+    "source_name": "龙骨",
+    "relation": "具有",
+    "target_id": "G010",
+    "target_name": "重镇安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H032",
+    "source_name": "龙骨",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H033",
+    "source_name": "牡蛎",
+    "relation": "具有",
+    "target_id": "G010",
+    "target_name": "重镇安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H033",
+    "source_name": "牡蛎",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H034",
+    "source_name": "茯苓",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H034",
+    "source_name": "茯苓",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H034",
+    "source_name": "茯苓",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H035",
+    "source_name": "猪苓",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H036",
+    "source_name": "泽泻",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H036",
+    "source_name": "泽泻",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H037",
+    "source_name": "薏苡仁",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H037",
+    "source_name": "薏苡仁",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H038",
+    "source_name": "车前子",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H038",
+    "source_name": "车前子",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H039",
+    "source_name": "滑石",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H039",
+    "source_name": "滑石",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H040",
+    "source_name": "茵陈",
+    "relation": "具有",
+    "target_id": "G031",
+    "target_name": "利水渗湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H040",
+    "source_name": "茵陈",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H041",
+    "source_name": "苍术",
+    "relation": "具有",
+    "target_id": "G032",
+    "target_name": "燥湿健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H041",
+    "source_name": "苍术",
+    "relation": "具有",
+    "target_id": "G039",
+    "target_name": "祛风除湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H042",
+    "source_name": "厚朴",
+    "relation": "具有",
+    "target_id": "G032",
+    "target_name": "燥湿健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H042",
+    "source_name": "厚朴",
+    "relation": "具有",
+    "target_id": "G025",
+    "target_name": "降气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H042",
+    "source_name": "厚朴",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H043",
+    "source_name": "藿香",
+    "relation": "具有",
+    "target_id": "G033",
+    "target_name": "芳香化湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H043",
+    "source_name": "藿香",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H044",
+    "source_name": "砂仁",
+    "relation": "具有",
+    "target_id": "G033",
+    "target_name": "芳香化湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H044",
+    "source_name": "砂仁",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H045",
+    "source_name": "豆蔻",
+    "relation": "具有",
+    "target_id": "G033",
+    "target_name": "芳香化湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H045",
+    "source_name": "豆蔻",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H047",
+    "source_name": "桂枝",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H047",
+    "source_name": "桂枝",
+    "relation": "具有",
+    "target_id": "G004",
+    "target_name": "补阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H048",
+    "source_name": "紫苏",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H048",
+    "source_name": "紫苏",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H049",
+    "source_name": "生姜",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H049",
+    "source_name": "生姜",
+    "relation": "具有",
+    "target_id": "G029",
+    "target_name": "温中散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H050",
+    "source_name": "荆芥",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H050",
+    "source_name": "荆芥",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H051",
+    "source_name": "防风",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H051",
+    "source_name": "防风",
+    "relation": "具有",
+    "target_id": "G039",
+    "target_name": "祛风除湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H052",
+    "source_name": "羌活",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H052",
+    "source_name": "羌活",
+    "relation": "具有",
+    "target_id": "G039",
+    "target_name": "祛风除湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H053",
+    "source_name": "白芷",
+    "relation": "具有",
+    "target_id": "G019",
+    "target_name": "解表散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H053",
+    "source_name": "白芷",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H054",
+    "source_name": "薄荷",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H054",
+    "source_name": "薄荷",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H055",
+    "source_name": "金银花",
+    "relation": "具有",
+    "target_id": "G017",
+    "target_name": "清热解毒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H055",
+    "source_name": "金银花",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H056",
+    "source_name": "连翘",
+    "relation": "具有",
+    "target_id": "G017",
+    "target_name": "清热解毒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H056",
+    "source_name": "连翘",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H057",
+    "source_name": "菊花",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H057",
+    "source_name": "菊花",
+    "relation": "具有",
+    "target_id": "G038",
+    "target_name": "平肝息风",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H058",
+    "source_name": "桑叶",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H058",
+    "source_name": "桑叶",
+    "relation": "具有",
+    "target_id": "G038",
+    "target_name": "平肝息风",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H059",
+    "source_name": "柴胡",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H059",
+    "source_name": "柴胡",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H059",
+    "source_name": "柴胡",
+    "relation": "具有",
+    "target_id": "G007",
+    "target_name": "补气升阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H060",
+    "source_name": "升麻",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H060",
+    "source_name": "升麻",
+    "relation": "具有",
+    "target_id": "G007",
+    "target_name": "补气升阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H061",
+    "source_name": "葛根",
+    "relation": "具有",
+    "target_id": "G020",
+    "target_name": "疏散风热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H061",
+    "source_name": "葛根",
+    "relation": "具有",
+    "target_id": "G007",
+    "target_name": "补气升阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H062",
+    "source_name": "石膏",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H062",
+    "source_name": "石膏",
+    "relation": "具有",
+    "target_id": "G013",
+    "target_name": "清热除烦",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H063",
+    "source_name": "知母",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H063",
+    "source_name": "知母",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H064",
+    "source_name": "栀子",
+    "relation": "具有",
+    "target_id": "G013",
+    "target_name": "清热除烦",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H064",
+    "source_name": "栀子",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H064",
+    "source_name": "栀子",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H065",
+    "source_name": "黄芩",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H065",
+    "source_name": "黄芩",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H066",
+    "source_name": "黄连",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H066",
+    "source_name": "黄连",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H066",
+    "source_name": "黄连",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H067",
+    "source_name": "黄柏",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H067",
+    "source_name": "黄柏",
+    "relation": "具有",
+    "target_id": "G018",
+    "target_name": "清虚热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H068",
+    "source_name": "龙胆",
+    "relation": "具有",
+    "target_id": "G015",
+    "target_name": "清热燥湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H068",
+    "source_name": "龙胆",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H069",
+    "source_name": "生地黄",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H069",
+    "source_name": "生地黄",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H070",
+    "source_name": "玄参",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H070",
+    "source_name": "玄参",
+    "relation": "具有",
+    "target_id": "G003",
+    "target_name": "补阴",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H070",
+    "source_name": "玄参",
+    "relation": "具有",
+    "target_id": "G017",
+    "target_name": "清热解毒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H071",
+    "source_name": "牡丹皮",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H071",
+    "source_name": "牡丹皮",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H071",
+    "source_name": "牡丹皮",
+    "relation": "具有",
+    "target_id": "G018",
+    "target_name": "清虚热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H072",
+    "source_name": "赤芍",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H072",
+    "source_name": "赤芍",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H072",
+    "source_name": "赤芍",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H073",
+    "source_name": "青蒿",
+    "relation": "具有",
+    "target_id": "G018",
+    "target_name": "清虚热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H073",
+    "source_name": "青蒿",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H074",
+    "source_name": "地骨皮",
+    "relation": "具有",
+    "target_id": "G018",
+    "target_name": "清虚热",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H074",
+    "source_name": "地骨皮",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H075",
+    "source_name": "陈皮",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H075",
+    "source_name": "陈皮",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H075",
+    "source_name": "陈皮",
+    "relation": "具有",
+    "target_id": "G025",
+    "target_name": "降气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H076",
+    "source_name": "枳壳",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H076",
+    "source_name": "枳壳",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H076",
+    "source_name": "枳壳",
+    "relation": "具有",
+    "target_id": "G025",
+    "target_name": "降气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H077",
+    "source_name": "木香",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H077",
+    "source_name": "木香",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H077",
+    "source_name": "木香",
+    "relation": "具有",
+    "target_id": "G006",
+    "target_name": "益气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H078",
+    "source_name": "香附",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H078",
+    "source_name": "香附",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H078",
+    "source_name": "香附",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H079",
+    "source_name": "佛手",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H079",
+    "source_name": "佛手",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H079",
+    "source_name": "佛手",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "具有",
+    "target_id": "G009",
+    "target_name": "养心安神",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H083",
+    "source_name": "红花",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H083",
+    "source_name": "红花",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H084",
+    "source_name": "延胡索",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H084",
+    "source_name": "延胡索",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "具有",
+    "target_id": "G025",
+    "target_name": "降气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "具有",
+    "target_id": "G032",
+    "target_name": "燥湿健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H086",
+    "source_name": "桔梗",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H086",
+    "source_name": "桔梗",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H086",
+    "source_name": "桔梗",
+    "relation": "具有",
+    "target_id": "G017",
+    "target_name": "清热解毒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H087",
+    "source_name": "杏仁",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H087",
+    "source_name": "杏仁",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H088",
+    "source_name": "瓜蒌",
+    "relation": "具有",
+    "target_id": "G034",
+    "target_name": "化痰",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H088",
+    "source_name": "瓜蒌",
+    "relation": "具有",
+    "target_id": "G035",
+    "target_name": "止咳平喘",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H088",
+    "source_name": "瓜蒌",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H090",
+    "source_name": "芒硝",
+    "relation": "具有",
+    "target_id": "G037",
+    "target_name": "泻下通便",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H090",
+    "source_name": "芒硝",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "具有",
+    "target_id": "G004",
+    "target_name": "补阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "具有",
+    "target_id": "G030",
+    "target_name": "回阳救逆",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "具有",
+    "target_id": "G029",
+    "target_name": "温中散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H092",
+    "source_name": "干姜",
+    "relation": "具有",
+    "target_id": "G029",
+    "target_name": "温中散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H092",
+    "source_name": "干姜",
+    "relation": "具有",
+    "target_id": "G030",
+    "target_name": "回阳救逆",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "具有",
+    "target_id": "G004",
+    "target_name": "补阳",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "具有",
+    "target_id": "G029",
+    "target_name": "温中散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "具有",
+    "target_id": "G030",
+    "target_name": "回阳救逆",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H094",
+    "source_name": "吴茱萸",
+    "relation": "具有",
+    "target_id": "G029",
+    "target_name": "温中散寒",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H094",
+    "source_name": "吴茱萸",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H094",
+    "source_name": "吴茱萸",
+    "relation": "具有",
+    "target_id": "G025",
+    "target_name": "降气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "具有",
+    "target_id": "G036",
+    "target_name": "消食和胃",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "具有",
+    "target_id": "G027",
+    "target_name": "活血行气",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H096",
+    "source_name": "神曲",
+    "relation": "具有",
+    "target_id": "G036",
+    "target_name": "消食和胃",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H096",
+    "source_name": "神曲",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H097",
+    "source_name": "麦芽",
+    "relation": "具有",
+    "target_id": "G036",
+    "target_name": "消食和胃",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H097",
+    "source_name": "麦芽",
+    "relation": "具有",
+    "target_id": "G024",
+    "target_name": "理气健脾",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H097",
+    "source_name": "麦芽",
+    "relation": "具有",
+    "target_id": "G022",
+    "target_name": "疏肝解郁",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H098",
+    "source_name": "三七",
+    "relation": "具有",
+    "target_id": "G028",
+    "target_name": "止血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H098",
+    "source_name": "三七",
+    "relation": "具有",
+    "target_id": "G026",
+    "target_name": "活血化瘀",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H099",
+    "source_name": "天麻",
+    "relation": "具有",
+    "target_id": "G038",
+    "target_name": "平肝息风",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H099",
+    "source_name": "天麻",
+    "relation": "具有",
+    "target_id": "G039",
+    "target_name": "祛风除湿",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H099",
+    "source_name": "天麻",
+    "relation": "具有",
+    "target_id": "G023",
+    "target_name": "行气止痛",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H100",
+    "source_name": "钩藤",
+    "relation": "具有",
+    "target_id": "G038",
+    "target_name": "平肝息风",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H100",
+    "source_name": "钩藤",
+    "relation": "具有",
+    "target_id": "G016",
+    "target_name": "清热凉血",
+    "evidence": "《中药学》教材"
+  },
+  {
+    "source_id": "H100",
+    "source_name": "钩藤",
+    "relation": "具有",
+    "target_id": "G014",
+    "target_name": "清热泻火",
+    "evidence": "《中药学》教材"
+  }
+]

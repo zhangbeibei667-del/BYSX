@@ -1,0 +1,690 @@
+[
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "主治",
+    "target_id": "Z003",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "主治",
+    "target_id": "Z030",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "主治",
+    "target_id": "Z007",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "主治",
+    "target_id": "Z003",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "主治",
+    "target_id": "Z021",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "主治",
+    "target_id": "Z003",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "主治",
+    "target_id": "Z008",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "主治",
+    "target_id": "Z005",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "主治",
+    "target_id": "Z008",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "主治",
+    "target_id": "Z004",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "主治",
+    "target_id": "Z004",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "主治",
+    "target_id": "Z008",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "主治",
+    "target_id": "Z001",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "主治",
+    "target_id": "Z004",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "主治",
+    "target_id": "Z008",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "主治",
+    "target_id": "Z006",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "主治",
+    "target_id": "Z004",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "主治",
+    "target_id": "Z022",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "主治",
+    "target_id": "Z010",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "主治",
+    "target_id": "Z010",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "主治",
+    "target_id": "Z006",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "主治",
+    "target_id": "Z012",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "主治",
+    "target_id": "Z005",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "主治",
+    "target_id": "Z001",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "主治",
+    "target_id": "Z006",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "主治",
+    "target_id": "Z010",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "主治",
+    "target_id": "Z002",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "主治",
+    "target_id": "Z002",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "主治",
+    "target_id": "Z018",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "主治",
+    "target_id": "Z002",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "主治",
+    "target_id": "Z015",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "主治",
+    "target_id": "Z026",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "主治",
+    "target_id": "Z026",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "主治",
+    "target_id": "Z015",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "主治",
+    "target_id": "Z016",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "主治",
+    "target_id": "Z016",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "主治",
+    "target_id": "Z015",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "主治",
+    "target_id": "Z016",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "主治",
+    "target_id": "Z012",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "主治",
+    "target_id": "Z008",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "主治",
+    "target_id": "Z017",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "主治",
+    "target_id": "Z018",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "主治",
+    "target_id": "Z017",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "主治",
+    "target_id": "Z013",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "主治",
+    "target_id": "Z014",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "主治",
+    "target_id": "Z017",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "主治",
+    "target_id": "Z024",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "主治",
+    "target_id": "Z014",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "主治",
+    "target_id": "Z019",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "主治",
+    "target_id": "Z026",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "主治",
+    "target_id": "Z014",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "主治",
+    "target_id": "Z024",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "主治",
+    "target_id": "Z021",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "主治",
+    "target_id": "Z023",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "主治",
+    "target_id": "Z023",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "主治",
+    "target_id": "Z011",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "主治",
+    "target_id": "Z011",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "主治",
+    "target_id": "Z003",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "主治",
+    "target_id": "Z011",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "主治",
+    "target_id": "Z023",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "主治",
+    "target_id": "Z019",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "主治",
+    "target_id": "Z012",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "主治",
+    "target_id": "Z012",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "主治",
+    "target_id": "Z020",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "主治",
+    "target_id": "Z012",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "主治",
+    "target_id": "Z019",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "主治",
+    "target_id": "Z029",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "主治",
+    "target_id": "Z020",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "主治",
+    "target_id": "Z020",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "主治",
+    "target_id": "Z009",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "主治",
+    "target_id": "Z027",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "主治",
+    "target_id": "Z025",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "主治",
+    "target_id": "Z025",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "主治",
+    "target_id": "Z019",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "主治",
+    "target_id": "Z027",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "主治",
+    "target_id": "Z029",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "主治",
+    "target_id": "Z024",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "主治",
+    "target_id": "Z019",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "主治",
+    "target_id": "Z028",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "主治",
+    "target_id": "Z030",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "主治",
+    "target_id": "Z026",
+    "target_name": "",
+    "evidence": "《方剂学》教材"
+  }
+]

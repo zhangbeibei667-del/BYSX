@@ -1,0 +1,498 @@
+[
+  {
+    "source_id": "Z001",
+    "source_name": "心脾两虚",
+    "relation": "对应",
+    "target_id": "F007",
+    "target_name": "归脾汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z002",
+    "source_name": "心肾不交",
+    "relation": "对应",
+    "target_id": "F013",
+    "target_name": "交泰丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z002",
+    "source_name": "心肾不交",
+    "relation": "对应",
+    "target_id": "F014",
+    "target_name": "安神定志丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z003",
+    "source_name": "脾胃气虚",
+    "relation": "对应",
+    "target_id": "F001",
+    "target_name": "四君子汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z003",
+    "source_name": "脾胃气虚",
+    "relation": "对应",
+    "target_id": "F003",
+    "target_name": "参苓白术散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z003",
+    "source_name": "脾胃气虚",
+    "relation": "对应",
+    "target_id": "F029",
+    "target_name": "理中丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z004",
+    "source_name": "气血两虚",
+    "relation": "对应",
+    "target_id": "F006",
+    "target_name": "八珍汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z004",
+    "source_name": "气血两虚",
+    "relation": "对应",
+    "target_id": "F007",
+    "target_name": "归脾汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z004",
+    "source_name": "气血两虚",
+    "relation": "对应",
+    "target_id": "F008",
+    "target_name": "炙甘草汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z005",
+    "source_name": "肝血不足",
+    "relation": "对应",
+    "target_id": "F011",
+    "target_name": "酸枣仁汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z005",
+    "source_name": "肝血不足",
+    "relation": "对应",
+    "target_id": "F004",
+    "target_name": "四物汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z006",
+    "source_name": "阴虚血少",
+    "relation": "对应",
+    "target_id": "F012",
+    "target_name": "天王补心丹",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z006",
+    "source_name": "阴虚血少",
+    "relation": "对应",
+    "target_id": "F008",
+    "target_name": "炙甘草汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z006",
+    "source_name": "阴虚血少",
+    "relation": "对应",
+    "target_id": "F010",
+    "target_name": "一贯煎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z007",
+    "source_name": "中气下陷",
+    "relation": "对应",
+    "target_id": "F002",
+    "target_name": "补中益气汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z008",
+    "source_name": "血虚证",
+    "relation": "对应",
+    "target_id": "F004",
+    "target_name": "四物汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z008",
+    "source_name": "血虚证",
+    "relation": "对应",
+    "target_id": "F005",
+    "target_name": "当归补血汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z008",
+    "source_name": "血虚证",
+    "relation": "对应",
+    "target_id": "F006",
+    "target_name": "八珍汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z009",
+    "source_name": "气虚证",
+    "relation": "对应",
+    "target_id": "F001",
+    "target_name": "四君子汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z009",
+    "source_name": "气虚证",
+    "relation": "对应",
+    "target_id": "F002",
+    "target_name": "补中益气汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z009",
+    "source_name": "气虚证",
+    "relation": "对应",
+    "target_id": "F003",
+    "target_name": "参苓白术散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z010",
+    "source_name": "阴虚证",
+    "relation": "对应",
+    "target_id": "F009",
+    "target_name": "六味地黄丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z010",
+    "source_name": "阴虚证",
+    "relation": "对应",
+    "target_id": "F010",
+    "target_name": "一贯煎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z011",
+    "source_name": "阳虚证",
+    "relation": "对应",
+    "target_id": "F028",
+    "target_name": "真武汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z011",
+    "source_name": "阳虚证",
+    "relation": "对应",
+    "target_id": "F029",
+    "target_name": "理中丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z011",
+    "source_name": "阳虚证",
+    "relation": "对应",
+    "target_id": "F030",
+    "target_name": "四逆汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z012",
+    "source_name": "肝气郁结",
+    "relation": "对应",
+    "target_id": "F020",
+    "target_name": "逍遥散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z012",
+    "source_name": "肝气郁结",
+    "relation": "对应",
+    "target_id": "F032",
+    "target_name": "柴胡疏肝散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z012",
+    "source_name": "肝气郁结",
+    "relation": "对应",
+    "target_id": "F033",
+    "target_name": "越鞠丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z013",
+    "source_name": "肝火炽盛",
+    "relation": "对应",
+    "target_id": "F023",
+    "target_name": "龙胆泻肝汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z014",
+    "source_name": "湿热蕴脾",
+    "relation": "对应",
+    "target_id": "F025",
+    "target_name": "平胃散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z014",
+    "source_name": "湿热蕴脾",
+    "relation": "对应",
+    "target_id": "F026",
+    "target_name": "藿香正气散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z015",
+    "source_name": "风寒表证",
+    "relation": "对应",
+    "target_id": "F015",
+    "target_name": "麻黄汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z015",
+    "source_name": "风寒表证",
+    "relation": "对应",
+    "target_id": "F016",
+    "target_name": "桂枝汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z016",
+    "source_name": "风热表证",
+    "relation": "对应",
+    "target_id": "F017",
+    "target_name": "银翘散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z016",
+    "source_name": "风热表证",
+    "relation": "对应",
+    "target_id": "F018",
+    "target_name": "桑菊饮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z017",
+    "source_name": "气分热盛",
+    "relation": "对应",
+    "target_id": "F021",
+    "target_name": "白虎汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z017",
+    "source_name": "气分热盛",
+    "relation": "对应",
+    "target_id": "F024",
+    "target_name": "清营汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z018",
+    "source_name": "心火亢盛",
+    "relation": "对应",
+    "target_id": "F022",
+    "target_name": "黄连解毒汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z018",
+    "source_name": "心火亢盛",
+    "relation": "对应",
+    "target_id": "F013",
+    "target_name": "交泰丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z019",
+    "source_name": "痰湿内阻",
+    "relation": "对应",
+    "target_id": "F039",
+    "target_name": "二陈汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z019",
+    "source_name": "痰湿内阻",
+    "relation": "对应",
+    "target_id": "F031",
+    "target_name": "半夏厚朴汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z019",
+    "source_name": "痰湿内阻",
+    "relation": "对应",
+    "target_id": "F037",
+    "target_name": "半夏白术天麻汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z020",
+    "source_name": "血瘀证",
+    "relation": "对应",
+    "target_id": "F034",
+    "target_name": "血府逐瘀汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z020",
+    "source_name": "血瘀证",
+    "relation": "对应",
+    "target_id": "F035",
+    "target_name": "补阳还五汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z021",
+    "source_name": "脾虚湿困",
+    "relation": "对应",
+    "target_id": "F003",
+    "target_name": "参苓白术散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z021",
+    "source_name": "脾虚湿困",
+    "relation": "对应",
+    "target_id": "F026",
+    "target_name": "藿香正气散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z021",
+    "source_name": "脾虚湿困",
+    "relation": "对应",
+    "target_id": "F027",
+    "target_name": "五苓散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z022",
+    "source_name": "肾阴虚",
+    "relation": "对应",
+    "target_id": "F009",
+    "target_name": "六味地黄丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z023",
+    "source_name": "肾阳虚",
+    "relation": "对应",
+    "target_id": "F028",
+    "target_name": "真武汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z023",
+    "source_name": "肾阳虚",
+    "relation": "对应",
+    "target_id": "F030",
+    "target_name": "四逆汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z024",
+    "source_name": "胃气不和",
+    "relation": "对应",
+    "target_id": "F025",
+    "target_name": "平胃散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z024",
+    "source_name": "胃气不和",
+    "relation": "对应",
+    "target_id": "F038",
+    "target_name": "保和丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z025",
+    "source_name": "肝阳上亢",
+    "relation": "对应",
+    "target_id": "F037",
+    "target_name": "半夏白术天麻汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z026",
+    "source_name": "外感风寒",
+    "relation": "对应",
+    "target_id": "F015",
+    "target_name": "麻黄汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z026",
+    "source_name": "外感风寒",
+    "relation": "对应",
+    "target_id": "F016",
+    "target_name": "桂枝汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z026",
+    "source_name": "外感风寒",
+    "relation": "对应",
+    "target_id": "F040",
+    "target_name": "止嗽散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z027",
+    "source_name": "风邪上扰",
+    "relation": "对应",
+    "target_id": "F036",
+    "target_name": "川芎茶调散",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z028",
+    "source_name": "痰热扰心",
+    "relation": "对应",
+    "target_id": "F039",
+    "target_name": "二陈汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z029",
+    "source_name": "食积停滞",
+    "relation": "对应",
+    "target_id": "F038",
+    "target_name": "保和丸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z030",
+    "source_name": "肺气不足",
+    "relation": "对应",
+    "target_id": "F001",
+    "target_name": "四君子汤",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "Z030",
+    "source_name": "肺气不足",
+    "relation": "对应",
+    "target_id": "F040",
+    "target_name": "止嗽散",
+    "evidence": "《方剂学》教材"
+  }
+]
