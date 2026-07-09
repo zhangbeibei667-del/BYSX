@@ -22,11 +22,17 @@ data/**/*.tar.gz
 data/**/*.7z
 
 # =========================
-# Full processed corpora
+# Processed corpora
 # =========================
-data/processed/
 
-rag_corpus_clean.jsonl
+# Ignore all processed intermediate files
+data/processed/*
+
+# Keep the final merged RAG corpus
+# for team integration
+!data/processed/rag_corpus_clean.jsonl
+
+# Ignore intermediate cleaned corpora
 tcm_qg_chunks_clean.jsonl
 tcm_sd_syndrome_knowledge_clean.jsonl
 tcm_sd_dev_eval_clean.jsonl
