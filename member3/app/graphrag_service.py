@@ -40,7 +40,86 @@ class GraphRAGService:
         self.vector_search = vector_search
         self.graph_search = graph_search
         self.llm_client = llm_client
+    def _categorize_response_entities(
+        self,
+        query: str,
+        answer: str,
+        chunks: list[RetrievedChunk],
+        graph: GraphData,
+    ) -> dict[str, list[str]]:
+        """
+        从“用户问题 + 最终回答”中提取结构化实体。
 
+        约束：
+        1. 实体必须是知识图谱中的已知实体；
+        2. 实体必须得到图谱或文本证据支持；
+        3. 实体必须实际出现在用户问题或最终回答中。
+
+        这样避免直接把整个候选子图中的所有节点
+        都机械写入 symptoms / syndromes / formulas / herbs。
+        """
+
+        result = {
+            "symptoms": [],
+            "syndromes": [],
+            "formulas": [],
+            "herbs": [],
+        }
+
+        # 最终需要结构化的文本范围：
+        # 用户问题 + DeepSeek 最终回答
+        mention_text = f"{query}\n{answer}".lower()
+
+        # 图谱证据支持的实体 ID
+        supported_ids = {
+            node.id
+            for node in graph.nodes
+        }
+
+        # 文本证据内容
+        chunk_text = "\n".join(
+            chunk.content
+            for chunk in chunks
+        ).lower()
+
+        # 文本证据中明确出现的实体，也视为有证据支持
+        for entity in self.graph_search.entities:
+            candidates = [
+                entity.name,
+                entity.alias,
+            ]
+
+            if any(
+                name and name.lower() in chunk_text
+                for name in candidates
+            ):
+                supported_ids.add(entity.id)
+
+        # 最终只保留：
+        # 有证据支持 + 实际出现在问题或回答中的实体
+        for entity in self.graph_search.entities:
+            field = TYPE_TO_FIELD.get(entity.type)
+
+            if field is None:
+                continue
+
+            if entity.id not in supported_ids:
+                continue
+
+            candidates = [
+                entity.name,
+                entity.alias,
+            ]
+
+            mentioned = any(
+                name and name.lower() in mention_text
+                for name in candidates
+            )
+
+            if mentioned and entity.name not in result[field]:
+                result[field].append(entity.name)
+
+        return result
     def query(self, request: GraphRAGQueryRequest) -> QAResult:
         # 路 1：RAG 文本证据
         chunks = self.vector_search.search(
@@ -71,7 +150,12 @@ class GraphRAGService:
             prompt=prompt,
         )
 
-        categories = self._categorize_nodes(graph)
+        categories = self._categorize_response_entities(
+            query=request.query,
+            answer=answer,
+            chunks=chunks,
+            graph=graph,
+        )
 
         return QAResult(
             answer=answer,
@@ -151,9 +235,11 @@ class GraphRAGService:
 【要求】
 1. 只依据提供证据回答；
 2. 不补造不存在的事实；
-3. 可以说明“资料片段显示”或“图谱关系显示”；
-4. 证据不足时明确说明；
-5. 不构成医疗诊断或用药建议。
+3. 严格区分文本证据与图谱证据；
+4. 不得进行证据未明确支持的医学因果、疗效或调理方向推断；
+5. 优先回答用户直接提出的问题，避免展开无关图谱支路；
+6. 证据不足时明确说明；
+7. 不构成医疗诊断或用药建议。
 """.strip()
 
     def _generate_answer(
