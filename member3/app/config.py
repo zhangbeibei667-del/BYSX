@@ -100,11 +100,14 @@ DATA_DIR = PROJECT_ROOT / "data"
 # 6. Mock 图谱
 # ============================================================
 
-# 当前开发阶段仍然保留：
+# 暂时保留旧 Mock 图谱兼容：
 #
 # data/
 # ├── entities.json
 # └── relations.json
+#
+# 正式联调阶段推荐使用：
+# directory 或 custom。
 
 MOCK_ENTITIES_PATH = (
     DATA_DIR
@@ -121,7 +124,7 @@ MOCK_RELATIONS_PATH = (
 # 7. 团队真实多文件图谱目录
 # ============================================================
 
-# 未来推荐结构：
+# 推荐正式结构：
 #
 # data/
 # └── graph/
@@ -135,9 +138,10 @@ MOCK_RELATIONS_PATH = (
 #     │   └── entities_literature.json
 #     │
 #     └── relations/
-#         ├── relations_syndrome_symptom.json
-#         ├── relations_syndrome_formula.json
-#         ├── relations_formula_herb.json
+#         ├── relations_contains.json
+#         ├── relations_contra.json
+#         ├── relations_herb_effect.json
+#         ├── relations_source.json
 #         └── ...
 
 GRAPH_DIR = (
@@ -163,17 +167,15 @@ GRAPH_RELATIONS_DIR = (
 # 支持：
 #
 # mock
-#   使用：
 #   data/entities.json
 #   data/relations.json
 #
 # directory
-#   使用：
 #   data/graph/entities/
 #   data/graph/relations/
 #
 # custom
-#   完全使用：
+#   使用 .env 中：
 #   GRAPH_ENTITIES_PATH
 #   GRAPH_RELATIONS_PATH
 
@@ -197,7 +199,7 @@ if GRAPH_SOURCE not in {
 
 
 # ============================================================
-# 9. 根据模式确定图谱路径
+# 9. 根据模式确定默认图谱路径
 # ============================================================
 
 if GRAPH_SOURCE == "mock":
@@ -219,8 +221,11 @@ elif GRAPH_SOURCE == "directory":
     )
 
 else:
-    # custom 模式仍给默认值，
-    # 但实际建议通过 .env 指定路径。
+    # custom 模式通常通过 .env
+    # 指定外部目录。
+    #
+    # 未配置时仍给出项目内默认目录，
+    # 让错误路径更容易排查。
     default_entities_path = (
         GRAPH_ENTITIES_DIR
     )
@@ -234,13 +239,10 @@ else:
 # 10. 最终实体 / 关系数据源
 # ============================================================
 
-# 注意：
-# GraphSearch 新版本已经支持：
+# 新版 GraphSearch 已支持：
 #
 # - 单个 JSON 文件
-# - JSON 目录
-#
-# 所以这里统一使用 Path 即可。
+# - 包含多个 JSON 的目录
 
 GRAPH_ENTITIES_SOURCE = _resolve_path(
     os.getenv(
@@ -257,21 +259,8 @@ GRAPH_RELATIONS_SOURCE = _resolve_path(
 )
 
 
-# ------------------------------------------------------------
-# 兼容旧 main.py
-# ------------------------------------------------------------
-#
-# 当前 main.py 很可能仍然：
-#
-# GraphSearch(
-#     entities_path=ENTITIES_PATH,
-#     relations_path=RELATIONS_PATH,
-# )
-#
-# 所以继续保留旧变量名。
-#
-# 后续 main.py 可以不改，
-# 也可以改用 GRAPH_ENTITIES_SOURCE。
+# 保留现有变量名，
+# 避免其他模块额外修改。
 
 ENTITIES_PATH = (
     GRAPH_ENTITIES_SOURCE
@@ -283,54 +272,16 @@ RELATIONS_PATH = (
 
 
 # ============================================================
-# 11. 旧 Mock 文本目录
+# 11. Milvus 正式向量数据库配置
 # ============================================================
 
-# 当前 Hash VectorSearch fallback 仍可能使用。
+# 当前项目正式 RAG 后端固定使用 Milvus。
 #
-# 正式 Milvus 模式下，
-# 不再作为主 RAG 知识库。
-
-DOCS_DIR = _resolve_path(
-    os.getenv(
-        "DOCS_DIR"
-    ),
-    DATA_DIR / "docs",
-)
-
-
-# ============================================================
-# 12. Vector Backend
-# ============================================================
-
-# 支持：
+# 完整语料：
+# data/processed/rag_corpus_clean.jsonl
 #
-# milvus
-#   正式 7951 条真实 RAG 语料
-#
-# hash
-#   旧开发期 Mock / fallback
-
-VECTOR_BACKEND = os.getenv(
-    "VECTOR_BACKEND",
-    "milvus",
-).strip().lower()
-
-
-if VECTOR_BACKEND not in {
-    "milvus",
-    "hash",
-}:
-    raise ValueError(
-        "VECTOR_BACKEND 配置错误。"
-        "仅支持: milvus / hash，"
-        f"当前值: {VECTOR_BACKEND}"
-    )
-
-
-# ============================================================
-# 13. Milvus 配置
-# ============================================================
+# 当前已验证：
+# 7951 chunks
 
 MILVUS_URI = os.getenv(
     "MILVUS_URI",
@@ -344,7 +295,7 @@ MILVUS_COLLECTION = os.getenv(
 
 
 # ============================================================
-# 14. Embedding 配置
+# 12. Embedding 配置
 # ============================================================
 
 EMBEDDING_API_KEY = os.getenv(
@@ -371,14 +322,14 @@ EMBEDDING_DIM = int(
 
 
 # ============================================================
-# 15. LLM 配置
+# 13. LLM 配置
 # ============================================================
 
 LLM_ENABLED = (
     os.getenv(
         "LLM_ENABLED",
         "false",
-    ).lower()
+    ).strip().lower()
     == "true"
 )
 
@@ -399,30 +350,37 @@ LLM_MODEL = os.getenv(
 
 
 # ============================================================
-# 16. 调试辅助
+# 14. 安全运行配置摘要
 # ============================================================
 
-def get_runtime_config() -> dict[str, str | int | bool]:
+def get_runtime_config() -> dict[
+    str,
+    str | int | bool,
+]:
     """
     返回当前运行配置摘要。
 
-    注意：
-    不返回任何 API Key，
-    避免敏感信息泄露。
+    不返回：
+    - LLM_API_KEY
+    - EMBEDDING_API_KEY
 
     可用于：
-    - 本地调试
     - FastAPI health
-    - 团队集成检查
+    - 团队联调
+    - 环境检查
     """
     return {
         "project_root": str(
             PROJECT_ROOT
         ),
+
         "app_host": APP_HOST,
+
         "app_port": APP_PORT,
 
-        "graph_source": GRAPH_SOURCE,
+        "graph_source": (
+            GRAPH_SOURCE
+        ),
 
         "entities_source": str(
             ENTITIES_PATH
@@ -432,11 +390,12 @@ def get_runtime_config() -> dict[str, str | int | bool]:
             RELATIONS_PATH
         ),
 
-        "vector_backend": (
-            VECTOR_BACKEND
-        ),
+        # 正式文本检索固定使用 Milvus
+        "vector_backend": "milvus",
 
-        "milvus_uri": MILVUS_URI,
+        "milvus_uri": (
+            MILVUS_URI
+        ),
 
         "milvus_collection": (
             MILVUS_COLLECTION

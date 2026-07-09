@@ -8,7 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import (
     APP_HOST,
     APP_PORT,
-    DOCS_DIR,
     ENTITIES_PATH,
     GRAPH_SOURCE,
     LLM_API_KEY,
@@ -18,7 +17,6 @@ from app.config import (
     MILVUS_COLLECTION,
     MILVUS_URI,
     RELATIONS_PATH,
-    VECTOR_BACKEND,
     get_runtime_config,
 )
 from app.graph_search import GraphSearch
@@ -29,7 +27,6 @@ from app.schemas import (
     GraphRAGQueryRequest,
     QAResult,
 )
-from app.vector_search import VectorSearch
 
 
 # ============================================================
@@ -38,9 +35,9 @@ from app.vector_search import VectorSearch
 
 app = FastAPI(
     title="TCM GraphRAG - Member 3",
-    version="0.2.0",
+    version="0.3.0",
     description=(
-        "成员 3 GraphRAG："
+        "成员 3 正式 GraphRAG："
         "Milvus 真实语义检索 + "
         "知识图谱路径搜索 + "
         "证据融合 + "
@@ -68,12 +65,16 @@ app.add_middleware(
 # 3. GraphSearch
 # ============================================================
 
-# 新版 GraphSearch 已支持：
+# GraphSearch 支持：
 #
 # 1. 单个 entities.json / relations.json
 # 2. 多 JSON 文件目录
 #
-# 实际数据源由 config.py 和 .env 决定。
+# 实际图谱数据源由：
+# GRAPH_SOURCE
+# GRAPH_ENTITIES_PATH
+# GRAPH_RELATIONS_PATH
+# 决定。
 
 graph_search = GraphSearch(
     entities_path=ENTITIES_PATH,
@@ -81,133 +82,80 @@ graph_search = GraphSearch(
 )
 
 
+print(
+    "[GraphSearch] 图谱加载成功"
+)
+
+print(
+    "[GraphSearch] "
+    f"Source: {GRAPH_SOURCE}"
+)
+
+print(
+    "[GraphSearch] "
+    f"Entities: {ENTITIES_PATH}"
+)
+
+print(
+    "[GraphSearch] "
+    f"Relations: {RELATIONS_PATH}"
+)
+
+print(
+    "[GraphSearch] "
+    f"Stats: {graph_search.get_stats()}"
+)
+
+
 # ============================================================
-# 4. Vector Search Backend
+# 4. Milvus Vector Search
 # ============================================================
 
-# 用户配置希望使用的后端：
+# 正式项目固定使用：
+# MilvusVectorSearch
 #
-# milvus
-# hash
+# 不再自动降级到旧：
+# data/docs
+# Hash VectorSearch
+#
+# 原因：
+# 1. 旧 3 篇 Mock TXT 已删除；
+# 2. 正式 RAG 语料为 7951 chunks；
+# 3. 隐式降级到小型 Mock 库会掩盖部署错误；
+# 4. Milvus 不可用时应明确报错。
 
-VECTOR_BACKEND_REQUESTED = VECTOR_BACKEND
-
-# 实际成功启动的后端
-VECTOR_BACKEND_ACTIVE = ""
-
-# 如果发生自动降级，
-# 记录错误供 health 接口调试
-VECTOR_BACKEND_ERROR: str | None = None
-
-
-def _build_vector_search() -> Any:
-    """
-    根据 VECTOR_BACKEND 创建文本检索器。
-
-    milvus:
-        正式后端
-        7951 条清洗语料
-        text-embedding-v4
-        1024 维向量
-
-    hash:
-        开发期 fallback
-        data/docs 下 Mock 文本
-
-    当配置为 milvus，
-    但 Milvus 临时不可访问时：
-        自动降级为 hash
-
-    这样可以避免：
-        Docker 未启动
-        19530 不通
-        Collection 不存在
-
-    导致整个 FastAPI 服务直接无法启动。
-    """
-    global VECTOR_BACKEND_ACTIVE
-    global VECTOR_BACKEND_ERROR
-
-    # --------------------------------------------------------
-    # 正式 Milvus
-    # --------------------------------------------------------
-    if VECTOR_BACKEND_REQUESTED == "milvus":
-        try:
-            searcher = MilvusVectorSearch()
-
-            VECTOR_BACKEND_ACTIVE = "milvus"
-            VECTOR_BACKEND_ERROR = None
-
-            print(
-                "[VectorSearch] "
-                "Milvus 后端启动成功"
-            )
-
-            print(
-                "[VectorSearch] "
-                f"URI: {MILVUS_URI}"
-            )
-
-            print(
-                "[VectorSearch] "
-                f"Collection: "
-                f"{MILVUS_COLLECTION}"
-            )
-
-            return searcher
-
-        except Exception as exc:
-            VECTOR_BACKEND_ERROR = (
-                f"{type(exc).__name__}: {exc}"
-            )
-
-            print(
-                "[VectorSearch] "
-                "Milvus 后端启动失败"
-            )
-
-            print(
-                "[VectorSearch] "
-                f"错误: {VECTOR_BACKEND_ERROR}"
-            )
-
-            print(
-                "[VectorSearch] "
-                "自动降级为 Hash VectorSearch"
-            )
-
-            searcher = VectorSearch(
-                docs_dir=DOCS_DIR,
-            )
-
-            VECTOR_BACKEND_ACTIVE = "hash"
-
-            return searcher
-
-    # --------------------------------------------------------
-    # Hash fallback
-    # --------------------------------------------------------
-    searcher = VectorSearch(
-        docs_dir=DOCS_DIR,
+try:
+    vector_search = (
+        MilvusVectorSearch()
     )
 
-    VECTOR_BACKEND_ACTIVE = "hash"
-    VECTOR_BACKEND_ERROR = None
-
-    print(
-        "[VectorSearch] "
-        "Hash 后端启动成功"
-    )
-
-    print(
-        "[VectorSearch] "
-        f"Docs: {DOCS_DIR}"
-    )
-
-    return searcher
+except Exception as exc:
+    raise RuntimeError(
+        "Milvus 向量检索初始化失败。\n"
+        f"URI: {MILVUS_URI}\n"
+        f"Collection: {MILVUS_COLLECTION}\n"
+        "请检查：\n"
+        "1. Milvus Docker 服务是否启动；\n"
+        "2. 127.0.0.1:19530 是否可访问；\n"
+        "3. tcm_rag_chunks Collection 是否存在；\n"
+        "4. 是否已经执行完整语料导入。"
+    ) from exc
 
 
-vector_search = _build_vector_search()
+print(
+    "[VectorSearch] "
+    "Milvus 后端启动成功"
+)
+
+print(
+    "[VectorSearch] "
+    f"URI: {MILVUS_URI}"
+)
+
+print(
+    "[VectorSearch] "
+    f"Collection: {MILVUS_COLLECTION}"
+)
 
 
 # ============================================================
@@ -265,8 +213,7 @@ def health() -> dict[str, Any]:
     返回：
     - FastAPI 状态
     - 图谱状态
-    - Vector Backend
-    - Milvus 配置
+    - Milvus 状态
     - LLM 状态
 
     不返回任何 API Key。
@@ -284,20 +231,25 @@ def health() -> dict[str, Any]:
         "app": {
             "host": APP_HOST,
             "port": APP_PORT,
-            "version": "0.2.0",
+            "version": "0.3.0",
         },
 
         # --------------------------------
         # Graph
         # --------------------------------
         "graph": {
-            "source": GRAPH_SOURCE,
+            "source": (
+                GRAPH_SOURCE
+            ),
+
             "entities_source": str(
                 ENTITIES_PATH
             ),
+
             "relations_source": str(
                 RELATIONS_PATH
             ),
+
             **graph_stats,
         },
 
@@ -305,41 +257,36 @@ def health() -> dict[str, Any]:
         # Vector Search
         # --------------------------------
         "vector_search": {
-            "requested_backend": (
-                VECTOR_BACKEND_REQUESTED
-            ),
-            "active_backend": (
-                VECTOR_BACKEND_ACTIVE
-            ),
-            "fallback_occurred": (
-                VECTOR_BACKEND_REQUESTED
-                != VECTOR_BACKEND_ACTIVE
-            ),
-            "error": (
-                VECTOR_BACKEND_ERROR
-            ),
+            "backend": "milvus",
+            "active": True,
         },
 
         # --------------------------------
         # Milvus
         # --------------------------------
         "milvus": {
-            "uri": MILVUS_URI,
+            "uri": (
+                MILVUS_URI
+            ),
+
             "collection": (
                 MILVUS_COLLECTION
             ),
-            "active": (
-                VECTOR_BACKEND_ACTIVE
-                == "milvus"
-            ),
+
+            "active": True,
         },
 
         # --------------------------------
         # LLM
         # --------------------------------
         "llm": {
-            "enabled": LLM_ENABLED,
-            "model": LLM_MODEL,
+            "enabled": (
+                LLM_ENABLED
+            ),
+
+            "model": (
+                LLM_MODEL
+            ),
         },
     }
 
@@ -359,28 +306,12 @@ def runtime_config() -> dict[str, Any]:
     - LLM_API_KEY
     - EMBEDDING_API_KEY
 
-    主要用于：
+    用于：
     - 团队联调
     - 页面调试
     - 环境确认
     """
-    config = get_runtime_config()
-
-    config.update(
-        {
-            "vector_backend_requested": (
-                VECTOR_BACKEND_REQUESTED
-            ),
-            "vector_backend_active": (
-                VECTOR_BACKEND_ACTIVE
-            ),
-            "vector_backend_error": (
-                VECTOR_BACKEND_ERROR
-            ),
-        }
-    )
-
-    return config
+    return get_runtime_config()
 
 
 # ============================================================
@@ -406,21 +337,23 @@ def graphrag_query(
 
         Query
           │
-          ├───────────────┐
-          ↓               ↓
-      GraphSearch     VectorSearch
-          ↓               ↓
-      Graph Paths     Milvus Top-K
-          │               │
-          └───────┬───────┘
-                  ↓
-          Evidence Fusion
-                  ↓
-              DeepSeek
-                  ↓
-              QAResult
+          ├─────────────────┐
+          ↓                 ↓
+      GraphSearch       Milvus
+          ↓                 ↓
+      Entity Match      Dense Retrieval
+          ↓                 ↓
+      Graph BFS          Rerank
+          │                 │
+          └────────┬────────┘
+                   ↓
+           Evidence Fusion
+                   ↓
+               DeepSeek
+                   ↓
+               QAResult
 
-    输出严格遵守组长统一问答格式。
+    输出遵守团队统一问答格式。
     """
     return graphrag_service.query(
         request
