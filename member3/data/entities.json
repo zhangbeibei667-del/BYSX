@@ -1,0 +1,145 @@
+[
+  {
+    "id": "S001",
+    "name": "失眠",
+    "type": "症状",
+    "alias": "不寐",
+    "description": "教学示例中的睡眠相关症状",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "S002",
+    "name": "多梦",
+    "type": "症状",
+    "alias": "梦多",
+    "description": "教学示例中的睡眠相关表现",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "S003",
+    "name": "心悸",
+    "type": "症状",
+    "alias": "心慌",
+    "description": "教学示例中的相关症状",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "S004",
+    "name": "健忘",
+    "type": "症状",
+    "alias": "善忘",
+    "description": "教学示例中的相关表现",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "Z001",
+    "name": "心脾两虚",
+    "type": "证候",
+    "alias": "心脾气血两虚",
+    "description": "用于课程项目演示的证候实体",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "F001",
+    "name": "归脾汤",
+    "type": "方剂",
+    "alias": "归脾汤",
+    "description": "益气补血，健脾养心",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "H001",
+    "name": "酸枣仁",
+    "type": "药材",
+    "alias": "枣仁",
+    "description": "课程项目中的药材实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "H002",
+    "name": "远志",
+    "type": "药材",
+    "alias": "小草",
+    "description": "课程项目中的药材实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "H003",
+    "name": "人参",
+    "type": "药材",
+    "alias": "人衔",
+    "description": "课程项目中的药材实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "H004",
+    "name": "黄芪",
+    "type": "药材",
+    "alias": "黄耆",
+    "description": "课程项目中的药材实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "E001",
+    "name": "益气补血",
+    "type": "功效",
+    "alias": "益气养血",
+    "description": "课程项目中的功效实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "E002",
+    "name": "健脾养心",
+    "type": "功效",
+    "alias": "健脾养心",
+    "description": "课程项目中的功效实体示例",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  },
+  {
+    "id": "L001",
+    "name": "归脾汤方剂说明",
+    "type": "文献",
+    "alias": "方剂说明",
+    "description": "课程项目使用的教学模拟资料节点",
+    "properties": {
+      "source": "教学模拟资料",
+      "note": "GraphRAG开发测试"
+    }
+  }
+]
