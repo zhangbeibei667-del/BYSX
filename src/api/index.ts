@@ -118,7 +118,8 @@ export const documentApi = {
     return api.post('/admin/documents/upload', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
-  }
+  },
+  export: () => api.get('/admin/documents/export', { responseType: 'blob' })
 }
 
 // 实体管理接口
@@ -163,16 +164,32 @@ export const entityApi = {
     create: (data: Partial<SymptomEntity>) => api.post('/admin/symptoms', data),
     update: (id: string, data: Partial<SymptomEntity>) => api.put(`/admin/symptoms/${id}`, data),
     delete: (id: string) => api.delete(`/admin/symptoms/${id}`),
-    batchDelete: (ids: string[]) => api.delete('/admin/symptoms/batch', { data: { ids } })
+    batchDelete: (ids: string[]) => api.delete('/admin/symptoms/batch', { data: { ids } }),
+    import: (file: File) => {
+      const formData = new FormData()
+      formData.append('file', file)
+      return api.post('/admin/symptoms/import', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+    },
+    export: () => api.get('/admin/symptoms/export', { responseType: 'blob' })
   },
-  
+
   // 证候管理
   syndromes: {
     list: (params: any) => api.get<SyndromeEntity[]>('/admin/syndromes', { params }),
     create: (data: Partial<SyndromeEntity>) => api.post('/admin/syndromes', data),
     update: (id: string, data: Partial<SyndromeEntity>) => api.put(`/admin/syndromes/${id}`, data),
     delete: (id: string) => api.delete(`/admin/syndromes/${id}`),
-    batchDelete: (ids: string[]) => api.delete('/admin/syndromes/batch', { data: { ids } })
+    batchDelete: (ids: string[]) => api.delete('/admin/syndromes/batch', { data: { ids } }),
+    import: (file: File) => {
+      const formData = new FormData()
+      formData.append('file', file)
+      return api.post('/admin/syndromes/import', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+    },
+    export: () => api.get('/admin/syndromes/export', { responseType: 'blob' })
   }
 }
 

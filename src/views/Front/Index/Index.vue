@@ -226,7 +226,7 @@ import {
   Loading,
   Setting
 } from '@element-plus/icons-vue'
-import { entityApi } from '@/api'
+import { entityApi, statsApi } from '@/api'
 import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
 
 const router = useRouter()
@@ -268,32 +268,29 @@ onMounted(() => {
 const loadStats = async () => {
   try {
     loadingStats.value = true
-    
-    // 实际API调用 - 从后端获取统计数据
-    // 注意：如果后端API还未实现，可以先使用模拟数据
+
+    // 优先使用 statsApi
     try {
-      // 尝试调用真实API
-      const response = await fetch('/api/stats/platform')
-      if (response.ok) {
-        const data = await response.json()
+      const res: any = await statsApi.getPlatformStats()
+      // 兼容不同后端响应格式
+      const data = res?.data || res
+      if (data && typeof data === 'object') {
         stats.value = {
           totalHerbs: data.totalHerbs || 0,
           totalPrescriptions: data.totalPrescriptions || 0,
           totalRelations: data.totalRelations || 0,
           totalQuestions: data.totalQuestions || 0
         }
-      } else {
-        // API未实现，使用模拟数据
-        useMockStats()
+        return
       }
     } catch (apiError) {
-      console.log('API未就绪，使用模拟数据:', apiError)
-      useMockStats()
+      console.log('statsApi 未就绪，使用模拟数据:', apiError)
     }
+
+    // API 不可用时使用模拟数据
+    useMockStats()
   } catch (error) {
     console.error('加载统计数据失败:', error)
-    ElMessage.error('加载统计数据失败')
-    // 出错时使用模拟数据
     useMockStats()
   } finally {
     loadingStats.value = false
@@ -315,32 +312,33 @@ const useMockStats = () => {
 const loadRecommendedPrescriptions = async () => {
   try {
     loadingPrescriptions.value = true
-    
-    // 尝试调用真实API
+
+    // 优先使用 statsApi 获取热门实体
     try {
-      const params = {
-        page: 1,
-        pageSize: 4,
-        sortBy: 'usage_count', // 按使用频率排序
-        sortOrder: 'desc'
+      const res: any = await statsApi.getPopularEntities('prescriptions', 4)
+      const data = res?.data || res
+      if (Array.isArray(data) && data.length > 0) {
+        recommendedPrescriptions.value = data
+        return
       }
-      
-      // 实际API调用
-      const response = await entityApi.prescriptions.list(params)
+    } catch {
+      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
+    }
+
+    // 回退到 entityApi 列表
+    try {
+      const response = await entityApi.prescriptions.list({ page: 1, pageSize: 4, sortBy: 'usage_count', sortOrder: 'desc' })
       if (response && response.data && response.data.length > 0) {
         recommendedPrescriptions.value = response.data
-      } else {
-        // API返回空数据，使用模拟数据
-        useMockPrescriptions()
+        return
       }
-    } catch (apiError) {
-      console.log('API未就绪，使用模拟数据:', apiError)
-      useMockPrescriptions()
+    } catch {
+      console.log('entityApi 未就绪，使用模拟数据')
     }
+
+    useMockPrescriptions()
   } catch (error) {
     console.error('加载推荐方剂失败:', error)
-    ElMessage.error('加载推荐方剂失败')
-    // 出错时使用模拟数据
     useMockPrescriptions()
   } finally {
     loadingPrescriptions.value = false
@@ -385,32 +383,33 @@ const useMockPrescriptions = () => {
 const loadRecommendedHerbs = async () => {
   try {
     loadingHerbs.value = true
-    
-    // 尝试调用真实API
+
+    // 优先使用 statsApi 获取热门实体
     try {
-      const params = {
-        page: 1,
-        pageSize: 4,
-        sortBy: 'usage_count', // 按使用频率排序
-        sortOrder: 'desc'
+      const res: any = await statsApi.getPopularEntities('herbs', 4)
+      const data = res?.data || res
+      if (Array.isArray(data) && data.length > 0) {
+        recommendedHerbs.value = data
+        return
       }
-      
-      // 实际API调用
-      const response = await entityApi.herbs.list(params)
+    } catch {
+      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
+    }
+
+    // 回退到 entityApi 列表
+    try {
+      const response = await entityApi.herbs.list({ page: 1, pageSize: 4, sortBy: 'usage_count', sortOrder: 'desc' })
       if (response && response.data && response.data.length > 0) {
         recommendedHerbs.value = response.data
-      } else {
-        // API返回空数据，使用模拟数据
-        useMockHerbs()
+        return
       }
-    } catch (apiError) {
-      console.log('API未就绪，使用模拟数据:', apiError)
-      useMockHerbs()
+    } catch {
+      console.log('entityApi 未就绪，使用模拟数据')
     }
+
+    useMockHerbs()
   } catch (error) {
     console.error('加载推荐药材失败:', error)
-    ElMessage.error('加载推荐药材失败')
-    // 出错时使用模拟数据
     useMockHerbs()
   } finally {
     loadingHerbs.value = false
@@ -455,32 +454,33 @@ const useMockHerbs = () => {
 const loadRecommendedSymptoms = async () => {
   try {
     loadingSymptoms.value = true
-    
-    // 尝试调用真实API
+
+    // 优先使用 statsApi 获取热门实体
     try {
-      const params = {
-        page: 1,
-        pageSize: 4,
-        sortBy: 'frequency', // 按出现频率排序
-        sortOrder: 'desc'
+      const res: any = await statsApi.getPopularEntities('symptoms', 4)
+      const data = res?.data || res
+      if (Array.isArray(data) && data.length > 0) {
+        recommendedSymptoms.value = data
+        return
       }
-      
-      // 实际API调用
-      const response = await entityApi.symptoms.list(params)
+    } catch {
+      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
+    }
+
+    // 回退到 entityApi 列表
+    try {
+      const response = await entityApi.symptoms.list({ page: 1, pageSize: 4, sortBy: 'frequency', sortOrder: 'desc' })
       if (response && response.data && response.data.length > 0) {
         recommendedSymptoms.value = response.data
-      } else {
-        // API返回空数据，使用模拟数据
-        useMockSymptoms()
+        return
       }
-    } catch (apiError) {
-      console.log('API未就绪，使用模拟数据:', apiError)
-      useMockSymptoms()
+    } catch {
+      console.log('entityApi 未就绪，使用模拟数据')
     }
+
+    useMockSymptoms()
   } catch (error) {
     console.error('加载推荐症状失败:', error)
-    ElMessage.error('加载推荐症状失败')
-    // 出错时使用模拟数据
     useMockSymptoms()
   } finally {
     loadingSymptoms.value = false
@@ -569,9 +569,26 @@ const goToAdminRecords = async () => {
 }
 
 const viewDetail = (type: string, id: string) => {
-  // 跳转到详情页面
-  console.log('View detail:', type, id)
-  // 这里可以跳转到实体详情页
+  // 查找对应的实体名称用于搜索
+  let entityName = ''
+  if (type === 'prescription') {
+    const found = recommendedPrescriptions.value.find((p: any) => p.id === id)
+    entityName = found?.name || ''
+  } else if (type === 'herb') {
+    const found = recommendedHerbs.value.find((h: any) => h.id === id)
+    entityName = found?.name || ''
+  } else if (type === 'symptom') {
+    const found = recommendedSymptoms.value.find((s: any) => s.id === id)
+    entityName = found?.name || ''
+  }
+
+  if (entityName) {
+    // 跳转到图谱浏览页面并自动搜索该实体
+    router.push(`/graph?search=${encodeURIComponent(entityName)}`)
+  } else {
+    // 兜底：跳转到图谱页面
+    router.push('/graph')
+  }
 }
 
 const formatNumber = (num: number) => {

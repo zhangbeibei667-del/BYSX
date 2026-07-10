@@ -208,7 +208,8 @@ import {
   ArrowUp
 } from '@element-plus/icons-vue'
 import { useChatStore } from '@/store'
-import { simulateStreamResponse } from '@/utils/stream'
+import { simulateStreamResponse, StreamSSE } from '@/utils/stream'
+import { chatApi } from '@/api'
 import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import type { AnswerResponse } from '@/types'
 
@@ -266,24 +267,39 @@ const scrollToBottom = () => {
 }
 
 const loadChatHistory = async () => {
-  // 模拟加载历史记录
-  chatHistory.value = [
-    {
-      id: '1',
-      title: '失眠咨询',
-      timestamp: new Date(Date.now() - 3600000).toISOString()
-    },
-    {
-      id: '2',
-      title: '方剂查询',
-      timestamp: new Date(Date.now() - 7200000).toISOString()
-    },
-    {
-      id: '3',
-      title: '药材辨析',
-      timestamp: new Date(Date.now() - 86400000).toISOString()
+  // 优先从 API 加载历史记录
+  try {
+    const res: any = await chatApi.getHistory(1, 50)
+    if (res?.data) {
+      chatHistory.value = Array.isArray(res.data) ? res.data.map((item: any) => ({
+        id: item.id,
+        title: item.question?.slice(0, 20) || '对话记录',
+        timestamp: item.createdAt || new Date().toISOString()
+      })) : []
+      return
+    } else if (Array.isArray(res)) {
+      chatHistory.value = res.map((item: any) => ({
+        id: item.id,
+        title: item.question?.slice(0, 20) || '对话记录',
+        timestamp: item.createdAt || new Date().toISOString()
+      }))
+      return
     }
-  ]
+  } catch (apiError) {
+    console.log('chatApi.getHistory 未就绪，使用本地数据')
+  }
+
+  // API 不可用时从本地恢复
+  const saved = localStorage.getItem('tcm_chat_history')
+  if (saved) {
+    try {
+      chatHistory.value = JSON.parse(saved)
+      return
+    } catch { /* ignore parse error */ }
+  }
+
+  // 最终兜底：空列表（不再硬编码假数据）
+  chatHistory.value = []
 }
 
 const newChat = () => {
@@ -332,8 +348,18 @@ const loadHistory = (historyId: string) => {
   scrollToBottom()
 }
 
-const deleteHistory = (historyId: string) => {
+const deleteHistory = async (historyId: string) => {
+  // 优先调用 API 删除
+  try {
+    await chatApi.deleteHistory(historyId)
+  } catch {
+    console.log('chatApi.deleteHistory 未就绪，仅本地删除')
+  }
+
   chatHistory.value = chatHistory.value.filter(h => h.id !== historyId)
+  // 持久化到本地
+  localStorage.setItem('tcm_chat_history', JSON.stringify(chatHistory.value))
+
   if (activeHistoryId.value === historyId) {
     newChat()
   }
@@ -342,73 +368,86 @@ const deleteHistory = (historyId: string) => {
 
 const sendMessage = async () => {
   if (!inputMessage.value.trim() || isStreaming.value) return
-  
+
   const userMessage = inputMessage.value.trim()
-  
+
   // 添加用户消息
   chatStore.addMessage('user', userMessage)
   inputMessage.value = ''
-  
+
   // 添加助理消息（占位）
   chatStore.addMessage('assistant', '', undefined)
   chatStore.startStream()
-  
-  scrollToBottom()
-  
-  try {
-    // 模拟回答（实际应该调用API）
-    const mockResponse: AnswerResponse = {
-      answer: `根据您的问题"${userMessage}"，我来为您分析：
 
-失眠在中医中可以从多个角度考虑：
-1. **心脾两虚**：表现为失眠多梦、心悸健忘、食少乏力
-   - 推荐方剂：归脾汤
-   - 主要药材：酸枣仁、远志、人参、黄芪
-   
-2. **心肾不交**：表现为心烦失眠、心悸不安、头晕耳鸣
-   - 推荐方剂：黄连阿胶汤
-   - 主要药材：黄连、黄芩、阿胶、白芍
-   
-3. **肝郁化火**：表现为失眠多梦、烦躁易怒、口苦口干
-   - 推荐方剂：龙胆泻肝汤
-   - 主要药材：龙胆草、栀子、黄芩、柴胡`,
-      symptoms: ['失眠', '多梦', '心悸', '健忘'],
-      syndromes: ['心脾两虚', '心肾不交', '肝郁化火'],
-      formulas: ['归脾汤', '黄连阿胶汤', '龙胆泻肝汤'],
-      herbs: ['酸枣仁', '远志', '人参', '黄芪', '黄连', '黄芩'],
-      evidence: [
-        {
-          title: '《中医内科学》失眠章节',
-          content: '失眠病位在心，与肝、脾、肾关系密切...'
-        },
-        {
-          title: '《中药学》酸枣仁条目',
-          content: '酸枣仁性甘、酸，平，归心、肝、胆经，具有养心益肝、安神、敛汗功效...'
-        }
-      ],
-      follow_up_questions: [
-        '是否伴有食少乏力？',
-        '是否有舌淡、脉细等表现？',
-        '是否经常熬夜或工作压力大？'
-      ],
-      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。'
+  scrollToBottom()
+
+  try {
+    let response: AnswerResponse | null = null
+
+    // 优先尝试真实 API 调用
+    try {
+      const apiRes: any = await chatApi.askQuestion(userMessage, activeHistoryId.value || undefined)
+      // 兼容不同后端响应格式
+      if (apiRes?.data) {
+        response = apiRes.data
+      } else if (apiRes?.answer) {
+        response = apiRes as AnswerResponse
+      }
+    } catch (apiError) {
+      console.log('chatApi.askQuestion 未就绪，使用 SSE 尝试...')
     }
-    
-    // 模拟流式响应
-    await simulateStreamResponse(
-      mockResponse,
-      (chunk) => {
-        chatStore.appendToStream(chunk)
-        scrollToBottom()
-      },
-      () => {
-        chatStore.endStream(mockResponse)
-        scrollToBottom()
-      },
-      30
-    )
-    
-    // 保存到历史
+
+    // 如果非流式 API 不可用，尝试 SSE 流式
+    if (!response) {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const streamUrl = `/api/chat/ask/stream?question=${encodeURIComponent(userMessage)}&historyId=${activeHistoryId.value || ''}`
+          const streamSSE = new StreamSSE(streamUrl)
+
+          streamSSE.start(
+            (data) => {
+              response = data
+            },
+            () => {
+              resolve()
+            }
+          )
+
+          // 超时回退
+          setTimeout(() => {
+            if (!response) {
+              streamSSE.stop()
+              resolve()
+            }
+          }, 8000)
+        })
+      } catch (sseError) {
+        console.log('SSE 流式 API 未就绪:', sseError)
+      }
+    }
+
+    // 如果所有 API 都不可用，使用 mock 数据兜底
+    if (!response) {
+      response = buildMockResponse(userMessage)
+    }
+
+    // 模拟流式渲染效果
+    if (response) {
+      await simulateStreamResponse(
+        response,
+        (chunk) => {
+          chatStore.appendToStream(chunk)
+          scrollToBottom()
+        },
+        () => {
+          chatStore.endStream(response!)
+          scrollToBottom()
+        },
+        30
+      )
+    }
+
+    // 保存到历史（API + 本地持久化）
     if (!activeHistoryId.value) {
       activeHistoryId.value = Date.now().toString()
       chatHistory.value.unshift({
@@ -416,12 +455,206 @@ const sendMessage = async () => {
         title: userMessage.slice(0, 20) + (userMessage.length > 20 ? '...' : ''),
         timestamp: new Date().toISOString()
       })
+      // 持久化到 localStorage
+      localStorage.setItem('tcm_chat_history', JSON.stringify(chatHistory.value))
     }
-    
+
   } catch (error) {
     console.error('Error sending message:', error)
     chatStore.endStream()
     ElMessage.error('发送失败，请重试')
+  }
+}
+
+// 构建 mock 回答（API 未就绪时的兜底方案）
+const buildMockResponse = (question: string): AnswerResponse => {
+  const isInsomnia = /失眠|入睡|睡眠|多梦|易醒/.test(question)
+  const isCough = /咳嗽|咳痰|痰|气喘|喘/.test(question)
+  const isCold = /感冒|风寒|风热|畏寒|发热|鼻塞|流涕/.test(question)
+  const isDigest = /食欲|腹胀|腹泻|便秘|消化|胃/.test(question)
+  const isHerbCompare = /区别|对比|比较|哪个好/.test(question)
+
+  if (isHerbCompare) {
+    return {
+      answer: `关于药材对比分析：
+
+中药材的选择需根据具体证候和体质来决定，以下是常见对比：
+
+1. **人参与黄芪**
+   - 人参：大补元气，补脾益肺，生津养血，安神益智。适用于元气虚衰较重者。
+   - 黄芪：补气升阳，固表止汗，利水消肿。适用于气虚表虚、自汗水肿者。
+   - 区别：人参偏于补益脏腑之气，黄芪偏于补肌表之气。
+
+2. **当归与熟地黄**
+   - 当归：补血活血，调经止痛。补中有行，适用于血虚兼血瘀者。
+   - 熟地黄：补血滋阴，益精填髓。纯补无泻，适用于血虚精亏者。
+
+3. **茯苓与白术**
+   - 茯苓：利水渗湿，健脾宁心。以利湿为主。
+   - 白术：健脾益气，燥湿利水。以健脾为主。
+
+具体使用哪种药材，需要结合患者的舌脉体征和整体辨证来确定。`,
+      symptoms: [],
+      syndromes: ['气虚证', '血虚证'],
+      formulas: ['四君子汤', '四物汤'],
+      herbs: ['人参', '黄芪', '当归', '熟地黄', '茯苓', '白术'],
+      evidence: [
+        { title: '《中药学》补气药章节', content: '人参、黄芪同为补气要药，人参大补元气，黄芪补气固表...' },
+        { title: '《中药学》补血药章节', content: '当归补血活血，熟地黄补血滋阴，二者常相须为用...' },
+      ],
+      follow_up_questions: ['您想了解哪些具体药材的区别？', '是否有特定的症状需要调理？'],
+      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+      graph: { nodes: [], edges: [] }
+    }
+  }
+
+  if (isInsomnia) {
+    return {
+      answer: `根据您关于失眠的问题，我来为您分析：
+
+失眠在中医中有"不寐"、"不得卧"等称谓，病因病机复杂，常见以下证型：
+
+1. **心脾两虚**：表现为失眠多梦、心悸健忘、食少乏力
+   - 推荐方剂：归脾汤
+   - 主要药材：酸枣仁、远志、人参、黄芪
+
+2. **心肾不交**：表现为心烦失眠、心悸不安、头晕耳鸣
+   - 推荐方剂：黄连阿胶汤
+   - 主要药材：黄连、黄芩、阿胶、白芍
+
+3. **肝郁化火**：表现为失眠多梦、烦躁易怒、口苦口干
+   - 推荐方剂：龙胆泻肝汤
+   - 主要药材：龙胆草、栀子、黄芩、柴胡
+
+建议结合舌脉体征进一步辨证，以确定最适合的治疗方案。`,
+      symptoms: ['失眠', '多梦', '心悸', '健忘'],
+      syndromes: ['心脾两虚', '心肾不交', '肝郁化火'],
+      formulas: ['归脾汤', '黄连阿胶汤', '龙胆泻肝汤'],
+      herbs: ['酸枣仁', '远志', '人参', '黄芪', '黄连', '黄芩'],
+      evidence: [
+        { title: '《中医内科学》失眠章节', content: '失眠病位在心，与肝、脾、肾关系密切...' },
+        { title: '《中药学》酸枣仁条目', content: '酸枣仁性甘、酸，平，归心、肝、胆经，具有养心益肝、安神、敛汗功效...' },
+      ],
+      follow_up_questions: ['是否伴有食少乏力？', '是否有舌淡、脉细等表现？', '是否经常熬夜或工作压力大？'],
+      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+      graph: { nodes: [], edges: [] }
+    }
+  }
+
+  if (isCold) {
+    return {
+      answer: `关于外感病的分析：
+
+外感病证是中医临床最常见的疾病之一，主要分为：
+
+1. **外感风寒**：恶寒重发热轻，头痛身痛，鼻塞流清涕，舌苔薄白，脉浮紧。
+   - 治法：辛温解表
+   - 推荐方剂：麻黄汤、桂枝汤
+   - 主要药材：麻黄、桂枝、杏仁、甘草
+
+2. **外感风热**：发热重恶寒轻，口渴咽痛，咳嗽痰黄，舌边尖红，脉浮数。
+   - 治法：辛凉解表
+   - 推荐方剂：银翘散、桑菊饮
+   - 主要药材：金银花、连翘、桑叶、菊花
+
+请根据具体症状结合舌脉进行辨证选方。`,
+      symptoms: ['发热', '恶寒', '咳嗽', '鼻塞', '头痛'],
+      syndromes: ['外感风寒', '外感风热'],
+      formulas: ['麻黄汤', '桂枝汤', '银翘散', '桑菊饮'],
+      herbs: ['麻黄', '桂枝', '金银花', '连翘', '桑叶', '菊花'],
+      evidence: [
+        { title: '《伤寒论》太阳病篇', content: '太阳之为病，脉浮，头项强痛而恶寒...' },
+      ],
+      follow_up_questions: ['是清涕还是黄涕？', '有无咽喉疼痛？', '发热程度如何？'],
+      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+      graph: { nodes: [], edges: [] }
+    }
+  }
+
+  if (isCough) {
+    return {
+      answer: `关于咳嗽的中医分析：
+
+咳嗽病位在肺，但与肝、脾、肾等脏腑相关。《素问》云："五脏六腑皆令人咳，非独肺也。"
+
+1. **风寒犯肺**：咳嗽声重，痰白稀薄，伴鼻塞流清涕，舌苔薄白，脉浮紧。
+   - 推荐方剂：止嗽散、三拗汤
+   - 主要药材：麻黄、杏仁、紫菀、款冬花
+
+2. **痰湿蕴肺**：咳嗽反复发作，痰多色白易咯，胸闷脘痞，舌苔白腻，脉濡滑。
+   - 推荐方剂：二陈汤、三子养亲汤
+   - 主要药材：半夏、陈皮、茯苓、苏子
+
+3. **肝火犯肺**：咳嗽阵作，痰黄黏稠，胸胁胀痛，口苦咽干，舌红苔黄，脉弦数。
+   - 推荐方剂：黛蛤散合泻白散
+   - 主要药材：桑白皮、地骨皮、黄芩、栀子`,
+      symptoms: ['咳嗽', '咳痰', '胸闷'],
+      syndromes: ['风寒犯肺', '痰湿蕴肺', '肝火犯肺'],
+      formulas: ['止嗽散', '二陈汤', '泻白散'],
+      herbs: ['麻黄', '杏仁', '半夏', '陈皮', '桑白皮', '黄芩'],
+      evidence: [
+        { title: '《中医内科学》咳嗽章节', content: '咳嗽分为外感咳嗽与内伤咳嗽两大类...' },
+      ],
+      follow_up_questions: ['痰的颜色和质地如何？', '咳嗽多久了？', '是否伴有胸痛？'],
+      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+      graph: { nodes: [], edges: [] }
+    }
+  }
+
+  if (isDigest) {
+    return {
+      answer: `关于消化系统问题的中医分析：
+
+脾胃为后天之本，气血生化之源。消化问题多与脾胃功能失调相关：
+
+1. **脾胃气虚**：食欲不振，食后腹胀，大便溏薄，神疲乏力，舌淡苔白，脉弱。
+   - 推荐方剂：四君子汤、香砂六君子汤
+   - 主要药材：人参、白术、茯苓、甘草
+
+2. **脾胃湿热**：脘腹痞满，恶心呕吐，口苦口黏，大便黏滞不爽，舌红苔黄腻，脉滑数。
+   - 推荐方剂：半夏泻心汤、连朴饮
+   - 主要药材：半夏、黄连、黄芩、厚朴
+
+3. **食积停滞**：脘腹胀满，嗳腐吞酸，厌食，大便酸臭，舌苔厚腻，脉滑。
+   - 推荐方剂：保和丸、枳实导滞丸
+   - 主要药材：神曲、山楂、莱菔子、枳实`,
+      symptoms: ['食欲不振', '腹胀', '腹泻', '便秘'],
+      syndromes: ['脾胃气虚', '脾胃湿热', '食积停滞'],
+      formulas: ['四君子汤', '半夏泻心汤', '保和丸'],
+      herbs: ['人参', '白术', '茯苓', '半夏', '黄连', '山楂'],
+      evidence: [
+        { title: '《脾胃论》', content: '脾胃虚弱，阳气不能生长，是春夏之令不行，五脏之气不生...' },
+      ],
+      follow_up_questions: ['大便的形状和颜色？', '饭后腹胀明显吗？', '有无口苦或口甜？'],
+      safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+      graph: { nodes: [], edges: [] }
+    }
+  }
+
+  // 默认通用回答
+  return {
+    answer: `根据您的问题"${question}"，我来为您分析：
+
+中医药学是中华民族的伟大创造，在疾病预防、治疗和康复中发挥着重要作用。基于知识图谱的中医药诊疗系统可以帮助您：
+
+1. **症状分析**：通过症状描述，追溯可能的证候类型
+2. **方剂推荐**：根据辨证结果，推荐合适的方剂
+3. **药材查询**：了解每味药材的性味归经、功效主治
+4. **关系推理**：展示症状→证候→方剂→药材之间的关联路径
+
+建议您提供更详细的症状信息（如舌象、脉象等），以便进行更准确的辨证分析。
+
+如果您有具体的药材、方剂或证候相关问题，欢迎继续提问！`,
+    symptoms: [],
+    syndromes: [],
+    formulas: [],
+    herbs: [],
+    evidence: [
+      { title: '中医药基本理论', content: '中医以整体观念和辨证论治为基本特点...' },
+    ],
+    follow_up_questions: ['您能更详细描述一下症状吗？', '想了解哪方面的中医药知识？'],
+    safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
+    graph: { nodes: [], edges: [] }
   }
 }
 
@@ -450,8 +683,13 @@ const useExampleQuestion = (question: string) => {
   })
 }
 
-const handleFavorite = (messageId: string) => {
-  // 处理收藏逻辑
+const handleFavorite = async (messageId: string) => {
+  // 优先调用 API 收藏
+  try {
+    await chatApi.favoriteQuestion(messageId)
+  } catch {
+    console.log('chatApi.favoriteQuestion 未就绪，仅本地标记')
+  }
   ElMessage.success('已收藏到知识库')
 }
 

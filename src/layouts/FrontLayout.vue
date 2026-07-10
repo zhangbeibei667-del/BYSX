@@ -245,7 +245,7 @@ const aboutSystem = () => {
   flex: 1;
   padding: 20px;
   max-width: 1400px;
-  margin: 1100px auto 0;
+  margin: 1000px auto 0;
   width: 100%;
   }
   

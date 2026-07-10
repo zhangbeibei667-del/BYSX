@@ -5,6 +5,7 @@
       <h2 class="page-title">症状管理</h2>
       <div class="header-actions">
         <el-button type="primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
         <el-button :icon="Download" @click="handleExport">导出数据</el-button>
       </div>
     </div>
@@ -305,6 +306,16 @@
         </el-button>
       </template>
     </el-dialog>
+
+    <!-- 批量导入弹窗 -->
+    <ImportDialog
+      v-model="showImportDialog"
+      title="批量导入症状"
+      entity-type="symptom"
+      template-url="/api/admin/symptoms/template"
+      upload-url="/api/admin/symptoms/import"
+      @success="handleImportSuccess"
+    />
   </div>
 </template>
 
@@ -312,6 +323,7 @@
 import { ref, reactive, computed, onMounted } from 'vue'
 import {
   Plus,
+  Upload,
   Download,
   Search,
   Refresh,
@@ -324,6 +336,7 @@ import {
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { entityApi, graphApi } from '@/api'
 import type { SymptomEntity, SyndromeEntity } from '@/types'
+import ImportDialog from '@/components/Common/ImportDialog.vue'
 
 // ==================== 选项数据 ====================
 const categoryOptions = [
@@ -450,8 +463,38 @@ const handleSelectionChange = (rows: SymptomEntity[]) => {
 }
 
 // ==================== 导出 ====================
-const handleExport = () => {
-  ElMessage.info('导出功能开发中')
+const handleExport = async () => {
+  try {
+    const res: any = await entityApi.symptoms.export()
+    const blob = res instanceof Blob ? res : new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = '症状数据导出.xlsx'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(url)
+    ElMessage.success('导出成功')
+  } catch {
+    // 降级：直接触发下载
+    const link = document.createElement('a')
+    link.href = '/api/admin/symptoms/export'
+    link.download = '症状数据导出.xlsx'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+}
+
+// ==================== 导入 ====================
+const showImportDialog = ref(false)
+
+const handleImportSuccess = () => {
+  showImportDialog.value = false
+  ElMessage.success('导入成功')
+  fetchData()
+  fetchAllSymptoms()
 }
 
 // ==================== 新建/编辑弹窗 ====================

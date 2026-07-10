@@ -384,6 +384,7 @@ import {
   WarningFilled
 } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
+import MarkdownIt from 'markdown-it'
 import { documentApi, entityApi } from '@/api'
 import type { DocumentEntity } from '@/types'
 
@@ -467,18 +468,16 @@ const getRelatedEntities = (doc: DocumentEntity | null): Array<{ id: string; nam
 }
 
 // ==================== Markdown 工具 ====================
+const md = new MarkdownIt({
+  html: false,        // 禁用原始 HTML（安全）
+  linkify: true,      // 自动识别链接
+  breaks: true,       // 换行转 <br>
+  typographer: true   // 智能引号/破折号
+})
+
 const renderMarkdown = (text: string): string => {
   if (!text) return ''
-  return text
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^### (.+)$/gm, '<h4 style="margin:16px 0 8px;color:#303133">$1</h4>')
-    .replace(/^## (.+)$/gm, '<h3 style="margin:20px 0 10px;color:#303133">$1</h3>')
-    .replace(/^# (.+)$/gm, '<h2 style="margin:24px 0 12px;color:#303133">$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^- (.+)$/gm, '<li style="margin-left:20px">$1</li>')
-    .replace(/^> (.+)$/gm, '<blockquote style="border-left:3px solid #dcdfe6;padding:4px 12px;color:#909399;margin:8px 0">$1</blockquote>')
-    .replace(/\n/g, '<br/>')
+  return md.render(text)
 }
 
 const insertMarkdown = (before: string, after: string) => {
@@ -570,8 +569,27 @@ const handleSelectionChange = (rows: DocumentEntity[]) => {
 }
 
 // ==================== 导出 ====================
-const handleExport = () => {
-  ElMessage.info('导出功能开发中')
+const handleExport = async () => {
+  try {
+    const res: any = await documentApi.export()
+    const blob = res instanceof Blob ? res : new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = '文献数据导出.xlsx'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(url)
+    ElMessage.success('导出成功')
+  } catch {
+    const link = document.createElement('a')
+    link.href = '/api/admin/documents/export'
+    link.download = '文献数据导出.xlsx'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 }
 
 // ==================== 上传/编辑弹窗 ====================

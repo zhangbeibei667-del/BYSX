@@ -225,6 +225,15 @@
           />
         </el-form-item>
 
+        <el-form-item label="制法" prop="preparation">
+          <el-input
+            v-model="formData.preparation"
+            type="textarea"
+            :rows="2"
+            placeholder="请输入制备方法，如：上为粗末，每服三钱，水一盏半，煎至八分，去滓温服"
+          />
+        </el-form-item>
+
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item label="用法用量" prop="usage_dosage">
@@ -475,6 +484,7 @@ const initFormData = () => ({
   composition: [] as string[],
   functions: '',
   indications: '',
+  preparation: '',
   usage_dosage: '',
   contraindications: '',
   source: '',
@@ -510,6 +520,7 @@ const handleEdit = (row: PrescriptionEntity) => {
   formData.composition = comp ? comp.split(/[,，]/).map((s: string) => s.trim()).filter(Boolean) : []
   formData.functions = row.properties?.functions || ''
   formData.indications = row.properties?.indications || ''
+  formData.preparation = row.properties?.preparation || ''
   formData.usage_dosage = row.properties?.usage_dosage || ''
   formData.contraindications = row.properties?.contraindications || ''
   formData.source = row.description || ''
@@ -534,7 +545,7 @@ const handleSubmit = async () => {
         category: formData.category,
         properties: {
           composition: formData.composition.join('，'),
-          preparation: '',
+          preparation: formData.preparation,
           functions: formData.functions,
           indications: formData.indications,
           usage_dosage: formData.usage_dosage,

@@ -407,6 +407,18 @@ function useMockAnalysis() {
   const hasShaoyang = /(口苦|咽干|目眩|胸胁|往来寒热|心烦|喜呕)/.test(text)
   // 血虚模式
   const hasBloodDeficiency = /(头晕|目眩|面色苍白|爪甲|月经|手足麻木|舌淡白|脉细无力)/.test(text)
+  // 肝气郁结模式
+  const hasLiverQi = /(胁痛|胁肋|抑郁|善太息|胸闷|嗳气|情绪低落|脉弦|急躁|易怒|乳房胀|痛经|月经不调).*(抑郁|胸闷|胁|善太息|嗳气|叹息)/.test(text)
+    || /(抑郁|胸闷|胁|善太息).*(胁痛|胁肋|嗳气|情绪|脉弦)/.test(text)
+  // 肾阴虚模式
+  const hasKidneyYin = /(腰膝酸软|五心烦热|潮热|盗汗|口干咽燥|手足心热|耳鸣|遗精|舌红少苔|脉细数)/.test(text)
+  // 脾胃湿热模式
+  const hasSpleenStomachDamp = /(脘腹|痞满|恶心|呕吐|纳呆|大便黏滞|里急后重|舌红苔黄腻|脉滑数|黄疸|身目发黄)/.test(text)
+  // 痰湿内阻模式
+  const hasPhlegmDamp = /(痰多|胸闷|头重|肢体困重|眩晕|呕恶|舌苔白腻|脉濡滑|形体肥胖|嗜睡)/.test(text)
+  // 气虚模式
+  const hasQiDeficiency = /(气短|懒言|自汗|神疲|乏力|面色.*白|舌淡胖|脉虚|脉弱).*(乏力|气短|自汗)/.test(text)
+    || /(乏力|气短|自汗|神疲|懒言).*(乏力|气短|自汗|神疲|懒言)/.test(text)
 
   let graph: GraphResponse = { nodes: [], edges: [] }
   let syndromes: string[] = []
@@ -547,6 +559,166 @@ function useMockAnalysis() {
         { source: 'F_SWT', target: 'H_SDH', label: '包含' },
         { source: 'F_SWT', target: 'H_BS', label: '包含' },
         { source: 'F_SWT', target: 'H_CX', label: '包含' },
+      ],
+    }
+  } else if (hasLiverQi) {
+    syndromes = ['肝气郁结']
+    formulas = ['柴胡疏肝散']
+    herbs = ['柴胡', '白芍', '枳壳', '香附', '川芎', '陈皮', '甘草']
+    answer = '患者表现为胸胁胀痛、善太息、情志抑郁或急躁易怒，脉弦。四诊合参，辨证为肝气郁结证。肝主疏泄，调畅气机与情志。情志不遂，郁怒伤肝，肝失调达，气机郁滞，故胸胁胀痛、善太息。治宜疏肝解郁、行气止痛，方选柴胡疏肝散加减。'
+    evidence = [
+      { title: '柴胡疏肝散方解', content: '柴胡疏肝散出自《景岳全书》，具有疏肝理气、活血止痛之功效，是治疗肝气郁结证的代表方剂。' },
+    ]
+
+    graph = {
+      nodes: [
+        { id: 'S_XT', label: '胸胁胀痛', type: '症状' },
+        { id: 'S_STX', label: '善太息', type: '症状' },
+        { id: 'S_QZ', label: '情志抑郁', type: '症状' },
+        { id: 'Z_GQYJ', label: '肝气郁结', type: '证候' },
+        { id: 'F_CHSGS', label: '柴胡疏肝散', type: '方剂' },
+        { id: 'H_CH2', label: '柴胡', type: '药材' },
+        { id: 'H_BS2', label: '白芍', type: '药材' },
+        { id: 'H_ZK', label: '枳壳', type: '药材' },
+        { id: 'H_XF', label: '香附', type: '药材' },
+      ],
+      edges: [
+        { source: 'S_XT', target: 'Z_GQYJ', label: '提示' },
+        { source: 'S_STX', target: 'Z_GQYJ', label: '提示' },
+        { source: 'S_QZ', target: 'Z_GQYJ', label: '提示' },
+        { source: 'Z_GQYJ', target: 'F_CHSGS', label: '对应' },
+        { source: 'F_CHSGS', target: 'H_CH2', label: '包含' },
+        { source: 'F_CHSGS', target: 'H_BS2', label: '包含' },
+        { source: 'F_CHSGS', target: 'H_ZK', label: '包含' },
+        { source: 'F_CHSGS', target: 'H_XF', label: '包含' },
+      ],
+    }
+  } else if (hasKidneyYin) {
+    syndromes = ['肾阴虚']
+    formulas = ['六味地黄丸']
+    herbs = ['熟地黄', '山茱萸', '山药', '泽泻', '牡丹皮', '茯苓']
+    answer = '患者表现为腰膝酸软、五心烦热、潮热盗汗、口干咽燥、舌红少苔、脉细数。四诊合参，辨证为肾阴虚证。肾主骨生髓，腰为肾之府。肾阴不足，髓海亏虚，骨骼失养，故腰膝酸软；阴虚生内热，故五心烦热、潮热盗汗。治宜滋补肾阴，方选六味地黄丸加减。'
+    evidence = [
+      { title: '六味地黄丸方解', content: '六味地黄丸出自《小儿药证直诀》，三补三泻，以补肾阴为主，是治疗肾阴虚证的基础方。' },
+    ]
+
+    graph = {
+      nodes: [
+        { id: 'S_YXSS', label: '腰膝酸软', type: '症状' },
+        { id: 'S_WXFR', label: '五心烦热', type: '症状' },
+        { id: 'S_CSDH', label: '潮热盗汗', type: '症状' },
+        { id: 'Z_SYX', label: '肾阴虚', type: '证候' },
+        { id: 'F_LWDHW', label: '六味地黄丸', type: '方剂' },
+        { id: 'H_SDH2', label: '熟地黄', type: '药材' },
+        { id: 'H_SZY', label: '山茱萸', type: '药材' },
+        { id: 'H_SY2', label: '山药', type: '药材' },
+        { id: 'H_ZX', label: '泽泻', type: '药材' },
+      ],
+      edges: [
+        { source: 'S_YXSS', target: 'Z_SYX', label: '提示' },
+        { source: 'S_WXFR', target: 'Z_SYX', label: '提示' },
+        { source: 'S_CSDH', target: 'Z_SYX', label: '提示' },
+        { source: 'Z_SYX', target: 'F_LWDHW', label: '对应' },
+        { source: 'F_LWDHW', target: 'H_SDH2', label: '包含' },
+        { source: 'F_LWDHW', target: 'H_SZY', label: '包含' },
+        { source: 'F_LWDHW', target: 'H_SY2', label: '包含' },
+        { source: 'F_LWDHW', target: 'H_ZX', label: '包含' },
+      ],
+    }
+  } else if (hasSpleenStomachDamp) {
+    syndromes = ['脾胃湿热']
+    formulas = ['半夏泻心汤']
+    herbs = ['半夏', '黄连', '黄芩', '干姜', '人参', '甘草', '大枣']
+    answer = '患者表现为脘腹痞满、恶心呕吐、口苦口黏、大便黏滞、舌红苔黄腻、脉滑数。四诊合参，辨证为脾胃湿热证。湿热中阻，脾胃升降失常，气机壅滞，故脘腹痞满；胃气上逆，故恶心呕吐。治宜清热化湿、和胃降逆，方选半夏泻心汤加减。'
+    evidence = [
+      { title: '半夏泻心汤方解', content: '半夏泻心汤出自《伤寒论》，具有寒热平调、消痞散结之功效，是治疗脾胃湿热痞满证的代表方。' },
+    ]
+
+    graph = {
+      nodes: [
+        { id: 'S_WFPM', label: '脘腹痞满', type: '症状' },
+        { id: 'S_EXOT', label: '恶心呕吐', type: '症状' },
+        { id: 'S_KKNK', label: '口苦口黏', type: '症状' },
+        { id: 'Z_PWSR', label: '脾胃湿热', type: '证候' },
+        { id: 'F_BXXX', label: '半夏泻心汤', type: '方剂' },
+        { id: 'H_BX2', label: '半夏', type: '药材' },
+        { id: 'H_HL', label: '黄连', type: '药材' },
+        { id: 'H_HQ3', label: '黄芩', type: '药材' },
+        { id: 'H_GJ', label: '干姜', type: '药材' },
+      ],
+      edges: [
+        { source: 'S_WFPM', target: 'Z_PWSR', label: '提示' },
+        { source: 'S_EXOT', target: 'Z_PWSR', label: '提示' },
+        { source: 'S_KKNK', target: 'Z_PWSR', label: '提示' },
+        { source: 'Z_PWSR', target: 'F_BXXX', label: '对应' },
+        { source: 'F_BXXX', target: 'H_BX2', label: '包含' },
+        { source: 'F_BXXX', target: 'H_HL', label: '包含' },
+        { source: 'F_BXXX', target: 'H_HQ3', label: '包含' },
+        { source: 'F_BXXX', target: 'H_GJ', label: '包含' },
+      ],
+    }
+  } else if (hasPhlegmDamp) {
+    syndromes = ['痰湿内阻']
+    formulas = ['二陈汤']
+    herbs = ['半夏', '陈皮', '茯苓', '甘草', '生姜', '乌梅']
+    answer = '患者表现为胸闷痰多、头重如裹、肢体困重、舌苔白腻、脉濡滑。四诊合参，辨证为痰湿内阻证。脾为生痰之源，肺为储痰之器。脾失健运，水湿内停，聚而为痰，痰湿中阻，清阳不升，故头重、胸闷、肢体困重。治宜燥湿化痰、理气和中，方选二陈汤加减。'
+    evidence = [
+      { title: '二陈汤方解', content: '二陈汤出自《太平惠民和剂局方》，为燥湿化痰的基础方，具有燥湿化痰、理气和中之功效。' },
+    ]
+
+    graph = {
+      nodes: [
+        { id: 'S_XM', label: '胸闷痰多', type: '症状' },
+        { id: 'S_TZ', label: '头重如裹', type: '症状' },
+        { id: 'S_ZTKZ', label: '肢体困重', type: '症状' },
+        { id: 'Z_TSNZ', label: '痰湿内阻', type: '证候' },
+        { id: 'F_ECT', label: '二陈汤', type: '方剂' },
+        { id: 'H_BX3', label: '半夏', type: '药材' },
+        { id: 'H_CP', label: '陈皮', type: '药材' },
+        { id: 'H_FL2', label: '茯苓', type: '药材' },
+        { id: 'H_GC3', label: '甘草', type: '药材' },
+      ],
+      edges: [
+        { source: 'S_XM', target: 'Z_TSNZ', label: '提示' },
+        { source: 'S_TZ', target: 'Z_TSNZ', label: '提示' },
+        { source: 'S_ZTKZ', target: 'Z_TSNZ', label: '提示' },
+        { source: 'Z_TSNZ', target: 'F_ECT', label: '对应' },
+        { source: 'F_ECT', target: 'H_BX3', label: '包含' },
+        { source: 'F_ECT', target: 'H_CP', label: '包含' },
+        { source: 'F_ECT', target: 'H_FL2', label: '包含' },
+        { source: 'F_ECT', target: 'H_GC3', label: '包含' },
+      ],
+    }
+  } else if (hasQiDeficiency) {
+    syndromes = ['气虚证']
+    formulas = ['四君子汤']
+    herbs = ['人参', '白术', '茯苓', '甘草']
+    answer = '患者表现为气短懒言、神疲乏力、自汗、舌淡胖、脉虚。四诊合参，辨证为气虚证。元气不足，脏腑功能减退，故气短懒言、神疲乏力；卫气不固，故自汗。治宜益气健脾，方选四君子汤加减。'
+    evidence = [
+      { title: '四君子汤方解', content: '四君子汤出自《太平惠民和剂局方》，为补气基础方，具有益气健脾之功效。' },
+    ]
+
+    graph = {
+      nodes: [
+        { id: 'S_QD', label: '气短懒言', type: '症状' },
+        { id: 'S_SPFL', label: '神疲乏力', type: '症状' },
+        { id: 'S_ZH', label: '自汗', type: '症状' },
+        { id: 'Z_QXZ', label: '气虚证', type: '证候' },
+        { id: 'F_SJZT', label: '四君子汤', type: '方剂' },
+        { id: 'H_RS2', label: '人参', type: '药材' },
+        { id: 'H_BZ2', label: '白术', type: '药材' },
+        { id: 'H_FL3', label: '茯苓', type: '药材' },
+        { id: 'H_GC4', label: '甘草', type: '药材' },
+      ],
+      edges: [
+        { source: 'S_QD', target: 'Z_QXZ', label: '提示' },
+        { source: 'S_SPFL', target: 'Z_QXZ', label: '提示' },
+        { source: 'S_ZH', target: 'Z_QXZ', label: '提示' },
+        { source: 'Z_QXZ', target: 'F_SJZT', label: '对应' },
+        { source: 'F_SJZT', target: 'H_RS2', label: '包含' },
+        { source: 'F_SJZT', target: 'H_BZ2', label: '包含' },
+        { source: 'F_SJZT', target: 'H_FL3', label: '包含' },
+        { source: 'F_SJZT', target: 'H_GC4', label: '包含' },
       ],
     }
   } else {
