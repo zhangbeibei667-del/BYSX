@@ -200,6 +200,77 @@
             </div>
           </transition>
 
+          <!-- 图谱数据 SQL Agent -->
+          <transition name="fade-up">
+            <div v-if="analysisResult?.sql_result" class="diagnosis-card sql-agent-card">
+              <h3 class="block-title">🧮 图谱数据 SQL Agent</h3>
+              <div class="sql-summary-grid">
+                <div class="sql-stat">
+                  <span class="sql-label">数据源</span>
+                  <span class="sql-value">{{ analysisResult.sql_result.status || '未知' }}</span>
+                </div>
+                <div class="sql-stat">
+                  <span class="sql-label">实体总数</span>
+                  <span class="sql-value">{{ analysisResult.sql_result.entity_counts?.total ?? '--' }}</span>
+                </div>
+                <div class="sql-stat">
+                  <span class="sql-label">关系总数</span>
+                  <span class="sql-value">{{ analysisResult.sql_result.relation_count ?? '--' }}</span>
+                </div>
+                <div class="sql-stat">
+                  <span class="sql-label">命中关系</span>
+                  <span class="sql-value">{{ analysisResult.sql_result.matched_relation_count ?? 0 }}</span>
+                </div>
+              </div>
+
+              <div class="sql-detail">
+                <div class="sql-detail-row">
+                  <span class="sql-detail-label">匹配证候：</span>
+                  <span class="sql-detail-text">
+                    {{ formatSqlEntityNames(analysisResult.sql_result.matched_syndromes) || '暂无' }}
+                  </span>
+                </div>
+                <div class="sql-detail-row">
+                  <span class="sql-detail-label">匹配方剂：</span>
+                  <span class="sql-detail-text">
+                    {{ formatSqlEntityNames(analysisResult.sql_result.matched_formulas) || '暂无' }}
+                  </span>
+                </div>
+                <div class="sql-detail-row">
+                  <span class="sql-detail-label">方剂组成：</span>
+                  <span class="sql-detail-text">
+                    {{ formatFormulaHerbs(analysisResult.sql_result.formula_herbs) || '暂无' }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="sql-db-path">
+                SQLite：{{ analysisResult.sql_result.database || 'backend/data/kg.sqlite' }}
+              </div>
+            </div>
+          </transition>
+
+          <!-- Agent 执行流程 -->
+          <transition name="fade-up">
+            <div v-if="analysisResult?.agent_steps?.length" class="diagnosis-card agent-steps-card">
+              <h3 class="block-title">🤖 Agent 执行详情</h3>
+              <div class="agent-step-list">
+                <div
+                  v-for="(step, index) in analysisResult.agent_steps"
+                  :key="`${step.name}-${index}`"
+                  class="agent-step-item"
+                >
+                  <span class="agent-step-index">{{ index + 1 }}</span>
+                  <div class="agent-step-body">
+                    <div class="agent-step-name">{{ step.name }}</div>
+                    <div class="agent-step-summary">{{ step.summary }}</div>
+                  </div>
+                  <span class="agent-step-status">{{ step.status }}</span>
+                </div>
+              </div>
+            </div>
+          </transition>
+
           <!-- 教学笔记区 -->
           <div class="analysis-block">
             <h3 class="block-title">📒 教学笔记</h3>
@@ -1037,6 +1108,24 @@ function truncate(text: string, maxLen: number): string {
   return text.length > maxLen ? text.slice(0, maxLen) + '...' : text
 }
 
+function formatSqlEntityNames(items?: Array<Record<string, any>>): string {
+  if (!items || items.length === 0) return ''
+  return items
+    .map((item) => item.name || item.label || item.id)
+    .filter(Boolean)
+    .slice(0, 8)
+    .join('、')
+}
+
+function formatFormulaHerbs(formulaHerbs?: Record<string, string[]>): string {
+  if (!formulaHerbs) return ''
+  return Object.entries(formulaHerbs)
+    .filter(([, herbs]) => Array.isArray(herbs) && herbs.length > 0)
+    .slice(0, 4)
+    .map(([formula, herbs]) => `${formula}：${herbs.slice(0, 8).join('、')}`)
+    .join('；')
+}
+
 // ==================== 监听 ====================
 
 // 当分析结果变化时重新渲染图谱
@@ -1409,6 +1498,126 @@ $border-light: #e2e8f0;
           color: #475569;
         }
       }
+    }
+  }
+
+  &.sql-agent-card {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+
+    .sql-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+
+      .sql-stat {
+        padding: 10px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+
+        .sql-label {
+          display: block;
+          font-size: 11px;
+          color: $text-muted;
+          margin-bottom: 4px;
+        }
+
+        .sql-value {
+          font-size: 16px;
+          font-weight: 700;
+          color: $indigo;
+        }
+      }
+    }
+
+    .sql-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+
+      .sql-detail-row {
+        font-size: 13px;
+        line-height: 1.6;
+
+        .sql-detail-label {
+          color: $text-muted;
+          font-weight: 600;
+        }
+
+        .sql-detail-text {
+          color: $text-dark;
+        }
+      }
+    }
+
+    .sql-db-path {
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 11px;
+      color: #64748b;
+      word-break: break-all;
+    }
+  }
+
+  &.agent-steps-card {
+    background: #f7fee7;
+    border-color: #d9f99d;
+
+    .agent-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .agent-step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #ecfccb;
+    }
+
+    .agent-step-index {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: $emerald;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .agent-step-body {
+      flex: 1;
+      min-width: 0;
+
+      .agent-step-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: $text-dark;
+      }
+
+      .agent-step-summary {
+        font-size: 12px;
+        color: $text-muted;
+        line-height: 1.5;
+      }
+    }
+
+    .agent-step-status {
+      font-size: 11px;
+      color: $emerald;
+      font-weight: 700;
+      flex-shrink: 0;
     }
   }
 

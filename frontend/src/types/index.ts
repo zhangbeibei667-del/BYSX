@@ -47,6 +47,25 @@ export interface AnswerResponse {
   evidence: AnswerEvidence[]
   follow_up_questions: string[]
   safety_notice: string
+  sql_result?: {
+    status?: string
+    database?: string
+    entity_counts?: Record<string, number>
+    relation_count?: number
+    matched_syndromes?: Array<Record<string, any>>
+    matched_formulas?: Array<Record<string, any>>
+    matched_entity_count?: number
+    matched_relation_count?: number
+    formula_herbs?: Record<string, string[]>
+    syndrome_formula_relations?: Array<Record<string, any>>
+    note?: string
+  }
+  agent_steps?: Array<{
+    name: string
+    status: string
+    summary: string
+    output: any
+  }>
 }
 
 // 实体类型
