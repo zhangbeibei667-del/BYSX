@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 运行时数据（内存库 JSON 落盘，不提交）
+data/store.json
+
+# 环境变量（含密码）
+.env
+
+# IDE
+.vscode/
+.idea/
