@@ -49,11 +49,21 @@ export const chatApi = {
     return new EventSource(`/api/chat/ask/stream?question=${encodeURIComponent(question)}&historyId=${historyId || ''}`)
   },
   
-  // 获取问答历史
+  // 获取问答历史列表
   getHistory: (page = 1, pageSize = 20) => {
     return api.get('/chat/history', { params: { page, pageSize } })
   },
-  
+
+  // 获取单个对话的完整消息
+  getHistoryDetail: (id: string) => {
+    return api.get(`/chat/history/${id}`)
+  },
+
+  // 保存/更新对话（含完整消息列表，用于服务端持久化）
+  saveHistory: (data: { id: string; title: string; messages: any[] }) => {
+    return api.post('/chat/history/save', data)
+  },
+
   // 删除历史记录
   deleteHistory: (id: string) => {
     return api.delete(`/chat/history/${id}`)

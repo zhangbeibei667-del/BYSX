@@ -106,6 +106,21 @@
                   </el-button>
                 </el-tooltip>
                 
+                <el-tooltip content="朗读最新回答" placement="top">
+                  <el-button
+                    type="info"
+                    link
+                    @click="handleGlobalSpeech"
+                    :disabled="!hasAssistantMessage"
+                  >
+                    <el-icon>
+                      <VideoPlay v-if="!speaking" />
+                      <VideoPause v-else />
+                    </el-icon>
+                    {{ speaking ? '停止' : '朗读' }}
+                  </el-button>
+                </el-tooltip>
+
                 <el-tooltip content="清除当前对话" placement="top">
                   <el-button type="warning" link @click="clearChat" :disabled="messages.length === 0">
                     <el-icon><Delete /></el-icon>
@@ -205,7 +220,9 @@ import {
   ChatDotRound,
   MagicStick,
   Promotion,
-  ArrowUp
+  ArrowUp,
+  VideoPlay,
+  VideoPause
 } from '@element-plus/icons-vue'
 import { useChatStore } from '@/store'
 import { simulateStreamResponse, StreamSSE } from '@/utils/stream'
@@ -221,10 +238,52 @@ const showTemplates = ref(false)
 const activeTemplateTab = ref('symptoms')
 const chatHistory = ref<any[]>([])
 const activeHistoryId = ref<string | null>(null)
+const speaking = ref(false)
 
 const messages = computed(() => chatStore.messages)
 const isStreaming = computed(() => chatStore.isStreaming)
 const currentAnswer = computed(() => chatStore.currentAnswer)
+
+const hasAssistantMessage = computed(() => {
+  return messages.value.some(m => m.role === 'assistant' && !m.loading && m.content)
+})
+
+const handleGlobalSpeech = () => {
+  if (speaking.value) {
+    // 停止朗读
+    speaking.value = false
+    window.speechSynthesis.cancel()
+    return
+  }
+
+  // 获取最新的 assistant 消息
+  const lastAssistantMsg = [...messages.value].reverse().find(
+    m => m.role === 'assistant' && !m.loading && m.content
+  )
+  if (!lastAssistantMsg) {
+    ElMessage.warning('暂无回答可朗读')
+    return
+  }
+
+  speaking.value = true
+
+  const utterance = new SpeechSynthesisUtterance(lastAssistantMsg.content)
+  utterance.lang = 'zh-CN'
+  utterance.rate = 0.9
+  utterance.pitch = 1
+  utterance.volume = 1
+
+  utterance.onend = () => {
+    speaking.value = false
+  }
+
+  utterance.onerror = () => {
+    speaking.value = false
+    ElMessage.error('语音播放失败')
+  }
+
+  window.speechSynthesis.speak(utterance)
+}
 
 const exampleQuestions = [
   '失眠应该用什么方剂治疗？',
@@ -303,49 +362,50 @@ const loadChatHistory = async () => {
 }
 
 const newChat = () => {
+  // 切换前先保存当前对话消息
+  saveCurrentChat()
   chatStore.clearChat()
   activeHistoryId.value = null
   inputMessage.value = ''
 }
 
-const loadHistory = (historyId: string) => {
+const loadHistory = async (historyId: string) => {
   activeHistoryId.value = historyId
-  // 这里应该加载实际的历史消息
-  const historyMessages = [
-    {
-      id: '1',
-      role: 'user',
-      content: '失眠应该用什么方剂治疗？',
-      timestamp: new Date().toISOString()
-    },
-    {
-      id: '2',
-      role: 'assistant',
-      content: '根据您的描述，失眠可从心脾两虚、心肾不交等角度考虑...',
-      timestamp: new Date().toISOString(),
-      response: {
-        answer: '根据您的描述，失眠可从心脾两虚、心肾不交等角度考虑...',
-        symptoms: ['失眠', '多梦'],
-        syndromes: ['心脾两虚'],
-        formulas: ['归脾汤'],
-        herbs: ['酸枣仁', '远志'],
-        evidence: [
-          {
-            title: '归脾汤方剂说明',
-            content: '归脾汤具有益气补血、健脾养心等功效...'
-          }
-        ],
-        follow_up_questions: [
-          '是否伴有食少乏力？',
-          '是否有舌淡、脉细等表现？'
-        ],
-        safety_notice: '本结果仅用于中医药知识学习和教学辅助，不构成医疗诊断或用药建议。'
-      }
+
+  // 1. 优先从 API 加载完整对话消息
+  try {
+    const res: any = await chatApi.getHistoryDetail(historyId)
+    let messages: any[] | null = null
+    if (res?.data?.messages) {
+      messages = res.data.messages
+    } else if (res?.messages) {
+      messages = res.messages
     }
-  ]
-  
-  chatStore.loadHistory(historyId, historyMessages)
-  scrollToBottom()
+    if (messages && Array.isArray(messages) && messages.length > 0) {
+      chatStore.loadHistory(historyId, messages)
+      scrollToBottom()
+      return
+    }
+  } catch {
+    console.log('chatApi.getHistoryDetail 未就绪，尝试本地恢复')
+  }
+
+  // 2. 回退：从 localStorage 加载该对话的消息
+  const saved = localStorage.getItem(`tcm_chat_messages_${historyId}`)
+  if (saved) {
+    try {
+      const messages = JSON.parse(saved)
+      if (Array.isArray(messages) && messages.length > 0) {
+        chatStore.loadHistory(historyId, messages)
+        scrollToBottom()
+        return
+      }
+    } catch { /* ignore parse error */ }
+  }
+
+  // 3. 最终兜底：无法加载
+  chatStore.clearChat()
+  ElMessage.warning('该对话记录无法加载，请确认后端服务已连接或本地缓存未被清理')
 }
 
 const deleteHistory = async (historyId: string) => {
@@ -359,6 +419,8 @@ const deleteHistory = async (historyId: string) => {
   chatHistory.value = chatHistory.value.filter(h => h.id !== historyId)
   // 持久化到本地
   localStorage.setItem('tcm_chat_history', JSON.stringify(chatHistory.value))
+  // 同步清除该对话的消息缓存
+  localStorage.removeItem(`tcm_chat_messages_${historyId}`)
 
   if (activeHistoryId.value === historyId) {
     newChat()
@@ -455,8 +517,29 @@ const sendMessage = async () => {
         title: userMessage.slice(0, 20) + (userMessage.length > 20 ? '...' : ''),
         timestamp: new Date().toISOString()
       })
-      // 持久化到 localStorage
-      localStorage.setItem('tcm_chat_history', JSON.stringify(chatHistory.value))
+    } else {
+      // 更新已有对话的时间戳和标题
+      const existing = chatHistory.value.find(h => h.id === activeHistoryId.value)
+      if (existing) {
+        existing.timestamp = new Date().toISOString()
+      }
+    }
+
+    // 持久化历史列表到 localStorage
+    localStorage.setItem('tcm_chat_history', JSON.stringify(chatHistory.value))
+    // 持久化消息到 localStorage（按 historyId 分 key，支持按对话恢复）
+    localStorage.setItem(`tcm_chat_messages_${activeHistoryId.value}`, JSON.stringify(messages.value))
+
+    // 尝试通过 API 持久化到服务端（后端就绪时生效，否则静默跳过）
+    try {
+      const title = chatHistory.value.find(h => h.id === activeHistoryId.value)?.title || '对话记录'
+      await chatApi.saveHistory({
+        id: activeHistoryId.value!,
+        title,
+        messages: messages.value
+      })
+    } catch {
+      console.log('chatApi.saveHistory 未就绪，仅本地保存')
     }
 
   } catch (error) {
@@ -659,9 +742,18 @@ const buildMockResponse = (question: string): AnswerResponse => {
 }
 
 const clearChat = () => {
+  // 清除前先保存当前对话消息
+  saveCurrentChat()
   chatStore.clearChat()
   activeHistoryId.value = null
   ElMessage.success('对话已清除')
+}
+
+// 将当前对话消息保存到 localStorage（用于 newChat / clearChat 前持久化）
+const saveCurrentChat = () => {
+  if (activeHistoryId.value && messages.value.length > 0) {
+    localStorage.setItem(`tcm_chat_messages_${activeHistoryId.value}`, JSON.stringify(messages.value))
+  }
 }
 
 const showQuickTemplates = () => {

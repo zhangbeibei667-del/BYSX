@@ -255,7 +255,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import {
   Plus,
   Upload,
@@ -286,6 +287,9 @@ const tableRef = ref()
 const loading = ref(false)
 const tableData = ref<HerbEntity[]>([])
 const selectedRows = ref<HerbEntity[]>([])
+
+const route = useRoute()
+const router = useRouter()
 
 const searchParams = reactive({
   name: '',
@@ -534,8 +538,19 @@ const handleImportSuccess = () => {
 }
 
 // ==================== 初始化 ====================
-onMounted(() => {
-  fetchData()
+onMounted(async () => {
+  await fetchData()
+
+  // 从知识图谱跳转过来时，自动打开指定实体的编辑弹窗
+  const editId = route.query.editId as string
+  if (editId) {
+    await nextTick()
+    const entity = tableData.value.find((item: any) => item.id === editId)
+    if (entity) {
+      handleEdit(entity)
+      router.replace({ query: {} })
+    }
+  }
 })
 </script>
 

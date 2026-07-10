@@ -302,7 +302,6 @@
             <el-button
               type="primary"
               @click="goToAdminDetail"
-              :disabled="!isAdmin"
             >
               <el-icon><Edit /></el-icon>
               查看详情（后台）
@@ -905,7 +904,32 @@ async function handleSearch() {
       blinkNode(targetNode.id)
     }
   } catch {
-    ElMessage.error('搜索失败，请稍后重试')
+    // API 未就绪，回退到本地搜索（在已加载的 mock 数据中匹配）
+    console.log('graphApi.searchEntities 未就绪，使用本地搜索')
+    const keywordLower = keyword.toLowerCase()
+    const checkedTypes = filterTypes.filter(f => f.checked).map(f => f.type)
+    const matched = allNodes.value.filter(n => {
+      const typeMatch = checkedTypes.length === 0 || checkedTypes.includes(n.type)
+      const textMatch = n.label.includes(keyword) || n.id.toLowerCase().includes(keywordLower)
+      return typeMatch && textMatch
+    })
+
+    if (matched.length === 0) {
+      ElMessage.info(`未找到与"${keyword}"相关的实体`)
+      searchLoading.value = false
+      return
+    }
+
+    // 高亮第一个匹配节点
+    const targetNode = matched[0]
+    // 先打开右侧详情面板
+    handleNodeClick(targetNode.id)
+    // 居中 + 闪烁
+    blinkNode(targetNode.id)
+
+    if (matched.length > 1) {
+      ElMessage.success(`找到 ${matched.length} 个匹配实体，已定位到"${targetNode.label}"`)
+    }
   } finally {
     searchLoading.value = false
   }
@@ -1150,50 +1174,86 @@ function blinkNode(nodeId: string) {
   let count = 0
   const maxBlinks = 6 // 3次闪烁 = 6次切换
 
-  // 先居中
-  centerOnNode(nodeId)
-
-  const interval = setInterval(() => {
-    if (!chartInstance || count >= maxBlinks) {
-      clearInterval(interval)
-      if (chartInstance && count >= maxBlinks) {
+  const startBlink = () => {
+    if (!chartInstance) return
+    const interval = setInterval(() => {
+      if (!chartInstance || count >= maxBlinks) {
+        clearInterval(interval)
+        if (chartInstance && count >= maxBlinks) {
+          chartInstance.dispatchAction({ type: 'downplay', seriesIndex: 0, name: node.label })
+        }
+        return
+      }
+      if (count % 2 === 0) {
+        chartInstance.dispatchAction({ type: 'highlight', seriesIndex: 0, name: node.label })
+      } else {
         chartInstance.dispatchAction({ type: 'downplay', seriesIndex: 0, name: node.label })
       }
-      return
-    }
-    if (count % 2 === 0) {
-      chartInstance.dispatchAction({ type: 'highlight', seriesIndex: 0, name: node.label })
-    } else {
-      chartInstance.dispatchAction({ type: 'downplay', seriesIndex: 0, name: node.label })
-    }
-    count++
-  }, 350)
+      count++
+    }, 350)
+  }
+
+  // 先居中（内部有 900ms 延迟等待布局动画），居中完成后再闪烁
+  centerOnNode(nodeId, startBlink)
 }
 
-function centerOnNode(nodeId: string) {
+function centerOnNode(nodeId: string, callback?: () => void) {
   if (!chartInstance) return
   const node = allNodes.value.find(n => n.id === nodeId)
   if (!node) return
 
-  // 通过 setOption 定位到节点
-  chartInstance.setOption({
-    series: [{
-      center: [nodeId],
-    }],
-  })
+  // 等力导向布局动画结束后再居中（animationDuration 为 800ms）
+  setTimeout(() => {
+    try {
+      if (!chartInstance) return
+
+      const seriesModel = (chartInstance as any).getModel().getSeriesByIndex(0)
+      if (!seriesModel?.coordinateSystem) return
+
+      const coordSys = seriesModel.coordinateSystem
+      const data = seriesModel.getData()
+
+      // 通过节点 label（即图表中的 name）定位数据索引
+      const nodeIndex = data.indexOfName(node.label)
+      if (nodeIndex < 0) return
+
+      const layout = data.getItemLayout(nodeIndex)
+      if (!layout || layout.length < 2) return
+
+      const [nx, ny] = layout
+      const cw = chartInstance.getWidth()
+      const ch = chartInstance.getHeight()
+
+      // 获取当前缩放级别
+      const zoom: number = coordSys.getZoom?.() ?? 1
+
+      // 屏幕坐标 = 布局坐标 × zoom + pan
+      // 目标：让节点出现在画布正中央 → pan = 画布中心 - 节点布局坐标 × zoom
+      const panX = cw / 2 - nx * zoom
+      const panY = ch / 2 - ny * zoom
+
+      if (typeof coordSys.setPan === 'function') {
+        coordSys.setPan(panX, panY)
+      }
+    } catch (e) {
+      console.warn('centerOnNode 居中失败:', e)
+    } finally {
+      callback?.()
+    }
+  }, 900)
 }
 
 function jumpToEntity(nodeId: string) {
   clearSearch()
-  centerOnNode(nodeId)
   handleNodeClick(nodeId)
+  // blinkNode 内部已包含居中逻辑，无需重复调用 centerOnNode
   blinkNode(nodeId)
 }
 
 function jumpToRelatedEntity(rel: { otherId: string; otherType: string }) {
   clearSearch()
-  centerOnNode(rel.otherId)
   handleNodeClick(rel.otherId)
+  // blinkNode 内部已包含居中逻辑，无需重复调用 centerOnNode
   blinkNode(rel.otherId)
 }
 
@@ -1217,13 +1277,13 @@ function goToAdminDetail() {
   const type = selectedNode.value.type
   const id = selectedNode.value.id as string
   const routeMap: Record<string, string> = {
-    '药材': `/admin/herbs`,
-    '方剂': `/admin/prescriptions`,
-    '症状': `/admin/symptoms`,
-    '证候': `/admin/syndromes`,
+    '药材': '/admin/herbs',
+    '方剂': '/admin/prescriptions',
+    '症状': '/admin/symptoms',
+    '证候': '/admin/syndromes',
   }
   const path = routeMap[type] || '/admin/herbs'
-  router.push(path)
+  router.push({ path, query: { editId: id } })
 }
 
 // ==================== 生命周期 ====================

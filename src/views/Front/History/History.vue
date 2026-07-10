@@ -176,6 +176,23 @@
             :prefix-icon="Search"
             class="toolbar-search"
           />
+          <div class="toolbar-batch">
+            <el-button text size="small" @click="toggleSelectAllFavorites">
+              {{ isAllFavsSelected ? '取消全选' : '全选' }}
+            </el-button>
+            <el-button
+              type="danger"
+              text
+              size="small"
+              :disabled="selectedFavCount === 0"
+              @click="batchUnfavorite"
+            >
+              批量删除 ({{ selectedFavCount }})
+            </el-button>
+            <el-button text size="small" @click="exportFavorites">
+              导出 CSV
+            </el-button>
+          </div>
         </div>
 
         <!-- 空状态 -->
@@ -191,8 +208,15 @@
             v-for="fav in filteredFavorites"
             :key="fav.id"
             class="fav-card"
+            :class="{ 'fav-selected': selectedFavIds[fav.id] }"
             @click="navigateToFavorite(fav)"
           >
+            <el-checkbox
+              :model-value="!!selectedFavIds[fav.id]"
+              class="fav-checkbox"
+              @click.stop
+              @change="toggleFavSelect(fav.id, $event)"
+            />
             <div class="fav-card-header">
               <span class="fav-type-badge" :class="fav.type">
                 {{ fav.type === 'chat' ? '💬 问答' : '🎯 节点' }}
@@ -243,6 +267,23 @@
               :value="s"
             />
           </el-select>
+          <div class="toolbar-batch">
+            <el-button text size="small" @click="toggleSelectAllCases">
+              {{ isAllCasesSelected ? '取消全选' : '全选' }}
+            </el-button>
+            <el-button
+              type="danger"
+              text
+              size="small"
+              :disabled="selectedCaseCount === 0"
+              @click="batchDeleteCases"
+            >
+              批量删除 ({{ selectedCaseCount }})
+            </el-button>
+            <el-button text size="small" @click="exportCases">
+              导出 CSV
+            </el-button>
+          </div>
         </div>
 
         <!-- 加载骨架 -->
@@ -266,8 +307,15 @@
             v-for="c in filteredCases"
             :key="c.id"
             class="case-card"
+            :class="{ 'case-selected': selectedCaseIds[c.id] }"
             @click="openCase(c)"
           >
+            <el-checkbox
+              :model-value="!!selectedCaseIds[c.id]"
+              class="case-checkbox"
+              @click.stop
+              @change="toggleCaseSelect(c.id, $event)"
+            />
             <div class="case-card-header">
               <h4 class="case-name">{{ c.name || '未命名病例' }}</h4>
               <span class="case-gender">{{ c.gender || '' }}</span>
@@ -674,6 +722,149 @@ function saveLocalCases() {
   localStorage.setItem('tcm_cases', JSON.stringify(cases.value))
 }
 
+// ==================== 批量选择 & 操作 ====================
+
+const selectedFavIds = ref<Record<string, boolean>>({})
+const selectedCaseIds = ref<Record<string, boolean>>({})
+
+const selectedFavCount = computed(() => Object.keys(selectedFavIds.value).filter(k => selectedFavIds.value[k]).length)
+const selectedCaseCount = computed(() => Object.keys(selectedCaseIds.value).filter(k => selectedCaseIds.value[k]).length)
+
+const isAllFavsSelected = computed(() =>
+  filteredFavorites.value.length > 0 && selectedFavCount.value === filteredFavorites.value.length
+)
+const isAllCasesSelected = computed(() =>
+  filteredCases.value.length > 0 && selectedCaseCount.value === filteredCases.value.length
+)
+
+function toggleFavSelect(id: string, val: boolean) {
+  selectedFavIds.value = { ...selectedFavIds.value, [id]: val }
+}
+
+function toggleCaseSelect(id: string, val: boolean) {
+  selectedCaseIds.value = { ...selectedCaseIds.value, [id]: val }
+}
+
+function toggleSelectAllFavorites() {
+  if (isAllFavsSelected.value) {
+    selectedFavIds.value = {}
+  } else {
+    const all: Record<string, boolean> = {}
+    filteredFavorites.value.forEach(f => { all[f.id] = true })
+    selectedFavIds.value = all
+  }
+}
+
+function toggleSelectAllCases() {
+  if (isAllCasesSelected.value) {
+    selectedCaseIds.value = {}
+  } else {
+    const all: Record<string, boolean> = {}
+    filteredCases.value.forEach(c => { all[c.id] = true })
+    selectedCaseIds.value = all
+  }
+}
+
+async function batchUnfavorite() {
+  if (selectedFavCount.value === 0) return
+  try {
+    await ElMessageBox.confirm(
+      `确定删除选中的 ${selectedFavCount.value} 条收藏吗？`,
+      '批量取消收藏',
+      { confirmButtonText: '确定删除', cancelButtonText: '取消', type: 'warning' }
+    )
+  } catch { return }
+
+  const ids = new Set(Object.keys(selectedFavIds.value).filter(k => selectedFavIds.value[k]))
+  favorites.value = favorites.value.filter(f => !ids.has(f.id))
+
+  // 同步更新 localStorage
+  const chatFavs: FavoriteItem[] = JSON.parse(localStorage.getItem('tcm_chat_favorites') || '[]')
+  localStorage.setItem('tcm_chat_favorites', JSON.stringify(chatFavs.filter(f => !ids.has(f.id))))
+  const graphFavs: string[] = JSON.parse(localStorage.getItem('graph_favorites') || '[]')
+  localStorage.setItem('graph_favorites', JSON.stringify(graphFavs.filter(gid => !ids.has(`graph-${gid}`))))
+
+  selectedFavIds.value = {}
+  ElMessage.success(`已删除 ${ids.size} 条收藏`)
+}
+
+async function batchDeleteCases() {
+  if (selectedCaseCount.value === 0) return
+  try {
+    await ElMessageBox.confirm(
+      `确定删除选中的 ${selectedCaseCount.value} 个病例吗？此操作不可恢复。`,
+      '批量删除病例',
+      { confirmButtonText: '确定删除', cancelButtonText: '取消', type: 'warning' }
+    )
+  } catch { return }
+
+  const ids = new Set(Object.keys(selectedCaseIds.value).filter(k => selectedCaseIds.value[k]))
+  cases.value = cases.value.filter(c => !ids.has(c.id))
+  saveLocalCases()
+  selectedCaseIds.value = {}
+  ElMessage.success(`已删除 ${ids.size} 个病例`)
+}
+
+function exportFavorites() {
+  const hasSelection = selectedFavCount.value > 0
+  const data = (hasSelection
+    ? favorites.value.filter(f => selectedFavIds.value[f.id])
+    : favorites.value
+  ).map(f => ({
+    '类型': f.type === 'chat' ? '问答' : '图谱节点',
+    '标题': f.title,
+    '描述': f.description || '',
+    '节点类型': f.nodeType || '',
+    '时间': formatTime(f.time),
+  }))
+  if (data.length === 0) {
+    ElMessage.warning('没有可导出的数据')
+    return
+  }
+  exportCSV(data, ['类型', '标题', '描述', '节点类型', '时间'], '收藏列表')
+}
+
+function exportCases() {
+  const hasSelection = selectedCaseCount.value > 0
+  const data = (hasSelection
+    ? cases.value.filter(c => selectedCaseIds.value[c.id])
+    : cases.value
+  ).map(c => ({
+    '名称': c.name || '未命名',
+    '年龄': c.age ?? '',
+    '性别': c.gender || '',
+    '主诉': c.chiefComplaint || c.symptoms || '',
+    '证候': (c.syndromes || []).join('、'),
+    '方剂': (c.formulas || []).join('、'),
+    '时间': formatTime(c.createdAt || c.date || ''),
+  }))
+  if (data.length === 0) {
+    ElMessage.warning('没有可导出的数据')
+    return
+  }
+  exportCSV(data, ['名称', '年龄', '性别', '主诉', '证候', '方剂', '时间'], '病例列表')
+}
+
+function exportCSV(data: Record<string, any>[], headers: string[], filename: string) {
+  const BOM = '﻿' // Excel 识别 UTF-8 中文
+  const headerRow = headers.join(',')
+  const rows = data.map(row =>
+    headers.map(h => {
+      const val = (row[h] ?? '').toString()
+      return `"${val.replace(/"/g, '""')}"`
+    }).join(',')
+  )
+  const csv = BOM + headerRow + '\n' + rows.join('\n')
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+  const link = document.createElement('a')
+  link.href = URL.createObjectURL(blob)
+  link.download = `${filename}_${new Date().toISOString().slice(0, 10)}.csv`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  ElMessage.success(`已导出 ${data.length} 条记录`)
+}
+
 // ==================== 路由跳转 ====================
 
 function goToChat() {
@@ -889,9 +1080,18 @@ $border-light: #e2e8f0;
   display: flex;
   gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
 
   .toolbar-search {
     max-width: 320px;
+  }
+
+  .toolbar-batch {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: auto;
   }
 }
 
@@ -976,6 +1176,18 @@ $border-light: #e2e8f0;
   cursor: pointer;
   transition: all 0.25s;
   position: relative;
+
+  .fav-checkbox {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+  }
+
+  &.fav-selected {
+    border-color: $indigo;
+    background: $indigo-light;
+  }
 
   &:hover {
     border-color: $indigo;
@@ -1064,6 +1276,18 @@ $border-light: #e2e8f0;
   cursor: pointer;
   transition: all 0.25s;
   position: relative;
+
+  .case-checkbox {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+  }
+
+  &.case-selected {
+    border-color: $rose;
+    background: #fdf2f8;
+  }
 
   &:hover {
     border-color: $indigo;
