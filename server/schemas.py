@@ -115,6 +115,7 @@ class QAResult(BaseModel):
     graph: GraphData = Field(default_factory=GraphData)
     evidence: List[EvidenceItem] = Field(default_factory=list)
     follow_up_questions: List[str] = Field(default_factory=list)
+    safety_notice: str = "本结果仅用于中医药知识学习和教学辅助，不构成医疗诊断或用药建议。"
 
 
 # ---------- 6. 统一 HTTP 响应外壳 ----------

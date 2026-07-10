@@ -7,14 +7,16 @@ import io
 from typing import Any, Dict, List, Optional, Tuple
 
 try:
-    from .schemas import (Entity, EntityCreate, EntityUpdate, GraphData, GraphEdge,
-                           GraphNode, ImportError_, ImportResult, Relation,
-                           RelationCreate, validate_entity_type, validate_relation)
+    from .schemas import (Entity, EntityCreate, EntityUpdate, EvidenceItem,
+                           GraphData, GraphEdge, GraphNode, ImportError_,
+                           ImportResult, QAResult, Relation, RelationCreate,
+                           validate_entity_type, validate_relation)
     from .store_base import GraphStore
 except ImportError:
-    from schemas import (Entity, EntityCreate, EntityUpdate, GraphData, GraphEdge,
-                          GraphNode, ImportError_, ImportResult, Relation,
-                          RelationCreate, validate_entity_type, validate_relation)
+    from schemas import (Entity, EntityCreate, EntityUpdate, EvidenceItem,
+                          GraphData, GraphEdge, GraphNode, ImportError_,
+                          ImportResult, QAResult, Relation, RelationCreate,
+                          validate_entity_type, validate_relation)
     from store_base import GraphStore
 
 RESERVED_ENTITY_COLS = {"id", "name", "type", "alias", "description"}
@@ -201,6 +203,94 @@ class GraphService:
     def parse_csv(content: bytes) -> List[Dict[str, str]]:
         text = content.decode("utf-8-sig")           # 兼容 Excel 导出的 BOM
         return list(csv.DictReader(io.StringIO(text)))
+
+    # ==================== 问答（图 4 格式） ====================
+    def qa_ask(self, keyword: str) -> QAResult:
+        """教学问答入口：输入任意实体名称或关键词，返回完整 QAResult。
+        任务 3/4 接入后替换此处内部实现，但返回结构不变。"""
+        # 1. 找到起始实体
+        _, hits = self.list_entities(None, keyword, 1, 5)
+        if not hits:
+            raise ValueError(f"未找到与「{keyword}」相关的实体")
+
+        entity = hits[0]
+
+        # 2. 获取子图（depth=3 覆盖 症状→证候→方剂→药材 完整链路）
+        g = self.subgraph(entity.id, depth=3).model_dump()
+        nodes_by_type: Dict[str, List[str]] = {}
+        for n in g["nodes"]:
+            nodes_by_type.setdefault(n["type"], []).append(n["label"])
+
+        def names(t: str) -> List[str]:
+            return sorted(set(nodes_by_type.get(t, [])))
+
+        symptoms = names("症状")
+        syndromes = names("证候")
+        formulas = names("方剂")
+        herbs = names("药材")
+
+        # 3. 构建 evidence（实体描述作为资料片段）
+        evidence: List[EvidenceItem] = []
+        seen = set()
+        for n in g["nodes"]:
+            if n["id"] in seen:
+                continue
+            seen.add(n["id"])
+            e = self.get_entity(n["id"])
+            if e and e.description:
+                evidence.append(EvidenceItem(
+                    title=f"{e.name}（{e.type}）",
+                    content=e.description,
+                ))
+
+        # 4. 构建可读 answer
+        answer_parts = [f"「{entity.name}」"]
+        if symptoms:
+            answer_parts.append(f"相关症状：{'、'.join(symptoms)}。")
+        if syndromes:
+            answer_parts.append(f"关联证候：{'、'.join(syndromes)}。")
+        if formulas:
+            answer_parts.append(f"可选方剂：{'、'.join(formulas)}。")
+        if herbs:
+            answer_parts.append(f"涉及药材：{'、'.join(herbs)}。")
+
+        # 采集一条推理路径写入 answer，增强教学可读性
+        for start_type, end_type in [("症状", "方剂"), ("证候", "方剂"), ("方剂", "药材")]:
+            starts = [n for n in g["nodes"] if n["type"] == start_type]
+            ends = [n for n in g["nodes"] if n["type"] == end_type]
+            if starts and ends:
+                paths = self.find_paths(starts[0]["id"], ends[0]["id"], max_depth=3, limit=1)
+                if paths:
+                    answer_parts.insert(1, f"推理路径：{paths[0]['readable']}。")
+                    break
+
+        answer = "".join(answer_parts) if len(answer_parts) > 1 else (
+            f"已找到实体「{entity.name}」（{entity.type}），图谱中暂无更多关联信息。"
+        )
+
+        # 5. 生成追问
+        follow_ups: List[str] = []
+        if syndromes:
+            follow_ups.append(f"「{syndromes[0]}」还有哪些典型表现？")
+        if formulas:
+            follow_ups.append(f"「{formulas[0]}」的组方原理与方解是什么？")
+            if "禁忌" in nodes_by_type or syndromes:
+                follow_ups.append(f"「{formulas[0]}」有何使用禁忌或加减变化？")
+        if symptoms and len(syndromes) > 1:
+            follow_ups.append(f"「{symptoms[0]}」还可能对应哪些其他证候？")
+        if herbs and formulas:
+            follow_ups.append(f"「{formulas[0]}」中各味药材的配伍关系是什么？")
+
+        return QAResult(
+            answer=answer,
+            symptoms=symptoms,
+            syndromes=syndromes,
+            formulas=formulas,
+            herbs=herbs,
+            graph=GraphData(**g),
+            evidence=evidence,
+            follow_up_questions=follow_ups[:4],
+        )
 
     def stats(self) -> dict:
         return self.store.stats()

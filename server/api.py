@@ -149,3 +149,13 @@ def search_graph(keyword: str, type: Optional[str] = None, depth: int = 1, limit
 @router.get("/graph/path", response_model=ApiResponse)
 def find_path(source_id: str, target_id: str, max_depth: int = 4, limit: int = 5):
     return ok({"paths": svc().find_paths(source_id, target_id, max_depth, limit)})
+
+
+# ---------- 教学问答：data 就是 QAResult（图 4 格式） ----------
+@router.get("/qa/ask", response_model=ApiResponse)
+def qa_ask(keyword: str = Query(..., description="症状名、方剂名或药材名，如 失眠 / 归脾汤")):
+    """输入实体名称，返回完整 QAResult。任务 3/4 可替换内部实现，API 契约不变。"""
+    try:
+        return ok(svc().qa_ask(keyword).model_dump())
+    except Exception as e:
+        return fail(str(e))
