@@ -1,0 +1,864 @@
+from __future__ import annotations
+
+import json
+import csv
+import io
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+from fastapi import APIRouter, Body, File, HTTPException, Query, UploadFile
+from fastapi.responses import Response, StreamingResponse
+from pydantic import BaseModel
+
+from backend.services.agent_service import AgentService
+from backend.services.history_service import HistoryService
+from backend.services.local_graphrag_service import Entity, Relation, get_local_graphrag_service
+
+
+router = APIRouter(prefix="/api", tags=["Frontend compatibility"])
+
+_CASES: dict[str, dict[str, Any]] = {}
+_CHAT: dict[str, dict[str, Any]] = {}
+
+
+class ChatAskRequest(BaseModel):
+    question: str
+    historyId: str | None = None
+
+
+class CaseCreateRequest(BaseModel):
+    name: str | None = ""
+    age: int | None = None
+    gender: str | None = ""
+    chiefComplaint: str | None = ""
+    tongueExam: str | None = ""
+    pulseExam: str | None = ""
+    teachingNote: str | None = ""
+    analysisResult: dict[str, Any] | None = None
+
+
+ENTITY_TYPE_BY_ADMIN_KIND = {
+    "herbs": ("药材", "H"),
+    "prescriptions": ("方剂", "F"),
+    "symptoms": ("症状", "S"),
+    "syndromes": ("证候", "Z"),
+}
+
+
+def graph_data_root() -> Path:
+    return Path(__file__).resolve().parents[2] / "integrated_entities_graphrag" / "data"
+
+
+def admin_entities_path() -> Path:
+    return graph_data_root() / "entities" / "entities_admin_supplement.json"
+
+
+def admin_relations_path() -> Path:
+    return graph_data_root() / "relations" / "relations_admin_supplement.json"
+
+
+def admin_overlay_path() -> Path:
+    return graph_data_root() / "admin_overlay.json"
+
+
+def read_json_file(path: Path, default: Any) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return default
+
+
+def write_json_file(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def read_admin_entities() -> list[dict[str, Any]]:
+    data = read_json_file(admin_entities_path(), {"entities": []})
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    return [item for item in data.get("entities", []) if isinstance(item, dict)]
+
+
+def write_admin_entities(items: list[dict[str, Any]]) -> None:
+    write_json_file(admin_entities_path(), {"entities": items})
+    get_local_graphrag_service.cache_clear()
+
+
+def read_admin_relations() -> list[dict[str, Any]]:
+    data = read_json_file(admin_relations_path(), {"relations": []})
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    return [item for item in data.get("relations", []) if isinstance(item, dict)]
+
+
+def write_admin_relations(items: list[dict[str, Any]]) -> None:
+    write_json_file(admin_relations_path(), {"relations": items})
+    get_local_graphrag_service.cache_clear()
+
+
+def read_admin_overlay() -> dict[str, list[str]]:
+    data = read_json_file(admin_overlay_path(), {})
+    return {
+        "deleted_entity_ids": [str(item) for item in data.get("deleted_entity_ids", [])],
+        "deleted_relation_keys": [str(item) for item in data.get("deleted_relation_keys", [])],
+    }
+
+
+def write_admin_overlay(data: dict[str, list[str]]) -> None:
+    write_json_file(admin_overlay_path(), data)
+    get_local_graphrag_service.cache_clear()
+
+
+def next_entity_id(entity_type: str, prefix: str) -> str:
+    service = get_local_graphrag_service()
+    max_num = 0
+    for entity in service.entities:
+        if entity.type != entity_type or not entity.id.upper().startswith(prefix):
+            continue
+        suffix = entity.id[len(prefix) :]
+        if suffix.isdigit():
+            max_num = max(max_num, int(suffix))
+    return f"{prefix}{max_num + 1:04d}"
+
+
+def entity_payload_to_item(payload: dict[str, Any], entity_type: str, prefix: str, entity_id: str | None = None) -> dict[str, Any]:
+    props = payload.get("properties") if isinstance(payload.get("properties"), dict) else {}
+    category = payload.get("category") or props.get("category") or entity_type
+    props = {**props, "category": category, "source": props.get("source") or "后台管理录入"}
+    return {
+        "id": entity_id or str(payload.get("id") or next_entity_id(entity_type, prefix)),
+        "name": str(payload.get("name") or "").strip(),
+        "type": entity_type,
+        "alias": str(payload.get("alias") or "").strip(),
+        "description": str(payload.get("description") or "").strip(),
+        "properties": props,
+    }
+
+
+def relation_key_from_parts(source_id: str, relation: str, target_id: str) -> str:
+    return f"{source_id}|{relation}|{target_id}"
+
+
+def relation_to_admin_item(relation: Relation | dict[str, Any]) -> dict[str, Any]:
+    if isinstance(relation, Relation):
+        source_id = relation.source_id
+        rel = relation.relation
+        target_id = relation.target_id
+        item = {
+            "source_id": source_id,
+            "source_name": relation.source_name,
+            "relation": rel,
+            "target_id": target_id,
+            "target_name": relation.target_name,
+            "evidence": relation.evidence,
+        }
+    else:
+        source_id = str(relation.get("source_id", ""))
+        rel = str(relation.get("relation", ""))
+        target_id = str(relation.get("target_id", ""))
+        item = dict(relation)
+    item["id"] = relation_key_from_parts(source_id, rel, target_id)
+    return item
+
+
+def ok(data: Any) -> dict[str, Any]:
+    return {"code": 200, "msg": "ok", "data": data}
+
+
+def now_iso() -> str:
+    return datetime.now().isoformat(timespec="seconds")
+
+
+def entity_to_admin(entity: Entity) -> dict[str, Any]:
+    props = entity.properties or {}
+    return {
+        "id": entity.id,
+        "name": entity.name,
+        "type": entity.type,
+        "alias": entity.alias,
+        "category": props.get("category") or entity.type,
+        "description": entity.description,
+        "properties": props,
+        "createdAt": props.get("createdAt") or "",
+        "updatedAt": props.get("updatedAt") or "",
+    }
+
+
+def graph_response(nodes: list[dict], edges: list[dict]) -> dict[str, Any]:
+    return {
+        "nodes": nodes,
+        "edges": edges,
+    }
+
+
+def case_text_from_payload(payload: CaseCreateRequest) -> str:
+    parts = [
+        payload.chiefComplaint or "",
+        payload.tongueExam or "",
+        payload.pulseExam or "",
+    ]
+    return "，".join(part.strip("，。 \n\r\t") for part in parts if part and part.strip())
+
+
+def is_case_like_question(text: str) -> bool:
+    """Route real case narratives to the Agent, and knowledge questions to GraphRAG."""
+    stripped = text.strip()
+    if not stripped:
+        return False
+
+    case_markers = ["患者", "近", "主诉", "舌", "苔", "脉", "夜间", "大便", "小便", "盗汗", "纳差"]
+    question_markers = [
+        "是什么",
+        "有哪些",
+        "有什么",
+        "为什么",
+        "由哪些",
+        "包含哪些",
+        "组成",
+        "功效",
+        "禁忌",
+        "解释",
+        "介绍",
+    ]
+
+    marker_count = sum(1 for marker in case_markers if marker in stripped)
+    asks_knowledge = any(marker in stripped for marker in question_markers)
+
+    if stripped.startswith(("患者", "病例", "男", "女")):
+        return True
+    if "请进行中医" in stripped or "辨证" in stripped:
+        return True
+    if marker_count >= 3 and not asks_knowledge:
+        return True
+    return False
+
+
+def answer_with_graphrag(question: str) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    result = service.search(question, top_k=5)
+    return {
+        "answer": result.get("answer", ""),
+        "symptoms": [],
+        "tongue": [],
+        "pulse": [],
+        "syndromes": result.get("syndromes", []),
+        "formulas": result.get("formulas", []),
+        "herbs": result.get("herbs", []),
+        "graph": result.get("graph", {"nodes": [], "edges": []}),
+        "evidence": result.get("evidence", []),
+        "intent": result.get("intent"),
+        "intent_label": result.get("intent_label"),
+        "mode": result.get("mode", "local-graphrag"),
+    }
+
+
+@router.post("/case/create")
+def create_case(payload: CaseCreateRequest) -> dict[str, Any]:
+    case_id = str(int(time.time() * 1000))
+    data = payload.model_dump()
+    data["id"] = case_id
+    data["createdAt"] = now_iso()
+    data["symptoms"] = data.get("chiefComplaint") or ""
+    _CASES[case_id] = data
+    return ok({"id": case_id, **data})
+
+
+@router.post("/case/analyze/{case_id}")
+def analyze_case(case_id: str) -> dict[str, Any]:
+    case_data = _CASES.get(case_id)
+    if not case_data:
+        raise HTTPException(status_code=404, detail="case not found")
+    text = "，".join(
+        part.strip("，。 \n\r\t")
+        for part in [
+            str(case_data.get("chiefComplaint") or ""),
+            str(case_data.get("tongueExam") or ""),
+            str(case_data.get("pulseExam") or ""),
+        ]
+        if part and part.strip()
+    )
+    result = AgentService().analyze_case(text)
+    case_data["analysisResult"] = result
+    case_data["syndromes"] = result.get("syndromes", [])
+    case_data["formulas"] = result.get("formulas", [])
+    case_data["herbs"] = result.get("herbs", [])
+    case_data["answer"] = result.get("answer", "")
+    return ok(result)
+
+
+@router.get("/case/list")
+def list_cases(page: int = 1, pageSize: int = 20) -> dict[str, Any]:
+    items = sorted(_CASES.values(), key=lambda item: item.get("createdAt", ""), reverse=True)
+    start = (page - 1) * pageSize
+    return ok({"list": items[start : start + pageSize], "total": len(items)})
+
+
+@router.get("/case/{case_id}")
+def get_case(case_id: str) -> dict[str, Any]:
+    case_data = _CASES.get(case_id)
+    if not case_data:
+        raise HTTPException(status_code=404, detail="case not found")
+    return ok(case_data)
+
+
+@router.post("/chat/ask")
+def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
+    if is_case_like_question(payload.question):
+        result = AgentService().analyze_case(payload.question)
+    else:
+        result = answer_with_graphrag(payload.question)
+    history_id = payload.historyId or str(int(time.time() * 1000))
+    _CHAT[history_id] = {
+        "id": history_id,
+        "title": payload.question[:30],
+        "timestamp": now_iso(),
+        "messages": [
+            {"role": "user", "content": payload.question},
+            {"role": "assistant", "content": result.get("answer", ""), "result": result},
+        ],
+    }
+    return result
+
+
+@router.get("/chat/ask/stream")
+def ask_chat_stream(question: str, historyId: str | None = None) -> StreamingResponse:
+    if is_case_like_question(question):
+        result = AgentService().analyze_case(question)
+    else:
+        result = answer_with_graphrag(question)
+    text = result.get("answer", "")
+
+    def events():
+        yield f"data: {json.dumps({'type': 'message', 'content': text}, ensure_ascii=False)}\n\n"
+        yield "data: [DONE]\n\n"
+
+    return StreamingResponse(events(), media_type="text/event-stream")
+
+
+@router.get("/chat/history")
+def list_chat_history(page: int = 1, pageSize: int = 20) -> dict[str, Any]:
+    items = sorted(_CHAT.values(), key=lambda item: item.get("timestamp", ""), reverse=True)
+    start = (page - 1) * pageSize
+    return ok({"list": items[start : start + pageSize], "total": len(items)})
+
+
+@router.get("/chat/history/{history_id}")
+def get_chat_history(history_id: str) -> dict[str, Any]:
+    return ok(_CHAT.get(history_id, {"id": history_id, "messages": []}))
+
+
+@router.post("/chat/history/save")
+def save_chat_history(data: dict[str, Any]) -> dict[str, Any]:
+    history_id = str(data.get("id") or int(time.time() * 1000))
+    _CHAT[history_id] = {"id": history_id, "timestamp": now_iso(), **data}
+    return ok(_CHAT[history_id])
+
+
+@router.delete("/chat/history/{history_id}")
+def delete_chat_history(history_id: str) -> dict[str, Any]:
+    _CHAT.pop(history_id, None)
+    return ok({"deleted": True})
+
+
+@router.get("/graph/full")
+def full_graph(limit: int = Query(1200, ge=100, le=5000)) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    # Keep a readable demo graph: include all non-disease nodes first, then cap.
+    entities = [e for e in service.entities if e.type != "疾病"][:limit]
+    ids = {entity.id for entity in entities}
+    nodes = [{"id": e.id, "label": e.name, "type": e.type, "properties": e.properties or {}} for e in entities]
+    edges = [
+        {"source": r.source_id, "target": r.target_id, "label": r.relation, "properties": {"evidence": r.evidence}}
+        for r in service.relations
+        if r.source_id in ids and r.target_id in ids
+    ][: limit * 2]
+    return graph_response(nodes, edges)
+
+
+@router.get("/graph/search")
+def search_graph(keyword: str = "", types: str | None = None) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    type_set = set(str(types or "").split(",")) if types else set()
+    matches = [
+        entity
+        for entity in service.entities
+        if (not type_set or entity.type in type_set)
+        and (not keyword or keyword in entity.name or keyword in entity.alias or keyword in entity.description)
+    ][:120]
+    ids = {entity.id for entity in matches}
+    related_edges = [
+        relation
+        for relation in service.relations
+        if relation.source_id in ids or relation.target_id in ids
+    ][:300]
+    for relation in related_edges:
+        ids.add(relation.source_id)
+        ids.add(relation.target_id)
+    nodes = [
+        {"id": entity.id, "label": entity.name, "type": entity.type, "properties": entity.properties or {}}
+        for entity in service.entities
+        if entity.id in ids
+    ]
+    edges = [
+        {"source": r.source_id, "target": r.target_id, "label": r.relation, "properties": {"evidence": r.evidence}}
+        for r in related_edges
+    ]
+    return graph_response(nodes, edges)
+
+
+@router.get("/graph/entity/{entity_id}")
+def entity_detail(entity_id: str) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    entity = service.entities_by_id.get(entity_id)
+    if not entity:
+        raise HTTPException(status_code=404, detail="entity not found")
+    return ok(entity_to_admin(entity))
+
+
+@router.get("/graph/related/{entity_id}")
+def related_graph(entity_id: str, depth: int = 2) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    entity = service.entities_by_id.get(entity_id)
+    if not entity:
+        return graph_response([], [])
+    graph = service._expand_graph([entity], max_hops=depth)
+    return graph
+
+
+@router.get("/graph/path")
+def graph_path(sourceId: str, targetId: str) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    source = service.entities_by_id.get(sourceId)
+    target = service.entities_by_id.get(targetId)
+    if not source or not target:
+        return graph_response([], [])
+    graph = service._expand_graph([source, target], max_hops=3)
+    return graph
+
+
+def list_entities_by_type(entity_type: str, page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    items = [
+        entity_to_admin(entity)
+        for entity in service.entities
+        if entity.type == entity_type and (not name or name in entity.name)
+    ]
+    start = (page - 1) * pageSize
+    return ok({"list": items[start : start + pageSize], "total": len(items)})
+
+
+def create_entity(kind: str, payload: dict[str, Any]) -> dict[str, Any]:
+    entity_type, prefix = ENTITY_TYPE_BY_ADMIN_KIND[kind]
+    item = entity_payload_to_item(payload, entity_type, prefix)
+    if not item["name"]:
+        raise HTTPException(status_code=400, detail="name is required")
+    entities = [entity for entity in read_admin_entities() if entity.get("id") != item["id"]]
+    entities.append(item)
+
+    overlay = read_admin_overlay()
+    overlay["deleted_entity_ids"] = [entity_id for entity_id in overlay["deleted_entity_ids"] if entity_id != item["id"]]
+    write_admin_overlay(overlay)
+    write_admin_entities(entities)
+    return ok(entity_to_admin(Entity(**item)))
+
+
+def update_entity(kind: str, entity_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    entity_type, prefix = ENTITY_TYPE_BY_ADMIN_KIND[kind]
+    service = get_local_graphrag_service()
+    current = service.entities_by_id.get(entity_id)
+    base_payload = {
+        "id": entity_id,
+        "name": current.name if current else "",
+        "alias": current.alias if current else "",
+        "description": current.description if current else "",
+        "properties": current.properties or {} if current else {},
+    }
+    merged = {**base_payload, **payload, "properties": {**base_payload.get("properties", {}), **(payload.get("properties") or {})}}
+    item = entity_payload_to_item(merged, entity_type, prefix, entity_id=entity_id)
+    if not item["name"]:
+        raise HTTPException(status_code=400, detail="name is required")
+
+    entities = [entity for entity in read_admin_entities() if entity.get("id") != entity_id]
+    entities.append(item)
+    write_admin_entities(entities)
+    return ok(entity_to_admin(Entity(**item)))
+
+
+def delete_entities(ids: list[str]) -> dict[str, Any]:
+    id_set = {str(item) for item in ids if str(item)}
+    if not id_set:
+        return ok({"deleted": 0})
+
+    admin_entities = [entity for entity in read_admin_entities() if entity.get("id") not in id_set]
+    write_admin_entities(admin_entities)
+
+    admin_relations = [
+        relation
+        for relation in read_admin_relations()
+        if relation.get("source_id") not in id_set and relation.get("target_id") not in id_set
+    ]
+    write_admin_relations(admin_relations)
+
+    overlay = read_admin_overlay()
+    deleted_entity_ids = set(overlay["deleted_entity_ids"])
+    deleted_entity_ids.update(id_set)
+    overlay["deleted_entity_ids"] = sorted(deleted_entity_ids)
+    write_admin_overlay(overlay)
+    return ok({"deleted": len(id_set)})
+
+
+async def import_entities(kind: str, file: UploadFile) -> dict[str, Any]:
+    entity_type, prefix = ENTITY_TYPE_BY_ADMIN_KIND[kind]
+    content = await file.read()
+    filename = file.filename or ""
+    rows: list[dict[str, Any]] = []
+
+    if filename.lower().endswith(".json"):
+        data = json.loads(content.decode("utf-8-sig"))
+        if isinstance(data, dict):
+            rows = data.get("entities") or data.get("list") or []
+        elif isinstance(data, list):
+            rows = data
+    else:
+        text = content.decode("utf-8-sig")
+        rows = list(csv.DictReader(io.StringIO(text)))
+
+    existing = {entity.get("id"): entity for entity in read_admin_entities()}
+    imported = 0
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        payload = {
+            "id": row.get("id"),
+            "name": row.get("name") or row.get("名称"),
+            "alias": row.get("alias") or row.get("别名"),
+            "description": row.get("description") or row.get("描述") or "",
+            "category": row.get("category") or row.get("分类") or entity_type,
+            "properties": {k: v for k, v in row.items() if k not in {"id", "name", "名称", "alias", "别名", "description", "描述"}},
+        }
+        item = entity_payload_to_item(payload, entity_type, prefix)
+        if not item["name"]:
+            continue
+        existing[item["id"]] = item
+        imported += 1
+    write_admin_entities(list(existing.values()))
+    return ok({"imported": imported})
+
+
+def export_entities(kind: str) -> Response:
+    entity_type, _prefix = ENTITY_TYPE_BY_ADMIN_KIND[kind]
+    service = get_local_graphrag_service()
+    rows = [entity_to_admin(entity) for entity in service.entities if entity.type == entity_type]
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=["id", "name", "type", "alias", "category", "description"])
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({key: row.get(key, "") for key in writer.fieldnames})
+    return Response(
+        content=output.getvalue().encode("utf-8-sig"),
+        media_type="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{kind}.csv"'},
+    )
+
+
+def template_entities(kind: str) -> Response:
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=["id", "name", "alias", "category", "description"])
+    writer.writeheader()
+    writer.writerow({"id": "", "name": "示例名称", "alias": "", "category": "", "description": "示例描述"})
+    return Response(
+        content=output.getvalue().encode("utf-8-sig"),
+        media_type="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{kind}_template.csv"'},
+    )
+
+
+@router.get("/admin/herbs")
+def admin_herbs(page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
+    return list_entities_by_type("药材", page, pageSize, name)
+
+
+@router.post("/admin/herbs")
+def create_herb(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return create_entity("herbs", payload)
+
+
+@router.put("/admin/herbs/{entity_id}")
+def update_herb(entity_id: str, payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return update_entity("herbs", entity_id, payload)
+
+
+@router.delete("/admin/herbs/{entity_id}")
+def delete_herb(entity_id: str) -> dict[str, Any]:
+    return delete_entities([entity_id])
+
+
+@router.delete("/admin/herbs/batch")
+def delete_herbs_batch(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return delete_entities(payload.get("ids", []))
+
+
+@router.post("/admin/herbs/import")
+async def import_herbs(file: UploadFile = File(...)) -> dict[str, Any]:
+    return await import_entities("herbs", file)
+
+
+@router.get("/admin/herbs/export")
+def export_herbs() -> Response:
+    return export_entities("herbs")
+
+
+@router.get("/admin/herbs/template")
+def template_herbs() -> Response:
+    return template_entities("herbs")
+
+
+@router.get("/admin/prescriptions")
+def admin_prescriptions(page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
+    return list_entities_by_type("方剂", page, pageSize, name)
+
+
+@router.post("/admin/prescriptions")
+def create_prescription(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return create_entity("prescriptions", payload)
+
+
+@router.put("/admin/prescriptions/{entity_id}")
+def update_prescription(entity_id: str, payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return update_entity("prescriptions", entity_id, payload)
+
+
+@router.delete("/admin/prescriptions/{entity_id}")
+def delete_prescription(entity_id: str) -> dict[str, Any]:
+    return delete_entities([entity_id])
+
+
+@router.delete("/admin/prescriptions/batch")
+def delete_prescriptions_batch(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return delete_entities(payload.get("ids", []))
+
+
+@router.post("/admin/prescriptions/import")
+async def import_prescriptions(file: UploadFile = File(...)) -> dict[str, Any]:
+    return await import_entities("prescriptions", file)
+
+
+@router.get("/admin/prescriptions/export")
+def export_prescriptions() -> Response:
+    return export_entities("prescriptions")
+
+
+@router.get("/admin/prescriptions/template")
+def template_prescriptions() -> Response:
+    return template_entities("prescriptions")
+
+
+@router.get("/admin/symptoms")
+def admin_symptoms(page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
+    return list_entities_by_type("症状", page, pageSize, name)
+
+
+@router.post("/admin/symptoms")
+def create_symptom(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return create_entity("symptoms", payload)
+
+
+@router.put("/admin/symptoms/{entity_id}")
+def update_symptom(entity_id: str, payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return update_entity("symptoms", entity_id, payload)
+
+
+@router.delete("/admin/symptoms/{entity_id}")
+def delete_symptom(entity_id: str) -> dict[str, Any]:
+    return delete_entities([entity_id])
+
+
+@router.delete("/admin/symptoms/batch")
+def delete_symptoms_batch(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return delete_entities(payload.get("ids", []))
+
+
+@router.post("/admin/symptoms/import")
+async def import_symptoms(file: UploadFile = File(...)) -> dict[str, Any]:
+    return await import_entities("symptoms", file)
+
+
+@router.get("/admin/symptoms/export")
+def export_symptoms() -> Response:
+    return export_entities("symptoms")
+
+
+@router.get("/admin/symptoms/template")
+def template_symptoms() -> Response:
+    return template_entities("symptoms")
+
+
+@router.get("/admin/syndromes")
+def admin_syndromes(page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
+    return list_entities_by_type("证候", page, pageSize, name)
+
+
+@router.post("/admin/syndromes")
+def create_syndrome(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return create_entity("syndromes", payload)
+
+
+@router.put("/admin/syndromes/{entity_id}")
+def update_syndrome(entity_id: str, payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return update_entity("syndromes", entity_id, payload)
+
+
+@router.delete("/admin/syndromes/{entity_id}")
+def delete_syndrome(entity_id: str) -> dict[str, Any]:
+    return delete_entities([entity_id])
+
+
+@router.delete("/admin/syndromes/batch")
+def delete_syndromes_batch(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return delete_entities(payload.get("ids", []))
+
+
+@router.post("/admin/syndromes/import")
+async def import_syndromes(file: UploadFile = File(...)) -> dict[str, Any]:
+    return await import_entities("syndromes", file)
+
+
+@router.get("/admin/syndromes/export")
+def export_syndromes() -> Response:
+    return export_entities("syndromes")
+
+
+@router.get("/admin/syndromes/template")
+def template_syndromes() -> Response:
+    return template_entities("syndromes")
+
+
+@router.get("/admin/relations")
+def admin_relations(
+    page: int = 1,
+    pageSize: int = 20,
+    sourceName: str | None = None,
+    targetName: str | None = None,
+    relation: str | None = None,
+) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    items = [
+        relation_to_admin_item(r)
+        for r in service.relations
+    ]
+    if sourceName:
+        items = [item for item in items if sourceName in item.get("source_name", "")]
+    if targetName:
+        items = [item for item in items if targetName in item.get("target_name", "")]
+    if relation:
+        items = [item for item in items if relation == item.get("relation")]
+    start = (page - 1) * pageSize
+    return ok({"list": items[start : start + pageSize], "total": len(items)})
+
+
+@router.post("/admin/relations")
+def create_relation(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    source_id = str(payload.get("source_id") or "").strip()
+    target_id = str(payload.get("target_id") or "").strip()
+    relation = str(payload.get("relation") or "").strip()
+    if not source_id or not target_id or not relation:
+        raise HTTPException(status_code=400, detail="source_id, target_id and relation are required")
+
+    service = get_local_graphrag_service()
+    source = service.entities_by_id.get(source_id)
+    target = service.entities_by_id.get(target_id)
+    item = {
+        "source_id": source_id,
+        "source_name": str(payload.get("source_name") or (source.name if source else "")),
+        "source_type": str(payload.get("source_type") or (source.type if source else "")),
+        "relation": relation,
+        "target_id": target_id,
+        "target_name": str(payload.get("target_name") or (target.name if target else "")),
+        "target_type": str(payload.get("target_type") or (target.type if target else "")),
+        "evidence": str(payload.get("evidence") or "后台管理录入"),
+    }
+    relation_id = relation_key_from_parts(source_id, relation, target_id)
+    items = [row for row in read_admin_relations() if relation_key_from_parts(str(row.get("source_id")), str(row.get("relation")), str(row.get("target_id"))) != relation_id]
+    items.append(item)
+
+    overlay = read_admin_overlay()
+    overlay["deleted_relation_keys"] = [key for key in overlay["deleted_relation_keys"] if key != relation_id]
+    write_admin_overlay(overlay)
+    write_admin_relations(items)
+    return ok(relation_to_admin_item(item))
+
+
+def delete_relations(ids: list[str]) -> dict[str, Any]:
+    key_set = {str(item) for item in ids if str(item)}
+    if not key_set:
+        return ok({"deleted": 0})
+
+    items = [
+        row
+        for row in read_admin_relations()
+        if relation_key_from_parts(str(row.get("source_id")), str(row.get("relation")), str(row.get("target_id"))) not in key_set
+    ]
+    write_admin_relations(items)
+    overlay = read_admin_overlay()
+    deleted_relation_keys = set(overlay["deleted_relation_keys"])
+    deleted_relation_keys.update(key_set)
+    overlay["deleted_relation_keys"] = sorted(deleted_relation_keys)
+    write_admin_overlay(overlay)
+    return ok({"deleted": len(key_set)})
+
+
+@router.delete("/admin/relations/{relation_id}")
+def delete_relation(relation_id: str) -> dict[str, Any]:
+    return delete_relations([relation_id])
+
+
+@router.delete("/admin/relations/batch")
+def delete_relations_batch(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    return delete_relations(payload.get("ids", []))
+
+
+@router.get("/stats/platform")
+def platform_stats() -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    counts: dict[str, int] = {}
+    for entity in service.entities:
+        counts[entity.type] = counts.get(entity.type, 0) + 1
+    return {
+        "totalHerbs": counts.get("药材", 0),
+        "totalPrescriptions": counts.get("方剂", 0),
+        "totalSymptoms": counts.get("症状", 0),
+        "totalSyndromes": counts.get("证候", 0),
+        "totalRelations": len(service.relations),
+        "totalQuestions": len(HistoryService().list_history(limit=100, offset=0)),
+        "totalCases": len(_CASES),
+    }
+
+
+@router.get("/stats/categories")
+def category_stats() -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    counts: dict[str, int] = {}
+    for entity in service.entities:
+        counts[entity.type] = counts.get(entity.type, 0) + 1
+    return counts
+
+
+@router.get("/stats/popular/{entity_type}")
+def popular_entities(entity_type: str, limit: int = 10) -> list[dict[str, Any]]:
+    mapping = {"herbs": "药材", "prescriptions": "方剂", "symptoms": "症状"}
+    service = get_local_graphrag_service()
+    target_type = mapping.get(entity_type, entity_type)
+    return [
+        {"name": entity.name, "value": index + 1, "id": entity.id}
+        for index, entity in enumerate([e for e in service.entities if e.type == target_type][:limit])
+    ]
+
+
+@router.get("/stats/daily-questions")
+def daily_questions(days: int = 7) -> list[dict[str, Any]]:
+    return [{"date": now_iso()[:10], "count": 0} for _ in range(days)]

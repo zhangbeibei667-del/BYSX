@@ -1,0 +1,233 @@
+[
+  {
+    "id": "S901",
+    "name": "牙龈肿痛",
+    "type": "症状",
+    "alias": "齿龈肿痛",
+    "description": "牙龈红肿疼痛，可见于胃火上攻、热毒上炎等教学辨证场景",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充现有图谱未覆盖的口齿症状"
+    }
+  },
+  {
+    "id": "S902",
+    "name": "口臭",
+    "type": "症状",
+    "alias": "口气臭",
+    "description": "口中气味臭秽，常与胃热、食积、湿热等教学证候相关",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充口腔气味类症状"
+    }
+  },
+  {
+    "id": "S903",
+    "name": "口渴喜冷饮",
+    "type": "症状",
+    "alias": "渴喜冷饮",
+    "description": "口渴且偏好冷饮，多见于实热、胃热、气分热盛等教学辨证场景",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "由口渴细分出的热证倾向症状"
+    }
+  },
+  {
+    "id": "S904",
+    "name": "胃脘灼痛",
+    "type": "症状",
+    "alias": "胃中灼痛",
+    "description": "胃脘部灼热疼痛，可辅助胃火、胃热、胃阴不足等辨证教学",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充胃部热象症状"
+    }
+  },
+  {
+    "id": "S905",
+    "name": "小便短赤",
+    "type": "症状",
+    "alias": "尿短赤",
+    "description": "小便量少色黄赤，常用于湿热、实热类证候教学",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充湿热下注等场景"
+    }
+  },
+  {
+    "id": "S906",
+    "name": "尿频尿急",
+    "type": "症状",
+    "alias": "小便频急",
+    "description": "小便频数急迫，可用于湿热下注、淋证类教学辨证",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充下焦湿热场景"
+    }
+  },
+  {
+    "id": "S907",
+    "name": "恶风",
+    "type": "症状",
+    "alias": "怕风",
+    "description": "自觉怕风，可见于表证教学辨证",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充外感表证"
+    }
+  },
+  {
+    "id": "S908",
+    "name": "鼻塞流涕",
+    "type": "症状",
+    "alias": "鼻塞流清涕",
+    "description": "鼻塞并流涕，可辅助风寒或风热感冒教学辨证",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充感冒类症状"
+    }
+  },
+  {
+    "id": "Z901",
+    "name": "胃火炽盛",
+    "type": "证候",
+    "alias": "胃火上攻",
+    "description": "胃中火热炽盛，循经上攻，可见牙龈肿痛、口臭、口渴喜冷饮、大便干结、舌红苔黄、脉数等",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "补充口齿肿痛、胃热上攻辨证链路"
+    }
+  },
+  {
+    "id": "Z902",
+    "name": "阳明胃热",
+    "type": "证候",
+    "alias": "阳明热盛",
+    "description": "阳明经腑热盛，可见口渴喜冷饮、便秘、牙龈肿痛、舌红苔黄、脉数",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "补充胃热实热教学辨证链路"
+    }
+  },
+  {
+    "id": "Z903",
+    "name": "肝郁脾虚",
+    "type": "证候",
+    "alias": "肝脾不和",
+    "description": "肝气郁结影响脾胃运化，可见情志抑郁、胁胀、善太息、食少、腹胀、便溏等",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于提高肝郁与脾虚兼见病例的辨证稳定性"
+    }
+  },
+  {
+    "id": "Z904",
+    "name": "痰热内扰",
+    "type": "证候",
+    "alias": "痰热扰心",
+    "description": "痰热扰动心神或肺胃，可见心烦失眠、痰多、胸闷、苔黄腻、脉滑数",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "补充温胆汤类辨证链路"
+    }
+  },
+  {
+    "id": "Z905",
+    "name": "湿热下注",
+    "type": "证候",
+    "alias": "下焦湿热",
+    "description": "湿热下注膀胱或下焦，可见小便短赤、尿频尿急、尿痛、舌苔黄腻、脉滑数",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "补充八正散类辨证链路"
+    }
+  },
+  {
+    "id": "Z906",
+    "name": "胃阴不足",
+    "type": "证候",
+    "alias": "胃阴虚",
+    "description": "胃阴亏虚，虚热内扰，可见胃脘隐痛或灼痛、口燥咽干、饥不欲食、舌红少苔",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "补充益胃汤、玉女煎相关教学链路"
+    }
+  },
+  {
+    "id": "F901",
+    "name": "清胃散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清胃凉血",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "黄连、生地黄、牡丹皮、当归、升麻；用于胃火牙痛、牙龈肿痛等教学场景"
+    }
+  },
+  {
+    "id": "F902",
+    "name": "玉女煎",
+    "type": "方剂",
+    "alias": "",
+    "description": "清胃热，滋肾阴",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "石膏、熟地黄、麦冬、知母、牛膝；用于胃热阴虚类教学场景"
+    }
+  },
+  {
+    "id": "F903",
+    "name": "温胆汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "理气化痰，清胆和胃",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "半夏、竹茹、枳实、陈皮、甘草、茯苓；用于痰热内扰、胆胃不和类教学场景"
+    }
+  },
+  {
+    "id": "F904",
+    "name": "八正散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热泻火，利水通淋",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "车前子、瞿麦、萹蓄、滑石、栀子、甘草、木通、大黄；用于湿热下注、小便淋涩类教学场景"
+    }
+  },
+  {
+    "id": "F905",
+    "name": "荆防败毒散",
+    "type": "方剂",
+    "alias": "",
+    "description": "发汗解表，散风祛湿",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "荆芥、防风、羌活、独活、柴胡、前胡等；用于风寒夹湿表证教学场景"
+    }
+  },
+  {
+    "id": "F906",
+    "name": "益胃汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "养阴益胃",
+    "properties": {
+      "source": "《方剂学》补充",
+      "note": "沙参、麦冬、生地黄、玉竹、冰糖；用于胃阴不足教学场景"
+    }
+  },
+  {
+    "id": "S909",
+    "name": "饥不欲食",
+    "type": "症状",
+    "alias": "饥而不欲食",
+    "description": "自觉饥饿但不想进食，常见于胃阴不足、胃失濡养等辨证场景",
+    "properties": {
+      "source": "clinical_supplement",
+      "note": "用于补充胃阴不足病例的关键症状"
+    }
+  }
+]
