@@ -93,6 +93,18 @@ export const graphApi = {
   }
 }
 
+// 新增文献相关的 API（用于 ChatAI 回答中的溯源卡片）
+export const literatureApi = {
+  // 获取文献详情（用于回答溯源）
+  getDetail: (id: string) => api.get(`/literature/${id}`),
+  
+  // 根据实体查询关联文献
+  getByEntity: (entityId: string) => api.get(`/literature/entity/${entityId}`),
+  
+  // 搜索文献
+  search: (keyword: string, params?: any) => api.get('/literature/search', { params: { keyword, ...params } })
+}
+
 // 实体管理接口
 export const entityApi = {
   // 药材管理
@@ -176,6 +188,35 @@ export const caseApi = {
   
   // 获取病例详情
   detail: (id: string) => api.get(`/case/${id}`)
+}
+
+// 统计接口
+export const statsApi = {
+  // 获取平台统计数据
+  getPlatformStats: () => api.get<{
+    totalHerbs: number
+    totalPrescriptions: number
+    totalSymptoms: number
+    totalSyndromes: number
+    totalRelations: number
+    totalQuestions: number
+    totalCases: number
+  }>('/stats/platform'),
+  
+  // 获取热门实体统计
+  getPopularEntities: (type: 'herbs' | 'prescriptions' | 'symptoms', limit = 10) => {
+    return api.get(`/stats/popular/${type}`, { params: { limit } })
+  },
+  
+  // 获取每日问答统计
+  getDailyQuestions: (days = 7) => {
+    return api.get('/stats/daily-questions', { params: { days } })
+  },
+  
+  // 获取实体分类统计
+  getCategoryStats: () => {
+    return api.get('/stats/categories')
+  }
 }
 
 export default api

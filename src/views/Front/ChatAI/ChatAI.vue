@@ -197,7 +197,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, watch } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   Plus,
@@ -759,6 +759,14 @@ watch(messages, () => {
   }
   50% {
     transform: translateY(-5px);
+  }
+}
+
+.chat-ai {
+  margin-top: -800px;
+  
+  @media (max-width: 1200px) {
+    margin-top: -1020px;
   }
 }
 </style>
