@@ -1,3 +1,4 @@
+<!-- 页面大小调不好，我先放弃了 -->
 <template>
   <div class="admin-layout">
     <!-- 侧边栏 -->
@@ -30,7 +31,7 @@
         </el-menu-item>
         <el-menu-item index="/admin/relations">
           <el-icon><Connection /></el-icon>
-          关系管理
+          图谱管理
         </el-menu-item>
         <el-menu-item index="/admin/documents">
           <el-icon><Files /></el-icon>
@@ -90,6 +91,7 @@ import {
   Back,
   SwitchButton
 } from '@element-plus/icons-vue'
+import { clearCaptchaVerified } from '@/utils/captcha'
 
 const route = useRoute()
 const router = useRouter()
@@ -100,7 +102,7 @@ const pageTitles: Record<string, string> = {
   '/admin/prescriptions': '方剂管理',
   '/admin/symptoms': '症状管理',
   '/admin/syndromes': '证候管理',
-  '/admin/relations': '关系管理',
+  '/admin/relations': '图谱管理',
   '/admin/documents': '文献管理',
   '/admin/records': '记录管理'
 }
@@ -118,6 +120,7 @@ const backToFront = () => {
 
 const logout = () => {
   localStorage.removeItem('admin_token')
+  clearCaptchaVerified()
   router.push('/')
 }
 </script>
@@ -177,6 +180,8 @@ const logout = () => {
   
   .main-content {
     flex: 1;
+    min-width: 0;
+    max-width: calc(100vw - 240px);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -210,8 +215,10 @@ const logout = () => {
     
     .content-container {
       flex: 1;
-      padding: 24px;
-      overflow: auto;
+      min-width: 0;
+      padding: 20px 24px;
+      overflow-y: auto;
+      overflow-x: atuo;
     }
   }
 }

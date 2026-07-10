@@ -22,6 +22,10 @@
             <el-icon><Clock /></el-icon>
             历史记录
           </el-button>
+          <el-button type="default" size="large" @click="goToAdmin" class="admin-btn">
+            <el-icon><Setting /></el-icon>
+            后台管理
+          </el-button>
         </div>
       </div>
     </div>
@@ -156,7 +160,7 @@
     <div class="stats-section">
       <h2 class="section-title">平台数据概览</h2>
       <div class="stats-grid">
-        <div class="stat-card">
+        <div class="stat-card" @click="goToAdminHerbs">
           <div class="stat-icon" style="background: #e3f2fd;">
             <el-icon color="#2196f3"><Orange /></el-icon>
           </div>
@@ -166,8 +170,8 @@
             <p>药材数量</p>
           </div>
         </div>
-        
-        <div class="stat-card">
+
+        <div class="stat-card" @click="goToAdminPrescriptions">
           <div class="stat-icon" style="background: #f3e5f5;">
             <el-icon color="#9c27b0"><Document /></el-icon>
           </div>
@@ -177,8 +181,8 @@
             <p>方剂数量</p>
           </div>
         </div>
-        
-        <div class="stat-card">
+
+        <div class="stat-card" @click="goToAdminRelations">
           <div class="stat-icon" style="background: #e8f5e9;">
             <el-icon color="#4caf50"><Connection /></el-icon>
           </div>
@@ -188,8 +192,8 @@
             <p>关系数量</p>
           </div>
         </div>
-        
-        <div class="stat-card">
+
+        <div class="stat-card" @click="goToAdminRecords">
           <div class="stat-icon" style="background: #fff3e0;">
             <el-icon color="#ff9800"><Message /></el-icon>
           </div>
@@ -201,6 +205,9 @@
         </div>
       </div>
     </div>
+
+    <!-- 人机验证弹窗 -->
+    <CaptchaVerify ref="captchaRef" />
   </div>
 </template>
 
@@ -216,12 +223,17 @@ import {
   Orange,
   Connection,
   Message,
-  Loading
+  Loading,
+  Setting
 } from '@element-plus/icons-vue'
 import { entityApi } from '@/api'
+import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
 
 const router = useRouter()
 const activeTab = ref('prescriptions')
+
+// 验证组件引用
+const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
 
 // 加载状态
 const loadingStats = ref(true)
@@ -521,6 +533,41 @@ const goToHistory = () => {
   router.push('/history')
 }
 
+const goToAdmin = async () => {
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/herbs')
+  }
+}
+
+const goToAdminHerbs = async () => {
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/herbs')
+  }
+}
+
+const goToAdminPrescriptions = async () => {
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/prescriptions')
+  }
+}
+
+const goToAdminRelations = async () => {
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/relations')
+  }
+}
+
+const goToAdminRecords = async () => {
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/records')
+  }
+}
+
 const viewDetail = (type: string, id: string) => {
   // 跳转到详情页面
   console.log('View detail:', type, id)
@@ -569,6 +616,16 @@ const formatNumber = (num: number) => {
         gap: 20px;
         justify-content: center;
         flex-wrap: wrap;
+
+        .admin-btn {
+          border-style: dashed;
+          opacity: 0.85;
+
+          &:hover {
+            opacity: 1;
+            border-style: solid;
+          }
+        }
       }
     }
   }
@@ -724,6 +781,13 @@ const formatNumber = (num: number) => {
         align-items: center;
         gap: 20px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
         
         .stat-icon {
           width: 60px;

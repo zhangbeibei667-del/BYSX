@@ -97,12 +97,28 @@ export const graphApi = {
 export const literatureApi = {
   // 获取文献详情（用于回答溯源）
   getDetail: (id: string) => api.get(`/literature/${id}`),
-  
+
   // 根据实体查询关联文献
   getByEntity: (entityId: string) => api.get(`/literature/entity/${entityId}`),
-  
+
   // 搜索文献
   search: (keyword: string, params?: any) => api.get('/literature/search', { params: { keyword, ...params } })
+}
+
+// 文献管理接口
+export const documentApi = {
+  list: (params: any) => api.get('/admin/documents', { params }),
+  create: (data: any) => api.post('/admin/documents', data),
+  update: (id: string, data: any) => api.put(`/admin/documents/${id}`, data),
+  delete: (id: string) => api.delete(`/admin/documents/${id}`),
+  batchDelete: (ids: string[]) => api.delete('/admin/documents/batch', { data: { ids } }),
+  upload: (file: File) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    return api.post('/admin/documents/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+  }
 }
 
 // 实体管理接口
@@ -188,6 +204,17 @@ export const caseApi = {
   
   // 获取病例详情
   detail: (id: string) => api.get(`/case/${id}`)
+}
+
+// 问答记录管理接口
+export const recordApi = {
+  list: (params: any) => api.get('/admin/records', { params }),
+  detail: (id: string) => api.get(`/admin/records/${id}`),
+  delete: (id: string) => api.delete(`/admin/records/${id}`),
+  batchDelete: (ids: string[]) => api.delete('/admin/records/batch', { data: { ids } }),
+  toggleFavorite: (id: string) => api.post(`/admin/records/${id}/favorite`),
+  export: (params?: any) => api.get('/admin/records/export', { params, responseType: 'blob' }),
+  getStats: () => api.get('/admin/records/stats')
 }
 
 // 统计接口
