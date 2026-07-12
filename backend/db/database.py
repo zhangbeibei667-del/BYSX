@@ -2,6 +2,7 @@ import sqlite3
 from pathlib import Path
 
 from backend.db.models import (
+    CREATE_CASES_TABLE,
     CREATE_CONVERSATION_SESSIONS_TABLE,
     CREATE_DOCUMENT_CHUNKS_TABLE,
     CREATE_DOCUMENTS_TABLE,
@@ -28,6 +29,15 @@ def init_db() -> None:
         conn.execute(CREATE_DOCUMENTS_TABLE)
         conn.execute(CREATE_DOCUMENT_CHUNKS_TABLE)
         conn.execute(CREATE_CONVERSATION_SESSIONS_TABLE)
+        conn.execute(CREATE_CASES_TABLE)
+        conversation_columns = {row[1] for row in conn.execute("PRAGMA table_info(conversation_sessions)")}
+        for name, definition in {
+            "title": "TEXT NOT NULL DEFAULT ''",
+            "last_result_json": "TEXT NOT NULL DEFAULT '{}'",
+            "created_at": "TEXT NOT NULL DEFAULT ''",
+        }.items():
+            if name not in conversation_columns:
+                conn.execute(f"ALTER TABLE conversation_sessions ADD COLUMN {name} {definition}")
         document_columns = {row[1] for row in conn.execute("PRAGMA table_info(documents)")}
         for name, definition in {
             "category": "TEXT NOT NULL DEFAULT '未分类'", "edition": "TEXT", "chapter": "TEXT",

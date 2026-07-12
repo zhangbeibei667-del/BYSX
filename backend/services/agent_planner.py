@@ -42,8 +42,23 @@ class AgentPlanner:
             content = re.sub(r"^```json|```$", "", response["content"].strip()).strip()
             plan = json.loads(content)
             tools = [tool for tool in plan.get("tools", []) if tool in AVAILABLE_TOOLS]
+            intent = str(plan.get("intent") or "").strip()
+            # Providers occasionally return a Chinese label instead of the canonical
+            # machine intent. Tool selection is the stable contract.
+            if "symptom_analysis" in tools or any(word in intent for word in ("辨证", "病例", "症状")):
+                intent = "case_analysis"
+                for required in ("symptom_analysis", "followup", "graph_query", "sql_query",
+                                 "literature_search", "formula_explanation", "knowledge_explanation"):
+                    if required not in tools:
+                        tools.append(required)
+            elif "formula_explanation" in tools:
+                intent = "formula_query"
+            elif "literature_search" in tools:
+                intent = "literature_query"
+            else:
+                intent = "knowledge_query"
             if "safety_review" not in tools:
                 tools.append("safety_review")
-            return {**plan, "tools": tools, "planner": "llm-dynamic", "model": response["model"]}
+            return {**plan, "intent": intent, "tools": tools, "planner": "llm-dynamic", "model": response["model"]}
         except (json.JSONDecodeError, TypeError):
             return None

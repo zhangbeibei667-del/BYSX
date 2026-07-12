@@ -46,10 +46,26 @@ CREATE TABLE IF NOT EXISTS document_chunks (
 CREATE_CONVERSATION_SESSIONS_TABLE = """
 CREATE TABLE IF NOT EXISTS conversation_sessions (
     id TEXT PRIMARY KEY,
+    title TEXT NOT NULL DEFAULT '',
     turns_json TEXT NOT NULL DEFAULT '[]',
     collected_json TEXT NOT NULL DEFAULT '{}',
     pending_questions_json TEXT NOT NULL DEFAULT '[]',
+    last_result_json TEXT NOT NULL DEFAULT '{}',
     status TEXT NOT NULL DEFAULT 'active',
+    created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
+);
+"""
+
+CREATE_CASES_TABLE = """
+CREATE TABLE IF NOT EXISTS teaching_cases (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL DEFAULT '',
+    case_json TEXT NOT NULL DEFAULT '{}',
+    analysis_json TEXT NOT NULL DEFAULT '{}',
+    session_id TEXT,
+    status TEXT NOT NULL DEFAULT 'draft',
+    created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
     updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
 );
 """

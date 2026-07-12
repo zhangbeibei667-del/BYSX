@@ -76,6 +76,36 @@ class LLMClient:
                 self.last_error = message
             return None
 
+    def stream(self, messages: list[dict], temperature: float = 0.2):
+        """Yield provider tokens from an OpenAI-compatible SSE response."""
+        if not self.available:
+            return
+        payload = {"model": self.model, "messages": messages, "temperature": temperature, "stream": True}
+        request = urllib.request.Request(
+            f"{self.base_url}/chat/completions", data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}, method="POST")
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                for raw_line in response:
+                    line = raw_line.decode("utf-8", errors="ignore").strip()
+                    if not line.startswith("data:"):
+                        continue
+                    data = line[5:].strip()
+                    if data == "[DONE]":
+                        break
+                    try:
+                        event = json.loads(data)
+                        token = event.get("choices", [{}])[0].get("delta", {}).get("content") or ""
+                    except (json.JSONDecodeError, IndexError, AttributeError):
+                        continue
+                    if token:
+                        yield token
+            with self._lock:
+                self.last_error = ""
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+            with self._lock:
+                self.last_error = f"{type(exc).__name__}: {exc}"
+
 
 _CLIENT: LLMClient | None = None
 

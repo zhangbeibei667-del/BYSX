@@ -546,7 +546,9 @@ async function loadChatHistories() {
   chatLoading.value = true
   try {
     const res: any = await chatApi.getHistory(1, 50)
-    if (res?.data?.length > 0) {
+    if (res?.data?.list) {
+      chatHistories.value = res.data.list
+    } else if (res?.data?.length > 0) {
       chatHistories.value = res.data
     } else if (Array.isArray(res)) {
       chatHistories.value = res
@@ -590,7 +592,9 @@ async function loadCases() {
   caseLoading.value = true
   try {
     const res: any = await caseApi.list({ page: 1, pageSize: 50 })
-    if (res?.data?.length > 0) {
+    if (res?.data?.list) {
+      cases.value = res.data.list
+    } else if (res?.data?.length > 0) {
       cases.value = res.data
     } else if (Array.isArray(res)) {
       cases.value = res

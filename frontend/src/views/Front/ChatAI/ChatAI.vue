@@ -252,6 +252,29 @@ let voiceInitialText = ''
 let voiceFinalText = ''
 let voiceSilenceTimer: ReturnType<typeof setTimeout> | null = null
 let voiceAutoSend = false
+let streamSpeechBuffer = ''
+const streamSpeechQueue: string[] = []
+
+const playNextStreamSentence = () => {
+  if (!speaking.value || window.speechSynthesis.speaking || streamSpeechQueue.length === 0) return
+  const utterance = new SpeechSynthesisUtterance(streamSpeechQueue.shift()!)
+  utterance.lang = 'zh-CN'
+  utterance.rate = 0.95
+  utterance.onend = () => playNextStreamSentence()
+  utterance.onerror = () => { speaking.value = false; streamSpeechQueue.length = 0 }
+  window.speechSynthesis.speak(utterance)
+}
+
+const feedStreamSpeech = (chunk: string, flush = false) => {
+  if (!speaking.value) return
+  streamSpeechBuffer += chunk
+  const parts = streamSpeechBuffer.split(/(?<=[。！？；\n])/)
+  const tail = parts.pop() || ''
+  streamSpeechBuffer = flush ? '' : tail
+  streamSpeechQueue.push(...parts.filter(part => part.trim()))
+  if (flush && tail.trim()) streamSpeechQueue.push(tail)
+  playNextStreamSentence()
+}
 
 const clearVoiceSilenceTimer = () => {
   if (voiceSilenceTimer) {
@@ -282,6 +305,9 @@ const toggleVoiceInput = () => {
     ElMessage.error('当前浏览器不支持语音识别，请使用最新版 Chrome 或 Edge')
     return
   }
+  // Barge-in: starting a new utterance immediately interrupts current TTS.
+  window.speechSynthesis.cancel()
+  speaking.value = false
   recognition = new SpeechRecognition()
   recognition.lang = 'zh-CN'
   recognition.continuous = true
@@ -291,6 +317,10 @@ const toggleVoiceInput = () => {
   voiceAutoSend = false
   recognition.onstart = () => { listening.value = true }
   recognition.onresult = (event: any) => {
+    if (speaking.value) {
+      window.speechSynthesis.cancel()
+      speaking.value = false
+    }
     voiceAutoSend = true
     let interimText = ''
     for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -337,6 +367,16 @@ const handleGlobalSpeech = () => {
     // 停止朗读
     speaking.value = false
     window.speechSynthesis.cancel()
+    streamSpeechQueue.length = 0
+    streamSpeechBuffer = ''
+    return
+  }
+
+  if (isStreaming.value) {
+    speaking.value = true
+    streamSpeechBuffer = ''
+    streamSpeechQueue.length = 0
+    ElMessage.info('已开启流式语音播报，再次点击可中断')
     return
   }
 
@@ -414,11 +454,12 @@ const loadChatHistory = async () => {
   try {
     const res: any = await chatApi.getHistory(1, 50)
     if (res?.data) {
-      chatHistory.value = Array.isArray(res.data) ? res.data.map((item: any) => ({
+      const rows = Array.isArray(res.data) ? res.data : (res.data.list || [])
+      chatHistory.value = rows.map((item: any) => ({
         id: item.id,
-        title: item.question?.slice(0, 20) || '对话记录',
-        timestamp: item.createdAt || new Date().toISOString()
-      })) : []
+        title: item.title || item.question?.slice(0, 20) || '对话记录',
+        timestamp: item.timestamp || item.updatedAt || item.createdAt || new Date().toISOString()
+      }))
       return
     } else if (Array.isArray(res)) {
       chatHistory.value = res.map((item: any) => ({
@@ -529,21 +570,9 @@ const sendMessage = async () => {
 
   try {
     let response: AnswerResponse | null = null
+    let streamRendered = false
 
-    // 优先尝试真实 API 调用
-    try {
-      const apiRes: any = await chatApi.askQuestion(userMessage, activeHistoryId.value || undefined)
-      // 兼容不同后端响应格式
-      if (apiRes?.data) {
-        response = apiRes.data
-      } else if (apiRes?.answer) {
-        response = apiRes as AnswerResponse
-      }
-    } catch (apiError) {
-      console.log('chatApi.askQuestion 未就绪，使用 SSE 尝试...')
-    }
-
-    // 如果非流式 API 不可用，尝试 SSE 流式
+    // SSE is the primary path and streams provider tokens as they arrive.
     if (!response) {
       try {
         await new Promise<void>((resolve, reject) => {
@@ -556,6 +585,12 @@ const sendMessage = async () => {
             },
             () => {
               resolve()
+            },
+            (chunk) => {
+              streamRendered = true
+              chatStore.appendToStream(chunk)
+              feedStreamSpeech(chunk)
+              scrollToBottom()
             }
           )
 
@@ -565,20 +600,20 @@ const sendMessage = async () => {
               streamSSE.stop()
               resolve()
             }
-          }, 8000)
+          }, 120000)
         })
       } catch (sseError) {
         console.log('SSE 流式 API 未就绪:', sseError)
       }
     }
 
-    // 如果所有 API 都不可用，使用 mock 数据兜底
+    // Production chat must never disguise a backend failure as a mock answer.
     if (!response) {
-      response = buildMockResponse(userMessage)
+      throw new Error('流式问答服务未返回完整结果')
     }
 
     // 模拟流式渲染效果
-    if (response) {
+    if (response && !streamRendered) {
       await simulateStreamResponse(
         response,
         (chunk) => {
@@ -591,6 +626,10 @@ const sendMessage = async () => {
         },
         30
       )
+    } else if (response) {
+      feedStreamSpeech('', true)
+      chatStore.endStream(response)
+      scrollToBottom()
     }
 
     // 保存到历史（API + 本地持久化）

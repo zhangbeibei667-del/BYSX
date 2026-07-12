@@ -17,13 +17,11 @@ from backend.services.conversation_service import ConversationService
 from backend.services.history_service import HistoryService
 from backend.services.rag_service import RAGService
 from backend.services.local_graphrag_service import Entity, Relation, get_local_graphrag_service
+from backend.services.teaching_case_service import TeachingCaseService
+from backend.services.llm_client import get_llm_client
 
 
 router = APIRouter(prefix="/api", tags=["Frontend compatibility"])
-
-_CASES: dict[str, dict[str, Any]] = {}
-_CHAT: dict[str, dict[str, Any]] = {}
-
 
 class ChatAskRequest(BaseModel):
     question: str
@@ -264,18 +262,13 @@ def answer_with_graphrag(question: str) -> dict[str, Any]:
 
 @router.post("/case/create")
 def create_case(payload: CaseCreateRequest) -> dict[str, Any]:
-    case_id = str(int(time.time() * 1000))
-    data = payload.model_dump()
-    data["id"] = case_id
-    data["createdAt"] = now_iso()
-    data["symptoms"] = data.get("chiefComplaint") or ""
-    _CASES[case_id] = data
-    return ok({"id": case_id, **data})
+    return ok(TeachingCaseService().create(payload.model_dump()))
 
 
 @router.post("/case/analyze/{case_id}")
 def analyze_case(case_id: str) -> dict[str, Any]:
-    case_data = _CASES.get(case_id)
+    cases = TeachingCaseService()
+    case_data = cases.get(case_id)
     if not case_data:
         raise HTTPException(status_code=404, detail="case not found")
     text = "，".join(
@@ -287,25 +280,27 @@ def analyze_case(case_id: str) -> dict[str, Any]:
         ]
         if part and part.strip()
     )
-    result = AgentService().analyze_case(text)
-    case_data["analysisResult"] = result
-    case_data["syndromes"] = result.get("syndromes", [])
-    case_data["formulas"] = result.get("formulas", [])
-    case_data["herbs"] = result.get("herbs", [])
-    case_data["answer"] = result.get("answer", "")
+    session_id = case_data.get("sessionId") or f"case-{case_id}"
+    conversations = ConversationService()
+    session = conversations.load(session_id)
+    contextualized = conversations.contextualize(session, text)
+    result = AgentService().analyze_case(contextualized, has_context=bool(session["turns"]))
+    conversations.save_turn(session, text, result)
+    result["conversation"] = {"id": session_id, "status": session["status"],
+                              "collected": session["collected"],
+                              "pending_questions": session["pending_questions"]}
+    cases.save_analysis(case_id, result, session_id)
     return ok(result)
 
 
 @router.get("/case/list")
 def list_cases(page: int = 1, pageSize: int = 20) -> dict[str, Any]:
-    items = sorted(_CASES.values(), key=lambda item: item.get("createdAt", ""), reverse=True)
-    start = (page - 1) * pageSize
-    return ok({"list": items[start : start + pageSize], "total": len(items)})
+    return ok(TeachingCaseService().list(page, pageSize))
 
 
 @router.get("/case/{case_id}")
 def get_case(case_id: str) -> dict[str, Any]:
-    case_data = _CASES.get(case_id)
+    case_data = TeachingCaseService().get(case_id)
     if not case_data:
         raise HTTPException(status_code=404, detail="case not found")
     return ok(case_data)
@@ -317,6 +312,7 @@ def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
     session = conversations.load(payload.historyId)
     contextualized = conversations.contextualize(session, payload.question)
     continuing_case = bool(session["turns"]) and session.get("status") == "awaiting_clarification"
+    previous_result = session.get("last_result", {}) if continuing_case else {}
     if is_case_like_question(payload.question) or continuing_case:
         result = AgentService().analyze_case(contextualized, has_context=bool(session["turns"]))
     else:
@@ -327,19 +323,60 @@ def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
         "id": history_id, "status": session["status"], "turn_count": len(session["turns"]) // 2,
         "collected": session["collected"], "pending_questions": session["pending_questions"],
     }
-    _CHAT[history_id] = {
-        "id": history_id,
-        "title": payload.question[:30],
-        "timestamp": now_iso(),
-        "messages": [
-            {**turn, **({"result": result} if index == len(session["turns"]) - 1 else {})}
-            for index, turn in enumerate(session["turns"])
-        ],
-    }
+    if continuing_case:
+        result["followup_transition"] = {
+            "type": "clarification_applied",
+            "answered_questions": previous_result.get("follow_up_questions", []),
+            "previous_syndromes": previous_result.get("syndromes", []),
+            "current_syndromes": result.get("syndromes", []),
+            "previous_formulas": previous_result.get("formulas", []),
+            "current_formulas": result.get("formulas", []),
+        }
     return result
 
 
 @router.get("/chat/ask/stream")
+def ask_chat_token_stream(question: str, historyId: str | None = None) -> StreamingResponse:
+    result = ask_chat(ChatAskRequest(question=question, historyId=historyId))
+    fallback_text = result.get("answer", "")
+    session_id = result.get("conversation", {}).get("id")
+
+    def events():
+        import re
+        client = get_llm_client()
+        streamed: list[str] = []
+        evidence = "\n".join(
+            str(item.get("citation") or item.get("title") or "")
+            for item in result.get("evidence", [])[:5]
+        )
+        messages = [
+            {"role": "system", "content": (
+                "你是中医药知识学习与病例教学助手。把给定的已验证结果整理成自然清晰的中文回答。"
+                "不得增加结果中没有的证候、方剂、功效或剂量；资料不足时明确追问并保留引用编号。"
+                "不得作出临床诊断或个体化处方，结尾说明仅用于知识学习与辨证辅助。")},
+            {"role": "user", "content": f"用户问题：{question}\n已验证结果：{fallback_text}\n引用：{evidence}"},
+        ]
+        if client.available:
+            for index, token in enumerate(client.stream(messages, temperature=0.2) or []):
+                streamed.append(token)
+                yield f"data: {json.dumps({'type': 'chunk', 'index': index, 'content': token}, ensure_ascii=False)}\n\n"
+        if not streamed:
+            for index, chunk in enumerate(part for part in re.split(r"(?<=[。！？])", fallback_text) if part):
+                streamed.append(chunk)
+                yield f"data: {json.dumps({'type': 'chunk', 'index': index, 'content': chunk}, ensure_ascii=False)}\n\n"
+        text = "".join(streamed)
+        result["answer"] = text
+        result["generation"] = {"mode": "llm-token-stream" if client.available else "local-stream-fallback",
+                                "provider": client.provider, "model": client.model}
+        if session_id:
+            ConversationService().replace_last_answer(session_id, text, result)
+        yield f"data: {json.dumps({'type': 'result', 'content': text, 'result': result}, ensure_ascii=False)}\n\n"
+        yield "data: [DONE]\n\n"
+
+    return StreamingResponse(events(), media_type="text/event-stream", headers={"Cache-Control": "no-cache"})
+
+
+@router.get("/chat/ask/stream/legacy")
 def ask_chat_stream(question: str, historyId: str | None = None) -> StreamingResponse:
     result = ask_chat(ChatAskRequest(question=question, historyId=historyId))
     text = result.get("answer", "")
@@ -357,27 +394,26 @@ def ask_chat_stream(question: str, historyId: str | None = None) -> StreamingRes
 
 @router.get("/chat/history")
 def list_chat_history(page: int = 1, pageSize: int = 20) -> dict[str, Any]:
-    items = sorted(_CHAT.values(), key=lambda item: item.get("timestamp", ""), reverse=True)
-    start = (page - 1) * pageSize
-    return ok({"list": items[start : start + pageSize], "total": len(items)})
+    return ok(ConversationService().list(page, pageSize))
 
 
 @router.get("/chat/history/{history_id}")
 def get_chat_history(history_id: str) -> dict[str, Any]:
-    return ok(_CHAT.get(history_id, {"id": history_id, "messages": []}))
+    session = ConversationService().load(history_id)
+    return ok({"id": session["id"], "title": session["title"], "messages": session["turns"],
+               "status": session["status"], "pending_questions": session["pending_questions"]})
 
 
 @router.post("/chat/history/save")
 def save_chat_history(data: dict[str, Any]) -> dict[str, Any]:
     history_id = str(data.get("id") or int(time.time() * 1000))
-    _CHAT[history_id] = {"id": history_id, "timestamp": now_iso(), **data}
-    return ok(_CHAT[history_id])
+    session = ConversationService().load(history_id)
+    return ok({"id": session["id"], "title": session["title"], "messages": session["turns"]})
 
 
 @router.delete("/chat/history/{history_id}")
 def delete_chat_history(history_id: str) -> dict[str, Any]:
-    _CHAT.pop(history_id, None)
-    return ok({"deleted": True})
+    return ok({"deleted": ConversationService().delete(history_id)})
 
 
 @router.get("/graph/full")
@@ -850,7 +886,7 @@ def platform_stats() -> dict[str, Any]:
         "totalSyndromes": counts.get("证候", 0),
         "totalRelations": len(service.relations),
         "totalQuestions": len(HistoryService().list_history(limit=100, offset=0)),
-        "totalCases": len(_CASES),
+        "totalCases": TeachingCaseService().list(1, 1)["total"],
     }
 
 

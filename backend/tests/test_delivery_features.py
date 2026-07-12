@@ -1,4 +1,5 @@
 import unittest
+import uuid
 
 from backend.services.agent_planner import AgentPlanner
 from backend.services.vector_retrieval_service import VectorRetrievalService
@@ -52,6 +53,23 @@ class DeliveryFeatureTests(unittest.TestCase):
         context = ConversationService.contextualize(session, "那该怎么办？")
         self.assertIn("失眠应该用什么方剂", context)
         self.assertIn("本轮问题：那该怎么办", context)
+
+
+    def test_conversation_round_trip_and_followup_state(self):
+        service = ConversationService()
+        session_id = f"test-{uuid.uuid4().hex}"
+        session = service.load(session_id)
+        result = {
+            "answer": "请补充舌象和脉象。", "symptoms": ["失眠"], "tongue": [], "pulse": [],
+            "follow_up_questions": ["舌象如何？", "脉象如何？"], "needs_clarification": True,
+        }
+        service.save_turn(session, "患者失眠", result)
+        restored = service.load(session_id)
+        self.assertEqual(restored["status"], "awaiting_clarification")
+        self.assertEqual(restored["collected"]["symptoms"], ["失眠"])
+        self.assertEqual(len(restored["turns"]), 2)
+        self.assertTrue(any(item["id"] == session_id for item in service.list(1, 100)["list"]))
+        self.assertTrue(service.delete(session_id))
 
 
 if __name__ == "__main__":

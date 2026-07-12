@@ -64,7 +64,8 @@ class TCMTeachingOrchestratorAgent:
         voice = self.voice_agent.run(symptom, graph, {**explanation, "answer": safety["answer"]})
 
         needs_clarification = bool(graph.get("needs_clarification")) or (
-            plan["intent"] == "case_analysis" and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
+            "symptom_analysis" in selected
+            and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
         )
         return {
             "answer": safety["answer"], "symptoms": symptom.get("symptoms", []),
