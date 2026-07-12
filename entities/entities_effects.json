@@ -1,0 +1,442 @@
+[
+  {
+    "id": "G001",
+    "name": "补气",
+    "type": "功效",
+    "alias": "",
+    "description": "补益元气",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G002",
+    "name": "补血",
+    "type": "功效",
+    "alias": "",
+    "description": "补养血液",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G003",
+    "name": "补阴",
+    "type": "功效",
+    "alias": "",
+    "description": "滋养阴液",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G004",
+    "name": "补阳",
+    "type": "功效",
+    "alias": "",
+    "description": "温补阳气",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G005",
+    "name": "益气补血",
+    "type": "功效",
+    "alias": "",
+    "description": "气血双补",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "归脾汤、八珍汤功效"
+    }
+  },
+  {
+    "id": "G006",
+    "name": "益气健脾",
+    "type": "功效",
+    "alias": "",
+    "description": "补气健运脾胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "四君子汤功效"
+    }
+  },
+  {
+    "id": "G007",
+    "name": "补气升阳",
+    "type": "功效",
+    "alias": "",
+    "description": "补中气、升阳气",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "补中益气汤功效"
+    }
+  },
+  {
+    "id": "G008",
+    "name": "滋阴养血",
+    "type": "功效",
+    "alias": "",
+    "description": "滋养阴血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "天王补心丹功效"
+    }
+  },
+  {
+    "id": "G009",
+    "name": "养心安神",
+    "type": "功效",
+    "alias": "",
+    "description": "滋养心血以安神",
+    "properties": {
+      "source": "《中药学》",
+      "note": "酸枣仁、柏子仁功效"
+    }
+  },
+  {
+    "id": "G010",
+    "name": "重镇安神",
+    "type": "功效",
+    "alias": "",
+    "description": "用质重之品安定神志",
+    "properties": {
+      "source": "《中药学》",
+      "note": "龙骨、磁石功效"
+    }
+  },
+  {
+    "id": "G011",
+    "name": "解郁安神",
+    "type": "功效",
+    "alias": "",
+    "description": "疏解郁结以安神",
+    "properties": {
+      "source": "《中药学》",
+      "note": "合欢皮功效"
+    }
+  },
+  {
+    "id": "G012",
+    "name": "交通心肾",
+    "type": "功效",
+    "alias": "",
+    "description": "使心肾水火相济",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "交泰丸功效"
+    }
+  },
+  {
+    "id": "G013",
+    "name": "清热除烦",
+    "type": "功效",
+    "alias": "",
+    "description": "清解热邪、消除烦躁",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G014",
+    "name": "清热泻火",
+    "type": "功效",
+    "alias": "",
+    "description": "清解气分热邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "石膏、知母功效"
+    }
+  },
+  {
+    "id": "G015",
+    "name": "清热燥湿",
+    "type": "功效",
+    "alias": "",
+    "description": "清热兼燥除湿邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄连、黄芩功效"
+    }
+  },
+  {
+    "id": "G016",
+    "name": "清热凉血",
+    "type": "功效",
+    "alias": "",
+    "description": "清解血分热邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "生地、玄参功效"
+    }
+  },
+  {
+    "id": "G017",
+    "name": "清热解毒",
+    "type": "功效",
+    "alias": "",
+    "description": "清解热毒",
+    "properties": {
+      "source": "《中药学》",
+      "note": "金银花、连翘功效"
+    }
+  },
+  {
+    "id": "G018",
+    "name": "清虚热",
+    "type": "功效",
+    "alias": "",
+    "description": "清解虚热",
+    "properties": {
+      "source": "《中药学》",
+      "note": "青蒿、地骨皮功效"
+    }
+  },
+  {
+    "id": "G019",
+    "name": "解表散寒",
+    "type": "功效",
+    "alias": "",
+    "description": "发散风寒表邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "麻黄、桂枝功效"
+    }
+  },
+  {
+    "id": "G020",
+    "name": "疏散风热",
+    "type": "功效",
+    "alias": "",
+    "description": "发散风热表邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "薄荷、菊花功效"
+    }
+  },
+  {
+    "id": "G021",
+    "name": "和解少阳",
+    "type": "功效",
+    "alias": "",
+    "description": "调和少阳枢机",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "小柴胡汤功效"
+    }
+  },
+  {
+    "id": "G022",
+    "name": "疏肝解郁",
+    "type": "功效",
+    "alias": "",
+    "description": "疏理肝气、解除郁结",
+    "properties": {
+      "source": "《中药学》",
+      "note": "柴胡、香附功效"
+    }
+  },
+  {
+    "id": "G023",
+    "name": "行气止痛",
+    "type": "功效",
+    "alias": "",
+    "description": "疏通气机以止痛",
+    "properties": {
+      "source": "《中药学》",
+      "note": "木香、延胡索功效"
+    }
+  },
+  {
+    "id": "G024",
+    "name": "理气健脾",
+    "type": "功效",
+    "alias": "",
+    "description": "行气以健运脾胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "陈皮功效"
+    }
+  },
+  {
+    "id": "G025",
+    "name": "降气",
+    "type": "功效",
+    "alias": "",
+    "description": "降逆下气",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "G026",
+    "name": "活血化瘀",
+    "type": "功效",
+    "alias": "",
+    "description": "活血以消散瘀滞",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎、桃仁功效"
+    }
+  },
+  {
+    "id": "G027",
+    "name": "活血行气",
+    "type": "功效",
+    "alias": "",
+    "description": "活血兼行气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎功效"
+    }
+  },
+  {
+    "id": "G028",
+    "name": "止血",
+    "type": "功效",
+    "alias": "",
+    "description": "制止出血",
+    "properties": {
+      "source": "《中药学》",
+      "note": "三七功效"
+    }
+  },
+  {
+    "id": "G029",
+    "name": "温中散寒",
+    "type": "功效",
+    "alias": "",
+    "description": "温补中焦、散除寒邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "干姜、吴茱萸功效"
+    }
+  },
+  {
+    "id": "G030",
+    "name": "回阳救逆",
+    "type": "功效",
+    "alias": "",
+    "description": "挽回阳气以救厥逆",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "四逆汤功效"
+    }
+  },
+  {
+    "id": "G031",
+    "name": "利水渗湿",
+    "type": "功效",
+    "alias": "",
+    "description": "通利水道、渗除水湿",
+    "properties": {
+      "source": "《中药学》",
+      "note": "茯苓、泽泻功效"
+    }
+  },
+  {
+    "id": "G032",
+    "name": "燥湿健脾",
+    "type": "功效",
+    "alias": "",
+    "description": "燥化湿邪以健脾胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "苍术功效"
+    }
+  },
+  {
+    "id": "G033",
+    "name": "芳香化湿",
+    "type": "功效",
+    "alias": "",
+    "description": "芳香辟浊以化湿邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "藿香、砂仁功效"
+    }
+  },
+  {
+    "id": "G034",
+    "name": "化痰",
+    "type": "功效",
+    "alias": "",
+    "description": "消除痰邪",
+    "properties": {
+      "source": "《中药学》",
+      "note": "半夏、陈皮功效"
+    }
+  },
+  {
+    "id": "G035",
+    "name": "止咳平喘",
+    "type": "功效",
+    "alias": "",
+    "description": "止咳嗽、平气喘",
+    "properties": {
+      "source": "《中药学》",
+      "note": "杏仁功效"
+    }
+  },
+  {
+    "id": "G036",
+    "name": "消食和胃",
+    "type": "功效",
+    "alias": "",
+    "description": "消导食积、调和胃气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "山楂、神曲功效"
+    }
+  },
+  {
+    "id": "G037",
+    "name": "泻下通便",
+    "type": "功效",
+    "alias": "",
+    "description": "通利大便",
+    "properties": {
+      "source": "《中药学》",
+      "note": "大黄、芒硝功效"
+    }
+  },
+  {
+    "id": "G038",
+    "name": "平肝息风",
+    "type": "功效",
+    "alias": "",
+    "description": "平抑肝阳、息止内风",
+    "properties": {
+      "source": "《中药学》",
+      "note": "天麻、钩藤功效"
+    }
+  },
+  {
+    "id": "G039",
+    "name": "祛风除湿",
+    "type": "功效",
+    "alias": "",
+    "description": "祛除风湿邪气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "羌活、防风功效"
+    }
+  },
+  {
+    "id": "G040",
+    "name": "调和诸药",
+    "type": "功效",
+    "alias": "",
+    "description": "缓和药性、协调方中诸药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "甘草功效"
+    }
+  }
+]

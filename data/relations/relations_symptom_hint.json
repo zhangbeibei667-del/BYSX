@@ -1,0 +1,2034 @@
+[
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S002",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S004",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S009",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S013",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S026",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S034",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S035",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S066",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z001",
+    "target_name": "心脾两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S020",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S049",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S051",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S055",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S056",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S057",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z002",
+    "target_name": "心肾不交",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S009",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S011",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S012",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S013",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S024",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S029",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S034",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S035",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S040",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S067",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z003",
+    "target_name": "脾胃气虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S009",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S011",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S013",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S014",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S025",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S066",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S067",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S073",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S074",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z004",
+    "target_name": "气血两虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S002",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S018",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S052",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S066",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S073",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S074",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S075",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S076",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z005",
+    "target_name": "肝血不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S021",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S033",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S051",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S055",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S056",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S057",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z006",
+    "target_name": "阴虚血少",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S011",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S012",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S047",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S053",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S067",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z007",
+    "target_name": "中气下陷",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S013",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S014",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S015",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S018",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S025",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S052",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S066",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S073",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S074",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S075",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z008",
+    "target_name": "血虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S009",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S011",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S012",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S054",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S066",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S067",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S079",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S021",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S033",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S051",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S055",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S056",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S057",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S023",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S028",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S030",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S050",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S060",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S068",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z011",
+    "target_name": "阳虚证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S044",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S045",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S047",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S062",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S063",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S064",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S065",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S070",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S076",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z012",
+    "target_name": "肝气郁结",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S016",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S022",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S063",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z013",
+    "target_name": "肝火炽盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S022",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S032",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S037",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S040",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S043",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S071",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z014",
+    "target_name": "湿热蕴脾",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S030",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S058",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S059",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S072",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S078",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S079",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z015",
+    "target_name": "风寒表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S021",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S023",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S058",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S078",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z016",
+    "target_name": "风热表证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S016",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S023",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S058",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z017",
+    "target_name": "气分热盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S016",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S021",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S022",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z018",
+    "target_name": "心火亢盛",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S032",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S037",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S038",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S071",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S078",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S080",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z019",
+    "target_name": "痰湿内阻",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S044",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S046",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S047",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S048",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S050",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S068",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S073",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S077",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z020",
+    "target_name": "血瘀证",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S010",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S028",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S029",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S030",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S037",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S040",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S042",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z021",
+    "target_name": "脾虚湿困",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S020",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S033",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S048",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S049",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S051",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S055",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S056",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z022",
+    "target_name": "肾阴虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S023",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S028",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S030",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S048",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S049",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S050",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S053",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S060",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S068",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z023",
+    "target_name": "肾阳虚",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S035",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S037",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S038",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S039",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S041",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z024",
+    "target_name": "胃气不和",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S016",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S018",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S020",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S063",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S070",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S030",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S059",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S072",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S078",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S079",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S080",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z026",
+    "target_name": "外感风寒",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S017",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z027",
+    "target_name": "风邪上扰",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S018",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z027",
+    "target_name": "风邪上扰",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S019",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z027",
+    "target_name": "风邪上扰",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S070",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z027",
+    "target_name": "风邪上扰",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S001",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S002",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S003",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S005",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S032",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S071",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S080",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S035",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S036",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S037",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S039",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S041",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S043",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S009",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S011",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S012",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S054",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S078",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  },
+  {
+    "source_id": "S079",
+    "source_name": "",
+    "relation": "提示",
+    "target_id": "Z030",
+    "target_name": "肺气不足",
+    "evidence": "《中医诊断学》"
+  }
+]

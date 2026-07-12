@@ -1,0 +1,322 @@
+[
+  {
+    "source_id": "S901",
+    "source_name": "牙龈肿痛",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 口齿肿痛胃火上攻教学链路"
+  },
+  {
+    "source_id": "S902",
+    "source_name": "口臭",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 口臭与胃热胃火相关教学链路"
+  },
+  {
+    "source_id": "S903",
+    "source_name": "口渴喜冷饮",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 实热口渴喜冷饮教学链路"
+  },
+  {
+    "source_id": "S041",
+    "source_name": "便秘",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 胃热肠燥便秘教学链路"
+  },
+  {
+    "source_id": "S027",
+    "source_name": "舌红",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 热证舌象"
+  },
+  {
+    "source_id": "S031",
+    "source_name": "舌苔黄",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 热证苔象"
+  },
+  {
+    "source_id": "S069",
+    "source_name": "脉数",
+    "relation": "提示",
+    "target_id": "Z901",
+    "target_name": "胃火炽盛",
+    "evidence": "clinical_supplement: 热证脉象"
+  },
+  {
+    "source_id": "S903",
+    "source_name": "口渴喜冷饮",
+    "relation": "提示",
+    "target_id": "Z902",
+    "target_name": "阳明胃热",
+    "evidence": "clinical_supplement: 阳明热盛口渴喜冷饮教学链路"
+  },
+  {
+    "source_id": "S041",
+    "source_name": "便秘",
+    "relation": "提示",
+    "target_id": "Z902",
+    "target_name": "阳明胃热",
+    "evidence": "clinical_supplement: 阳明腑实便秘教学链路"
+  },
+  {
+    "source_id": "Z901",
+    "source_name": "胃火炽盛",
+    "relation": "对应",
+    "target_id": "F901",
+    "target_name": "清胃散",
+    "evidence": "clinical_supplement: 胃火牙痛清胃凉血教学链路"
+  },
+  {
+    "source_id": "Z901",
+    "source_name": "胃火炽盛",
+    "relation": "对应",
+    "target_id": "F022",
+    "target_name": "黄连解毒汤",
+    "evidence": "clinical_supplement: 泻火解毒参考方"
+  },
+  {
+    "source_id": "Z902",
+    "source_name": "阳明胃热",
+    "relation": "对应",
+    "target_id": "F021",
+    "target_name": "白虎汤",
+    "evidence": "clinical_supplement: 阳明气分热盛清热生津参考方"
+  },
+  {
+    "source_id": "Z902",
+    "source_name": "阳明胃热",
+    "relation": "对应",
+    "target_id": "F902",
+    "target_name": "玉女煎",
+    "evidence": "clinical_supplement: 胃热阴虚参考方"
+  },
+  {
+    "source_id": "F901",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "clinical_supplement: 清胃散组成"
+  },
+  {
+    "source_id": "F901",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "clinical_supplement: 清胃散组成"
+  },
+  {
+    "source_id": "F901",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H071",
+    "target_name": "牡丹皮",
+    "evidence": "clinical_supplement: 清胃散组成"
+  },
+  {
+    "source_id": "F901",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "clinical_supplement: 清胃散组成"
+  },
+  {
+    "source_id": "F901",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H060",
+    "target_name": "升麻",
+    "evidence": "clinical_supplement: 清胃散组成"
+  },
+  {
+    "source_id": "F902",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H062",
+    "target_name": "石膏",
+    "evidence": "clinical_supplement: 玉女煎组成"
+  },
+  {
+    "source_id": "F902",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "clinical_supplement: 玉女煎组成"
+  },
+  {
+    "source_id": "F902",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "clinical_supplement: 玉女煎组成"
+  },
+  {
+    "source_id": "F902",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H063",
+    "target_name": "知母",
+    "evidence": "clinical_supplement: 玉女煎组成"
+  },
+  {
+    "source_id": "S062",
+    "source_name": "情志抑郁",
+    "relation": "提示",
+    "target_id": "Z903",
+    "target_name": "肝郁脾虚",
+    "evidence": "clinical_supplement: 肝郁脾虚教学链路"
+  },
+  {
+    "source_id": "S044",
+    "source_name": "胁痛",
+    "relation": "提示",
+    "target_id": "Z903",
+    "target_name": "肝郁脾虚",
+    "evidence": "clinical_supplement: 肝郁脾虚教学链路"
+  },
+  {
+    "source_id": "S034",
+    "source_name": "食少",
+    "relation": "提示",
+    "target_id": "Z903",
+    "target_name": "肝郁脾虚",
+    "evidence": "clinical_supplement: 肝郁脾虚教学链路"
+  },
+  {
+    "source_id": "S040",
+    "source_name": "便溏",
+    "relation": "提示",
+    "target_id": "Z903",
+    "target_name": "肝郁脾虚",
+    "evidence": "clinical_supplement: 肝郁脾虚教学链路"
+  },
+  {
+    "source_id": "Z903",
+    "source_name": "肝郁脾虚",
+    "relation": "对应",
+    "target_id": "F020",
+    "target_name": "逍遥散",
+    "evidence": "clinical_supplement: 肝郁脾虚参考方"
+  },
+  {
+    "source_id": "Z904",
+    "source_name": "痰热内扰",
+    "relation": "对应",
+    "target_id": "F903",
+    "target_name": "温胆汤",
+    "evidence": "clinical_supplement: 痰热内扰参考方"
+  },
+  {
+    "source_id": "S032",
+    "source_name": "舌苔腻",
+    "relation": "提示",
+    "target_id": "Z904",
+    "target_name": "痰热内扰",
+    "evidence": "clinical_supplement: 痰热苔象"
+  },
+  {
+    "source_id": "S071",
+    "source_name": "脉滑",
+    "relation": "提示",
+    "target_id": "Z904",
+    "target_name": "痰热内扰",
+    "evidence": "clinical_supplement: 痰湿痰热脉象"
+  },
+  {
+    "source_id": "S905",
+    "source_name": "小便短赤",
+    "relation": "提示",
+    "target_id": "Z905",
+    "target_name": "湿热下注",
+    "evidence": "clinical_supplement: 下焦湿热教学链路"
+  },
+  {
+    "source_id": "S906",
+    "source_name": "尿频尿急",
+    "relation": "提示",
+    "target_id": "Z905",
+    "target_name": "湿热下注",
+    "evidence": "clinical_supplement: 下焦湿热教学链路"
+  },
+  {
+    "source_id": "Z905",
+    "source_name": "湿热下注",
+    "relation": "对应",
+    "target_id": "F904",
+    "target_name": "八正散",
+    "evidence": "clinical_supplement: 湿热淋证参考方"
+  },
+  {
+    "source_id": "S904",
+    "source_name": "胃脘灼痛",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 胃阴不足教学链路"
+  },
+  {
+    "source_id": "S021",
+    "source_name": "口燥咽干",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 胃阴不足教学链路"
+  },
+  {
+    "source_id": "Z906",
+    "source_name": "胃阴不足",
+    "relation": "对应",
+    "target_id": "F906",
+    "target_name": "益胃汤",
+    "evidence": "clinical_supplement: 胃阴不足参考方"
+  },
+  {
+    "source_id": "SMTS01221",
+    "source_name": "胃脘隐痛",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 胃脘隐痛、饥不欲食、口干咽燥、舌红少津、脉细数提示胃阴不足"
+  },
+  {
+    "source_id": "S909",
+    "source_name": "饥不欲食",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 胃阴不足胃失濡养，常见饥不欲食"
+  },
+  {
+    "source_id": "SMTS00893",
+    "source_name": "少津",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 舌红少津提示阴液不足"
+  },
+  {
+    "source_id": "SMTS00655",
+    "source_name": "脉细数",
+    "relation": "提示",
+    "target_id": "Z906",
+    "target_name": "胃阴不足",
+    "evidence": "clinical_supplement: 脉细数提示阴虚内热"
+  }
+]
