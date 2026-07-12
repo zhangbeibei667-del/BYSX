@@ -8,6 +8,7 @@ from app.community_search import (
     LightweightCommunitySearch,
 )
 from app.graph_search import GraphSearch
+from app.hkcmms_cleaning import clean_hkcmms_item_text
 from app.llm_client import LLMClient
 from app.schemas import (
     EvidenceItem,
@@ -1604,48 +1605,7 @@ class GraphRAGService:
     def _clean_pharmacopoeia_item(
         item: str,
     ) -> str:
-        item = re.sub(
-            r"\s+",
-            " ",
-            item,
-        ).strip(" ：:。;；,.，")
-        item = re.sub(
-            r"©|®|™",
-            "",
-            item,
-        )
-        item = re.sub(
-            r"[（(][^）)]*(?:附錄|THE|VID|VUD|MER|Uff|PBR|RR|應絲|季緣|[A-Za-z]{2,})[^）)]*[）)\]]?",
-            "",
-            item,
-            flags=re.IGNORECASE,
-        )
-        item = re.split(
-            r"[:：。；;]",
-            item,
-        )[0].strip()
-        item = re.sub(
-            r"(.{2,6})\1",
-            r"\1",
-            item,
-        )
-        item = re.sub(
-            r"\s+",
-            "",
-            item,
-        ).strip(" -—–：:。;；,.，")
-
-        if item in {
-            "檢查",
-            "检查",
-            "應符合有關規定",
-        }:
-            return ""
-
-        if not re.search(r"[\u4e00-\u9fff]", item):
-            return ""
-
-        return item
+        return clean_hkcmms_item_text(item)
 
     @classmethod
     def _extract_check_items_from_chunks(

@@ -36,6 +36,20 @@ EMBEDDING_BATCH_SIZE = 10
 # Milvus 每累计多少条执行一次 insert
 MILVUS_INSERT_BATCH_SIZE = 100
 
+OPTIONAL_SCALAR_FIELDS = [
+    "record_type",
+    "chinese_name",
+    "chinese_name_simplified",
+    "official_name",
+    "pinyin_name",
+    "section_type",
+    "section_number",
+    "section_title",
+    "parent_section",
+    "citation",
+    "source_url",
+]
+
 
 def read_jsonl(
     path: Path,
@@ -130,6 +144,7 @@ def validate_chunk(
 def build_milvus_rows(
     embedding_client: EmbeddingClient,
     chunks: list[dict],
+    collection_fields: set[str],
 ) -> list[dict]:
     """
     对一小批 chunk 生成向量，
@@ -151,28 +166,61 @@ def build_milvus_rows(
         vectors,
         strict=True,
     ):
-        rows.append(
-            {
-                "chunk_id": str(
-                    item["chunk_id"]
-                ),
-                "doc_id": str(
-                    item["doc_id"]
-                ),
-                "title": str(
-                    item["title"]
-                ),
-                "content": str(
-                    item["content"]
-                ),
-                "source": str(
-                    item["source"]
-                ),
-                "embedding": vector,
-            }
-        )
+        row = {
+            "chunk_id": str(
+                item["chunk_id"]
+            ),
+            "doc_id": str(
+                item["doc_id"]
+            ),
+            "title": str(
+                item["title"]
+            ),
+            "content": str(
+                item["content"]
+            ),
+            "source": str(
+                item["source"]
+            ),
+            "embedding": vector,
+        }
+
+        metadata = item.get("metadata") or {}
+
+        for field in OPTIONAL_SCALAR_FIELDS:
+            if field not in collection_fields:
+                continue
+
+            value = item.get(field)
+
+            if value is None:
+                value = metadata.get(field)
+
+            row[field] = str(value or "")
+
+        rows.append(row)
 
     return rows
+
+
+def get_collection_fields(
+    client,
+    collection_name: str,
+) -> set[str]:
+    description = client.describe_collection(
+        collection_name=collection_name,
+    )
+    fields = description.get("fields") or (
+        description.get("schema", {}) or {}
+    ).get("fields", [])
+
+    names = {
+        str(field.get("name") or field.get("field_name"))
+        for field in fields
+        if field.get("name") or field.get("field_name")
+    }
+
+    return names
 
 
 def main() -> None:
@@ -308,6 +356,27 @@ def main() -> None:
             f"{collection_name}"
         )
 
+    collection_fields = get_collection_fields(
+        client,
+        collection_name,
+    )
+    enabled_optional_fields = [
+        field
+        for field in OPTIONAL_SCALAR_FIELDS
+        if field in collection_fields
+    ]
+
+    if enabled_optional_fields:
+        print(
+            "[Schema] 可写入结构化字段: "
+            + ", ".join(enabled_optional_fields)
+        )
+    else:
+        print(
+            "[Schema] 当前 collection 未包含 HKCMMS 结构化字段，"
+            "将按旧 schema 写入。"
+        )
+
     embedding_client = EmbeddingClient()
 
     pending_rows: list[dict] = []
@@ -336,6 +405,7 @@ def main() -> None:
         rows = build_milvus_rows(
             embedding_client,
             chunk_batch,
+            collection_fields,
         )
 
         pending_rows.extend(rows)

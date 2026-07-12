@@ -17,11 +17,20 @@ import argparse
 import json
 import re
 import shutil
+import sys
 from pathlib import Path
 from typing import Any, Iterable, Iterator
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from app.hkcmms_cleaning import (
+    clean_hkcmms_section_title,
+    clean_hkcmms_title,
+)
 
 DEFAULT_INPUT_PATH = (
     PROJECT_ROOT
@@ -269,7 +278,9 @@ def format_section(
     title: Any,
 ) -> str:
     section_number = compact_text(number or "")
-    section_title = normalize_section_title(title or "正文")
+    section_title = clean_hkcmms_section_title(
+        normalize_section_title(title or "正文")
+    )
 
     if section_number:
         return f"{section_number} {section_title}".strip()
@@ -351,7 +362,9 @@ def build_title(row: dict[str, Any]) -> str:
     ):
         section = f"{parent_section}｜{raw_title}"
 
-    title = f"HKCMMS：{chinese_name}｜{section}"
+    title = clean_hkcmms_title(
+        f"HKCMMS：{chinese_name}｜{section}"
+    )
     return truncate_text(
         title,
         MILVUS_TITLE_MAX_LENGTH,
@@ -437,12 +450,31 @@ def convert_row(row: dict[str, Any]) -> dict[str, Any]:
             f"{chunk_id} 内容为空"
         )
 
+    chinese_name = compact_text(row.get("chinese_name") or row.get("title"))
+    section_title = clean_hkcmms_section_title(
+        normalize_section_title(row.get("section_title") or "")
+    )
+    parent_section = clean_hkcmms_section_title(
+        normalize_section_title(row.get("parent_section") or "")
+    )
+
     return {
         "chunk_id": chunk_id,
         "doc_id": document_id,
         "title": build_title(row),
         "content": content,
         "source": "HKCMMS",
+        "record_type": "pharmacopoeia_monograph",
+        "chinese_name": chinese_name,
+        "chinese_name_simplified": to_simplified_hint(chinese_name),
+        "official_name": compact_text(row.get("official_name") or ""),
+        "pinyin_name": compact_text(row.get("pinyin_name") or ""),
+        "section_type": compact_text(row.get("section_type") or ""),
+        "section_number": compact_text(row.get("section_number") or ""),
+        "section_title": section_title,
+        "parent_section": parent_section,
+        "citation": compact_text(row.get("citation") or ""),
+        "source_url": compact_text(row.get("source_url") or ""),
         "metadata": {
             "record_type": "pharmacopoeia_monograph",
             "source_id": "HKCMMS",
@@ -452,12 +484,13 @@ def convert_row(row: dict[str, Any]) -> dict[str, Any]:
             "language": row.get("language"),
             "category": row.get("category"),
             "official_name": row.get("official_name"),
-            "chinese_name": row.get("chinese_name"),
+            "chinese_name": chinese_name,
+            "chinese_name_simplified": to_simplified_hint(chinese_name),
             "pinyin_name": row.get("pinyin_name"),
             "section_id": row.get("section_id"),
             "section_number": row.get("section_number"),
-            "section_title": row.get("section_title"),
-            "parent_section": row.get("parent_section"),
+            "section_title": section_title,
+            "parent_section": parent_section,
             "section_type": row.get("section_type"),
             "page_start": row.get("page_start"),
             "page_end": row.get("page_end"),

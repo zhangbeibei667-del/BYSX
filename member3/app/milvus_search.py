@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from pymilvus import MilvusClient
 
 from app.embedding_client import EmbeddingClient
+from app.hkcmms_cleaning import clean_hkcmms_title
 from app.vector_search import RetrievedChunk
 
 
@@ -25,6 +26,28 @@ COLLECTION_NAME = os.getenv(
     "MILVUS_COLLECTION",
     "tcm_rag_chunks",
 )
+
+BASE_OUTPUT_FIELDS = [
+    "chunk_id",
+    "doc_id",
+    "title",
+    "content",
+    "source",
+]
+
+OPTIONAL_OUTPUT_FIELDS = [
+    "record_type",
+    "chinese_name",
+    "chinese_name_simplified",
+    "official_name",
+    "pinyin_name",
+    "section_type",
+    "section_number",
+    "section_title",
+    "parent_section",
+    "citation",
+    "source_url",
+]
 
 
 class MilvusVectorSearch:
@@ -63,6 +86,35 @@ class MilvusVectorSearch:
         self.client.load_collection(
             collection_name=COLLECTION_NAME,
         )
+        self.scalar_fields = self._load_scalar_fields()
+        self.output_fields = [
+            field
+            for field in [
+                *BASE_OUTPUT_FIELDS,
+                *OPTIONAL_OUTPUT_FIELDS,
+            ]
+            if field in self.scalar_fields
+        ]
+
+    def _load_scalar_fields(self) -> set[str]:
+        try:
+            description = self.client.describe_collection(
+                collection_name=COLLECTION_NAME,
+            )
+        except Exception:
+            return set(BASE_OUTPUT_FIELDS)
+
+        fields = description.get("fields") or (
+            description.get("schema", {}) or {}
+        ).get("fields", [])
+
+        field_names = {
+            str(field.get("name") or field.get("field_name"))
+            for field in fields
+            if field.get("name") or field.get("field_name")
+        }
+
+        return field_names or set(BASE_OUTPUT_FIELDS)
 
     # ========================================================
     # 1. 从 Query 中提取当前轻量级实体提示
@@ -217,6 +269,190 @@ class MilvusVectorSearch:
 
         return ""
 
+    @staticmethod
+    def _literal(
+        value: str,
+    ) -> str:
+        escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
+
+    @staticmethod
+    def _section_matches(
+        section_intent: str,
+        title: str,
+        content: str,
+    ) -> bool:
+        if not section_intent:
+            return False
+
+        text = f"{title}\n{content}"
+
+        if section_intent == "tests":
+            return any(
+                keyword in text
+                for keyword in [
+                    "檢查",
+                    "检查",
+                    "上级章节：5",
+                    "parent_section: 5",
+                ]
+            ) or bool(
+                re.search(r"5\.\d+", text)
+            )
+
+        if section_intent == "identification":
+            return any(
+                keyword in text
+                for keyword in [
+                    "鑒別",
+                    "鉴别",
+                    "上级章节：4",
+                    "parent_section: 4",
+                ]
+            )
+
+        if section_intent == "source":
+            return "來源" in text or "来源" in text
+
+        if section_intent == "assay":
+            return "含量測定" in text or "含量测定" in text
+
+        return False
+
+    def _build_structured_hkcmms_filter(
+        self,
+        entity_hint: str,
+    ) -> tuple[str, int]:
+        filters = ['source == "HKCMMS"']
+
+        if (
+            entity_hint
+            and "chinese_name" in self.scalar_fields
+            and "chinese_name_simplified" in self.scalar_fields
+        ):
+            literal = self._literal(entity_hint)
+            filters.append(
+                "("
+                f"chinese_name == {literal} "
+                f"or chinese_name_simplified == {literal}"
+                ")"
+            )
+            return " && ".join(filters), 200
+
+        return " && ".join(filters), 2000
+
+    def _normalize_hit(
+        self,
+        hit: dict,
+        score: float,
+    ) -> dict:
+        entity = hit.get(
+            "entity",
+            hit,
+        )
+
+        row = {
+            "id": hit.get("id"),
+            "score": score,
+            "chunk_id": str(entity.get("chunk_id", "")),
+            "doc_id": str(entity.get("doc_id", "")),
+            "title": str(entity.get("title", "")),
+            "content": str(entity.get("content", "")),
+            "source": str(entity.get("source", "")),
+        }
+
+        for field in OPTIONAL_OUTPUT_FIELDS:
+            if field in entity:
+                row[field] = str(entity.get(field) or "")
+
+        return row
+
+    def _structured_hkcmms_candidates(
+        self,
+        query: str,
+    ) -> list[dict]:
+        section_intent = self._detect_pharmacopoeia_section_intent(
+            query
+        )
+
+        if not section_intent:
+            return []
+
+        entity_hint = self._extract_entity_hint(
+            query
+        )
+        filter_expr, limit = self._build_structured_hkcmms_filter(
+            entity_hint
+        )
+
+        try:
+            rows = self.client.query(
+                collection_name=COLLECTION_NAME,
+                filter=filter_expr,
+                output_fields=self.output_fields,
+                limit=limit,
+            )
+        except Exception:
+            return []
+
+        candidates: list[dict] = []
+
+        for row in rows:
+            hit = self._normalize_hit(
+                row,
+                score=0.78,
+            )
+            title = hit["title"]
+            content = hit["content"]
+            text = f"{title}\n{content}"
+
+            if entity_hint and entity_hint not in text:
+                continue
+
+            if not self._section_matches(
+                section_intent=section_intent,
+                title=title,
+                content=content,
+            ):
+                continue
+
+            hit["structured_match"] = True
+            candidates.append(hit)
+
+        return candidates
+
+    @staticmethod
+    def _merge_hits(
+        hits: list[dict],
+        extra_hits: list[dict],
+    ) -> list[dict]:
+        merged: dict[str, dict] = {}
+
+        for hit in [
+            *hits,
+            *extra_hits,
+        ]:
+            key = hit.get("chunk_id") or str(hit.get("id"))
+
+            if not key:
+                continue
+
+            current = merged.get(key)
+
+            if current is None:
+                merged[key] = hit
+                continue
+
+            if float(hit.get("score", 0.0)) > float(
+                current.get("score", 0.0)
+            ):
+                merged[key] = {
+                    **current,
+                    **hit,
+                }
+
+        return list(merged.values())
+
     # ========================================================
     # 2. Query-aware Rerank
     # ========================================================
@@ -315,6 +551,9 @@ class MilvusVectorSearch:
                 if "含量測定" in title or "含量测定" in title:
                     bonus += 0.12
 
+            if hit.get("structured_match"):
+                bonus += 0.08
+
             hit["rerank_bonus"] = bonus
 
             hit["rerank_score"] = (
@@ -357,95 +596,6 @@ class MilvusVectorSearch:
 
         return base_limit
 
-    @staticmethod
-    def _clean_hkcmms_title(
-        title: str,
-    ) -> str:
-        """清理 HKCMMS OCR 残片，让 evidence 标题更适合直接展示。"""
-        def clean_parenthetical(
-            match: re.Match[str],
-        ) -> str:
-            value = match.group(0)
-
-            if "附錄" in value:
-                return value
-
-            if re.search(
-                r"[A-Za-z©®™]|THE|VID|VUD|MER|Uff|PBR|RR",
-                value,
-                flags=re.IGNORECASE,
-            ):
-                return ""
-
-            return value
-
-        title = re.sub(
-            r"\s+",
-            " ",
-            title,
-        ).strip()
-
-        if "｜" not in title:
-            return title
-
-        prefix, section = title.rsplit(
-            "｜",
-            1,
-        )
-
-        section = re.sub(
-            r"©|®|™",
-            "",
-            section,
-        )
-        section = re.sub(
-            r"[（(][^）)]*[）)\]]?",
-            clean_parenthetical,
-            section,
-        )
-        section = re.sub(
-            r"\b(?:THE|VID|VUD|MER|Uff|PBR|RR|Std|Stock)\b",
-            "",
-            section,
-            flags=re.IGNORECASE,
-        )
-        section = re.sub(
-            r"[（(]附錄[^）):：]*(?:[):：]|$)",
-            "",
-            section,
-        )
-        section = re.sub(
-            r"[:：]?\s*應符合有關規定.*$",
-            "",
-            section,
-        )
-        section = re.sub(
-            r"\b(\d+\.\d)(?:\d+\.\d)\b",
-            r"\1",
-            section,
-        )
-        section = re.sub(
-            r"\s*[:：]\s*",
-            "：",
-            section,
-        )
-        section = re.sub(
-            r"\s+",
-            " ",
-            section,
-        ).strip(" ：:;；,.，。")
-
-        if len(section) > 48:
-            section = re.split(
-                r"[。；;]",
-                section,
-            )[0].strip()
-
-        if not section:
-            return prefix
-
-        return f"{prefix}｜{section}"
-
     # ========================================================
     # 3. Milvus 原始候选召回
     # ========================================================
@@ -477,11 +627,7 @@ class MilvusVectorSearch:
                 "metric_type": "COSINE",
             },
             output_fields=[
-                "chunk_id",
-                "doc_id",
-                "title",
-                "content",
-                "source",
+                *self.output_fields,
             ],
         )
 
@@ -500,47 +646,15 @@ class MilvusVectorSearch:
             )
 
             hits.append(
-                {
-                    "id": hit.get(
-                        "id"
-                    ),
-                    "score": float(
+                self._normalize_hit(
+                    hit,
+                    score=float(
                         hit.get(
                             "distance",
                             0.0,
                         )
                     ),
-                    "chunk_id": str(
-                        entity.get(
-                            "chunk_id",
-                            "",
-                        )
-                    ),
-                    "doc_id": str(
-                        entity.get(
-                            "doc_id",
-                            "",
-                        )
-                    ),
-                    "title": str(
-                        entity.get(
-                            "title",
-                            "",
-                        )
-                    ),
-                    "content": str(
-                        entity.get(
-                            "content",
-                            "",
-                        )
-                    ),
-                    "source": str(
-                        entity.get(
-                            "source",
-                            "",
-                        )
-                    ),
-                }
+                )
             )
 
         return hits
@@ -597,6 +711,11 @@ class MilvusVectorSearch:
             candidate_k=candidate_k,
         )
 
+        hits = self._merge_hits(
+            hits,
+            self._structured_hkcmms_candidates(query),
+        )
+
         if not hits:
             return []
 
@@ -626,7 +745,7 @@ class MilvusVectorSearch:
             # 为了让前端页面能看到数据来源，
             # 将 source 合并到 title 中。
             if source == "HKCMMS":
-                title = self._clean_hkcmms_title(
+                title = clean_hkcmms_title(
                     title
                 )
                 display_title = (
@@ -698,6 +817,11 @@ class MilvusVectorSearch:
         hits = self._search_candidates(
             query=query,
             candidate_k=candidate_k,
+        )
+
+        hits = self._merge_hits(
+            hits,
+            self._structured_hkcmms_candidates(query),
         )
 
         reranked_hits = self._rerank_hits(
