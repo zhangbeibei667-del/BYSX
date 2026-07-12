@@ -8,6 +8,33 @@ OCR_TOKEN_RE = re.compile(
     flags=re.IGNORECASE,
 )
 
+DISPLAY_SIMPLIFIED_REPLACEMENTS = {
+    "黃": "黄",
+    "鑒別": "鉴别",
+    "顯微": "显微",
+    "薄層": "薄层",
+    "色譜": "色谱",
+    "指紋圖譜": "指纹图谱",
+    "檢查": "检查",
+    "來源": "来源",
+    "含量測定": "含量测定",
+    "對照品溶液": "对照品溶液",
+    "供試品溶液": "供试品溶液",
+    "色譜條件": "色谱条件",
+    "雜質": "杂质",
+    "農藥殘留": "农药残留",
+    "二氧化硫殘留": "二氧化硫残留",
+    "重金屬": "重金属",
+    "霉菌毒素-黃曲霉毒素": "霉菌毒素-黄曲霉毒素",
+    "為": "为",
+    "乾燥": "干燥",
+    "藥典": "药典",
+    "標準": "标准",
+    "條目": "条目",
+    "條件": "条件",
+    "圖譜": "图谱",
+}
+
 
 def compact_text(text: object) -> str:
     return " ".join(
@@ -15,6 +42,16 @@ def compact_text(text: object) -> str:
         .replace("\r", "\n")
         .split()
     ).strip()
+
+
+def simplify_hkcmms_display_text(text: str) -> str:
+    """把回答中常见 HKCMMS 繁体术语转成简体显示。"""
+    value = str(text or "")
+
+    for source, target in DISPLAY_SIMPLIFIED_REPLACEMENTS.items():
+        value = value.replace(source, target)
+
+    return value
 
 
 def clean_hkcmms_item_text(item: str) -> str:
@@ -90,6 +127,13 @@ def clean_hkcmms_section_title(title: str) -> str:
         return value
 
     section = compact_text(title)
+    appendix_placeholders = {
+        "__APPENDIX_IV_A__": "（附錄IV(A)）",
+    }
+
+    for placeholder, appendix in appendix_placeholders.items():
+        section = section.replace(appendix, placeholder)
+        section = section.replace("[附錄IV(A)]", placeholder)
     section = re.sub(
         r"©|®|™",
         "",
@@ -105,7 +149,7 @@ def clean_hkcmms_section_title(title: str) -> str:
         section,
     )
     section = re.sub(
-        r"[（(]附錄[^）):：]*(?:[):：]|$)",
+        r"[（(]附錄[^）)]*[:：][^）)]*$",
         "",
         section,
     )
@@ -114,6 +158,7 @@ def clean_hkcmms_section_title(title: str) -> str:
         "",
         section,
     )
+    section = section.replace("..", "：")
     section = re.sub(
         r"\b(\d+\.\d)(?:\d+\.\d)\b",
         r"\1",
@@ -129,6 +174,18 @@ def clean_hkcmms_section_title(title: str) -> str:
         " ",
         section,
     ).strip(" ：:;；,.，。")
+    if (
+        section.endswith(("）", ")"))
+        and section.count("）") + section.count(")")
+        > section.count("（") + section.count("(")
+    ):
+        section = re.sub(
+            r"\s*[）)]\s*$",
+            "",
+            section,
+        ).strip(" ：:;；,.，。")
+    for placeholder, appendix in appendix_placeholders.items():
+        section = section.replace(placeholder, appendix)
 
     if len(section) > 48:
         section = re.split(

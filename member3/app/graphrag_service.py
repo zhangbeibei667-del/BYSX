@@ -8,7 +8,10 @@ from app.community_search import (
     LightweightCommunitySearch,
 )
 from app.graph_search import GraphSearch
-from app.hkcmms_cleaning import clean_hkcmms_item_text
+from app.hkcmms_cleaning import (
+    clean_hkcmms_item_text,
+    simplify_hkcmms_display_text,
+)
 from app.llm_client import LLMClient
 from app.schemas import (
     EvidenceItem,
@@ -1527,7 +1530,7 @@ class GraphRAGService:
                 )
 
                 return self._clean_answer_prefix(
-                    answer
+                    simplify_hkcmms_display_text(answer)
                 )
 
             except Exception as exc:
@@ -1543,12 +1546,14 @@ class GraphRAGService:
                     f"错误信息: {exc}"
                 )
 
-        return self._fallback_answer(
-            query=query,
-            chunks=chunks,
-            graph=graph,
-            community_summaries=community_summaries,
-            intent=intent,
+        return simplify_hkcmms_display_text(
+            self._fallback_answer(
+                query=query,
+                chunks=chunks,
+                graph=graph,
+                community_summaries=community_summaries,
+                intent=intent,
+            )
         )
 
     # ========================================================

@@ -257,6 +257,14 @@ def normalize_section_title(text: str) -> str:
         r"（\1）",
         value,
     )
+    value = value.replace(
+        "（附錄IV(A）]",
+        "（附錄IV(A)）",
+    )
+    value = value.replace(
+        "（附錄IV(A）",
+        "（附錄IV(A)）",
+    )
     value = value.replace("  ", " ")
 
     return value.strip()

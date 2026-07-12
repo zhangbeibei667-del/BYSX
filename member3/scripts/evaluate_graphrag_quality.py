@@ -46,6 +46,22 @@ NOISY_MARKERS = [
     "™",
 ]
 
+ANSWER_TRADITIONAL_MARKERS = [
+    "黃",
+    "鑒別",
+    "顯微",
+    "薄層",
+    "色譜",
+    "檢查",
+    "來源",
+    "含量測定",
+    "對照品溶液",
+    "供試品溶液",
+    "雜質",
+    "農藥殘留",
+    "二氧化硫殘留",
+]
+
 
 class EmptyRetriever:
     """离线评测用检索器：只评估图谱路径、社区摘要和 fallback。"""
@@ -190,6 +206,16 @@ def evaluate_case(
             not any(
                 marker in visible_text
                 for marker in NOISY_MARKERS
+            ),
+        )
+    )
+
+    checks.append(
+        (
+            "answer_simplified_chinese",
+            not any(
+                marker in answer_text
+                for marker in ANSWER_TRADITIONAL_MARKERS
             ),
         )
     )
