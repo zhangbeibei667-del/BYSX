@@ -60,6 +60,8 @@ ANSWER_TRADITIONAL_MARKERS = [
     "雜質",
     "農藥殘留",
     "二氧化硫殘留",
+    "重金屬",
+    "條件",
 ]
 
 
