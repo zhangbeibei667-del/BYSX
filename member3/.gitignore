@@ -64,3 +64,5 @@ data/pharmacopoeia/processed/hkcmms/**
 !data/pharmacopoeia/processed/hkcmms/index_ready/filter_report.json
 data/pharmacopoeia/processed/hkcmms_test/
 data/pharmacopoeia/processed/hkcmms_ocr_test/
+
+docker-compose.milvus.yml
