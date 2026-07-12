@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 
 from dotenv import load_dotenv
 from pymilvus import MilvusClient
@@ -356,6 +357,95 @@ class MilvusVectorSearch:
 
         return base_limit
 
+    @staticmethod
+    def _clean_hkcmms_title(
+        title: str,
+    ) -> str:
+        """清理 HKCMMS OCR 残片，让 evidence 标题更适合直接展示。"""
+        def clean_parenthetical(
+            match: re.Match[str],
+        ) -> str:
+            value = match.group(0)
+
+            if "附錄" in value:
+                return value
+
+            if re.search(
+                r"[A-Za-z©®™]|THE|VID|VUD|MER|Uff|PBR|RR",
+                value,
+                flags=re.IGNORECASE,
+            ):
+                return ""
+
+            return value
+
+        title = re.sub(
+            r"\s+",
+            " ",
+            title,
+        ).strip()
+
+        if "｜" not in title:
+            return title
+
+        prefix, section = title.rsplit(
+            "｜",
+            1,
+        )
+
+        section = re.sub(
+            r"©|®|™",
+            "",
+            section,
+        )
+        section = re.sub(
+            r"[（(][^）)]*[）)\]]?",
+            clean_parenthetical,
+            section,
+        )
+        section = re.sub(
+            r"\b(?:THE|VID|VUD|MER|Uff|PBR|RR|Std|Stock)\b",
+            "",
+            section,
+            flags=re.IGNORECASE,
+        )
+        section = re.sub(
+            r"[（(]附錄[^）):：]*(?:[):：]|$)",
+            "",
+            section,
+        )
+        section = re.sub(
+            r"[:：]?\s*應符合有關規定.*$",
+            "",
+            section,
+        )
+        section = re.sub(
+            r"\b(\d+\.\d)(?:\d+\.\d)\b",
+            r"\1",
+            section,
+        )
+        section = re.sub(
+            r"\s*[:：]\s*",
+            "：",
+            section,
+        )
+        section = re.sub(
+            r"\s+",
+            " ",
+            section,
+        ).strip(" ：:;；,.，。")
+
+        if len(section) > 48:
+            section = re.split(
+                r"[。；;]",
+                section,
+            )[0].strip()
+
+        if not section:
+            return prefix
+
+        return f"{prefix}｜{section}"
+
     # ========================================================
     # 3. Milvus 原始候选召回
     # ========================================================
@@ -536,6 +626,9 @@ class MilvusVectorSearch:
             # 为了让前端页面能看到数据来源，
             # 将 source 合并到 title 中。
             if source == "HKCMMS":
+                title = self._clean_hkcmms_title(
+                    title
+                )
                 display_title = (
                     f"药典标准｜{title}（HKCMMS）"
                 )

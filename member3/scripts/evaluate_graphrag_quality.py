@@ -37,6 +37,15 @@ DEFAULT_REPORT_PATH = (
     / "graphrag_eval_report.json"
 )
 
+NOISY_MARKERS = [
+    "THE VID",
+    "MER XID",
+    "Uff",
+    "©",
+    "®",
+    "™",
+]
+
 
 class EmptyRetriever:
     """离线评测用检索器：只评估图谱路径、社区摘要和 fallback。"""
@@ -109,6 +118,15 @@ def evaluate_case(
         ]
     )
     answer_text = result.answer
+    visible_text = "\n".join(
+        [
+            answer_text,
+            *[
+                item.title
+                for item in result.evidence
+            ],
+        ]
+    )
 
     checks: list[tuple[str, bool]] = []
 
@@ -165,6 +183,16 @@ def evaluate_case(
                 ),
             )
         )
+
+    checks.append(
+        (
+            "no_visible_ocr_noise",
+            not any(
+                marker in visible_text
+                for marker in NOISY_MARKERS
+            ),
+        )
+    )
 
     passed = all(
         ok

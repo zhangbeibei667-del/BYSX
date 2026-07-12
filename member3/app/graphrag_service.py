@@ -1567,7 +1567,196 @@ class GraphRAGService:
         return result
 
     @staticmethod
+    def _evidence_target(
+        content: str,
+    ) -> str:
+        target_match = re.search(
+            r"药材条目：([^\n]+)",
+            content,
+        )
+
+        if target_match:
+            return target_match.group(1).strip()
+
+        return ""
+
+    @staticmethod
+    def _evidence_body(
+        content: str,
+    ) -> str:
+        body = content.strip()
+        body_match = re.search(
+            r"正文：\s*(.+)",
+            body,
+            flags=re.S,
+        )
+
+        if body_match:
+            body = body_match.group(1).strip()
+
+        return re.sub(
+            r"\s+",
+            " ",
+            body,
+        ).strip()
+
+    @staticmethod
+    def _clean_pharmacopoeia_item(
+        item: str,
+    ) -> str:
+        item = re.sub(
+            r"\s+",
+            " ",
+            item,
+        ).strip(" ：:。;；,.，")
+        item = re.sub(
+            r"©|®|™",
+            "",
+            item,
+        )
+        item = re.sub(
+            r"[（(][^）)]*(?:附錄|THE|VID|VUD|MER|Uff|PBR|RR|應絲|季緣|[A-Za-z]{2,})[^）)]*[）)\]]?",
+            "",
+            item,
+            flags=re.IGNORECASE,
+        )
+        item = re.split(
+            r"[:：。；;]",
+            item,
+        )[0].strip()
+        item = re.sub(
+            r"(.{2,6})\1",
+            r"\1",
+            item,
+        )
+        item = re.sub(
+            r"\s+",
+            "",
+            item,
+        ).strip(" -—–：:。;；,.，")
+
+        if item in {
+            "檢查",
+            "检查",
+            "應符合有關規定",
+        }:
+            return ""
+
+        if not re.search(r"[\u4e00-\u9fff]", item):
+            return ""
+
+        return item
+
+    @classmethod
+    def _extract_check_items_from_chunks(
+        cls,
+        chunks: list[RetrievedChunk],
+    ) -> tuple[str, list[str]]:
+        target = ""
+        items: list[str] = []
+
+        for chunk in chunks:
+            if not target:
+                target = cls._evidence_target(
+                    chunk.content
+                )
+
+            searchable_text = "\n".join(
+                [
+                    chunk.title,
+                    cls._evidence_body(chunk.content),
+                ]
+            )
+
+            for match in re.finditer(
+                r"(?:5\.\d+){1,2}\s*([^。；;\n]{1,60})",
+                searchable_text,
+            ):
+                item = cls._clean_pharmacopoeia_item(
+                    match.group(1)
+                )
+
+                if item and item not in items:
+                    items.append(item)
+
+        return target, items
+
+    @classmethod
+    def _extract_identification_methods_from_chunks(
+        cls,
+        chunks: list[RetrievedChunk],
+    ) -> tuple[str, list[str]]:
+        target = ""
+        methods: list[str] = []
+        method_keywords = [
+            "顯微鑒別",
+            "显微鉴别",
+            "理化鑒別",
+            "理化鉴别",
+            "薄層色譜鑒別",
+            "薄层色谱鉴别",
+            "高效液相色譜指紋圖譜鑒別法",
+            "高效液相色譜指紋圖譜法",
+            "高效液相色谱指纹图谱鉴别法",
+        ]
+
+        for chunk in chunks:
+            if not target:
+                target = cls._evidence_target(
+                    chunk.content
+                )
+
+            searchable_text = "\n".join(
+                [
+                    chunk.title,
+                    cls._evidence_body(chunk.content),
+                ]
+            )
+
+            for keyword in method_keywords:
+                if keyword in searchable_text and keyword not in methods:
+                    methods.append(keyword)
+
+        return target, methods
+
+    @classmethod
+    def _extract_assay_parts_from_chunks(
+        cls,
+        chunks: list[RetrievedChunk],
+    ) -> tuple[str, list[str]]:
+        target = ""
+        parts: list[str] = []
+
+        for chunk in chunks:
+            if not target:
+                target = cls._evidence_target(
+                    chunk.content
+                )
+
+            searchable_text = "\n".join(
+                [
+                    chunk.title,
+                    cls._evidence_body(chunk.content),
+                ]
+            )
+
+            for keyword in [
+                "對照品溶液",
+                "对照品溶液",
+                "供試品溶液",
+                "供试品溶液",
+                "操作程序",
+                "色譜條件",
+                "色谱条件",
+            ]:
+                if keyword in searchable_text and keyword not in parts:
+                    parts.append(keyword)
+
+        return target, parts
+
+    @classmethod
     def _extract_concise_evidence_answer(
+        cls,
         query: str,
         content: str,
     ) -> str:
@@ -1577,30 +1766,13 @@ class GraphRAGService:
         if not text:
             return ""
 
-        target = ""
-        target_match = re.search(
-            r"药材条目：([^\n]+)",
-            text,
+        target = cls._evidence_target(
+            text
         )
 
-        if target_match:
-            target = target_match.group(1).strip()
-
-        body = text
-        body_match = re.search(
-            r"正文：\s*(.+)",
+        body = cls._evidence_body(
             text,
-            flags=re.S,
         )
-
-        if body_match:
-            body = body_match.group(1).strip()
-
-        body = re.sub(
-            r"\s+",
-            " ",
-            body,
-        ).strip()
 
         if not body:
             return ""
@@ -1618,8 +1790,10 @@ class GraphRAGService:
             )
             if sentence:
                 return (
-                    f"{target_prefix}来源为"
+                    f"{target}的来源是"
                     f"{sentence.group(1).strip()}"
+                    if target
+                    else f"来源是{sentence.group(1).strip()}"
                 )
 
         if any(
@@ -1635,11 +1809,7 @@ class GraphRAGService:
                 body,
             )
             cleaned = [
-                re.sub(
-                    r"\s+",
-                    "",
-                    item,
-                ).strip(" ：:。;；")
+                cls._clean_pharmacopoeia_item(item)
                 for item in items
             ]
             cleaned = [
@@ -1654,7 +1824,7 @@ class GraphRAGService:
                 )
 
                 return (
-                    f"{target_prefix}检查项目包括"
+                    f"{target_prefix}检查项目包括："
                     f"{'、'.join(unique_items[:6])}。"
                 )
 
@@ -1853,6 +2023,95 @@ class GraphRAGService:
             if selected_sentences:
                 return "".join(
                     selected_sentences
+                )
+
+        if chunks and any(
+            keyword in query
+            for keyword in [
+                "鉴别",
+                "鑒別",
+                "鉴别方法",
+                "鑒別方法",
+            ]
+        ):
+            (
+                target,
+                methods,
+            ) = self._extract_identification_methods_from_chunks(
+                chunks
+            )
+
+            if methods:
+                target_name = (
+                    target
+                    if target
+                    else self._extract_query_hint(query)
+                )
+
+                return (
+                    f"从已召回的 HKCMMS 标准片段看，"
+                    f"{target_name}的鉴别内容主要包括："
+                    f"{'、'.join(methods[:6])}。"
+                    "如需做实验细节核对，应继续查看对应的操作程序原文。"
+                )
+
+        if chunks and any(
+            keyword in query
+            for keyword in [
+                "含量",
+                "测定",
+                "測定",
+            ]
+        ):
+            (
+                target,
+                assay_parts,
+            ) = self._extract_assay_parts_from_chunks(
+                chunks
+            )
+
+            if assay_parts:
+                target_name = (
+                    target
+                    if target
+                    else self._extract_query_hint(query)
+                )
+
+                return (
+                    f"从已召回的 HKCMMS 标准片段看，"
+                    f"{target_name}的含量测定依据在“含量測定”栏目下，"
+                    f"当前证据涉及：{'、'.join(assay_parts[:6])}。"
+                    "具体称量、溶剂和色谱条件建议以药典原文为准。"
+                )
+
+        if chunks and any(
+            keyword in query
+            for keyword in [
+                "检查",
+                "檢查",
+                "检查项目",
+                "檢查項目",
+            ]
+        ):
+            target, check_items = self._extract_check_items_from_chunks(
+                chunks
+            )
+
+            if check_items:
+                target_name = (
+                    target
+                    if target
+                    else self._extract_query_hint(query)
+                )
+                item_text = "、".join(
+                    check_items[:8]
+                )
+
+                return (
+                    f"从已召回的 HKCMMS 标准片段看，"
+                    f"{target_name}的检查项目包括：{item_text}。"
+                    "这些内容适合用于药典条目核对，"
+                    "不等同于临床用药建议。"
                 )
 
         if chunks:
