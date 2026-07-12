@@ -2,7 +2,7 @@ from backend.tools.voice_qa_tool import StreamingVoiceQATool
 
 
 class StreamingVoiceQAAgent:
-    """Prepare mock streaming voice Q&A output for the frontend."""
+    """Prepare the browser ASR and streaming TTS contract."""
 
     def __init__(self, voice_tool: StreamingVoiceQATool | None = None) -> None:
         self.voice_tool = voice_tool or StreamingVoiceQATool()

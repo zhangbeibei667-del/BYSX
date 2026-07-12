@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+import re
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,51 @@ class GraphSQLTool:
 
     def refresh_database(self) -> None:
         sync_kg_sqlite(self.db_path)
+
+    def execute_readonly(self, sql: str, params: list[Any] | None = None, max_rows: int = 100) -> dict:
+        """Validate and execute one read-only Text-to-SQL statement."""
+        normalized = re.sub(r"\s+", " ", sql.strip()).rstrip(";")
+        if not re.match(r"^(SELECT|WITH)\b", normalized, re.I):
+            raise ValueError("SQL Agent 只允许 SELECT/WITH 只读查询")
+        if ";" in normalized or re.search(
+            r"\b(INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|ATTACH|DETACH|PRAGMA|REPLACE|VACUUM)\b", normalized, re.I
+        ):
+            raise ValueError("检测到不安全或多语句 SQL")
+        tables = set(re.findall(r"\b(?:FROM|JOIN)\s+([a-zA-Z_][\w]*)", normalized, re.I))
+        if not tables or not tables.issubset({"entities", "relations", "metadata"}):
+            raise ValueError(f"只允许访问知识图谱白名单表，当前表：{sorted(tables)}")
+        limited = normalized if re.search(r"\bLIMIT\s+\d+", normalized, re.I) else f"{normalized} LIMIT {max_rows}"
+        uri = f"file:{self.db_path.as_posix()}?mode=ro"
+        with sqlite3.connect(uri, uri=True, timeout=5) as conn:
+            conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA query_only = ON")
+            conn.execute("EXPLAIN QUERY PLAN " + limited, params or [])
+            rows = [dict(row) for row in conn.execute(limited, params or []).fetchmany(max_rows)]
+        return {"status": "success", "sql": limited, "rows": rows, "row_count": len(rows),
+                "database": str(self.db_path), "read_only": True}
+
+    def text_to_sql(self, question: str, syndromes: list[str] | None = None, formulas: list[str] | None = None) -> dict:
+        """Generate parameterized SQL for common KG questions and execute it safely."""
+        formulas, syndromes = formulas or [], syndromes or []
+        if formulas:
+            sql = """SELECT r.source_name AS formula, r.relation, r.target_name AS herb, r.evidence
+                     FROM relations r JOIN entities e ON e.id=r.source_id
+                     WHERE e.name=? ORDER BY r.target_name"""
+            params = [formulas[0]]
+        elif syndromes:
+            sql = """SELECT r.source_name, r.relation, r.target_name, r.evidence
+                     FROM relations r WHERE r.source_name=? OR r.target_name=?"""
+            params = [syndromes[0], syndromes[0]]
+        elif any(word in question for word in ("数量", "多少", "统计")):
+            sql, params = "SELECT type, COUNT(*) AS count FROM entities GROUP BY type ORDER BY count DESC", []
+        else:
+            keyword = re.sub(r"[？?，,。\s]", "", question)[-12:]
+            sql = """SELECT id, name, type, alias, description FROM entities
+                     WHERE name LIKE ? OR alias LIKE ? ORDER BY name"""
+            params = [f"%{keyword}%", f"%{keyword}%"]
+        result = self.execute_readonly(sql, params)
+        result.update({"question": question, "generator": "validated-text-to-sql", "parameters": params})
+        return result
 
     def query_entity_statistics(self, syndromes: list[str] | None = None, formulas: list[str] | None = None) -> dict:
         self.ensure_database()

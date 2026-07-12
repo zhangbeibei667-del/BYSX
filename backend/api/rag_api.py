@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from backend.schemas.rag import RAGSearchRequest
 from backend.services.rag_service import RAGService
+from backend.services.data_quality_service import DataQualityService
 
 
 router = APIRouter(prefix="/api/rag", tags=["RAG"])
@@ -17,3 +18,8 @@ def search_documents(request: RAGSearchRequest) -> dict:
         formulas=request.formulas,
         top_k=request.top_k,
     )
+
+
+@router.get("/quality")
+def retrieval_quality() -> dict:
+    return DataQualityService().report()

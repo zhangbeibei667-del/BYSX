@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -70,6 +71,9 @@ class LocalGraphRAGService:
         self.graph_repo_root = self.workspace_root / "integrated_entities_graphrag"
         self.graph_root = self.graph_repo_root / "data"
         self.member3_root = self.workspace_root / "integrated_entities_graphrag" / "member3"
+        self.enable_symmap_data = os.getenv("ENABLE_SYMMAP_DATA", "false").strip().lower() in {
+            "1", "true", "yes", "on"
+        }
 
         self.deleted_entity_ids, self.deleted_relation_keys = self._load_admin_deletions()
         self.entities = [
@@ -586,12 +590,18 @@ class LocalGraphRAGService:
         name = path.name.lower()
         return any(keyword in name for keyword in ["supplement", "symmap", "external", "import"])
 
+    def _is_disabled_source_file(self, path: Path) -> bool:
+        """Keep optional third-party datasets out of the active KG by default."""
+        return not self.enable_symmap_data and "symmap" in path.name.lower()
+
     def _load_entities(self, entities_dir: Path, supplemental_only: bool = False) -> list[Entity]:
         entities: list[Entity] = []
         if not entities_dir.exists():
             return entities
 
         for path in sorted(entities_dir.glob("*.json")):
+            if self._is_disabled_source_file(path):
+                continue
             if supplemental_only and not self._is_supplemental_file(path):
                 continue
             for item in self._read_json_items(path, "entities"):
@@ -613,6 +623,8 @@ class LocalGraphRAGService:
             return relations
 
         for path in sorted(relations_dir.glob("*.json")):
+            if self._is_disabled_source_file(path):
+                continue
             if supplemental_only and not self._is_supplemental_file(path):
                 continue
             for item in self._read_json_items(path, "relations"):

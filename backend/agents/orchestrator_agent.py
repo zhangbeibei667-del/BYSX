@@ -7,10 +7,11 @@ from backend.agents.safety_review_agent import SafetyReviewAgent
 from backend.agents.sql_agent import GraphSQLAgent
 from backend.agents.streaming_voice_agent import StreamingVoiceQAAgent
 from backend.agents.symptom_analysis_agent import SymptomAnalysisAgent
+from backend.services.agent_planner import AgentPlanner
 
 
 class TCMTeachingOrchestratorAgent:
-    """Coordinate the teaching multi-agent workflow and expose step traces."""
+    """Dynamically plan and run only the tools needed by the current turn."""
 
     def __init__(self) -> None:
         self.symptom_agent = SymptomAnalysisAgent()
@@ -22,137 +23,69 @@ class TCMTeachingOrchestratorAgent:
         self.knowledge_agent = KnowledgeExplanationAgent()
         self.voice_agent = StreamingVoiceQAAgent()
         self.safety_agent = SafetyReviewAgent()
+        self.planner = AgentPlanner()
 
-    def run(self, case_text: str) -> dict:
-        print("[TCMTeachingOrchestratorAgent] start")
-        agent_steps: list[dict] = []
+    def run(self, case_text: str, has_context: bool = False) -> dict:
+        plan = self.planner.plan(case_text, has_context)
+        selected = set(plan["tools"])
+        steps = [self._step("动态工具规划", f"识别意图：{plan['intent']}；选择 {len(selected)} 个工具", plan)]
 
-        symptom_result = self.symptom_agent.run(case_text)
-        agent_steps.append(
-            self._step(
-                "症状分析 Agent",
-                f"识别症状：{self._join(symptom_result.get('symptoms', []))}；"
-                f"舌象：{self._join(symptom_result.get('tongue', []))}；"
-                f"脉象：{self._join(symptom_result.get('pulse', []))}",
-                symptom_result,
-            )
+        symptom = self.symptom_agent.run(case_text) if "symptom_analysis" in selected else {
+            "symptoms": [], "tongue": [], "pulse": []}
+        if "symptom_analysis" in selected:
+            steps.append(self._step("症状分析 Agent", f"识别症状：{self._join(symptom['symptoms'])}", symptom))
+
+        followup = self.followup_agent.run(symptom) if "followup" in selected else {"follow_up_questions": []}
+        if "followup" in selected:
+            steps.append(self._step("症状追问 Agent", f"生成 {len(followup['follow_up_questions'])} 条上下文追问", followup))
+
+        graph = self.graph_agent.run(symptom) if "graph_query" in selected else {
+            "syndromes": [], "formulas": [], "herbs": [], "graph": {"nodes": [], "edges": []}}
+        if "graph_query" in selected:
+            steps.append(self._step("图谱查询 Agent", f"证候：{self._join(graph.get('syndromes', []))}；方剂：{self._join(graph.get('formulas', []))}", graph))
+
+        sql = self.sql_agent.run(graph, case_text) if "sql_query" in selected else {"sql_result": {}}
+        if "sql_query" in selected:
+            steps.append(self._step("图谱数据 Text-to-SQL Agent", "生成、校验并只读执行 SQL", sql))
+
+        rag = self.literature_agent.run(case_text, graph) if "literature_search" in selected else {"evidence": []}
+        if "literature_search" in selected:
+            steps.append(self._step("向量文献检索 Agent", f"召回 {len(rag.get('evidence', []))} 条可追溯证据", rag))
+
+        formula = self.formula_agent.run(graph.get("formulas", [])) if "formula_explanation" in selected else {"formula_explanations": []}
+        if "formula_explanation" in selected:
+            steps.append(self._step("方剂说明 Agent", f"解释：{self._join(graph.get('formulas', []))}", formula))
+
+        explanation = self.knowledge_agent.run(case_text, symptom, graph, sql, rag, formula)
+        steps.append(self._step("知识解释 Agent", "融合图谱、SQL 与文献证据生成解释", explanation))
+
+        safety = self.safety_agent.run(explanation["answer"])
+        steps.append(self._step("安全审查 Agent", "完成医疗安全边界审查", {"safety_notice": safety["safety_notice"]}))
+        voice = self.voice_agent.run(symptom, graph, {**explanation, "answer": safety["answer"]})
+
+        needs_clarification = bool(graph.get("needs_clarification")) or (
+            plan["intent"] == "case_analysis" and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
         )
-
-        followup_result = self.followup_agent.run(symptom_result)
-        agent_steps.append(
-            self._step(
-                "追问建议 Agent",
-                f"生成 {len(followup_result.get('follow_up_questions', []))} 条追问建议",
-                followup_result,
-            )
-        )
-
-        graph_result = self.graph_agent.run(symptom_result)
-        agent_steps.append(
-            self._step(
-                "图谱推理 Agent",
-                f"匹配证候：{self._join(graph_result.get('syndromes', []))}；"
-                f"方剂：{self._join(graph_result.get('formulas', []))}",
-                {
-                    "syndromes": graph_result.get("syndromes", []),
-                    "formulas": graph_result.get("formulas", []),
-                    "reasoning_paths": graph_result.get("reasoning_paths", []),
-                },
-            )
-        )
-
-        sql_result = self.sql_agent.run(graph_result)
-        agent_steps.append(
-            self._step(
-                "图谱数据 SQL Agent",
-                "查询方剂、药材和证候相关结构化数据",
-                sql_result,
-            )
-        )
-
-        rag_result = self.literature_agent.run(case_text, graph_result)
-        agent_steps.append(
-            self._step(
-                "文献检索 Agent",
-                f"检索到 {len(rag_result.get('evidence', []))} 条相关资料依据",
-                rag_result,
-            )
-        )
-
-        formula_result = self.formula_agent.run(graph_result.get("formulas", []))
-        agent_steps.append(
-            self._step(
-                "方剂解释 Agent",
-                f"生成 {self._join(graph_result.get('formulas', []))} 的组成、功效和主治说明",
-                formula_result,
-            )
-        )
-
-        explanation_result = self.knowledge_agent.run(
-            case_text=case_text,
-            symptom_result=symptom_result,
-            graph_result=graph_result,
-            sql_result=sql_result,
-            rag_result=rag_result,
-            formula_result=formula_result,
-        )
-        agent_steps.append(
-            self._step(
-                "知识解释 Agent",
-                "生成面向学习者的教学辅助分析",
-                {
-                    "learning_summary": explanation_result.get("learning_summary", ""),
-                    "teaching_sections": explanation_result.get("teaching_sections", []),
-                },
-            )
-        )
-
-        voice_result = self.voice_agent.run(symptom_result, graph_result, explanation_result)
-        agent_steps.append(
-            self._step(
-                "流式语音问答 Agent",
-                "生成 mock 流式语音问答结果",
-                voice_result,
-            )
-        )
-
-        safety_result = self.safety_agent.run(explanation_result["answer"])
-        agent_steps.append(
-            self._step(
-                "安全审查 Agent",
-                "已添加教学辅助安全声明，并过滤真实诊断/治疗建议口径",
-                {"safety_notice": safety_result["safety_notice"]},
-            )
-        )
-
-        print("[TCMTeachingOrchestratorAgent] completed")
         return {
-            "answer": safety_result["answer"],
-            "symptoms": symptom_result.get("symptoms", []),
-            "tongue": symptom_result.get("tongue", []),
-            "pulse": symptom_result.get("pulse", []),
-            "syndromes": graph_result.get("syndromes", []),
-            "formulas": graph_result.get("formulas", []),
-            "herbs": graph_result.get("herbs", []),
-            "graph": graph_result.get("graph", {"nodes": [], "edges": []}),
-            "sql_result": sql_result.get("sql_result", {}),
-            "evidence": rag_result.get("evidence", []),
-            "formula_explanations": formula_result.get("formula_explanations", []),
-            "follow_up_questions": followup_result.get("follow_up_questions", []),
-            "learning_summary": explanation_result.get("learning_summary", ""),
-            "voice_qa": voice_result.get("voice_qa", {}),
-            "agent_steps": agent_steps,
-            "needs_clarification": graph_result.get("needs_clarification", False),
-            "safety_notice": safety_result["safety_notice"],
+            "answer": safety["answer"], "symptoms": symptom.get("symptoms", []),
+            "tongue": symptom.get("tongue", []), "pulse": symptom.get("pulse", []),
+            "syndromes": graph.get("syndromes", []), "formulas": graph.get("formulas", []),
+            "herbs": graph.get("herbs", []), "graph": graph.get("graph", {"nodes": [], "edges": []}),
+            "sql_result": sql.get("sql_result", {}), "evidence": rag.get("evidence", []),
+            "formula_explanations": formula.get("formula_explanations", []),
+            "follow_up_questions": followup.get("follow_up_questions", []),
+            "learning_summary": explanation.get("learning_summary", ""), "voice_qa": voice.get("voice_qa", {}),
+            "citations": explanation.get("citations", []),
+            "evidence_confidence": explanation.get("evidence_confidence", "insufficient"),
+            "generation": explanation.get("generation", {"mode": "local-evidence-template"}),
+            "agent_plan": plan, "agent_steps": steps, "needs_clarification": needs_clarification,
+            "safety_notice": safety["safety_notice"],
         }
 
-    def _step(self, name: str, summary: str, output: dict) -> dict:
-        return {
-            "name": name,
-            "status": "completed",
-            "summary": summary,
-            "output": output,
-        }
+    @staticmethod
+    def _step(name: str, summary: str, output: dict) -> dict:
+        return {"name": name, "status": "completed", "summary": summary, "output": output}
 
-    def _join(self, values: list) -> str:
+    @staticmethod
+    def _join(values: list) -> str:
         return "、".join(str(value) for value in values) if values else "暂无明确数据"

@@ -7,13 +7,15 @@ class GraphSQLAgent:
     def __init__(self, sql_tool: GraphSQLTool | None = None) -> None:
         self.sql_tool = sql_tool or GraphSQLTool()
 
-    def run(self, graph_result: dict) -> dict:
+    def run(self, graph_result: dict, question: str = "") -> dict:
         print("[GraphSQLAgent] start")
-        result = {
-            "sql_result": self.sql_tool.query_entity_statistics(
+        statistics = self.sql_tool.query_entity_statistics(
                 syndromes=graph_result.get("syndromes", []),
                 formulas=graph_result.get("formulas", []),
             )
-        }
+        text_sql = self.sql_tool.text_to_sql(
+            question, graph_result.get("syndromes", []), graph_result.get("formulas", [])
+        )
+        result = {"sql_result": {**statistics, "text_to_sql": text_sql}}
         print("[GraphSQLAgent] completed")
         return result

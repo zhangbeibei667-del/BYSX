@@ -13,7 +13,9 @@ from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
 from backend.services.agent_service import AgentService
+from backend.services.conversation_service import ConversationService
 from backend.services.history_service import HistoryService
+from backend.services.rag_service import RAGService
 from backend.services.local_graphrag_service import Entity, Relation, get_local_graphrag_service
 
 
@@ -239,8 +241,7 @@ def is_case_like_question(text: str) -> bool:
 
 
 def answer_with_graphrag(question: str) -> dict[str, Any]:
-    service = get_local_graphrag_service()
-    result = service.search(question, top_k=5)
+    result = RAGService().search(question, top_k=5)
     return {
         "answer": result.get("answer", ""),
         "symptoms": [],
@@ -254,6 +255,10 @@ def answer_with_graphrag(question: str) -> dict[str, Any]:
         "intent": result.get("intent"),
         "intent_label": result.get("intent_label"),
         "mode": result.get("mode", "local-graphrag"),
+        "citations": result.get("citations", []),
+        "retrieval": result.get("retrieval", {}),
+        "generation": result.get("generation", {"mode": "local-evidence-template"}),
+        "evidence_confidence": result.get("evidence_confidence", "insufficient"),
     }
 
 
@@ -308,18 +313,27 @@ def get_case(case_id: str) -> dict[str, Any]:
 
 @router.post("/chat/ask")
 def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
-    if is_case_like_question(payload.question):
-        result = AgentService().analyze_case(payload.question)
+    conversations = ConversationService()
+    session = conversations.load(payload.historyId)
+    contextualized = conversations.contextualize(session, payload.question)
+    continuing_case = bool(session["turns"]) and session.get("status") == "awaiting_clarification"
+    if is_case_like_question(payload.question) or continuing_case:
+        result = AgentService().analyze_case(contextualized, has_context=bool(session["turns"]))
     else:
-        result = answer_with_graphrag(payload.question)
-    history_id = payload.historyId or str(int(time.time() * 1000))
+        result = answer_with_graphrag(contextualized)
+    conversations.save_turn(session, payload.question, result)
+    history_id = session["id"]
+    result["conversation"] = {
+        "id": history_id, "status": session["status"], "turn_count": len(session["turns"]) // 2,
+        "collected": session["collected"], "pending_questions": session["pending_questions"],
+    }
     _CHAT[history_id] = {
         "id": history_id,
         "title": payload.question[:30],
         "timestamp": now_iso(),
         "messages": [
-            {"role": "user", "content": payload.question},
-            {"role": "assistant", "content": result.get("answer", ""), "result": result},
+            {**turn, **({"result": result} if index == len(session["turns"]) - 1 else {})}
+            for index, turn in enumerate(session["turns"])
         ],
     }
     return result
@@ -327,14 +341,15 @@ def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
 
 @router.get("/chat/ask/stream")
 def ask_chat_stream(question: str, historyId: str | None = None) -> StreamingResponse:
-    if is_case_like_question(question):
-        result = AgentService().analyze_case(question)
-    else:
-        result = answer_with_graphrag(question)
+    result = ask_chat(ChatAskRequest(question=question, historyId=historyId))
     text = result.get("answer", "")
 
     def events():
-        yield f"data: {json.dumps({'type': 'message', 'content': text}, ensure_ascii=False)}\n\n"
+        import re
+        chunks = [part for part in re.split(r"(?<=[。！？!?])", text) if part]
+        for index, chunk in enumerate(chunks):
+            yield f"data: {json.dumps({'type': 'chunk', 'index': index, 'content': chunk}, ensure_ascii=False)}\n\n"
+        yield f"data: {json.dumps({'type': 'result', 'content': text, 'result': result}, ensure_ascii=False)}\n\n"
         yield "data: [DONE]\n\n"
 
     return StreamingResponse(events(), media_type="text/event-stream")

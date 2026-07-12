@@ -99,6 +99,12 @@
             
             <div class="input-actions">
               <div class="action-left">
+                <el-tooltip :content="listening ? '停止语音输入' : '语音输入（实时识别）'" placement="top">
+                  <el-button type="primary" link @click="toggleVoiceInput" :disabled="isStreaming">
+                    <el-icon><Microphone /></el-icon>
+                    {{ listening ? '识别中…' : '语音' }}
+                  </el-button>
+                </el-tooltip>
                 <el-tooltip content="快捷问题模板" placement="top">
                   <el-button type="info" link @click="showQuickTemplates">
                     <el-icon><MagicStick /></el-icon>
@@ -212,7 +218,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   Plus,
@@ -222,7 +228,8 @@ import {
   Promotion,
   ArrowUp,
   VideoPlay,
-  VideoPause
+  VideoPause,
+  Microphone
 } from '@element-plus/icons-vue'
 import { useChatStore } from '@/store'
 import { simulateStreamResponse, StreamSSE } from '@/utils/stream'
@@ -239,6 +246,83 @@ const activeTemplateTab = ref('symptoms')
 const chatHistory = ref<any[]>([])
 const activeHistoryId = ref<string | null>(null)
 const speaking = ref(false)
+const listening = ref(false)
+let recognition: any = null
+let voiceInitialText = ''
+let voiceFinalText = ''
+let voiceSilenceTimer: ReturnType<typeof setTimeout> | null = null
+let voiceAutoSend = false
+
+const clearVoiceSilenceTimer = () => {
+  if (voiceSilenceTimer) {
+    clearTimeout(voiceSilenceTimer)
+    voiceSilenceTimer = null
+  }
+}
+
+const scheduleVoiceAutoStop = () => {
+  clearVoiceSilenceTimer()
+  voiceSilenceTimer = setTimeout(() => {
+    if (listening.value && recognition) {
+      voiceAutoSend = true
+      recognition.stop()
+      ElMessage.info('检测到停顿，正在发送…')
+    }
+  }, 1600)
+}
+
+const toggleVoiceInput = () => {
+  if (listening.value) {
+    voiceAutoSend = true
+    recognition?.stop()
+    return
+  }
+  const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+  if (!SpeechRecognition) {
+    ElMessage.error('当前浏览器不支持语音识别，请使用最新版 Chrome 或 Edge')
+    return
+  }
+  recognition = new SpeechRecognition()
+  recognition.lang = 'zh-CN'
+  recognition.continuous = true
+  recognition.interimResults = true
+  voiceInitialText = inputMessage.value.trim()
+  voiceFinalText = ''
+  voiceAutoSend = false
+  recognition.onstart = () => { listening.value = true }
+  recognition.onresult = (event: any) => {
+    voiceAutoSend = true
+    let interimText = ''
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const text = event.results[i][0].transcript
+      if (event.results[i].isFinal) voiceFinalText += text
+      else interimText += text
+    }
+    inputMessage.value = [voiceInitialText, voiceFinalText, interimText].filter(Boolean).join(' ')
+    scheduleVoiceAutoStop()
+  }
+  recognition.onerror = (event: any) => {
+    clearVoiceSilenceTimer()
+    listening.value = false
+    voiceAutoSend = false
+    ElMessage.error(event.error === 'not-allowed' ? '请允许浏览器使用麦克风' : `语音识别失败：${event.error}`)
+  }
+  recognition.onend = () => {
+    clearVoiceSilenceTimer()
+    listening.value = false
+    const shouldSend = voiceAutoSend && Boolean(inputMessage.value.trim())
+    voiceAutoSend = false
+    if (shouldSend) setTimeout(() => sendMessage(), 120)
+  }
+  recognition.start()
+}
+
+onBeforeUnmount(() => {
+  clearVoiceSilenceTimer()
+  voiceAutoSend = false
+  recognition?.stop()
+  window.speechSynthesis.cancel()
+})
 
 const messages = computed(() => chatStore.messages)
 const isStreaming = computed(() => chatStore.isStreaming)
@@ -510,8 +594,9 @@ const sendMessage = async () => {
     }
 
     // 保存到历史（API + 本地持久化）
+    const backendHistoryId = (response as any)?.conversation?.id
     if (!activeHistoryId.value) {
-      activeHistoryId.value = Date.now().toString()
+      activeHistoryId.value = backendHistoryId || Date.now().toString()
       chatHistory.value.unshift({
         id: activeHistoryId.value,
         title: userMessage.slice(0, 20) + (userMessage.length > 20 ? '...' : ''),
@@ -522,6 +607,12 @@ const sendMessage = async () => {
       const existing = chatHistory.value.find(h => h.id === activeHistoryId.value)
       if (existing) {
         existing.timestamp = new Date().toISOString()
+      } else {
+        chatHistory.value.unshift({
+          id: activeHistoryId.value,
+          title: userMessage.slice(0, 20) + (userMessage.length > 20 ? '...' : ''),
+          timestamp: new Date().toISOString()
+        })
       }
     }
 
