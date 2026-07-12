@@ -112,6 +112,14 @@ class MilvusVectorSearch:
             "的來源是什麼",
             "來源是什麼？",
             "來源是什麼",
+            "的含量测定依据是什么？",
+            "的含量测定依据是什么",
+            "含量测定依据是什么？",
+            "含量测定依据是什么",
+            "的含量測定依據是什麼？",
+            "的含量測定依據是什麼",
+            "含量測定依據是什麼？",
+            "含量測定依據是什麼",
             "有哪些典型症状表现？",
             "有哪些典型症状表现",
             "有哪些典型表现？",
@@ -324,6 +332,30 @@ class MilvusVectorSearch:
             reverse=True,
         )
 
+    def _candidate_limit(
+        self,
+        query: str,
+        top_k: int,
+    ) -> int:
+        """
+        药典栏目问题的目标通常是“某药材 + 某标准栏目”。
+
+        这类问题的正文短、标题相似，过小候选池容易在 dense retrieval
+        阶段漏掉同名 HKCMMS 片段；扩大候选池后再用上面的轻量规则重排。
+        """
+        base_limit = max(
+            10,
+            top_k * 3,
+        )
+
+        if self._detect_pharmacopoeia_section_intent(query):
+            return max(
+                60,
+                top_k * 6,
+            )
+
+        return base_limit
+
     # ========================================================
     # 3. Milvus 原始候选召回
     # ========================================================
@@ -464,9 +496,9 @@ class MilvusVectorSearch:
         # 先从 Milvus 取至少 10 条候选，
         # 再重排。
         # ----------------------------------------------------
-        candidate_k = max(
-            10,
-            top_k * 3,
+        candidate_k = self._candidate_limit(
+            query=query,
+            top_k=top_k,
         )
 
         # 1. Dense Retrieval
@@ -565,9 +597,9 @@ class MilvusVectorSearch:
                 "top_k 必须大于 0"
             )
 
-        candidate_k = max(
-            10,
-            top_k * 3,
+        candidate_k = self._candidate_limit(
+            query=query,
+            top_k=top_k,
         )
 
         hits = self._search_candidates(

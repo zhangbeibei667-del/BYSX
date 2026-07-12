@@ -131,15 +131,20 @@ class GraphRAGService:
                 for keyword in [
                     "有什么方剂",
                     "哪些方剂",
+                    "关联哪些方剂",
+                    "相关方剂",
                     "用什么方剂",
                     "推荐什么方剂",
                     "对应什么方剂",
                     "可用什么方剂",
+                    "哪些证候和方剂",
                 ]
             )
             and any(
                 keyword in text
                 for keyword in [
+                    "关联",
+                    "相关",
                     "治疗",
                     "用于",
                     "失眠",
@@ -1262,15 +1267,7 @@ class GraphRAGService:
         # ----------------------------------------------------
         # Unified QAResult
         # ----------------------------------------------------
-        evidence_items = [
-            EvidenceItem(
-                title=item.title,
-                content=item.content,
-            )
-            for item in chunks
-        ]
-
-        evidence_items.extend(
+        community_evidence_items = [
             EvidenceItem(
                 title=(
                     "图谱社区摘要："
@@ -1279,7 +1276,26 @@ class GraphRAGService:
                 content=summary.content,
             )
             for summary in community_summaries
-        )
+        ]
+
+        chunk_evidence_items = [
+            EvidenceItem(
+                title=item.title,
+                content=item.content,
+            )
+            for item in chunks
+        ]
+
+        if intent == "global_summary":
+            evidence_items = [
+                *community_evidence_items,
+                *chunk_evidence_items,
+            ]
+        else:
+            evidence_items = [
+                *chunk_evidence_items,
+                *community_evidence_items,
+            ]
 
         return QAResult(
             answer=answer,

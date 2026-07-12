@@ -48,6 +48,7 @@ volumes/
 # =========================
 tmp/
 temp/
+reports/graphrag_eval_report.json
 # Pharmacopoeia raw files
 data/pharmacopoeia/raw/
 data/pharmacopoeia/**/*.pdf

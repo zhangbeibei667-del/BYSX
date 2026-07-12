@@ -15,11 +15,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 from app.graph_search import GraphSearch
 from app.graphrag_service import GraphRAGService
 from app.llm_client import LLMClient
-from app.milvus_search import MilvusVectorSearch
-from app.schemas import GraphRAGQueryRequest, QAResult
+from app.schemas import GraphRAGQueryRequest
 
 
 DEFAULT_CASES_PATH = (
@@ -28,6 +30,23 @@ DEFAULT_CASES_PATH = (
     / "evaluation"
     / "graphrag_eval_questions.jsonl"
 )
+
+DEFAULT_REPORT_PATH = (
+    PROJECT_ROOT
+    / "reports"
+    / "graphrag_eval_report.json"
+)
+
+
+class EmptyRetriever:
+    """离线评测用检索器：只评估图谱路径、社区摘要和 fallback。"""
+
+    def search(
+        self,
+        query: str,
+        top_k: int = 3,
+    ):
+        return []
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -155,6 +174,7 @@ def evaluate_case(
     return {
         "id": case.get("id"),
         "query": case.get("query"),
+        "intent": case.get("intent"),
         "passed": passed,
         "checks": checks,
         "answer_preview": answer_text[:160],
@@ -172,6 +192,7 @@ def evaluate_case(
 def build_service(
     enable_llm: bool,
     use_env_graph: bool,
+    no_vector: bool,
 ) -> GraphRAGService:
     entities_path = PROJECT_ROOT / "data" / "entities.json"
     relations_path = PROJECT_ROOT / "data" / "relations.json"
@@ -195,7 +216,12 @@ def build_service(
         relations_path=relations_path,
     )
 
-    vector_search = MilvusVectorSearch()
+    if no_vector:
+        vector_search = EmptyRetriever()
+    else:
+        from app.milvus_search import MilvusVectorSearch
+
+        vector_search = MilvusVectorSearch()
 
     llm_client = None
 
@@ -246,14 +272,52 @@ def main() -> int:
         action="store_true",
         help="默认只评估 member3 本地图谱；传入该参数才使用 .env 中的团队图谱路径。",
     )
+    parser.add_argument(
+        "--no-vector",
+        action="store_true",
+        help="不连接 Milvus/Embedding，只跑不依赖向量检索的用例。",
+    )
+    parser.add_argument(
+        "--intent",
+        default="",
+        help="只运行指定 intent 的用例。",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=DEFAULT_REPORT_PATH,
+        help="评测 JSON 报告输出路径。",
+    )
     args = parser.parse_args()
 
     load_dotenv(PROJECT_ROOT / ".env")
 
     cases = read_jsonl(args.cases)
+
+    if args.intent:
+        cases = [
+            case
+            for case in cases
+            if case.get("intent") == args.intent
+        ]
+
+    skipped_cases: list[dict[str, Any]] = []
+
+    if args.no_vector:
+        runnable_cases = []
+
+        for case in cases:
+            if case.get("requires_vector"):
+                skipped_cases.append(case)
+            else:
+                runnable_cases.append(case)
+
+        cases = runnable_cases
+
     service = build_service(
         enable_llm=args.enable_llm,
         use_env_graph=args.use_env_graph,
+        no_vector=args.no_vector,
     )
 
     reports = [
@@ -277,6 +341,7 @@ def main() -> int:
     print(f"cases : {len(reports)}")
     print(f"passed: {passed_count}")
     print(f"failed: {len(reports) - passed_count}")
+    print(f"skipped: {len(skipped_cases)}")
     print()
 
     for report in reports:
@@ -292,6 +357,46 @@ def main() -> int:
             + " | ".join(report["evidence_titles"][:3])
         )
         print()
+
+    args.output.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+    args.output.write_text(
+        json.dumps(
+            {
+                "cases": len(reports),
+                "passed": passed_count,
+                "failed": len(reports) - passed_count,
+                "skipped": [
+                    {
+                        "id": case.get("id"),
+                        "query": case.get("query"),
+                        "reason": "requires_vector",
+                    }
+                    for case in skipped_cases
+                ],
+                "reports": [
+                    {
+                        **report,
+                        "checks": [
+                            {
+                                "name": name,
+                                "passed": ok,
+                            }
+                            for name, ok in report["checks"]
+                        ],
+                    }
+                    for report in reports
+                ],
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    print(f"report: {args.output}")
 
     return 0 if passed_count == len(reports) else 1
 
