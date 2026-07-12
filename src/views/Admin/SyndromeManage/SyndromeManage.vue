@@ -2,11 +2,11 @@
   <div class="syndrome-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">证候管理</h2>
+      <h2 class="page-title">⚕️ 证候管理</h2>
       <div class="header-actions">
-        <el-button type="primary" :icon="Plus" @click="handleAdd">新建</el-button>
-        <el-button :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
-        <el-button :icon="Download" @click="handleExport">导出数据</el-button>
+        <el-button class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
+        <el-button class="btn-outline" :icon="Download" @click="handleExport">导出数据</el-button>
       </div>
     </div>
 
@@ -36,12 +36,12 @@
           :value="cat"
         />
       </el-select>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button :icon="Refresh" @click="handleReset">重置</el-button>
+      <el-button class="btn-primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button class="btn-outline" :icon="Refresh" @click="handleReset">重置</el-button>
 
       <el-button
         v-if="selectedRows.length > 0"
-        type="danger"
+        class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
       >
@@ -51,74 +51,75 @@
 
     <!-- 数据表格 -->
     <div class="table-wrapper">
-    <el-table
-      ref="tableRef"
-      v-loading="loading"
-      :data="tableData"
-      border
-      stripe
-      row-key="id"
-      @selection-change="handleSelectionChange"
-    >
-      <el-table-column type="selection" width="50" align="center" />
-      <el-table-column type="index" label="序号" width="65" align="center" />
-      <el-table-column prop="id" label="编号" width="100" align="center" />
-      <el-table-column prop="name" label="证候名" width="140" align="center" />
-      <el-table-column prop="category" label="分类" width="130" align="center">
-        <template #default="{ row }">
-          <el-tag size="small" type="warning">{{ row.category }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="核心症状" min-width="220">
-        <template #default="{ row }">
-          <div class="tag-list" v-if="getTagList(row.properties?.clinical_manifestations).length">
-            <el-tag
-              v-for="(tag, i) in getTagList(row.properties?.clinical_manifestations)"
-              :key="i"
-              size="small"
-              type="danger"
-              effect="light"
-            >
-              {{ tag }}
-            </el-tag>
-          </div>
-          <span v-else class="text-placeholder">-</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="对应方剂" min-width="200">
-        <template #default="{ row }">
-          <div class="tag-list" v-if="getTagList(row.properties?.commonly_used_formulas).length">
-            <el-tag
-              v-for="(tag, i) in getTagList(row.properties?.commonly_used_formulas)"
-              :key="i"
-              size="small"
-              type="success"
-              effect="light"
-            >
-              {{ tag }}
-            </el-tag>
-          </div>
-          <span v-else class="text-placeholder">-</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="病机" min-width="160" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.properties?.pathogenesis || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" width="160" align="center" fixed="right">
-        <template #default="{ row }">
-          <el-button type="primary" link size="small" @click="handleEdit(row)">
-            <el-icon><Edit /></el-icon>
-            编辑
-          </el-button>
-          <el-button type="danger" link size="small" @click="handleDelete(row)">
-            <el-icon><Delete /></el-icon>
-            删除
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+      <el-table
+        ref="tableRef"
+        v-loading="loading"
+        :data="tableData"
+        border
+        stripe
+        row-key="id"
+        @selection-change="handleSelectionChange"
+        class="tcm-table"
+      >
+        <el-table-column type="selection" width="50" align="center" />
+        <el-table-column type="index" label="序号" width="65" align="center" />
+        <el-table-column prop="id" label="编号" width="100" align="center" />
+        <el-table-column prop="name" label="证候名" width="140" align="center" />
+        <el-table-column prop="category" label="分类" width="130" align="center">
+          <template #default="{ row }">
+            <el-tag size="small" type="warning">{{ row.category }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="核心症状" min-width="220">
+          <template #default="{ row }">
+            <div class="tag-list" v-if="getTagList(row.properties?.clinical_manifestations).length">
+              <el-tag
+                v-for="(tag, i) in getTagList(row.properties?.clinical_manifestations)"
+                :key="i"
+                size="small"
+                type="danger"
+                effect="light"
+              >
+                {{ tag }}
+              </el-tag>
+            </div>
+            <span v-else class="text-placeholder">-</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="对应方剂" min-width="200">
+          <template #default="{ row }">
+            <div class="tag-list" v-if="getTagList(row.properties?.commonly_used_formulas).length">
+              <el-tag
+                v-for="(tag, i) in getTagList(row.properties?.commonly_used_formulas)"
+                :key="i"
+                size="small"
+                type="success"
+                effect="light"
+              >
+                {{ tag }}
+              </el-tag>
+            </div>
+            <span v-else class="text-placeholder">-</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="病机" min-width="160" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.properties?.pathogenesis || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="160" align="center" fixed="right">
+          <template #default="{ row }">
+            <el-button class="btn-edit" link size="small" @click="handleEdit(row)">
+              <el-icon><Edit /></el-icon>
+              编辑
+            </el-button>
+            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+              <el-icon><Delete /></el-icon>
+              删除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
 
     <!-- 分页 -->
@@ -141,6 +142,7 @@
       width="750px"
       :close-on-click-modal="false"
       @closed="resetForm"
+      class="tcm-dialog"
     >
       <el-form
         ref="formRef"
@@ -274,8 +276,8 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="submitLoading" @click="handleSubmit">
+        <el-button class="btn-cancel" @click="dialogVisible = false">取消</el-button>
+        <el-button class="btn-primary" :loading="submitLoading" @click="handleSubmit">
           {{ isEdit ? '更新' : '创建' }}
         </el-button>
       </template>
@@ -287,16 +289,17 @@
       title="确认删除"
       width="420px"
       :close-on-click-modal="false"
+      class="tcm-dialog"
     >
       <div class="delete-confirm-content">
-        <el-icon class="delete-icon" :size="48" color="#f56c6c">
+        <el-icon class="delete-icon" :size="48" color="#b35c5c">
           <WarningFilled />
         </el-icon>
         <p class="delete-message">{{ deleteMessage }}</p>
       </div>
       <template #footer>
-        <el-button @click="deleteDialogVisible = false">取消</el-button>
-        <el-button type="danger" :loading="deleteLoading" @click="confirmDelete">
+        <el-button class="btn-cancel" @click="deleteDialogVisible = false">取消</el-button>
+        <el-button class="btn-danger" :loading="deleteLoading" @click="confirmDelete">
           确认删除
         </el-button>
       </template>
@@ -332,13 +335,11 @@ import { entityApi } from '@/api'
 import type { SyndromeEntity, SymptomEntity, PrescriptionEntity } from '@/types'
 import ImportDialog from '@/components/Common/ImportDialog.vue'
 
-// ==================== 选项数据 ====================
 const categoryOptions = [
   '脏腑辨证', '气血津液辨证', '八纲辨证', '六经辨证',
   '卫气营血辨证', '三焦辨证', '经络辨证', '病因辨证'
 ]
 
-// ==================== 已有实体数据（供多选） ====================
 const symptomOptions = ref<SymptomEntity[]>([])
 const prescriptionOptions = ref<PrescriptionEntity[]>([])
 
@@ -348,32 +349,20 @@ const fetchReferenceData = async () => {
       entityApi.symptoms.list({ pageSize: 9999 }),
       entityApi.prescriptions.list({ pageSize: 9999 })
     ])
+    if (symRes.code === 200) symptomOptions.value = symRes.data?.list ?? symRes.data?.records ?? []
+    else if (Array.isArray(symRes)) symptomOptions.value = symRes
+    else if (symRes.data && Array.isArray(symRes.data)) symptomOptions.value = symRes.data
 
-    if (symRes.code === 200) {
-      symptomOptions.value = symRes.data?.list ?? symRes.data?.records ?? []
-    } else if (Array.isArray(symRes)) {
-      symptomOptions.value = symRes
-    } else if (symRes.data && Array.isArray(symRes.data)) {
-      symptomOptions.value = symRes.data
-    }
-
-    if (presRes.code === 200) {
-      prescriptionOptions.value = presRes.data?.list ?? presRes.data?.records ?? []
-    } else if (Array.isArray(presRes)) {
-      prescriptionOptions.value = presRes
-    } else if (presRes.data && Array.isArray(presRes.data)) {
-      prescriptionOptions.value = presRes.data
-    }
+    if (presRes.code === 200) prescriptionOptions.value = presRes.data?.list ?? presRes.data?.records ?? []
+    else if (Array.isArray(presRes)) prescriptionOptions.value = presRes
+    else if (presRes.data && Array.isArray(presRes.data)) prescriptionOptions.value = presRes.data
   } catch (error) {
     console.error('获取参考数据失败:', error)
   }
 }
 
-const removeTag = (arr: string[], index: number) => {
-  arr.splice(index, 1)
-}
+const removeTag = (arr: string[], index: number) => { arr.splice(index, 1) }
 
-// ==================== 标签解析工具 ====================
 const getTagList = (str?: string): string[] => {
   if (!str) return []
   return str.split(/[,，]/).map((s: string) => s.trim()).filter(Boolean)
@@ -388,99 +377,54 @@ const selectedRows = ref<SyndromeEntity[]>([])
 const route = useRoute()
 const router = useRouter()
 
-const searchParams = reactive({
-  name: '',
-  category: ''
-})
+const searchParams = reactive({ name: '', category: '' })
+const pagination = reactive({ page: 1, pageSize: 20, total: 0 })
 
-const pagination = reactive({
-  page: 1,
-  pageSize: 20,
-  total: 0
-})
-
-// ==================== 数据获取 ====================
 const fetchData = async () => {
   loading.value = true
   try {
     const res: any = await entityApi.syndromes.list({
-      page: pagination.page,
-      pageSize: pagination.pageSize,
-      name: searchParams.name || undefined,
-      category: searchParams.category || undefined
+      page: pagination.page, pageSize: pagination.pageSize,
+      name: searchParams.name || undefined, category: searchParams.category || undefined
     })
     if (res.code === 200) {
       tableData.value = res.data?.list ?? res.data?.records ?? []
       pagination.total = res.data?.total ?? 0
-    } else if (Array.isArray(res)) {
-      tableData.value = res
-      pagination.total = res.length
-    } else if (res.data && Array.isArray(res.data)) {
-      tableData.value = res.data
-      pagination.total = res.total ?? res.data.length
-    } else {
-      tableData.value = []
-      pagination.total = 0
-    }
+    } else if (Array.isArray(res)) { tableData.value = res; pagination.total = res.length }
+    else if (res.data && Array.isArray(res.data)) { tableData.value = res.data; pagination.total = res.total ?? res.data.length }
+    else { tableData.value = []; pagination.total = 0 }
   } catch (error) {
     console.error('获取证候列表失败:', error)
     ElMessage.error('获取证候列表失败')
-  } finally {
-    loading.value = false
-  }
+  } finally { loading.value = false }
 }
 
-// ==================== 搜索 ====================
-const handleSearch = () => {
-  pagination.page = 1
-  fetchData()
-}
+const handleSearch = () => { pagination.page = 1; fetchData() }
+const handleReset = () => { searchParams.name = ''; searchParams.category = ''; handleSearch() }
+const handleSelectionChange = (rows: SyndromeEntity[]) => { selectedRows.value = rows }
 
-const handleReset = () => {
-  searchParams.name = ''
-  searchParams.category = ''
-  handleSearch()
-}
-
-const handleSelectionChange = (rows: SyndromeEntity[]) => {
-  selectedRows.value = rows
-}
-
-// ==================== 导出 ====================
 const handleExport = async () => {
   try {
     const res: any = await entityApi.syndromes.export()
     const blob = res instanceof Blob ? res : new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
     const url = window.URL.createObjectURL(blob)
     const link = document.createElement('a')
-    link.href = url
-    link.download = '证候数据导出.xlsx'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    link.href = url; link.download = '证候数据导出.xlsx'
+    document.body.appendChild(link); link.click(); document.body.removeChild(link)
     window.URL.revokeObjectURL(url)
     ElMessage.success('导出成功')
   } catch {
     const link = document.createElement('a')
     link.href = '/api/admin/syndromes/export'
     link.download = '证候数据导出.xlsx'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    document.body.appendChild(link); link.click(); document.body.removeChild(link)
   }
 }
 
-// ==================== 导入 ====================
-const showImportDialog = ref(false)
-
-const handleImportSuccess = () => {
-  showImportDialog.value = false
-  ElMessage.success('导入成功')
-  fetchData()
-  fetchReferenceData()
-}
-
 // ==================== 新建/编辑弹窗 ====================
+const showImportDialog = ref(false)
+const handleImportSuccess = () => { showImportDialog.value = false; ElMessage.success('导入成功'); fetchData(); fetchReferenceData() }
+
 const dialogVisible = ref(false)
 const isEdit = ref(false)
 const editId = ref('')
@@ -488,15 +432,9 @@ const submitLoading = ref(false)
 const formRef = ref<FormInstance>()
 
 const initFormData = () => ({
-  name: '',
-  category: '',
-  clinical_manifestations: [] as string[],
-  commonly_used_formulas: [] as string[],
-  pathogenesis: '',
-  treatment_principle: '',
-  description: ''
+  name: '', category: '', clinical_manifestations: [] as string[],
+  commonly_used_formulas: [] as string[], pathogenesis: '', treatment_principle: '', description: ''
 })
-
 const formData = reactive(initFormData())
 
 const formRules: FormRules = {
@@ -505,17 +443,11 @@ const formRules: FormRules = {
   clinical_manifestations: [{ required: true, message: '请选择核心症状', trigger: 'change' }]
 }
 
-const handleAdd = () => {
-  isEdit.value = false
-  editId.value = ''
-  dialogVisible.value = true
-}
+const handleAdd = () => { isEdit.value = false; editId.value = ''; dialogVisible.value = true }
 
 const handleEdit = (row: SyndromeEntity) => {
-  isEdit.value = true
-  editId.value = row.id
-  formData.name = row.name
-  formData.category = row.category
+  isEdit.value = true; editId.value = row.id
+  formData.name = row.name; formData.category = row.category
   formData.clinical_manifestations = getTagList(row.properties?.clinical_manifestations)
   formData.commonly_used_formulas = getTagList(row.properties?.commonly_used_formulas)
   formData.pathogenesis = row.properties?.pathogenesis || ''
@@ -524,46 +456,27 @@ const handleEdit = (row: SyndromeEntity) => {
   dialogVisible.value = true
 }
 
-const resetForm = () => {
-  Object.assign(formData, initFormData())
-  formRef.value?.resetFields()
-}
+const resetForm = () => { Object.assign(formData, initFormData()); formRef.value?.resetFields() }
 
 const handleSubmit = async () => {
   if (!formRef.value) return
   await formRef.value.validate(async (valid: boolean) => {
     if (!valid) return
-
     submitLoading.value = true
     try {
       const payload = {
-        name: formData.name,
-        category: formData.category,
-        description: formData.description,
+        name: formData.name, category: formData.category, description: formData.description,
         properties: {
           clinical_manifestations: formData.clinical_manifestations.join('，'),
           commonly_used_formulas: formData.commonly_used_formulas.join('，'),
-          pathogenesis: formData.pathogenesis,
-          treatment_principle: formData.treatment_principle
+          pathogenesis: formData.pathogenesis, treatment_principle: formData.treatment_principle
         }
       }
-
-      if (isEdit.value) {
-        await entityApi.syndromes.update(editId.value, payload as any)
-        ElMessage.success('编辑成功')
-      } else {
-        await entityApi.syndromes.create(payload as any)
-        ElMessage.success('创建成功')
-      }
-
-      dialogVisible.value = false
-      fetchData()
-    } catch (error) {
-      console.error('提交失败:', error)
-      ElMessage.error('操作失败，请重试')
-    } finally {
-      submitLoading.value = false
-    }
+      if (isEdit.value) { await entityApi.syndromes.update(editId.value, payload as any); ElMessage.success('编辑成功') }
+      else { await entityApi.syndromes.create(payload as any); ElMessage.success('创建成功') }
+      dialogVisible.value = false; fetchData()
+    } catch (error) { console.error('提交失败:', error); ElMessage.error('操作失败，请重试') }
+    finally { submitLoading.value = false }
   })
 }
 
@@ -574,182 +487,105 @@ const isBatchDelete = ref(false)
 const deleteTarget = ref<SyndromeEntity | null>(null)
 
 const deleteMessage = computed(() => {
-  if (isBatchDelete.value) {
-    return `确认删除选中的 ${selectedRows.value.length} 条证候记录？此操作不可恢复。`
-  }
+  if (isBatchDelete.value) return `确认删除选中的 ${selectedRows.value.length} 条证候记录？此操作不可恢复。`
   return `确认删除证候「${deleteTarget.value?.name}」？此操作不可恢复。`
 })
 
-const handleDelete = (row: SyndromeEntity) => {
-  isBatchDelete.value = false
-  deleteTarget.value = row
-  deleteDialogVisible.value = true
-}
-
+const handleDelete = (row: SyndromeEntity) => { isBatchDelete.value = false; deleteTarget.value = row; deleteDialogVisible.value = true }
 const handleBatchDelete = () => {
-  if (selectedRows.value.length === 0) {
-    ElMessage.warning('请先选择要删除的证候')
-    return
-  }
-  isBatchDelete.value = true
-  deleteTarget.value = null
-  deleteDialogVisible.value = true
+  if (selectedRows.value.length === 0) { ElMessage.warning('请先选择要删除的证候'); return }
+  isBatchDelete.value = true; deleteTarget.value = null; deleteDialogVisible.value = true
 }
 
 const confirmDelete = async () => {
   deleteLoading.value = true
   try {
-    if (isBatchDelete.value) {
-      const ids = selectedRows.value.map((row) => row.id)
-      await entityApi.syndromes.batchDelete(ids)
-      ElMessage.success(`成功删除 ${ids.length} 条记录`)
-    } else if (deleteTarget.value) {
-      await entityApi.syndromes.delete(deleteTarget.value.id)
-      ElMessage.success('删除成功')
-    }
-    deleteDialogVisible.value = false
-    tableRef.value?.clearSelection()
-    fetchData()
-  } catch (error) {
-    console.error('删除失败:', error)
-    ElMessage.error('删除失败，请重试')
-  } finally {
-    deleteLoading.value = false
-  }
+    if (isBatchDelete.value) { const ids = selectedRows.value.map((row) => row.id); await entityApi.syndromes.batchDelete(ids); ElMessage.success(`成功删除 ${ids.length} 条记录`) }
+    else if (deleteTarget.value) { await entityApi.syndromes.delete(deleteTarget.value.id); ElMessage.success('删除成功') }
+    deleteDialogVisible.value = false; tableRef.value?.clearSelection(); fetchData()
+  } catch (error) { console.error('删除失败:', error); ElMessage.error('删除失败，请重试') }
+  finally { deleteLoading.value = false }
 }
 
 // ==================== 初始化 ====================
 onMounted(async () => {
-  await fetchData()
-  fetchReferenceData()
-
-  // 从知识图谱跳转过来时，自动打开指定实体的编辑弹窗
+  await fetchData(); fetchReferenceData()
   const editId = route.query.editId as string
   if (editId) {
     await nextTick()
     const entity = tableData.value.find((item: any) => item.id === editId)
-    if (entity) {
-      handleEdit(entity)
-      router.replace({ query: {} })
-    }
+    if (entity) { handleEdit(entity); router.replace({ query: {} }) }
   }
 })
 </script>
 
 <style scoped lang="scss">
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$gold-light: rgba(200, 168, 110, 0.15);
+$cream-bg: #f7f3eb;
+$cream-white: #faf6ef;
+$text-dark: #2c3630;
+$text-light: #6b7a72;
+$border-light: rgba(110, 135, 120, 0.12);
+$danger-red: #b35c5c;
+
 .syndrome-manage {
-  // ===== 这行控制页面整体的上下左右边距 =====
-  padding: 20px;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
 
-  .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // ===== 顶部标题栏与下方搜索栏的间距（下边距）=====
-    margin-bottom: 20px;
-
-    .page-title {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-      color: #303133;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-    }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; }
+    .header-actions { display: flex; gap: 10px; }
   }
 
-  .search-bar {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    // ===== 搜索栏与下方表格的间距（下边距）=====
-    margin-bottom: 16px;
-    // ===== 搜索栏内部内边距（上下左右）=====
-    padding: 16px;
-    background-color: #f5f7fa;
-    border-radius: 6px;
-    flex-wrap: wrap;
+  .search-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 18px; padding: 16px 20px; background: $cream-white; border-radius: 12px; border: 1px solid $border-light; flex-wrap: wrap; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; padding: 2px 0; }
+  .text-placeholder { color: #c0c4cc; }
+
+  .pagination-wrapper { margin-top: 18px; display: flex; justify-content: flex-end;
+    :deep(.el-pagination) { .el-pagination__total { color: $text-light; } .el-pager li { border-radius: 4px; &:hover { color: $mid-green; } &.is-active { background: $gold-light; color: $mid-green; font-weight: 500; } } button:hover { color: $mid-green; } }
   }
 
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    padding: 2px 0;
+  .table-wrapper { width: 100%; overflow-x: auto; border-radius: 12px; border: 1px solid $border-light; background: $cream-white; }
+
+  :deep(.tcm-table) {
+    --el-table-border-color: $border-light;
+    --el-table-header-bg-color: $cream-bg;
+    --el-table-row-hover-bg-color: rgba(200, 168, 110, 0.06);
+    .el-table__header-wrapper th { background-color: $cream-bg !important; color: $text-dark; font-weight: 500; font-size: 13px; letter-spacing: 0.5px; }
+    .el-table__body-wrapper td { color: $text-light; font-size: 13px; }
+    .el-table__row--striped { background-color: rgba(247, 243, 235, 0.3); }
   }
 
-  .text-placeholder {
-    color: #c0c4cc;
+  .btn-primary { background: $mid-green; border-color: $mid-green; color: #fff; &:hover { background: lighten($mid-green, 8%); border-color: lighten($mid-green, 8%); color: #fff; } }
+  .btn-outline { background: transparent; border-color: $border-light; color: $text-light; &:hover { border-color: $mid-green; color: $mid-green; background: rgba(70, 99, 80, 0.05); } }
+  .btn-danger { background: $danger-red; border-color: $danger-red; color: #fff; &:hover { background: darken($danger-red, 8%); border-color: darken($danger-red, 8%); color: #fff; } }
+  .btn-edit { color: $mid-green; &:hover { color: lighten($mid-green, 15%); } }
+  .btn-delete { color: $danger-red; &:hover { color: darken($danger-red, 10%); } }
+  .btn-cancel { color: $text-light; &:hover { color: $text-dark; } }
+
+  :deep(.tcm-dialog) {
+    .el-dialog { border-radius: 16px; box-shadow: 0 8px 40px rgba(42, 64, 48, 0.12); }
+    .el-dialog__header { border-bottom: 1px solid $border-light; padding: 20px 24px 16px; .el-dialog__title { color: $text-dark; font-weight: 500; font-size: 18px; } }
+    .el-dialog__body { padding: 24px; }
+    .el-dialog__footer { border-top: 1px solid $border-light; padding: 16px 24px 20px; }
   }
 
-  .pagination-wrapper {
-    // ===== 表格与分页组件的间距（上边距）=====
-    margin-top: 16px;
-    display: flex;
-    justify-content: flex-end;
+  .relation-selector .selected-tags { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    .tag-label { font-size: 13px; color: $text-light; margin-right: 4px; }
   }
 
-  .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+  .entity-option { display: flex; justify-content: space-between; align-items: center; width: 100%;
+    .entity-name { color: $text-dark; font-weight: 500; }
+    .entity-category { font-size: 12px; color: $text-light; }
   }
 
-  .relation-selector {
-    .selected-tags {
-      // ===== 选择器与下方标签列表的间距（上边距）=====
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-
-      .tag-label {
-        font-size: 13px;
-        color: #909399;
-        // ===== 标签文字右侧间距 =====
-        margin-right: 4px;
-      }
-    }
-  }
-
-  .entity-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-
-    .entity-name {
-      color: #303133;
-      font-weight: 500;
-    }
-
-    .entity-category {
-      font-size: 12px;
-      color: #909399;
-    }
-  }
-
-  .delete-confirm-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // ===== 删除确认弹窗内容的内边距（上下）=====
-    padding: 16px 0;
-
-    .delete-icon {
-      // ===== 警告图标与下方文字间距（下边距）=====
-      margin-bottom: 16px;
-    }
-
-    .delete-message {
-      font-size: 15px;
-      color: #303133;
-      text-align: center;
-      line-height: 1.6;
-    }
+  .delete-confirm-content { display: flex; flex-direction: column; align-items: center; padding: 16px 0;
+    .delete-icon { margin-bottom: 16px; }
+    .delete-message { font-size: 15px; color: $text-dark; text-align: center; line-height: 1.6; }
   }
 }
 </style>

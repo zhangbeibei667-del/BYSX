@@ -168,9 +168,6 @@
 
     <!-- ==================== 中央图谱画布（60%） ==================== -->
     <section class="center-canvas" ref="canvasContainer">
-      <!-- 星空背景 -->
-      <div class="starfield-bg"></div>
-
       <!-- ECharts 挂载容器 -->
       <div ref="chartRef" class="chart-container"></div>
 
@@ -338,13 +335,13 @@ const graphStore = useGraphStore()
 
 // ==================== 常量定义 ====================
 const TYPE_COLORS: Record<string, string> = {
-  '药材': '#10b981',
-  '方剂': '#6366f1',
-  '症状': '#f59e0b',
-  '证候': '#b91c1c',
-  '功效': '#06b6d4',
-  '禁忌': '#ef4444',
-  '文献': '#8b5cf6',
+  '药材': '#588264',
+  '方剂': '#8c6e4a',
+  '症状': '#c8a86e',
+  '证候': '#b13e3e',
+  '功效': '#5a8c7a',
+  '禁忌': '#b13e3e',
+  '文献': '#7a6a8a',
 }
 
 const TYPE_LABELS: Record<string, string> = {
@@ -388,16 +385,13 @@ const PROPERTY_LABEL_MAP: Record<string, string> = {
 
 // ==================== 响应式状态 ====================
 
-// 数据
 const allNodes = ref<GraphNode[]>([])
 const allEdges = ref<GraphEdge[]>([])
 const loading = ref(false)
 
-// 搜索
 const searchKeyword = ref('')
 const searchLoading = ref(false)
 
-// 筛选
 const filterTypes = reactive([
   { type: '药材', label: '药材', color: TYPE_COLORS['药材'], checked: true },
   { type: '方剂', label: '方剂', color: TYPE_COLORS['方剂'], checked: true },
@@ -405,42 +399,34 @@ const filterTypes = reactive([
   { type: '证候', label: '证候', color: TYPE_COLORS['证候'], checked: true },
 ])
 
-// 路径查询
 const pathSource = ref('')
 const pathTarget = ref('')
 const pathLoading = ref(false)
 const activePath = ref<{ nodes: string[]; edges: [string, string][] }>({ nodes: [], edges: [] })
 
-// 热门实体
 const hotEntities = ref<Array<{ id: string; label: string; type: string; color: string }>>([])
 
-// 选中节点
 const selectedNode = ref<GraphNode | null>(null)
 const entityDetail = ref<Record<string, any> | null>(null)
 const detailLoading = ref(false)
 
-// 收藏
 const favorites = ref<Set<string>>(new Set(JSON.parse(localStorage.getItem('graph_favorites') || '[]')))
 
-// 图谱实例
 const chartRef = ref<HTMLDivElement>()
 const canvasContainer = ref<HTMLElement>()
 let chartInstance: echarts.ECharts | null = null
 const zoomLevel = ref(1)
 
-// 权限
 const isAdmin = computed(() => !!localStorage.getItem('admin_token'))
 const isFavorited = computed(() => selectedNode.value ? favorites.value.has(selectedNode.value.id) : false)
 
 // ==================== 计算属性 ====================
 
-// 筛选后的节点
 const filteredNodes = computed(() => {
   const checkedTypes = filterTypes.filter(f => f.checked).map(f => f.type)
   return allNodes.value.filter(n => checkedTypes.includes(n.type))
 })
 
-// 筛选后的边（两端节点都在筛选结果中）
 const filteredEdges = computed(() => {
   const filteredNodeIds = new Set(filteredNodes.value.map(n => n.id))
   return allEdges.value.filter(
@@ -451,12 +437,10 @@ const filteredEdges = computed(() => {
 const filteredNodeCount = computed(() => filteredNodes.value.length)
 const filteredEdgeCount = computed(() => filteredEdges.value.length)
 
-// 图谱概览图例
 const legendItems = computed(() =>
   filterTypes.map(f => ({ type: f.type, label: f.label, color: f.color }))
 )
 
-// 所有实体选项（用于路径查询下拉框）
 const allEntityOptions = computed(() =>
   allNodes.value.map(n => ({
     value: n.id,
@@ -466,7 +450,6 @@ const allEntityOptions = computed(() =>
   }))
 )
 
-// 当前选中节点的关联边
 const relatedEdges = computed(() => {
   if (!selectedNode.value) return []
   const nodeId = selectedNode.value.id
@@ -488,7 +471,6 @@ const relatedEdges = computed(() => {
     })
 })
 
-// 展示的属性（映射中文名）
 const displayProperties = computed(() => {
   if (!entityDetail.value) return {}
   const props = entityDetail.value.properties || entityDetail.value
@@ -498,7 +480,6 @@ const displayProperties = computed(() => {
     const label = PROPERTY_LABEL_MAP[key] || key
     mapped[label] = String(value)
   }
-  // 也处理顶层字段
   if (entityDetail.value.category && !mapped['分类']) {
     mapped['分类'] = entityDetail.value.category
   }
@@ -552,36 +533,35 @@ function buildChartOption(
       symbol: n.type === '方剂' ? 'diamond' as const : 'circle' as const,
       symbolSize: size,
       category: n.type,
-      // 存储原始数据
       _rawType: n.type,
       _rawId: n.id,
       itemStyle: {
-        color: inPath ? '#fbbf24' : color,
-        borderColor: inPath ? '#f59e0b' : 'rgba(255,255,255,0.3)',
+        color: inPath ? '#c8a86e' : color,
+        borderColor: inPath ? '#b8943e' : 'rgba(255,255,255,0.3)',
         borderWidth: inPath ? 2 : 0.5,
-        shadowColor: inPath ? '#fbbf24' : color,
+        shadowColor: inPath ? '#c8a86e' : color,
         shadowBlur: inPath ? 25 : 12,
         opacity: dimmed ? 0.25 : 1,
       },
       label: {
         show: !dimmed || inPath,
-        color: dimmed ? 'rgba(148,163,184,0.3)' : '#e2e8f0',
+        color: dimmed ? 'rgba(107,122,114,0.3)' : '#2c3630',
         fontSize: 11,
         position: 'bottom' as const,
         distance: 6,
-        textShadowColor: inPath ? '#fbbf24' : 'transparent',
+        textShadowColor: inPath ? '#c8a86e' : 'transparent',
         textShadowBlur: inPath ? 8 : 0,
       },
       emphasis: {
         scale: 1.3,
         itemStyle: {
           shadowBlur: 30,
-          shadowColor: inPath ? '#fbbf24' : color,
+          shadowColor: inPath ? '#c8a86e' : color,
         },
         label: {
           fontSize: 14,
           fontWeight: 'bold',
-          color: '#ffffff',
+          color: '#2a4030',
         },
       },
     }
@@ -599,16 +579,16 @@ function buildChartOption(
       name: e.label,
       _rawLabel: e.label,
       lineStyle: {
-        color: inPath ? '#fbbf24' : 'rgba(148,163,184,0.35)',
+        color: inPath ? '#c8a86e' : 'rgba(110,135,120,0.35)',
         width: inPath ? 2.5 : 1,
         opacity: dimmed ? 0.1 : (inPath ? 1 : 0.7),
         curveness: 0.15,
-        shadowColor: inPath ? '#fbbf24' : 'transparent',
+        shadowColor: inPath ? '#c8a86e' : 'transparent',
         shadowBlur: inPath ? 6 : 0,
       },
       emphasis: {
         lineStyle: {
-          color: '#fbbf24',
+          color: '#c8a86e',
           width: 3,
           opacity: 1,
         },
@@ -620,22 +600,22 @@ function buildChartOption(
     backgroundColor: 'transparent',
     tooltip: {
       show: true,
-      backgroundColor: 'rgba(15,23,42,0.95)',
-      borderColor: 'rgba(148,163,184,0.3)',
-      textStyle: { color: '#e2e8f0', fontSize: 13 },
+      backgroundColor: 'rgba(247,243,235,0.95)',
+      borderColor: 'rgba(200,168,110,0.4)',
+      textStyle: { color: '#2a4030', fontSize: 13 },
       formatter: (params: any) => {
         if (params.dataType === 'edge') {
           const srcName = allNodes.value.find(n => n.id === params.data.source)?.label || params.data.source
           const tgtName = allNodes.value.find(n => n.id === params.data.target)?.label || params.data.target
-          return `<span style="color:#94a3b8">${srcName}</span>
-                  <span style="color:#fbbf24;margin:0 6px">—${params.data._rawLabel || params.data.name || '关联'}→</span>
-                  <span style="color:#94a3b8">${tgtName}</span>`
+          return `<span style="color:#6b7a72">${srcName}</span>
+                  <span style="color:#c8a86e;margin:0 6px">—${params.data._rawLabel || params.data.name || '关联'}→</span>
+                  <span style="color:#6b7a72">${tgtName}</span>`
         }
         const type = params.data._rawType || params.data.category || ''
         const color = getTypeColor(type)
-        return `<b style="font-size:14px;color:#fff">${params.data.name || params.name}</b>
+        return `<b style="font-size:14px;color:#2a4030">${params.data.name || params.name}</b>
                 <br/><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${color};margin-right:6px"></span>
-                <span style="color:#94a3b8">${type}</span>`
+                <span style="color:#6b7a72">${type}</span>`
       },
     },
     animationDuration: 800,
@@ -658,7 +638,6 @@ function buildChartOption(
         },
         data: chartNodes,
         edges: chartEdges,
-        // 分类颜色
         categories: Object.entries(TYPE_COLORS).map(([name, color]) => ({
           name,
           itemStyle: { color },
@@ -689,7 +668,6 @@ function initChart() {
     devicePixelRatio: window.devicePixelRatio || 1,
   })
 
-  // 监听缩放变化
   chartInstance.on('graphroam', () => {
     if (chartInstance) {
       const option = chartInstance.getOption() as any
@@ -700,7 +678,6 @@ function initChart() {
     }
   })
 
-  // 监听节点点击
   chartInstance.on('click', (params: any) => {
     if (params.dataType === 'node') {
       const nodeId = params.data?._rawId || params.data?.id
@@ -833,7 +810,6 @@ function useMockGraphData() {
 }
 
 function updateHotEntities() {
-  // 根据度中心性计算热门实体
   const degreeMap = calculateDegree(allNodes.value, allEdges.value)
   const sorted = [...allNodes.value]
     .sort((a, b) => (degreeMap[b.id] || 0) - (degreeMap[a.id] || 0))
@@ -877,7 +853,6 @@ async function handleSearch() {
       return
     }
 
-    // 合并到全量数据（去重）
     const existingIds = new Set(allNodes.value.map(n => n.id))
     newNodes.forEach(n => {
       if (!existingIds.has(n.id)) {
@@ -898,13 +873,11 @@ async function handleSearch() {
     renderChart()
     updateHotEntities()
 
-    // 对第一个结果闪烁
     const targetNode = allNodes.value.find(n => n.id === newNodes[0].id)
     if (targetNode) {
       blinkNode(targetNode.id)
     }
   } catch {
-    // API 未就绪，回退到本地搜索（在已加载的 mock 数据中匹配）
     console.log('graphApi.searchEntities 未就绪，使用本地搜索')
     const keywordLower = keyword.toLowerCase()
     const checkedTypes = filterTypes.filter(f => f.checked).map(f => f.type)
@@ -920,11 +893,8 @@ async function handleSearch() {
       return
     }
 
-    // 高亮第一个匹配节点
     const targetNode = matched[0]
-    // 先打开右侧详情面板
     handleNodeClick(targetNode.id)
-    // 居中 + 闪烁
     blinkNode(targetNode.id)
 
     if (matched.length > 1) {
@@ -951,7 +921,6 @@ function handleNodeClick(nodeId: string) {
   const node = allNodes.value.find(n => n.id === nodeId)
   if (!node) return
 
-  // 清除路径高亮
   if (activePath.value.nodes.length > 0) {
     activePath.value = { nodes: [], edges: [] }
   }
@@ -959,12 +928,10 @@ function handleNodeClick(nodeId: string) {
   selectedNode.value = node
   loadEntityDetail(nodeId)
 
-  // 高亮选中节点
   if (chartInstance) {
     chartInstance.dispatchAction({ type: 'highlight', seriesIndex: 0, name: node.label })
   }
 
-  // 更新 store
   graphStore.selectNode(node)
 }
 
@@ -987,7 +954,6 @@ async function loadEntityDetail(nodeId: string) {
     } else if (response) {
       entityDetail.value = response
     } else {
-      // 使用图谱节点自身属性
       const node = allNodes.value.find(n => n.id === nodeId)
       entityDetail.value = node?.properties || node || {}
     }
@@ -1029,7 +995,6 @@ async function handlePathQuery() {
       return
     }
 
-    // 合并路径数据到全量数据
     const existingIds = new Set(allNodes.value.map(n => n.id))
     pathNodes.forEach(n => {
       if (!existingIds.has(n.id)) {
@@ -1056,7 +1021,6 @@ async function handlePathQuery() {
 
     ElMessage.success(`找到路径，共 ${nodeIds.length} 个节点，${edgePairs.length} 条关系`)
   } catch {
-    // 客户端计算简单路径
     const found = findLocalPath(pathSource.value, pathTarget.value)
     if (found) {
       activePath.value = found
@@ -1072,7 +1036,6 @@ async function handlePathQuery() {
 }
 
 function findLocalPath(sourceId: string, targetId: string): { nodes: string[]; edges: [string, string][] } | null {
-  // BFS 最短路径
   const adj: Record<string, Array<{ node: string; edgeLabel: string }>> = {}
   allEdges.value.forEach(e => {
     if (!adj[e.source]) adj[e.source] = []
@@ -1102,7 +1065,6 @@ function findLocalPath(sourceId: string, targetId: string): { nodes: string[]; e
 
   if (!parent[targetId]) return null
 
-  // 回溯路径
   const nodes: string[] = []
   const edges: [string, string][] = []
   let current: string | null = targetId
@@ -1153,7 +1115,7 @@ function exportImage() {
   const url = chartInstance.getDataURL({
     type: 'png',
     pixelRatio: 2,
-    backgroundColor: '#0a1628',
+    backgroundColor: '#faf6ef',
   })
   const link = document.createElement('a')
   link.href = url
@@ -1172,7 +1134,7 @@ function blinkNode(nodeId: string) {
   if (!node) return
 
   let count = 0
-  const maxBlinks = 6 // 3次闪烁 = 6次切换
+  const maxBlinks = 6
 
   const startBlink = () => {
     if (!chartInstance) return
@@ -1193,7 +1155,6 @@ function blinkNode(nodeId: string) {
     }, 350)
   }
 
-  // 先居中（内部有 900ms 延迟等待布局动画），居中完成后再闪烁
   centerOnNode(nodeId, startBlink)
 }
 
@@ -1202,7 +1163,6 @@ function centerOnNode(nodeId: string, callback?: () => void) {
   const node = allNodes.value.find(n => n.id === nodeId)
   if (!node) return
 
-  // 等力导向布局动画结束后再居中（animationDuration 为 800ms）
   setTimeout(() => {
     try {
       if (!chartInstance) return
@@ -1213,7 +1173,6 @@ function centerOnNode(nodeId: string, callback?: () => void) {
       const coordSys = seriesModel.coordinateSystem
       const data = seriesModel.getData()
 
-      // 通过节点 label（即图表中的 name）定位数据索引
       const nodeIndex = data.indexOfName(node.label)
       if (nodeIndex < 0) return
 
@@ -1224,11 +1183,8 @@ function centerOnNode(nodeId: string, callback?: () => void) {
       const cw = chartInstance.getWidth()
       const ch = chartInstance.getHeight()
 
-      // 获取当前缩放级别
       const zoom: number = coordSys.getZoom?.() ?? 1
 
-      // 屏幕坐标 = 布局坐标 × zoom + pan
-      // 目标：让节点出现在画布正中央 → pan = 画布中心 - 节点布局坐标 × zoom
       const panX = cw / 2 - nx * zoom
       const panY = ch / 2 - ny * zoom
 
@@ -1246,14 +1202,12 @@ function centerOnNode(nodeId: string, callback?: () => void) {
 function jumpToEntity(nodeId: string) {
   clearSearch()
   handleNodeClick(nodeId)
-  // blinkNode 内部已包含居中逻辑，无需重复调用 centerOnNode
   blinkNode(nodeId)
 }
 
 function jumpToRelatedEntity(rel: { otherId: string; otherType: string }) {
   clearSearch()
   handleNodeClick(rel.otherId)
-  // blinkNode 内部已包含居中逻辑，无需重复调用 centerOnNode
   blinkNode(rel.otherId)
 }
 
@@ -1301,7 +1255,6 @@ onBeforeUnmount(() => {
   }
 })
 
-// 数据变化时重新渲染
 watch([filteredNodes, filteredEdges], () => {
   if (chartInstance) {
     const hasPath = activePath.value.nodes.length > 0
@@ -1311,40 +1264,46 @@ watch([filteredNodes, filteredEdges], () => {
 </script>
 
 <style scoped lang="scss">
-// ==================== 变量 ====================
-$bg-dark: #0a1628;
-$bg-mid: #111d32;
-$card-bg: #ffffff;
-$card-radius: 12px;
-$panel-width: 20%;
-$center-width: 60%;
-$text-muted: #94a3b8;
-$text-dark: #1e293b;
-$indigo: #6366f1;
-$emerald: #10b981;
-$amber: #f59e0b;
-$rose: #b91c1c;
+// ==================== 国风变量 ====================
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$cream-bg: #f7f3eb;
+$light-cream: #faf6ef;
+$text-dark: #2c3630;
+$text-light: #6b7a72;
+$card-shadow: 0 2px 16px rgba(42, 64, 48, 0.08);
+$card-border: rgba(110, 135, 120, 0.12);
+$white: #ffffff;
+$syndrome-red: #b13e3e;
+$herb-green: #588264;
+$formula-brown: #8c6e4a;
 
 // ==================== 主容器 ====================
 .graph-browse {
   display: flex;
-  height: calc(100vh - 64px - 60px); // 减去 header 和 footer
+  height: calc(100vh - 64px - 60px);
   min-height: 700px;
-  max-width: 1600px;
+  max-width: 1440px;
   margin: 0 auto;
-  background: $bg-dark;
-  border-radius: 8px;
+  background: $cream-bg;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: $card-shadow;
+  margin-top: 400px;
+  
+  @media (max-width: 1200px) {
+    margin-top: -1020px;
+  }
 }
 
 // ==================== 左侧面板 ====================
 .left-panel {
-  width: $panel-width;
+  width: 20%;
   min-width: 260px;
   max-width: 320px;
-  background: #f8fafc;
-  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  background: $white;
+  border-right: 1px solid $card-border;
   display: flex;
   flex-direction: column;
   z-index: 10;
@@ -1361,17 +1320,17 @@ $rose: #b91c1c;
       width: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
+      background: rgba(110, 135, 120, 0.2);
       border-radius: 4px;
     }
   }
 }
 
 .panel-card {
-  background: $card-bg;
-  border-radius: $card-radius;
+  background: $light-cream;
+  border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  box-shadow: $card-shadow;
 
   .card-header {
     display: flex;
@@ -1383,7 +1342,7 @@ $rose: #b91c1c;
     margin-bottom: 12px;
 
     .el-icon {
-      color: $indigo;
+      color: $mid-green;
     }
   }
 }
@@ -1396,24 +1355,27 @@ $rose: #b91c1c;
   :deep(.el-input) {
     flex: 1;
   }
+  
+  :deep(.el-input__wrapper) {
+    border-radius: 8px;
+    border-color: $card-border;
+    box-shadow: none;
+    &:hover { border-color: $mid-green; }
+    &.is-focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
+  }
 
   .search-icon {
     cursor: pointer;
-    color: $indigo;
-
-    &:hover {
-      color: darken($indigo, 10%);
-    }
+    color: $mid-green;
+    &:hover { color: $dark-green; }
   }
 
   .search-btn {
     flex-shrink: 0;
-    background: linear-gradient(135deg, $indigo, #4f46e5);
+    background: $mid-green;
     border: none;
-
-    &:hover {
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
-    }
+    border-radius: 8px;
+    &:hover { background: $dark-green; }
   }
 }
 
@@ -1442,12 +1404,16 @@ $rose: #b91c1c;
     height: 10px;
     border-radius: 50%;
     flex-shrink: 0;
-    box-shadow: 0 0 6px currentColor;
   }
 
   .filter-label {
     font-size: 13px;
     color: $text-dark;
+  }
+  
+  :deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
+    background: $mid-green;
+    border-color: $mid-green;
   }
 }
 
@@ -1461,10 +1427,10 @@ $rose: #b91c1c;
     .count-num {
       font-size: 22px;
       font-weight: 700;
-      color: $indigo;
+      color: $mid-green;
     }
     .count-unit {
-      color: $text-muted;
+      color: $text-light;
       font-size: 12px;
       margin: 0 2px;
     }
@@ -1484,7 +1450,7 @@ $rose: #b91c1c;
       align-items: center;
       gap: 6px;
       font-size: 12px;
-      color: #475569;
+      color: $text-light;
 
       .legend-dot {
         width: 10px;
@@ -1505,18 +1471,24 @@ $rose: #b91c1c;
   .path-arrow {
     text-align: center;
     font-size: 20px;
-    color: $text-muted;
+    color: $text-light;
     line-height: 1;
+  }
+
+  :deep(.el-select .el-input__wrapper) {
+    border-radius: 8px;
+    border-color: $card-border;
+    box-shadow: none;
+    &:hover { border-color: $mid-green; }
+    &.is-focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
   }
 
   .path-btn {
     width: 100%;
-    background: linear-gradient(135deg, $emerald, #059669);
+    background: $herb-green;
     border: none;
-
-    &:hover {
-      background: linear-gradient(135deg, #059669, #047857);
-    }
+    border-radius: 8px;
+    &:hover { background: $dark-green; }
   }
 
   .entity-option {
@@ -1534,7 +1506,7 @@ $rose: #b91c1c;
     .option-type {
       margin-left: auto;
       font-size: 11px;
-      color: $text-muted;
+      color: $text-light;
     }
   }
 }
@@ -1552,52 +1524,21 @@ $rose: #b91c1c;
     font-size: 12px;
     cursor: pointer;
     transition: all 0.25s;
-    background: rgba(255, 255, 255, 0.8);
+    background: $white;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      filter: brightness(1.1);
+      box-shadow: 0 4px 12px rgba(42, 64, 48, 0.12);
     }
   }
 }
 
 // ==================== 中央画布 ====================
 .center-canvas {
-  width: $center-width;
   flex: 1;
   position: relative;
-  background: linear-gradient(135deg, $bg-dark 0%, #1a2a3a 50%, #0f2335 100%);
+  background: $cream-bg;
   overflow: hidden;
-
-  .starfield-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    // CSS 星空背景
-    background-image:
-      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1.5px 1.5px at 35% 80%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1px 1px at 65% 75%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1.5px 1.5px at 80% 85%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 90% 35%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 20% 90%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1.5px 1.5px at 60% 55%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 95% 5%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1.5px 1.5px at 45% 90%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(1px 1px at 75% 40%, rgba(255,255,255,0.4), transparent);
-    background-size: 100% 100%;
-    animation: starTwinkle 4s ease-in-out infinite alternate;
-  }
 
   .chart-container {
     position: absolute;
@@ -1613,19 +1554,18 @@ $rose: #b91c1c;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(10, 22, 40, 0.85);
-    backdrop-filter: blur(4px);
+    background: rgba(247, 243, 235, 0.9);
   }
 
   .loading-state {
     flex-direction: column;
     gap: 16px;
-    color: $text-muted;
+    color: $text-light;
 
     .loading-icon {
       font-size: 40px;
       animation: spin 1.2s linear infinite;
-      color: $indigo;
+      color: $mid-green;
     }
 
     p {
@@ -1633,7 +1573,6 @@ $rose: #b91c1c;
     }
   }
 
-  // 定位标签
   .location-tag {
     position: absolute;
     top: 16px;
@@ -1643,17 +1582,16 @@ $rose: #b91c1c;
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(251, 191, 36, 0.5);
+    background: rgba(42, 64, 48, 0.9);
+    border: 1px solid rgba(200, 168, 110, 0.5);
     border-radius: 20px;
-    color: #fbbf24;
+    color: $soft-gold;
     font-size: 14px;
     font-weight: 500;
     backdrop-filter: blur(8px);
     pointer-events: none;
   }
 
-  // 工具栏
   .canvas-toolbar {
     position: absolute;
     top: 16px;
@@ -1669,18 +1607,18 @@ $rose: #b91c1c;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(42, 64, 48, 0.85);
+      border: 1px solid rgba(110, 135, 120, 0.3);
       border-radius: 8px;
-      color: #e2e8f0;
+      color: $cream-bg;
       cursor: pointer;
       transition: all 0.2s;
       backdrop-filter: blur(8px);
       font-size: 16px;
 
       &:hover:not(:disabled) {
-        background: rgba(99, 102, 241, 0.3);
-        border-color: $indigo;
+        background: rgba(70, 99, 80, 0.9);
+        border-color: $mid-green;
         color: #fff;
       }
 
@@ -1694,11 +1632,11 @@ $rose: #b91c1c;
 
 // ==================== 右侧详情面板 ====================
 .right-panel {
-  width: $panel-width;
+  width: 20%;
   min-width: 260px;
   max-width: 320px;
-  background: #f8fafc;
-  border-left: 1px solid rgba(148, 163, 184, 0.2);
+  background: $white;
+  border-left: 1px solid $card-border;
   z-index: 10;
   position: relative;
   overflow: hidden;
@@ -1715,7 +1653,7 @@ $rose: #b91c1c;
       width: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
+      background: rgba(110, 135, 120, 0.2);
       border-radius: 4px;
     }
   }
@@ -1727,26 +1665,26 @@ $rose: #b91c1c;
     width: 32px;
     height: 32px;
     border: none;
-    background: #f1f5f9;
+    background: $cream-bg;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #64748b;
+    color: $text-light;
     z-index: 2;
     transition: all 0.2s;
 
     &:hover {
-      background: #e2e8f0;
-      color: #1e293b;
+      background: rgba(177, 62, 62, 0.1);
+      color: $syndrome-red;
     }
   }
 
   .detail-header {
     text-align: center;
     padding-bottom: 12px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid $card-border;
 
     .detail-name {
       margin: 0 0 10px 0;
@@ -1770,11 +1708,12 @@ $rose: #b91c1c;
     align-items: center;
     gap: 12px;
     padding: 40px 0;
-    color: $text-muted;
+    color: $text-light;
 
     .loading-icon {
       font-size: 30px;
       animation: spin 1.2s linear infinite;
+      color: $mid-green;
     }
   }
 
@@ -1788,15 +1727,14 @@ $rose: #b91c1c;
   }
 
   .property-list {
-    background: #fff;
+    background: $cream-bg;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 
     .property-row {
       display: flex;
       padding: 10px 14px;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid rgba(110, 135, 120, 0.08);
 
       &:last-child {
         border-bottom: none;
@@ -1806,7 +1744,7 @@ $rose: #b91c1c;
         width: 80px;
         flex-shrink: 0;
         font-size: 12px;
-        color: $text-muted;
+        color: $text-light;
         font-weight: 500;
       }
 
@@ -1829,17 +1767,16 @@ $rose: #b91c1c;
       align-items: center;
       gap: 6px;
       padding: 8px 10px;
-      background: #fff;
+      background: $cream-bg;
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
       font-size: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 
       &:hover {
         transform: translateX(4px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        background: #f0f9ff;
+        box-shadow: 0 2px 8px rgba(42, 64, 48, 0.1);
+        background: rgba(70, 99, 80, 0.06);
       }
 
       .rel-source,
@@ -1865,8 +1802,8 @@ $rose: #b91c1c;
 
       .rel-label-tag {
         padding: 2px 8px;
-        background: #fef3c7;
-        color: #b45309;
+        background: rgba(200, 168, 110, 0.2);
+        color: #8c6e4a;
         border-radius: 10px;
         font-size: 11px;
         font-weight: 500;
@@ -1881,17 +1818,24 @@ $rose: #b91c1c;
     gap: 10px;
     margin-top: auto;
     padding-top: 12px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid $card-border;
 
-    .el-button {
-      width: 100%;
+    :deep(.el-button--primary) {
+      background: $mid-green;
+      border-color: $mid-green;
+      border-radius: 8px;
+      &:hover { background: $dark-green; border-color: $dark-green; }
+    }
+    
+    :deep(.el-button--warning) {
+      border-radius: 8px;
     }
   }
 }
 
 .no-data {
   text-align: center;
-  color: $text-muted;
+  color: $text-light;
   font-size: 13px;
   padding: 16px 0;
 }
@@ -1918,10 +1862,13 @@ $rose: #b91c1c;
   to { transform: rotate(360deg); }
 }
 
-@keyframes starTwinkle {
-  0% { opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
+// ==================== Element Plus 覆盖 ====================
+:deep(.el-empty__description) {
+  color: $text-light;
+}
+
+:deep(.el-button--primary) {
+  --el-button-border-radius: 8px;
 }
 
 // ==================== 响应式 ====================
@@ -1937,7 +1884,7 @@ $rose: #b91c1c;
       min-width: 0;
       max-height: 400px;
       border-right: none;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      border-bottom: 1px solid $card-border;
     }
 
     .center-canvas {
@@ -1952,7 +1899,7 @@ $rose: #b91c1c;
       min-width: 0;
       max-height: 50vh;
       border-left: none;
-      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      border-top: 1px solid $card-border;
       order: 2;
     }
   }
@@ -1993,14 +1940,6 @@ $rose: #b91c1c;
         font-size: 14px;
       }
     }
-  }
-}
-
-.graph-browse {
-  margin-top: -800px;
-  
-  @media (max-width: 1200px) {
-    margin-top: -1020px;
   }
 }
 </style>

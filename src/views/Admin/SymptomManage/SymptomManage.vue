@@ -2,11 +2,11 @@
   <div class="symptom-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">症状管理</h2>
+      <h2 class="page-title">🩺 症状管理</h2>
       <div class="header-actions">
-        <el-button type="primary" :icon="Plus" @click="handleAdd">新建</el-button>
-        <el-button :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
-        <el-button :icon="Download" @click="handleExport">导出数据</el-button>
+        <el-button class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
+        <el-button class="btn-outline" :icon="Download" @click="handleExport">导出数据</el-button>
       </div>
     </div>
 
@@ -36,12 +36,12 @@
           :value="cat"
         />
       </el-select>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button :icon="Refresh" @click="handleReset">重置</el-button>
+      <el-button class="btn-primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button class="btn-outline" :icon="Refresh" @click="handleReset">重置</el-button>
 
       <el-button
         v-if="selectedRows.length > 0"
-        type="danger"
+        class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
       >
@@ -51,71 +51,72 @@
 
     <!-- 数据表格 -->
     <div class="table-wrapper">
-    <el-table
-      ref="tableRef"
-      v-loading="loading"
-      :data="tableData"
-      border
-      stripe
-      row-key="id"
-      @selection-change="handleSelectionChange"
-    >
-      <el-table-column type="selection" width="50" align="center" />
-      <el-table-column type="index" label="序号" width="65" align="center" />
-      <el-table-column prop="id" label="编号" width="100" align="center" />
-      <el-table-column prop="name" label="症状名" width="130" align="center" />
-      <el-table-column prop="category" label="分类" width="100" align="center">
-        <template #default="{ row }">
-          <el-tag size="small">{{ row.category }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="描述" min-width="200" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.description || row.properties?.nature || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="部位" width="100" align="center">
-        <template #default="{ row }">
-          {{ row.properties?.body_part || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="辨证要点" min-width="160" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.properties?.differentiation || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="关联证候" width="120" align="center">
-        <template #default="{ row }">
-          <el-badge
-            :value="getSyndromeCount(row.id)"
-            class="syndrome-badge"
-            :hidden="!getSyndromeCount(row.id)"
-          >
-            <el-button
-              type="primary"
-              link
-              size="small"
-              @click="showRelatedSyndromes(row)"
+      <el-table
+        ref="tableRef"
+        v-loading="loading"
+        :data="tableData"
+        border
+        stripe
+        row-key="id"
+        @selection-change="handleSelectionChange"
+        class="tcm-table"
+      >
+        <el-table-column type="selection" width="50" align="center" />
+        <el-table-column type="index" label="序号" width="65" align="center" />
+        <el-table-column prop="id" label="编号" width="100" align="center" />
+        <el-table-column prop="name" label="症状名" width="130" align="center" />
+        <el-table-column prop="category" label="分类" width="100" align="center">
+          <template #default="{ row }">
+            <el-tag size="small" type="danger">{{ row.category }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="描述" min-width="200" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.description || row.properties?.nature || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="部位" width="100" align="center">
+          <template #default="{ row }">
+            {{ row.properties?.body_part || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="辨证要点" min-width="160" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.properties?.differentiation || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="关联证候" width="120" align="center">
+          <template #default="{ row }">
+            <el-badge
+              :value="getSyndromeCount(row.id)"
+              class="syndrome-badge"
+              :hidden="!getSyndromeCount(row.id)"
             >
-              <el-icon><Connection /></el-icon>
-              {{ getSyndromeCount(row.id) ? '查看' : '无' }}
+              <el-button
+                class="btn-edit"
+                link
+                size="small"
+                @click="showRelatedSyndromes(row)"
+              >
+                <el-icon><Connection /></el-icon>
+                {{ getSyndromeCount(row.id) ? '查看' : '无' }}
+              </el-button>
+            </el-badge>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="160" align="center" fixed="right">
+          <template #default="{ row }">
+            <el-button class="btn-edit" link size="small" @click="handleEdit(row)">
+              <el-icon><Edit /></el-icon>
+              编辑
             </el-button>
-          </el-badge>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" width="160" align="center" fixed="right">
-        <template #default="{ row }">
-          <el-button type="primary" link size="small" @click="handleEdit(row)">
-            <el-icon><Edit /></el-icon>
-            编辑
-          </el-button>
-          <el-button type="danger" link size="small" @click="handleDelete(row)">
-            <el-icon><Delete /></el-icon>
-            删除
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+              <el-icon><Delete /></el-icon>
+              删除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
 
     <!-- 分页 -->
@@ -138,6 +139,7 @@
       width="700px"
       :close-on-click-modal="false"
       @closed="resetForm"
+      class="tcm-dialog"
     >
       <el-form
         ref="formRef"
@@ -248,19 +250,20 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="submitLoading" @click="handleSubmit">
+        <el-button class="btn-cancel" @click="dialogVisible = false">取消</el-button>
+        <el-button class="btn-primary" :loading="submitLoading" @click="handleSubmit">
           {{ isEdit ? '更新' : '创建' }}
         </el-button>
       </template>
     </el-dialog>
 
-    <!-- 关联证候弹窗（只读） -->
+    <!-- 关联证候弹窗 -->
     <el-dialog
       v-model="syndromeDialogVisible"
       :title="`「${currentSymptom?.name}」关联的证候`"
       width="600px"
       :close-on-click-modal="false"
+      class="tcm-dialog"
     >
       <div v-if="syndromeLoading" class="loading-content">
         <el-icon class="loading-icon" :size="32"><Loading /></el-icon>
@@ -270,7 +273,7 @@
         <el-empty description="暂无关联证候数据" />
       </div>
       <div v-else class="syndrome-list">
-        <el-table :data="relatedSyndromes" border stripe size="small">
+        <el-table :data="relatedSyndromes" border stripe size="small" class="tcm-table">
           <el-table-column prop="id" label="编号" width="90" align="center" />
           <el-table-column prop="name" label="证候名称" width="140" align="center" />
           <el-table-column prop="category" label="分类" width="100" align="center" />
@@ -282,7 +285,7 @@
         </el-table>
       </div>
       <template #footer>
-        <el-button @click="syndromeDialogVisible = false">关闭</el-button>
+        <el-button class="btn-cancel" @click="syndromeDialogVisible = false">关闭</el-button>
       </template>
     </el-dialog>
 
@@ -292,16 +295,17 @@
       title="确认删除"
       width="420px"
       :close-on-click-modal="false"
+      class="tcm-dialog"
     >
       <div class="delete-confirm-content">
-        <el-icon class="delete-icon" :size="48" color="#f56c6c">
+        <el-icon class="delete-icon" :size="48" color="#b35c5c">
           <WarningFilled />
         </el-icon>
         <p class="delete-message">{{ deleteMessage }}</p>
       </div>
       <template #footer>
-        <el-button @click="deleteDialogVisible = false">取消</el-button>
-        <el-button type="danger" :loading="deleteLoading" @click="confirmDelete">
+        <el-button class="btn-cancel" @click="deleteDialogVisible = false">取消</el-button>
+        <el-button class="btn-danger" :loading="deleteLoading" @click="confirmDelete">
           确认删除
         </el-button>
       </template>
@@ -355,7 +359,7 @@ const natureOptions = [
   '红', '淡', '紫', '暗'
 ]
 
-// ==================== 全部症状（供伴随症状选择） ====================
+// ==================== 全部症状 ====================
 const allSymptoms = ref<SymptomEntity[]>([])
 
 const fetchAllSymptoms = async () => {
@@ -397,7 +401,6 @@ const pagination = reactive({
   total: 0
 })
 
-// 关联证候计数缓存
 const syndromeCountMap = ref<Record<string, number>>({})
 
 const getSyndromeCount = (id: string): number => {
@@ -426,8 +429,6 @@ const fetchData = async () => {
       pagination.total = res.total ?? res.data.length
     }
     tableData.value = list
-
-    // 异步加载关联证候数量
     fetchSyndromeCounts(list)
   } catch (error) {
     console.error('获取症状列表失败:', error)
@@ -481,7 +482,6 @@ const handleExport = async () => {
     window.URL.revokeObjectURL(url)
     ElMessage.success('导出成功')
   } catch {
-    // 降级：直接触发下载
     const link = document.createElement('a')
     link.href = '/api/admin/symptoms/export'
     link.download = '症状数据导出.xlsx'
@@ -668,7 +668,6 @@ onMounted(async () => {
   await fetchData()
   fetchAllSymptoms()
 
-  // 从知识图谱跳转过来时，自动打开指定实体的编辑弹窗
   const editId = route.query.editId as string
   if (editId) {
     await nextTick()
@@ -682,131 +681,93 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$gold-light: rgba(200, 168, 110, 0.15);
+$cream-bg: #f7f3eb;
+$cream-white: #faf6ef;
+$text-dark: #2c3630;
+$text-light: #6b7a72;
+$border-light: rgba(110, 135, 120, 0.12);
+$danger-red: #b35c5c;
+
 .symptom-manage {
-  padding: 20px;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
 
   .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    .page-title {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-      color: #303133;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-    }
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; }
+    .header-actions { display: flex; gap: 10px; }
   }
 
   .search-bar {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f5f7fa;
-    border-radius: 6px;
-    flex-wrap: wrap;
+    display: flex; gap: 12px; align-items: center; margin-bottom: 18px;
+    padding: 16px 20px; background: $cream-white; border-radius: 12px; border: 1px solid $border-light; flex-wrap: wrap;
   }
 
-  .syndrome-badge {
-    :deep(.el-badge__content) {
-      margin-top: -2px;
-    }
-  }
+  .syndrome-badge :deep(.el-badge__content) { margin-top: -2px; }
 
   .pagination-wrapper {
-    margin-top: 16px;
-    display: flex;
-    justify-content: flex-end;
+    margin-top: 18px; display: flex; justify-content: flex-end;
+    :deep(.el-pagination) {
+      .el-pagination__total { color: $text-light; }
+      .el-pager li { border-radius: 4px; &:hover { color: $mid-green; } &.is-active { background: $gold-light; color: $mid-green; font-weight: 500; } }
+      button:hover { color: $mid-green; }
+    }
   }
 
   .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+    width: 100%; overflow-x: auto; border-radius: 12px; border: 1px solid $border-light; background: $cream-white;
   }
 
-  .associated-selector {
-    .selected-tags {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
+  :deep(.tcm-table) {
+    --el-table-border-color: $border-light;
+    --el-table-header-bg-color: $cream-bg;
+    --el-table-row-hover-bg-color: rgba(200, 168, 110, 0.06);
+    .el-table__header-wrapper th { background-color: $cream-bg !important; color: $text-dark; font-weight: 500; font-size: 13px; letter-spacing: 0.5px; }
+    .el-table__body-wrapper td { color: $text-light; font-size: 13px; }
+    .el-table__row--striped { background-color: rgba(247, 243, 235, 0.3); }
+  }
 
-      .tag-label {
-        font-size: 13px;
-        color: #909399;
-        margin-right: 4px;
-      }
-    }
+  .btn-primary { background: $mid-green; border-color: $mid-green; color: #fff; &:hover { background: lighten($mid-green, 8%); border-color: lighten($mid-green, 8%); color: #fff; } }
+  .btn-outline { background: transparent; border-color: $border-light; color: $text-light; &:hover { border-color: $mid-green; color: $mid-green; background: rgba(70, 99, 80, 0.05); } }
+  .btn-danger { background: $danger-red; border-color: $danger-red; color: #fff; &:hover { background: darken($danger-red, 8%); border-color: darken($danger-red, 8%); color: #fff; } }
+  .btn-edit { color: $mid-green; &:hover { color: lighten($mid-green, 15%); } }
+  .btn-delete { color: $danger-red; &:hover { color: darken($danger-red, 10%); } }
+  .btn-cancel { color: $text-light; &:hover { color: $text-dark; } }
+
+  :deep(.tcm-dialog) {
+    .el-dialog { border-radius: 16px; box-shadow: 0 8px 40px rgba(42, 64, 48, 0.12); }
+    .el-dialog__header { border-bottom: 1px solid $border-light; padding: 20px 24px 16px; .el-dialog__title { color: $text-dark; font-weight: 500; font-size: 18px; } }
+    .el-dialog__body { padding: 24px; }
+    .el-dialog__footer { border-top: 1px solid $border-light; padding: 16px 24px 20px; }
+  }
+
+  .associated-selector .selected-tags {
+    margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    .tag-label { font-size: 13px; color: $text-light; margin-right: 4px; }
   }
 
   .symptom-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-
-    .sym-name {
-      color: #303133;
-      font-weight: 500;
-    }
-
-    .sym-category {
-      font-size: 12px;
-      color: #909399;
-    }
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    .sym-name { color: $text-dark; font-weight: 500; }
+    .sym-category { font-size: 12px; color: $text-light; }
   }
 
-  .loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 0;
-
-    .loading-icon {
-      color: #409eff;
-      animation: spin 2s linear infinite;
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: #909399;
-    }
+  .loading-content { display: flex; flex-direction: column; align-items: center; padding: 32px 0;
+    .loading-icon { color: $mid-green; animation: spin 2s linear infinite; margin-bottom: 12px; }
+    p { color: $text-light; }
   }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .empty-content {
-    padding: 20px 0;
-  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .empty-content { padding: 20px 0; }
 
   .delete-confirm-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px 0;
-
-    .delete-icon {
-      margin-bottom: 16px;
-    }
-
-    .delete-message {
-      font-size: 15px;
-      color: #303133;
-      text-align: center;
-      line-height: 1.6;
-    }
+    display: flex; flex-direction: column; align-items: center; padding: 16px 0;
+    .delete-icon { margin-bottom: 16px; }
+    .delete-message { font-size: 15px; color: $text-dark; text-align: center; line-height: 1.6; }
   }
 }
 </style>
