@@ -9,6 +9,7 @@ import ChatAI from '@/views/Front/ChatAI/ChatAI.vue'
 import GraphBrowse from '@/views/Front/GraphBrowse/GraphBrowse.vue'
 import CaseStudy from '@/views/Front/CaseStudy/CaseStudy.vue'
 import History from '@/views/Front/History/History.vue'
+import Login from '@/views/Front/Login/Login.vue'
 
 // 后台布局
 import AdminLayout from '@/layouts/AdminLayout.vue'
@@ -53,6 +54,11 @@ const router = createRouter({
           path: 'history',
           name: 'history',
           component: History
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: Login
         }
       ]
     },

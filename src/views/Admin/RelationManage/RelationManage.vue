@@ -580,6 +580,7 @@ $danger-red: #b35c5c;
 
 .relation-manage {
   padding: 0;
+  width: 100%;  // 添加这行
   max-width: 100%;
   overflow: hidden;
 

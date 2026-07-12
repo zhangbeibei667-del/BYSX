@@ -610,21 +610,10 @@ $danger-red: #b35c5c;
   // ===== 表格容器 =====
   .table-wrapper {
     width: 100%;
-    max-width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
     border-radius: 12px;
     border: 1px solid $border-light;
     background: $cream-white;
-    
-    :deep(.el-table) {
-      min-width: 1400px;
-      width: 100%;
-      
-      .el-table__body-wrapper {
-        overflow-x: auto;
-      }
-    }
   }
 
   // ===== 国风表格样式 =====

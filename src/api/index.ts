@@ -37,6 +37,29 @@ api.interceptors.response.use(
   }
 )
 
+// ===== 认证接口 =====
+export const authApi = {
+  // 登录
+  login: (data: { username: string; password: string }) =>
+    api.post<{ token: string; user: any }>('/auth/login', data),
+
+  // 注册
+  register: (data: { username: string; email: string; password: string }) =>
+    api.post<{ token: string; user: any }>('/auth/register', data),
+
+  // 获取当前用户信息
+  getCurrentUser: () =>
+    api.get<{ user: any }>('/auth/user'),
+
+  // 修改密码
+  changePassword: (data: { oldPassword: string; newPassword: string }) =>
+    api.put('/auth/password', data),
+
+  // 退出登录（可选：后端销毁 token）
+  logout: () =>
+    api.post('/auth/logout')
+}
+
 // 问答接口
 export const chatApi = {
   // 发送问题

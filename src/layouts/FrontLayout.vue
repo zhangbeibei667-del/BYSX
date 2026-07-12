@@ -111,7 +111,7 @@ const goToAdmin = async () => {
 }
 
 const login = () => {
-  console.log('登录')
+  router.push('/login')
 }
 </script>
 
