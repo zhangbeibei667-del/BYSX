@@ -73,6 +73,26 @@
             </el-button>
           </template>
         </el-table-column>
+        <el-table-column label="来源类型" width="90" align="center">
+          <template #default="{ row }">
+            <el-tag :type="getDocTypeColor(row.type)" size="small">{{ getDocTypeLabel(row.type) }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="原文片段" min-width="180" show-overflow-tooltip>
+          <template #default="{ row }">
+            <el-tooltip
+              v-if="row.original_text"
+              :content="row.original_text"
+              placement="top"
+              :show-after="300"
+              effect="light"
+              popper-class="doc-text-tooltip"
+            >
+              <span class="text-preview">{{ truncateText(row.original_text, 30) }}</span>
+            </el-tooltip>
+            <span v-else class="text-placeholder">-</span>
+          </template>
+        </el-table-column>
         <el-table-column label="类型" width="100" align="center">
           <template #default="{ row }">
             <el-tag :type="getDocTypeColor(row.type)" size="small">{{ row.type || '-' }}</el-tag>
@@ -166,6 +186,28 @@
             </el-form-item>
           </el-col>
         </el-row>
+
+        <el-row :gutter="20">
+          <el-col :span="14">
+            <el-form-item label="来源详情">
+              <el-input v-model="formData.source_detail" placeholder="如：《中国药典》2020版 第一卷" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="10">
+            <el-form-item label="页码/章节">
+              <el-input v-model="formData.chapter" placeholder="如：P123 或 第五章" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <el-form-item label="原文片段">
+          <el-input
+            v-model="formData.original_text"
+            type="textarea"
+            :rows="4"
+            placeholder="请直接引用原文内容，用于RAG回答中展示依据"
+          />
+        </el-form-item>
 
         <el-form-item label="文献内容" prop="content">
           <div class="editor-wrapper">
@@ -296,6 +338,25 @@
           <span class="meta-time">上传时间：{{ formatDate(viewDoc.createdAt) }}</span>
         </div>
 
+        <!-- 溯源信息 -->
+        <div class="doc-provenance" v-if="viewDoc.source_detail || viewDoc.chapter || viewDoc.original_text">
+          <div class="section-label">📖 溯源信息</div>
+          <div class="provenance-grid">
+            <div class="provenance-item" v-if="viewDoc.source_detail">
+              <span class="provenance-label">来源详情：</span>
+              <span class="provenance-value">{{ viewDoc.source_detail }}</span>
+            </div>
+            <div class="provenance-item" v-if="viewDoc.chapter">
+              <span class="provenance-label">页码/章节：</span>
+              <span class="provenance-value">{{ viewDoc.chapter }}</span>
+            </div>
+          </div>
+          <div class="provenance-quote" v-if="viewDoc.original_text">
+            <div class="provenance-label">原文片段：</div>
+            <blockquote class="original-text-block">{{ viewDoc.original_text }}</blockquote>
+          </div>
+        </div>
+
         <div class="doc-relations" v-if="getRelatedEntities(viewDoc).length">
           <span class="section-label">关联实体：</span>
           <el-tag
@@ -361,11 +422,15 @@ import type { DocumentEntity } from '@/types'
 interface EntityOption { _key: string; id: string; name: string; type: string }
 interface Association { type: string; id: string; name: string }
 
-const docTypeOptions = ['药典', '教材', '科普', '期刊']
+const docTypeOptions = ['药典', '教材', '古籍', '科普', '期刊']
 const entityTypeOptions = ['药材', '方剂', '症状', '证候']
 
-const docTypeColorMap: Record<string, string> = { '药典': 'danger', '教材': 'primary', '科普': 'success', '期刊': 'warning' }
+const docTypeColorMap: Record<string, string> = { '药典': 'danger', '教材': 'primary', '古籍': 'warning', '科普': 'info', '期刊': 'success' }
 const getDocTypeColor = (t?: string): string => docTypeColorMap[t || ''] || 'info'
+const getDocTypeLabel = (t?: string): string => {
+  const map: Record<string, string> = { '药典': '药典', '教材': '教材', '古籍': '古籍', '科普': '科普', '期刊': '期刊' }
+  return map[t || ''] || t || '-'
+}
 
 const entityTypeColorMap: Record<string, string> = { '药材': 'success', '方剂': 'primary', '症状': 'danger', '证候': 'warning' }
 const getEntityTypeColor = (t?: string): string => entityTypeColorMap[t || ''] || 'info'
@@ -418,6 +483,11 @@ const insertMarkdown = (before: string, after: string) => {
   const start = textarea.selectionStart; const end = textarea.selectionEnd
   const selected = formData.content.substring(start, end)
   formData.content = formData.content.substring(0, start) + before + selected + after + formData.content.substring(end)
+}
+
+const truncateText = (text: string, maxLen: number): string => {
+  if (!text) return ''
+  return text.length > maxLen ? text.substring(0, maxLen) + '…' : text
 }
 
 const formatDate = (dateStr?: string): string => {
@@ -479,7 +549,7 @@ const formRef = ref<FormInstance>()
 const uploadRef = ref()
 const uploadFile = ref<File | null>(null)
 
-const initFormData = () => ({ name: '', type: '', content: '', source: '', relatedEntities: [] as Association[] })
+const initFormData = () => ({ name: '', type: '', source_detail: '', original_text: '', chapter: '', content: '', source: '', relatedEntities: [] as Association[] })
 const formData = reactive(initFormData())
 
 const formRules: FormRules = {
@@ -493,6 +563,9 @@ const handleAdd = () => { isEdit.value = false; editId.value = ''; uploadFile.va
 const handleEdit = (row: DocumentEntity) => {
   isEdit.value = true; editId.value = row.id; uploadFile.value = null
   formData.name = row.name; formData.type = row.type || ''; formData.content = row.content || ''
+  formData.source_detail = (row as any).source_detail || row.source_detail || ''
+  formData.original_text = (row as any).original_text || row.original_text || ''
+  formData.chapter = (row as any).chapter || row.chapter || ''
   formData.source = row.source || ''
   formData.relatedEntities = Array.isArray(row.relatedEntities) ? row.relatedEntities.map((e) => ({ ...e })) : []
   dialogVisible.value = true
@@ -521,7 +594,9 @@ const handleSubmit = async () => {
       const relatedEntities = formData.relatedEntities.filter((e) => e.id && e.name)
       const payload: any = {
         name: formData.name, type: formData.type, content: formData.content,
-        source: formData.source, relatedEntities
+        source: formData.source, source_detail: formData.source_detail,
+        original_text: formData.original_text, chapter: formData.chapter,
+        relatedEntities
       }
       if (uploadFile.value) {
         try {
@@ -659,6 +734,18 @@ $danger-red: #b35c5c;
     .doc-meta { display: flex; align-items: center; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid $border-light; margin-bottom: 16px;
       .meta-source, .meta-time { font-size: 13px; color: $text-light; }
     }
+    .doc-provenance { margin-bottom: 16px; padding: 14px 16px; background: $cream-bg; border-radius: 10px; border: 1px solid $border-light;
+      .section-label { font-size: 14px; font-weight: 500; color: $text-dark; margin-bottom: 10px; }
+      .provenance-grid { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 8px; }
+      .provenance-item { font-size: 13px;
+        .provenance-label { color: $text-light; }
+        .provenance-value { color: $text-dark; font-weight: 500; }
+      }
+      .provenance-quote { margin-top: 8px;
+        .provenance-label { font-size: 13px; color: $text-light; margin-bottom: 6px; display: block; }
+        .original-text-block { margin: 6px 0 0 0; padding: 10px 14px; background: rgba(70, 99, 80, 0.05); border-left: 3px solid $mid-green; border-radius: 4px; font-size: 14px; line-height: 1.8; color: $text-dark; font-style: italic; }
+      }
+    }
     .doc-relations { margin-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
     .doc-body { margin-bottom: 16px;
       .markdown-body { padding: 16px; background: $cream-bg; border-radius: 8px; line-height: 1.8; color: $text-dark; font-size: 14px; max-height: 400px; overflow-y: auto; }
@@ -667,9 +754,27 @@ $danger-red: #b35c5c;
     .section-label { font-size: 14px; font-weight: 500; color: $text-dark; margin-right: 8px; }
   }
 
+  // 表格内原文片段截断
+  .text-preview { cursor: default; color: $text-light; font-size: 13px; }
+
   .delete-confirm-content { display: flex; flex-direction: column; align-items: center; padding: 16px 0;
     .delete-icon { margin-bottom: 16px; }
     .delete-message { font-size: 15px; color: $text-dark; text-align: center; line-height: 1.6; }
   }
+}
+</style>
+
+<style lang="scss">
+// 原文片段 tooltip（渲染在 body 层，需非 scoped 样式）
+.doc-text-tooltip {
+  max-width: 420px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #2c3630;
+  background: #faf6ef;
+  border: 1px solid rgba(110, 135, 120, 0.18);
+  box-shadow: 0 6px 24px rgba(42, 64, 48, 0.1);
 }
 </style>

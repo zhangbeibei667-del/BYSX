@@ -1066,9 +1066,8 @@ $herb-green: #588264;
 
 // ==================== 主容器 ====================
 .case-study {
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 16px 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1664,7 +1663,7 @@ $herb-green: #588264;
 }
 
 .case-study {
-  margin-top: 400px;
+  margin-top: 50px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;

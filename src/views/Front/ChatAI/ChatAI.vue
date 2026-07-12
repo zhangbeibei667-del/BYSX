@@ -69,6 +69,7 @@
               :message="message"
               @favorite="handleFavorite"
               @followup="handleFollowUp"
+              @navigate-to-graph="handleNavigateToGraph"
             />
             
             <!-- 正在输入指示器 -->
@@ -213,6 +214,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
   Plus,
@@ -230,6 +232,7 @@ import { chatApi } from '@/api'
 import ChatBubble from '@/components/Chat/ChatBubble.vue'
 import type { AnswerResponse } from '@/types'
 
+const router = useRouter()
 const chatStore = useChatStore()
 const messagesContainer = ref<HTMLElement>()
 const inputRef = ref()
@@ -559,6 +562,30 @@ const buildMockResponse = (question: string): AnswerResponse => {
         { title: '《中药学》补气药章节', content: '人参、黄芪同为补气要药，人参大补元气，黄芪补气固表...' },
         { title: '《中药学》补血药章节', content: '当归补血活血，熟地黄补血滋阴，二者常相须为用...' },
       ],
+      sources: [
+        {
+          title: '《中国药典》人参条目',
+          type: '药典',
+          source_detail: '《中国药典》2020版 第一卷',
+          original_text: '人参，本品为五加科植物人参的干燥根和根茎。性味与归经：甘、微苦，微温。归脾、肺、心、肾经。功能与主治：大补元气，复脉固脱，补脾益肺，生津养血，安神益智。',
+          chapter: 'P8-9',
+          related_entities: [
+            { id: 'H001', name: '人参', type: '药材' },
+            { id: 'H002', name: '黄芪', type: '药材' },
+          ]
+        },
+        {
+          title: '《中药学》补气药章节',
+          type: '教材',
+          source_detail: '《中药学》第2版 第十二章 补气药',
+          original_text: '人参、黄芪同为补气要药。人参大补元气，补脾益肺，生津养血，安神益智，为治虚劳内伤第一要药。黄芪补气升阳，固表止汗，利水消肿，为补气之长。',
+          chapter: '第十二章 P178',
+          related_entities: [
+            { id: 'H001', name: '人参', type: '药材' },
+            { id: 'H002', name: '黄芪', type: '药材' },
+          ]
+        },
+      ],
       follow_up_questions: ['您想了解哪些具体药材的区别？', '是否有特定的症状需要调理？'],
       safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
       graph: { nodes: [], edges: [] }
@@ -591,6 +618,29 @@ const buildMockResponse = (question: string): AnswerResponse => {
       evidence: [
         { title: '《中医内科学》失眠章节', content: '失眠病位在心，与肝、脾、肾关系密切...' },
         { title: '《中药学》酸枣仁条目', content: '酸枣仁性甘、酸，平，归心、肝、胆经，具有养心益肝、安神、敛汗功效...' },
+      ],
+      sources: [
+        {
+          title: '《中医内科学》失眠章节',
+          type: '教材',
+          source_detail: '《中医内科学》第3版 第七章 心系病证',
+          original_text: '失眠又称不寐，是以经常不能获得正常睡眠为特征的一类病证。其主要病机为阳盛阴衰，阴阳失交。病位主要在心，与肝、脾、肾关系密切。',
+          chapter: '第七章 P156',
+          related_entities: [
+            { id: 'S001', name: '失眠', type: '症状' },
+            { id: 'Z001', name: '心脾两虚', type: '证候' },
+          ]
+        },
+        {
+          title: '《中药学》酸枣仁条目',
+          type: '教材',
+          source_detail: '《中药学》第2版 第十五章 安神药',
+          original_text: '酸枣仁性甘、酸，平，归心、肝、胆经。功效：养心益肝，安神，敛汗。主治：心悸失眠，自汗盗汗。',
+          chapter: '第十五章 P210',
+          related_entities: [
+            { id: 'H003', name: '酸枣仁', type: '药材' },
+          ]
+        },
       ],
       follow_up_questions: ['是否伴有食少乏力？', '是否有舌淡、脉细等表现？', '是否经常熬夜或工作压力大？'],
       safety_notice: '本分析基于中医药理论知识，不构成医疗建议。如有实际病症，请咨询专业医师。',
@@ -762,6 +812,10 @@ const handleFollowUp = (question: string) => {
   })
 }
 
+const handleNavigateToGraph = (entityName: string) => {
+  router.push({ path: '/graph', query: { search: entityName } })
+}
+
 const formatTime = (timestamp: string) => {
   const date = new Date(timestamp)
   const now = new Date()
@@ -798,7 +852,7 @@ $white: #ffffff;
 
 .chat-ai {
   height: calc(100vh - 64px - 60px);
-  margin-top: 400px;
+  margin-top: 50px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;

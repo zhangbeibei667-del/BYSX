@@ -124,6 +124,7 @@ $cream-bg: #f7f3eb;
 $text-light: #6b7a72;
 
 .front-layout {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -140,9 +141,9 @@ $text-light: #6b7a72;
     z-index: 100;
 
     .header-container {
-      max-width: 1440px;
+      max-width: 1800px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -195,12 +196,8 @@ $text-light: #6b7a72;
   // ===== 主要内容区域 =====
   .main-content {
     flex: 1;
-    padding: 0 24px;
-    max-width: 1440px;
-    margin: 0 auto;
+    padding: 24px 32px;
     width: 100%;
-    padding-top: 24px;
-    padding-bottom: 24px;
   }
 
   // ===== 页脚 - 国风样式 =====
@@ -211,7 +208,7 @@ $text-light: #6b7a72;
     flex-shrink: 0;
 
     .footer-inner {
-      max-width: 1440px;
+      max-width: 1800px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -253,7 +250,7 @@ $text-light: #6b7a72;
     }
 
     .copyright {
-      max-width: 1440px;
+      max-width: 1800px;
       margin: 0 auto;
       text-align: center;
       font-size: 13px;

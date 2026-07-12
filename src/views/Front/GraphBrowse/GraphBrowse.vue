@@ -1284,13 +1284,12 @@ $formula-brown: #8c6e4a;
   display: flex;
   height: calc(100vh - 64px - 60px);
   min-height: 700px;
-  max-width: 1440px;
   margin: 0 auto;
   background: $cream-bg;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: $card-shadow;
-  margin-top: 400px;
+  margin-top: 50px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;

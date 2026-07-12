@@ -336,15 +336,14 @@ $border-light: rgba(110, 135, 120, 0.12);
 $shadow-card: 0 8px 40px rgba(42, 64, 48, 0.1);
 
 .auth-page {
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 64px - 60px);
   background-color: $cream-bg;
-  margin-top: 400px;
+  margin-top: 50px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;

@@ -138,6 +138,7 @@ $border-light: rgba(110, 135, 120, 0.12);
 $shadow-soft: 0 2px 12px rgba(42, 64, 48, 0.06);
 
 .admin-layout {
+  width: 100%;
   display: flex;
   min-height: 100vh;
   background-color: $cream-bg;

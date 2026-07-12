@@ -908,13 +908,12 @@ $syndrome-red: #b13e3e;
 .history-page {
   display: flex;
   gap: 20px;
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 32px;
   min-height: calc(100vh - 64px - 60px);
   background: $cream-bg;
   border-radius: 8px;
-  margin-top: 400px;
+  margin-top: 50px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;

@@ -47,6 +47,21 @@ export interface AnswerResponse {
   evidence: AnswerEvidence[]
   follow_up_questions: string[]
   safety_notice: string
+  sources?: SourceItem[]  // RAG 引用资料来源
+}
+
+// RAG 引用来源项
+export interface SourceItem {
+  title?: string         // 文献标题
+  type?: string          // 文献类型（药典/教材/古籍/科普/期刊）
+  source_detail?: string // 来源详情
+  original_text?: string // 原文片段
+  chapter?: string       // 页码/章节
+  related_entities?: Array<{  // 关联实体列表
+    id: string
+    name: string
+    type: string
+  }>
 }
 
 // 实体类型
@@ -113,9 +128,12 @@ export interface SyndromeEntity extends BaseEntity {
 
 // 文献实体
 export interface DocumentEntity extends BaseEntity {
-  type: '药典' | '教材' | '科普' | '期刊' // 文献类型
+  type: '药典' | '教材' | '古籍' | '科普' | '期刊' // 文献类型
   content: string // 文献内容
   source?: string // 来源出处
+  source_detail?: string // 来源详情（如"《中国药典》2020版 第一卷"）
+  original_text?: string // 原文片段（RAG回答中展示使用）
+  chapter?: string // 页码/章节（如"P123"或"第五章"）
   fileName?: string // 附件文件名
   fileUrl?: string // 附件URL
   relatedEntities?: Array<{

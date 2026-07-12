@@ -467,14 +467,14 @@ $herb-pink: #f9e6e6;
 .front-index {
   background-color: $cream-bg;
   // 增加顶部内边距，避开 sticky 导航栏的高度
-  padding-top: 1400px;  // ✅ 新增：给导航栏留出空间
+  padding-top: 0px;  // ✅ 新增：给导航栏留出空间
   padding-bottom: 24px;
 
   .container-wrap {
-    max-width: 1440px;
+    max-width: 1800px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   .section-en-title {
