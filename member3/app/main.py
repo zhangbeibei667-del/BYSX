@@ -254,6 +254,15 @@ def health() -> dict[str, Any]:
         },
 
         # --------------------------------
+        # Lightweight GraphRAG Communities
+        # --------------------------------
+        "communities": (
+            graphrag_service
+            .community_search
+            .get_stats()
+        ),
+
+        # --------------------------------
         # Vector Search
         # --------------------------------
         "vector_search": {

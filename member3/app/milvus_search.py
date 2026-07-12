@@ -88,6 +88,30 @@ class MilvusVectorSearch:
         entity_hint = query.strip().lower()
 
         suffixes = [
+            "的检查项目有哪些？",
+            "的检查项目有哪些",
+            "检查项目有哪些？",
+            "检查项目有哪些",
+            "的檢查項目有哪些？",
+            "的檢查項目有哪些",
+            "檢查項目有哪些？",
+            "檢查項目有哪些",
+            "的鉴别方法是什么？",
+            "的鉴别方法是什么",
+            "鉴别方法是什么？",
+            "鉴别方法是什么",
+            "的鑒別方法是什麼？",
+            "的鑒別方法是什麼",
+            "鑒別方法是什麼？",
+            "鑒別方法是什麼",
+            "的来源是什么？",
+            "的来源是什么",
+            "来源是什么？",
+            "来源是什么",
+            "的來源是什麼？",
+            "的來源是什麼",
+            "來源是什麼？",
+            "來源是什麼",
             "有哪些典型症状表现？",
             "有哪些典型症状表现",
             "有哪些典型表现？",
@@ -137,6 +161,53 @@ class MilvusVectorSearch:
 
         return entity_hint
 
+    @staticmethod
+    def _detect_pharmacopoeia_section_intent(
+        query: str,
+    ) -> str:
+        if any(
+            keyword in query
+            for keyword in [
+                "检查",
+                "檢查",
+                "检查项目",
+                "檢查項目",
+            ]
+        ):
+            return "tests"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "鉴别",
+                "鑒別",
+                "鉴别方法",
+                "鑒別方法",
+            ]
+        ):
+            return "identification"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "来源",
+                "來源",
+            ]
+        ):
+            return "source"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "含量",
+                "测定",
+                "測定",
+            ]
+        ):
+            return "assay"
+
+        return ""
+
     # ========================================================
     # 2. Query-aware Rerank
     # ========================================================
@@ -163,6 +234,11 @@ class MilvusVectorSearch:
         """
         entity_hint = self._extract_entity_hint(
             query
+        )
+        section_intent = (
+            self._detect_pharmacopoeia_section_intent(
+                query
+            )
         )
 
         for hit in hits:
@@ -195,6 +271,40 @@ class MilvusVectorSearch:
 
                 elif entity_hint in content:
                     bonus += 0.04
+
+            if section_intent == "tests":
+                if "檢查" in title or "检查" in title:
+                    bonus += 0.12
+                elif "上级章节：5 檢查" in content:
+                    bonus += 0.08
+
+                if (
+                    "鑒別" in title
+                    or "鉴别" in title
+                    or "含量測定" in title
+                    or "含量测定" in title
+                ):
+                    bonus -= 0.04
+
+            elif section_intent == "identification":
+                if "鑒別" in title or "鉴别" in title:
+                    bonus += 0.12
+                elif (
+                    "上级章节：4" in content
+                    and (
+                        "鑒別" in content
+                        or "鉴别" in content
+                    )
+                ):
+                    bonus += 0.06
+
+            elif section_intent == "source":
+                if "來源" in title or "来源" in title:
+                    bonus += 0.12
+
+            elif section_intent == "assay":
+                if "含量測定" in title or "含量测定" in title:
+                    bonus += 0.12
 
             hit["rerank_bonus"] = bonus
 
@@ -393,12 +503,18 @@ class MilvusVectorSearch:
             #
             # 为了让前端页面能看到数据来源，
             # 将 source 合并到 title 中。
-            if source:
+            if source == "HKCMMS":
                 display_title = (
-                    f"{title}（{source}）"
+                    f"药典标准｜{title}（HKCMMS）"
+                )
+            elif source:
+                display_title = (
+                    f"资料片段｜{title}（{source}）"
                 )
             else:
-                display_title = title
+                display_title = (
+                    f"资料片段｜{title}"
+                )
 
             chunks.append(
                 RetrievedChunk(

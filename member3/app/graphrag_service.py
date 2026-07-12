@@ -3,6 +3,10 @@ from __future__ import annotations
 import re
 from typing import Protocol
 
+from app.community_search import (
+    CommunitySummary,
+    LightweightCommunitySearch,
+)
 from app.graph_search import GraphSearch
 from app.llm_client import LLMClient
 from app.schemas import (
@@ -30,6 +34,7 @@ INTENT_LABELS = {
     "effect_query": "功效作用查询",
     "contraindication_query": "禁忌注意查询",
     "definition_query": "概念定义查询",
+    "global_summary": "图谱全局概览查询",
     "general": "一般知识查询",
 }
 
@@ -73,6 +78,9 @@ class GraphRAGService:
         self.vector_search = vector_search
         self.graph_search = graph_search
         self.llm_client = llm_client
+        self.community_search = LightweightCommunitySearch(
+            graph_search
+        )
 
     # ========================================================
     # 1. Query Intent + Hint
@@ -189,6 +197,28 @@ class GraphRAGService:
             ]
         ):
             return "contraindication_query"
+
+        if any(
+            keyword in text
+            for keyword in [
+                "整体概览",
+                "总体概览",
+                "知识结构",
+                "图谱结构",
+                "社区摘要",
+                "社区发现",
+                "全局检索",
+                "全局总结",
+                "宏观",
+                "总结一下",
+                "概览",
+                "总览",
+                "学习路线",
+                "有哪些模块",
+                "有哪些主题",
+            ]
+        ):
+            return "global_summary"
 
         if any(
             keyword in text
@@ -1053,6 +1083,7 @@ class GraphRAGService:
                 "formulas",
                 "herbs",
             },
+            "global_summary": set(),
             "general": {
                 "symptoms",
                 "syndromes",
@@ -1075,6 +1106,32 @@ class GraphRAGService:
             field: values if field in allowed else []
             for field, values in categories.items()
         }
+
+    @staticmethod
+    def _should_use_community_summaries(
+        query: str,
+        intent: str,
+        matched_entity_count: int,
+    ) -> bool:
+        """判断是否启用轻量社区摘要，避免具体事实问题被全局摘要冲淡。"""
+        if intent == "global_summary":
+            return True
+
+        if matched_entity_count > 0:
+            return False
+
+        return any(
+            keyword in query
+            for keyword in [
+                "概览",
+                "总览",
+                "总结",
+                "知识结构",
+                "学习路线",
+                "有哪些模块",
+                "有哪些主题",
+            ]
+        )
 
     # ========================================================
     # 6. Query
@@ -1119,6 +1176,21 @@ class GraphRAGService:
             request.query
         )
 
+        community_summaries: list[CommunitySummary] = []
+
+        if self._should_use_community_summaries(
+            query=request.query,
+            intent=intent,
+            matched_entity_count=len(entities),
+        ):
+            community_summaries = self.community_search.search(
+                query=request.query,
+                top_k=min(
+                    request.top_k,
+                    3,
+                ),
+            )
+
         candidate_graph = self.graph_search.search_paths(
             entities,
             max_hops=request.max_hops,
@@ -1145,7 +1217,8 @@ class GraphRAGService:
             f"{len(candidate_graph.edges)} edges; "
             f"final_graph={len(graph.nodes)} nodes / "
             f"{len(graph.edges)} edges; "
-            f"evidence={len(chunks)}"
+            f"evidence={len(chunks)}; "
+            f"communities={len(community_summaries)}"
         )
 
         # ----------------------------------------------------
@@ -1155,6 +1228,7 @@ class GraphRAGService:
             query=request.query,
             chunks=chunks,
             graph=graph,
+            community_summaries=community_summaries,
             intent=intent,
         )
 
@@ -1165,6 +1239,7 @@ class GraphRAGService:
             query=request.query,
             chunks=chunks,
             graph=graph,
+            community_summaries=community_summaries,
             prompt=prompt,
             intent=intent,
         )
@@ -1187,6 +1262,25 @@ class GraphRAGService:
         # ----------------------------------------------------
         # Unified QAResult
         # ----------------------------------------------------
+        evidence_items = [
+            EvidenceItem(
+                title=item.title,
+                content=item.content,
+            )
+            for item in chunks
+        ]
+
+        evidence_items.extend(
+            EvidenceItem(
+                title=(
+                    "图谱社区摘要："
+                    f"{summary.title}"
+                ),
+                content=summary.content,
+            )
+            for summary in community_summaries
+        )
+
         return QAResult(
             answer=answer,
             symptoms=categories["symptoms"],
@@ -1194,13 +1288,7 @@ class GraphRAGService:
             formulas=categories["formulas"],
             herbs=categories["herbs"],
             graph=graph,
-            evidence=[
-                EvidenceItem(
-                    title=item.title,
-                    content=item.content,
-                )
-                for item in chunks
-            ],
+            evidence=evidence_items,
             follow_up_questions=[],
         )
 
@@ -1212,6 +1300,7 @@ class GraphRAGService:
         query: str,
         chunks: list[RetrievedChunk],
         graph: GraphData,
+        community_summaries: list[CommunitySummary],
         intent: str,
     ) -> str:
         """将文本证据和图谱证据融合成统一 Prompt。"""
@@ -1267,6 +1356,22 @@ class GraphRAGService:
             else "未检索到图谱关系。"
         )
 
+        community_lines = [
+            f"[社区摘要{idx}] "
+            f"{summary.title}\n"
+            f"{summary.content}"
+            for idx, summary in enumerate(
+                community_summaries,
+                start=1,
+            )
+        ]
+
+        community_block = (
+            "\n\n".join(community_lines)
+            if community_lines
+            else "未启用或未命中社区摘要。"
+        )
+
         intent_label = INTENT_LABELS.get(
             intent,
             "一般知识查询",
@@ -1298,6 +1403,11 @@ class GraphRAGService:
                 "本题是禁忌注意查询。只围绕用户询问对象的禁忌或慎用信息作答，"
                 "不要输出个体化用药建议。"
             ),
+            "global_summary": (
+                "本题是图谱全局概览查询。优先使用社区摘要组织知识结构，"
+                "再用文本证据或图谱路径补充一两个具体例子；"
+                "不要把社区摘要误当成药典原文。"
+            ),
         }.get(
             intent,
             "只回答用户直接询问的目标信息。",
@@ -1321,6 +1431,9 @@ class GraphRAGService:
 【图谱证据】
 {graph_block}
 
+【社区摘要】
+{community_block}
+
 【回答要求】
 1. 先直接回答用户问题，不要以“根据提供的证据”“根据检索结果”“根据图谱证据”“结合文本证据”等模板化语句开头；
 2. 只依据提供证据回答，不补造不存在的事实；
@@ -1330,8 +1443,9 @@ class GraphRAGService:
 6. 只回答用户直接询问的目标信息；
 7. 除非回答当前问题所必需，不得列举或解释无关的方剂、药材、功效、文献或其他图谱支路；
 8. 对与当前问题无关的证据直接忽略，不要为了说明“未使用”而再次复述这些证据；
-9. 语气自然，面向中医药学习与教学辅助场景；
-10. 不构成医疗诊断或用药建议。
+9. 回答要像教学辅助说明：先给结论，再用短句分层解释，避免堆砌证据标题；
+10. 药典/HKCMMS 类证据只回答来源、性状、鉴别、检查、含量测定等标准信息，不扩展成临床用药建议；
+11. 不构成医疗诊断或用药建议。
 """.strip()
 
     # ========================================================
@@ -1374,6 +1488,7 @@ class GraphRAGService:
         query: str,
         chunks: list[RetrievedChunk],
         graph: GraphData,
+        community_summaries: list[CommunitySummary],
         prompt: str,
         intent: str,
     ) -> str:
@@ -1415,6 +1530,7 @@ class GraphRAGService:
             query=query,
             chunks=chunks,
             graph=graph,
+            community_summaries=community_summaries,
             intent=intent,
         )
 
@@ -1434,14 +1550,154 @@ class GraphRAGService:
 
         return result
 
+    @staticmethod
+    def _extract_concise_evidence_answer(
+        query: str,
+        content: str,
+    ) -> str:
+        """从结构化 evidence 中抽取一句更像回答的话，用于无 LLM fallback。"""
+        text = content.strip()
+
+        if not text:
+            return ""
+
+        target = ""
+        target_match = re.search(
+            r"药材条目：([^\n]+)",
+            text,
+        )
+
+        if target_match:
+            target = target_match.group(1).strip()
+
+        body = text
+        body_match = re.search(
+            r"正文：\s*(.+)",
+            text,
+            flags=re.S,
+        )
+
+        if body_match:
+            body = body_match.group(1).strip()
+
+        body = re.sub(
+            r"\s+",
+            " ",
+            body,
+        ).strip()
+
+        if not body:
+            return ""
+
+        target_prefix = (
+            f"{target}："
+            if target
+            else ""
+        )
+
+        if "来源" in query:
+            sentence = re.search(
+                r"(?:\d+\.)?來源(.+?。)",
+                body,
+            )
+            if sentence:
+                return (
+                    f"{target_prefix}来源为"
+                    f"{sentence.group(1).strip()}"
+                )
+
+        if any(
+            keyword in query
+            for keyword in [
+                "检查",
+                "檢查",
+                "检查项目",
+            ]
+        ):
+            items = re.findall(
+                r"5\.\d+\s*([^。；\n]{2,40})",
+                body,
+            )
+            cleaned = [
+                re.sub(
+                    r"\s+",
+                    "",
+                    item,
+                ).strip(" ：:。;；")
+                for item in items
+            ]
+            cleaned = [
+                item
+                for item in cleaned
+                if item
+            ]
+
+            if cleaned:
+                unique_items = list(
+                    dict.fromkeys(cleaned)
+                )
+
+                return (
+                    f"{target_prefix}检查项目包括"
+                    f"{'、'.join(unique_items[:6])}。"
+                )
+
+        if any(
+            keyword in query
+            for keyword in [
+                "鉴别",
+                "鑒別",
+                "鉴别方法",
+            ]
+        ):
+            methods = []
+
+            for keyword in [
+                "顯微鑒別",
+                "理化鑒別",
+                "薄層色譜鑒別",
+                "高效液相色譜指紋圖譜",
+            ]:
+                if keyword in body and keyword not in methods:
+                    methods.append(keyword)
+
+            if methods:
+                return (
+                    f"{target_prefix}鉴别相关内容包括"
+                    f"{'、'.join(methods)}。"
+                )
+
+        first_sentence = re.split(
+            r"(?<=[。！？!?])",
+            body,
+        )[0].strip()
+
+        if first_sentence and len(first_sentence) <= 180:
+            return f"{target_prefix}{first_sentence}"
+
+        return ""
+
     def _fallback_answer(
         self,
         query: str,
         chunks: list[RetrievedChunk],
         graph: GraphData,
+        community_summaries: list[CommunitySummary],
         intent: str,
     ) -> str:
         """无可用 LLM 时的意图感知降级回答。"""
+        if intent == "global_summary" and community_summaries:
+            lines = [
+                "这个问题更适合从图谱社区来做整体理解。"
+            ]
+
+            for summary in community_summaries[:3]:
+                lines.append(
+                    f"{summary.title}：{summary.content}"
+                )
+
+            return "\n".join(lines)
+
         if intent == "formula_composition":
             formulas = self._list_graph_nodes_by_type(
                 graph,
@@ -1584,10 +1840,21 @@ class GraphRAGService:
                 )
 
         if chunks:
+            source_title = chunks[0].title
+            source_content = chunks[0].content
+
+            concise = self._extract_concise_evidence_answer(
+                query=query,
+                content=source_content,
+            )
+
+            if concise:
+                return concise
+
             return (
-                f"已检索到与“{query}”相关的资料。"
-                f"优先参考：{chunks[0].title}。"
-                "当前大模型不可用，建议结合规范教材进一步核对。"
+                f"可以先看“{source_title}”这条资料。"
+                "它与问题最相关；如果需要更完整的教学表述，"
+                "建议开启大模型生成后再结合其他证据整合。"
             )
 
         if graph.edges:

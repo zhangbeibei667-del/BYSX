@@ -157,22 +157,87 @@ http://127.0.0.1:8003/docs
 
 ---
 
+## 接入 HKCMMS 药典资料库
+
+HKCMMS 清洗后的安全入库集位于：
+
+```text
+data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_index.jsonl
+```
+
+先转换为当前 Milvus RAG schema 可导入的统一 chunk：
+
+```powershell
+python scripts/build_hkcmms_rag_corpus.py
+```
+
+转换后会生成：
+
+```text
+data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl
+```
+
+先做字段校验，不连接 Milvus：
+
+```powershell
+python scripts/milvus_insert.py `
+  --input data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl `
+  --limit 0 `
+  --check-only
+```
+
+确认 Milvus、Embedding API 和 `.env` 配置可用后，导入 HKCMMS 增量语料：
+
+```powershell
+python scripts/milvus_insert.py `
+  --input data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl `
+  --limit 0
+```
+
+导入后可做不联网验证：
+
+```powershell
+python scripts/verify_hkcmms_milvus.py --skip-search
+```
+
+当前 HKCMMS 可入库 chunk 数为 1094 条。每条 evidence 中保留：
+
+- HKCMMS 资料库名称；
+- 药材名、简繁检索别名、拉丁/正名、拼音；
+- 章节、页码、引用；
+- 原始 PDF 相对路径；
+- 官方来源 URL。
+
+注意：当前 Milvus schema 不按 `chunk_id` 自动去重，重复运行同一个增量导入文件会产生重复数据。
+
+---
+
+## 轻量 GraphRAG 社区摘要
+
+按老师课件中的 GraphRAG 思路，成员 3 增加了轻量版社区发现与社区摘要：
+
+- 社区发现：基于已加载的实体和关系做无依赖连通社区划分；
+- 社区摘要：按实体类型、主要关系、核心实体、代表路径生成规则摘要；
+- 检索策略：具体事实问题仍优先走局部文本检索和图谱路径；概览、总结、知识结构类问题会补充社区摘要；
+- 接口保持不变：仍返回统一 `QAResult`，社区摘要放入 `evidence`，不新增前端字段。
+
+本功能只消费现有图谱数据，不改写成员 1 的实体关系设计，也不替代成员 2 的图谱管理接口。
+
+离线验证：
+
+```powershell
+python scripts/smoke_community_graphrag.py
+```
+
+---
+
 ## 说明
 
-当前 `data/` 中都是教学模拟 Mock 数据：
+当前成员 3 模块保留 Mock 图谱兼容，同时已经接入正式 Milvus 文本检索链路：
 
-- 不冒充真实医学数据；
-- 用于先把成员 3 的 GraphRAG 代码和接口跑通；
-- 后续真实数据到位后替换即可。
+- 原始课程/问答语料：`data/processed/rag_corpus_clean.jsonl`；
+- HKCMMS 药典增量语料：`data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl`；
+- 图谱实体/关系格式仍遵守组内统一 JSON 契约；
+- 问答结果仍输出统一 `QAResult`，不影响成员 4 Agent 和成员 5 前端联调。
 
-当前不包含：
-
-- Milvus 预留脚本；
-- 复杂 Repository / Adapter；
-- tests；
-- scripts；
-- docs；
-- 多层小文件夹；
-- Python 缓存文件。
-
-这样更适合 4 周课程项目和多人 Git 分支协作。
+所有回答仅用于中医药知识学习和教学辅助，不构成医疗诊断或用药建议。

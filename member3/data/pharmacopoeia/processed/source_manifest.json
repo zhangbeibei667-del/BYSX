@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "source_id": "HKCMMS",
+      "source_name": "香港中药材标准",
+      "english_name": "Hong Kong Chinese Materia Medica Standards",
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "source_type": "public_government_standard",
+      "data_scope": "中药材标准条目",
+      "language": ["zh", "en"],
+      "access_method": "official_public_web_pages_and_pdf_files",
+      "usage_note": "用于课程项目中的中药材标准资料检索增强；原始 PDF 不公开提交，仅保留处理脚本和来源清单。",
+      "status": "index_ready",
+      "created_by": "member3",
+      "version": "v1"
+    }
+  ]
+}

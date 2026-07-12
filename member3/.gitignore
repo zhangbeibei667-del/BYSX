@@ -48,3 +48,19 @@ volumes/
 # =========================
 tmp/
 temp/
+# Pharmacopoeia raw files
+data/pharmacopoeia/raw/
+data/pharmacopoeia/**/*.pdf
+data/pharmacopoeia/processed/full/
+
+# Keep only reviewable HKCMMS deliverables, not extraction caches.
+data/pharmacopoeia/processed/hkcmms/**
+!data/pharmacopoeia/processed/hkcmms/
+!data/pharmacopoeia/processed/hkcmms/index_ready/
+!data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_index.jsonl
+!data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl
+!data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_review.jsonl
+!data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_review.csv
+!data/pharmacopoeia/processed/hkcmms/index_ready/filter_report.json
+data/pharmacopoeia/processed/hkcmms_test/
+data/pharmacopoeia/processed/hkcmms_ocr_test/

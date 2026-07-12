@@ -277,11 +277,17 @@ RELATIONS_PATH = (
 
 # 当前项目正式 RAG 后端固定使用 Milvus。
 #
-# 完整语料：
+# 基础语料：
 # data/processed/rag_corpus_clean.jsonl
 #
 # 当前已验证：
 # 7951 chunks
+#
+# HKCMMS 药典增量语料：
+# data/pharmacopoeia/processed/hkcmms/index_ready/chunks_for_milvus.jsonl
+#
+# 当前已验证：
+# 1094 chunks
 
 MILVUS_URI = os.getenv(
     "MILVUS_URI",

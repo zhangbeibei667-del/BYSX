@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
 from typing import Iterator
 
 from dotenv import load_dotenv
-from pymilvus import MilvusClient
 
 
 # 让 scripts/ 下的脚本可以导入 app/
@@ -22,10 +22,6 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 from app.embedding_client import EmbeddingClient
-
-
-MILVUS_URI = "http://127.0.0.1:19530"
-COLLECTION_NAME = "tcm_rag_chunks"
 
 DEFAULT_CORPUS_PATH = (
     PROJECT_ROOT
@@ -204,30 +200,56 @@ def main() -> None:
         ),
     )
 
+    parser.add_argument(
+        "--uri",
+        default=None,
+        help=(
+            "Milvus URI。默认读取 .env 的 MILVUS_URI，"
+            "未配置时使用 http://127.0.0.1:19530。"
+        ),
+    )
+
+    parser.add_argument(
+        "--collection",
+        default=None,
+        help=(
+            "Milvus Collection 名称。默认读取 .env 的 "
+            "MILVUS_COLLECTION，未配置时使用 tcm_rag_chunks。"
+        ),
+    )
+
+    parser.add_argument(
+        "--check-only",
+        action="store_true",
+        help="只校验输入 JSONL，不连接 Milvus，不生成 embedding。",
+    )
+
     args = parser.parse_args()
 
     load_dotenv(
         PROJECT_ROOT / ".env"
     )
 
+    milvus_uri = (
+        args.uri
+        or os.getenv(
+            "MILVUS_URI",
+            "http://127.0.0.1:19530",
+        )
+    )
+
+    collection_name = (
+        args.collection
+        or os.getenv(
+            "MILVUS_COLLECTION",
+            "tcm_rag_chunks",
+        )
+    )
+
     if not args.input.exists():
         raise FileNotFoundError(
             f"找不到输入文件: {args.input}"
         )
-
-    client = MilvusClient(
-        uri=MILVUS_URI
-    )
-
-    collections = client.list_collections()
-
-    if COLLECTION_NAME not in collections:
-        raise RuntimeError(
-            f"Collection 不存在: "
-            f"{COLLECTION_NAME}"
-        )
-
-    embedding_client = EmbeddingClient()
 
     limit = (
         None
@@ -239,7 +261,8 @@ def main() -> None:
     print("TCM GraphRAG Milvus Insert")
     print("=" * 60)
     print(f"输入文件: {args.input}")
-    print(f"Collection: {COLLECTION_NAME}")
+    print(f"Milvus URI: {milvus_uri}")
+    print(f"Collection: {collection_name}")
     print(
         "导入数量: "
         + (
@@ -266,6 +289,26 @@ def main() -> None:
     print(
         f"读取成功: {len(chunks)} 条"
     )
+
+    if args.check_only:
+        print("[Check] 输入文件字段校验通过，未连接 Milvus。")
+        return
+
+    from pymilvus import MilvusClient
+
+    client = MilvusClient(
+        uri=milvus_uri
+    )
+
+    collections = client.list_collections()
+
+    if collection_name not in collections:
+        raise RuntimeError(
+            f"Collection 不存在: "
+            f"{collection_name}"
+        )
+
+    embedding_client = EmbeddingClient()
 
     pending_rows: list[dict] = []
     inserted_total = 0
@@ -303,7 +346,7 @@ def main() -> None:
             >= MILVUS_INSERT_BATCH_SIZE
         ):
             result = client.insert(
-                collection_name=COLLECTION_NAME,
+                collection_name=collection_name,
                 data=pending_rows,
             )
 
@@ -334,49 +377,59 @@ def main() -> None:
 
     # 写入最后不足 100 条的数据
     if pending_rows:
-        client.insert(
-            collection_name=COLLECTION_NAME,
+        result = client.insert(
+            collection_name=collection_name,
             data=pending_rows,
         )
 
-        inserted_total += len(
-            pending_rows
+        server_insert_count = int(
+            result.get(
+                "insert_count",
+                len(pending_rows),
+            )
         )
+
+        inserted_total += server_insert_count
 
         print(
             f"[Milvus] 已插入: "
             f"{inserted_total}"
         )
 
-# 强制 flush，确保 Milvus 完成数据持久化和统计刷新
-print("[Milvus] 正在 flush...")
+    # 强制 flush，确保 Milvus 完成数据持久化和统计刷新。
+    print("[Milvus] 正在 flush...")
 
-client.flush(
-    collection_name=COLLECTION_NAME,
-)
+    client.flush(
+        collection_name=collection_name,
+    )
 
-stats = client.get_collection_stats(
-    collection_name=COLLECTION_NAME,
-)
+    stats = client.get_collection_stats(
+        collection_name=collection_name,
+    )
 
-row_count = int(
-    stats.get("row_count", 0)
-)
+    row_count = int(
+        stats.get("row_count", 0)
+    )
 
-elapsed = time.time() - start_time
+    elapsed = time.time() - start_time
 
-print("=" * 60)
-print("导入完成")
-print(f"脚本累计提交: {inserted_total}")
-print(f"Milvus row_count: {row_count}")
-print(f"耗时: {elapsed:.2f} 秒")
-print("=" * 60)
+    print("=" * 60)
+    print("导入完成")
+    print(f"本次脚本提交: {inserted_total}")
+    print(f"Milvus row_count: {row_count}")
+    print(f"耗时: {elapsed:.2f} 秒")
+    print("=" * 60)
 
-if row_count != inserted_total:
+    if row_count < inserted_total:
+        print(
+            "[警告] Milvus 当前统计数量 "
+            f"{row_count} 小于本次脚本提交数量 "
+            f"{inserted_total}"
+        )
+
     print(
-        "[警告] Milvus 当前统计数量 "
-        f"{row_count} 与脚本提交数量 "
-        f"{inserted_total} 不一致"
+        "提示：如重复运行同一输入文件，当前 schema 不会自动按 "
+        "chunk_id 去重；请避免重复导入同一批增量数据。"
     )
 
 if __name__ == "__main__":
