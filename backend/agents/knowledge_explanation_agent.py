@@ -2,7 +2,11 @@ from backend.services.llm_client import get_llm_client
 
 
 class KnowledgeExplanationAgent:
-    """Generate an evidence-bounded explanation with traceable citations."""
+    """Generate an evidence-bounded explanation with traceable citations.
+
+    Integrates graph paths, SQL Agent structured results, and RAG evidence
+    into a coherent, teaching-oriented explanation.
+    """
 
     def run(self, case_text: str, symptom_result: dict, graph_result: dict,
             sql_result: dict, rag_result: dict, formula_result: dict) -> dict:
@@ -18,6 +22,12 @@ class KnowledgeExplanationAgent:
                               if edge.get("evidence") and "桥接" not in edge.get("evidence", "")]
         needs_clarification = graph_result.get("needs_clarification", False)
 
+        # Extract structured SQL results for richer explanations
+        sql_text_result = sql_result.get("sql_result", {}).get("text_to_sql", {})
+        sql_rows = sql_text_result.get("rows", [])
+        sql_explanation = sql_result.get("sql_explanation", "")
+        sql_generated = sql_result.get("generated_sql", "")
+
         sections = [f"病例信息：{case_text}", f"已识别症状：{self._join(symptoms)}。"]
         if tongue:
             sections.append(f"舌象：{self._join(tongue)}。")
@@ -32,6 +42,11 @@ class KnowledgeExplanationAgent:
             sections.append(f"图谱关联：可能相关证候为 {self._join(syndromes)}；相关方剂知识为 {self._join(formulas)}。")
             if paths:
                 sections.append(f"推理路径：{self._join(paths)}。")
+            # Include SQL structured data summary when available
+            if sql_explanation:
+                sections.append(f"结构化数据查询：{sql_explanation}")
+            elif sql_rows:
+                sections.append(f"结构化数据查询返回 {len(sql_rows)} 条记录，涵盖方剂组成、证候关联等结构化信息。")
             confidence = "high" if reliable_relations and len(evidence) >= 2 else "medium"
 
         if citations:
@@ -40,8 +55,12 @@ class KnowledgeExplanationAgent:
             sections.append("资料依据：本次未召回可定位的教材、药典或科普资料片段。")
         learning_summary = "结论仅限中医药知识学习与关系分析，应结合完整四诊资料理解。"
         sections.append(learning_summary)
-        generated = self._generate(case_text, symptoms, tongue, pulse, syndromes, formulas,
-                                   paths, evidence, citations, confidence)
+
+        generated = self._generate(
+            case_text, symptoms, tongue, pulse, syndromes, formulas,
+            paths, evidence, citations, confidence,
+            sql_explanation=sql_explanation, sql_rows=sql_rows,
+        )
         answer = generated["content"] if generated else "\n\n".join(sections)
         return {
             "answer": answer, "learning_summary": learning_summary,
@@ -54,17 +73,32 @@ class KnowledgeExplanationAgent:
 
     @staticmethod
     def _generate(case_text, symptoms, tongue, pulse, syndromes, formulas, paths,
-                  evidence, citations, confidence) -> dict | None:
+                  evidence, citations, confidence,
+                  sql_explanation="", sql_rows=None) -> dict | None:
         client = get_llm_client()
         if not client.available:
             return None
         sources = "\n\n".join(
             f"[{index}] {item.get('citation') or item.get('title')}\n{str(item.get('content', ''))[:800]}"
             for index, item in enumerate(evidence[:5], 1))
+
+        # Include SQL structured data in the prompt
+        sql_context = ""
+        if sql_explanation:
+            sql_context = f"\n结构化查询结果：{sql_explanation}"
+        if sql_rows:
+            sample_items = sql_rows[:10]
+            sql_context += f"\n结构化数据示例（{len(sql_rows)} 条）："
+            for row in sample_items:
+                # Build a readable line from the row dict
+                parts = [f"{k}: {v}" for k, v in row.items() if v]
+                if parts:
+                    sql_context += "\n  " + " | ".join(parts[:6])
+
         prompt = (
             f"病例描述：{case_text}\n已识别症状：{symptoms}\n舌象：{tongue}\n脉象：{pulse}\n"
             f"候选证候：{syndromes}\n关联方剂知识：{formulas}\n图谱路径：{paths}\n"
-            f"证据等级：{confidence}\n资料：\n{sources}"
+            f"证据等级：{confidence}\n资料：\n{sources}{sql_context}"
         )
         return client.complete([
             {"role": "system", "content": (
