@@ -52,3 +52,33 @@ json
   ],
   "safety_notice": "本结果仅用于中医药知识学习和教学辅助，不构成医疗诊断或用药建议。"
 }
+
+
+用户登录注册
+1.登录
+POST /api/auth/login
+请求：
+{"username": "admin", "password": "admin123"}
+返回：
+{
+  "code": 0, "msg": "ok",
+  "data": {
+    "token": "eyJhbGciOi...",
+    "user": {"id": 1, "username": "admin", "role": "admin"}
+  }
+}
+之后所有需鉴权的请求带 Header：Authorization: Bearer <token>
+
+2. 注册（普通用户）
+POST /api/auth/register
+请求：
+{"username": "zhangsan", "password": "123456"}
+返回：
+{"code": 0, "msg": "ok", "data": {"id": 2, "username": "zhangsan", "role": "user"}}
+
+3.当前用户信息
+GET /api/auth/me
+请求头：
+Header: Authorization: Bearer <token>
+返回：
+{"code": 0, "data": {"id": 1, "username": "admin", "role": "admin", "last_login": "..."}}

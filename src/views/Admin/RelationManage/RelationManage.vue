@@ -4,8 +4,8 @@
     <div class="page-header">
       <h2 class="page-title">🔗 图谱关系维护</h2>
       <div class="header-actions">
-        <el-button class="btn-primary" :icon="Plus" @click="handleAdd">新增关系</el-button>
-        <el-button class="btn-warning" :icon="WarningFilled" @click="handleCleanInvalid">
+        <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新增关系</el-button>
+        <el-button v-permission="['admin']" class="btn-warning" :icon="WarningFilled" @click="handleCleanInvalid">
           清除无效关系
         </el-button>
       </div>
@@ -53,6 +53,7 @@
 
       <el-button
         v-if="selectedRows.length > 0"
+        v-permission="['admin']"
         class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
@@ -122,7 +123,7 @@
         </el-table-column>
         <el-table-column label="操作" width="100" align="center" fixed="right">
           <template #default="{ row }">
-            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
               <el-icon><Delete /></el-icon>
               删除
             </el-button>

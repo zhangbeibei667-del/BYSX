@@ -111,15 +111,6 @@
             />
           </el-form-item>
 
-          <el-form-item prop="email">
-            <el-input
-              v-model="registerForm.email"
-              placeholder="请输入邮箱地址"
-              :prefix-icon="Message"
-              clearable
-            />
-          </el-form-item>
-
           <el-form-item prop="password">
             <el-input
               v-model="registerForm.password"
@@ -138,6 +129,17 @@
               :prefix-icon="Lock"
               show-password
             />
+          </el-form-item>
+
+          <el-form-item prop="role" label="角色">
+            <el-select
+              v-model="registerForm.role"
+              placeholder="请选择角色"
+              style="width: 100%"
+            >
+              <el-option label="普通用户" value="user" />
+              <el-option label="管理员" value="admin" />
+            </el-select>
           </el-form-item>
 
           <el-button
@@ -164,12 +166,14 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { User, Lock, Message, ChatDotRound, DataAnalysis, Notebook } from '@element-plus/icons-vue'
 import { useUserStore } from '@/store'
+import { authApi } from '@/api'
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
 
 // ---- 模式切换 ----
@@ -210,30 +214,22 @@ const handleLogin = async () => {
 
   loginLoading.value = true
   try {
-    // TODO: 替换为真实 API 调用
-    // const res: any = await authApi.login({
-    //   username: loginForm.username,
-    //   password: loginForm.password
-    // })
-    //
-    // userStore.login(res.data.token, res.data.user)
-
-    // ---- 模拟登录（后端就绪后删除此段） ----
-    await new Promise(resolve => setTimeout(resolve, 800))
-    const mockToken = 'mock_token_' + Date.now()
-    const mockUser = {
-      id: '1',
+    const res = await authApi.login({
       username: loginForm.username,
-      role: loginForm.username.toLowerCase().includes('admin') ? 'admin' as const : 'student' as const
-    }
-    userStore.login(mockToken, mockUser)
-    // ---- 模拟结束 ----
+      password: loginForm.password
+    })
+
+    const { token, user } = res.data
+    userStore.login(token, user)
 
     ElMessage.success('登录成功，欢迎回来！')
-    router.push('/')
+
+    // 跳转到 redirect 参数指定的页面或首页
+    const redirect = route.query.redirect as string
+    router.push(redirect ? decodeURIComponent(redirect) : '/')
   } catch (error: any) {
     console.error('登录失败:', error)
-    ElMessage.error(error?.response?.data?.message || '登录失败，请检查用户名和密码')
+    ElMessage.error(error?.response?.data?.message || error?.response?.data?.msg || '登录失败，请检查用户名和密码')
   } finally {
     loginLoading.value = false
   }
@@ -244,9 +240,9 @@ const registerFormRef = ref<FormInstance>()
 const registerLoading = ref(false)
 const registerForm = reactive({
   username: '',
-  email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  role: 'user' as 'user' | 'auditor' | 'admin'
 })
 
 const validateConfirmPassword = (_rule: any, value: string, callback: (error?: Error) => void) => {
@@ -263,10 +259,6 @@ const registerRules: FormRules = {
     { min: 4, max: 20, message: '用户名长度在 4 到 20 位之间', trigger: 'blur' },
     { pattern: /^[a-zA-Z0-9_一-龥]+$/, message: '用户名只能包含中英文、数字和下划线', trigger: 'blur' }
   ],
-  email: [
-    { required: true, message: '请输入邮箱', trigger: 'blur' },
-    { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
-  ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 6, max: 20, message: '密码长度在 6 到 20 位之间', trigger: 'blur' }
@@ -274,6 +266,9 @@ const registerRules: FormRules = {
   confirmPassword: [
     { required: true, message: '请再次输入密码', trigger: 'blur' },
     { validator: validateConfirmPassword, trigger: 'blur' }
+  ],
+  role: [
+    { required: true, message: '请选择角色', trigger: 'change' }
   ]
 }
 
@@ -287,31 +282,19 @@ const handleRegister = async () => {
 
   registerLoading.value = true
   try {
-    // TODO: 替换为真实 API 调用
-    // const res: any = await authApi.register({
-    //   username: registerForm.username,
-    //   email: registerForm.email,
-    //   password: registerForm.password
-    // })
-    //
-    // userStore.login(res.data.token, res.data.user)
-
-    // ---- 模拟注册（后端就绪后删除此段） ----
-    await new Promise(resolve => setTimeout(resolve, 800))
-    const mockToken = 'mock_token_' + Date.now()
-    const mockUser = {
-      id: '1',
+    await authApi.register({
       username: registerForm.username,
-      role: 'student' as const
-    }
-    userStore.login(mockToken, mockUser)
-    // ---- 模拟结束 ----
+      password: registerForm.password
+    })
 
-    ElMessage.success('注册成功，欢迎加入！')
-    router.push('/')
+    ElMessage.success('注册成功，请登录')
+    // 注册成功后切换到登录 tab，不自动登录
+    switchTab('login')
+    // 自动填充刚注册的用户名
+    loginForm.username = registerForm.username
   } catch (error: any) {
     console.error('注册失败:', error)
-    ElMessage.error(error?.response?.data?.message || '注册失败，请稍后重试')
+    ElMessage.error(error?.response?.data?.message || error?.response?.data?.msg || '注册失败，请稍后重试')
   } finally {
     registerLoading.value = false
   }

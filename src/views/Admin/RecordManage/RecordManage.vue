@@ -4,7 +4,7 @@
     <div class="page-header">
       <h2 class="page-title">📋 问答记录管理</h2>
       <div class="header-actions">
-        <el-button class="btn-outline" :icon="Download" @click="handleExportAll">导出全部记录</el-button>
+        <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExportAll">导出全部记录</el-button>
       </div>
     </div>
 
@@ -65,6 +65,7 @@
 
       <el-button
         v-if="selectedRows.length > 0"
+        v-permission="['admin']"
         class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
@@ -147,7 +148,7 @@
               <el-icon><StarFilled v-if="row.isFavorite" /><Star v-else /></el-icon>
               {{ row.isFavorite ? '取消' : '收藏' }}
             </el-button>
-            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
               <el-icon><Delete /></el-icon>
               删除
             </el-button>

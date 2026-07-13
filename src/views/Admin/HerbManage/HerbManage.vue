@@ -4,9 +4,9 @@
     <div class="page-header">
       <h2 class="page-title">🌿 药材管理</h2>
       <div class="header-actions">
-        <el-button class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
-        <el-button class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
-        <el-button class="btn-outline" :icon="Download" @click="handleExportTemplate">导出模板</el-button>
+        <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
+        <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExportTemplate">导出模板</el-button>
       </div>
     </div>
 
@@ -42,6 +42,7 @@
       <!-- 批量删除按钮 -->
       <el-button
         v-if="selectedRows.length > 0"
+        v-permission="['admin']"
         class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
@@ -100,11 +101,11 @@
         <el-table-column prop="category" label="分类" width="120" align="center" />
         <el-table-column label="操作" width="160" align="center" fixed="right">
           <template #default="{ row }">
-            <el-button class="btn-edit" link size="small" @click="handleEdit(row)">
+            <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">
               <el-icon><Edit /></el-icon>
               编辑
             </el-button>
-            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
               <el-icon><Delete /></el-icon>
               删除
             </el-button>

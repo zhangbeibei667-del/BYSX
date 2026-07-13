@@ -57,6 +57,18 @@
         </div>
         
         <div class="admin-tools">
+          <div class="user-info-bar">
+            <el-icon><User /></el-icon>
+            <span class="user-name">{{ userInfo.username }}</span>
+            <el-tag
+              v-if="roleLabel"
+              :type="roleTagType"
+              size="small"
+              class="role-tag"
+            >
+              {{ roleLabel }}
+            </el-tag>
+          </div>
           <el-button class="back-btn" link @click="backToFront">
             <el-icon><Back /></el-icon>
             返回前台
@@ -77,8 +89,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import {
   Orange,
   Document,
@@ -88,12 +101,41 @@ import {
   Files,
   List,
   Back,
-  SwitchButton
+  SwitchButton,
+  User
 } from '@element-plus/icons-vue'
-import { clearCaptchaVerified } from '@/utils/captcha'
+import { useUserStore, type UserInfo } from '@/store'
 
 const route = useRoute()
 const router = useRouter()
+const userStore = useUserStore()
+
+// 从 localStorage 恢复用户信息
+const userInfo = ref<UserInfo>({ id: '', username: '', role: 'guest' })
+onMounted(() => {
+  const stored = localStorage.getItem('user_info')
+  if (stored) {
+    try {
+      userInfo.value = JSON.parse(stored)
+    } catch { /* ignore */ }
+  }
+})
+
+const roleLabel = computed(() => {
+  switch (userInfo.value.role) {
+    case 'admin': return '管理员'
+    case 'user': return '普通用户'
+    default: return ''
+  }
+})
+
+const roleTagType = computed(() => {
+  switch (userInfo.value.role) {
+    case 'admin': return 'danger' as const
+    case 'user': return 'info' as const
+    default: return 'info' as const
+  }
+})
 
 const pageTitles: Record<string, string> = {
   '/admin/herbs': '药材管理',
@@ -117,8 +159,8 @@ const backToFront = () => {
 }
 
 const logout = () => {
-  localStorage.removeItem('admin_token')
-  clearCaptchaVerified()
+  userStore.logout()
+  ElMessage.success('已退出登录')
   router.push('/')
 }
 </script>
@@ -252,18 +294,37 @@ $shadow-soft: 0 2px 12px rgba(42, 64, 48, 0.06);
       
       .admin-tools {
         display: flex;
+        align-items: center;
         gap: 16px;
-        
+
+        .user-info-bar {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding-right: 16px;
+          border-right: 1px solid $border-light;
+          color: $text-dark;
+          font-size: 14px;
+
+          .user-name {
+            font-weight: 500;
+          }
+
+          .role-tag {
+            margin-left: 4px;
+          }
+        }
+
         .back-btn,
         .logout-btn {
           color: $text-light;
           font-size: 14px;
-          
+
           &:hover {
             color: $mid-green;
           }
         }
-        
+
         .logout-btn:hover {
           color: #b35c5c;
         }

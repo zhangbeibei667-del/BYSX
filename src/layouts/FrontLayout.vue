@@ -14,7 +14,30 @@
           <span class="nav-item" :class="{ active: $route.path === '/case-study' }" @click="goToCaseStudy">病例教学</span>
           <span class="nav-item" :class="{ active: $route.path === '/history' }" @click="goToHistory">历史记录</span>
           <span class="nav-item" :class="{ active: $route.path.startsWith('/admin') }" @click="goToAdmin">后台管理</span>
-          <el-button text class="login-btn" @click="login">登录 / 注册</el-button>
+
+          <!-- 未登录：显示登录/注册按钮 -->
+          <el-button v-if="!isLoggedIn" text class="login-btn" @click="login">登录 / 注册</el-button>
+
+          <!-- 已登录：用户头像 + 下拉菜单 -->
+          <el-dropdown v-else trigger="click" class="user-dropdown">
+            <span class="user-info">
+              <el-avatar :size="32" class="user-avatar">{{ userInitial }}</el-avatar>
+              <span class="user-name">{{ username }}</span>
+              <el-icon class="dropdown-icon"><ArrowDown /></el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="goToProfile">
+                  <el-icon><User /></el-icon>
+                  个人中心
+                </el-dropdown-item>
+                <el-dropdown-item divided @click="handleLogout">
+                  <el-icon><SwitchButton /></el-icon>
+                  退出登录
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </nav>
       </div>
     </header>
@@ -88,14 +111,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { ArrowDown, User, SwitchButton } from '@element-plus/icons-vue'
 import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
+import { useUserStore } from '@/store'
 
 const router = useRouter()
 const route = useRoute()
+const userStore = useUserStore()
 const aboutDialogVisible = ref(false)
 const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
+
+const isLoggedIn = computed(() => userStore.isAuthenticated)
+const username = computed(() => userStore.userInfo.username)
+const userInitial = computed(() => username.value.charAt(0).toUpperCase())
 
 const goToHome = () => router.push('/')
 const goToChat = () => router.push('/chat')
@@ -104,6 +135,12 @@ const goToCaseStudy = () => router.push('/case-study')
 const goToHistory = () => router.push('/history')
 
 const goToAdmin = async () => {
+  // 先检查是否已登录
+  if (!isLoggedIn.value) {
+    router.push('/login?redirect=' + encodeURIComponent('/admin/herbs'))
+    return
+  }
+  // 已登录则弹出人机验证弹窗
   const passed = await captchaRef.value?.requireVerify()
   if (passed) {
     router.push('/admin/herbs')
@@ -112,6 +149,16 @@ const goToAdmin = async () => {
 
 const login = () => {
   router.push('/login')
+}
+
+const handleLogout = () => {
+  userStore.logout()
+  router.push('/')
+  ElMessage.success('已退出登录')
+}
+
+const goToProfile = () => {
+  ElMessage.info('个人中心功能开发中')
 }
 </script>
 
@@ -187,6 +234,40 @@ $text-light: #6b7a72;
 
           &:hover {
             color: lighten($soft-gold, 15%);
+          }
+        }
+
+        .user-dropdown {
+          .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.85);
+
+            &:hover {
+              color: #fff;
+            }
+
+            .user-avatar {
+              background: $soft-gold;
+              color: #fff;
+              font-weight: 500;
+              font-size: 14px;
+            }
+
+            .user-name {
+              font-size: 14px;
+              max-width: 100px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .dropdown-icon {
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.6);
+            }
           }
         }
       }

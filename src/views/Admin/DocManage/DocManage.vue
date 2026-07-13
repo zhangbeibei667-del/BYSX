@@ -4,8 +4,8 @@
     <div class="page-header">
       <h2 class="page-title">📚 文献资料管理</h2>
       <div class="header-actions">
-        <el-button class="btn-primary" :icon="Plus" @click="handleAdd">上传文献</el-button>
-        <el-button class="btn-outline" :icon="Download" @click="handleExport">导出数据</el-button>
+        <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">上传文献</el-button>
+        <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExport">导出数据</el-button>
       </div>
     </div>
 
@@ -43,6 +43,7 @@
 
       <el-button
         v-if="selectedRows.length > 0"
+        v-permission="['admin']"
         class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
@@ -130,11 +131,11 @@
               <el-icon><View /></el-icon>
               查看
             </el-button>
-            <el-button class="btn-edit" link size="small" @click="handleEdit(row)">
+            <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">
               <el-icon><Edit /></el-icon>
               编辑
             </el-button>
-            <el-button class="btn-delete" link size="small" @click="handleDelete(row)">
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
               <el-icon><Delete /></el-icon>
               删除
             </el-button>

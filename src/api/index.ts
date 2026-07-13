@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 import type {
   GraphResponse,
   AnswerResponse,
@@ -32,24 +33,40 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
+    if (error.response?.status === 401) {
+      ElMessage.error('登录已过期，请重新登录')
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('user_info')
+      // 动态导入 router 避免循环依赖
+      import('@/router').then(({ default: router }) => {
+        router.push('/login')
+      })
+    }
     console.error('API Error:', error)
     return Promise.reject(error)
   }
 )
 
+// 通用响应包裹结构
+interface ApiResponse<T> {
+  code: number
+  msg?: string
+  data: T
+}
+
 // ===== 认证接口 =====
 export const authApi = {
   // 登录
   login: (data: { username: string; password: string }) =>
-    api.post<{ token: string; user: any }>('/auth/login', data),
+    api.post<ApiResponse<{ token: string; user: { id: number; username: string; role: string } }>>('/auth/login', data),
 
-  // 注册
-  register: (data: { username: string; email: string; password: string }) =>
-    api.post<{ token: string; user: any }>('/auth/register', data),
+  // 注册（后端仅支持注册普通用户角色）
+  register: (data: { username: string; password: string }) =>
+    api.post<ApiResponse<{ id: number; username: string; role: string }>>('/auth/register', data),
 
   // 获取当前用户信息
   getCurrentUser: () =>
-    api.get<{ user: any }>('/auth/user'),
+    api.get<ApiResponse<{ id: number; username: string; role: string; last_login?: string }>>('/auth/me'),
 
   // 修改密码
   changePassword: (data: { oldPassword: string; newPassword: string }) =>
