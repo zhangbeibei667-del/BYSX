@@ -2,7 +2,10 @@
   <div class="relation-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">🔗 图谱关系维护</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Connection /></el-icon>
+        图谱关系维护
+      </h2>
       <div class="header-actions">
         <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新增关系</el-button>
         <el-button v-permission="['admin']" class="btn-warning" :icon="WarningFilled" @click="handleCleanInvalid">
@@ -339,7 +342,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue'
-import { Plus, Search, Refresh, Delete, WarningFilled } from '@element-plus/icons-vue'
+import { Plus, Search, Refresh, Delete, WarningFilled, Connection } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { relationApi, entityApi } from '@/api'
 import type { GraphRelation } from '@/types'
@@ -586,7 +589,9 @@ $danger-red: #b35c5c;
   overflow: hidden;
 
   .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; }
+    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+      .title-icon { color: $soft-gold; font-size: 22px; }
+    }
     .header-actions { display: flex; gap: 10px; }
   }
 

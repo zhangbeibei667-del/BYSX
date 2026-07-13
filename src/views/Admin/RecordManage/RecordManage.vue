@@ -2,7 +2,10 @@
   <div class="record-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">📋 问答记录管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><List /></el-icon>
+        问答记录管理
+      </h2>
       <div class="header-actions">
         <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExportAll">导出全部记录</el-button>
       </div>
@@ -305,7 +308,8 @@ import {
   WarningFilled,
   UserFilled,
   ChatDotRound,
-  Document
+  Document,
+  List
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { recordApi } from '@/api'
@@ -505,7 +509,9 @@ $danger-red: #b35c5c;
   overflow: hidden;
 
   .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; }
+    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+      .title-icon { color: $soft-gold; font-size: 22px; }
+    }
     .header-actions { display: flex; gap: 10px; }
   }
 

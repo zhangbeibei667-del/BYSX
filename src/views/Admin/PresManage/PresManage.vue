@@ -2,7 +2,10 @@
   <div class="pres-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">📜 方剂管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Document /></el-icon>
+        方剂管理
+      </h2>
       <div class="header-actions">
         <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
         <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
@@ -334,7 +337,8 @@ import {
   Refresh,
   Delete,
   Edit,
-  WarningFilled
+  WarningFilled,
+  Document
 } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { entityApi } from '@/api'
@@ -687,6 +691,14 @@ $danger-red: #b35c5c;
       font-weight: 500;
       color: $text-dark;
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .title-icon {
+        color: $soft-gold;
+        font-size: 22px;
+      }
     }
 
     .header-actions {

@@ -2,7 +2,10 @@
   <div class="herb-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">🌿 药材管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Orange /></el-icon>
+        药材管理
+      </h2>
       <div class="header-actions">
         <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
         <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
@@ -269,7 +272,8 @@ import {
   Refresh,
   Delete,
   Edit,
-  WarningFilled
+  WarningFilled,
+  Orange
 } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { entityApi } from '@/api'
@@ -587,6 +591,14 @@ $danger-red: #b35c5c;
       font-weight: 500;
       color: $text-dark;
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .title-icon {
+        color: $soft-gold;
+        font-size: 22px;
+      }
     }
 
     .header-actions {
@@ -598,14 +610,42 @@ $danger-red: #b35c5c;
   // ===== 搜索栏 =====
   .search-bar {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
     margin-bottom: 18px;
-    padding: 16px 20px;
+    padding: 14px 20px;
     background: $cream-white;
     border-radius: 12px;
-    border: 1px solid $border-light;
+    border: 1px solid rgba(110, 135, 120, 0.2);
     flex-wrap: wrap;
+
+    :deep(.el-input__wrapper) {
+      border-radius: 8px;
+      box-shadow: none !important;
+      border: 1px solid rgba(110, 135, 120, 0.25);
+      background: #fff;
+      transition: border-color 0.2s;
+
+      &:hover, &:focus-within {
+        border-color: $mid-green;
+      }
+    }
+
+    :deep(.el-input__prefix-inner .el-icon) {
+      color: $mid-green;
+    }
+
+    :deep(.el-select .el-input__wrapper) {
+      border: 1px solid rgba(110, 135, 120, 0.25);
+
+      &:hover, &.is-focus {
+        border-color: $mid-green;
+      }
+    }
+
+    :deep(.el-select .el-input__prefix .el-icon) {
+      color: $mid-green;
+    }
   }
 
   // ===== 表格容器 =====

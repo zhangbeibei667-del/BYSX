@@ -2,7 +2,10 @@
   <div class="symptom-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">🩺 症状管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Warning /></el-icon>
+        症状管理
+      </h2>
       <div class="header-actions">
         <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
         <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
@@ -336,6 +339,7 @@ import {
   Delete,
   Edit,
   WarningFilled,
+  Warning,
   Connection,
   Loading
 } from '@element-plus/icons-vue'
@@ -700,7 +704,9 @@ $danger-red: #b35c5c;
 
   .page-header {
     display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; }
+    .page-title { margin: 0; font-size: 22px; font-weight: 500; color: $text-dark; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+      .title-icon { color: $soft-gold; font-size: 22px; }
+    }
     .header-actions { display: flex; gap: 10px; }
   }
 
