@@ -319,7 +319,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
   Search, ZoomIn, ZoomOut, RefreshRight, Download,
@@ -331,6 +331,7 @@ import { useGraphStore } from '@/store'
 import type { GraphNode, GraphEdge } from '@/types'
 
 const router = useRouter()
+const route = useRoute()
 const graphStore = useGraphStore()
 
 // ==================== 常量定义 ====================
@@ -832,6 +833,7 @@ async function handleSearch() {
     return
   }
 
+  router.replace({ query: { search: keyword } })
   searchLoading.value = true
   try {
     const checkedTypes = filterTypes.filter(f => f.checked).map(f => f.type)
@@ -907,6 +909,7 @@ async function handleSearch() {
 
 function clearSearch() {
   searchKeyword.value = ''
+  router.replace({ query: {} })
 }
 
 // ==================== 筛选 ====================
@@ -1245,6 +1248,12 @@ function goToAdminDetail() {
 onMounted(() => {
   loadGraphData()
   window.addEventListener('resize', resizeChart)
+
+  const initSearch = route.query.search as string
+  if (initSearch) {
+    searchKeyword.value = initSearch
+    nextTick(() => handleSearch())
+  }
 })
 
 onBeforeUnmount(() => {

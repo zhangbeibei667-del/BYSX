@@ -6,27 +6,12 @@
         <p class="banner-en-sub">TRADITIONAL CHINESE MEDICINE AGENT</p>
         <h1 class="banner-title">中医药诊疗智能体</h1>
         <p class="banner-subtitle">基于知识图谱的中医药学习与教学辅助平台</p>
-        <div class="banner-actions">
-          <el-button size="large" @click="goToChat" class="tcm-btn primary-tcm">
-            <el-icon><ChatDotRound /></el-icon>
-            开始问答
-          </el-button>
-          <el-button size="large" @click="goToGraph" class="tcm-btn green-tcm">
-            <el-icon><DataAnalysis /></el-icon>
-            知识图谱
-          </el-button>
-          <el-button size="large" @click="goToCaseStudy" class="tcm-btn earth-tcm">
-            <el-icon><Notebook /></el-icon>
-            病例教学
-          </el-button>
-          <el-button size="large" @click="goToHistory" class="tcm-btn brown-tcm">
-            <el-icon><Clock /></el-icon>
-            历史记录
-          </el-button>
-          <el-button size="large" @click="goToAdmin" class="tcm-btn dark-tcm admin-btn">
-            <el-icon><Setting /></el-icon>
-            后台管理
-          </el-button>
+        <div class="banner-capabilities">
+          <span class="cap-kg">知识图谱驱动</span>
+          <i></i>
+          <span class="cap-rag">RAG 智能检索</span>
+          <i></i>
+          <span class="cap-case">病例辅助教学</span>
         </div>
       </div>
     </div>
@@ -74,84 +59,96 @@
     <div class="recommendations-section">
       <p class="section-en-title">FEATURED HERBS</p>
       <h2 class="section-title">热门知识推荐</h2>
-      <el-tabs v-model="activeTab" type="border-card" class="tcm-tabs">
-        <el-tab-pane label="常用方剂" name="prescriptions">
-          <div v-if="loadingPrescriptions" class="loading-content">
-            <div class="loading-spinner"><el-icon><Loading /></el-icon></div>
-            <p>正在加载方剂数据...</p>
+      <div class="recommendations-outer">
+        <!-- 标签栏 -->
+        <div class="card-tabs-bar">
+          <div class="tabs-pill-track">
+            <span
+              v-for="tab in recommendationTabs"
+              :key="tab.name"
+              class="tabs-pill"
+              :class="{ active: activeTab === tab.name }"
+              @click="activeTab = tab.name"
+            >{{ tab.label }}</span>
           </div>
-          <div v-else-if="recommendedPrescriptions.length === 0" class="empty-content">
-            <el-empty description="暂无方剂数据" />
-          </div>
-          <div v-else class="recommendations-list">
-            <div
-              v-for="item in recommendedPrescriptions"
-              :key="item.id"
-              class="recommendation-item herb-card-greens"
-              @click="viewDetail('prescription', item.id)"
-            >
-              <div class="card-big-char">方</div>
-              <h4>{{ item.name }}</h4>
-              <p>{{ item.description }}</p>
-              <div class="item-tags">
-                <el-tag size="small" class="tag-green">{{ item.category }}</el-tag>
-                <el-tag size="small" class="tag-earth">{{ item.source }}</el-tag>
-              </div>
+        </div>
+
+        <!-- 加载中 -->
+        <div v-if="loadingPrescriptions || loadingHerbs || loadingSymptoms" class="loading-content">
+          <div class="loading-spinner"><el-icon><Loading /></el-icon></div>
+          <p>正在加载数据...</p>
+        </div>
+
+        <!-- 空状态 -->
+        <div v-else-if="activeTab === 'prescriptions' && recommendedPrescriptions.length === 0" class="empty-content">
+          <el-empty description="暂无方剂数据" />
+        </div>
+        <div v-else-if="activeTab === 'herbs' && recommendedHerbs.length === 0" class="empty-content">
+          <el-empty description="暂无药材数据" />
+        </div>
+        <div v-else-if="activeTab === 'symptoms' && recommendedSymptoms.length === 0" class="empty-content">
+          <el-empty description="暂无症状数据" />
+        </div>
+
+        <!-- 方剂列表 -->
+        <div v-show="activeTab === 'prescriptions'" class="recommendations-list">
+          <div
+            v-for="item in recommendedPrescriptions"
+            :key="item.id"
+            class="recommendation-item herb-card-greens"
+          >
+            <div class="card-big-char">方</div>
+            <h4>{{ item.name }}</h4>
+            <p class="item-desc">{{ item.description }}</p>
+            <div class="item-tags">
+              <el-tag size="small" class="tag-green">{{ item.category }}</el-tag>
+              <el-tag size="small" class="tag-earth">{{ item.source }}</el-tag>
+            </div>
+            <div class="card-arrow" @click.stop="viewDetail('prescription', item.id)">
+              <el-icon><ArrowRight /></el-icon>
             </div>
           </div>
-        </el-tab-pane>
-        
-        <el-tab-pane label="常用药材" name="herbs">
-          <div v-if="loadingHerbs" class="loading-content">
-            <div class="loading-spinner"><el-icon><Loading /></el-icon></div>
-            <p>正在加载药材数据...</p>
-          </div>
-          <div v-else-if="recommendedHerbs.length === 0" class="empty-content">
-            <el-empty description="暂无药材数据" />
-          </div>
-          <div v-else class="recommendations-list">
-            <div
-              v-for="item in recommendedHerbs"
-              :key="item.id"
-              class="recommendation-item herb-card-yellow"
-              @click="viewDetail('herb', item.id)"
-            >
-              <div class="card-big-char">药</div>
-              <h4>{{ item.name }}</h4>
-              <p>{{ item.description }}</p>
-              <div class="item-tags">
-                <el-tag size="small" class="tag-pink">{{ item.nature_and_flavor }}</el-tag>
-                <el-tag size="small" class="tag-olive">{{ item.efficacy }}</el-tag>
-              </div>
+        </div>
+
+        <!-- 药材列表 -->
+        <div v-show="activeTab === 'herbs'" class="recommendations-list">
+          <div
+            v-for="item in recommendedHerbs"
+            :key="item.id"
+            class="recommendation-item herb-card-yellow"
+          >
+            <div class="card-big-char">药</div>
+            <h4>{{ item.name }}</h4>
+            <p class="item-desc">{{ item.description }}</p>
+            <div class="item-tags">
+              <el-tag size="small" class="tag-pink">{{ item.nature_and_flavor }}</el-tag>
+              <el-tag size="small" class="tag-olive">{{ item.efficacy }}</el-tag>
+            </div>
+            <div class="card-arrow" @click.stop="viewDetail('herb', item.id)">
+              <el-icon><ArrowRight /></el-icon>
             </div>
           </div>
-        </el-tab-pane>
-        
-        <el-tab-pane label="常见症状" name="symptoms">
-          <div v-if="loadingSymptoms" class="loading-content">
-            <div class="loading-spinner"><el-icon><Loading /></el-icon></div>
-            <p>正在加载症状数据...</p>
-          </div>
-          <div v-else-if="recommendedSymptoms.length === 0" class="empty-content">
-            <el-empty description="暂无症状数据" />
-          </div>
-          <div v-else class="recommendations-list">
-            <div
-              v-for="item in recommendedSymptoms"
-              :key="item.id"
-              class="recommendation-item herb-card-pink"
-              @click="viewDetail('symptom', item.id)"
-            >
-              <div class="card-big-char">症</div>
-              <h4>{{ item.name }}</h4>
-              <p>{{ item.description }}</p>
-              <div class="item-tags">
-                <el-tag size="small" class="tag-warm">{{ item.category }}</el-tag>
-              </div>
+        </div>
+
+        <!-- 症状列表 -->
+        <div v-show="activeTab === 'symptoms'" class="recommendations-list">
+          <div
+            v-for="item in recommendedSymptoms"
+            :key="item.id"
+            class="recommendation-item herb-card-pink"
+          >
+            <div class="card-big-char">症</div>
+            <h4>{{ item.name }}</h4>
+            <p class="item-desc">{{ item.description }}</p>
+            <div class="item-tags">
+              <el-tag size="small" class="tag-warm">{{ item.category }}</el-tag>
+            </div>
+            <div class="card-arrow" @click.stop="viewDetail('symptom', item.id)">
+              <el-icon><ArrowRight /></el-icon>
             </div>
           </div>
-        </el-tab-pane>
-      </el-tabs>
+        </div>
+      </div>
     </div>
 
     <!-- 4. 平台统计 -->
@@ -209,14 +206,13 @@
       </div>
     </div>
 
-    <!-- 人机验证弹窗 -->
-    <CaptchaVerify ref="captchaRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/store'
 import {
   ChatDotRound,
   DataAnalysis,
@@ -227,14 +223,24 @@ import {
   Message,
   Loading,
   Setting,
-  Clock
+  Clock,
+  ArrowRight
 } from '@element-plus/icons-vue'
 import { entityApi, statsApi } from '@/api'
-import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
+
+
 
 const router = useRouter()
+const userStore = useUserStore()
+userStore.checkAuth()
+const isAdmin = computed(() => userStore.userInfo.role === 'admin')
 const activeTab = ref('prescriptions')
-const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
+const recommendationTabs = [
+  { name: 'prescriptions', label: '常用方剂' },
+  { name: 'herbs', label: '常用药材' },
+  { name: 'symptoms', label: '常见症状' }
+]
+
 
 const loadingStats = ref(true)
 const loadingPrescriptions = ref(true)
@@ -408,30 +414,12 @@ const goToGraph = () => router.push('/graph')
 const goToCaseStudy = () => router.push('/case-study')
 const goToHistory = () => router.push('/history')
 
-const goToAdmin = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) router.push('/admin/herbs')
-}
+const goToAdminHerbs = () => { if (isAdmin.value) router.push('/admin/herbs') }
+const goToAdminPrescriptions = () => { if (isAdmin.value) router.push('/admin/prescriptions') }
+const goToAdminRelations = () => { if (isAdmin.value) router.push('/admin/relations') }
+const goToAdminRecords = () => { if (isAdmin.value) router.push('/admin/records') }
 
-const goToAdminHerbs = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) router.push('/admin/herbs')
-}
-
-const goToAdminPrescriptions = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) router.push('/admin/prescriptions')
-}
-
-const goToAdminRelations = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) router.push('/admin/relations')
-}
-
-const goToAdminRecords = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) router.push('/admin/records')
-}
+const formatNumber = (num: number) => num.toLocaleString()
 
 const viewDetail = (type: string, id: string) => {
   let entityName = ''
@@ -441,8 +429,6 @@ const viewDetail = (type: string, id: string) => {
   if (entityName) router.push(`/graph?search=${encodeURIComponent(entityName)}`)
   else router.push('/graph')
 }
-
-const formatNumber = (num: number) => num.toLocaleString()
 </script>
 
 <style scoped lang="scss">
@@ -527,73 +513,56 @@ $herb-pink: #f9e6e6;
       .banner-subtitle {
         font-size: 17px;
         color: $text-light;
-        margin-bottom: 36px;
+        margin-bottom: 20px;
       }
-      .banner-actions {
+      .banner-capabilities {
         display: flex;
-        gap: 14px;
+        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        .tcm-btn {
-          border-radius: 8px;
-          border: 1px solid transparent;
-          padding: 10px 22px;
+        gap: 20px;
+        margin-top: 0;
+
+        span {
           font-size: 15px;
-          transition: all 0.3s ease;
-          &.primary-tcm {
-            background: rgba(70, 99, 80, 0.08);
-            color: $dark-green;
-            border-color: rgba(70, 99, 80, 0.2);
-            &:hover { background: $mid-green; color: #fff; }
-          }
-          &.green-tcm {
-            background: rgba(100, 145, 110, 0.08);
-            color: $mid-green;
-            border-color: rgba(100, 145, 110, 0.2);
-            &:hover { background: #588264; color: #fff; }
-          }
-          &.earth-tcm {
-            background: rgba(200, 168, 110, 0.1);
-            color: #926f3e;
-            border-color: rgba(200, 168, 110, 0.25);
-            &:hover { background: $soft-gold; color: #fff; }
-          }
-          &.brown-tcm {
-            background: rgba(130, 100, 70, 0.08);
-            color: #725439;
-            border-color: rgba(130, 100, 70, 0.2);
-            &:hover { background: #8c6747; color: #fff; }
-          }
-          &.dark-tcm {
-            background: rgba(42, 64, 48, 0.08);
-            color: $dark-green;
-            border-color: rgba(42, 64, 48, 0.2);
-            &:hover { background: $dark-green; color: #fff; }
-          }
+          font-weight: 500;
+          background: rgba(70, 99, 80, 0.1);
+          border: 1px solid rgba(70, 99, 80, 0.25);
+          border-radius: 22px;
+          padding: 8px 22px;
+          white-space: nowrap;
+          color: $dark-green;
+          &.cap-rag { background: rgba(200, 168, 110, 0.12); border-color: rgba(200, 168, 110, 0.35); color: #926f3e; }
+          &.cap-case { background: rgba(130, 100, 70, 0.1); border-color: rgba(130, 100, 70, 0.3); color: #725439; }
         }
-        .admin-btn {
-          border-style: dashed;
-          opacity: 0.9;
-          &:hover { opacity: 1; border-style: solid; }
+
+        i {
+          width: 5px;
+          height: 5px;
+          background: $soft-gold;
+          border-radius: 50%;
+          flex-shrink: 0;
         }
       }
     }
   }
-  
+
   .features-section {
     margin-bottom: 70px;
     .features-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      .feature-card {
+        .feature-card {
         border-radius: 14px;
         padding: 32px 20px;
         text-align: center;
-        cursor: pointer;
-        transition: transform 0.3s ease;
         border: 1px solid $card-border;
-        &:hover { transform: translateY(-6px); }
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 28px rgba(42, 64, 48, 0.14);
+        }
         &.card-spring { background: $spring-card; }
         &.card-summer { background: $summer-card; }
         &.card-autumn { background: $autumn-card; }
@@ -618,44 +587,116 @@ $herb-pink: #f9e6e6;
   
   .recommendations-section {
     margin-bottom: 70px;
-    .tcm-tabs {
-      :deep(.el-tabs__content) {
-        padding: 24px;
+
+    /* 白色外层容器 */
+    .recommendations-outer {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid $card-border;
+      box-shadow: 0 4px 24px rgba(42, 64, 48, 0.06);
+      padding: 20px 20px 16px;
+
+      .card-tabs-bar {
+        margin-bottom: 16px;
+
+        .tabs-pill-track {
+          display: inline-flex;
+          gap: 8px;
+
+          .tabs-pill {
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: $text-light;
+            cursor: pointer;
+            transition: all 0.28s ease;
+            white-space: nowrap;
+            user-select: none;
+            border: 1px solid transparent;
+
+            &:hover { color: $dark-green; }
+
+            &.active {
+              background: $dark-green;
+              color: #f7f3eb;
+              border-color: $dark-green;
+              box-shadow: 0 2px 8px rgba(42, 64, 48, 0.18);
+            }
+          }
+        }
       }
-      :deep(.el-tabs__header) { margin-bottom: 16px; padding: 0 24px; }
-      :deep(.el-tabs__nav-wrap::after) { background: $card-border; }
-      :deep(.el-tabs__item) { color: $text-light; font-size: 16px; &.is-active { color: $dark-green; } &.is-active::after { background: $soft-gold; } }
-      
+
       .recommendations-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 12px;
+
         .recommendation-item {
           border-radius: 12px;
-          padding: 20px;
-          cursor: pointer;
-          transition: transform 0.3s ease;
+          padding: 16px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           border: 1px solid $card-border;
           position: relative;
           overflow: hidden;
-          &:hover { transform: translateY(-4px); }
-          .card-big-char {
-            position: absolute;
-            top: 8px;
-            right: 14px;
-            font-size: 52px;
-            opacity: 0.12;
-            font-weight: 500;
+          display: flex;
+          flex-direction: column;
+          height: 160px;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(42, 64, 48, 0.1);
           }
+
           &.herb-card-greens { background: $herb-green; }
           &.herb-card-yellow { background: $herb-yellow; }
           &.herb-card-pink { background: $herb-pink; }
-          h4 { margin: 0 0 10px 0; color: $dark-green; font-size: 18px; font-weight: 500; }
-          p { color: $text-light; font-size: 13px; line-height: 1.5; margin: 0 0 14px 0; }
+
+          .card-big-char {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            font-size: 38px;
+            opacity: 0.09;
+            font-weight: 500;
+            line-height: 1;
+            pointer-events: none;
+          }
+
+          h4 {
+            margin: 0 0 15px 0;
+            color: $dark-green;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+          }
+
+          .item-desc {
+            color: $text-light;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            flex: 1;
+            min-height: 0;
+          }
+
           .item-tags {
             display: flex;
-            gap: 8px;
-            .el-tag { border: none; font-size: 12px; padding: 2px 6px; border-radius: 4px;
+            gap: 4px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            margin-top: auto;
+
+            .el-tag {
+              border: none;
+              font-size: 11px;
+              padding: 1px 5px;
+              border-radius: 4px;
+
               &.tag-green { background: rgba(88, 130, 100, 0.15); color: #3c6048; }
               &.tag-earth { background: rgba(200, 168, 110, 0.18); color: #8c6747; }
               &.tag-pink { background: rgba(216, 178, 178, 0.2); color: #945b5b; }
@@ -663,10 +704,39 @@ $herb-pink: #f9e6e6;
               &.tag-warm { background: rgba(212, 182, 140, 0.18); color: #916c3e; }
             }
           }
+
+          .card-arrow {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: rgba(42, 64, 48, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            .el-icon { font-size: 12px; color: $dark-green; }
+            &:hover {
+              background: rgba(42, 64, 48, 0.2);
+              transform: translateX(2px);
+            }
+          }
         }
       }
-      .loading-content, .empty-content { text-align: center; padding: 50px 20px;
-        .loading-spinner { display: inline-block; animation: spin 1s linear infinite; font-size: 32px; color: $mid-green; margin-bottom: 14px; }
+
+      .loading-content, .empty-content {
+        text-align: center;
+        padding: 50px 20px;
+        .loading-spinner {
+          display: inline-block;
+          animation: spin 1s linear infinite;
+          font-size: 32px;
+          color: $mid-green;
+          margin-bottom: 14px;
+        }
         p { color: $text-light; margin: 0; }
       }
     }
