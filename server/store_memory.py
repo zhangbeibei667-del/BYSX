@@ -9,10 +9,10 @@ from collections import deque
 from typing import Dict, List, Optional, Tuple
 
 try:
-    from .schemas import Entity, Relation, TYPE_PREFIX
+    from .schemas import Entity, Relation
     from .store_base import GraphStore
 except ImportError:
-    from schemas import Entity, Relation, TYPE_PREFIX
+    from schemas import Entity, Relation
     from store_base import GraphStore
 
 
@@ -92,7 +92,9 @@ class MemoryStore(GraphStore):
         return len(items), items[(page - 1) * size: page * size]
 
     def next_id(self, type_: str) -> str:
-        prefix = TYPE_PREFIX[type_]
+        from server.schemas import auto_prefix, get_type_prefixes
+        known = get_type_prefixes()
+        prefix = known.get(type_) or auto_prefix(type_)
         nums = [int(e.id[len(prefix):]) for e in self.entities.values()
                 if e.id.startswith(prefix) and e.id[len(prefix):].isdigit()]
         return f"{prefix}{(max(nums) + 1 if nums else 1):03d}"

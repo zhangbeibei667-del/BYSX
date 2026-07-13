@@ -28,14 +28,15 @@
   button{cursor:pointer;background:var(--ink);color:#fff;border-color:var(--ink)}
   button.ghost{background:#fff;color:var(--ink)}
   button.seal{background:var(--seal);border-color:var(--seal)}
+  button.tiny{font-size:11px;padding:3px 7px}
   button:hover{opacity:.88}
 
-  main{display:grid;grid-template-columns:220px 1fr 320px;height:calc(100vh - 55px)}
+  main{display:grid;grid-template-columns:220px 1fr 340px;height:calc(100vh - 55px)}
   aside{border-right:1px solid var(--line);background:var(--panel);overflow:auto;padding:14px}
-  aside.right{border-right:none;border-left:1px solid var(--line)}
+  aside.right{border-right:none;border-left:1px solid var(--line);display:flex;flex-direction:column}
   .rail-title{font:600 12px/1 var(--mono);letter-spacing:.14em;color:var(--ink-soft);
        text-transform:uppercase;margin:4px 0 10px}
-  /* 抽屉式类型清单：中药柜的一格一格 */
+  /* 抽屉式类型清单 */
   .drawer{display:flex;align-items:center;gap:8px;padding:8px 10px;margin-bottom:5px;
        background:#fff;border:1px solid var(--line);border-left:4px solid var(--c);
        cursor:pointer;user-select:none}
@@ -43,7 +44,15 @@
        border-left-color:var(--c)}
   .drawer .n{margin-left:auto;font:11px var(--mono);opacity:.7}
   #chart{width:100%;height:100%}
-  .right h3{margin:14px 0 6px;font:600 13px/1.4 system-ui}
+
+  /* 右侧 Tabs */
+  .right-tabs{display:flex;border-bottom:1px solid var(--line);flex-shrink:0}
+  .right-tab{flex:1;text-align:center;padding:8px 4px;font:11px var(--mono);
+       cursor:pointer;background:var(--panel);border:none;border-bottom:2px solid transparent;
+       color:var(--ink-soft);letter-spacing:.04em}
+  .right-tab.active{color:var(--ink);border-bottom-color:var(--seal);font-weight:600}
+  .right-content{flex:1;overflow:auto;padding:14px}
+  .right-content h3{margin:0 0 6px;font:600 13px/1.4 system-ui}
   .kv{font:12px/1.7 var(--mono);white-space:pre-wrap;word-break:break-all;
       background:#fff;border:1px solid var(--line);padding:9px;border-radius:3px}
   .chip{display:inline-block;font:11px var(--mono);padding:1px 6px;border-radius:2px;color:#fff}
@@ -53,10 +62,29 @@
   .form input,.form select{width:100%}
   .row{display:flex;gap:6px}
   .row>*{flex:1}
-  footer{position:fixed;bottom:0;left:220px;right:320px;padding:6px 14px;
+  footer{position:fixed;bottom:0;left:220px;right:340px;padding:6px 14px;
      background:rgba(247,248,245,.94);border-top:1px solid var(--line);
      font:11px var(--mono);color:var(--ink-soft);display:flex;gap:16px}
   .err{color:var(--seal)}
+
+  /* 登录弹窗 */
+  .modal-mask{position:fixed;inset:0;background:rgba(35,42,38,.45);
+       display:flex;align-items:center;justify-content:center;z-index:1000}
+  .modal{background:#fff;border:1px solid var(--line);border-radius:4px;
+       padding:22px 26px;min-width:300px;box-shadow:0 4px 24px rgba(0,0,0,.12)}
+  .modal h3{margin:0 0 14px;font:600 16px/1.4 "Songti SC","SimSun",serif}
+  .modal .form{gap:8px}
+  .modal .form label{font:11px var(--mono);color:var(--ink-soft)}
+
+  /* 审计日志 / 导入历史表格 */
+  .log-table{width:100%;font:11px/1.5 var(--mono);border-collapse:collapse;margin-top:8px}
+  .log-table th{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);
+       color:var(--ink-soft);background:var(--panel);position:sticky;top:0}
+  .log-table td{padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  .log-table tr:hover{background:var(--panel)}
+  .user-badge{display:inline-flex;align-items:center;gap:6px;font:12px var(--mono);
+       color:var(--ink-soft)}
+  .user-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--celadon)}
   details summary{cursor:pointer;font-weight:600;margin-top:12px;font-size:13px}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -66,10 +94,13 @@
   <h1>中医药知识图谱</h1>
   <span class="tag">任务2 · 图谱管理模块</span>
   <div class="bar">
-    <input id="kw" placeholder="搜索实体，如 失眠 / 归脾汤" size="24" />
+    <input id="kw" placeholder="搜索实体，如 失眠 / 归脾汤" size="20" />
     <select id="depth"><option value="1">邻居 1 层</option><option value="2" selected>2 层</option><option value="3">3 层</option></select>
     <button id="btnSearch">检索</button>
     <button class="ghost" id="btnAll">全图</button>
+    <span style="width:1px;height:18px;background:var(--line)"></span>
+    <span id="userInfo" class="user-badge" style="cursor:pointer" title="点击登录">🔒 未登录</span>
+    <button class="ghost tiny" id="btnLogin">登录</button>
   </div>
 </header>
 
@@ -81,7 +112,10 @@
     <div class="form">
       <input id="pSrc" placeholder="起点 id 或名称，如 失眠" />
       <input id="pTgt" placeholder="终点 id 或名称，如 酸枣仁" />
-      <button class="seal" id="btnPath">求推理路径</button>
+      <div class="row">
+        <select id="pDepth"><option value="3">3 跳</option><option value="4">4 跳</option><option value="5">5 跳</option><option value="6" selected>6 跳</option></select>
+        <button class="seal" id="btnPath">求推理路径</button>
+      </div>
     </div>
     <div id="paths"></div>
   </aside>
@@ -89,52 +123,123 @@
   <div><div id="chart"></div></div>
 
   <aside class="right">
-    <div class="rail-title">节点详情</div>
-    <div id="detail" class="kv">点击图中节点查看；双击节点展开它的邻居。</div>
-
-    <details>
-      <summary>录入实体</summary>
-      <div class="form">
-        <input id="eName" placeholder="名称 *" />
-        <select id="eType"></select>
-        <input id="eAlias" placeholder="别名" />
-        <input id="eDesc" placeholder="描述" />
-        <button id="btnAddE">保存实体</button>
+    <div class="right-tabs">
+      <button class="right-tab active" data-tab="detail">详情/录入</button>
+      <button class="right-tab" data-tab="audit">操作日志</button>
+      <button class="right-tab" data-tab="import">导入历史</button>
+    </div>
+    <div class="right-content" id="tabDetail">
+      <div class="rail-title">节点详情</div>
+      <div id="detail" class="kv">点击图中节点查看；双击节点展开它的邻居。</div>
+      <div class="row" id="detailActions" style="display:none;margin-top:6px">
+        <button class="seal tiny" id="btnDelEntity">删除</button>
+        <button class="ghost tiny" id="btnEditEntity">编辑</button>
       </div>
-    </details>
-
-    <details>
-      <summary>录入关系</summary>
-      <div class="form">
-        <input id="rSrc" placeholder="起点名称 *" />
-        <select id="rRel"></select>
-        <input id="rTgt" placeholder="终点名称 *" />
-        <input id="rEv" placeholder="依据 evidence" />
-        <button id="btnAddR">保存关系</button>
-        <small id="relHint" style="color:var(--ink-soft)"></small>
-      </div>
-    </details>
-
-    <details>
-      <summary>批量导入</summary>
-      <div class="form">
+      <div id="editForm" style="display:none;margin-top:8px" class="form">
+        <input id="editName" placeholder="名称" />
+        <input id="editAlias" placeholder="别名" />
+        <input id="editDesc" placeholder="描述" />
+        <input id="editSource" placeholder="来源 source" />
+        <input id="editNote" placeholder="备注 note" />
         <div class="row">
-          <label class="ghost" style="border:1px solid var(--line);padding:6px;border-radius:3px;text-align:center;cursor:pointer">
-            实体 CSV<input type="file" id="fE" accept=".csv" hidden></label>
-          <label class="ghost" style="border:1px solid var(--line);padding:6px;border-radius:3px;text-align:center;cursor:pointer">
-            关系 CSV<input type="file" id="fR" accept=".csv" hidden></label>
+          <button id="btnSaveEdit">保存修改</button>
+          <button class="ghost" id="btnCancelEdit">取消</button>
         </div>
-        <div class="row">
-          <a href="/api/import/template?kind=entity" download>下载实体模板</a>
-          <a href="/api/import/template?kind=relation" download>下载关系模板</a>
-        </div>
-        <div id="impLog" class="kv" style="display:none"></div>
+        <small id="editMsg"></small>
       </div>
-    </details>
+
+      <!-- 关系详情（点击边线出现） -->
+      <div id="relDetail" class="kv" style="display:none;margin-top:8px"></div>
+      <div class="row" id="relActions" style="display:none;margin-top:6px">
+        <button class="seal tiny" id="btnDelRel">删除关系</button>
+        <button class="ghost tiny" id="btnEditRel">编辑关系</button>
+      </div>
+      <div id="relEditForm" style="display:none;margin-top:8px" class="form">
+        <select id="editRelType"></select>
+        <input id="editRelEv" placeholder="依据 evidence" />
+        <div class="row">
+          <button id="btnSaveRel">保存</button>
+          <button class="ghost" id="btnCancelRel">取消</button>
+        </div>
+        <small id="relEditMsg"></small>
+      </div>
+
+      <details>
+        <summary>录入实体</summary>
+        <div class="form">
+          <input id="eName" placeholder="名称 *" />
+          <select id="eType"></select>
+          <input id="eAlias" placeholder="别名" />
+          <input id="eDesc" placeholder="描述" />
+          <input id="eSource" placeholder="来源 source" />
+          <input id="eNote" placeholder="备注 note" />
+          <button id="btnAddE">保存实体</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>录入关系</summary>
+        <div class="form">
+          <input id="rSrc" placeholder="起点名称 *" />
+          <select id="rRel"></select>
+          <input id="rTgt" placeholder="终点名称 *" />
+          <input id="rEv" placeholder="依据 evidence" />
+          <button id="btnAddR">保存关系</button>
+          <small id="relHint" style="color:var(--ink-soft)"></small>
+        </div>
+      </details>
+
+      <details>
+        <summary>批量导入</summary>
+        <div class="form">
+          <div class="row">
+            <label class="ghost" style="border:1px solid var(--line);padding:6px;border-radius:3px;text-align:center;cursor:pointer">
+              实体 CSV<input type="file" id="fE" accept=".csv" hidden></label>
+            <label class="ghost" style="border:1px solid var(--line);padding:6px;border-radius:3px;text-align:center;cursor:pointer">
+              关系 CSV<input type="file" id="fR" accept=".csv" hidden></label>
+          </div>
+          <div class="row">
+            <a href="/api/import/template?kind=entity" download>下载实体模板</a>
+            <a href="/api/import/template?kind=relation" download>下载关系模板</a>
+          </div>
+          <div id="impLog" class="kv" style="display:none"></div>
+        </div>
+      </details>
+    </div>
+    <div class="right-content" id="tabAudit" style="display:none">
+      <div class="rail-title">操作日志</div>
+      <div class="row" style="margin-bottom:8px">
+        <select id="auditAction"><option value="">全部操作</option><option>create</option><option>update</option><option>delete</option><option>import</option></select>
+        <select id="auditTarget"><option value="">全部类型</option></select>
+      </div>
+      <div id="auditList">点击刷新按钮加载日志</div>
+      <button class="ghost tiny" id="btnRefreshAudit" style="margin-top:6px">刷新</button>
+    </div>
+    <div class="right-content" id="tabImport" style="display:none">
+      <div class="rail-title">导入历史</div>
+      <div id="importList">点击刷新按钮加载导入历史</div>
+      <button class="ghost tiny" id="btnRefreshImport" style="margin-top:6px">刷新</button>
+    </div>
   </aside>
 </main>
 
 <footer><span id="statNode">节点 0</span><span id="statEdge">关系 0</span><span id="statMsg"></span></footer>
+
+<!-- 登录弹窗 -->
+<div class="modal-mask" id="loginMask" style="display:none">
+  <div class="modal">
+    <h3>管理员登录</h3>
+    <div class="form">
+      <label>用户名</label><input id="loginUser" placeholder="admin" />
+      <label>密码</label><input id="loginPass" type="password" placeholder="输入密码" />
+      <div class="row" style="margin-top:6px">
+        <button id="btnDoLogin">登录</button>
+        <button class="ghost" id="btnCancelLogin">取消</button>
+      </div>
+    </div>
+    <div id="loginErr" class="err" style="margin-top:8px;font-size:12px"></div>
+  </div>
+</div>
 
 <script>
 const API = location.origin + "/api";
@@ -143,15 +248,103 @@ const COLOR = {"药材":"var(--t-yaocai)","方剂":"var(--t-fangji)","症状":"v
 const HEX = {"药材":"#5e8c61","方剂":"#b4763f","症状":"#a8443a","证候":"#4a6fa5",
   "功效":"#7a6ba8","禁忌":"#3f4a52","文献":"#8a8256"};
 let META = {}, ACTIVE = new Set(), RAW = {nodes:[],edges:[]};
+let AUTH_TOKEN = localStorage.getItem("tcm_token") || "";
+let AUTH_USER = null;
+try { AUTH_USER = JSON.parse(localStorage.getItem("tcm_user")||"null"); } catch(e){}
+
 const chart = echarts.init(document.getElementById("chart"));
 const say = (m, bad) => { const s=document.getElementById("statMsg"); s.textContent=m; s.className = bad?"err":""; };
 
+/* ---------- API（带鉴权） ---------- */
+function authHeaders(extra={}){
+  const h = {...extra};
+  if (AUTH_TOKEN) h["Authorization"] = "Bearer " + AUTH_TOKEN;
+  return h;
+}
 async function api(path, opt={}) {
+  opt.headers = authHeaders(opt.headers||{});
   const r = await fetch(API + path, opt);
   const b = await r.json();
+  if (b.code === 401) { say("请先登录", true); showLogin(); throw new Error(b.msg); }
   if (b.code !== 0) throw new Error(b.msg);
   return b.data;
 }
+
+/* ---------- 用户状态 ---------- */
+function updateUserUI(){
+  const el = document.getElementById("userInfo");
+  const btn = document.getElementById("btnLogin");
+  if (AUTH_USER) {
+    const roleLabel = {admin:"管理员", user:"用户"}[AUTH_USER.role]||AUTH_USER.role;
+    el.innerHTML = `<span class="dot"></span>${AUTH_USER.username} <span style="opacity:.6">[${roleLabel}]</span>`;
+    btn.textContent = "登出";
+    btn.className = "ghost tiny";
+  } else {
+    el.innerHTML = "🔒 未登录";
+    btn.textContent = "登录";
+    btn.className = "ghost tiny";
+  }
+}
+updateUserUI();
+
+btnLogin.onclick = () => {
+  if (AUTH_USER) { logout(); return; }
+  showLogin();
+};
+
+function logout(){
+  AUTH_TOKEN = ""; AUTH_USER = null;
+  localStorage.removeItem("tcm_token");
+  localStorage.removeItem("tcm_user");
+  updateUserUI(); say("已登出");
+}
+
+/* ---------- 登录弹窗 ---------- */
+function showLogin(){
+  document.getElementById("loginMask").style.display = "flex";
+  document.getElementById("loginUser").focus();
+}
+btnCancelLogin.onclick = () => {
+  document.getElementById("loginMask").style.display = "none";
+  document.getElementById("loginErr").textContent = "";
+};
+btnDoLogin.onclick = async () => {
+  const u = document.getElementById("loginUser").value.trim();
+  const p = document.getElementById("loginPass").value;
+  if (!u || !p) { document.getElementById("loginErr").textContent = "请输入用户名和密码"; return; }
+  try {
+    const data = await api("/auth/login", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({username:u, password:p})
+    });
+    AUTH_TOKEN = data.token; AUTH_USER = data.user;
+    localStorage.setItem("tcm_token", AUTH_TOKEN);
+    localStorage.setItem("tcm_user", JSON.stringify(AUTH_USER));
+    updateUserUI();
+    document.getElementById("loginMask").style.display = "none";
+    document.getElementById("loginErr").textContent = "";
+    document.getElementById("loginPass").value = "";
+    say("登录成功，欢迎 " + AUTH_USER.username);
+  } catch(e) {
+    document.getElementById("loginErr").textContent = e.message;
+  }
+};
+document.getElementById("loginPass").onkeydown = e => {
+  if (e.key === "Enter") btnDoLogin.click();
+};
+
+/* ---------- 右侧 Tabs ---------- */
+document.querySelectorAll(".right-tab").forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll(".right-tab").forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("tabDetail").style.display = tab.dataset.tab==="detail"?"block":"none";
+    document.getElementById("tabAudit").style.display = tab.dataset.tab==="audit"?"block":"none";
+    document.getElementById("tabImport").style.display = tab.dataset.tab==="import"?"block":"none";
+    if (tab.dataset.tab === "audit") loadAuditLog();
+    if (tab.dataset.tab === "import") loadImportHistory();
+  };
+});
 
 /* ---------- 初始化 ---------- */
 (async function boot(){
@@ -173,25 +366,41 @@ async function api(path, opt={}) {
   rRel.onchange = () => relHint.textContent = "允许：" +
     META.relation_schema[rRel.value].map(p=>p.join("→")).join("、");
   rRel.onchange();
+  // 审计筛选下拉
+  META.entity_types.forEach(t => auditTarget.add(new Option(t,t)));
   loadAll();
 })();
 
 /* ---------- 取数 ---------- */
 async function loadAll(){
-  const ents = (await api("/entities?size=500")).items;
-  const rels = (await api("/relations?size=2000")).items;
-  RAW = { nodes: ents.map(e=>({id:e.id,label:e.name,type:e.type})),
-          edges: rels.map(r=>({source:r.source_id,target:r.target_id,label:r.relation})) };
-  render(RAW); say("已载入全图");
+  try {
+    const ents = (await api("/entities?size=500")).items;
+    const rels = (await api("/relations?size=2000")).items;
+    RAW = { nodes: ents.map(e=>({id:e.id,label:e.name,type:e.type})),
+            edges: rels.map(r=>({source:r.source_id,target:r.target_id,label:r.relation})) };
+    render(RAW); say("已载入全图");
+  } catch(e) { say(e.message, true); }
+}
+// 智能刷新：搜索框有文字就重新搜索，否则载入全图
+async function refresh(){
+  const kw = kw_.value.trim();
+  if (kw) { await doSearch(); } else { await loadAll(); }
 }
 async function doSearch(){
-  const kw = kw_.value.trim(); if(!kw) return loadAll();
-  RAW = await api(`/graph/search?keyword=${encodeURIComponent(kw)}&depth=${depth.value}`);
-  render(RAW); say(RAW.nodes.length ? `检索「${kw}」` : `没找到「${kw}」`, !RAW.nodes.length);
+  try {
+    const kw = kw_.value.trim(); if(!kw) return loadAll();
+    RAW = await api(`/graph/search?keyword=${encodeURIComponent(kw)}&depth=${depth.value}`);
+    console.log("search result", RAW);
+    render(RAW);
+    const names = RAW.nodes.slice(0,5).map(n=>n.label).join("、");
+    say(RAW.nodes.length ? `检索「${kw}」→ ${names}${RAW.nodes.length>5?"…等":""}` : `没找到「${kw}」`, !RAW.nodes.length);
+  } catch(e) { say(e.message, true); }
 }
 const kw_ = document.getElementById("kw");
 btnSearch.onclick = doSearch;
-kw_.onkeydown = e => e.key==="Enter" && doSearch();
+kw_.onkeydown = e => {
+  if (e.key === "Enter" && !e.isComposing) doSearch();
+};
 btnAll.onclick = loadAll;
 
 /* ---------- 绘图 ---------- */
@@ -222,15 +431,88 @@ function render(g){
 }
 window.onresize = () => chart.resize();
 
+let SELECTED = null;  // 当前选中实体
+
 chart.on("click", async p => {
   if (p.dataType !== "node") return;
   const e = await api("/entities/" + p.data.id);
+  SELECTED = e;
   detail.innerHTML = `<span class="chip" style="background:${HEX[e.type]}">${e.type}</span> `
     + `<b>${e.name}</b>  <span style="color:var(--ink-soft)">${e.id}</span>\n`
     + (e.alias?`别名：${e.alias}\n`:"") + (e.description?`释义：${e.description}\n`:"")
     + `properties: ${JSON.stringify(e.properties, null, 1)}`;
   pSrc.value = e.name;
+  document.getElementById("detailActions").style.display = "flex";
+  document.getElementById("editForm").style.display = "none";
+  document.getElementById("relDetail").style.display = "none";
+  document.getElementById("relActions").style.display = "none";
+  document.getElementById("relEditForm").style.display = "none";
+  SELECTED_REL = null;
 });
+
+// 删除
+btnDelEntity.onclick = async () => {
+  if (!SELECTED) return;
+  if (!confirm(`确定删除「${SELECTED.name}」(${SELECTED.id})？关联关系将一并删除。`)) return;
+  try {
+    await api(`/entities/${SELECTED.id}`, {method:"DELETE"});
+    say(`已删除 ${SELECTED.name}`);
+    SELECTED = null;
+    detail.innerHTML = "已删除，请刷新全图";
+    document.getElementById("detailActions").style.display = "none";
+    refresh();
+  } catch(err) { say(err.message, true); }
+};
+
+// 编辑 → 展开表单
+btnEditEntity.onclick = () => {
+  if (!SELECTED) return;
+  document.getElementById("editForm").style.display = "grid";
+  document.getElementById("editName").value = SELECTED.name || "";
+  document.getElementById("editAlias").value = SELECTED.alias || "";
+  document.getElementById("editDesc").value = SELECTED.description || "";
+  document.getElementById("editSource").value = (SELECTED.properties||{}).source || "";
+  document.getElementById("editNote").value = (SELECTED.properties||{}).note || "";
+  document.getElementById("editMsg").textContent = "";
+};
+
+// 保存编辑
+btnSaveEdit.onclick = async () => {
+  if (!SELECTED) return;
+  try {
+    const body = {};
+    const n = document.getElementById("editName").value.trim();
+    const a = document.getElementById("editAlias").value.trim();
+    const d = document.getElementById("editDesc").value.trim();
+    const src = document.getElementById("editSource").value.trim();
+    const note = document.getElementById("editNote").value.trim();
+    if (n && n !== SELECTED.name) body.name = n;
+    if (a !== (SELECTED.alias || "")) body.alias = a;
+    if (d !== (SELECTED.description || "")) body.description = d;
+    // source/note 写入 properties
+    if (src !== ((SELECTED.properties||{}).source || "") || note !== ((SELECTED.properties||{}).note || "")) {
+      body.properties = {...(SELECTED.properties||{}), source: src, note: note};
+    }
+    if (!Object.keys(body).length) { say("没有修改"); return; }
+    const updated = await api(`/entities/${SELECTED.id}`, {
+      method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)
+    });
+    SELECTED = updated;
+    detail.innerHTML = `<span class="chip" style="background:${HEX[updated.type]}">${updated.type}</span> `
+      + `<b>${updated.name}</b>  <span style="color:var(--ink-soft)">${updated.id}</span>\n`
+      + (updated.alias?`别名：${updated.alias}\n`:"") + (updated.description?`释义：${updated.description}\n`:"")
+      + `properties: ${JSON.stringify(updated.properties, null, 1)}`;
+    document.getElementById("editForm").style.display = "none";
+    document.getElementById("editMsg").textContent = "";
+    say(`已更新 ${updated.name}`);
+    refresh();
+  } catch(err) { document.getElementById("editMsg").textContent = err.message; }
+};
+
+btnCancelEdit.onclick = () => {
+  document.getElementById("editForm").style.display = "none";
+  document.getElementById("editMsg").textContent = "";
+};
 chart.on("dblclick", async p => {
   if (p.dataType !== "node") return;
   const sub = await api(`/graph/subgraph?id=${p.data.id}&depth=1`);
@@ -242,51 +524,195 @@ chart.on("dblclick", async p => {
 });
 
 /* ---------- 路径 ---------- */
+const resolveEntity = async (v) => {
+  // 直接输入 ID 如 H001 → 原样返回
+  if (v.match(/^[HFSZGJW]\d+$/)) return v;
+  // 精确名称匹配优先
+  const all = (await api(`/entities?keyword=${encodeURIComponent(v)}&size=10`)).items;
+  const exact = all.find(e => e.name === v);
+  return exact ? exact.id : all[0]?.id;
+};
+
 btnPath.onclick = async () => {
   try{
-    const one = async v => v.match(/^[HFSZGJW]\d+$/) ? v :
-      (await api(`/entities?keyword=${encodeURIComponent(v)}&size=1`)).items[0]?.id;
-    const s = await one(pSrc.value.trim()), t = await one(pTgt.value.trim());
+    const s = await resolveEntity(pSrc.value.trim());
+    const t = await resolveEntity(pTgt.value.trim());
     if(!s||!t) throw new Error("起点或终点找不到对应实体");
-    const {paths} = await api(`/graph/path?source_id=${s}&target_id=${t}&max_depth=4`);
+    const depth = document.getElementById("pDepth").value;
+    const {paths} = await api(`/graph/path?source_id=${s}&target_id=${t}&max_depth=${depth}`);
     document.getElementById("paths").innerHTML = paths.length
-      ? paths.map(p=>`<div class="path">${p.readable}<br><small>${p.length} 跳</small></div>`).join("")
-      : `<div class="path">4 跳之内没有连通路径</div>`;
-    if(paths.length){ RAW = paths[0].graph; render(RAW); }
-    say(`找到 ${paths.length} 条路径`);
+      ? paths.map((p, idx) => `<div class="path" data-path-idx="${idx}" style="cursor:pointer" title="点击查看此路径">
+           ${p.readable}<br><small>${p.length} 跳</small></div>`).join("")
+      : `<div class="path">${depth} 跳之内没有连通路径</div>`;
+    if(paths.length){
+      // 存起来，默认显示第一条
+      window._foundPaths = paths;
+      RAW = paths[0].graph; render(RAW);
+      // 给每条路径绑定点击切换
+      document.querySelectorAll(".path[data-path-idx]").forEach(el => {
+        el.onclick = () => {
+          const idx = parseInt(el.dataset.pathIdx);
+          RAW = window._foundPaths[idx].graph; render(RAW);
+          // 高亮当前选中
+          document.querySelectorAll(".path[data-path-idx]").forEach(e => e.style.borderLeftColor = "var(--seal)");
+          el.style.borderLeftColor = "var(--celadon)";
+        };
+      });
+    }
+    say(paths.length ? `找到 ${paths.length} 条路径` : `${depth} 跳内未找到路径`, !paths.length);
   }catch(e){ say(e.message, true); }
 };
 
 /* ---------- 录入 ---------- */
-const post = (p, body) => api(p, {method:"POST", headers:{"Content-Type":"application/json"},
+const post = (p, body) => api(p, {method:"POST", headers:authHeaders({"Content-Type":"application/json"}),
   body: JSON.stringify(body)});
 btnAddE.onclick = async () => {
   try{
+    const props = {};
+    const src = document.getElementById("eSource").value.trim();
+    const note = document.getElementById("eNote").value.trim();
+    if (src) props.source = src;
+    if (note) props.note = note;
     const e = await post("/entities", {name:eName.value.trim(), type:eType.value,
-      alias:eAlias.value, description:eDesc.value});
+      alias:eAlias.value, description:eDesc.value, properties: props});
     say(`已录入 ${e.id} ${e.name}`); eName.value=eAlias.value=eDesc.value="";
-    loadAll();
+    document.getElementById("eSource").value = "";
+    document.getElementById("eNote").value = "";
+    refresh();
   }catch(err){ say(err.message, true); }
 };
+let SELECTED_REL = null;  // 当前选中关系
+
 btnAddR.onclick = async () => {
   try{
     const r = await post("/relations", {source_name:rSrc.value.trim(), relation:rRel.value,
       target_name:rTgt.value.trim(), evidence:rEv.value});
-    say(`已录入 ${r.source_name}-${r.relation}->${r.target_name}`); loadAll();
+    say(`已录入 ${r.source_name}-${r.relation}->${r.target_name}`);
+    rEv.value = ""; refresh();
   }catch(err){ say(err.message, true); }
+};
+
+// 点击边线 → 显示关系详情
+chart.on("click", async p => {
+  if (p.dataType !== "edge") return;
+  SELECTED_REL = { source: p.data.source, target: p.data.target, label: p.data.label };
+  document.getElementById("relDetail").style.display = "block";
+  document.getElementById("relDetail").innerHTML =
+    `<b>${p.data.source}</b> <span class="chip" style="background:var(--seal)">${p.data.label}</span> <b>${p.data.target}</b>`;
+  document.getElementById("relActions").style.display = "flex";
+  document.getElementById("relEditForm").style.display = "none";
+  document.getElementById("detailActions").style.display = "none";
+  document.getElementById("editForm").style.display = "none";
+  const sel = document.getElementById("editRelType");
+  sel.innerHTML = ""; META.relation_types.forEach(t => sel.add(new Option(t, t)));
+  sel.value = p.data.label;
+});
+
+// 删除关系
+btnDelRel.onclick = async () => {
+  if (!SELECTED_REL) return;
+  if (!confirm(`确定删除「${SELECTED_REL.source} -${SELECTED_REL.label}-> ${SELECTED_REL.target}」？`)) return;
+  try {
+    await api(`/relations?source_id=${SELECTED_REL.source}&relation=${SELECTED_REL.label}&target_id=${SELECTED_REL.target}`, {method:"DELETE"});
+    say("已删除关系");
+    SELECTED_REL = null;
+    document.getElementById("relDetail").style.display = "none";
+    document.getElementById("relActions").style.display = "none";
+    refresh();
+  } catch(err) { say(err.message, true); }
+};
+
+// 编辑关系 → 展开表单
+btnEditRel.onclick = () => {
+  document.getElementById("relEditForm").style.display = "grid";
+  document.getElementById("editRelEv").value = "";
+  document.getElementById("relEditMsg").textContent = "";
+};
+
+// 保存关系修改
+btnSaveRel.onclick = async () => {
+  if (!SELECTED_REL) return;
+  try {
+    await api(`/relations?source_id=${SELECTED_REL.source}&relation=${SELECTED_REL.label}&target_id=${SELECTED_REL.target}`, {method:"DELETE"});
+    const newRel = document.getElementById("editRelType").value;
+    const newEv = document.getElementById("editRelEv").value.trim();
+    const r = await post("/relations", {
+      source_id: SELECTED_REL.source, target_id: SELECTED_REL.target,
+      relation: newRel, evidence: newEv || undefined,
+    });
+    say(`关系已更新: ${r.source_name}-${r.relation}->${r.target_name}`);
+    SELECTED_REL = null;
+    document.getElementById("relDetail").style.display = "none";
+    document.getElementById("relActions").style.display = "none";
+    document.getElementById("relEditForm").style.display = "none";
+    refresh();
+  } catch(err) { document.getElementById("relEditMsg").textContent = err.message; }
+};
+
+btnCancelRel.onclick = () => {
+  document.getElementById("relEditForm").style.display = "none";
 };
 
 /* ---------- 导入 ---------- */
 async function upload(file, kind){
-  const fd = new FormData(); fd.append("file", file);
-  const res = await api(`/import/${kind}`, {method:"POST", body:fd});
-  impLog.style.display="block";
-  impLog.textContent = `总 ${res.total} / 成功 ${res.success} / 失败 ${res.failed}\n`
-    + res.errors.map(e=>`第 ${e.row} 行: ${e.reason}`).join("\n");
-  loadAll();
+  try {
+    const fd = new FormData(); fd.append("file", file);
+    const res = await api(`/import/${kind}`, {method:"POST", headers:authHeaders(), body:fd});
+    impLog.style.display="block";
+    impLog.textContent = `总 ${res.total} / 成功 ${res.success} / 失败 ${res.failed}\n`
+      + res.errors.map(e=>`第 ${e.row} 行: ${e.reason}`).join("\n");
+    refresh();
+  } catch(err) { say(err.message, true); }
 }
 fE.onchange = e => upload(e.target.files[0], "entities");
 fR.onchange = e => upload(e.target.files[0], "relations");
+
+/* ---------- 操作日志 ---------- */
+async function loadAuditLog(){
+  const list = document.getElementById("auditList");
+  try {
+    const action = document.getElementById("auditAction").value;
+    const target = document.getElementById("auditTarget").value;
+    let qs = "page=1&size=50";
+    if (action) qs += "&action=" + action;
+    if (target) qs += "&target_type=" + target;
+    const data = await api("/admin/audit-log?" + qs);
+    if (!data.items.length) { list.innerHTML = "暂无操作日志"; return; }
+    const labels = {create:"新增", update:"修改", delete:"删除", "import":"导入"};
+    list.innerHTML = `<table class="log-table">
+      <tr><th>时间</th><th>用户</th><th>操作</th><th>对象</th></tr>
+      ${data.items.map(l => `
+        <tr>
+          <td>${(l.created_at||"").replace("T"," ").substring(0,19)}</td>
+          <td>${l.username||"系统"}</td>
+          <td>${labels[l.action]||l.action}</td>
+          <td>${l.target_name||l.target_id||""}</td>
+        </tr>`).join("")}
+    </table>`;
+  } catch(e) { list.innerHTML = `<span class="err">加载失败: ${e.message}</span>`; }
+}
+btnRefreshAudit.onclick = loadAuditLog;
+
+/* ---------- 导入历史 ---------- */
+async function loadImportHistory(){
+  const list = document.getElementById("importList");
+  try {
+    const data = await api("/admin/import-batches?page=1&size=20");
+    if (!data.items.length) { list.innerHTML = "暂无导入记录"; return; }
+    list.innerHTML = `<table class="log-table">
+      <tr><th>时间</th><th>用户</th><th>类型</th><th>文件</th><th>成功/失败</th></tr>
+      ${data.items.map(b => `
+        <tr>
+          <td>${(b.created_at||"").replace("T"," ").substring(0,19)}</td>
+          <td>${b.username||""}</td>
+          <td>${b.kind==="entity"?"实体":"关系"}</td>
+          <td>${b.file_name||""}</td>
+          <td>${b.success}/${b.total} ${b.failed>0?`<span class="err">(失败${b.failed})</span>`:""}</td>
+        </tr>`).join("")}
+    </table>`;
+  } catch(e) { list.innerHTML = `<span class="err">加载失败: ${e.message}</span>`; }
+}
+btnRefreshImport.onclick = loadImportHistory;
 </script>
 </body>
 </html>

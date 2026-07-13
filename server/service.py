@@ -1,5 +1,5 @@
 """
-业务层：所有校验、ID 分配、批量导入、以及「图 3 格式」的转换都在这里。
+业务层：所有校验、ID 分配、批量导入、图谱格式转换、审计日志。
 API 层只负责收发 HTTP，不写业务逻辑。
 """
 import csv
@@ -7,15 +7,15 @@ import io
 from typing import Any, Dict, List, Optional, Tuple
 
 try:
-    from .schemas import (Entity, EntityCreate, EntityUpdate, EvidenceItem,
+    from .schemas import (Entity, EntityCreate, EntityUpdate,
                            GraphData, GraphEdge, GraphNode, ImportError_,
-                           ImportResult, QAResult, Relation, RelationCreate,
+                           ImportResult, Relation, RelationCreate,
                            validate_entity_type, validate_relation)
     from .store_base import GraphStore
 except ImportError:
-    from schemas import (Entity, EntityCreate, EntityUpdate, EvidenceItem,
+    from schemas import (Entity, EntityCreate, EntityUpdate,
                           GraphData, GraphEdge, GraphNode, ImportError_,
-                          ImportResult, QAResult, Relation, RelationCreate,
+                          ImportResult, Relation, RelationCreate,
                           validate_entity_type, validate_relation)
     from store_base import GraphStore
 
@@ -26,12 +26,41 @@ RELATION_COLS = ["source_id", "source_name", "relation", "target_id", "target_na
 class GraphService:
     def __init__(self, store: GraphStore):
         self.store = store
+        self._current_user: Optional[dict] = None   # {id, username, role}
+
+    def set_user(self, user: Optional[dict]) -> None:
+        """设置当前操作用户，用于审计日志。"""
+        self._current_user = user
+
+    @property
+    def _uid(self) -> int:
+        return int(self._current_user["sub"]) if self._current_user else 0
+
+    @property
+    def _uname(self) -> str:
+        return self._current_user.get("username", "") if self._current_user else ""
+
+    def _log(self, action: str, target_type: str, target_id: str,
+             target_name: str = "", before: dict | None = None,
+             after: dict | None = None) -> None:
+        """记录操作日志（静默，失败不抛异常）。"""
+        try:
+            self.store.insert_operation_log(
+                user_id=self._uid, username=self._uname,
+                action=action, target_type=target_type,
+                target_id=target_id, target_name=target_name,
+                before_snapshot=before, after_snapshot=after,
+            )
+        except Exception:
+            pass   # 审计记录失败不应阻断主流程
 
     # ==================== 实体 ====================
     def create_entity(self, payload: EntityCreate) -> Entity:
         validate_entity_type(payload.type)
         if not payload.name.strip():
             raise ValueError("name 不能为空")
+        if not payload.type.strip():
+            raise ValueError("type 不能为空")
         exist = self.store.get_entity_by_name(payload.name)
         if exist and exist.type == payload.type:
             raise ValueError(f"同名同类型实体已存在：{exist.id} {exist.name}")
@@ -41,18 +70,26 @@ class GraphService:
         e = Entity(id=eid, name=payload.name.strip(), type=payload.type,
                    alias=payload.alias, description=payload.description,
                    properties=payload.properties)
-        return self.store.upsert_entity(e)
+        result = self.store.upsert_entity(e)
+        self._log("create", e.type, e.id, e.name, after=e.model_dump())
+        return result
 
     def update_entity(self, eid: str, payload: EntityUpdate) -> Entity:
         e = self.store.get_entity(eid)
         if not e:
             raise ValueError(f"实体不存在：{eid}")
+        before = e.model_dump()
         data = payload.model_dump(exclude_none=True)
         for k, v in data.items():
             setattr(e, k, v)
-        return self.store.upsert_entity(e)
+        result = self.store.upsert_entity(e)
+        self._log("update", e.type, e.id, e.name, before=before, after=e.model_dump())
+        return result
 
     def delete_entity(self, eid: str) -> bool:
+        e = self.store.get_entity(eid)
+        if e:
+            self._log("delete", e.type, e.id, e.name, before=e.model_dump())
         return self.store.delete_entity(eid)
 
     def get_entity(self, eid: str) -> Optional[Entity]:
@@ -65,11 +102,20 @@ class GraphService:
 
     # ==================== 关系 ====================
     def _resolve(self, eid: Optional[str], name: Optional[str], role: str) -> Entity:
-        e = self.store.get_entity(eid) if eid else (
-            self.store.get_entity_by_name(name) if name else None)
-        if not e:
-            raise ValueError(f"{role} 实体不存在：id={eid} name={name}")
-        return e
+        """解析关系端点。名字优先：如果名字和 ID 指向不同实体，以名字为准。"""
+        name_entity = self.store.get_entity_by_name(name) if name else None
+        id_entity = self.store.get_entity(eid) if eid else None
+
+        if name_entity and id_entity and name_entity.id != id_entity.id:
+            # ID 与名字不匹配 → 以名字为准，纠正 ID
+            return name_entity
+
+        if name_entity:
+            return name_entity
+        if id_entity:
+            return id_entity
+
+        raise ValueError(f"{role} 实体不存在：id={eid} name={name}")
 
     def create_relation(self, payload: RelationCreate) -> Relation:
         src = self._resolve(payload.source_id, payload.source_name, "source")
@@ -79,9 +125,19 @@ class GraphService:
         validate_relation(payload.relation, src.type, tgt.type)
         r = Relation(source_id=src.id, source_name=src.name, relation=payload.relation,
                      target_id=tgt.id, target_name=tgt.name, evidence=payload.evidence)
-        return self.store.upsert_relation(r)
+        result = self.store.upsert_relation(r)
+        self._log("create", "relation", f"{src.id}|{r.relation}|{tgt.id}",
+                  f"{src.name}-{r.relation}->{tgt.name}", after=r.model_dump())
+        return result
 
     def delete_relation(self, source_id: str, relation: str, target_id: str) -> bool:
+        # 查询删除前的关系用于审计
+        _, rels = self.store.list_relations(source_id, target_id, relation, 1, 1)
+        if rels:
+            self._log("delete", "relation",
+                      f"{source_id}|{relation}|{target_id}",
+                      f"{rels[0].source_name}-{relation}->{rels[0].target_name}",
+                      before=rels[0].model_dump())
         return self.store.delete_relation(source_id, relation, target_id)
 
     def list_relations(self, source_id=None, target_id=None, relation=None, page=1, size=20):
@@ -95,7 +151,6 @@ class GraphService:
         edges = [GraphEdge(source=r.source_id, target=r.target_id, label=r.relation)
                  for r in relations
                  if r.source_id in node_ids and r.target_id in node_ids]
-        # 去重（同一对节点同一 label 只留一条）
         seen, uniq = set(), []
         for e in edges:
             k = (e.source, e.target, e.label)
@@ -140,13 +195,12 @@ class GraphService:
 
     @staticmethod
     def _readable(ents: List[Entity], rels: List[Relation]) -> str:
-        """把一条路径写成 '失眠 -提示-> 心脾两虚 -对应-> 归脾汤'，给 RAG/Agent 当证据文本。"""
         if not ents:
             return ""
         if not rels:
             return ents[0].name
         name = {e.id: e.name for e in ents}
-        cur = ents[0].id                      # ents[0] 一定是路径起点
+        cur = ents[0].id
         parts = [name.get(cur, cur)]
         for r in rels:
             nxt = r.target_id if r.source_id == cur else r.source_id
@@ -155,34 +209,125 @@ class GraphService:
             cur = nxt
         return "".join(parts)
 
-    # ==================== 批量导入 ====================
-    def import_entities(self, rows: List[Dict[str, str]]) -> ImportResult:
+    # ==================== 批量导入（事务模式） ====================
+    def import_entities(self, rows: List[Dict[str, str]],
+                         strict: bool = False) -> ImportResult:
+        """导入实体。strict=True 时任一失败全回滚；False 时逐行容错但记入批次。"""
         res = ImportResult(total=len(rows))
-        for i, row in enumerate(rows, start=2):        # 第 1 行是表头
+        if strict:
+            # 整体事务模式
+            self.store.mysql.begin() if hasattr(self.store, "mysql") else None
+            if hasattr(self.store, "neo4j"):
+                self.store.neo4j.begin_write_transaction()
+            try:
+                self._do_import_entities(rows, res)
+                if res.failed > 0:
+                    raise ValueError(f"导入有 {res.failed} 条失败，整体回滚")
+                if hasattr(self.store, "mysql"):
+                    self.store.mysql.commit()
+                if hasattr(self.store, "neo4j"):
+                    self.store.neo4j.commit_write_transaction()
+            except Exception:
+                if hasattr(self.store, "mysql"):
+                    self.store.mysql.rollback()
+                if hasattr(self.store, "neo4j"):
+                    self.store.neo4j.rollback_write_transaction()
+                raise
+        else:
+            self._do_import_entities(rows, res)
+        return res
+
+    def _do_import_entities(self, rows: List[Dict[str, str]],
+                             res: ImportResult) -> None:
+        for i, row in enumerate(rows, start=2):
             try:
                 row = {k.strip(): (v or "").strip() for k, v in row.items() if k}
+                if not row.get("name") or not row.get("type"):
+                    raise ValueError("name 和 type 不能为空")
                 props = {k: v for k, v in row.items()
                          if k not in RESERVED_ENTITY_COLS and v != ""}
                 payload = EntityCreate(
                     id=row.get("id") or None, name=row["name"], type=row["type"],
                     alias=row.get("alias", ""), description=row.get("description", ""),
                     properties=props)
-                # 幂等：id 已存在就更新，不报错
+
+                # 同 ID 已存在 → 直接更新
                 if payload.id and self.store.get_entity(payload.id):
                     self.store.upsert_entity(Entity(**payload.model_dump()))
-                else:
-                    exist = self.store.get_entity_by_name(payload.name)
-                    if exist and exist.type == payload.type:
-                        raise ValueError(f"重复实体，已存在 {exist.id}")
-                    self.create_entity(payload)
+                    res.success += 1
+                    continue
+
+                # 同名同类型 → 首见为主，补充属性
+                exist = self.store.get_entity_by_name(payload.name)
+                if exist and exist.type == payload.type:
+                    # 合并 alias（/ 分隔，去重）
+                    exist_aliases = set(
+                        a.strip() for a in exist.alias.split("/") if a.strip()
+                    )
+                    new_aliases = [
+                        a.strip() for a in payload.alias.split("/") if a.strip()
+                        and a.strip() not in exist_aliases
+                    ]
+                    merged_alias = "/".join(
+                        list(exist_aliases) + new_aliases
+                    )
+
+                    # 合并 description（已有不覆盖）
+                    merged_desc = exist.description if exist.description else payload.description
+
+                    # 合并 properties（只加新 key，已有不覆盖）
+                    merged_props = {**(payload.properties or {}), **(exist.properties or {})}
+
+                    merged = Entity(
+                        id=exist.id,                      # ID 不变
+                        name=exist.name,                   # name 不变
+                        type=exist.type,                   # type 不变
+                        alias=merged_alias,
+                        description=merged_desc,
+                        properties=merged_props,
+                    )
+                    self.store.upsert_entity(merged)
+                    res.success += 1
+                    continue
+
+                # 无 ID → 按类型前缀自动分配
+                if not payload.id:
+                    payload.id = self.store.next_id(payload.type)
+
+                self.create_entity(payload)
                 res.success += 1
             except Exception as ex:
                 res.failed += 1
                 res.errors.append(ImportError_(row=i, reason=str(ex)))
+
+    def import_relations(self, rows: List[Dict[str, str]],
+                          strict: bool = False) -> ImportResult:
+        res = ImportResult(total=len(rows))
+        if strict:
+            if hasattr(self.store, "mysql"):
+                self.store.mysql.begin()
+            if hasattr(self.store, "neo4j"):
+                self.store.neo4j.begin_write_transaction()
+            try:
+                self._do_import_relations(rows, res)
+                if res.failed > 0:
+                    raise ValueError(f"导入有 {res.failed} 条失败，整体回滚")
+                if hasattr(self.store, "mysql"):
+                    self.store.mysql.commit()
+                if hasattr(self.store, "neo4j"):
+                    self.store.neo4j.commit_write_transaction()
+            except Exception:
+                if hasattr(self.store, "mysql"):
+                    self.store.mysql.rollback()
+                if hasattr(self.store, "neo4j"):
+                    self.store.neo4j.rollback_write_transaction()
+                raise
+        else:
+            self._do_import_relations(rows, res)
         return res
 
-    def import_relations(self, rows: List[Dict[str, str]]) -> ImportResult:
-        res = ImportResult(total=len(rows))
+    def _do_import_relations(self, rows: List[Dict[str, str]],
+                              res: ImportResult) -> None:
         for i, row in enumerate(rows, start=2):
             try:
                 row = {k.strip(): (v or "").strip() for k, v in row.items() if k}
@@ -197,100 +342,40 @@ class GraphService:
             except Exception as ex:
                 res.failed += 1
                 res.errors.append(ImportError_(row=i, reason=str(ex)))
-        return res
 
     @staticmethod
     def parse_csv(content: bytes) -> List[Dict[str, str]]:
-        text = content.decode("utf-8-sig")           # 兼容 Excel 导出的 BOM
+        text = content.decode("utf-8-sig")
         return list(csv.DictReader(io.StringIO(text)))
 
-    # ==================== 问答（图 4 格式） ====================
-    def qa_ask(self, keyword: str) -> QAResult:
-        """教学问答入口：输入任意实体名称或关键词，返回完整 QAResult。
-        任务 3/4 接入后替换此处内部实现，但返回结构不变。"""
-        # 1. 找到起始实体
-        _, hits = self.list_entities(None, keyword, 1, 5)
-        if not hits:
-            raise ValueError(f"未找到与「{keyword}」相关的实体")
+    @staticmethod
+    def parse_excel(content: bytes) -> List[Dict[str, str]]:
+        """解析 .xlsx 文件，取第一个 sheet 的第一行作为表头。"""
+        import openpyxl
+        wb = openpyxl.load_workbook(io.BytesIO(content), read_only=True)
+        ws = wb.active
+        rows_iter = ws.iter_rows(values_only=True)
+        headers = [str(h or "").strip() for h in next(rows_iter, [])]
+        if not headers:
+            return []
+        result = []
+        for row in rows_iter:
+            d = {}
+            for i, h in enumerate(headers):
+                val = row[i] if i < len(row) else ""
+                d[h] = str(val).strip() if val is not None else ""
+            result.append(d)
+        wb.close()
+        return result
 
-        entity = hits[0]
+    @staticmethod
+    def parse_file(filename: str, content: bytes) -> List[Dict[str, str]]:
+        """根据文件名自动选择解析方式。"""
+        if filename.lower().endswith(".xlsx"):
+            return GraphService.parse_excel(content)
+        return GraphService.parse_csv(content)
 
-        # 2. 获取子图（depth=3 覆盖 症状→证候→方剂→药材 完整链路）
-        g = self.subgraph(entity.id, depth=3).model_dump()
-        nodes_by_type: Dict[str, List[str]] = {}
-        for n in g["nodes"]:
-            nodes_by_type.setdefault(n["type"], []).append(n["label"])
-
-        def names(t: str) -> List[str]:
-            return sorted(set(nodes_by_type.get(t, [])))
-
-        symptoms = names("症状")
-        syndromes = names("证候")
-        formulas = names("方剂")
-        herbs = names("药材")
-
-        # 3. 构建 evidence（实体描述作为资料片段）
-        evidence: List[EvidenceItem] = []
-        seen = set()
-        for n in g["nodes"]:
-            if n["id"] in seen:
-                continue
-            seen.add(n["id"])
-            e = self.get_entity(n["id"])
-            if e and e.description:
-                evidence.append(EvidenceItem(
-                    title=f"{e.name}（{e.type}）",
-                    content=e.description,
-                ))
-
-        # 4. 构建可读 answer
-        answer_parts = [f"「{entity.name}」"]
-        if symptoms:
-            answer_parts.append(f"相关症状：{'、'.join(symptoms)}。")
-        if syndromes:
-            answer_parts.append(f"关联证候：{'、'.join(syndromes)}。")
-        if formulas:
-            answer_parts.append(f"可选方剂：{'、'.join(formulas)}。")
-        if herbs:
-            answer_parts.append(f"涉及药材：{'、'.join(herbs)}。")
-
-        # 采集一条推理路径写入 answer，增强教学可读性
-        for start_type, end_type in [("症状", "方剂"), ("证候", "方剂"), ("方剂", "药材")]:
-            starts = [n for n in g["nodes"] if n["type"] == start_type]
-            ends = [n for n in g["nodes"] if n["type"] == end_type]
-            if starts and ends:
-                paths = self.find_paths(starts[0]["id"], ends[0]["id"], max_depth=3, limit=1)
-                if paths:
-                    answer_parts.insert(1, f"推理路径：{paths[0]['readable']}。")
-                    break
-
-        answer = "".join(answer_parts) if len(answer_parts) > 1 else (
-            f"已找到实体「{entity.name}」（{entity.type}），图谱中暂无更多关联信息。"
-        )
-
-        # 5. 生成追问
-        follow_ups: List[str] = []
-        if syndromes:
-            follow_ups.append(f"「{syndromes[0]}」还有哪些典型表现？")
-        if formulas:
-            follow_ups.append(f"「{formulas[0]}」的组方原理与方解是什么？")
-            if "禁忌" in nodes_by_type or syndromes:
-                follow_ups.append(f"「{formulas[0]}」有何使用禁忌或加减变化？")
-        if symptoms and len(syndromes) > 1:
-            follow_ups.append(f"「{symptoms[0]}」还可能对应哪些其他证候？")
-        if herbs and formulas:
-            follow_ups.append(f"「{formulas[0]}」中各味药材的配伍关系是什么？")
-
-        return QAResult(
-            answer=answer,
-            symptoms=symptoms,
-            syndromes=syndromes,
-            formulas=formulas,
-            herbs=herbs,
-            graph=GraphData(**g),
-            evidence=evidence,
-            follow_up_questions=follow_ups[:4],
-        )
+    # ==================== 图谱查询请用 subgraph / neighbors / search_graph / find_paths ====================
 
     def stats(self) -> dict:
         return self.store.stats()

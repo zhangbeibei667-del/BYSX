@@ -22,6 +22,16 @@ app.add_middleware(
 
 app.include_router(router)
 
+
+@app.on_event("startup")
+def _ensure_admin():
+    try:
+        from server.init_admin import ensure_admin
+    except ImportError:
+        from init_admin import ensure_admin
+    ensure_admin()
+
+
 FRONT = os.path.join(os.path.dirname(__file__), "..", "view", "graph_viewer.html")
 
 
