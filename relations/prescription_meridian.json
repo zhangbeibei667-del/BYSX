@@ -3,7 +3,7 @@
     "source_id": "F001",
     "source_name": "四君子汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气健脾，脾经为本"
   },
@@ -11,7 +11,7 @@
     "source_id": "F002",
     "source_name": "补中益气汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补中益气，脾主升清"
   },
@@ -19,7 +19,7 @@
     "source_id": "F002",
     "source_name": "补中益气汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "升阳举陷，胃经为阳明之经"
   },
@@ -27,7 +27,7 @@
     "source_id": "F003",
     "source_name": "参苓白术散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气健脾，脾主运化"
   },
@@ -35,7 +35,7 @@
     "source_id": "F003",
     "source_name": "参苓白术散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "渗湿止泻，胃经为表"
   },
@@ -43,7 +43,7 @@
     "source_id": "F004",
     "source_name": "四物汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "补血和血，肝藏血"
   },
@@ -51,7 +51,7 @@
     "source_id": "F004",
     "source_name": "四物汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "补血养心，心主血脉"
   },
@@ -59,7 +59,7 @@
     "source_id": "F005",
     "source_name": "当归补血汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补气生血，脾为气血生化之源"
   },
@@ -67,7 +67,7 @@
     "source_id": "F005",
     "source_name": "当归补血汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "补血养心，心主血脉"
   },
@@ -75,7 +75,7 @@
     "source_id": "F006",
     "source_name": "八珍汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气补血，脾主运化"
   },
@@ -83,7 +83,7 @@
     "source_id": "F006",
     "source_name": "八珍汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "益气补血，心主血脉"
   },
@@ -91,7 +91,7 @@
     "source_id": "F006",
     "source_name": "八珍汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "补血和血，肝藏血"
   },
@@ -99,7 +99,7 @@
     "source_id": "F007",
     "source_name": "归脾汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "养心安神，心藏神"
   },
@@ -107,7 +107,7 @@
     "source_id": "F007",
     "source_name": "归脾汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾统血，脾主运化"
   },
@@ -115,7 +115,7 @@
     "source_id": "F008",
     "source_name": "炙甘草汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "益气滋阴，心主血脉"
   },
@@ -123,7 +123,7 @@
     "source_id": "F008",
     "source_name": "炙甘草汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "滋阴养血，肾藏精"
   },
@@ -131,7 +131,7 @@
     "source_id": "F009",
     "source_name": "六味地黄丸",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "滋阴补肾，肾藏精"
   },
@@ -139,7 +139,7 @@
     "source_id": "F010",
     "source_name": "一贯煎",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "滋阴疏肝，肝主疏泄"
   },
@@ -147,7 +147,7 @@
     "source_id": "F010",
     "source_name": "一贯煎",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "滋阴养肾，肝肾同源"
   },
@@ -155,7 +155,7 @@
     "source_id": "F011",
     "source_name": "酸枣仁汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "养血安神，心藏神"
   },
@@ -163,7 +163,7 @@
     "source_id": "F011",
     "source_name": "酸枣仁汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "清热除烦，肝主疏泄"
   },
@@ -171,7 +171,7 @@
     "source_id": "F012",
     "source_name": "天王补心丹",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "补心安神，心藏神"
   },
@@ -179,7 +179,7 @@
     "source_id": "F012",
     "source_name": "天王补心丹",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "滋阴养血，肾藏精"
   },
@@ -187,7 +187,7 @@
     "source_id": "F013",
     "source_name": "交泰丸",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "清火安神，心主火"
   },
@@ -195,7 +195,7 @@
     "source_id": "F013",
     "source_name": "交泰丸",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "交通心肾，肾主水"
   },
@@ -203,7 +203,7 @@
     "source_id": "F014",
     "source_name": "安神定志丸",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "安神定志，心藏神"
   },
@@ -211,7 +211,7 @@
     "source_id": "F014",
     "source_name": "安神定志丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气镇惊，脾主思"
   },
@@ -219,7 +219,7 @@
     "source_id": "F015",
     "source_name": "麻黄汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "宣肺平喘，肺主宣发"
   },
@@ -227,7 +227,7 @@
     "source_id": "F016",
     "source_name": "桂枝汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "解肌发表，肺主皮毛"
   },
@@ -235,7 +235,7 @@
     "source_id": "F016",
     "source_name": "桂枝汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "调和营卫，营卫出于中焦"
   },
@@ -243,7 +243,7 @@
     "source_id": "F017",
     "source_name": "银翘散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "辛凉透表，肺主卫表"
   },
@@ -251,7 +251,7 @@
     "source_id": "F017",
     "source_name": "银翘散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清热解毒，阳明为多气多血之经"
   },
@@ -259,7 +259,7 @@
     "source_id": "F018",
     "source_name": "桑菊饮",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "宣肺止咳，肺主宣肃"
   },
@@ -267,7 +267,7 @@
     "source_id": "F019",
     "source_name": "小柴胡汤",
     "relation": "归经",
-    "target_id": "J011",
+    "target_id": "M011",
     "target_name": "足少阳胆经",
     "evidence": "和解少阳，胆经属少阳"
   },
@@ -275,7 +275,7 @@
     "source_id": "F019",
     "source_name": "小柴胡汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "和胃降逆，胃经为里"
   },
@@ -283,7 +283,7 @@
     "source_id": "F020",
     "source_name": "逍遥散",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "疏肝解郁，肝主疏泄"
   },
@@ -291,7 +291,7 @@
     "source_id": "F020",
     "source_name": "逍遥散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "养血健脾，脾主运化"
   },
@@ -299,7 +299,7 @@
     "source_id": "F021",
     "source_name": "白虎汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清热生津，阳明经热"
   },
@@ -307,7 +307,7 @@
     "source_id": "F021",
     "source_name": "白虎汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "清热生津，肺胃同治"
   },
@@ -315,7 +315,7 @@
     "source_id": "F022",
     "source_name": "黄连解毒汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "泻火解毒，胃经多火"
   },
@@ -323,7 +323,7 @@
     "source_id": "F022",
     "source_name": "黄连解毒汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "泻火解毒，肝经实火"
   },
@@ -331,7 +331,7 @@
     "source_id": "F022",
     "source_name": "黄连解毒汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "清心泻火，心主火"
   },
@@ -339,7 +339,7 @@
     "source_id": "F023",
     "source_name": "龙胆泻肝汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "清泻肝胆实火，肝经为本"
   },
@@ -347,7 +347,7 @@
     "source_id": "F023",
     "source_name": "龙胆泻肝汤",
     "relation": "归经",
-    "target_id": "J011",
+    "target_id": "M011",
     "target_name": "足少阳胆经",
     "evidence": "清利肝经湿热，胆为表"
   },
@@ -355,7 +355,7 @@
     "source_id": "F024",
     "source_name": "清营汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "清营解毒，心主营血"
   },
@@ -363,7 +363,7 @@
     "source_id": "F024",
     "source_name": "清营汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "透热养阴，肾藏阴精"
   },
@@ -371,7 +371,7 @@
     "source_id": "F025",
     "source_name": "平胃散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "燥湿运脾，脾主运化"
   },
@@ -379,7 +379,7 @@
     "source_id": "F025",
     "source_name": "平胃散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "行气和胃，胃主受纳"
   },
@@ -387,7 +387,7 @@
     "source_id": "F026",
     "source_name": "藿香正气散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "理气和中，脾主运化"
   },
@@ -395,7 +395,7 @@
     "source_id": "F026",
     "source_name": "藿香正气散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "解表化湿，胃为表"
   },
@@ -403,7 +403,7 @@
     "source_id": "F027",
     "source_name": "五苓散",
     "relation": "归经",
-    "target_id": "J007",
+    "target_id": "M007",
     "target_name": "足太阳膀胱经",
     "evidence": "利水渗湿，膀胱主水"
   },
@@ -411,7 +411,7 @@
     "source_id": "F027",
     "source_name": "五苓散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温阳化气，脾主运化水湿"
   },
@@ -419,7 +419,7 @@
     "source_id": "F028",
     "source_name": "真武汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "温阳利水，肾主水"
   },
@@ -427,7 +427,7 @@
     "source_id": "F028",
     "source_name": "真武汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温阳利水，脾运水湿"
   },
@@ -435,7 +435,7 @@
     "source_id": "F029",
     "source_name": "理中丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补气健脾，脾主运化"
   },
@@ -443,7 +443,7 @@
     "source_id": "F029",
     "source_name": "理中丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "温中祛寒，胃经为阳"
   },
@@ -451,7 +451,7 @@
     "source_id": "F030",
     "source_name": "四逆汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "回阳救逆，肾主阳"
   },
@@ -459,7 +459,7 @@
     "source_id": "F030",
     "source_name": "四逆汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "回阳救逆，心为君火"
   },
@@ -467,7 +467,7 @@
     "source_id": "F031",
     "source_name": "半夏厚朴汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "降逆化痰，肺主宣肃"
   },
@@ -475,7 +475,7 @@
     "source_id": "F031",
     "source_name": "半夏厚朴汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "行气散结，胃主降"
   },
@@ -483,7 +483,7 @@
     "source_id": "F032",
     "source_name": "柴胡疏肝散",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "疏肝理气，肝主疏泄"
   },
@@ -491,7 +491,7 @@
     "source_id": "F032",
     "source_name": "柴胡疏肝散",
     "relation": "归经",
-    "target_id": "J011",
+    "target_id": "M011",
     "target_name": "足少阳胆经",
     "evidence": "疏肝理气，胆为表"
   },
@@ -499,7 +499,7 @@
     "source_id": "F033",
     "source_name": "越鞠丸",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "行气解郁，肝主疏泄"
   },
@@ -507,7 +507,7 @@
     "source_id": "F033",
     "source_name": "越鞠丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "行气解郁，脾主运化"
   },
@@ -515,7 +515,7 @@
     "source_id": "F034",
     "source_name": "血府逐瘀汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "活血化瘀，心主血脉"
   },
@@ -523,7 +523,7 @@
     "source_id": "F034",
     "source_name": "血府逐瘀汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "行气止痛，肝主疏泄"
   },
@@ -531,7 +531,7 @@
     "source_id": "F035",
     "source_name": "补阳还五汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "补气活血，心主血脉"
   },
@@ -539,7 +539,7 @@
     "source_id": "F035",
     "source_name": "补阳还五汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补气通络，脾主肌肉"
   },
@@ -547,7 +547,7 @@
     "source_id": "F036",
     "source_name": "川芎茶调散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "疏风止痛，肺主卫表"
   },
@@ -555,7 +555,7 @@
     "source_id": "F036",
     "source_name": "川芎茶调散",
     "relation": "归经",
-    "target_id": "J007",
+    "target_id": "M007",
     "target_name": "足太阳膀胱经",
     "evidence": "疏风止痛，太阳经主表"
   },
@@ -563,7 +563,7 @@
     "source_id": "F037",
     "source_name": "半夏白术天麻汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾祛湿，脾主运化"
   },
@@ -571,7 +571,7 @@
     "source_id": "F037",
     "source_name": "半夏白术天麻汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "化痰息风，肝主风"
   },
@@ -579,7 +579,7 @@
     "source_id": "F038",
     "source_name": "保和丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "消食和胃，胃主受纳"
   },
@@ -587,7 +587,7 @@
     "source_id": "F038",
     "source_name": "保和丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "消食和胃，脾主运化"
   },
@@ -595,7 +595,7 @@
     "source_id": "F039",
     "source_name": "二陈汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "燥湿化痰，肺主贮痰"
   },
@@ -603,7 +603,7 @@
     "source_id": "F039",
     "source_name": "二陈汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "理气和中，脾为生痰之源"
   },
@@ -611,7 +611,7 @@
     "source_id": "F040",
     "source_name": "止嗽散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "宣肺止咳，肺主宣肃"
   },
@@ -619,7 +619,7 @@
     "source_id": "F041",
     "source_name": "生脉散",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "益气生津，心主血脉"
   },
@@ -627,7 +627,7 @@
     "source_id": "F041",
     "source_name": "生脉散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "敛阴止汗，肺主气"
   },
@@ -635,7 +635,7 @@
     "source_id": "F042",
     "source_name": "玉屏风散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "益气固表，肺主皮毛"
   },
@@ -643,7 +643,7 @@
     "source_id": "F042",
     "source_name": "玉屏风散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气固表，脾为气血之源"
   },
@@ -651,7 +651,7 @@
     "source_id": "F043",
     "source_name": "完带汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补脾化湿，脾主运化"
   },
@@ -659,7 +659,7 @@
     "source_id": "F043",
     "source_name": "完带汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "疏肝止带，肝主疏泄"
   },
@@ -667,7 +667,7 @@
     "source_id": "F044",
     "source_name": "七味白术散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾益气，脾主运化"
   },
@@ -675,7 +675,7 @@
     "source_id": "F044",
     "source_name": "七味白术散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "和胃生津，胃主受纳"
   },
@@ -683,7 +683,7 @@
     "source_id": "F045",
     "source_name": "养心汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "养心安神，心藏神"
   },
@@ -691,7 +691,7 @@
     "source_id": "F045",
     "source_name": "养心汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "补血养心，脾为气血之源"
   },
@@ -699,7 +699,7 @@
     "source_id": "F046",
     "source_name": "甘麦大枣汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "养心安神，心藏神"
   },
@@ -707,7 +707,7 @@
     "source_id": "F047",
     "source_name": "黄连阿胶汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "滋阴降火，心主火"
   },
@@ -715,7 +715,7 @@
     "source_id": "F047",
     "source_name": "黄连阿胶汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "除烦安神，肾主水"
   },
@@ -723,7 +723,7 @@
     "source_id": "F048",
     "source_name": "温胆汤",
     "relation": "归经",
-    "target_id": "J011",
+    "target_id": "M011",
     "target_name": "足少阳胆经",
     "evidence": "清胆和胃，胆属少阳"
   },
@@ -731,7 +731,7 @@
     "source_id": "F048",
     "source_name": "温胆汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "理气化痰，胃主降"
   },
@@ -739,7 +739,7 @@
     "source_id": "F049",
     "source_name": "清气化痰丸",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "清热化痰，肺主气"
   },
@@ -747,7 +747,7 @@
     "source_id": "F049",
     "source_name": "清气化痰丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "理气止咳，胃主降"
   },
@@ -755,7 +755,7 @@
     "source_id": "F050",
     "source_name": "贝母瓜蒌散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "润肺清热，肺主宣肃"
   },
@@ -763,7 +763,7 @@
     "source_id": "F050",
     "source_name": "贝母瓜蒌散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "理气化痰，胃经为表"
   },
@@ -771,7 +771,7 @@
     "source_id": "F051",
     "source_name": "小陷胸汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "清热化痰，肺主气"
   },
@@ -779,7 +779,7 @@
     "source_id": "F051",
     "source_name": "小陷胸汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "宽胸散结，胃经为表"
   },
@@ -787,7 +787,7 @@
     "source_id": "F052",
     "source_name": "苓甘五味姜辛汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "温肺化饮，肺主宣肃"
   },
@@ -795,7 +795,7 @@
     "source_id": "F052",
     "source_name": "苓甘五味姜辛汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "温肺化饮，肾主水"
   },
@@ -803,7 +803,7 @@
     "source_id": "F053",
     "source_name": "三子养亲汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "温肺化痰，肺主气"
   },
@@ -811,7 +811,7 @@
     "source_id": "F053",
     "source_name": "三子养亲汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "降气消食，胃主降"
   },
@@ -819,7 +819,7 @@
     "source_id": "F054",
     "source_name": "定喘汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "宣肺降气，肺主宣肃"
   },
@@ -827,7 +827,7 @@
     "source_id": "F055",
     "source_name": "苏子降气汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "降气平喘，肺主气"
   },
@@ -835,7 +835,7 @@
     "source_id": "F055",
     "source_name": "苏子降气汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "温肾纳气，肾主纳气"
   },
@@ -843,7 +843,7 @@
     "source_id": "F056",
     "source_name": "旋覆代赭汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "益气和胃，胃主降"
   },
@@ -851,7 +851,7 @@
     "source_id": "F056",
     "source_name": "旋覆代赭汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "降逆化痰，脾主运化"
   },
@@ -859,7 +859,7 @@
     "source_id": "F057",
     "source_name": "橘皮竹茹汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "降逆止呕，胃主降"
   },
@@ -867,7 +867,7 @@
     "source_id": "F057",
     "source_name": "橘皮竹茹汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "清热益气，脾主运化"
   },
@@ -875,7 +875,7 @@
     "source_id": "F058",
     "source_name": "丁香柿蒂汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "降逆止呃，胃主降"
   },
@@ -883,7 +883,7 @@
     "source_id": "F058",
     "source_name": "丁香柿蒂汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温中益气，脾主运化"
   },
@@ -891,7 +891,7 @@
     "source_id": "F059",
     "source_name": "桃核承气汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "逐瘀泻热，心主血脉"
   },
@@ -899,7 +899,7 @@
     "source_id": "F059",
     "source_name": "桃核承气汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "泻热通下，胃经为表"
   },
@@ -907,7 +907,7 @@
     "source_id": "F060",
     "source_name": "身痛逐瘀汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "活血化瘀，肝主筋"
   },
@@ -915,7 +915,7 @@
     "source_id": "F061",
     "source_name": "膈下逐瘀汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "活血化瘀，肝主疏泄"
   },
@@ -923,7 +923,7 @@
     "source_id": "F062",
     "source_name": "少腹逐瘀汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "温经活血，肝经循少腹"
   },
@@ -931,7 +931,7 @@
     "source_id": "F063",
     "source_name": "生化汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "化瘀生新，肝藏血"
   },
@@ -939,7 +939,7 @@
     "source_id": "F064",
     "source_name": "复元活血汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "疏肝通络，肝主疏泄"
   },
@@ -947,7 +947,7 @@
     "source_id": "F065",
     "source_name": "七厘散",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "化瘀止血，肝藏血"
   },
@@ -955,7 +955,7 @@
     "source_id": "F066",
     "source_name": "失笑散",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "活血散结，肝藏血"
   },
@@ -963,7 +963,7 @@
     "source_id": "F067",
     "source_name": "丹参饮",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "活血化瘀，心主血脉"
   },
@@ -971,7 +971,7 @@
     "source_id": "F067",
     "source_name": "丹参饮",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "行气止痛，肝主疏泄"
   },
@@ -979,7 +979,7 @@
     "source_id": "F068",
     "source_name": "温经汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "温经散寒，肝藏血"
   },
@@ -987,7 +987,7 @@
     "source_id": "F068",
     "source_name": "温经汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "养血祛瘀，心主血脉"
   },
@@ -995,7 +995,7 @@
     "source_id": "F069",
     "source_name": "胶艾汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "补血止血，肝藏血"
   },
@@ -1003,7 +1003,7 @@
     "source_id": "F069",
     "source_name": "胶艾汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "调经安胎，心主血脉"
   },
@@ -1011,7 +1011,7 @@
     "source_id": "F070",
     "source_name": "四生丸",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "凉血止血，肝藏血"
   },
@@ -1019,7 +1019,7 @@
     "source_id": "F070",
     "source_name": "四生丸",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "凉血止血，肺主气"
   },
@@ -1027,7 +1027,7 @@
     "source_id": "F071",
     "source_name": "槐花散",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "清肠止血，大肠经为本"
   },
@@ -1035,7 +1035,7 @@
     "source_id": "F071",
     "source_name": "槐花散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "疏风行气，胃经为表"
   },
@@ -1043,7 +1043,7 @@
     "source_id": "F072",
     "source_name": "黄土汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温阳健脾，脾主统血"
   },
@@ -1051,7 +1051,7 @@
     "source_id": "F072",
     "source_name": "黄土汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "养血止血，肾藏精"
   },
@@ -1059,7 +1059,7 @@
     "source_id": "F073",
     "source_name": "小建中汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温中补虚，脾主运化"
   },
@@ -1067,7 +1067,7 @@
     "source_id": "F073",
     "source_name": "小建中汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "和里缓急，胃主受纳"
   },
@@ -1075,7 +1075,7 @@
     "source_id": "F074",
     "source_name": "大建中汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温中散寒，脾主运化"
   },
@@ -1083,7 +1083,7 @@
     "source_id": "F074",
     "source_name": "大建中汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "补虚止痛，胃主受纳"
   },
@@ -1091,7 +1091,7 @@
     "source_id": "F075",
     "source_name": "吴茱萸汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "温肝暖胃，肝经为本"
   },
@@ -1099,7 +1099,7 @@
     "source_id": "F075",
     "source_name": "吴茱萸汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "降逆止呕，胃主降"
   },
@@ -1107,7 +1107,7 @@
     "source_id": "F076",
     "source_name": "小半夏汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "和胃降逆，胃主降"
   },
@@ -1115,7 +1115,7 @@
     "source_id": "F077",
     "source_name": "大半夏汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "和胃降逆，胃主降"
   },
@@ -1123,7 +1123,7 @@
     "source_id": "F077",
     "source_name": "大半夏汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气润燥，脾主运化"
   },
@@ -1131,7 +1131,7 @@
     "source_id": "F078",
     "source_name": "茯苓饮",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾化痰，脾主运化"
   },
@@ -1139,7 +1139,7 @@
     "source_id": "F078",
     "source_name": "茯苓饮",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "理气消痞，胃主降"
   },
@@ -1147,7 +1147,7 @@
     "source_id": "F079",
     "source_name": "枳术丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾消食，脾主运化"
   },
@@ -1155,7 +1155,7 @@
     "source_id": "F079",
     "source_name": "枳术丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "行气化湿，胃主受纳"
   },
@@ -1163,7 +1163,7 @@
     "source_id": "F080",
     "source_name": "健脾丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾和胃，脾主运化"
   },
@@ -1171,7 +1171,7 @@
     "source_id": "F080",
     "source_name": "健脾丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "消食止泻，胃主受纳"
   },
@@ -1179,7 +1179,7 @@
     "source_id": "F081",
     "source_name": "枳实导滞丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "消食导滞，胃经为本"
   },
@@ -1187,7 +1187,7 @@
     "source_id": "F081",
     "source_name": "枳实导滞丸",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "清热祛湿，大肠主传导"
   },
@@ -1195,7 +1195,7 @@
     "source_id": "F082",
     "source_name": "木香槟榔丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "行气导滞，胃经为本"
   },
@@ -1203,7 +1203,7 @@
     "source_id": "F082",
     "source_name": "木香槟榔丸",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "攻积泄热，大肠主传导"
   },
@@ -1211,7 +1211,7 @@
     "source_id": "F083",
     "source_name": "肥儿丸",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾清热，脾主运化"
   },
@@ -1219,7 +1219,7 @@
     "source_id": "F083",
     "source_name": "肥儿丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "杀虫消积，胃主受纳"
   },
@@ -1227,7 +1227,7 @@
     "source_id": "F084",
     "source_name": "乌梅丸",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "温脏安蛔，肝经为本"
   },
@@ -1235,7 +1235,7 @@
     "source_id": "F084",
     "source_name": "乌梅丸",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "寒热并用，肾主水"
   },
@@ -1243,7 +1243,7 @@
     "source_id": "F085",
     "source_name": "理中安蛔汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温中安蛔，脾主运化"
   },
@@ -1251,7 +1251,7 @@
     "source_id": "F085",
     "source_name": "理中安蛔汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "温中安蛔，胃主受纳"
   },
@@ -1259,7 +1259,7 @@
     "source_id": "F086",
     "source_name": "连梅汤",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "清热安蛔，心主火"
   },
@@ -1267,7 +1267,7 @@
     "source_id": "F086",
     "source_name": "连梅汤",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "滋阴泻火，肾主水"
   },
@@ -1275,7 +1275,7 @@
     "source_id": "F087",
     "source_name": "白头翁汤",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "凉血止痢，大肠经为本"
   },
@@ -1283,7 +1283,7 @@
     "source_id": "F087",
     "source_name": "白头翁汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清热解毒，胃经为表"
   },
@@ -1291,7 +1291,7 @@
     "source_id": "F088",
     "source_name": "芍药汤",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "调气行血，大肠经为本"
   },
@@ -1299,7 +1299,7 @@
     "source_id": "F088",
     "source_name": "芍药汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清热解毒，胃经为表"
   },
@@ -1307,7 +1307,7 @@
     "source_id": "F089",
     "source_name": "葛根芩连汤",
     "relation": "归经",
-    "target_id": "J002",
+    "target_id": "M002",
     "target_name": "手阳明大肠经",
     "evidence": "升清止泻，大肠经为本"
   },
@@ -1315,7 +1315,7 @@
     "source_id": "F089",
     "source_name": "葛根芩连汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "解表清里，胃经为表"
   },
@@ -1323,7 +1323,7 @@
     "source_id": "F090",
     "source_name": "参苓白术散（同名新方）",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "益气健脾，脾主运化"
   },
@@ -1331,7 +1331,7 @@
     "source_id": "F090",
     "source_name": "参苓白术散（同名新方）",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "渗湿止泻，胃经为表"
   },
@@ -1339,7 +1339,7 @@
     "source_id": "F091",
     "source_name": "实脾散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "温阳健脾，脾主运化"
   },
@@ -1347,7 +1347,7 @@
     "source_id": "F091",
     "source_name": "实脾散",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "行气利水，肾主水"
   },
@@ -1355,7 +1355,7 @@
     "source_id": "F092",
     "source_name": "五皮散",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "健脾化湿，脾主运化"
   },
@@ -1363,7 +1363,7 @@
     "source_id": "F092",
     "source_name": "五皮散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "行气利水，肺主通调水道"
   },
@@ -1371,7 +1371,7 @@
     "source_id": "F093",
     "source_name": "导赤散",
     "relation": "归经",
-    "target_id": "J005",
+    "target_id": "M005",
     "target_name": "手少阴心经",
     "evidence": "清心利水，心主火"
   },
@@ -1379,7 +1379,7 @@
     "source_id": "F093",
     "source_name": "导赤散",
     "relation": "归经",
-    "target_id": "J006",
+    "target_id": "M006",
     "target_name": "手太阳小肠经",
     "evidence": "清心利水，小肠主泌别清浊"
   },
@@ -1387,7 +1387,7 @@
     "source_id": "F094",
     "source_name": "龙胆泻肝汤（详方）",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "清泻肝胆实火，肝经为本"
   },
@@ -1395,7 +1395,7 @@
     "source_id": "F094",
     "source_name": "龙胆泻肝汤（详方）",
     "relation": "归经",
-    "target_id": "J011",
+    "target_id": "M011",
     "target_name": "足少阳胆经",
     "evidence": "清利肝经湿热，胆为表"
   },
@@ -1403,7 +1403,7 @@
     "source_id": "F095",
     "source_name": "左金丸",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "清泻肝火，肝经为本"
   },
@@ -1411,7 +1411,7 @@
     "source_id": "F095",
     "source_name": "左金丸",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "降逆止呕，胃主降"
   },
@@ -1419,7 +1419,7 @@
     "source_id": "F096",
     "source_name": "苇茎汤",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "清肺化痰，肺主气"
   },
@@ -1427,7 +1427,7 @@
     "source_id": "F096",
     "source_name": "苇茎汤",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "逐瘀排脓，胃经为表"
   },
@@ -1435,7 +1435,7 @@
     "source_id": "F097",
     "source_name": "泻白散",
     "relation": "归经",
-    "target_id": "J001",
+    "target_id": "M001",
     "target_name": "手太阴肺经",
     "evidence": "清泻肺热，肺主宣肃"
   },
@@ -1443,7 +1443,7 @@
     "source_id": "F098",
     "source_name": "清胃散",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清胃凉血，胃经为本"
   },
@@ -1451,7 +1451,7 @@
     "source_id": "F098",
     "source_name": "清胃散",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "清胃凉血，肝藏血"
   },
@@ -1459,7 +1459,7 @@
     "source_id": "F099",
     "source_name": "玉女煎",
     "relation": "归经",
-    "target_id": "J003",
+    "target_id": "M003",
     "target_name": "足阳明胃经",
     "evidence": "清胃滋阴，胃经为本"
   },
@@ -1467,7 +1467,7 @@
     "source_id": "F099",
     "source_name": "玉女煎",
     "relation": "归经",
-    "target_id": "J008",
+    "target_id": "M008",
     "target_name": "足少阴肾经",
     "evidence": "清胃滋阴，肾藏精"
   },
@@ -1475,7 +1475,7 @@
     "source_id": "F100",
     "source_name": "芍药甘草汤",
     "relation": "归经",
-    "target_id": "J012",
+    "target_id": "M012",
     "target_name": "足厥阴肝经",
     "evidence": "缓急止痛，肝主筋"
   },
@@ -1483,7 +1483,7 @@
     "source_id": "F100",
     "source_name": "芍药甘草汤",
     "relation": "归经",
-    "target_id": "J004",
+    "target_id": "M004",
     "target_name": "足太阴脾经",
     "evidence": "酸甘化阴，脾主肌肉"
   }
