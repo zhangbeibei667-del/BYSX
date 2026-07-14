@@ -1,0 +1,11 @@
+{
+  "source_pages": "data\\pharmacopoeia\\processed\\hkcmms\\pages.jsonl",
+  "source_chunks": "data\\pharmacopoeia\\processed\\hkcmms\\chunks.jsonl",
+  "quality_threshold": 0.58,
+  "total_pages": 436,
+  "low_quality_pages": 19,
+  "total_chunks": 1106,
+  "indexable_chunks": 1094,
+  "review_chunks": 12,
+  "section_title_suspect_count": 0
+}

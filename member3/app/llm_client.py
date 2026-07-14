@@ -7,8 +7,8 @@ class LLMClient:
     """
     DeepSeek / OpenAI-compatible Chat Completions 客户端。
 
-    默认项目关闭真实 LLM 调用。
-    填写 .env 后即可启用，不需要把 API Key 写死在源码中。
+    API Key 通过 .env / 环境变量注入，
+    不写死在源码中。
     """
 
     def __init__(
@@ -17,17 +17,50 @@ class LLMClient:
         api_key: str,
         model: str,
     ) -> None:
-        if not api_key:
-            raise ValueError("LLM_API_KEY 为空")
+        clean_base_url = base_url.strip().rstrip("/")
+        clean_api_key = api_key.strip()
+        clean_model = model.strip()
 
-        self.url = f"{base_url.rstrip('/')}/chat/completions"
-        self.api_key = api_key
-        self.model = model
+        if not clean_base_url:
+            raise ValueError(
+                "LLM_BASE_URL 为空"
+            )
 
-    def generate(self, prompt: str) -> str:
+        if not clean_api_key:
+            raise ValueError(
+                "LLM_API_KEY 为空"
+            )
+
+        if not clean_model:
+            raise ValueError(
+                "LLM_MODEL 为空"
+            )
+
+        self.url = (
+            f"{clean_base_url}/chat/completions"
+        )
+
+        self.api_key = clean_api_key
+        self.model = clean_model
+
+    def generate(
+        self,
+        prompt: str,
+    ) -> str:
+        clean_prompt = prompt.strip()
+
+        if not clean_prompt:
+            raise ValueError(
+                "prompt 为空"
+            )
+
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json",
+            "Authorization": (
+                f"Bearer {self.api_key}"
+            ),
+            "Content-Type": (
+                "application/json"
+            ),
         }
 
         payload = {
@@ -43,19 +76,58 @@ class LLMClient:
                 },
                 {
                     "role": "user",
-                    "content": prompt,
+                    "content": clean_prompt,
                 },
             ],
             "temperature": 0.2,
         }
 
-        with httpx.Client(timeout=60.0) as client:
+        with httpx.Client(
+            timeout=60.0
+        ) as client:
             response = client.post(
                 self.url,
                 headers=headers,
                 json=payload,
             )
-            response.raise_for_status()
-            body = response.json()
 
-        return body["choices"][0]["message"]["content"].strip()
+        # 不再只给一个模糊 HTTPStatusError。
+        if response.is_error:
+            detail = (
+                response.text[:500]
+                .replace("\r", " ")
+                .replace("\n", " ")
+            )
+
+            raise RuntimeError(
+                "LLM API 请求失败："
+                f"HTTP {response.status_code}; "
+                f"response={detail}"
+            )
+
+        body = response.json()
+
+        try:
+            content = (
+                body["choices"][0]
+                ["message"]["content"]
+            )
+
+        except (
+            KeyError,
+            IndexError,
+            TypeError,
+        ) as exc:
+            raise RuntimeError(
+                "LLM API 返回结构异常："
+                f"{str(body)[:500]}"
+            ) from exc
+
+        answer = str(content).strip()
+
+        if not answer:
+            raise RuntimeError(
+                "LLM API 返回空答案"
+            )
+
+        return answer

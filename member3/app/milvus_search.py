@@ -1,0 +1,910 @@
+from __future__ import annotations
+
+import os
+import re
+
+from dotenv import load_dotenv
+from pymilvus import MilvusClient
+
+from app.embedding_client import EmbeddingClient
+from app.hkcmms_cleaning import clean_hkcmms_title
+from app.vector_search import RetrievedChunk
+
+
+# ============================================================
+# 先加载 .env
+# ============================================================
+load_dotenv()
+
+
+MILVUS_URI = os.getenv(
+    "MILVUS_URI",
+    "http://127.0.0.1:19530",
+)
+
+COLLECTION_NAME = os.getenv(
+    "MILVUS_COLLECTION",
+    "tcm_rag_chunks",
+)
+
+BASE_OUTPUT_FIELDS = [
+    "chunk_id",
+    "doc_id",
+    "title",
+    "content",
+    "source",
+]
+
+OPTIONAL_OUTPUT_FIELDS = [
+    "record_type",
+    "chinese_name",
+    "chinese_name_simplified",
+    "official_name",
+    "pinyin_name",
+    "section_type",
+    "section_number",
+    "section_title",
+    "parent_section",
+    "citation",
+    "source_url",
+]
+
+
+class MilvusVectorSearch:
+    """
+    TCM GraphRAG 正式 Milvus 向量检索器。
+
+    流程：
+    1. Query -> Embedding；
+    2. Milvus Dense Retrieval；
+    3. 召回较多候选；
+    4. Query-aware Rerank；
+    5. 截取最终 Top-K；
+    6. 转换为 RetrievedChunk；
+    7. 直接交给 GraphRAGService。
+    """
+
+    def __init__(self) -> None:
+        # 连接 Milvus
+        self.client = MilvusClient(
+            uri=MILVUS_URI,
+        )
+
+        # Query Embedding
+        self.embedding_client = EmbeddingClient()
+
+        # 检查 Collection
+        collections = self.client.list_collections()
+
+        if COLLECTION_NAME not in collections:
+            raise RuntimeError(
+                "Milvus Collection 不存在: "
+                f"{COLLECTION_NAME}"
+            )
+
+        # 显式加载 Collection
+        self.client.load_collection(
+            collection_name=COLLECTION_NAME,
+        )
+        self.scalar_fields = self._load_scalar_fields()
+        self.output_fields = [
+            field
+            for field in [
+                *BASE_OUTPUT_FIELDS,
+                *OPTIONAL_OUTPUT_FIELDS,
+            ]
+            if field in self.scalar_fields
+        ]
+
+    def _load_scalar_fields(self) -> set[str]:
+        try:
+            description = self.client.describe_collection(
+                collection_name=COLLECTION_NAME,
+            )
+        except Exception:
+            return set(BASE_OUTPUT_FIELDS)
+
+        fields = description.get("fields") or (
+            description.get("schema", {}) or {}
+        ).get("fields", [])
+
+        field_names = {
+            str(field.get("name") or field.get("field_name"))
+            for field in fields
+            if field.get("name") or field.get("field_name")
+        }
+
+        return field_names or set(BASE_OUTPUT_FIELDS)
+
+    # ========================================================
+    # 1. 从 Query 中提取当前轻量级实体提示
+    # ========================================================
+    @staticmethod
+    def _extract_entity_hint(
+        query: str,
+    ) -> str:
+        """
+        当前开发阶段的轻量查询提示提取。
+
+        示例：
+        风寒袭肺证有哪些症状？
+        ->
+        风寒袭肺证
+
+        归脾汤有什么功效？
+        ->
+        归脾汤
+
+        后续团队正式图谱整合后，
+        可替换为 GraphSearch.extract_entities()。
+        """
+        entity_hint = query.strip().lower()
+
+        suffixes = [
+            "的检查项目有哪些？",
+            "的检查项目有哪些",
+            "检查项目有哪些？",
+            "检查项目有哪些",
+            "的檢查項目有哪些？",
+            "的檢查項目有哪些",
+            "檢查項目有哪些？",
+            "檢查項目有哪些",
+            "的鉴别方法是什么？",
+            "的鉴别方法是什么",
+            "鉴别方法是什么？",
+            "鉴别方法是什么",
+            "的鑒別方法是什麼？",
+            "的鑒別方法是什麼",
+            "鑒別方法是什麼？",
+            "鑒別方法是什麼",
+            "的来源是什么？",
+            "的来源是什么",
+            "来源是什么？",
+            "来源是什么",
+            "的來源是什麼？",
+            "的來源是什麼",
+            "來源是什麼？",
+            "來源是什麼",
+            "的含量测定依据是什么？",
+            "的含量测定依据是什么",
+            "含量测定依据是什么？",
+            "含量测定依据是什么",
+            "的含量測定依據是什麼？",
+            "的含量測定依據是什麼",
+            "含量測定依據是什麼？",
+            "含量測定依據是什麼",
+            "有哪些典型症状表现？",
+            "有哪些典型症状表现",
+            "有哪些典型表现？",
+            "有哪些典型表现",
+            "有哪些症状？",
+            "有哪些症状",
+            "有什么症状？",
+            "有什么症状",
+            "主要症状是什么？",
+            "主要症状是什么",
+            "有什么功效？",
+            "有什么功效",
+            "有哪些功效？",
+            "有哪些功效",
+            "有什么作用？",
+            "有什么作用",
+            "有哪些作用？",
+            "有哪些作用",
+            "是什么？",
+            "是什么",
+            "为什么？",
+            "为什么",
+        ]
+
+        for suffix in suffixes:
+            if entity_hint.endswith(suffix):
+                entity_hint = entity_hint[
+                    :-len(suffix)
+                ].strip()
+                break
+
+        # 去除部分常见前缀
+        prefixes = [
+            "请问",
+            "我想知道",
+            "想了解",
+            "请介绍一下",
+            "介绍一下",
+        ]
+
+        for prefix in prefixes:
+            if entity_hint.startswith(prefix):
+                entity_hint = entity_hint[
+                    len(prefix):
+                ].strip()
+                break
+
+        return entity_hint
+
+    @staticmethod
+    def _detect_pharmacopoeia_section_intent(
+        query: str,
+    ) -> str:
+        if any(
+            keyword in query
+            for keyword in [
+                "检查",
+                "檢查",
+                "检查项目",
+                "檢查項目",
+            ]
+        ):
+            return "tests"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "鉴别",
+                "鑒別",
+                "鉴别方法",
+                "鑒別方法",
+            ]
+        ):
+            return "identification"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "来源",
+                "來源",
+            ]
+        ):
+            return "source"
+
+        if any(
+            keyword in query
+            for keyword in [
+                "含量",
+                "测定",
+                "測定",
+            ]
+        ):
+            return "assay"
+
+        return ""
+
+    @staticmethod
+    def _literal(
+        value: str,
+    ) -> str:
+        escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
+
+    @staticmethod
+    def _section_matches(
+        section_intent: str,
+        title: str,
+        content: str,
+    ) -> bool:
+        if not section_intent:
+            return False
+
+        text = f"{title}\n{content}"
+
+        if section_intent == "tests":
+            return any(
+                keyword in text
+                for keyword in [
+                    "檢查",
+                    "检查",
+                    "上级章节：5",
+                    "parent_section: 5",
+                ]
+            ) or bool(
+                re.search(r"5\.\d+", text)
+            )
+
+        if section_intent == "identification":
+            return any(
+                keyword in text
+                for keyword in [
+                    "鑒別",
+                    "鉴别",
+                    "上级章节：4",
+                    "parent_section: 4",
+                ]
+            )
+
+        if section_intent == "source":
+            return "來源" in text or "来源" in text
+
+        if section_intent == "assay":
+            return "含量測定" in text or "含量测定" in text
+
+        return False
+
+    def _build_structured_hkcmms_filter(
+        self,
+        entity_hint: str,
+    ) -> tuple[str, int]:
+        filters = ['source == "HKCMMS"']
+
+        if (
+            entity_hint
+            and "chinese_name" in self.scalar_fields
+            and "chinese_name_simplified" in self.scalar_fields
+        ):
+            literal = self._literal(entity_hint)
+            filters.append(
+                "("
+                f"chinese_name == {literal} "
+                f"or chinese_name_simplified == {literal}"
+                ")"
+            )
+            return " && ".join(filters), 200
+
+        return " && ".join(filters), 2000
+
+    def _normalize_hit(
+        self,
+        hit: dict,
+        score: float,
+    ) -> dict:
+        entity = hit.get(
+            "entity",
+            hit,
+        )
+
+        row = {
+            "id": hit.get("id"),
+            "score": score,
+            "chunk_id": str(entity.get("chunk_id", "")),
+            "doc_id": str(entity.get("doc_id", "")),
+            "title": str(entity.get("title", "")),
+            "content": str(entity.get("content", "")),
+            "source": str(entity.get("source", "")),
+        }
+
+        for field in OPTIONAL_OUTPUT_FIELDS:
+            if field in entity:
+                row[field] = str(entity.get(field) or "")
+
+        return row
+
+    def _structured_hkcmms_candidates(
+        self,
+        query: str,
+    ) -> list[dict]:
+        section_intent = self._detect_pharmacopoeia_section_intent(
+            query
+        )
+
+        if not section_intent:
+            return []
+
+        entity_hint = self._extract_entity_hint(
+            query
+        )
+        filter_expr, limit = self._build_structured_hkcmms_filter(
+            entity_hint
+        )
+
+        try:
+            rows = self.client.query(
+                collection_name=COLLECTION_NAME,
+                filter=filter_expr,
+                output_fields=self.output_fields,
+                limit=limit,
+            )
+        except Exception:
+            return []
+
+        candidates: list[dict] = []
+
+        for row in rows:
+            hit = self._normalize_hit(
+                row,
+                score=0.78,
+            )
+            title = hit["title"]
+            content = hit["content"]
+            text = f"{title}\n{content}"
+
+            if entity_hint and entity_hint not in text:
+                continue
+
+            if not self._section_matches(
+                section_intent=section_intent,
+                title=title,
+                content=content,
+            ):
+                continue
+
+            hit["structured_match"] = True
+            candidates.append(hit)
+
+        return candidates
+
+    @staticmethod
+    def _merge_hits(
+        hits: list[dict],
+        extra_hits: list[dict],
+    ) -> list[dict]:
+        merged: dict[str, dict] = {}
+
+        for hit in [
+            *hits,
+            *extra_hits,
+        ]:
+            key = hit.get("chunk_id") or str(hit.get("id"))
+
+            if not key:
+                continue
+
+            current = merged.get(key)
+
+            if current is None:
+                merged[key] = hit
+                continue
+
+            if float(hit.get("score", 0.0)) > float(
+                current.get("score", 0.0)
+            ):
+                merged[key] = {
+                    **current,
+                    **hit,
+                }
+
+        return list(merged.values())
+
+    # ========================================================
+    # 2. Query-aware Rerank
+    # ========================================================
+    def _rerank_hits(
+        self,
+        query: str,
+        hits: list[dict],
+    ) -> list[dict]:
+        """
+        对 Milvus Dense Retrieval 结果进行轻量重排。
+
+        当前规则：
+        1. 保留原始 COSINE 分数；
+        2. 查询实体提示完整出现在 title：
+           +0.08
+        3. 查询实体提示完整出现在 content：
+           +0.04
+
+        示例：
+        Query = 风寒袭肺证有哪些症状？
+
+        风寒袭肺证：定义与典型表现
+        会获得 title exact-match bonus。
+        """
+        entity_hint = self._extract_entity_hint(
+            query
+        )
+        section_intent = (
+            self._detect_pharmacopoeia_section_intent(
+                query
+            )
+        )
+
+        for hit in hits:
+            base_score = float(
+                hit.get(
+                    "score",
+                    0.0,
+                )
+            )
+
+            title = str(
+                hit.get(
+                    "title",
+                    "",
+                )
+            ).lower()
+
+            content = str(
+                hit.get(
+                    "content",
+                    "",
+                )
+            ).lower()
+
+            bonus = 0.0
+
+            if entity_hint:
+                if entity_hint in title:
+                    bonus += 0.08
+
+                elif entity_hint in content:
+                    bonus += 0.04
+
+            if section_intent == "tests":
+                if "檢查" in title or "检查" in title:
+                    bonus += 0.12
+                elif "上级章节：5 檢查" in content:
+                    bonus += 0.08
+
+                if (
+                    "鑒別" in title
+                    or "鉴别" in title
+                    or "含量測定" in title
+                    or "含量测定" in title
+                ):
+                    bonus -= 0.04
+
+            elif section_intent == "identification":
+                if "鑒別" in title or "鉴别" in title:
+                    bonus += 0.12
+                elif (
+                    "上级章节：4" in content
+                    and (
+                        "鑒別" in content
+                        or "鉴别" in content
+                    )
+                ):
+                    bonus += 0.06
+
+            elif section_intent == "source":
+                if "來源" in title or "来源" in title:
+                    bonus += 0.12
+
+            elif section_intent == "assay":
+                if "含量測定" in title or "含量测定" in title:
+                    bonus += 0.12
+
+            if hit.get("structured_match"):
+                bonus += 0.08
+
+            hit["rerank_bonus"] = bonus
+
+            hit["rerank_score"] = (
+                base_score + bonus
+            )
+
+        return sorted(
+            hits,
+            key=lambda item: item.get(
+                "rerank_score",
+                item.get(
+                    "score",
+                    0.0,
+                ),
+            ),
+            reverse=True,
+        )
+
+    def _candidate_limit(
+        self,
+        query: str,
+        top_k: int,
+    ) -> int:
+        """
+        药典栏目问题的目标通常是“某药材 + 某标准栏目”。
+
+        这类问题的正文短、标题相似，过小候选池容易在 dense retrieval
+        阶段漏掉同名 HKCMMS 片段；扩大候选池后再用上面的轻量规则重排。
+        """
+        base_limit = max(
+            10,
+            top_k * 3,
+        )
+
+        if self._detect_pharmacopoeia_section_intent(query):
+            return max(
+                60,
+                top_k * 6,
+            )
+
+        return base_limit
+
+    # ========================================================
+    # 3. Milvus 原始候选召回
+    # ========================================================
+    def _search_candidates(
+        self,
+        query: str,
+        candidate_k: int,
+    ) -> list[dict]:
+        """
+        从 Milvus 召回候选文本。
+
+        注意：
+        这里返回的是内部 dict，
+        暂不直接返回给 GraphRAGService。
+        """
+        # Query -> 1024维 Embedding
+        query_vector = (
+            self.embedding_client.embed(
+                query
+            )
+        )
+
+        results = self.client.search(
+            collection_name=COLLECTION_NAME,
+            anns_field="embedding",
+            data=[query_vector],
+            limit=candidate_k,
+            search_params={
+                "metric_type": "COSINE",
+            },
+            output_fields=[
+                *self.output_fields,
+            ],
+        )
+
+        hits: list[dict] = []
+
+        if not results:
+            return hits
+
+        if not results[0]:
+            return hits
+
+        for hit in results[0]:
+            entity = hit.get(
+                "entity",
+                {},
+            )
+
+            hits.append(
+                self._normalize_hit(
+                    hit,
+                    score=float(
+                        hit.get(
+                            "distance",
+                            0.0,
+                        )
+                    ),
+                )
+            )
+
+        return hits
+
+    # ========================================================
+    # 4. 正式 GraphRAG 检索接口
+    # ========================================================
+    def search(
+        self,
+        query: str,
+        top_k: int = 3,
+    ) -> list[RetrievedChunk]:
+        """
+        GraphRAGService 直接调用的正式接口。
+
+        与旧 VectorSearch 保持兼容：
+
+        self.vector_search.search(
+            query,
+            top_k=3,
+        )
+
+        返回：
+        list[RetrievedChunk]
+        """
+        query = query.strip()
+
+        if not query:
+            raise ValueError(
+                "查询文本不能为空"
+            )
+
+        if top_k <= 0:
+            raise ValueError(
+                "top_k 必须大于 0"
+            )
+
+        # ----------------------------------------------------
+        # 不直接只召回 top_k。
+        #
+        # 示例：
+        # 用户最终需要 3 条，
+        # 先从 Milvus 取至少 10 条候选，
+        # 再重排。
+        # ----------------------------------------------------
+        candidate_k = self._candidate_limit(
+            query=query,
+            top_k=top_k,
+        )
+
+        # 1. Dense Retrieval
+        hits = self._search_candidates(
+            query=query,
+            candidate_k=candidate_k,
+        )
+
+        hits = self._merge_hits(
+            hits,
+            self._structured_hkcmms_candidates(query),
+        )
+
+        if not hits:
+            return []
+
+        # 2. Query-aware Rerank
+        reranked_hits = self._rerank_hits(
+            query=query,
+            hits=hits,
+        )
+
+        # 3. 截取最终 Top-K
+        final_hits = reranked_hits[
+            :top_k
+        ]
+
+        # 4. 转换成现有 GraphRAGService
+        #    已经使用的 RetrievedChunk
+        chunks: list[RetrievedChunk] = []
+
+        for hit in final_hits:
+            title = hit["title"]
+            source = hit["source"]
+
+            # 当前统一 EvidenceItem 只有：
+            # title
+            # content
+            #
+            # 为了让前端页面能看到数据来源，
+            # 将 source 合并到 title 中。
+            if source == "HKCMMS":
+                title = clean_hkcmms_title(
+                    title
+                )
+                display_title = (
+                    f"药典标准｜{title}（HKCMMS）"
+                )
+            elif source:
+                display_title = (
+                    f"资料片段｜{title}（{source}）"
+                )
+            else:
+                display_title = (
+                    f"资料片段｜{title}"
+                )
+
+            chunks.append(
+                RetrievedChunk(
+                    title=display_title,
+                    content=hit["content"],
+                    score=float(
+                        hit.get(
+                            "rerank_score",
+                            hit["score"],
+                        )
+                    ),
+                )
+            )
+
+        return chunks
+
+    # ========================================================
+    # 5. 调试接口
+    # ========================================================
+    def search_debug(
+        self,
+        query: str,
+        top_k: int = 5,
+    ) -> list[dict]:
+        """
+        仅用于本地调试。
+
+        和正式 search() 不同：
+        - search() 返回 RetrievedChunk
+        - search_debug() 返回完整 dict
+
+        可以查看：
+        - 原始 score
+        - rerank bonus
+        - rerank score
+        - chunk_id
+        - source
+        """
+        query = query.strip()
+
+        if not query:
+            raise ValueError(
+                "查询文本不能为空"
+            )
+
+        if top_k <= 0:
+            raise ValueError(
+                "top_k 必须大于 0"
+            )
+
+        candidate_k = self._candidate_limit(
+            query=query,
+            top_k=top_k,
+        )
+
+        hits = self._search_candidates(
+            query=query,
+            candidate_k=candidate_k,
+        )
+
+        hits = self._merge_hits(
+            hits,
+            self._structured_hkcmms_candidates(query),
+        )
+
+        reranked_hits = self._rerank_hits(
+            query=query,
+            hits=hits,
+        )
+
+        return reranked_hits[
+            :top_k
+        ]
+
+
+# ============================================================
+# 本地独立测试
+# ============================================================
+def main() -> None:
+    searcher = MilvusVectorSearch()
+
+    query = "风寒袭肺证有哪些症状？"
+
+    results = searcher.search_debug(
+        query=query,
+        top_k=5,
+    )
+
+    print("=" * 70)
+    print(
+        f"查询: {query}"
+    )
+    print("=" * 70)
+
+    for rank, item in enumerate(
+        results,
+        start=1,
+    ):
+        print()
+
+        print(
+            f"[Top {rank}]"
+        )
+
+        print(
+            "score         : "
+            f"{item['score']:.6f}"
+        )
+
+        print(
+            "rerank_bonus  : "
+            f"{item.get('rerank_bonus', 0.0):.6f}"
+        )
+
+        print(
+            "rerank_score  : "
+            f"{item.get('rerank_score', item['score']):.6f}"
+        )
+
+        print(
+            f"chunk_id      : "
+            f"{item['chunk_id']}"
+        )
+
+        print(
+            f"doc_id        : "
+            f"{item['doc_id']}"
+        )
+
+        print(
+            f"title         : "
+            f"{item['title']}"
+        )
+
+        print(
+            f"source        : "
+            f"{item['source']}"
+        )
+
+        print(
+            "content       : "
+            f"{item['content'][:300]}"
+        )
+
+        print("-" * 70)
+
+
+if __name__ == "__main__":
+    main()

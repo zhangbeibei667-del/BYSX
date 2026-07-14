@@ -1,0 +1,8 @@
+{"id":"hkcmms_source_001","query":"一枝黄花的来源是什么？","intent":"source","requires_vector":true,"expected_source":"HKCMMS","expected_title_keywords":["一枝黃花","來源"],"expected_evidence_keywords":["药典标准"],"note":"验证药典来源栏目召回。"}
+{"id":"hkcmms_identification_001","query":"黄芪的鉴别方法是什么？","intent":"identification","requires_vector":true,"expected_source":"HKCMMS","expected_title_keywords":["黃芪","鑒別"],"expected_evidence_keywords":["药典标准"],"note":"验证药典鉴别栏目召回和栏目重排。"}
+{"id":"hkcmms_tests_001","query":"三七的检查项目有哪些？","intent":"tests","requires_vector":true,"expected_source":"HKCMMS","expected_title_keywords":["三七","檢查"],"expected_evidence_keywords":["药典标准"],"note":"验证药典检查栏目召回。"}
+{"id":"hkcmms_assay_001","query":"一枝黄花的含量测定依据是什么？","intent":"assay","requires_vector":true,"expected_source":"HKCMMS","expected_title_keywords":["一枝黃花","含量測定"],"expected_evidence_keywords":["药典标准"],"note":"验证药典含量测定栏目召回。"}
+{"id":"graph_formula_001","query":"归脾汤包含哪些药材？","intent":"formula_composition","requires_vector":false,"expected_graph_keywords":["归脾汤","酸枣仁"],"note":"验证方剂组成图谱路径。"}
+{"id":"graph_symptom_001","query":"失眠可能关联哪些证候和方剂？","intent":"symptom_to_formula","requires_vector":false,"expected_graph_keywords":["失眠","心脾两虚","归脾汤"],"note":"验证症状到证候再到方剂路径。"}
+{"id":"graph_syndrome_001","query":"心脾两虚有哪些典型症状表现？","intent":"syndrome_manifestation","requires_vector":false,"expected_graph_keywords":["心脾两虚"],"note":"验证证候表现类问题。"}
+{"id":"community_summary_001","query":"这个图谱的知识结构做一个概览","intent":"global_summary","requires_vector":false,"expected_evidence_keywords":["图谱社区摘要"],"note":"验证轻量社区发现和社区摘要。"}

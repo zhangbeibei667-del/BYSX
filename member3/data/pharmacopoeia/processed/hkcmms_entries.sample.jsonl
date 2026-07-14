@@ -1,0 +1,22 @@
+{
+    "entry_id": "HKCMMS_VOL2_RHIZOMA_COPTIDIS",
+    "name": "黄连",
+    "latin_name": "Rhizoma Coptidis",
+    "type": "药材",
+    "source_name": "香港中药材标准",
+    "source_type": "hkcmms",
+    "volume": "Volume 2",
+    "language": "zh",
+    "source_url": "",
+    "local_pdf_path": "",
+    "fields": {
+        "definition": "",
+        "description": "",
+        "identification": "",
+        "tests": "",
+        "assay": "",
+        "remarks": ""
+    },
+    "source_ref": "HKCMMS Volume 2 - Rhizoma Coptidis",
+    "verification_status": "auto_extracted_pending_check"
+}
