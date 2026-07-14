@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="front-index">
     <!-- 欢迎横幅 -->
     <div class="welcome-banner">
@@ -12,58 +12,51 @@
           </el-button>
           <el-button type="success" size="large" @click="goToGraph">
             <el-icon><DataAnalysis /></el-icon>
-            知识图谱
-          </el-button>
-          <el-button type="warning" size="large" @click="goToCaseStudy">
-            <el-icon><Notebook /></el-icon>
-            病例教学
-          </el-button>
-          <el-button type="info" size="large" @click="goToHistory">
-            <el-icon><Clock /></el-icon>
-            历史记录
-          </el-button>
-          <el-button type="default" size="large" @click="goToAdmin" class="admin-btn">
-            <el-icon><Setting /></el-icon>
-            后台管理
+            浏览图谱
           </el-button>
         </div>
+        <p class="banner-hint">点击顶部菜单可访问：知识图谱 · 病例教学 · 历史记录 · 后台管理</p>
       </div>
     </div>
-    
-    <!-- 功能特性 -->
+
+    <!-- 功能特性（纯展示，引导用户使用顶部菜单） -->
     <div class="features-section">
-      <h2 class="section-title">核心功能特性</h2>
+      <h2 class="section-title">平台能力概览</h2>
       <div class="features-grid">
-        <div class="feature-card" @click="goToChat">
+        <div class="feature-card">
           <div class="feature-icon">
             <el-icon><ChatDotRound /></el-icon>
           </div>
           <h3>智能问答</h3>
           <p>基于 RAG 和 Agent 的流式对话，支持症状咨询、方剂查询、药材辨析</p>
+          <span class="feature-tag">顶部菜单 → 开始问答</span>
         </div>
-  
-        <div class="feature-card" @click="goToGraph">
+
+        <div class="feature-card">
           <div class="feature-icon">
             <el-icon><DataAnalysis /></el-icon>
           </div>
           <h3>知识图谱</h3>
           <p>可视化展示药材、方剂、症状、证候间的复杂关系，支持路径查询</p>
+          <span class="feature-tag">顶部菜单 → 知识图谱</span>
         </div>
-  
-        <div class="feature-card" @click="goToCaseStudy">
+
+        <div class="feature-card">
           <div class="feature-icon">
             <el-icon><Notebook /></el-icon>
           </div>
           <h3>病例教学</h3>
           <p>病例录入与分析，自动匹配证候和方剂，辅助中医临床教学</p>
+          <span class="feature-tag">顶部菜单 → 病例教学</span>
         </div>
-  
-        <div class="feature-card" @click="goToHistory">
+
+        <div class="feature-card">
           <div class="feature-icon">
-            <el-icon><Clock /></el-icon>
+            <el-icon><Document /></el-icon>
           </div>
-          <h3>历史记录</h3>
-          <p>统一管理问答对话、收藏知识和教学病例，回顾学习轨迹</p>
+          <h3>文献溯源</h3>
+          <p>答案自动关联经典文献和药典依据，提供可信的知识来源</p>
+          <span class="feature-tag">顶部菜单 → 知识图谱</span>
         </div>
       </div>
     </div>
@@ -74,16 +67,7 @@
       <div class="recommendations-tabs">
         <el-tabs v-model="activeTab" type="border-card">
           <el-tab-pane label="常用方剂" name="prescriptions">
-            <div v-if="loadingPrescriptions" class="loading-content">
-              <div class="loading-spinner">
-                <el-icon><Loading /></el-icon>
-              </div>
-              <p>正在加载方剂数据...</p>
-            </div>
-            <div v-else-if="recommendedPrescriptions.length === 0" class="empty-content">
-              <el-empty description="暂无方剂数据" />
-            </div>
-            <div v-else class="recommendations-list">
+            <div class="recommendations-list">
               <div
                 v-for="item in recommendedPrescriptions"
                 :key="item.id"
@@ -101,16 +85,7 @@
           </el-tab-pane>
           
           <el-tab-pane label="常用药材" name="herbs">
-            <div v-if="loadingHerbs" class="loading-content">
-              <div class="loading-spinner">
-                <el-icon><Loading /></el-icon>
-              </div>
-              <p>正在加载药材数据...</p>
-            </div>
-            <div v-else-if="recommendedHerbs.length === 0" class="empty-content">
-              <el-empty description="暂无药材数据" />
-            </div>
-            <div v-else class="recommendations-list">
+            <div class="recommendations-list">
               <div
                 v-for="item in recommendedHerbs"
                 :key="item.id"
@@ -128,16 +103,7 @@
           </el-tab-pane>
           
           <el-tab-pane label="常见症状" name="symptoms">
-            <div v-if="loadingSymptoms" class="loading-content">
-              <div class="loading-spinner">
-                <el-icon><Loading /></el-icon>
-              </div>
-              <p>正在加载症状数据...</p>
-            </div>
-            <div v-else-if="recommendedSymptoms.length === 0" class="empty-content">
-              <el-empty description="暂无症状数据" />
-            </div>
-            <div v-else class="recommendations-list">
+            <div class="recommendations-list">
               <div
                 v-for="item in recommendedSymptoms"
                 :key="item.id"
@@ -160,61 +126,53 @@
     <div class="stats-section">
       <h2 class="section-title">平台数据概览</h2>
       <div class="stats-grid">
-        <div class="stat-card" @click="goToAdminHerbs">
+        <div class="stat-card">
           <div class="stat-icon" style="background: #e3f2fd;">
             <el-icon color="#2196f3"><Orange /></el-icon>
           </div>
           <div class="stat-info">
-            <h3 v-if="loadingStats">-</h3>
-            <h3 v-else>{{ formatNumber(stats.totalHerbs) }}</h3>
+            <h3>{{ formatNumber(stats.totalHerbs) }}</h3>
             <p>药材数量</p>
           </div>
         </div>
-
-        <div class="stat-card" @click="goToAdminPrescriptions">
+        
+        <div class="stat-card">
           <div class="stat-icon" style="background: #f3e5f5;">
             <el-icon color="#9c27b0"><Document /></el-icon>
           </div>
           <div class="stat-info">
-            <h3 v-if="loadingStats">-</h3>
-            <h3 v-else>{{ formatNumber(stats.totalPrescriptions) }}</h3>
+            <h3>{{ formatNumber(stats.totalPrescriptions) }}</h3>
             <p>方剂数量</p>
           </div>
         </div>
-
-        <div class="stat-card" @click="goToAdminRelations">
+        
+        <div class="stat-card">
           <div class="stat-icon" style="background: #e8f5e9;">
             <el-icon color="#4caf50"><Connection /></el-icon>
           </div>
           <div class="stat-info">
-            <h3 v-if="loadingStats">-</h3>
-            <h3 v-else>{{ formatNumber(stats.totalRelations) }}</h3>
+            <h3>{{ formatNumber(stats.totalRelations) }}</h3>
             <p>关系数量</p>
           </div>
         </div>
-
-        <div class="stat-card" @click="goToAdminRecords">
+        
+        <div class="stat-card">
           <div class="stat-icon" style="background: #fff3e0;">
             <el-icon color="#ff9800"><Message /></el-icon>
           </div>
           <div class="stat-info">
-            <h3 v-if="loadingStats">-</h3>
-            <h3 v-else>{{ formatNumber(stats.totalQuestions) }}</h3>
+            <h3>{{ formatNumber(stats.totalQuestions) }}</h3>
             <p>问答记录</p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- 人机验证弹窗 -->
-    <CaptchaVerify ref="captchaRef" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
 import {
   ChatDotRound,
   DataAnalysis,
@@ -222,300 +180,113 @@ import {
   Document,
   Orange,
   Connection,
-  Message,
-  Loading,
-  Setting
+  Message
 } from '@element-plus/icons-vue'
-import { entityApi, statsApi } from '@/api'
-import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
 
 const router = useRouter()
 const activeTab = ref('prescriptions')
 
-// 验证组件引用
-const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
-
-// 加载状态
-const loadingStats = ref(true)
-const loadingPrescriptions = ref(true)
-const loadingHerbs = ref(true)
-const loadingSymptoms = ref(true)
-
 // 统计数据
 const stats = ref({
-  totalHerbs: 0,
-  totalPrescriptions: 0,
-  totalRelations: 0,
-  totalQuestions: 0
+  totalHerbs: 156,
+  totalPrescriptions: 89,
+  totalRelations: 234,
+  totalQuestions: 567
 })
 
-// 推荐数据 - 初始为空，从API获取
-const recommendedPrescriptions = ref<any[]>([])
-const recommendedHerbs = ref<any[]>([])
-const recommendedSymptoms = ref<any[]>([])
+// 推荐数据
+const recommendedPrescriptions = ref([
+  {
+    id: 'F001',
+    name: '归脾汤',
+    description: '益气补血、健脾养心，主治心脾两虚、气血不足证',
+    category: '补益剂',
+    source: '《济生方》'
+  },
+  {
+    id: 'F002',
+    name: '麻黄汤',
+    description: '发汗解表、宣肺平喘，主治外感风寒表实证',
+    category: '解表剂',
+    source: '《伤寒论》'
+  },
+  {
+    id: 'F003',
+    name: '小柴胡汤',
+    description: '和解少阳，主治伤寒少阳证',
+    category: '和解剂',
+    source: '《伤���论》'
+  },
+  {
+    id: 'F004',
+    name: '补中益气汤',
+    description: '补中益气、升阳举陷，主治脾虚气陷证',
+    category: '补益剂',
+    source: '《脾胃论》'
+  }
+])
+
+const recommendedHerbs = ref([
+  {
+    id: 'H001',
+    name: '人参',
+    description: '大补元气、复脉固脱、补脾益肺、生津养血',
+    nature_and_flavor: '甘、微苦，微温',
+    efficacy: '补气固脱'
+  },
+  {
+    id: 'H002',
+    name: '黄芪',
+    description: '补气升阳、固表止汗、利水消肿、生津养血',
+    nature_and_flavor: '甘，微温',
+    efficacy: '补气固表'
+  },
+  {
+    id: 'H003',
+    name: '当归',
+    description: '补血活血、调经止痛、润肠通便',
+    nature_and_flavor: '甘、辛，温',
+    efficacy: '补血活血'
+  },
+  {
+    id: 'H004',
+    name: '茯苓',
+    description: '利水渗湿、健脾宁心',
+    nature_and_flavor: '甘、淡，平',
+    efficacy: '利水渗湿'
+  }
+])
+
+const recommendedSymptoms = ref([
+  {
+    id: 'S001',
+    name: '失眠',
+    description: '难以入眠、睡中易醒、早醒、睡眠质量差',
+    category: '心神症状'
+  },
+  {
+    id: 'S002',
+    name: '畏寒',
+    description: '怕冷，尤以背部、四肢为甚',
+    category: '寒热症状'
+  },
+  {
+    id: 'S003',
+    name: '咳嗽',
+    description: '肺气上逆作声，咯吐痰涎',
+    category: '肺系症状'
+  },
+  {
+    id: 'S004',
+    name: '腹泻',
+    description: '大便次数增多，粪质稀薄或完全不化',
+    category: '脾胃症状'
+  }
+])
 
 onMounted(() => {
-  // 加载统计数据
-  loadStats()
-  
-  // 加载推荐数据
-  loadRecommendedPrescriptions()
-  loadRecommendedHerbs()
-  loadRecommendedSymptoms()
+  // 这里可以加载实际的统计数据
 })
-
-// 加载统计数据
-const loadStats = async () => {
-  try {
-    loadingStats.value = true
-
-    // 优先使用 statsApi
-    try {
-      const res: any = await statsApi.getPlatformStats()
-      // 兼容不同后端响应格式
-      const data = res?.data || res
-      if (data && typeof data === 'object') {
-        stats.value = {
-          totalHerbs: data.totalHerbs || 0,
-          totalPrescriptions: data.totalPrescriptions || 0,
-          totalRelations: data.totalRelations || 0,
-          totalQuestions: data.totalQuestions || 0
-        }
-        return
-      }
-    } catch (apiError) {
-      console.log('statsApi 未就绪，使用模拟数据:', apiError)
-    }
-
-    // API 不可用时使用模拟数据
-    useMockStats()
-  } catch (error) {
-    console.error('加载统计数据失败:', error)
-    useMockStats()
-  } finally {
-    loadingStats.value = false
-  }
-}
-
-// 使用模拟统计数据
-const useMockStats = () => {
-  // 模拟数据 - 实际应该从API获取
-  stats.value = {
-    totalHerbs: 156,  // 从API获取
-    totalPrescriptions: 89, // 从API获取
-    totalRelations: 234, // 从API获取
-    totalQuestions: 567  // 从API获取
-  }
-}
-
-// 加载推荐方剂
-const loadRecommendedPrescriptions = async () => {
-  try {
-    loadingPrescriptions.value = true
-
-    // 优先使用 statsApi 获取热门实体
-    try {
-      const res: any = await statsApi.getPopularEntities('prescriptions', 4)
-      const data = res?.data || res
-      if (Array.isArray(data) && data.length > 0) {
-        recommendedPrescriptions.value = data
-        return
-      }
-    } catch {
-      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
-    }
-
-    // 回退到 entityApi 列表
-    try {
-      const response = await entityApi.prescriptions.list({ page: 1, pageSize: 4, sortBy: 'usage_count', sortOrder: 'desc' })
-      if (response && response.data && response.data.length > 0) {
-        recommendedPrescriptions.value = response.data
-        return
-      }
-    } catch {
-      console.log('entityApi 未就绪，使用模拟数据')
-    }
-
-    useMockPrescriptions()
-  } catch (error) {
-    console.error('加载推荐方剂失败:', error)
-    useMockPrescriptions()
-  } finally {
-    loadingPrescriptions.value = false
-  }
-}
-
-// 使用模拟方剂数据
-const useMockPrescriptions = () => {
-  recommendedPrescriptions.value = [
-    {
-      id: 'F001',
-      name: '归脾汤',
-      description: '益气补血、健脾养心，主治心脾两虚、气血不足证',
-      category: '补益剂',
-      source: '《济生方》'
-    },
-    {
-      id: 'F002',
-      name: '麻黄汤',
-      description: '发汗解表、宣肺平喘，主治外感风寒表实证',
-      category: '解表剂',
-      source: '《伤寒论》'
-    },
-    {
-      id: 'F003',
-      name: '小柴胡汤',
-      description: '和解少阳，主治伤寒少阳证',
-      category: '和解剂',
-      source: '《伤寒论》'
-    },
-    {
-      id: 'F004',
-      name: '补中益气汤',
-      description: '补中益气、升阳举陷，主治脾虚气陷证',
-      category: '补益剂',
-      source: '《脾胃论》'
-    }
-  ]
-}
-
-// 加载推荐药材
-const loadRecommendedHerbs = async () => {
-  try {
-    loadingHerbs.value = true
-
-    // 优先使用 statsApi 获取热门实体
-    try {
-      const res: any = await statsApi.getPopularEntities('herbs', 4)
-      const data = res?.data || res
-      if (Array.isArray(data) && data.length > 0) {
-        recommendedHerbs.value = data
-        return
-      }
-    } catch {
-      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
-    }
-
-    // 回退到 entityApi 列表
-    try {
-      const response = await entityApi.herbs.list({ page: 1, pageSize: 4, sortBy: 'usage_count', sortOrder: 'desc' })
-      if (response && response.data && response.data.length > 0) {
-        recommendedHerbs.value = response.data
-        return
-      }
-    } catch {
-      console.log('entityApi 未就绪，使用模拟数据')
-    }
-
-    useMockHerbs()
-  } catch (error) {
-    console.error('加载推荐药材失败:', error)
-    useMockHerbs()
-  } finally {
-    loadingHerbs.value = false
-  }
-}
-
-// 使用模拟药材数据
-const useMockHerbs = () => {
-  recommendedHerbs.value = [
-    {
-      id: 'H001',
-      name: '人参',
-      description: '大补元气、复脉固脱、补脾益肺、生津养血',
-      nature_and_flavor: '甘、微苦，微温',
-      efficacy: '补气固脱'
-    },
-    {
-      id: 'H002',
-      name: '黄芪',
-      description: '补气升阳、固表止汗、利水消肿、生津养血',
-      nature_and_flavor: '甘，微温',
-      efficacy: '补气固表'
-    },
-    {
-      id: 'H003',
-      name: '当归',
-      description: '补血活血、调经止痛、润肠通便',
-      nature_and_flavor: '甘、辛，温',
-      efficacy: '补血活血'
-    },
-    {
-      id: 'H004',
-      name: '茯苓',
-      description: '利水渗湿、健脾宁心',
-      nature_and_flavor: '甘、淡，平',
-      efficacy: '利水渗湿'
-    }
-  ]
-}
-
-// 加载推荐症状
-const loadRecommendedSymptoms = async () => {
-  try {
-    loadingSymptoms.value = true
-
-    // 优先使用 statsApi 获取热门实体
-    try {
-      const res: any = await statsApi.getPopularEntities('symptoms', 4)
-      const data = res?.data || res
-      if (Array.isArray(data) && data.length > 0) {
-        recommendedSymptoms.value = data
-        return
-      }
-    } catch {
-      console.log('statsApi.getPopularEntities 未就绪，尝试 entityApi')
-    }
-
-    // 回退到 entityApi 列表
-    try {
-      const response = await entityApi.symptoms.list({ page: 1, pageSize: 4, sortBy: 'frequency', sortOrder: 'desc' })
-      if (response && response.data && response.data.length > 0) {
-        recommendedSymptoms.value = response.data
-        return
-      }
-    } catch {
-      console.log('entityApi 未就绪，使用模拟数据')
-    }
-
-    useMockSymptoms()
-  } catch (error) {
-    console.error('加载推荐症状失败:', error)
-    useMockSymptoms()
-  } finally {
-    loadingSymptoms.value = false
-  }
-}
-
-// 使用模拟症状数据
-const useMockSymptoms = () => {
-  recommendedSymptoms.value = [
-    {
-      id: 'S001',
-      name: '失眠',
-      description: '难以入眠、睡中易醒、早醒、睡眠质量差',
-      category: '心神症状'
-    },
-    {
-      id: 'S002',
-      name: '畏寒',
-      description: '怕冷，尤以背部、四肢为甚',
-      category: '寒热症状'
-    },
-    {
-      id: 'S003',
-      name: '咳嗽',
-      description: '肺气上逆作声，咯吐痰涎',
-      category: '肺系症状'
-    },
-    {
-      id: 'S004',
-      name: '腹泻',
-      description: '大便次数增多，粪质稀薄或完全不化',
-      category: '脾胃症状'
-    }
-  ]
-}
 
 const goToChat = () => {
   router.push('/chat')
@@ -529,66 +300,10 @@ const goToCaseStudy = () => {
   router.push('/case-study')
 }
 
-const goToHistory = () => {
-  router.push('/history')
-}
-
-const goToAdmin = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/herbs')
-  }
-}
-
-const goToAdminHerbs = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/herbs')
-  }
-}
-
-const goToAdminPrescriptions = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/prescriptions')
-  }
-}
-
-const goToAdminRelations = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/relations')
-  }
-}
-
-const goToAdminRecords = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/records')
-  }
-}
-
 const viewDetail = (type: string, id: string) => {
-  // 查找对应的实体名称用于搜索
-  let entityName = ''
-  if (type === 'prescription') {
-    const found = recommendedPrescriptions.value.find((p: any) => p.id === id)
-    entityName = found?.name || ''
-  } else if (type === 'herb') {
-    const found = recommendedHerbs.value.find((h: any) => h.id === id)
-    entityName = found?.name || ''
-  } else if (type === 'symptom') {
-    const found = recommendedSymptoms.value.find((s: any) => s.id === id)
-    entityName = found?.name || ''
-  }
-
-  if (entityName) {
-    // 跳转到图谱浏览页面并自动搜索该实体
-    router.push(`/graph?search=${encodeURIComponent(entityName)}`)
-  } else {
-    // 兜底：跳转到图谱页面
-    router.push('/graph')
-  }
+  // 跳转到详情页面
+  console.log('View detail:', type, id)
+  // 这里可以跳转到实体详情页
 }
 
 const formatNumber = (num: number) => {
@@ -633,16 +348,13 @@ const formatNumber = (num: number) => {
         gap: 20px;
         justify-content: center;
         flex-wrap: wrap;
+      }
 
-        .admin-btn {
-          border-style: dashed;
-          opacity: 0.85;
-
-          &:hover {
-            opacity: 1;
-            border-style: solid;
-          }
-        }
+      .banner-hint {
+        margin: 28px 0 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 1px;
       }
     }
   }
@@ -677,41 +389,47 @@ const formatNumber = (num: number) => {
         border-radius: 12px;
         padding: 32px 24px;
         text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-        
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-        
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(26, 35, 126, 0.06);
+
         .feature-icon {
-          width: 80px;
-          height: 80px;
-          background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+          width: 72px;
+          height: 72px;
+          background: #f5f7fb;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 24px;
-          
+          margin: 0 auto 20px;
+
           .el-icon {
-            font-size: 36px;
-            color: #2196f3;
+            font-size: 32px;
+            color: #5c6bc0;
           }
         }
-        
+
         h3 {
-          margin: 0 0 16px 0;
+          margin: 0 0 12px 0;
           color: #1a237e;
-          font-size: 20px;
+          font-size: 19px;
+          font-weight: 600;
         }
-        
+
         p {
           color: #666;
           line-height: 1.6;
-          margin: 0;
+          margin: 0 0 18px;
+          font-size: 14px;
+        }
+
+        .feature-tag {
+          display: inline-block;
+          padding: 4px 14px;
+          font-size: 12px;
+          color: #5c6bc0;
+          background: #eef1f8;
+          border-radius: 12px;
+          letter-spacing: 0.5px;
         }
       }
     }
@@ -720,28 +438,6 @@ const formatNumber = (num: number) => {
   .recommendations-section {
     .recommendations-tabs {
       margin-bottom: 40px;
-      
-      .loading-content {
-        text-align: center;
-        padding: 60px 20px;
-        
-        .loading-spinner {
-          display: inline-block;
-          animation: spin 1s linear infinite;
-          font-size: 32px;
-          color: #409eff;
-          margin-bottom: 16px;
-        }
-        
-        p {
-          color: #666;
-          margin: 0;
-        }
-      }
-      
-      .empty-content {
-        padding: 40px 20px;
-      }
       
       .recommendations-list {
         display: grid;
@@ -798,13 +494,6 @@ const formatNumber = (num: number) => {
         align-items: center;
         gap: 20px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-
-        &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
         
         .stat-icon {
           width: 60px;
@@ -859,16 +548,6 @@ const formatNumber = (num: number) => {
     .stats-grid {
       grid-template-columns: 1fr;
     }
-  }
-}
-
-// 旋转动画
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 </style>

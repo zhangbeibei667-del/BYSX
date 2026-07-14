@@ -15,18 +15,12 @@ export class StreamSSE {
   /**
    * 开始流式请求
    */
-  start(onData?: (data: AnswerResponse) => void, onComplete?: () => void, onChunk?: (chunk: string) => void) {
+  start(onData?: (data: AnswerResponse) => void, onComplete?: () => void) {
     this.reset()
     
     this.eventSource = new EventSource(this.url)
     
     this.eventSource.onmessage = (event) => {
-      if (event.data === '[DONE]') {
-        this.isComplete.value = true
-        this.eventSource?.close()
-        onComplete?.()
-        return
-      }
       try {
         const data = JSON.parse(event.data)
         
@@ -37,14 +31,11 @@ export class StreamSSE {
         } else if (data.type === 'chunk') {
           this.buffer += data.content
           this.message.value = this.buffer
-          onChunk?.(data.content)
           
           // 如果是完整JSON响应，调用回调
           if (data.complete_response) {
             onData?.(data.complete_response)
           }
-        } else if (data.type === 'result') {
-          onData?.(data.result || data)
         } else if (data.type === 'error') {
           console.error('SSE error:', data.error)
           this.eventSource?.close()

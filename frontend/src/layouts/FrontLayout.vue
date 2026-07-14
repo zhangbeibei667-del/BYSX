@@ -86,9 +86,6 @@
       </div>
     </footer>
     
-    <!-- 人机验证弹窗 -->
-    <CaptchaVerify ref="captchaRef" />
-
     <!-- 关于系统对话框 -->
     <el-dialog v-model="aboutDialogVisible" title="关于系统" width="500px">
       <div class="about-content">
@@ -129,17 +126,12 @@ import {
   InfoFilled,
   FirstAidKit
 } from '@element-plus/icons-vue'
-import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
 
 const router = useRouter()
 const aboutDialogVisible = ref(false)
-const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
 
-const goToAdmin = async () => {
-  const passed = await captchaRef.value?.requireVerify()
-  if (passed) {
-    router.push('/admin/herbs')
-  }
+const goToAdmin = () => {
+  router.push('/admin/herbs')
 }
 
 const login = () => {
@@ -245,7 +237,7 @@ const aboutSystem = () => {
   flex: 1;
   padding: 20px;
   max-width: 1400px;
-  margin: 1000px auto 0;
+  margin: 1100px auto 0;
   width: 100%;
   }
   

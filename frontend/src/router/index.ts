@@ -59,7 +59,7 @@ const router = createRouter({
     {
       path: '/admin',
       component: AdminLayout,
-      // meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
       children: [
         {
           path: 'herbs',
@@ -108,18 +108,17 @@ const router = createRouter({
 // 路由守卫 - 权限检查
 router.beforeEach((to, from, next) => {
   // 检查是否需要认证
-  //if (to.meta.requiresAuth) {
-    //const isAuthenticated = localStorage.getItem('admin_token')
-    //if (isAuthenticated) {
-    //  next()
-    //} else {
+  if (to.meta.requiresAuth) {
+    const isAuthenticated = localStorage.getItem('admin_token')
+    if (isAuthenticated) {
+      next()
+    } else {
       // 重定向到登录页或首页
-    //  next('/')
-    //}
-  //} else {
-  //  next()
-  //}
-  next()
+      next('/')
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

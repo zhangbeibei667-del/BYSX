@@ -10,3 +10,7 @@ declare module '*.scss' {
   const content: string
   export default content
 }
+
+declare module 'markdown-it'
+
+declare module 'element-plus/dist/locale/zh-cn.mjs'
