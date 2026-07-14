@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "F001",
+    "name": "四君子汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气健脾",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "补气剂基础方；人参、白术、茯苓、甘草"
+    }
+  },
+  {
+    "id": "F002",
+    "name": "补中益气汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补中益气，升阳举陷",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "李东垣创制；黄芪、人参、白术、甘草、柴胡、升麻、陈皮"
+    }
+  },
+  {
+    "id": "F003",
+    "name": "参苓白术散",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气健脾，渗湿止泻",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、茯苓、山药、薏苡仁、砂仁、陈皮、甘草"
+    }
+  },
+  {
+    "id": "F004",
+    "name": "四物汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补血和血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "补血剂基础方；当归、川芎、白芍、熟地黄"
+    }
+  },
+  {
+    "id": "F005",
+    "name": "当归补血汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补气生血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄芪、当归；气血双补"
+    }
+  },
+  {
+    "id": "F006",
+    "name": "八珍汤",
+    "type": "方剂",
+    "alias": "八珍散",
+    "description": "益气补血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "四君子汤合四物汤"
+    }
+  },
+  {
+    "id": "F007",
+    "name": "归脾汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气补血，健脾养心",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、黄芪、当归、茯苓、远志、酸枣仁、龙眼肉、木香、甘草"
+    }
+  },
+  {
+    "id": "F008",
+    "name": "炙甘草汤",
+    "type": "方剂",
+    "alias": "复脉汤",
+    "description": "益气滋阴，通阳复脉",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "甘草、人参、熟地、当归、阿胶、酸枣仁"
+    }
+  },
+  {
+    "id": "F009",
+    "name": "六味地黄丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "滋阴补肾",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "熟地、山药、茯苓、枸杞、泽泻、牡丹皮"
+    }
+  },
+  {
+    "id": "F010",
+    "name": "一贯煎",
+    "type": "方剂",
+    "alias": "",
+    "description": "滋阴疏肝",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "枸杞、麦冬、沙参、女贞子、白芍、陈皮"
+    }
+  },
+  {
+    "id": "F011",
+    "name": "酸枣仁汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "养血安神，清热除烦",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "酸枣仁、知母、茯苓、川芎、甘草"
+    }
+  },
+  {
+    "id": "F012",
+    "name": "天王补心丹",
+    "type": "方剂",
+    "alias": "",
+    "description": "滋阴养血，补心安神",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "酸枣仁、远志、柏子仁、麦冬、熟地、黄芪、茯苓"
+    }
+  },
+  {
+    "id": "F013",
+    "name": "交泰丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "交通心肾，清火安神",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、肉桂"
+    }
+  },
+  {
+    "id": "F014",
+    "name": "安神定志丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气镇惊，安神定志",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "远志、茯苓、人参、龙骨"
+    }
+  },
+  {
+    "id": "F015",
+    "name": "麻黄汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "发汗解表，宣肺平喘",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "麻黄、桂枝、杏仁、甘草"
+    }
+  },
+  {
+    "id": "F016",
+    "name": "桂枝汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "解肌发表，调和营卫",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桂枝、白芍、甘草、生姜、大枣"
+    }
+  },
+  {
+    "id": "F017",
+    "name": "银翘散",
+    "type": "方剂",
+    "alias": "",
+    "description": "辛凉透表，清热解毒",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "金银花、连翘、薄荷、桑叶、荆芥、防风"
+    }
+  },
+  {
+    "id": "F018",
+    "name": "桑菊饮",
+    "type": "方剂",
+    "alias": "",
+    "description": "疏风清热，宣肺止咳",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桑叶、菊花、薄荷、荆芥、防风"
+    }
+  },
+  {
+    "id": "F019",
+    "name": "小柴胡汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "和解少阳",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "柴胡、黄芩、半夏、生姜、大枣、甘草"
+    }
+  },
+  {
+    "id": "F020",
+    "name": "逍遥散",
+    "type": "方剂",
+    "alias": "",
+    "description": "疏肝解郁，养血健脾",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "柴胡、白芍、黄芪、白术、茯苓、薄荷、甘草、生姜"
+    }
+  },
+  {
+    "id": "F021",
+    "name": "白虎汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热生津",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "石膏、知母、甘草、薏苡仁"
+    }
+  },
+  {
+    "id": "F022",
+    "name": "黄连解毒汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "泻火解毒",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、黄芩、黄柏、栀子"
+    }
+  },
+  {
+    "id": "F023",
+    "name": "龙胆泻肝汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清泻肝胆实火，清利肝经湿热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "龙胆、栀子、黄芩、黄柏、茯苓、当归、白芍"
+    }
+  },
+  {
+    "id": "F024",
+    "name": "清营汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清营解毒，透热养阴",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "玄参、生地、牡丹皮、赤芍、黄连、桑叶"
+    }
+  },
+  {
+    "id": "F025",
+    "name": "平胃散",
+    "type": "方剂",
+    "alias": "",
+    "description": "燥湿运脾，行气和胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "苍术、厚朴、陈皮、甘草、生姜"
+    }
+  },
+  {
+    "id": "F026",
+    "name": "藿香正气散",
+    "type": "方剂",
+    "alias": "",
+    "description": "解表化湿，理气和中",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "藿香、厚朴、陈皮、苍术、茯苓、半夏"
+    }
+  },
+  {
+    "id": "F027",
+    "name": "五苓散",
+    "type": "方剂",
+    "alias": "",
+    "description": "利水渗湿，温阳化气",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "茯苓、猪苓、泽泻、白术、桂枝"
+    }
+  },
+  {
+    "id": "F028",
+    "name": "真武汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温阳利水",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "附子、白术、茯苓、白芍、生姜"
+    }
+  },
+  {
+    "id": "F029",
+    "name": "理中丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "温中祛寒，补气健脾",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、干姜、甘草"
+    }
+  },
+  {
+    "id": "F030",
+    "name": "四逆汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "回阳救逆",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "附子、干姜、甘草"
+    }
+  },
+  {
+    "id": "F031",
+    "name": "半夏厚朴汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "行气散结，降逆化痰",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、厚朴、茯苓、生姜、紫苏"
+    }
+  },
+  {
+    "id": "F032",
+    "name": "柴胡疏肝散",
+    "type": "方剂",
+    "alias": "",
+    "description": "疏肝理气，活血止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "柴胡、香附、川芎、陈皮、白芍、甘草"
+    }
+  },
+  {
+    "id": "F033",
+    "name": "越鞠丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "行气解郁",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "香附、川芎、苍术、栀子、山楂"
+    }
+  },
+  {
+    "id": "F034",
+    "name": "血府逐瘀汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血化瘀，行气止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "川芎、当归、白芍、熟地、桃仁、红花、柴胡、陈皮、甘草"
+    }
+  },
+  {
+    "id": "F035",
+    "name": "补阳还五汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补气活血通络",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄芪、川芎、当归、红花、桃仁"
+    }
+  },
+  {
+    "id": "F036",
+    "name": "川芎茶调散",
+    "type": "方剂",
+    "alias": "",
+    "description": "疏风止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "川芎、羌活、防风、薄荷、荆芥"
+    }
+  },
+  {
+    "id": "F037",
+    "name": "半夏白术天麻汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "化痰息风，健脾祛湿",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、白术、天麻、陈皮、茯苓"
+    }
+  },
+  {
+    "id": "F038",
+    "name": "保和丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "消食和胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "山楂、神曲、麦芽、半夏、白术、茯苓"
+    }
+  },
+  {
+    "id": "F039",
+    "name": "二陈汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "燥湿化痰，理气和中",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、陈皮、茯苓、甘草、生姜"
+    }
+  },
+  {
+    "id": "F040",
+    "name": "止嗽散",
+    "type": "方剂",
+    "alias": "",
+    "description": "宣肺疏风，止咳化痰",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、陈皮、茯苓、甘草、生姜、杏仁"
+    }
+  },
+  {
+    "id": "F041",
+    "name": "生脉散",
+    "type": "方剂",
+    "alias": "生脉饮",
+    "description": "益气生津，敛阴止汗",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、麦冬、五味子；气阴两虚证"
+    }
+  },
+  {
+    "id": "F042",
+    "name": "玉屏风散",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气固表止汗",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄芪、白术、防风；表虚自汗"
+    }
+  },
+  {
+    "id": "F043",
+    "name": "完带汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补脾疏肝，化湿止带",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "白术、山药、白芍、苍术、陈皮、柴胡、甘草"
+    }
+  },
+  {
+    "id": "F044",
+    "name": "七味白术散",
+    "type": "方剂",
+    "alias": "",
+    "description": "健脾益气，和胃生津",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、茯苓、甘草、木香、藿香、葛根"
+    }
+  },
+  {
+    "id": "F045",
+    "name": "养心汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补血养心，安神定志",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄芪、人参、当归、川芎、茯苓、远志、酸枣仁、柏子仁、甘草"
+    }
+  },
+  {
+    "id": "F046",
+    "name": "甘麦大枣汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "养心安神，和中缓急",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "甘草、小麦、大枣；脏躁证"
+    }
+  },
+  {
+    "id": "F047",
+    "name": "黄连阿胶汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "滋阴降火，除烦安神",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、黄芩、白芍、阿胶；少阴热化证"
+    }
+  },
+  {
+    "id": "F048",
+    "name": "温胆汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "理气化痰，清胆和胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、陈皮、茯苓、甘草、枳实、竹茹"
+    }
+  },
+  {
+    "id": "F049",
+    "name": "清气化痰丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热化痰，理气止咳",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "胆南星、瓜蒌仁、黄芩、半夏、陈皮、茯苓、枳实、杏仁"
+    }
+  },
+  {
+    "id": "F050",
+    "name": "贝母瓜蒌散",
+    "type": "方剂",
+    "alias": "",
+    "description": "润肺清热，理气化痰",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "贝母、瓜蒌、花粉、茯苓、橘红、桔梗"
+    }
+  },
+  {
+    "id": "F051",
+    "name": "小陷胸汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热化痰，宽胸散结",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、半夏、瓜蒌"
+    }
+  },
+  {
+    "id": "F052",
+    "name": "苓甘五味姜辛汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温肺化饮，止咳平喘",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "茯苓、甘草、五味子、干姜、细辛"
+    }
+  },
+  {
+    "id": "F053",
+    "name": "三子养亲汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温肺化痰，降气消食",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "紫苏子、白芥子、莱菔子"
+    }
+  },
+  {
+    "id": "F054",
+    "name": "定喘汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "宣肺降气，清热化痰",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "麻黄、杏仁、半夏、苏子、款冬花、桑白皮、黄芩、甘草"
+    }
+  },
+  {
+    "id": "F055",
+    "name": "苏子降气汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "降气平喘，温肾纳气",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "紫苏子、半夏、厚朴、陈皮、当归、肉桂、甘草"
+    }
+  },
+  {
+    "id": "F056",
+    "name": "旋覆代赭汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "降逆化痰，益气和胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "旋覆花、代赭石、半夏、生姜、人参、甘草、大枣"
+    }
+  },
+  {
+    "id": "F057",
+    "name": "橘皮竹茹汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "降逆止呕，清热益气",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "橘皮、竹茹、生姜、人参、甘草、大枣"
+    }
+  },
+  {
+    "id": "F058",
+    "name": "丁香柿蒂汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温中益气，降逆止呃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "丁香、柿蒂、人参、生姜"
+    }
+  },
+  {
+    "id": "F059",
+    "name": "桃核承气汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "逐瘀泻热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桃仁、大黄、桂枝、芒硝、甘草"
+    }
+  },
+  {
+    "id": "F060",
+    "name": "身痛逐瘀汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血化瘀，祛风除湿，通络止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "川芎、当归、桃仁、红花、羌活、秦艽、香附、牛膝、甘草"
+    }
+  },
+  {
+    "id": "F061",
+    "name": "膈下逐瘀汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血化瘀，行气止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "川芎、当归、桃仁、红花、五灵脂、延胡索、香附、枳壳、甘草"
+    }
+  },
+  {
+    "id": "F062",
+    "name": "少腹逐瘀汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温经活血，散寒止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "川芎、当归、赤芍、蒲黄、五灵脂、延胡索、肉桂、干姜、小茴香"
+    }
+  },
+  {
+    "id": "F063",
+    "name": "生化汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "化瘀生新，温经止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "当归、川芎、桃仁、炮姜、甘草"
+    }
+  },
+  {
+    "id": "F064",
+    "name": "复元活血汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血祛瘀，疏肝通络",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "柴胡、瓜蒌、当归、红花、桃仁、大黄、甘草"
+    }
+  },
+  {
+    "id": "F065",
+    "name": "七厘散",
+    "type": "方剂",
+    "alias": "",
+    "description": "化瘀消肿，止痛止血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "血竭、乳香、没药、红花、儿茶、冰片、朱砂"
+    }
+  },
+  {
+    "id": "F066",
+    "name": "失笑散",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血祛瘀，散结止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "蒲黄、五灵脂"
+    }
+  },
+  {
+    "id": "F067",
+    "name": "丹参饮",
+    "type": "方剂",
+    "alias": "",
+    "description": "活血化瘀，行气止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "丹参、檀香、砂仁"
+    }
+  },
+  {
+    "id": "F068",
+    "name": "温经汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温经散寒，养血祛瘀",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "当归、川芎、白芍、人参、桂枝、吴茱萸、阿胶、甘草、生姜"
+    }
+  },
+  {
+    "id": "F069",
+    "name": "胶艾汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "补血止血，调经安胎",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "阿胶、艾叶、当归、川芎、白芍、熟地黄、甘草"
+    }
+  },
+  {
+    "id": "F070",
+    "name": "四生丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "凉血止血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "生荷叶、生艾叶、生柏叶、生地黄"
+    }
+  },
+  {
+    "id": "F071",
+    "name": "槐花散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清肠止血，疏风行气",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "槐花、侧柏叶、荆芥穗、枳壳"
+    }
+  },
+  {
+    "id": "F072",
+    "name": "黄土汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温阳健脾，养血止血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "灶心黄土、甘草、干地黄、白术、附子、阿胶、黄芩"
+    }
+  },
+  {
+    "id": "F073",
+    "name": "小建中汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温中补虚，和里缓急",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桂枝、白芍、甘草、生姜、大枣、饴糖"
+    }
+  },
+  {
+    "id": "F074",
+    "name": "大建中汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温中散寒，补虚止痛",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "蜀椒、干姜、人参、饴糖"
+    }
+  },
+  {
+    "id": "F075",
+    "name": "吴茱萸汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温肝暖胃，降逆止呕",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "吴茱萸、人参、生姜、大枣"
+    }
+  },
+  {
+    "id": "F076",
+    "name": "小半夏汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "和胃降逆，消痰蠲饮",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、生姜"
+    }
+  },
+  {
+    "id": "F077",
+    "name": "大半夏汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "和胃降逆，益气润燥",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "半夏、人参、白蜜"
+    }
+  },
+  {
+    "id": "F078",
+    "name": "茯苓饮",
+    "type": "方剂",
+    "alias": "",
+    "description": "健脾化痰，理气消痞",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "茯苓、白术、人参、枳实、陈皮、生姜"
+    }
+  },
+  {
+    "id": "F079",
+    "name": "枳术丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "健脾消食，行气化湿",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "枳实、白术"
+    }
+  },
+  {
+    "id": "F080",
+    "name": "健脾丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "健脾和胃，消食止泻",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "白术、人参、山楂、神曲、麦芽、陈皮、枳实"
+    }
+  },
+  {
+    "id": "F081",
+    "name": "枳实导滞丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "消食导滞，清热祛湿",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "大黄、枳实、神曲、茯苓、黄芩、黄连、白术、泽泻"
+    }
+  },
+  {
+    "id": "F082",
+    "name": "木香槟榔丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "行气导滞，攻积泄热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "木香、槟榔、青皮、陈皮、黄连、大黄、牵牛子"
+    }
+  },
+  {
+    "id": "F083",
+    "name": "肥儿丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "杀虫消积，健脾清热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "神曲、黄连、使君子、槟榔、木香、麦芽"
+    }
+  },
+  {
+    "id": "F084",
+    "name": "乌梅丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "温脏安蛔，寒热并用",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "乌梅、细辛、干姜、黄连、当归、附子、蜀椒、桂枝、人参、黄柏"
+    }
+  },
+  {
+    "id": "F085",
+    "name": "理中安蛔汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "温中安蛔",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、干姜、茯苓、乌梅、蜀椒"
+    }
+  },
+  {
+    "id": "F086",
+    "name": "连梅汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热安蛔，滋阴泻火",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、乌梅、麦冬、地黄、阿胶"
+    }
+  },
+  {
+    "id": "F087",
+    "name": "白头翁汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热解毒，凉血止痢",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "白头翁、黄连、黄柏、秦皮"
+    }
+  },
+  {
+    "id": "F088",
+    "name": "芍药汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清热解毒，调气行血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、黄芩、大黄、当归、白芍、木香、槟榔、甘草"
+    }
+  },
+  {
+    "id": "F089",
+    "name": "葛根芩连汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "解表清里，升清止泻",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "葛根、黄芩、黄连、甘草"
+    }
+  },
+  {
+    "id": "F090",
+    "name": "参苓白术散（同名新方）",
+    "type": "方剂",
+    "alias": "",
+    "description": "益气健脾，渗湿止泻",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "人参、白术、茯苓、山药、薏苡仁、砂仁、桔梗、白扁豆、莲子、甘草"
+    }
+  },
+  {
+    "id": "F091",
+    "name": "实脾散",
+    "type": "方剂",
+    "alias": "",
+    "description": "温阳健脾，行气利水",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "附子、白术、茯苓、干姜、厚朴、木香、木瓜、甘草"
+    }
+  },
+  {
+    "id": "F092",
+    "name": "五皮散",
+    "type": "方剂",
+    "alias": "",
+    "description": "行气利水，健脾化湿",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "茯苓皮、大腹皮、陈皮、生姜皮、桑白皮"
+    }
+  },
+  {
+    "id": "F093",
+    "name": "导赤散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清心利水养阴",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "生地黄、木通、竹叶、甘草"
+    }
+  },
+  {
+    "id": "F094",
+    "name": "龙胆泻肝汤（详方）",
+    "type": "方剂",
+    "alias": "",
+    "description": "清泻肝胆实火，清利肝经湿热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "龙胆草、黄芩、栀子、泽泻、木通、车前子、当归、生地黄、柴胡、甘草"
+    }
+  },
+  {
+    "id": "F095",
+    "name": "左金丸",
+    "type": "方剂",
+    "alias": "",
+    "description": "清泻肝火，降逆止呕",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、吴茱萸"
+    }
+  },
+  {
+    "id": "F096",
+    "name": "苇茎汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "清肺化痰，逐瘀排脓",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "芦根、薏苡仁、冬瓜仁、桃仁"
+    }
+  },
+  {
+    "id": "F097",
+    "name": "泻白散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清泻肺热，平喘止咳",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桑白皮、地骨皮、甘草"
+    }
+  },
+  {
+    "id": "F098",
+    "name": "清胃散",
+    "type": "方剂",
+    "alias": "",
+    "description": "清胃凉血",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "黄连、生地黄、牡丹皮、升麻、当归"
+    }
+  },
+  {
+    "id": "F099",
+    "name": "玉女煎",
+    "type": "方剂",
+    "alias": "",
+    "description": "清胃滋阴",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "石膏、熟地黄、麦冬、知母、牛膝"
+    }
+  },
+  {
+    "id": "F100",
+    "name": "芍药甘草汤",
+    "type": "方剂",
+    "alias": "",
+    "description": "缓急止痛，酸甘化阴",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "白芍、甘草"
+    }
+  }
+]

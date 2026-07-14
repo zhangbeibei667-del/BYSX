@@ -1,0 +1,7757 @@
+[
+  {
+    "id": "H001",
+    "name": "人参",
+    "type": "药材",
+    "alias": "人蔘",
+    "description": "甘,微苦,微温。归脾,肺,心,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四君子汤、归脾汤组成"
+    }
+  },
+  {
+    "id": "H002",
+    "name": "西洋参",
+    "type": "药材",
+    "alias": "花旗参",
+    "description": "甘,微苦,凉。归心,肺,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H003",
+    "name": "党参",
+    "type": "药材",
+    "alias": "潞党参",
+    "description": "甘,平。归脾,肺经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "补中益气汤组成"
+    }
+  },
+  {
+    "id": "H004",
+    "name": "太子参",
+    "type": "药材",
+    "alias": "孩儿参",
+    "description": "甘,微苦,平。归脾,肺经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H005",
+    "name": "黄芪",
+    "type": "药材",
+    "alias": "黄耆",
+    "description": "甘,微温。归肺,脾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "归脾汤、补中益气汤组成"
+    }
+  },
+  {
+    "id": "H006",
+    "name": "白术",
+    "type": "药材",
+    "alias": "於术",
+    "description": "苦,甘,温。归脾,胃经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四君子汤、归脾汤组成"
+    }
+  },
+  {
+    "id": "H007",
+    "name": "山药",
+    "type": "药材",
+    "alias": "薯蓣",
+    "description": "甘,平。归脾,肺,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "参苓白术散组成"
+    }
+  },
+  {
+    "id": "H008",
+    "name": "甘草",
+    "type": "药材",
+    "alias": "国老",
+    "description": "甘,平。归心,肺,脾,胃经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "多数方剂调和药；反甘遂大戟海藻"
+    }
+  },
+  {
+    "id": "H009",
+    "name": "大枣",
+    "type": "药材",
+    "alias": "红枣",
+    "description": "甘,温。归脾,胃,心经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "桂枝汤、小柴胡汤组成"
+    }
+  },
+  {
+    "id": "H010",
+    "name": "蜂蜜",
+    "type": "药材",
+    "alias": "蜂糖",
+    "description": "甘,平。归肺,脾,大肠经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H011",
+    "name": "当归",
+    "type": "药材",
+    "alias": "全当归",
+    "description": "甘,辛,温。归肝,心,脾经。补血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四物汤、归脾汤组成"
+    }
+  },
+  {
+    "id": "H012",
+    "name": "熟地黄",
+    "type": "药材",
+    "alias": "熟地",
+    "description": "甘,微温。归肝,肾经。补血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四物汤组成"
+    }
+  },
+  {
+    "id": "H013",
+    "name": "白芍",
+    "type": "药材",
+    "alias": "芍药",
+    "description": "苦,酸,微寒。归肝,脾经。补血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四物汤、桂枝汤组成；反藜芦"
+    }
+  },
+  {
+    "id": "H014",
+    "name": "阿胶",
+    "type": "药材",
+    "alias": "驴皮胶",
+    "description": "甘,平。归肺,肝,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "炙甘草汤组成"
+    }
+  },
+  {
+    "id": "H015",
+    "name": "何首乌",
+    "type": "药材",
+    "alias": "首乌",
+    "description": "苦,甘,涩,微温。归肝,心,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H016",
+    "name": "龙眼肉",
+    "type": "药材",
+    "alias": "桂圆肉",
+    "description": "甘,温。归心,脾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "归脾汤组成"
+    }
+  },
+  {
+    "id": "H017",
+    "name": "枸杞子",
+    "type": "药材",
+    "alias": "枸杞",
+    "description": "甘,平。归肝,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "一贯煎组成"
+    }
+  },
+  {
+    "id": "H018",
+    "name": "麦冬",
+    "type": "药材",
+    "alias": "麦门冬",
+    "description": "甘,微苦,微寒。归心,肺,胃经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "天王补心丹、炙甘草汤组成"
+    }
+  },
+  {
+    "id": "H019",
+    "name": "沙参",
+    "type": "药材",
+    "alias": "北沙参",
+    "description": "甘,微苦,微寒。归肺,胃经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "一贯煎组成"
+    }
+  },
+  {
+    "id": "H020",
+    "name": "玉竹",
+    "type": "药材",
+    "alias": "葳蕤",
+    "description": "甘,微寒。归肺,胃经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H021",
+    "name": "百合",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,寒。归心,肺经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H022",
+    "name": "女贞子",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,苦,凉。归肝,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H023",
+    "name": "龟甲",
+    "type": "药材",
+    "alias": "龟板",
+    "description": "咸,甘,微寒。归肝,肾,心经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H024",
+    "name": "酸枣仁",
+    "type": "药材",
+    "alias": "枣仁",
+    "description": "甘,酸,平。归肝,胆,心经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "归脾汤、酸枣仁汤组成"
+    }
+  },
+  {
+    "id": "H025",
+    "name": "远志",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,辛,温。归心,肾,肺经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "归脾汤组成"
+    }
+  },
+  {
+    "id": "H026",
+    "name": "柏子仁",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,平。归心,肾,大肠经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "天王补心丹组成"
+    }
+  },
+  {
+    "id": "H027",
+    "name": "合欢皮",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,平。归心,肝,肺经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H028",
+    "name": "夜交藤",
+    "type": "药材",
+    "alias": "首乌藤",
+    "description": "甘,平。归心,肝经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H029",
+    "name": "茯神",
+    "type": "药材",
+    "alias": "",
+    "description": "性味：无。归经：无。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H030",
+    "name": "朱砂",
+    "type": "药材",
+    "alias": "辰砂",
+    "description": "甘,微寒,有毒。归心经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "有毒，不宜久服"
+    }
+  },
+  {
+    "id": "H031",
+    "name": "磁石",
+    "type": "药材",
+    "alias": "",
+    "description": "咸,寒。归肝,心,肾经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H032",
+    "name": "龙骨",
+    "type": "药材",
+    "alias": "",
+    "description": "性味：无。归经：无。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H033",
+    "name": "牡蛎",
+    "type": "药材",
+    "alias": "",
+    "description": "咸,微寒。归心,肝,肾经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H034",
+    "name": "茯苓",
+    "type": "药材",
+    "alias": "云苓",
+    "description": "甘,淡,平。归心,肺,脾,肾经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四君子汤、归脾汤组成"
+    }
+  },
+  {
+    "id": "H035",
+    "name": "猪苓",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,淡,平。归肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "五苓散组成"
+    }
+  },
+  {
+    "id": "H036",
+    "name": "泽泻",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,淡,寒。归肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "六味地黄丸组成"
+    }
+  },
+  {
+    "id": "H037",
+    "name": "薏苡仁",
+    "type": "药材",
+    "alias": "薏米",
+    "description": "甘,淡,凉。归脾,胃,肺经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "参苓白术散组成"
+    }
+  },
+  {
+    "id": "H038",
+    "name": "车前子",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,寒。归肝,肾,肺,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H039",
+    "name": "滑石",
+    "type": "药材",
+    "alias": "",
+    "description": "性味：无。归经：无。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H040",
+    "name": "茵陈",
+    "type": "药材",
+    "alias": "茵陈蒿",
+    "description": "苦,辛,微寒。归脾,胃,肝,胆经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H041",
+    "name": "苍术",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,温。归脾,胃,肝经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "平胃散、越鞠丸组成"
+    }
+  },
+  {
+    "id": "H042",
+    "name": "厚朴",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,辛,温。归脾,胃,肺,大肠经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "平胃散、半夏厚朴汤组成"
+    }
+  },
+  {
+    "id": "H043",
+    "name": "藿香",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微温。归脾,胃,肺经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "藿香正气散组成"
+    }
+  },
+  {
+    "id": "H044",
+    "name": "砂仁",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,温。归脾,胃,肾经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "参苓白术散组成"
+    }
+  },
+  {
+    "id": "H045",
+    "name": "豆蔻",
+    "type": "药材",
+    "alias": "白豆蔻",
+    "description": "辛,温。归肺,脾,胃经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H046",
+    "name": "麻黄",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微苦,温。归肺,膀胱经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "麻黄汤组成；表虚自汗忌用"
+    }
+  },
+  {
+    "id": "H047",
+    "name": "桂枝",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,甘,温。归心,肺,膀胱经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "桂枝汤、炙甘草汤组成"
+    }
+  },
+  {
+    "id": "H048",
+    "name": "紫苏",
+    "type": "药材",
+    "alias": "苏叶",
+    "description": "辛,温。归肺,脾经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H049",
+    "name": "生姜",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微温。归肺,脾,胃经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "桂枝汤、二陈汤组成"
+    }
+  },
+  {
+    "id": "H050",
+    "name": "荆芥",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微温。归肺,肝经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H051",
+    "name": "防风",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,甘,微温。归膀胱,肝,脾经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "川芎茶调散组成"
+    }
+  },
+  {
+    "id": "H052",
+    "name": "羌活",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,温。归膀胱,肾经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "川芎茶调散组成"
+    }
+  },
+  {
+    "id": "H053",
+    "name": "白芷",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,温。归胃,大肠,肺经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "川芎茶调散组成"
+    }
+  },
+  {
+    "id": "H054",
+    "name": "薄荷",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,凉。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "银翘散、逍遥散组成"
+    }
+  },
+  {
+    "id": "H055",
+    "name": "金银花",
+    "type": "药材",
+    "alias": "双花",
+    "description": "甘,寒。归肺,心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "银翘散组成"
+    }
+  },
+  {
+    "id": "H056",
+    "name": "连翘",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,微寒。归肺,心,小肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "银翘散组成"
+    }
+  },
+  {
+    "id": "H057",
+    "name": "菊花",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,苦,微寒。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "桑菊饮组成"
+    }
+  },
+  {
+    "id": "H058",
+    "name": "桑叶",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,苦,寒。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "桑菊饮组成"
+    }
+  },
+  {
+    "id": "H059",
+    "name": "柴胡",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,微寒。归肝,胆,肺经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "小柴胡汤、逍遥散组成"
+    }
+  },
+  {
+    "id": "H060",
+    "name": "升麻",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微甘,微寒。归肺,脾,胃,大肠经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "补中益气汤组成"
+    }
+  },
+  {
+    "id": "H061",
+    "name": "葛根",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,辛,凉。归脾,胃,肺经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H062",
+    "name": "石膏",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,辛,大寒。归肺,胃经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "白虎汤组成"
+    }
+  },
+  {
+    "id": "H063",
+    "name": "知母",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,甘,寒。归肺,胃,肾经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "白虎汤、酸枣仁汤组成"
+    }
+  },
+  {
+    "id": "H064",
+    "name": "栀子",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,寒。归心,肺,三焦经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "黄连解毒汤、越鞠丸组成"
+    }
+  },
+  {
+    "id": "H065",
+    "name": "黄芩",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,寒。归肺,胆,脾,大肠,小肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "小柴胡汤、黄连解毒汤组成"
+    }
+  },
+  {
+    "id": "H066",
+    "name": "黄连",
+    "type": "药材",
+    "alias": "川连",
+    "description": "苦,寒。归心,脾,胃,肝,胆,大肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "交泰丸、黄连解毒汤组成；脾胃虚寒忌用"
+    }
+  },
+  {
+    "id": "H067",
+    "name": "黄柏",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,寒。归肾,膀胱经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "黄连解毒汤组成"
+    }
+  },
+  {
+    "id": "H068",
+    "name": "龙胆",
+    "type": "药材",
+    "alias": "龙胆草",
+    "description": "苦,寒。归肝,胆经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "龙胆泻肝汤组成"
+    }
+  },
+  {
+    "id": "H069",
+    "name": "生地黄",
+    "type": "药材",
+    "alias": "生地",
+    "description": "甘,寒。归心,肝,肾经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "一贯煎、天王补心丹、炙甘草汤组成"
+    }
+  },
+  {
+    "id": "H070",
+    "name": "玄参",
+    "type": "药材",
+    "alias": "元参",
+    "description": "甘,苦,咸,微寒。归肺,胃,肾经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "天王补心丹组成；反藜芦"
+    }
+  },
+  {
+    "id": "H071",
+    "name": "牡丹皮",
+    "type": "药材",
+    "alias": "丹皮",
+    "description": "苦,辛,微寒。归心,肝,肾经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "六味地黄丸组成"
+    }
+  },
+  {
+    "id": "H072",
+    "name": "赤芍",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,微寒。归肝经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "反藜芦"
+    }
+  },
+  {
+    "id": "H073",
+    "name": "青蒿",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,辛,寒。归肝,胆经。清虚热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H074",
+    "name": "地骨皮",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,寒。归肺,肝,肾经。清虚热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H075",
+    "name": "陈皮",
+    "type": "药材",
+    "alias": "橘皮",
+    "description": "苦,辛,温。归肺,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "二陈汤、补中益气汤组成"
+    }
+  },
+  {
+    "id": "H076",
+    "name": "枳壳",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,辛,酸,微寒。归脾,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H077",
+    "name": "木香",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,温。归脾,胃,大肠,三焦,胆经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "归脾汤组成"
+    }
+  },
+  {
+    "id": "H078",
+    "name": "香附",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,微苦,微甘,平。归肝,脾,三焦经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "柴胡疏肝散、越鞠丸组成"
+    }
+  },
+  {
+    "id": "H079",
+    "name": "佛手",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,酸,温。归肝,脾,胃,肺经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H080",
+    "name": "川芎",
+    "type": "药材",
+    "alias": "芎䓖",
+    "description": "辛,温。归肝,胆,心包经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四物汤、血府逐瘀汤组成；阴虚火旺慎用"
+    }
+  },
+  {
+    "id": "H081",
+    "name": "丹参",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,微寒。归心,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "天王补心丹组成；反藜芦"
+    }
+  },
+  {
+    "id": "H082",
+    "name": "桃仁",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,甘,平。归心,肝,大肠经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "血府逐瘀汤组成；孕妇忌用"
+    }
+  },
+  {
+    "id": "H083",
+    "name": "红花",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,温。归心,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "血府逐瘀汤组成；孕妇忌用"
+    }
+  },
+  {
+    "id": "H084",
+    "name": "延胡索",
+    "type": "药材",
+    "alias": "元胡",
+    "description": "温,辛,苦。归脾,肝,心经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "柴胡疏肝散组成"
+    }
+  },
+  {
+    "id": "H085",
+    "name": "半夏",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,温,有毒。归脾,胃,肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "二陈汤、小柴胡汤组成；反乌头"
+    }
+  },
+  {
+    "id": "H086",
+    "name": "桔梗",
+    "type": "药材",
+    "alias": "",
+    "description": "苦,辛,平。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "天王补心丹组成；载药上行"
+    }
+  },
+  {
+    "id": "H087",
+    "name": "杏仁",
+    "type": "药材",
+    "alias": "苦杏仁",
+    "description": "苦,微温,有小毒。归肺,大肠经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "麻黄汤组成"
+    }
+  },
+  {
+    "id": "H088",
+    "name": "瓜蒌",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,微苦,寒。归肺,胃,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "反乌头"
+    }
+  },
+  {
+    "id": "H089",
+    "name": "大黄",
+    "type": "药材",
+    "alias": "川军",
+    "description": "苦,寒。归脾,胃,大肠,肝,心包经。攻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "孕妇慎用"
+    }
+  },
+  {
+    "id": "H090",
+    "name": "芒硝",
+    "type": "药材",
+    "alias": "",
+    "description": "咸,苦,寒。归胃,大肠经。攻下药,泻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "孕妇忌用"
+    }
+  },
+  {
+    "id": "H091",
+    "name": "附子",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,甘,大热,有毒。归心,肾,脾经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "四逆汤、真武汤组成；有毒，反半夏瓜蒌"
+    }
+  },
+  {
+    "id": "H092",
+    "name": "干姜",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,热。归脾,胃,肾,心,肺经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "理中丸、四逆汤组成"
+    }
+  },
+  {
+    "id": "H093",
+    "name": "肉桂",
+    "type": "药材",
+    "alias": "桂皮",
+    "description": "辛,甘,大热。归肾,脾,心,肝经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "交泰丸组成；阴虚火旺忌用"
+    }
+  },
+  {
+    "id": "H094",
+    "name": "吴茱萸",
+    "type": "药材",
+    "alias": "",
+    "description": "辛,苦,热,有小毒。归肝,脾,胃,肾经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H095",
+    "name": "山楂",
+    "type": "药材",
+    "alias": "",
+    "description": "酸,甘,微温。归脾,胃,肝经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "保和丸、越鞠丸组成"
+    }
+  },
+  {
+    "id": "H096",
+    "name": "神曲",
+    "type": "药材",
+    "alias": "",
+    "description": "性味：无。归经：无。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "保和丸、越鞠丸组成"
+    }
+  },
+  {
+    "id": "H097",
+    "name": "麦芽",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,平。归脾,胃经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "保和丸组成"
+    }
+  },
+  {
+    "id": "H098",
+    "name": "三七",
+    "type": "药材",
+    "alias": "田七",
+    "description": "甘,微苦,温。归肝,胃经。化瘀止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "孕妇忌用"
+    }
+  },
+  {
+    "id": "H099",
+    "name": "天麻",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,平。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "半夏白术天麻汤组成"
+    }
+  },
+  {
+    "id": "H100",
+    "name": "钩藤",
+    "type": "药材",
+    "alias": "",
+    "description": "甘,凉。归肝,心包经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H101",
+    "name": "山茱萸",
+    "type": "药材",
+    "alias": "山萸肉",
+    "description": "酸,涩,微温。归肝,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "六味地黄丸组成"
+    }
+  },
+  {
+    "id": "H102",
+    "name": "川楝子",
+    "type": "药材",
+    "alias": "金铃子",
+    "description": "苦,寒,有小毒。归肝,小肠,膀胱经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "一贯煎组成"
+    }
+  },
+  {
+    "id": "H103",
+    "name": "火麻仁",
+    "type": "药材",
+    "alias": "麻子仁",
+    "description": "甘,平。归脾,胃,大肠经。润下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "炙甘草汤组成"
+    }
+  },
+  {
+    "id": "H104",
+    "name": "五味子",
+    "type": "药材",
+    "alias": "",
+    "description": "酸,甘,温。归肺,心,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": "生脉散组成"
+    }
+  },
+  {
+    "id": "H105",
+    "name": "矮地茶",
+    "type": "药材",
+    "alias": "矮地茶",
+    "description": "辛,微苦,平。归肺,肝经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H106",
+    "name": "艾叶",
+    "type": "药材",
+    "alias": "艾叶",
+    "description": "辛,苦,温,有小毒。归肝,脾,肾经。温经止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H107",
+    "name": "安息香",
+    "type": "药材",
+    "alias": "安息香",
+    "description": "辛,苦,平。归心,脾经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H108",
+    "name": "八角茴香",
+    "type": "药材",
+    "alias": "八角茴香",
+    "description": "辛,温。归肝,肾,脾,胃经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H109",
+    "name": "八角莲",
+    "type": "药材",
+    "alias": "八角莲",
+    "description": "苦,辛,温,有毒。归肺,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H110",
+    "name": "巴豆",
+    "type": "药材",
+    "alias": "巴豆",
+    "description": "辛,热,有大毒。归胃,大肠经。攻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H111",
+    "name": "巴戟天",
+    "type": "药材",
+    "alias": "巴戟天",
+    "description": "甘,辛,微温。归肾,肝经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H112",
+    "name": "菝葜",
+    "type": "药材",
+    "alias": "菝葜",
+    "description": "甘,微苦,涩,平。归肝,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H113",
+    "name": "白扁豆",
+    "type": "药材",
+    "alias": "白扁豆",
+    "description": "甘,微温。归脾,胃经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H114",
+    "name": "白附子",
+    "type": "药材",
+    "alias": "白附子",
+    "description": "辛,温,有毒。归胃,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H115",
+    "name": "白果",
+    "type": "药材",
+    "alias": "白果",
+    "description": "甘,苦,涩,平,有毒。归肺,肾经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H116",
+    "name": "白花菜子",
+    "type": "药材",
+    "alias": "白花菜子",
+    "description": "苦,辛,微毒。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H117",
+    "name": "白花蛇舌草",
+    "type": "药材",
+    "alias": "白花蛇舌草",
+    "description": "苦,甘,寒。归心,肺,肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H118",
+    "name": "白及",
+    "type": "药材",
+    "alias": "白及",
+    "description": "苦,甘,涩,微寒。归肺,肝,胃经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H119",
+    "name": "白蔹",
+    "type": "药材",
+    "alias": "白蔹",
+    "description": "苦,微寒。归心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H120",
+    "name": "白毛藤",
+    "type": "药材",
+    "alias": "白毛藤",
+    "description": "甘,苦,寒,小毒。归肝,胆,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H121",
+    "name": "白毛夏枯草",
+    "type": "药材",
+    "alias": "白毛夏枯草",
+    "description": "性味：无。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H122",
+    "name": "白茅根",
+    "type": "药材",
+    "alias": "白茅根",
+    "description": "甘,寒。归肺,胃,膀胱经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H123",
+    "name": "白前",
+    "type": "药材",
+    "alias": "白前",
+    "description": "辛,苦,微温。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H124",
+    "name": "白屈菜",
+    "type": "药材",
+    "alias": "白屈菜",
+    "description": "苦,凉,有毒。归肺,胃经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H125",
+    "name": "白药子",
+    "type": "药材",
+    "alias": "白药子",
+    "description": "苦,辛,凉,小毒。归肺,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H126",
+    "name": "百部",
+    "type": "药材",
+    "alias": "百部",
+    "description": "甘,苦,微温。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H127",
+    "name": "败酱草",
+    "type": "药材",
+    "alias": "败酱草",
+    "description": "苦,辛,凉。归大肠,胃,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H128",
+    "name": "斑蝥",
+    "type": "药材",
+    "alias": "斑蝥",
+    "description": "辛,热,有大毒。归肝,胃,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H129",
+    "name": "板蓝根",
+    "type": "药材",
+    "alias": "板蓝根",
+    "description": "苦,寒。归心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H130",
+    "name": "半边莲",
+    "type": "药材",
+    "alias": "半边莲",
+    "description": "辛,平。归心,小肠,肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H131",
+    "name": "半枝莲",
+    "type": "药材",
+    "alias": "半枝莲",
+    "description": "辛,苦,寒。归肺,肝,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H132",
+    "name": "北豆根",
+    "type": "药材",
+    "alias": "北豆根",
+    "description": "苦,寒,有小毒。归肺,胃,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H133",
+    "name": "北刘寄奴",
+    "type": "药材",
+    "alias": "北刘寄奴",
+    "description": "苦,寒。归脾,胃,肝,胆经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H134",
+    "name": "荜茇",
+    "type": "药材",
+    "alias": "荜茇",
+    "description": "辛,热。归胃,大肠经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H135",
+    "name": "荜澄茄",
+    "type": "药材",
+    "alias": "荜澄茄",
+    "description": "辛,温。归脾,胃,肾,膀胱经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H136",
+    "name": "蓖麻子",
+    "type": "药材",
+    "alias": "蓖麻子",
+    "description": "甘,辛,平,有毒。归大肠,肺经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H137",
+    "name": "萹蓄",
+    "type": "药材",
+    "alias": "萹蓄",
+    "description": "微寒,苦。归膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H138",
+    "name": "扁豆花",
+    "type": "药材",
+    "alias": "扁豆花",
+    "description": "甘,平。归经：无。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H139",
+    "name": "槟榔",
+    "type": "药材",
+    "alias": "槟榔",
+    "description": "苦,辛,温。归胃,大肠经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H140",
+    "name": "冰片",
+    "type": "药材",
+    "alias": "冰片",
+    "description": "微寒,辛,苦。归肺,脾,心经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H141",
+    "name": "布渣叶",
+    "type": "药材",
+    "alias": "布渣叶",
+    "description": "微酸,凉。归脾,胃经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H142",
+    "name": "蚕沙",
+    "type": "药材",
+    "alias": "蚕沙",
+    "description": "甘,辛,温。归肝,脾,胃经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H143",
+    "name": "苍耳子",
+    "type": "药材",
+    "alias": "苍耳子",
+    "description": "辛,苦,温,有毒。归肺经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H144",
+    "name": "草苁蓉",
+    "type": "药材",
+    "alias": "草苁蓉",
+    "description": "甘,咸,温。归经：无。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H145",
+    "name": "草果",
+    "type": "药材",
+    "alias": "草果",
+    "description": "辛,温。归脾,胃经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H146",
+    "name": "草乌",
+    "type": "药材",
+    "alias": "草乌",
+    "description": "辛,苦,热,有大毒。归心,肝,肾,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H147",
+    "name": "草乌叶",
+    "type": "药材",
+    "alias": "草乌叶",
+    "description": "辛,涩,平,有小毒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H148",
+    "name": "侧柏叶",
+    "type": "药材",
+    "alias": "侧柏叶",
+    "description": "苦,涩,寒。归肺,肝,脾经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H149",
+    "name": "蝉蜕",
+    "type": "药材",
+    "alias": "蝉蜕",
+    "description": "甘,寒。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H150",
+    "name": "常山",
+    "type": "药材",
+    "alias": "常山",
+    "description": "苦,辛,寒,有毒。归肺,肝,心经。涌吐药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H151",
+    "name": "车前草",
+    "type": "药材",
+    "alias": "车前草",
+    "description": "甘,寒。归肝,肾,肺,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H152",
+    "name": "沉香",
+    "type": "药材",
+    "alias": "沉香",
+    "description": "辛,苦,微温。归脾,胃,肾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H153",
+    "name": "赤小豆",
+    "type": "药材",
+    "alias": "赤小豆",
+    "description": "甘,酸,平。归心,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H154",
+    "name": "茺蔚子",
+    "type": "药材",
+    "alias": "茺蔚子",
+    "description": "辛,苦,微寒。归心包,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H155",
+    "name": "臭梧桐",
+    "type": "药材",
+    "alias": "臭梧桐",
+    "description": "苦,微辛,平。归经：无。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H156",
+    "name": "楮实子",
+    "type": "药材",
+    "alias": "楮实子",
+    "description": "甘,寒。归肝,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H157",
+    "name": "川贝母",
+    "type": "药材",
+    "alias": "川贝母",
+    "description": "苦,甘,微寒。归肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H158",
+    "name": "川槿皮",
+    "type": "药材",
+    "alias": "川槿皮",
+    "description": "甘,苦,微寒。归大肠,肝,脾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H159",
+    "name": "川木通",
+    "type": "药材",
+    "alias": "川木通",
+    "description": "苦,寒。归心,小肠,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H160",
+    "name": "川牛膝",
+    "type": "药材",
+    "alias": "川牛膝",
+    "description": "甘,微苦,平。归肝,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H161",
+    "name": "川射干",
+    "type": "药材",
+    "alias": "川射干",
+    "description": "苦,寒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H162",
+    "name": "川乌",
+    "type": "药材",
+    "alias": "川乌",
+    "description": "辛,苦,热,有大毒。归心,肝,肾,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H163",
+    "name": "穿山龙",
+    "type": "药材",
+    "alias": "穿山龙",
+    "description": "甘,苦,温。归肝,肾,肺经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H164",
+    "name": "穿心莲",
+    "type": "药材",
+    "alias": "穿心莲",
+    "description": "苦,寒。归心,肺,大肠,膀胱经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H165",
+    "name": "垂盆草",
+    "type": "药材",
+    "alias": "垂盆草",
+    "description": "甘,淡,凉。归肝,胆,小肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H166",
+    "name": "椿皮",
+    "type": "药材",
+    "alias": "椿皮",
+    "description": "苦,涩,寒。归大肠,胃,肝经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H167",
+    "name": "葱白",
+    "type": "药材",
+    "alias": "葱白",
+    "description": "辛,温。归肺,胃经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H168",
+    "name": "大风子",
+    "type": "药材",
+    "alias": "大风子",
+    "description": "辛,热,有毒。归肝,脾经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H169",
+    "name": "大腹皮",
+    "type": "药材",
+    "alias": "大腹皮",
+    "description": "辛,微温。归脾,胃,大肠,小肠经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H170",
+    "name": "大蓟",
+    "type": "药材",
+    "alias": "大蓟",
+    "description": "甘,苦,凉。归心,肝经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H171",
+    "name": "大青叶",
+    "type": "药材",
+    "alias": "大青叶",
+    "description": "苦,寒。归心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H172",
+    "name": "大蒜",
+    "type": "药材",
+    "alias": "大蒜",
+    "description": "辛,温。归脾,胃,肺经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H173",
+    "name": "大血藤",
+    "type": "药材",
+    "alias": "大血藤",
+    "description": "苦,平。归大肠,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H174",
+    "name": "大皂角",
+    "type": "药材",
+    "alias": "大皂角",
+    "description": "辛,咸,温,有小毒。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H175",
+    "name": "玳玳花",
+    "type": "药材",
+    "alias": "玳玳花",
+    "description": "辛,甘,微苦,平。归经：无。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H176",
+    "name": "淡豆豉",
+    "type": "药材",
+    "alias": "淡豆豉",
+    "description": "苦,辛,凉。归肺,胃经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H177",
+    "name": "刀豆",
+    "type": "药材",
+    "alias": "刀豆",
+    "description": "甘,温。归胃,肾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H178",
+    "name": "倒扣草",
+    "type": "药材",
+    "alias": "倒扣草",
+    "description": "苦,酸,微寒。归肝,肺,膀胱经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H179",
+    "name": "灯心草",
+    "type": "药材",
+    "alias": "灯心草",
+    "description": "甘,淡,微寒。归心,肺,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H180",
+    "name": "地耳草",
+    "type": "药材",
+    "alias": "地耳草",
+    "description": "甘,微苦,凉。归经：无。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H181",
+    "name": "地枫皮",
+    "type": "药材",
+    "alias": "地枫皮",
+    "description": "微辛,涩,温,有小毒。归膀胱,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H182",
+    "name": "地肤子",
+    "type": "药材",
+    "alias": "地肤子",
+    "description": "辛,苦,寒。归肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H183",
+    "name": "地锦草",
+    "type": "药材",
+    "alias": "地锦草",
+    "description": "辛,平。归肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H184",
+    "name": "地榆",
+    "type": "药材",
+    "alias": "地榆",
+    "description": "苦,酸,涩,微寒。归肝,大肠经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H185",
+    "name": "丁公藤",
+    "type": "药材",
+    "alias": "丁公藤",
+    "description": "辛,温,有小毒。归肝,脾,胃经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H186",
+    "name": "丁香",
+    "type": "药材",
+    "alias": "丁香",
+    "description": "辛,温。归脾,胃,肺,肾经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H187",
+    "name": "冬虫夏草",
+    "type": "药材",
+    "alias": "冬虫夏草",
+    "description": "甘,平。归肺,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H188",
+    "name": "冬瓜皮",
+    "type": "药材",
+    "alias": "冬瓜皮",
+    "description": "甘,凉。归脾,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H189",
+    "name": "冬瓜子",
+    "type": "药材",
+    "alias": "冬瓜子",
+    "description": "甘,微寒。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H190",
+    "name": "冬葵果",
+    "type": "药材",
+    "alias": "冬葵果",
+    "description": "甘,涩,凉。归经：无。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H191",
+    "name": "独活",
+    "type": "药材",
+    "alias": "独活",
+    "description": "辛,苦,微温。归肾,膀胱经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H192",
+    "name": "杜仲",
+    "type": "药材",
+    "alias": "杜仲",
+    "description": "甘,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H193",
+    "name": "杜仲叶",
+    "type": "药材",
+    "alias": "杜仲叶",
+    "description": "微辛,温。归肝,肾经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H194",
+    "name": "断血流",
+    "type": "药材",
+    "alias": "断血流",
+    "description": "微苦,涩,凉。归肝经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H195",
+    "name": "莪术",
+    "type": "药材",
+    "alias": "莪术",
+    "description": "辛,苦,温。归肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H196",
+    "name": "鹅不食草",
+    "type": "药材",
+    "alias": "鹅不食草",
+    "description": "辛,温。归肺经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H197",
+    "name": "儿茶",
+    "type": "药材",
+    "alias": "儿茶",
+    "description": "苦,涩,微寒。归肺,心经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H198",
+    "name": "番泻叶",
+    "type": "药材",
+    "alias": "番泻叶",
+    "description": "甘,苦,寒。归大肠经。攻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H199",
+    "name": "翻白草",
+    "type": "药材",
+    "alias": "翻白草",
+    "description": "甘,微苦,平。归肝,胃,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H200",
+    "name": "防己",
+    "type": "药材",
+    "alias": "防己",
+    "description": "苦,寒。归膀胱,肺经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H201",
+    "name": "粉萆薢",
+    "type": "药材",
+    "alias": "粉萆薢",
+    "description": "性味：无。归肾,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H202",
+    "name": "凤尾草",
+    "type": "药材",
+    "alias": "凤尾草",
+    "description": "甘,微苦,微温。归大肠,胃,肝,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H203",
+    "name": "凤仙透骨草",
+    "type": "药材",
+    "alias": "凤仙透骨草",
+    "description": "苦,辛,温,有小毒。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H204",
+    "name": "凤眼草",
+    "type": "药材",
+    "alias": "凤眼草",
+    "description": "苦,涩,凉。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H205",
+    "name": "浮萍",
+    "type": "药材",
+    "alias": "浮萍",
+    "description": "辛,寒。归肺经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H206",
+    "name": "覆盆子",
+    "type": "药材",
+    "alias": "覆盆子",
+    "description": "甘,酸,温。归肝,肾,膀胱经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H207",
+    "name": "甘松",
+    "type": "药材",
+    "alias": "甘松",
+    "description": "辛,甘,温。归脾,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H208",
+    "name": "甘遂",
+    "type": "药材",
+    "alias": "甘遂",
+    "description": "苦,寒,有毒。归肺,肾,大肠经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H209",
+    "name": "高良姜",
+    "type": "药材",
+    "alias": "高良姜",
+    "description": "辛,热。归脾,胃经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H210",
+    "name": "藁本",
+    "type": "药材",
+    "alias": "藁本",
+    "description": "辛,温。归膀胱经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H211",
+    "name": "葛花",
+    "type": "药材",
+    "alias": "葛花",
+    "description": "甘,凉。归脾,胃经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H212",
+    "name": "功劳木",
+    "type": "药材",
+    "alias": "功劳木",
+    "description": "苦,寒。归肝,胃,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H213",
+    "name": "枸骨叶",
+    "type": "药材",
+    "alias": "枸骨叶",
+    "description": "苦,凉。归肝,肾经。清虚热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H214",
+    "name": "谷精草",
+    "type": "药材",
+    "alias": "谷精草",
+    "description": "辛,甘,平。归肝,肺经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H215",
+    "name": "骨碎补",
+    "type": "药材",
+    "alias": "骨碎补",
+    "description": "苦,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H216",
+    "name": "瓜蒂",
+    "type": "药材",
+    "alias": "瓜蒂",
+    "description": "苦,寒,有毒。归胃经。涌吐药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H217",
+    "name": "关黄柏",
+    "type": "药材",
+    "alias": "关黄柏",
+    "description": "苦,寒。归肾,膀胱经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H218",
+    "name": "贯叶金丝桃",
+    "type": "药材",
+    "alias": "贯叶金丝桃",
+    "description": "辛,寒。归肝经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H219",
+    "name": "绵马贯众",
+    "type": "药材",
+    "alias": "绵马贯众",
+    "description": "苦,微寒,有小毒。归肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H220",
+    "name": "广藿香",
+    "type": "药材",
+    "alias": "广藿香",
+    "description": "辛,微温。归脾,胃,肺经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H221",
+    "name": "广枣",
+    "type": "药材",
+    "alias": "广枣",
+    "description": "甘,酸,平。归脾,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H222",
+    "name": "鬼箭羽",
+    "type": "药材",
+    "alias": "鬼箭羽",
+    "description": "苦,辛,寒。归肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H223",
+    "name": "鬼针草",
+    "type": "药材",
+    "alias": "鬼针草",
+    "description": "苦,微寒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H224",
+    "name": "海风藤",
+    "type": "药材",
+    "alias": "海风藤",
+    "description": "辛,苦,微温。归肝经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H225",
+    "name": "海金沙",
+    "type": "药材",
+    "alias": "海金沙",
+    "description": "甘,咸,寒。归膀胱,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H226",
+    "name": "海桐皮",
+    "type": "药材",
+    "alias": "海桐皮",
+    "description": "苦,辛,平。归肝,脾经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H227",
+    "name": "海藻",
+    "type": "药材",
+    "alias": "海藻",
+    "description": "苦,咸,寒。归肝,胃,肾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H228",
+    "name": "诃子",
+    "type": "药材",
+    "alias": "诃子",
+    "description": "苦,酸,涩,平。归肺,大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H229",
+    "name": "荷叶",
+    "type": "药材",
+    "alias": "荷叶",
+    "description": "苦,平。归肝,脾,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H230",
+    "name": "核桃仁",
+    "type": "药材",
+    "alias": "核桃仁",
+    "description": "甘,温。归肾,肺,大肠经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H231",
+    "name": "鹤虱",
+    "type": "药材",
+    "alias": "鹤虱",
+    "description": "苦,辛,平,有小毒。归脾,胃经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H232",
+    "name": "黑豆",
+    "type": "药材",
+    "alias": "黑豆",
+    "description": "甘,平。归脾,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H233",
+    "name": "黑老虎",
+    "type": "药材",
+    "alias": "黑老虎",
+    "description": "辛,微苦,温。归经：无。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H234",
+    "name": "黑芝麻",
+    "type": "药材",
+    "alias": "黑芝麻",
+    "description": "甘,平。归肝,肾,大肠经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H235",
+    "name": "红参",
+    "type": "药材",
+    "alias": "红参",
+    "description": "甘,微苦,温。归脾,肺,心,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H236",
+    "name": "红芪",
+    "type": "药材",
+    "alias": "红芪",
+    "description": "甘,微温。归肺,脾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H237",
+    "name": "猴枣",
+    "type": "药材",
+    "alias": "猴枣",
+    "description": "苦,寒,无毒。归经：无。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H238",
+    "name": "胡黄连",
+    "type": "药材",
+    "alias": "胡黄连",
+    "description": "苦,寒。归肝,胃,大肠经。清虚热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H239",
+    "name": "胡椒",
+    "type": "药材",
+    "alias": "胡椒",
+    "description": "辛,热。归胃,大肠经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H240",
+    "name": "胡芦巴",
+    "type": "药材",
+    "alias": "胡芦巴",
+    "description": "苦,温。归肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H241",
+    "name": "槲寄生",
+    "type": "药材",
+    "alias": "槲寄生",
+    "description": "苦,平。归肝,肾经。祛风湿筋骨药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H242",
+    "name": "虎耳草",
+    "type": "药材",
+    "alias": "虎耳草",
+    "description": "苦,辛,寒,小毒。归肺,肝,心经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H243",
+    "name": "虎杖",
+    "type": "药材",
+    "alias": "虎杖",
+    "description": "微苦,微寒。归肝,胆,肺经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H244",
+    "name": "花椒",
+    "type": "药材",
+    "alias": "花椒",
+    "description": "辛,温。归脾,胃,肾经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H245",
+    "name": "花生衣",
+    "type": "药材",
+    "alias": "花生衣",
+    "description": "甘,微苦,涩,平。归肺,胃,肝经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H246",
+    "name": "华山参",
+    "type": "药材",
+    "alias": "华山参",
+    "description": "甘,微苦,温,有毒。归肺,心经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H247",
+    "name": "化橘红",
+    "type": "药材",
+    "alias": "化橘红",
+    "description": "辛,苦,温。归肺,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H248",
+    "name": "槐花",
+    "type": "药材",
+    "alias": "槐花",
+    "description": "苦,微寒。归肝,大肠经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H249",
+    "name": "槐角",
+    "type": "药材",
+    "alias": "槐角",
+    "description": "苦,寒。归肝,大肠经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H250",
+    "name": "黄精",
+    "type": "药材",
+    "alias": "黄精",
+    "description": "甘,平。归脾,肺,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H251",
+    "name": "黄药子",
+    "type": "药材",
+    "alias": "黄药子",
+    "description": "苦,寒,小毒。归肺,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H252",
+    "name": "鸡骨草",
+    "type": "药材",
+    "alias": "鸡骨草",
+    "description": "甘,微苦,凉。归肝,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H253",
+    "name": "鸡冠花",
+    "type": "药材",
+    "alias": "鸡冠花",
+    "description": "甘,涩,凉。归肝,大肠经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H254",
+    "name": "鸡屎藤",
+    "type": "药材",
+    "alias": "鸡屎藤",
+    "description": "甘,微苦,平。归经：无。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H255",
+    "name": "鸡血藤",
+    "type": "药材",
+    "alias": "鸡血藤",
+    "description": "苦,甘,温。归肝,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H256",
+    "name": "积雪草",
+    "type": "药材",
+    "alias": "积雪草",
+    "description": "苦,辛,寒。归肝,脾,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H257",
+    "name": "急性子",
+    "type": "药材",
+    "alias": "急性子",
+    "description": "微苦,辛,温,有小毒。归肺,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H258",
+    "name": "蒺藜",
+    "type": "药材",
+    "alias": "蒺藜",
+    "description": "辛,苦,微温,有小毒。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H259",
+    "name": "姜黄",
+    "type": "药材",
+    "alias": "姜黄",
+    "description": "辛,苦,温。归脾,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H260",
+    "name": "降香",
+    "type": "药材",
+    "alias": "降香",
+    "description": "辛,温。归肝,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H261",
+    "name": "绞股蓝",
+    "type": "药材",
+    "alias": "绞股蓝",
+    "description": "苦,微甘,凉。归肺,脾,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H262",
+    "name": "芥子",
+    "type": "药材",
+    "alias": "芥子",
+    "description": "辛,温。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H263",
+    "name": "金沸草",
+    "type": "药材",
+    "alias": "金沸草",
+    "description": "苦,辛,咸,温。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H264",
+    "name": "金果榄",
+    "type": "药材",
+    "alias": "金果榄",
+    "description": "苦,寒。归肺,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H265",
+    "name": "金莲花",
+    "type": "药材",
+    "alias": "金莲花",
+    "description": "苦,寒。归肺,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H266",
+    "name": "金钱草",
+    "type": "药材",
+    "alias": "金钱草",
+    "description": "甘,咸,微寒。归肝,胆,肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H267",
+    "name": "金荞麦",
+    "type": "药材",
+    "alias": "金荞麦",
+    "description": "微辛,涩,凉。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H268",
+    "name": "金樱子",
+    "type": "药材",
+    "alias": "金樱子",
+    "description": "酸,甘,涩,平。归肾,膀胱,大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H269",
+    "name": "金盏菊花",
+    "type": "药材",
+    "alias": "金盏菊花",
+    "description": "性味：无。归经：无。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H270",
+    "name": "锦灯笼",
+    "type": "药材",
+    "alias": "锦灯笼",
+    "description": "苦,寒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H271",
+    "name": "京大戟",
+    "type": "药材",
+    "alias": "京大戟",
+    "description": "苦,寒,有毒。归肺,脾,肾经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H272",
+    "name": "荆芥穗",
+    "type": "药材",
+    "alias": "荆芥穗",
+    "description": "辛,微温。归肺,肝经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H273",
+    "name": "景天三七",
+    "type": "药材",
+    "alias": "景天三七",
+    "description": "甘,微酸,平。归心,肝经。化瘀止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H274",
+    "name": "韭菜子",
+    "type": "药材",
+    "alias": "韭菜子",
+    "description": "辛,甘,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H275",
+    "name": "菊苣",
+    "type": "药材",
+    "alias": "菊苣",
+    "description": "微苦,咸,凉。归肝,胆,胃经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H276",
+    "name": "橘核",
+    "type": "药材",
+    "alias": "橘核",
+    "description": "苦,平。归肝,肾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H277",
+    "name": "橘红",
+    "type": "药材",
+    "alias": "橘红",
+    "description": "辛,苦,温。归肺,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H278",
+    "name": "橘络",
+    "type": "药材",
+    "alias": "橘络",
+    "description": "甘,苦,平。归肝,肺,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H279",
+    "name": "橘叶",
+    "type": "药材",
+    "alias": "橘叶",
+    "description": "苦,辛,平。归肝,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H280",
+    "name": "卷柏",
+    "type": "药材",
+    "alias": "卷柏",
+    "description": "辛,平。归肝,心经。化瘀止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H281",
+    "name": "决明子",
+    "type": "药材",
+    "alias": "决明子",
+    "description": "甘,苦,咸,微寒。归肝,大肠经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H282",
+    "name": "苦参",
+    "type": "药材",
+    "alias": "苦参",
+    "description": "苦,寒。归心,肝,胃,大肠,膀胱经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H283",
+    "name": "苦地丁",
+    "type": "药材",
+    "alias": "苦地丁",
+    "description": "苦,寒。归心,肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H284",
+    "name": "苦丁茶",
+    "type": "药材",
+    "alias": "苦丁茶",
+    "description": "甘,苦,寒。归肝,肺,胃经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H285",
+    "name": "苦楝皮",
+    "type": "药材",
+    "alias": "苦楝皮",
+    "description": "苦,寒,有毒。归肝,脾,胃经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H286",
+    "name": "苦楝子",
+    "type": "药材",
+    "alias": "苦楝子",
+    "description": "苦,寒,小毒。归经：无。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H287",
+    "name": "款冬花",
+    "type": "药材",
+    "alias": "款冬花",
+    "description": "辛,微苦,温。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H288",
+    "name": "昆布",
+    "type": "药材",
+    "alias": "昆布",
+    "description": "咸,寒。归肝,胃,肾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H289",
+    "name": "辣椒",
+    "type": "药材",
+    "alias": "辣椒",
+    "description": "辛,热。归心,脾经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H290",
+    "name": "莱菔子",
+    "type": "药材",
+    "alias": "莱菔子",
+    "description": "辛,甘,平。归肺,脾,胃经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H291",
+    "name": "老鹳草",
+    "type": "药材",
+    "alias": "老鹳草",
+    "description": "辛,苦,平。归肝,肾,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H292",
+    "name": "了哥王根",
+    "type": "药材",
+    "alias": "了哥王根",
+    "description": "苦,辛,寒,有毒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H293",
+    "name": "雷公藤",
+    "type": "药材",
+    "alias": "雷公藤",
+    "description": "苦,辛,凉,大毒。归肝,心经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H294",
+    "name": "雷丸",
+    "type": "药材",
+    "alias": "雷丸",
+    "description": "微苦,寒。归胃,大肠经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H295",
+    "name": "荔枝核",
+    "type": "药材",
+    "alias": "荔枝核",
+    "description": "甘,微苦,温。归肝,肾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H296",
+    "name": "连钱草",
+    "type": "药材",
+    "alias": "连钱草",
+    "description": "辛,微苦,微寒。归肝,肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H297",
+    "name": "莲房",
+    "type": "药材",
+    "alias": "莲房",
+    "description": "苦,涩,温。归肝经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H298",
+    "name": "莲须",
+    "type": "药材",
+    "alias": "莲须",
+    "description": "甘,涩,平。归心,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H299",
+    "name": "莲子心",
+    "type": "药材",
+    "alias": "莲子心",
+    "description": "苦,寒。归心,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H300",
+    "name": "两面针",
+    "type": "药材",
+    "alias": "两面针",
+    "description": "苦,辛,平,有小毒。归肝,胃经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H301",
+    "name": "两头尖",
+    "type": "药材",
+    "alias": "两头尖",
+    "description": "辛,热,有毒。归脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H302",
+    "name": "蓼大青叶",
+    "type": "药材",
+    "alias": "蓼大青叶",
+    "description": "苦,寒。归心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H303",
+    "name": "灵芝",
+    "type": "药材",
+    "alias": "灵芝",
+    "description": "甘,平。归心,肺,肝,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H304",
+    "name": "凌霄花",
+    "type": "药材",
+    "alias": "凌霄花",
+    "description": "甘,酸,寒。归肝,心包经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H305",
+    "name": "零陵香",
+    "type": "药材",
+    "alias": "零陵香",
+    "description": "微甘,平。归经：无。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H306",
+    "name": "龙葵",
+    "type": "药材",
+    "alias": "龙葵",
+    "description": "苦,寒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H307",
+    "name": "龙脷叶",
+    "type": "药材",
+    "alias": "龙脷叶",
+    "description": "甘,淡,平。归肺,胃经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H308",
+    "name": "漏芦",
+    "type": "药材",
+    "alias": "漏芦",
+    "description": "苦,寒。归胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H309",
+    "name": "芦根",
+    "type": "药材",
+    "alias": "芦根",
+    "description": "甘,寒。归肺,胃经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H310",
+    "name": "芦荟",
+    "type": "药材",
+    "alias": "芦荟",
+    "description": "苦,寒。归肝,胃,大肠经。攻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H311",
+    "name": "鹿衔草",
+    "type": "药材",
+    "alias": "鹿衔草",
+    "description": "甘,苦,温。归肝,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H312",
+    "name": "路路通",
+    "type": "药材",
+    "alias": "路路通",
+    "description": "苦,平。归肝,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H313",
+    "name": "罗布麻叶",
+    "type": "药材",
+    "alias": "罗布麻叶",
+    "description": "甘,苦,凉。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H314",
+    "name": "罗汉果",
+    "type": "药材",
+    "alias": "罗汉果",
+    "description": "甘,凉。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H315",
+    "name": "络石藤",
+    "type": "药材",
+    "alias": "络石藤",
+    "description": "苦,微寒。归心,肝,肾经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H316",
+    "name": "绿豆",
+    "type": "药材",
+    "alias": "绿豆",
+    "description": "甘,寒。归心,肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H317",
+    "name": "葎草",
+    "type": "药材",
+    "alias": "葎草",
+    "description": "甘,苦,寒。归肺,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H318",
+    "name": "麻黄根",
+    "type": "药材",
+    "alias": "麻黄根",
+    "description": "甘,涩,平。归心,肺经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H319",
+    "name": "马鞭草",
+    "type": "药材",
+    "alias": "马鞭草",
+    "description": "苦,凉。归肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H320",
+    "name": "马勃",
+    "type": "药材",
+    "alias": "马勃",
+    "description": "辛,平。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H321",
+    "name": "马齿苋",
+    "type": "药材",
+    "alias": "马齿苋",
+    "description": "酸,寒。归肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H322",
+    "name": "马兜铃",
+    "type": "药材",
+    "alias": "马兜铃",
+    "description": "寒,微辛,苦。归肺,大肠经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H323",
+    "name": "马钱子",
+    "type": "药材",
+    "alias": "马钱子",
+    "description": "苦,温,有大毒。归肝,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H324",
+    "name": "马尾莲",
+    "type": "药材",
+    "alias": "马尾莲",
+    "description": "苦,寒。归心,肝,大肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H325",
+    "name": "满山红",
+    "type": "药材",
+    "alias": "满山红",
+    "description": "辛,苦,寒。归肺,脾经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H326",
+    "name": "蔓荆子",
+    "type": "药材",
+    "alias": "蔓荆子",
+    "description": "微寒,辛,苦。归膀胱,胃,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H327",
+    "name": "猫眼草",
+    "type": "药材",
+    "alias": "猫眼草",
+    "description": "苦,微寒,有毒。归经：无。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H328",
+    "name": "猫爪草",
+    "type": "药材",
+    "alias": "猫爪草",
+    "description": "甘,辛,温。归肝,肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H329",
+    "name": "没药",
+    "type": "药材",
+    "alias": "没药",
+    "description": "辛,苦,平。归心,肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H330",
+    "name": "玫瑰花",
+    "type": "药材",
+    "alias": "玫瑰花",
+    "description": "甘,微苦,温。归肝,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H331",
+    "name": "梅花",
+    "type": "药材",
+    "alias": "梅花",
+    "description": "微酸,平。归肝,胃,肺经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H332",
+    "name": "猕猴桃根",
+    "type": "药材",
+    "alias": "猕猴桃根",
+    "description": "微甘,涩,凉,小毒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H333",
+    "name": "密蒙花",
+    "type": "药材",
+    "alias": "密蒙花",
+    "description": "甘,微寒。归肝经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H334",
+    "name": "绵萆薢",
+    "type": "药材",
+    "alias": "绵萆薢",
+    "description": "苦,平。归肾,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H335",
+    "name": "墨旱莲",
+    "type": "药材",
+    "alias": "墨旱莲",
+    "description": "甘,酸,寒。归肾,肝经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H336",
+    "name": "牡荆叶",
+    "type": "药材",
+    "alias": "牡荆叶",
+    "description": "微苦,辛,平。归肺经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H337",
+    "name": "牡荆子",
+    "type": "药材",
+    "alias": "牡荆子",
+    "description": "苦,辛,温。归肺,大肠经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H338",
+    "name": "木鳖子",
+    "type": "药材",
+    "alias": "木鳖子",
+    "description": "苦,微甘,凉,有毒。归肝,脾,胃经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H339",
+    "name": "木瓜",
+    "type": "药材",
+    "alias": "木瓜",
+    "description": "酸,温。归肝,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H340",
+    "name": "木蝴蝶",
+    "type": "药材",
+    "alias": "木蝴蝶",
+    "description": "苦,甘,凉。归肺,肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H341",
+    "name": "木棉花",
+    "type": "药材",
+    "alias": "木棉花",
+    "description": "甘,淡,凉。归大肠经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H342",
+    "name": "木通",
+    "type": "药材",
+    "alias": "木通",
+    "description": "苦,寒。归心,小肠,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H343",
+    "name": "木贼",
+    "type": "药材",
+    "alias": "木贼",
+    "description": "甘,苦,平。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H344",
+    "name": "墓头回",
+    "type": "药材",
+    "alias": "墓头回",
+    "description": "苦,微酸涩,凉。归心,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H345",
+    "name": "南瓜子",
+    "type": "药材",
+    "alias": "南瓜子",
+    "description": "甘,平。归大肠经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H346",
+    "name": "南鹤虱",
+    "type": "药材",
+    "alias": "南鹤虱",
+    "description": "苦,辛,平,有小毒。归脾,胃经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H347",
+    "name": "南沙参",
+    "type": "药材",
+    "alias": "南沙参",
+    "description": "甘,微寒。归肺,胃经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H348",
+    "name": "南蛇藤果",
+    "type": "药材",
+    "alias": "南蛇藤果",
+    "description": "甘,微苦,平。归经：无。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H349",
+    "name": "南五味子",
+    "type": "药材",
+    "alias": "南五味子",
+    "description": "酸,甘,温。归肺,心,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H350",
+    "name": "闹羊花",
+    "type": "药材",
+    "alias": "闹羊花",
+    "description": "辛,温,有大毒。归肝经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H351",
+    "name": "牛蒡子",
+    "type": "药材",
+    "alias": "牛蒡子",
+    "description": "辛,苦,寒。归肺,胃经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H352",
+    "name": "牛大力",
+    "type": "药材",
+    "alias": "牛大力",
+    "description": "甘,苦,平。归经：无。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H353",
+    "name": "牛黄",
+    "type": "药材",
+    "alias": "牛黄",
+    "description": "甘,凉。归心,肝经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H354",
+    "name": "牛膝",
+    "type": "药材",
+    "alias": "牛膝",
+    "description": "苦,甘,酸,平。归肝,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H355",
+    "name": "糯稻根",
+    "type": "药材",
+    "alias": "糯稻根",
+    "description": "甘,平。归肺,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H356",
+    "name": "藕节",
+    "type": "药材",
+    "alias": "藕节",
+    "description": "甘,涩,平。归肝,肺,胃经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H357",
+    "name": "胖大海",
+    "type": "药材",
+    "alias": "胖大海",
+    "description": "甘,寒。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H358",
+    "name": "佩兰",
+    "type": "药材",
+    "alias": "佩兰",
+    "description": "辛,平。归脾,胃,肺经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H359",
+    "name": "枇杷叶",
+    "type": "药材",
+    "alias": "枇杷叶",
+    "description": "苦,微寒。归肺,胃经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H360",
+    "name": "平贝母",
+    "type": "药材",
+    "alias": "平贝母",
+    "description": "苦,甘,微寒。归肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H361",
+    "name": "蒲黄",
+    "type": "药材",
+    "alias": "蒲黄",
+    "description": "甘,平。归肝,心包经。化瘀止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H362",
+    "name": "荠菜",
+    "type": "药材",
+    "alias": "荠菜",
+    "description": "甘,淡,凉。归肝,脾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H363",
+    "name": "千斤拔",
+    "type": "药材",
+    "alias": "千斤拔",
+    "description": "甘,辛,微涩,平。归经：无。祛风湿筋骨药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H364",
+    "name": "千金子",
+    "type": "药材",
+    "alias": "千金子",
+    "description": "辛,温,有毒。归肝,肾,大肠经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H365",
+    "name": "千年健",
+    "type": "药材",
+    "alias": "千年健",
+    "description": "苦,辛,温。归肝,肾经。祛风湿筋骨药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H366",
+    "name": "千日红",
+    "type": "药材",
+    "alias": "千日红",
+    "description": "甘,微咸,平。归经：无。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H367",
+    "name": "牵牛子",
+    "type": "药材",
+    "alias": "牵牛子",
+    "description": "苦,寒,有毒。归肺,肾,大肠经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H368",
+    "name": "前胡",
+    "type": "药材",
+    "alias": "前胡",
+    "description": "苦,辛,微寒。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H369",
+    "name": "芡实",
+    "type": "药材",
+    "alias": "芡实",
+    "description": "甘,涩,平。归脾,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H370",
+    "name": "茜草",
+    "type": "药材",
+    "alias": "茜草",
+    "description": "苦,寒。归肝经。化瘀止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H371",
+    "name": "茄根",
+    "type": "药材",
+    "alias": "茄根",
+    "description": "甘,辛,寒。归脾,大肠,胃经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H372",
+    "name": "秦艽",
+    "type": "药材",
+    "alias": "秦艽",
+    "description": "辛,苦,平。归胃,肝,胆经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H373",
+    "name": "秦皮",
+    "type": "药材",
+    "alias": "秦皮",
+    "description": "苦,涩,寒。归肝,胆,大肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H374",
+    "name": "青黛",
+    "type": "药材",
+    "alias": "青黛",
+    "description": "咸,寒。归肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H375",
+    "name": "青风藤",
+    "type": "药材",
+    "alias": "青风藤",
+    "description": "苦,辛,平。归肝,脾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H376",
+    "name": "青果",
+    "type": "药材",
+    "alias": "青果",
+    "description": "甘,酸,平。归肺,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H377",
+    "name": "青皮",
+    "type": "药材",
+    "alias": "青皮",
+    "description": "苦,辛,温。归肝,胆,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H378",
+    "name": "青葙子",
+    "type": "药材",
+    "alias": "青葙子",
+    "description": "性味：无。归肝经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H379",
+    "name": "青叶胆",
+    "type": "药材",
+    "alias": "青叶胆",
+    "description": "苦,甘,寒。归肝,胆,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H380",
+    "name": "苘麻子",
+    "type": "药材",
+    "alias": "苘麻子",
+    "description": "苦,平。归大肠,小肠,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H381",
+    "name": "瞿麦",
+    "type": "药材",
+    "alias": "瞿麦",
+    "description": "苦,寒。归心,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H382",
+    "name": "拳参",
+    "type": "药材",
+    "alias": "拳参",
+    "description": "苦,涩,微寒。归肺,肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H383",
+    "name": "人参叶",
+    "type": "药材",
+    "alias": "人参叶",
+    "description": "苦,甘,寒。归肺,胃经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H384",
+    "name": "肉苁蓉",
+    "type": "药材",
+    "alias": "肉苁蓉",
+    "description": "甘,咸,温。归肾,大肠经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H385",
+    "name": "肉豆蔻",
+    "type": "药材",
+    "alias": "肉豆蔻",
+    "description": "辛,温。归脾,胃,大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H386",
+    "name": "乳香",
+    "type": "药材",
+    "alias": "乳香",
+    "description": "辛,苦,温。归心,肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H387",
+    "name": "蕤仁",
+    "type": "药材",
+    "alias": "蕤仁",
+    "description": "甘,微寒。归肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H388",
+    "name": "三白草",
+    "type": "药材",
+    "alias": "三白草",
+    "description": "甘,辛,寒。归肺,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H389",
+    "name": "三分三",
+    "type": "药材",
+    "alias": "三分三",
+    "description": "苦,辛,温,大毒。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H390",
+    "name": "三棱",
+    "type": "药材",
+    "alias": "三棱",
+    "description": "辛,苦,平。归肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H391",
+    "name": "三七花",
+    "type": "药材",
+    "alias": "三七花",
+    "description": "甘,微苦,凉。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H392",
+    "name": "桑白皮",
+    "type": "药材",
+    "alias": "桑白皮",
+    "description": "甘,寒。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H393",
+    "name": "桑寄生",
+    "type": "药材",
+    "alias": "桑寄生",
+    "description": "苦,甘,平。归肝,肾经。祛风湿筋骨药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H394",
+    "name": "桑椹",
+    "type": "药材",
+    "alias": "桑椹",
+    "description": "甘,酸,寒。归心,肝,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H395",
+    "name": "桑枝",
+    "type": "药材",
+    "alias": "桑枝",
+    "description": "微苦,平。归肝经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H396",
+    "name": "沙棘",
+    "type": "药材",
+    "alias": "沙棘",
+    "description": "酸,涩,温。归脾,胃,肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H397",
+    "name": "沙苑子",
+    "type": "药材",
+    "alias": "沙苑子",
+    "description": "甘,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H398",
+    "name": "山慈菇",
+    "type": "药材",
+    "alias": "山慈菇",
+    "description": "甘,微辛,凉。归肝,脾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H399",
+    "name": "山豆根",
+    "type": "药材",
+    "alias": "山豆根",
+    "description": "苦,寒,有毒。归肺,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H400",
+    "name": "山柰",
+    "type": "药材",
+    "alias": "山柰",
+    "description": "辛,温。归胃经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H401",
+    "name": "山楂叶",
+    "type": "药材",
+    "alias": "山楂叶",
+    "description": "酸,平。归肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H402",
+    "name": "商陆",
+    "type": "药材",
+    "alias": "商陆",
+    "description": "苦,寒,有毒。归肺,脾,肾,大肠经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H403",
+    "name": "蛇床子",
+    "type": "药材",
+    "alias": "蛇床子",
+    "description": "辛,苦,温,有小毒。归肾经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H404",
+    "name": "射干",
+    "type": "药材",
+    "alias": "射干",
+    "description": "苦,寒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H405",
+    "name": "伸筋草",
+    "type": "药材",
+    "alias": "伸筋草",
+    "description": "微苦,辛,温。归肝,脾,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H406",
+    "name": "十大功劳根",
+    "type": "药材",
+    "alias": "十大功劳根",
+    "description": "寒,苦。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H407",
+    "name": "十大功劳叶",
+    "type": "药材",
+    "alias": "十大功劳叶",
+    "description": "苦,寒。归肺,肝,肾经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H408",
+    "name": "石菖蒲",
+    "type": "药材",
+    "alias": "石菖蒲",
+    "description": "辛,苦,温。归心,胃经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H409",
+    "name": "石见穿",
+    "type": "药材",
+    "alias": "石见穿",
+    "description": "辛,苦,微寒。归经：无。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H410",
+    "name": "石榴皮",
+    "type": "药材",
+    "alias": "石榴皮",
+    "description": "酸,涩,温。归大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H411",
+    "name": "石上柏",
+    "type": "药材",
+    "alias": "石上柏",
+    "description": "甘,微苦,涩,凉。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H412",
+    "name": "石韦",
+    "type": "药材",
+    "alias": "石韦",
+    "description": "甘,苦,微寒。归肺,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H413",
+    "name": "使君子",
+    "type": "药材",
+    "alias": "使君子",
+    "description": "甘,温。归脾,胃经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H414",
+    "name": "柿蒂",
+    "type": "药材",
+    "alias": "柿蒂",
+    "description": "苦,涩,平。归胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H415",
+    "name": "鼠曲草",
+    "type": "药材",
+    "alias": "鼠曲草",
+    "description": "甘,微酸,平。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H416",
+    "name": "水飞蓟",
+    "type": "药材",
+    "alias": "水飞蓟",
+    "description": "苦,凉。归肝,胆经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H417",
+    "name": "水红花子",
+    "type": "药材",
+    "alias": "水红花子",
+    "description": "咸,微寒。归肝,胃经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H418",
+    "name": "四季青",
+    "type": "药材",
+    "alias": "四季青",
+    "description": "苦,涩,凉。归肺,大肠,膀胱经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H419",
+    "name": "松花粉",
+    "type": "药材",
+    "alias": "松花粉",
+    "description": "甘,温。归肝,脾经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H420",
+    "name": "油松节",
+    "type": "药材",
+    "alias": "油松节",
+    "description": "苦,辛,温。归肝,肾经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H421",
+    "name": "松子仁",
+    "type": "药材",
+    "alias": "松子仁",
+    "description": "甘,温。归经：无。润下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H422",
+    "name": "苏合香",
+    "type": "药材",
+    "alias": "苏合香",
+    "description": "辛,温。归心,脾经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H423",
+    "name": "娑罗子",
+    "type": "药材",
+    "alias": "娑罗子",
+    "description": "甘,温。归肝,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H424",
+    "name": "檀香",
+    "type": "药材",
+    "alias": "檀香",
+    "description": "辛,温。归脾,胃,心,肺经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H425",
+    "name": "天冬",
+    "type": "药材",
+    "alias": "天冬",
+    "description": "甘,苦,寒。归肺,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H426",
+    "name": "天花粉",
+    "type": "药材",
+    "alias": "天花粉",
+    "description": "甘,微苦,微寒。归肺,胃经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H427",
+    "name": "天葵子",
+    "type": "药材",
+    "alias": "天葵子",
+    "description": "甘,苦,寒。归肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H428",
+    "name": "天南星",
+    "type": "药材",
+    "alias": "天南星",
+    "description": "苦,辛,温,有毒。归肺,肝,脾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H429",
+    "name": "天山雪莲",
+    "type": "药材",
+    "alias": "天山雪莲",
+    "description": "微苦,温。归经：无。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H430",
+    "name": "天仙藤",
+    "type": "药材",
+    "alias": "天仙藤",
+    "description": "性味：无。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H431",
+    "name": "天仙子",
+    "type": "药材",
+    "alias": "天仙子",
+    "description": "苦,辛,温,有大毒。归心,胃,肝经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H432",
+    "name": "天竺黄",
+    "type": "药材",
+    "alias": "天竺黄",
+    "description": "甘,寒。归心,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H433",
+    "name": "甜瓜子",
+    "type": "药材",
+    "alias": "甜瓜子",
+    "description": "甘,寒。归肺,胃,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H434",
+    "name": "铁丝威灵仙",
+    "type": "药材",
+    "alias": "铁丝威灵仙",
+    "description": "温,辛,咸。归经：无。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H435",
+    "name": "铁线透骨草",
+    "type": "药材",
+    "alias": "铁线透骨草",
+    "description": "辛,咸,温,小毒。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H436",
+    "name": "葶苈子",
+    "type": "药材",
+    "alias": "葶苈子",
+    "description": "辛,苦,大寒。归肺,膀胱经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H437",
+    "name": "通草",
+    "type": "药材",
+    "alias": "通草",
+    "description": "甘,淡,微寒。归肺,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H438",
+    "name": "土贝母",
+    "type": "药材",
+    "alias": "土贝母",
+    "description": "苦,微寒。归肺,脾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H439",
+    "name": "土茯苓",
+    "type": "药材",
+    "alias": "土茯苓",
+    "description": "甘,淡,平。归肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H440",
+    "name": "土荆皮",
+    "type": "药材",
+    "alias": "土荆皮",
+    "description": "辛,温,有毒。归肺,脾经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H441",
+    "name": "菟丝子",
+    "type": "药材",
+    "alias": "菟丝子",
+    "description": "辛,甘,平。归肝,肾,脾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H442",
+    "name": "瓦楞子",
+    "type": "药材",
+    "alias": "瓦楞子",
+    "description": "咸,平。归肺,胃,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H443",
+    "name": "瓦松",
+    "type": "药材",
+    "alias": "瓦松",
+    "description": "酸,苦,凉。归肝,肺,脾经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H444",
+    "name": "王不留行",
+    "type": "药材",
+    "alias": "王不留行",
+    "description": "苦,平。归肝,胃经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H445",
+    "name": "威灵仙",
+    "type": "药材",
+    "alias": "威灵仙",
+    "description": "辛,咸,温。归膀胱经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H446",
+    "name": "委陵菜",
+    "type": "药材",
+    "alias": "委陵菜",
+    "description": "苦,寒。归肝,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H447",
+    "name": "乌敛莓",
+    "type": "药材",
+    "alias": "乌敛莓",
+    "description": "苦,酸,寒。归心,肝,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H448",
+    "name": "乌梅",
+    "type": "药材",
+    "alias": "乌梅",
+    "description": "酸,涩,平。归肝,脾,肺,大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H449",
+    "name": "乌药",
+    "type": "药材",
+    "alias": "乌药",
+    "description": "辛,温。归肺,脾,肾,膀胱经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H450",
+    "name": "无患子",
+    "type": "药材",
+    "alias": "无患子",
+    "description": "苦,辛,寒,小毒。归经：无。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H451",
+    "name": "无患子皮",
+    "type": "药材",
+    "alias": "无患子皮",
+    "description": "苦,平,小毒。归经：无。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H452",
+    "name": "梧桐子",
+    "type": "药材",
+    "alias": "梧桐子",
+    "description": "甘,平。归脾,肺,肾经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H453",
+    "name": "五倍子",
+    "type": "药材",
+    "alias": "五倍子",
+    "description": "酸,涩,寒。归肺,大肠,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H454",
+    "name": "西河柳",
+    "type": "药材",
+    "alias": "西河柳",
+    "description": "甘,辛,平。归心,肺,胃经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H455",
+    "name": "西红花",
+    "type": "药材",
+    "alias": "西红花",
+    "description": "甘,平。归心,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H456",
+    "name": "豨莶草",
+    "type": "药材",
+    "alias": "豨莶草",
+    "description": "辛,苦,寒。归肝,肾经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H457",
+    "name": "细辛",
+    "type": "药材",
+    "alias": "细辛",
+    "description": "辛,温。归心,肺,肾经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H458",
+    "name": "夏枯草",
+    "type": "药材",
+    "alias": "夏枯草",
+    "description": "辛,苦,寒。归肝,胆经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H459",
+    "name": "夏天无",
+    "type": "药材",
+    "alias": "夏天无",
+    "description": "苦,微辛,温。归肝经。祛风湿清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H460",
+    "name": "仙鹤草",
+    "type": "药材",
+    "alias": "仙鹤草",
+    "description": "苦,涩,平。归心,肝经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H461",
+    "name": "仙茅",
+    "type": "药材",
+    "alias": "仙茅",
+    "description": "辛,热,有毒。归肾,肝,脾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H462",
+    "name": "仙桃草",
+    "type": "药材",
+    "alias": "仙桃草",
+    "description": "甘,微辛,平。归肝,胃,肺经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H463",
+    "name": "相思子",
+    "type": "药材",
+    "alias": "相思子",
+    "description": "苦,辛,平,大毒。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H464",
+    "name": "香加皮",
+    "type": "药材",
+    "alias": "香加皮",
+    "description": "辛,苦,温,有毒。归肝,肾,心经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H465",
+    "name": "香茅",
+    "type": "药材",
+    "alias": "香茅",
+    "description": "甘,辛,温。归经：无。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H466",
+    "name": "香薷",
+    "type": "药材",
+    "alias": "香薷",
+    "description": "辛,微温。归肺,胃经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H467",
+    "name": "香橼",
+    "type": "药材",
+    "alias": "香橼",
+    "description": "辛,苦,酸,温。归肝,脾,肺经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H468",
+    "name": "小茴香",
+    "type": "药材",
+    "alias": "小茴香",
+    "description": "辛,温。归肝,肾,脾,胃经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H469",
+    "name": "小蓟",
+    "type": "药材",
+    "alias": "小蓟",
+    "description": "甘,苦,凉。归心,肝经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H470",
+    "name": "小通草",
+    "type": "药材",
+    "alias": "小通草",
+    "description": "甘,淡,寒。归肺,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H471",
+    "name": "薤白",
+    "type": "药材",
+    "alias": "薤白",
+    "description": "辛,苦,温。归心,肺,胃,大肠经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H472",
+    "name": "辛夷",
+    "type": "药材",
+    "alias": "辛夷",
+    "description": "辛,温。归肺,胃经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H473",
+    "name": "徐长卿",
+    "type": "药材",
+    "alias": "徐长卿",
+    "description": "辛,温。归肝,胃经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H474",
+    "name": "续断",
+    "type": "药材",
+    "alias": "续断",
+    "description": "苦,辛,微温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H475",
+    "name": "萱草根",
+    "type": "药材",
+    "alias": "萱草根",
+    "description": "甘,凉,有毒。归脾,肝,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H476",
+    "name": "旋覆花",
+    "type": "药材",
+    "alias": "旋覆花",
+    "description": "苦,辛,咸,微温。归肺,脾,胃,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H477",
+    "name": "寻骨风",
+    "type": "药材",
+    "alias": "寻骨风",
+    "description": "辛,苦,平。归肝经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H478",
+    "name": "鸦胆子",
+    "type": "药材",
+    "alias": "鸦胆子",
+    "description": "苦,寒,有小毒。归大肠,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H479",
+    "name": "鸭跖草",
+    "type": "药材",
+    "alias": "鸭跖草",
+    "description": "甘,淡,寒。归肺,胃,小肠经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H480",
+    "name": "亚麻子",
+    "type": "药材",
+    "alias": "亚麻子",
+    "description": "甘,平。归肺,肝,大肠经。润下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H481",
+    "name": "洋金花",
+    "type": "药材",
+    "alias": "洋金花",
+    "description": "辛,温,有毒。归肺,肝经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H482",
+    "name": "野菊花",
+    "type": "药材",
+    "alias": "野菊花",
+    "description": "苦,辛,微寒。归肝,心经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H483",
+    "name": "一枝黄花",
+    "type": "药材",
+    "alias": "一枝黄花",
+    "description": "辛,苦,凉。归肺,肝经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H484",
+    "name": "伊贝母",
+    "type": "药材",
+    "alias": "伊贝母",
+    "description": "苦,甘,微寒。归肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H485",
+    "name": "益母草",
+    "type": "药材",
+    "alias": "益母草",
+    "description": "苦,辛,微寒。归肝,心包,膀胱经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H486",
+    "name": "益智",
+    "type": "药材",
+    "alias": "益智",
+    "description": "辛,温。归脾,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H487",
+    "name": "银柴胡",
+    "type": "药材",
+    "alias": "银柴胡",
+    "description": "甘,微寒。归肝,胃经。清虚热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H488",
+    "name": "银杏叶",
+    "type": "药材",
+    "alias": "银杏叶",
+    "description": "甘,苦,涩,平。归心,肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H489",
+    "name": "淫羊藿",
+    "type": "药材",
+    "alias": "淫羊藿",
+    "description": "辛,甘,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H490",
+    "name": "罂粟壳",
+    "type": "药材",
+    "alias": "罂粟壳",
+    "description": "酸,涩,平,有毒。归肺,大肠,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H491",
+    "name": "余甘子",
+    "type": "药材",
+    "alias": "余甘子",
+    "description": "甘,酸,涩,凉。归肺,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H492",
+    "name": "鱼腥草",
+    "type": "药材",
+    "alias": "鱼腥草",
+    "description": "辛,微寒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H493",
+    "name": "禹州漏芦",
+    "type": "药材",
+    "alias": "禹州漏芦",
+    "description": "苦,寒。归胃经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H494",
+    "name": "玉米须",
+    "type": "药材",
+    "alias": "玉米须",
+    "description": "甘,淡,平。归肾,胃,肝,胆经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H495",
+    "name": "郁金",
+    "type": "药材",
+    "alias": "郁金",
+    "description": "辛,苦,寒。归肝,心,肺经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H496",
+    "name": "郁李仁",
+    "type": "药材",
+    "alias": "郁李仁",
+    "description": "辛,苦,甘,平。归脾,大肠,小肠经。润下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H497",
+    "name": "预知子",
+    "type": "药材",
+    "alias": "预知子",
+    "description": "苦,寒。归肝,胆,胃,膀胱经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H498",
+    "name": "芫花",
+    "type": "药材",
+    "alias": "芫花",
+    "description": "苦,辛,温,有毒。归肺,脾,肾经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H499",
+    "name": "芫荽",
+    "type": "药材",
+    "alias": "芫荽",
+    "description": "辛,温。归肺,脾,肝经。辛温解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H500",
+    "name": "月季花",
+    "type": "药材",
+    "alias": "月季花",
+    "description": "甘,温。归肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H501",
+    "name": "云芝",
+    "type": "药材",
+    "alias": "云芝",
+    "description": "甘,平。归心,脾,肝,肾经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H502",
+    "name": "皂荚子",
+    "type": "药材",
+    "alias": "皂荚子",
+    "description": "辛,温。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H503",
+    "name": "皂角刺",
+    "type": "药材",
+    "alias": "皂角刺",
+    "description": "辛,温。归肝,胃经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H504",
+    "name": "泽兰",
+    "type": "药材",
+    "alias": "泽兰",
+    "description": "苦,辛,微温。归肝,脾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H505",
+    "name": "泽漆",
+    "type": "药材",
+    "alias": "泽漆",
+    "description": "辛,苦,微寒,有毒。归肺,大肠,小肠经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H506",
+    "name": "浙贝母",
+    "type": "药材",
+    "alias": "浙贝母",
+    "description": "苦,寒。归肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H507",
+    "name": "枳椇子",
+    "type": "药材",
+    "alias": "枳椇子",
+    "description": "甘,平。归胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H508",
+    "name": "枳实",
+    "type": "药材",
+    "alias": "枳实",
+    "description": "苦,辛,酸,微寒。归脾,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H509",
+    "name": "肿节风",
+    "type": "药材",
+    "alias": "肿节风",
+    "description": "苦,辛,平。归心,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H510",
+    "name": "猪牙皂",
+    "type": "药材",
+    "alias": "猪牙皂",
+    "description": "辛,咸,温,有小毒。归肺,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H511",
+    "name": "竹节参",
+    "type": "药材",
+    "alias": "竹节参",
+    "description": "甘,微苦,温。归肝,脾,肺经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H512",
+    "name": "竹沥",
+    "type": "药材",
+    "alias": "竹沥",
+    "description": "甘,苦,寒。归心,肝,肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H513",
+    "name": "苎麻根",
+    "type": "药材",
+    "alias": "苎麻根",
+    "description": "甘,寒。归肝,心,膀胱经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H514",
+    "name": "紫草",
+    "type": "药材",
+    "alias": "紫草",
+    "description": "甘,咸,寒。归心,肝经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H515",
+    "name": "紫花地丁",
+    "type": "药材",
+    "alias": "紫花地丁",
+    "description": "寒,辛,苦。归肝,心经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H516",
+    "name": "紫花前胡",
+    "type": "药材",
+    "alias": "紫花前胡",
+    "description": "苦,辛,微寒。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H517",
+    "name": "紫苏子",
+    "type": "药材",
+    "alias": "紫苏子",
+    "description": "辛,温。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H518",
+    "name": "紫菀",
+    "type": "药材",
+    "alias": "紫菀",
+    "description": "辛,苦,温。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H519",
+    "name": "人工牛黄",
+    "type": "药材",
+    "alias": "人工牛黄",
+    "description": "甘,凉。归心,肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H520",
+    "name": "九里香",
+    "type": "药材",
+    "alias": "九里香",
+    "description": "辛,微苦,温,有小毒。归肝,胃经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H521",
+    "name": "九香虫",
+    "type": "药材",
+    "alias": "九香虫",
+    "description": "咸,温。归肝,脾,肾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H522",
+    "name": "三颗针",
+    "type": "药材",
+    "alias": "三颗针",
+    "description": "苦,寒,有毒。归肝,胃,大肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H523",
+    "name": "炮姜",
+    "type": "药材",
+    "alias": "炮姜",
+    "description": "辛,热。归脾,胃,肾经。止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H524",
+    "name": "干漆",
+    "type": "药材",
+    "alias": "干漆",
+    "description": "辛,温,有毒。归肝,脾经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H525",
+    "name": "土木香",
+    "type": "药材",
+    "alias": "土木香",
+    "description": "辛,苦,温。归肝,脾经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H526",
+    "name": "土鳖虫（䗪虫）",
+    "type": "药材",
+    "alias": "土鳖虫（䗪虫）",
+    "description": "咸,寒,有小毒。归肝经。活血疗伤药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H527",
+    "name": "大叶紫珠",
+    "type": "药材",
+    "alias": "大叶紫珠",
+    "description": "辛,苦,平。归肝,肺,胃经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H528",
+    "name": "大豆黄卷",
+    "type": "药材",
+    "alias": "大豆黄卷",
+    "description": "甘,平。归脾,胃,肺经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H529",
+    "name": "大青盐",
+    "type": "药材",
+    "alias": "大青盐",
+    "description": "咸,寒。归心,肾,膀胱经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H530",
+    "name": "大蓟炭",
+    "type": "药材",
+    "alias": "大蓟炭",
+    "description": "苦,涩,凉。归心,肝经。凉血止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H531",
+    "name": "山麦冬",
+    "type": "药材",
+    "alias": "山麦冬",
+    "description": "甘,微苦,微寒。归心,肺,胃经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H532",
+    "name": "山香圆叶",
+    "type": "药材",
+    "alias": "山香圆叶",
+    "description": "苦,寒。归肺,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H533",
+    "name": "山银花",
+    "type": "药材",
+    "alias": "山银花",
+    "description": "甘,寒。归肺,心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H534",
+    "name": "千里光",
+    "type": "药材",
+    "alias": "千里光",
+    "description": "苦,寒。归肺,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H535",
+    "name": "千金子霜",
+    "type": "药材",
+    "alias": "千金子霜",
+    "description": "辛,温,有毒。归肝,肾,大肠经。攻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H536",
+    "name": "川木香",
+    "type": "药材",
+    "alias": "川木香",
+    "description": "辛,苦,温。归脾,胃,大肠,胆经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H537",
+    "name": "制川乌",
+    "type": "药材",
+    "alias": "制川乌",
+    "description": "辛,苦,热,有毒。归心,肝,肾,脾经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H538",
+    "name": "广东紫珠",
+    "type": "药材",
+    "alias": "广东紫珠",
+    "description": "苦,涩,凉。归肝,肺,胃经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H539",
+    "name": "广金钱草",
+    "type": "药材",
+    "alias": "广金钱草",
+    "description": "甘,淡,凉。归肝,肾,膀胱经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H540",
+    "name": "小叶莲",
+    "type": "药材",
+    "alias": "小叶莲",
+    "description": "甘,平,有小毒。归经：无。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H541",
+    "name": "小驳骨",
+    "type": "药材",
+    "alias": "小驳骨",
+    "description": "辛,温。归肝,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H542",
+    "name": "飞扬草",
+    "type": "药材",
+    "alias": "飞扬草",
+    "description": "辛,酸,凉,有小毒。归肺,膀胱,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H543",
+    "name": "马钱子粉",
+    "type": "药材",
+    "alias": "马钱子粉",
+    "description": "苦,温,有大毒。归肝,脾经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H544",
+    "name": "制天南星",
+    "type": "药材",
+    "alias": "制天南星",
+    "description": "苦,辛,温,有毒。归肺,肝,脾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H545",
+    "name": "天然冰片（右旋龙脑）",
+    "type": "药材",
+    "alias": "天然冰片（右旋龙脑）",
+    "description": "辛,苦,凉。归心,脾,肺经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H546",
+    "name": "木芙蓉叶",
+    "type": "药材",
+    "alias": "木芙蓉叶",
+    "description": "辛,平。归肺,肝经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H547",
+    "name": "五加皮",
+    "type": "药材",
+    "alias": "五加皮",
+    "description": "辛,苦,温。归肝,肾经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H548",
+    "name": "毛诃子",
+    "type": "药材",
+    "alias": "毛诃子",
+    "description": "甘,涩,平。归经：无。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H549",
+    "name": "片姜黄",
+    "type": "药材",
+    "alias": "片姜黄",
+    "description": "辛,苦,温。归脾,肝经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H550",
+    "name": "乌梢蛇",
+    "type": "药材",
+    "alias": "乌梢蛇",
+    "description": "甘,平。归肝经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H551",
+    "name": "巴豆霜",
+    "type": "药材",
+    "alias": "巴豆霜",
+    "description": "辛,热,有大毒。归胃,大肠经。泻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H552",
+    "name": "水牛角",
+    "type": "药材",
+    "alias": "水牛角",
+    "description": "苦,寒。归心,肝经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H553",
+    "name": "水蛭",
+    "type": "药材",
+    "alias": "水蛭",
+    "description": "辛,热,有大毒。归胃,大肠经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H554",
+    "name": "炙甘草",
+    "type": "药材",
+    "alias": "炙甘草",
+    "description": "甘,平。归心,肺,脾,胃经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H555",
+    "name": "艾片（左旋龙脑）",
+    "type": "药材",
+    "alias": "艾片（左旋龙脑）",
+    "description": "辛,苦,微寒。归心,脾,肺经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H556",
+    "name": "石吊兰",
+    "type": "药材",
+    "alias": "石吊兰",
+    "description": "苦,温。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H557",
+    "name": "石决明",
+    "type": "药材",
+    "alias": "石决明",
+    "description": "咸,寒。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H558",
+    "name": "石斛",
+    "type": "药材",
+    "alias": "石斛",
+    "description": "甘,微寒。归胃,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H559",
+    "name": "煅石膏",
+    "type": "药材",
+    "alias": "煅石膏",
+    "description": "甘,辛,涩,寒。归肺,胃经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H560",
+    "name": "白矾",
+    "type": "药材",
+    "alias": "白矾",
+    "description": "酸,涩,寒。归肺,脾,肝,大肠经。攻毒杀虫止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H561",
+    "name": "瓜子金",
+    "type": "药材",
+    "alias": "瓜子金",
+    "description": "辛,苦,平。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H562",
+    "name": "瓜蒌子",
+    "type": "药材",
+    "alias": "瓜蒌子",
+    "description": "甘,寒。归肺,胃,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H563",
+    "name": "炒瓜蒌子",
+    "type": "药材",
+    "alias": "炒瓜蒌子",
+    "description": "甘,寒。归肺,胃,大肠经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H564",
+    "name": "瓜蒌皮",
+    "type": "药材",
+    "alias": "瓜蒌皮",
+    "description": "甘,寒。归肺,胃经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H565",
+    "name": "冬凌草",
+    "type": "药材",
+    "alias": "冬凌草",
+    "description": "苦,甘,微寒。归肺,胃,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H566",
+    "name": "玄明粉",
+    "type": "药材",
+    "alias": "玄明粉",
+    "description": "咸,苦,寒。归胃,大肠经。攻下药,泻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H567",
+    "name": "法半夏",
+    "type": "药材",
+    "alias": "法半夏",
+    "description": "辛,温。归脾,胃,肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H568",
+    "name": "姜半夏",
+    "type": "药材",
+    "alias": "姜半夏",
+    "description": "辛,温。归脾,胃,肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H569",
+    "name": "清半夏",
+    "type": "药材",
+    "alias": "清半夏",
+    "description": "辛,温。归脾,胃,肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H570",
+    "name": "母丁香",
+    "type": "药材",
+    "alias": "母丁香",
+    "description": "辛,温。归脾,胃,肺,肾经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H571",
+    "name": "丝瓜络",
+    "type": "药材",
+    "alias": "丝瓜络",
+    "description": "甘,平。归肺,胃,肝经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H572",
+    "name": "地龙",
+    "type": "药材",
+    "alias": "地龙",
+    "description": "咸,寒。归肝,脾,膀胱经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H573",
+    "name": "亚乎奴（锡生藤）",
+    "type": "药材",
+    "alias": "亚乎奴（锡生藤）",
+    "description": "甘,苦,温。归经：无。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H574",
+    "name": "西瓜霜",
+    "type": "药材",
+    "alias": "西瓜霜",
+    "description": "咸,寒。归肺,胃,大肠经。清热泻火药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H575",
+    "name": "西青果",
+    "type": "药材",
+    "alias": "西青果",
+    "description": "苦,酸,涩,平。归肺,大肠经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H576",
+    "name": "当药",
+    "type": "药材",
+    "alias": "当药",
+    "description": "苦,寒。归肝,胃,大肠经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H577",
+    "name": "虫白蜡",
+    "type": "药材",
+    "alias": "虫白蜡",
+    "description": "甘,淡,温。归肝经。无分类。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H578",
+    "name": "朱砂根",
+    "type": "药材",
+    "alias": "朱砂根",
+    "description": "微苦,辛,平。归肺,肝经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H579",
+    "name": "竹茹",
+    "type": "药材",
+    "alias": "竹茹",
+    "description": "甘,微寒。归肺,胃,心,胆经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H580",
+    "name": "自然铜",
+    "type": "药材",
+    "alias": "自然铜",
+    "description": "辛,平。归肝经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H581",
+    "name": "血余炭",
+    "type": "药材",
+    "alias": "血余炭",
+    "description": "苦,平。归肝,胃经。止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H582",
+    "name": "血竭",
+    "type": "药材",
+    "alias": "血竭",
+    "description": "甘,咸,平。归心,肝经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H583",
+    "name": "全蝎",
+    "type": "药材",
+    "alias": "全蝎",
+    "description": "辛,平,有毒。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H584",
+    "name": "合欢花",
+    "type": "药材",
+    "alias": "合欢花",
+    "description": "甘,平。归心,肝经。安神药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H585",
+    "name": "灯盏细辛（灯盏花）",
+    "type": "药材",
+    "alias": "灯盏细辛（灯盏花）",
+    "description": "辛,微苦,温。归心,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H586",
+    "name": "红大戟",
+    "type": "药材",
+    "alias": "红大戟",
+    "description": "苦,寒,有小毒。归肺,脾,肾经。泻下药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H587",
+    "name": "红花龙胆",
+    "type": "药材",
+    "alias": "红花龙胆",
+    "description": "苦,寒。归肝,胆经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H588",
+    "name": "炙红芪",
+    "type": "药材",
+    "alias": "炙红芪",
+    "description": "甘,温。归肺,脾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H589",
+    "name": "红豆蔻",
+    "type": "药材",
+    "alias": "红豆蔻",
+    "description": "辛,温。归脾,肺经。温里药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H590",
+    "name": "红粉",
+    "type": "药材",
+    "alias": "红粉",
+    "description": "辛,热,有大毒。归肺,脾经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H591",
+    "name": "红景天",
+    "type": "药材",
+    "alias": "红景天",
+    "description": "甘,苦,平。归肺,心经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H592",
+    "name": "赤石脂",
+    "type": "药材",
+    "alias": "赤石脂",
+    "description": "甘,酸,涩,温。归大肠,胃经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H593",
+    "name": "花蕊石",
+    "type": "药材",
+    "alias": "花蕊石",
+    "description": "酸,涩,平。归肝经。止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H594",
+    "name": "苏木",
+    "type": "药材",
+    "alias": "苏木",
+    "description": "甘,咸,平。归心,肝,脾经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H595",
+    "name": "杠板归",
+    "type": "药材",
+    "alias": "杠板归",
+    "description": "酸,微寒。归肺,膀胱经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H596",
+    "name": "巫山淫羊藿",
+    "type": "药材",
+    "alias": "巫山淫羊藿",
+    "description": "辛,甘,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H597",
+    "name": "体外培育牛黄",
+    "type": "药材",
+    "alias": "体外培育牛黄",
+    "description": "性味：无。归心,肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H598",
+    "name": "制何首乌",
+    "type": "药材",
+    "alias": "制何首乌",
+    "description": "苦,甘,涩,微温。归肝,心,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H599",
+    "name": "皂矾（绿矾）",
+    "type": "药材",
+    "alias": "皂矾（绿矾）",
+    "description": "酸,凉。归肝,脾经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H600",
+    "name": "谷芽",
+    "type": "药材",
+    "alias": "谷芽",
+    "description": "甘,温。归脾,胃经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H601",
+    "name": "龟甲胶",
+    "type": "药材",
+    "alias": "龟甲胶",
+    "description": "咸,甘,凉。归肝,肾,心经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H602",
+    "name": "补骨脂",
+    "type": "药材",
+    "alias": "补骨脂",
+    "description": "辛,苦,温。归肾,脾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H603",
+    "name": "阿魏",
+    "type": "药材",
+    "alias": "阿魏",
+    "description": "苦,辛,温。归脾,胃经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H604",
+    "name": "忍冬藤",
+    "type": "药材",
+    "alias": "忍冬藤",
+    "description": "甘,寒。归肺,胃经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H605",
+    "name": "鸡内金",
+    "type": "药材",
+    "alias": "鸡内金",
+    "description": "甘,平。归脾,胃,小肠,膀胱经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H606",
+    "name": "青礞石",
+    "type": "药材",
+    "alias": "青礞石",
+    "description": "甘,咸,平。归肺,心,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H607",
+    "name": "苦木",
+    "type": "药材",
+    "alias": "苦木",
+    "description": "苦,寒,有小毒。归肺,大肠经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H608",
+    "name": "苦玄参",
+    "type": "药材",
+    "alias": "苦玄参",
+    "description": "苦,寒。归肺,胃,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H609",
+    "name": "枫香脂",
+    "type": "药材",
+    "alias": "枫香脂",
+    "description": "辛,微苦,平。归肺,脾经。活血化瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H610",
+    "name": "刺五加",
+    "type": "药材",
+    "alias": "刺五加",
+    "description": "辛,微苦,温。归脾,肾,心经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H611",
+    "name": "明党参",
+    "type": "药材",
+    "alias": "明党参",
+    "description": "甘,微苦,微寒。归肺,脾,肝经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H612",
+    "name": "岩白菜",
+    "type": "药材",
+    "alias": "岩白菜",
+    "description": "苦,涩,平。归肺,肝,脾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H613",
+    "name": "金龙胆草",
+    "type": "药材",
+    "alias": "金龙胆草",
+    "description": "苦,寒。归肺,肝经。清化热痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H614",
+    "name": "金钱白花蛇",
+    "type": "药材",
+    "alias": "金钱白花蛇",
+    "description": "甘,咸,温,有毒。归肝经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H615",
+    "name": "金铁锁",
+    "type": "药材",
+    "alias": "金铁锁",
+    "description": "苦,辛,温,有小毒。归肝经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H616",
+    "name": "金礞石",
+    "type": "药材",
+    "alias": "金礞石",
+    "description": "甘,咸,平。归肺,心,肝经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H617",
+    "name": "狗脊",
+    "type": "药材",
+    "alias": "狗脊",
+    "description": "苦,甘,温。归肝,肾经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H618",
+    "name": "炉甘石",
+    "type": "药材",
+    "alias": "炉甘石",
+    "description": "甘,平。归肝,脾经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H619",
+    "name": "珍珠",
+    "type": "药材",
+    "alias": "珍珠",
+    "description": "甘,咸,寒。归心,肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H620",
+    "name": "珍珠母",
+    "type": "药材",
+    "alias": "珍珠母",
+    "description": "咸,寒。归肝,心经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H621",
+    "name": "荆芥炭",
+    "type": "药材",
+    "alias": "荆芥炭",
+    "description": "辛,涩,微温。归肺,肝经。解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H622",
+    "name": "荆芥穗炭",
+    "type": "药材",
+    "alias": "荆芥穗炭",
+    "description": "辛,涩,微温。归肺,肝经。解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H623",
+    "name": "制草乌",
+    "type": "药材",
+    "alias": "制草乌",
+    "description": "辛,苦,热,有毒。归心,肝,肾,脾经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H624",
+    "name": "草豆蔻",
+    "type": "药材",
+    "alias": "草豆蔻",
+    "description": "辛,温。归脾,胃经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H625",
+    "name": "茯苓皮",
+    "type": "药材",
+    "alias": "茯苓皮",
+    "description": "甘,淡,平。归肺,脾,肾经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H626",
+    "name": "南板蓝根",
+    "type": "药材",
+    "alias": "南板蓝根",
+    "description": "苦,寒。归心,胃经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H627",
+    "name": "焦栀子",
+    "type": "药材",
+    "alias": "焦栀子",
+    "description": "苦,寒。归心,肺,三焦经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H628",
+    "name": "厚朴花",
+    "type": "药材",
+    "alias": "厚朴花",
+    "description": "苦,微温。归脾,胃经。化湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H629",
+    "name": "轻粉",
+    "type": "药材",
+    "alias": "轻粉",
+    "description": "辛,寒,有毒。归大肠,小肠经。拔毒化腐生肌药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H630",
+    "name": "哈蟆油",
+    "type": "药材",
+    "alias": "哈蟆油",
+    "description": "甘,咸,平。归肺,肾经。无分类。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H631",
+    "name": "钟乳石",
+    "type": "药材",
+    "alias": "钟乳石",
+    "description": "甘,温。归肺,肾,胃经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H632",
+    "name": "重楼",
+    "type": "药材",
+    "alias": "重楼",
+    "description": "苦,微寒,有小毒。归肝经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H633",
+    "name": "禹余粮",
+    "type": "药材",
+    "alias": "禹余粮",
+    "description": "甘,涩,微寒。归胃,大肠经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H634",
+    "name": "胆南星",
+    "type": "药材",
+    "alias": "胆南星",
+    "description": "苦,微辛,凉。归肺,肝,脾经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H635",
+    "name": "独一味",
+    "type": "药材",
+    "alias": "独一味",
+    "description": "甘,苦,平。归肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H636",
+    "name": "洪连",
+    "type": "药材",
+    "alias": "洪连",
+    "description": "苦,甘,寒。归肺,心,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H637",
+    "name": "珠子参",
+    "type": "药材",
+    "alias": "珠子参",
+    "description": "苦,甘,微寒。归肝,肺,胃经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H638",
+    "name": "莲子",
+    "type": "药材",
+    "alias": "莲子",
+    "description": "甘,涩,平。归脾,肾,心经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H639",
+    "name": "桃枝",
+    "type": "药材",
+    "alias": "桃枝",
+    "description": "苦,平。归心,肝经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H640",
+    "name": "铁皮石斛",
+    "type": "药材",
+    "alias": "铁皮石斛",
+    "description": "甘,微寒。归胃,肾经。补阴药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H641",
+    "name": "臭灵丹草",
+    "type": "药材",
+    "alias": "臭灵丹草",
+    "description": "辛,苦,寒,有毒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H642",
+    "name": "狼毒",
+    "type": "药材",
+    "alias": "狼毒",
+    "description": "辛,平,有毒。归肝,脾经。通水药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H643",
+    "name": "高山辣根菜",
+    "type": "药材",
+    "alias": "高山辣根菜",
+    "description": "苦,辛,寒。归肺,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H644",
+    "name": "粉葛",
+    "type": "药材",
+    "alias": "粉葛",
+    "description": "甘,辛,凉。归脾,胃经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H645",
+    "name": "海马",
+    "type": "药材",
+    "alias": "海马",
+    "description": "甘,咸,温。归肝,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H646",
+    "name": "海龙",
+    "type": "药材",
+    "alias": "海龙",
+    "description": "甘,咸,温。归肝,肾经。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H647",
+    "name": "海螵蛸",
+    "type": "药材",
+    "alias": "海螵蛸",
+    "description": "咸,涩,温。归脾,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H648",
+    "name": "通关藤",
+    "type": "药材",
+    "alias": "通关藤",
+    "description": "苦,微寒。归肺经。止咳平喘药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H649",
+    "name": "桑螵蛸",
+    "type": "药材",
+    "alias": "桑螵蛸",
+    "description": "甘,咸,平。归肝,肾经。收涩药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H650",
+    "name": "黄山药",
+    "type": "药材",
+    "alias": "黄山药",
+    "description": "苦,微辛,平。归胃,心经。理气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H651",
+    "name": "炙黄芪",
+    "type": "药材",
+    "alias": "炙黄芪",
+    "description": "甘,温。归肺,脾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H652",
+    "name": "黄蜀葵花",
+    "type": "药材",
+    "alias": "黄蜀葵花",
+    "description": "甘,寒。归肾,膀胱经。清热燥湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H653",
+    "name": "黄藤",
+    "type": "药材",
+    "alias": "黄藤",
+    "description": "苦,寒。归心,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H654",
+    "name": "菥蓂",
+    "type": "药材",
+    "alias": "菥蓂",
+    "description": "辛,微寒。归肝,胃,大肠经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H655",
+    "name": "救必应",
+    "type": "药材",
+    "alias": "救必应",
+    "description": "苦,寒。归肺,胃,大肠,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H656",
+    "name": "野马追",
+    "type": "药材",
+    "alias": "野马追",
+    "description": "苦,平。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H657",
+    "name": "野木瓜",
+    "type": "药材",
+    "alias": "野木瓜",
+    "description": "微苦,平。归肝,胃经。祛风湿散寒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H658",
+    "name": "蛇蜕",
+    "type": "药材",
+    "alias": "蛇蜕",
+    "description": "咸,甘,平。归肝经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H659",
+    "name": "猪胆粉",
+    "type": "药材",
+    "alias": "猪胆粉",
+    "description": "苦,寒。归肝,胆,肺,大肠经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H660",
+    "name": "鹿角",
+    "type": "药材",
+    "alias": "鹿角",
+    "description": "咸,温。归肾,肝经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H661",
+    "name": "鹿角胶",
+    "type": "药材",
+    "alias": "鹿角胶",
+    "description": "甘,咸,温。归肾,肝经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H662",
+    "name": "鹿角霜",
+    "type": "药材",
+    "alias": "鹿角霜",
+    "description": "咸,涩,温。归肝,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H663",
+    "name": "鹿茸",
+    "type": "药材",
+    "alias": "鹿茸",
+    "description": "甘,咸,温。归肾,肝经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H664",
+    "name": "羚羊角",
+    "type": "药材",
+    "alias": "羚羊角",
+    "description": "咸,寒。归肝,心经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H665",
+    "name": "淡竹叶",
+    "type": "药材",
+    "alias": "淡竹叶",
+    "description": "甘,淡,寒。归心,胃,小肠经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H666",
+    "name": "绵马贯众炭",
+    "type": "药材",
+    "alias": "绵马贯众炭",
+    "description": "苦,涩,微寒,有小毒。归肝,胃经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H667",
+    "name": "棕榈",
+    "type": "药材",
+    "alias": "棕榈",
+    "description": "苦,涩,平。归肺,肝,大肠经。止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H668",
+    "name": "硫黄",
+    "type": "药材",
+    "alias": "硫黄",
+    "description": "酸,温,有毒。归肾,大肠经。无分类。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H669",
+    "name": "雄黄",
+    "type": "药材",
+    "alias": "雄黄",
+    "description": "辛,温,有毒。归肝,大肠经。攻毒杀虫止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H670",
+    "name": "紫石英",
+    "type": "药材",
+    "alias": "紫石英",
+    "description": "甘,温。归肾,心,肺经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H671",
+    "name": "紫苏梗",
+    "type": "药材",
+    "alias": "紫苏梗",
+    "description": "辛,温。归肺,脾经。解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H672",
+    "name": "紫珠叶",
+    "type": "药材",
+    "alias": "紫珠叶",
+    "description": "苦,涩,凉。归肝,肺,胃经。收敛止血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H673",
+    "name": "紫萁贯众",
+    "type": "药材",
+    "alias": "紫萁贯众",
+    "description": "苦,微寒,有小毒。归肺,胃,肝经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H674",
+    "name": "蛤壳",
+    "type": "药材",
+    "alias": "蛤壳",
+    "description": "苦,咸,寒。归肺,肾,胃经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H675",
+    "name": "蛤蚧",
+    "type": "药材",
+    "alias": "蛤蚧",
+    "description": "咸,平。归肺,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H676",
+    "name": "黑种草子",
+    "type": "药材",
+    "alias": "黑种草子",
+    "description": "甘,辛,温。归经：无。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H677",
+    "name": "锁阳",
+    "type": "药材",
+    "alias": "锁阳",
+    "description": "甘,温。归肝,肾,大肠经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H678",
+    "name": "筋骨草",
+    "type": "药材",
+    "alias": "筋骨草",
+    "description": "苦,寒。归肺经。清热解毒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H679",
+    "name": "湖北贝母",
+    "type": "药材",
+    "alias": "湖北贝母",
+    "description": "微苦,凉。归肺,心经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H680",
+    "name": "滑石粉",
+    "type": "药材",
+    "alias": "滑石粉",
+    "description": "甘,淡,寒。归膀胱,肺,胃经。利水渗湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H681",
+    "name": "蓍草",
+    "type": "药材",
+    "alias": "蓍草",
+    "description": "苦,酸,平。归肺,脾,膀胱经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H682",
+    "name": "蓝布正",
+    "type": "药材",
+    "alias": "蓝布正",
+    "description": "甘,微苦,凉。归肝,脾,肺经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H683",
+    "name": "蒲公英",
+    "type": "药材",
+    "alias": "蒲公英",
+    "description": "苦,甘,寒。归肝,胃经。清热药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H684",
+    "name": "蜈蚣",
+    "type": "药材",
+    "alias": "蜈蚣",
+    "description": "辛,温,有毒。归肝经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H685",
+    "name": "蜂房",
+    "type": "药材",
+    "alias": "蜂房",
+    "description": "甘,平。归胃经。攻毒杀虫止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H686",
+    "name": "蜂胶",
+    "type": "药材",
+    "alias": "蜂胶",
+    "description": "苦,辛,寒。归脾,胃经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H687",
+    "name": "蜂蜡",
+    "type": "药材",
+    "alias": "蜂蜡",
+    "description": "甘,微温。归脾经。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H688",
+    "name": "滇鸡血藤",
+    "type": "药材",
+    "alias": "滇鸡血藤",
+    "description": "苦,甘,温。归肝,肾经。活血祛瘀药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H689",
+    "name": "裸花紫珠",
+    "type": "药材",
+    "alias": "裸花紫珠",
+    "description": "苦,微辛,平。归经：无。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H690",
+    "name": "榧子",
+    "type": "药材",
+    "alias": "榧子",
+    "description": "甘,平。归肺,胃,大肠经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H691",
+    "name": "榼藤子",
+    "type": "药材",
+    "alias": "榼藤子",
+    "description": "微苦,凉,有小毒。归肝,脾,胃,肾经。补气药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H692",
+    "name": "焦槟榔",
+    "type": "药材",
+    "alias": "焦槟榔",
+    "description": "苦,辛,温。归胃,大肠经。驱虫药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H693",
+    "name": "蜘蛛香",
+    "type": "药材",
+    "alias": "蜘蛛香",
+    "description": "微苦,辛,温。归心,脾,胃经。辛凉解表药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H694",
+    "name": "赭石",
+    "type": "药材",
+    "alias": "赭石",
+    "description": "苦,寒。归肝,心,肺,胃经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H695",
+    "name": "蕲蛇",
+    "type": "药材",
+    "alias": "蕲蛇",
+    "description": "甘,咸,温,有毒。归肝经。祛风湿药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H696",
+    "name": "暴马子皮",
+    "type": "药材",
+    "alias": "暴马子皮",
+    "description": "苦,微寒。归肺经。化痰药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H697",
+    "name": "稻芽",
+    "type": "药材",
+    "alias": "稻芽",
+    "description": "甘,温。归脾,胃经。消食药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H698",
+    "name": "僵蚕",
+    "type": "药材",
+    "alias": "僵蚕",
+    "description": "咸,辛,平。归肝,肺,胃经。平肝熄风药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H699",
+    "name": "颠茄草",
+    "type": "药材",
+    "alias": "颠茄草",
+    "description": "性味：无。归经：无。无分类。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H700",
+    "name": "藏菖蒲",
+    "type": "药材",
+    "alias": "藏菖蒲",
+    "description": "苦,辛,温,燥,锐。归经：无。补阳药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H701",
+    "name": "翼首草",
+    "type": "药材",
+    "alias": "翼首草",
+    "description": "苦,寒,小毒。归经：无。解毒杀虫燥湿止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H702",
+    "name": "蟾酥",
+    "type": "药材",
+    "alias": "蟾酥",
+    "description": "辛,温,有毒。归心经。攻毒杀虫止痒药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H703",
+    "name": "鳖甲",
+    "type": "药材",
+    "alias": "鳖甲",
+    "description": "咸,微寒。归肝,肾经。补虚药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H704",
+    "name": "麝香",
+    "type": "药材",
+    "alias": "麝香",
+    "description": "辛,温。归心,脾经。开窍药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "H705",
+    "name": "地黄",
+    "type": "药材",
+    "alias": "地黄",
+    "description": "甘,寒。归心,肝,肾经。清热凉血药。",
+    "properties": {
+      "source": "SymMap v2.0, SMHB file.xlsx",
+      "note": ""
+    }
+  }
+]

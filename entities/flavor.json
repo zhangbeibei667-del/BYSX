@@ -1,0 +1,266 @@
+[
+  {
+    "id": "T001",
+    "name": "甘",
+    "type": "性味",
+    "alias": "",
+    "description": "甘味，能补、能和、能缓",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T002",
+    "name": "微苦",
+    "type": "性味",
+    "alias": "",
+    "description": "微苦味，能泄、能燥",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T003",
+    "name": "微温",
+    "type": "性味",
+    "alias": "",
+    "description": "微温性，介于平与温之间",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T004",
+    "name": "苦",
+    "type": "性味",
+    "alias": "",
+    "description": "苦味，能泄、能燥、能坚",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T005",
+    "name": "温",
+    "type": "性味",
+    "alias": "",
+    "description": "温性，能温里散寒",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T006",
+    "name": "凉",
+    "type": "性味",
+    "alias": "",
+    "description": "凉性，能清热泻火",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T007",
+    "name": "平",
+    "type": "性味",
+    "alias": "",
+    "description": "平性，药性平和",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T008",
+    "name": "酸",
+    "type": "性味",
+    "alias": "",
+    "description": "酸味，能收、能涩",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T009",
+    "name": "微寒",
+    "type": "性味",
+    "alias": "",
+    "description": "微寒性，介于凉与寒之间",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T010",
+    "name": "辛",
+    "type": "性味",
+    "alias": "",
+    "description": "辛味，能散、能行",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T011",
+    "name": "寒",
+    "type": "性味",
+    "alias": "",
+    "description": "寒性，能清热泻火、解毒",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T012",
+    "name": "咸",
+    "type": "性味",
+    "alias": "",
+    "description": "咸味，能软、能下",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T013",
+    "name": "涩",
+    "type": "性味",
+    "alias": "",
+    "description": "涩味，能收敛固涩",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T014",
+    "name": "大寒",
+    "type": "性味",
+    "alias": "",
+    "description": "大寒性，寒之甚者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T015",
+    "name": "大热",
+    "type": "性味",
+    "alias": "",
+    "description": "大热性，热之甚者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T016",
+    "name": "热",
+    "type": "性味",
+    "alias": "",
+    "description": "热性，能温里祛寒",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T017",
+    "name": "淡",
+    "type": "性味",
+    "alias": "",
+    "description": "淡味，能渗、能利",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T018",
+    "name": "微辛",
+    "type": "性味",
+    "alias": "",
+    "description": "微辛味，能散、能行，辛之缓和者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T019",
+    "name": "微甘",
+    "type": "性味",
+    "alias": "",
+    "description": "微甘味，甘之缓和者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T020",
+    "name": "微咸",
+    "type": "性味",
+    "alias": "",
+    "description": "微咸味，咸之缓和者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T021",
+    "name": "微酸",
+    "type": "性味",
+    "alias": "",
+    "description": "微酸味，酸之缓和者",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T022",
+    "name": "有小毒",
+    "type": "性味",
+    "alias": "",
+    "description": "有小毒，需慎用",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T023",
+    "name": "有毒",
+    "type": "性味",
+    "alias": "",
+    "description": "有毒，需慎用",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  },
+  {
+    "id": "T024",
+    "name": "有大毒",
+    "type": "性味",
+    "alias": "",
+    "description": "有大毒，需慎用",
+    "properties": {
+      "source": "SymMap v2.0",
+      "note": ""
+    }
+  }
+]

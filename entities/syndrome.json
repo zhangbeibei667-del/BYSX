@@ -1,0 +1,2884 @@
+[
+  {
+    "id": "Z001",
+    "name": "心脾两虚",
+    "type": "证候",
+    "alias": "insufficiency of both the heart and the spleen",
+    "description": "心血不足兼脾气虚弱，心悸失眠、食少乏力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "归脾汤主治"
+    }
+  },
+  {
+    "id": "Z002",
+    "name": "心肾不交",
+    "type": "证候",
+    "alias": "breakdown of the normal physiological coordination between the heart and the kidney",
+    "description": "心火亢盛、肾水不足，心烦失眠、腰膝酸软",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "交泰丸主治"
+    }
+  },
+  {
+    "id": "Z003",
+    "name": "脾胃气虚",
+    "type": "证候",
+    "alias": "qi deficiency of the spleen and stomach",
+    "description": "脾胃运化减退，食少便溏、神疲乏力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "四君子汤主治"
+    }
+  },
+  {
+    "id": "Z004",
+    "name": "气血两虚",
+    "type": "证候",
+    "alias": "deficiency of both qi and blood",
+    "description": "气虚与血虚并存，面色苍白、头晕心悸",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "八珍汤主治"
+    }
+  },
+  {
+    "id": "Z005",
+    "name": "肝血不足",
+    "type": "证候",
+    "alias": "insufficiency of liver blood",
+    "description": "肝藏血不足，头晕目眩、虚烦不眠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "酸枣仁汤主治"
+    }
+  },
+  {
+    "id": "Z006",
+    "name": "阴虚血少",
+    "type": "证候",
+    "alias": "yin deficiency and blood insufficiency",
+    "description": "阴液亏虚、血液不足，心悸失眠、手足心热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "天王补心丹主治"
+    }
+  },
+  {
+    "id": "Z007",
+    "name": "中气下陷",
+    "type": "证候",
+    "alias": "sinking of the middle qi",
+    "description": "脾胃气虚升举无力，乏力腹胀、脱肛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "补中益气汤主治"
+    }
+  },
+  {
+    "id": "Z008",
+    "name": "血虚证",
+    "type": "证候",
+    "alias": "blood deficiency syndrome",
+    "description": "血液亏虚，面色苍白、头晕心悸、舌淡脉细",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "四物汤主治"
+    }
+  },
+  {
+    "id": "Z009",
+    "name": "气虚证",
+    "type": "证候",
+    "alias": "qi deficiency syndrome",
+    "description": "元气不足，乏力气短、自汗脉弱",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "四君子汤主治"
+    }
+  },
+  {
+    "id": "Z010",
+    "name": "阴虚证",
+    "type": "证候",
+    "alias": "yin deficiency syndrome",
+    "description": "阴液不足，口燥咽干、潮热盗汗、舌红少苔",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z011",
+    "name": "阳虚证",
+    "type": "证候",
+    "alias": "yang deficiency syndrome",
+    "description": "阳气不足，畏寒肢冷、舌胖脉沉",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z012",
+    "name": "肝气郁结",
+    "type": "证候",
+    "alias": "stagnation of liver qi",
+    "description": "肝失疏泄，胁痛胸闷、情志抑郁、脉弦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "柴胡疏肝散主治"
+    }
+  },
+  {
+    "id": "Z013",
+    "name": "肝火炽盛",
+    "type": "证候",
+    "alias": "exuberance of liver fire",
+    "description": "肝火上炎，面红目赤、口苦烦躁、舌红苔黄",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "龙胆泻肝汤主治"
+    }
+  },
+  {
+    "id": "Z014",
+    "name": "湿热蕴脾",
+    "type": "证候",
+    "alias": "damp-heat accumulating in the spleen",
+    "description": "湿热困脾，腹胀便溏、舌苔黄腻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z015",
+    "name": "风寒表证",
+    "type": "证候",
+    "alias": "wind-cold exterior syndrome",
+    "description": "风寒外袭，恶寒发热、头痛、苔白脉紧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "麻黄汤主治"
+    }
+  },
+  {
+    "id": "Z016",
+    "name": "风热表证",
+    "type": "证候",
+    "alias": "wind-heat exterior syndrome",
+    "description": "风热犯表，发热口渴、舌红苔黄、脉数",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "银翘散主治"
+    }
+  },
+  {
+    "id": "Z017",
+    "name": "气分热盛",
+    "type": "证候",
+    "alias": "excessive heat in the qi aspect",
+    "description": "热入气分，高热口渴、舌红苔黄、脉数",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "白虎汤主治"
+    }
+  },
+  {
+    "id": "Z018",
+    "name": "心火亢盛",
+    "type": "证候",
+    "alias": "exuberance of heart fire",
+    "description": "心火内炽，心悸心烦、口舌生疮",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "黄连解毒汤主治"
+    }
+  },
+  {
+    "id": "Z019",
+    "name": "痰湿内阻",
+    "type": "证候",
+    "alias": "internal obstruction by phlegm-dampness",
+    "description": "痰湿停聚，脘痞腹胀、痰多苔腻脉滑",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "二陈汤主治"
+    }
+  },
+  {
+    "id": "Z020",
+    "name": "血瘀证",
+    "type": "证候",
+    "alias": "blood stasis syndrome",
+    "description": "血行不畅，刺痛固定、舌暗脉涩",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血府逐瘀汤主治"
+    }
+  },
+  {
+    "id": "Z021",
+    "name": "脾虚湿困",
+    "type": "证候",
+    "alias": "spleen deficiency with dampness retention",
+    "description": "脾虚水湿内停，食少乏力、腹胀便溏",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "参苓白术散主治"
+    }
+  },
+  {
+    "id": "Z022",
+    "name": "肾阴虚",
+    "type": "证候",
+    "alias": "kidney yin deficiency",
+    "description": "肾阴不足，腰膝酸软、耳鸣盗汗、舌红少苔",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "六味地黄丸主治"
+    }
+  },
+  {
+    "id": "Z023",
+    "name": "肾阳虚",
+    "type": "证候",
+    "alias": "kidney yang deficiency",
+    "description": "肾阳亏虚，畏寒肢冷、腰膝酸软",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z024",
+    "name": "胃气不和",
+    "type": "证候",
+    "alias": "stomach qi disharmony",
+    "description": "胃失和降，脘痞腹胀、恶心呕吐",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z025",
+    "name": "肝阳上亢",
+    "type": "证候",
+    "alias": "upper hyperactivity of liver yang",
+    "description": "肝阳偏亢，头晕目眩、头痛烦躁、脉弦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z026",
+    "name": "外感风寒",
+    "type": "证候",
+    "alias": "external contraction of wind-cold",
+    "description": "风寒束表，恶寒发热、咳嗽、苔白",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z027",
+    "name": "风邪上扰",
+    "type": "证候",
+    "alias": "upward disturbance by wind pathogen",
+    "description": "风邪上犯，头晕头痛、目眩",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "川芎茶调散主治"
+    }
+  },
+  {
+    "id": "Z028",
+    "name": "痰热扰心",
+    "type": "证候",
+    "alias": "phlegm-heat disturbing the heart",
+    "description": "痰热内扰心神，失眠多梦、心烦、苔黄腻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z029",
+    "name": "食积停滞",
+    "type": "证候",
+    "alias": "food accumulation and stagnation",
+    "description": "饮食积滞，腹胀嗳腐、呕吐腹泻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "保和丸主治"
+    }
+  },
+  {
+    "id": "Z030",
+    "name": "肺气不足",
+    "type": "证候",
+    "alias": "insufficiency of lung qi",
+    "description": "肺气虚，气短咳嗽、自汗乏力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z031",
+    "name": "下元虚冷",
+    "type": "证候",
+    "alias": "deficiency-cold of kidney",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z032",
+    "name": "下脘虚冷",
+    "type": "证候",
+    "alias": "deficiency-cold of abdomen",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z033",
+    "name": "中气下陷",
+    "type": "证候",
+    "alias": "sinking of the middle qi",
+    "description": "脾虚气陷证是指脾气虚弱，升举无力而反下陷，以眩晕、泄泻、脘腹重坠、内脏下垂及气虚症状为主要表现的证。脾虚气陷证又名中气下陷证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z034",
+    "name": "久病虚羸",
+    "type": "证候",
+    "alias": "the debility from chronic illness",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z035",
+    "name": "乳食停滞",
+    "type": "证候",
+    "alias": "milk stagnation",
+    "description": "是脾胃虚弱，乳食停滞不化而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z036",
+    "name": "亡阳",
+    "type": "证候",
+    "alias": "yang exhaustion",
+    "description": "机体的阳气短时间内大量亡失，使属于阳的功能突然严重衰竭，因而导致生命垂危的一种病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z037",
+    "name": "产后瘀血",
+    "type": "证候",
+    "alias": "postpartum blood stasis",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z038",
+    "name": "产后血虚",
+    "type": "证候",
+    "alias": "postpartum blood deficiency",
+    "description": "血虚证是指血液亏虚，不能濡养脏腑、经络、组织，以面、睑、唇、舌色淡白，脉细为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z039",
+    "name": "内热",
+    "type": "证候",
+    "alias": "intrinsic heat",
+    "description": "指体内脏腑阴阳偏胜之热。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z040",
+    "name": "冷哮",
+    "type": "证候",
+    "alias": "asthma of cold type",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z041",
+    "name": "冷喘",
+    "type": "证候",
+    "alias": "Cold-type Dyspnea",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z042",
+    "name": "冷泻",
+    "type": "证候",
+    "alias": "cold diarrhea",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z043",
+    "name": "劳伤",
+    "type": "证候",
+    "alias": "injury caused by strain and sprain",
+    "description": "中医指因过度劳累而引起的内伤",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z044",
+    "name": "外感",
+    "type": "证候",
+    "alias": "externally infected disease",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z045",
+    "name": "外感风寒",
+    "type": "证候",
+    "alias": "affection by exopathic wind-cold",
+    "description": "风寒犯肺证是指由于风寒侵袭，肺卫失宣，以咳嗽及风寒表证症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z046",
+    "name": "实热",
+    "type": "证候",
+    "alias": "strong fever",
+    "description": "热证是指感受热邪，或脏腑阳气亢盛，或阴虚阳亢，导致机体功能活动亢进而表现出具有温、热等症状特点的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z047",
+    "name": "实热积滞",
+    "type": "证候",
+    "alias": "stagnation due to excessive heat",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z048",
+    "name": "宫冷",
+    "type": "证候",
+    "alias": "cold sensation in uterus",
+    "description": "指妇女肾阳不足，胞子宫失于温煦所出现的下腹坠胀，疼痛，得热则缓和，白带多，痛经，月经失调，脉沉紧，舌苔薄白多津为主要症状者",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z049",
+    "name": "寒凝气滞",
+    "type": "证候",
+    "alias": "accumulation of cold and stasis of qi",
+    "description": "是阴寒之邪侵入人体，损伤阳气，寒邪留滞不去，外现寒证的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z050",
+    "name": "寒湿",
+    "type": "证候",
+    "alias": "cold and damp",
+    "description": "是指寒湿之邪阻滞经络，以肢体或患处沉重冷痛、麻木，或肿胀，畏冷肢凉，苔白滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z051",
+    "name": "寒湿内阻",
+    "type": "证候",
+    "alias": "retention of cold and wind within the body",
+    "description": "是指寒湿之邪阻滞经络，以肢体或患处沉重冷痛、麻木，或肿胀，畏冷肢凉，苔白滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z052",
+    "name": "寒湿郁滞",
+    "type": "证候",
+    "alias": "stagnation of cold-dampness",
+    "description": "是指寒湿之邪阻滞经络，以肢体或患处沉重冷痛、麻木，或肿胀，畏冷肢凉，苔白滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z053",
+    "name": "寒湿闭暑",
+    "type": "证候",
+    "alias": "Cold-dampness and incubated summer heat",
+    "description": "是指寒湿之邪阻滞经络，以肢体或患处沉重冷痛、麻木，或肿胀，畏冷肢凉，苔白滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z054",
+    "name": "寒滞",
+    "type": "证候",
+    "alias": "retention of cold and fluid",
+    "description": "是阴寒之邪侵入人体，损伤阳气，寒邪留滞不去，外现寒证的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z055",
+    "name": "寒热互结",
+    "type": "证候",
+    "alias": "combination of cold and heat",
+    "description": "寒热错杂是指在同一患者身上，既有寒证，又有热证的情况。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z056",
+    "name": "寒疝",
+    "type": "证候",
+    "alias": "periumbilical colic due to invasion of cold",
+    "description": "由脾胃虚寒，或产后血虚，复感风寒外邪，结聚於腹中而致。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z057",
+    "name": "寒痰",
+    "type": "证候",
+    "alias": "cold phlegm",
+    "description": "寒痰阻肺证是指寒痰交阻于肺，肺失宣降，以咳嗽气喘、痰多色白及寒证症状为主要表现的证。寒痰阻肺证又名寒饮停肺证、痰浊阻肺证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z058",
+    "name": "寒积",
+    "type": "证候",
+    "alias": "accumulation of cold evil",
+    "description": "感受阴寒之邪所致的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z059",
+    "name": "寒饮",
+    "type": "证候",
+    "alias": "fluid retention",
+    "description": "寒痰阻肺证是指寒痰交阻于肺，肺失宣降，以咳嗽气喘、痰多色白及寒证症状为主要表现的证。寒痰阻肺证又名寒饮停肺证、痰浊阻肺证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z060",
+    "name": "小儿痰热",
+    "type": "证候",
+    "alias": "Phlegm fever in children",
+    "description": "由痰热互结，阻于气道，肺道失利，肺胃气逆，痰火伤及血络所致。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z061",
+    "name": "少阴伏风",
+    "type": "证候",
+    "alias": "wind in shaoyin",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z062",
+    "name": "心火亢盛",
+    "type": "证候",
+    "alias": "exuberance of the heart fire",
+    "description": "心火亢盛证是指心火内炽，扰神迫血，火热上炎下移，以心烦失眠、舌赤生疮、吐衄、尿赤及火热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z063",
+    "name": "心肾不交",
+    "type": "证候",
+    "alias": "breakdowm of the normal physilolgical coordination between the heart and the kidney",
+    "description": "心肾不交证是指心肾水火既济失调，以心烦、失眠、梦遗、耳鸣、腰膝酸软等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z064",
+    "name": "心脾不足",
+    "type": "证候",
+    "alias": "insufficiency of both the heart and the spleen",
+    "description": "心脾两虚证是指脾气亏虚，心血不足，以心悸怔忡、失眠多梦、食少、腹胀、便溏及气血两虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z065",
+    "name": "心腹瘀血",
+    "type": "证候",
+    "alias": "Heart stasis",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z066",
+    "name": "心虚",
+    "type": "证候",
+    "alias": "cardiac asthenia",
+    "description": "心气虚证是指心气不足，鼓动无力，以心悸怔忡及气虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z067",
+    "name": "心阳不足",
+    "type": "证候",
+    "alias": "insufficiency of cardiac yang",
+    "description": "心阳虚证是指心阳虚衰，温运失司，虚寒内生，以心悸怔忡，或心胸疼痛及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z068",
+    "name": "暑湿",
+    "type": "证候",
+    "alias": "be affected by summer-head-dampness",
+    "description": "即暑热挟湿。以胸脘痞闷、心烦、身热、舌苔黄腻为主证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z069",
+    "name": "暑湿表证",
+    "type": "证候",
+    "alias": "cold in meridian",
+    "description": "暑湿伤表，卫气失调，以发热，微恶风寒，头重身困，口渴，烦躁，小便短赤，舌红苔黄腻，脉濡数等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z070",
+    "name": "暑热",
+    "type": "证候",
+    "alias": "summer heat",
+    "description": "外感暑邪的热证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z071",
+    "name": "暑邪",
+    "type": "证候",
+    "alias": "summer-heat evil",
+    "description": "凡夏至之后，立秋以前，致病具有炎热、升散、兼湿特性的外邪，称为暑邪。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z072",
+    "name": "气不摄",
+    "type": "证候",
+    "alias": "Qi fails to keep",
+    "description": "脾不统血证是指脾气虚弱，统血失常，血溢脉外，以各种出血及脾气虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z073",
+    "name": "气不摄血",
+    "type": "证候",
+    "alias": "failure of qi to govern blood;qi failing to failure of qi to contain blood",
+    "description": "脾不统血证是指脾气虚弱，统血失常，血溢脉外，以各种出血及脾气虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z074",
+    "name": "气滞",
+    "type": "证候",
+    "alias": "sluggish flow of qi",
+    "description": "气滞证是指人体某一部位，或某一脏腑、经络的气机阻滞，运行不畅，以胀闷、疼痛、脉弦为主要表现的证。气滞证又称气郁证、气结证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z075",
+    "name": "气潜",
+    "type": "证候",
+    "alias": "Qi becomes dormant or concealed",
+    "description": "气陷证是指气虚升举无力而反下陷，以自觉气坠，或内脏下垂为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z076",
+    "name": "气虚",
+    "type": "证候",
+    "alias": "air weakness",
+    "description": "气虚证是指机体元气不足，脏腑组织机能减退，以神疲乏力、少气懒言、脉虚等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z077",
+    "name": "气血不足",
+    "type": "证候",
+    "alias": "insufficiency of the vital energy and blood",
+    "description": "气血两虚证是指气血不能互相化生，以气虚和血虚症状相兼为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z078",
+    "name": "气血亏虚",
+    "type": "证候",
+    "alias": "deficiency of qi and the blood",
+    "description": "气血两虚证是指气血不能互相化生，以气虚和血虚症状相兼为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z079",
+    "name": "气血虚弱",
+    "type": "证候",
+    "alias": "the debility of qi and the blood",
+    "description": "气血两虚证是指气血不能互相化生，以气虚和血虚症状相兼为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z080",
+    "name": "气逆",
+    "type": "证候",
+    "alias": "abnormal rising of qi",
+    "description": "气逆证是指气机升降失常，逆而向上，以咳喘、呕恶、头痛眩晕等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z081",
+    "name": "气郁",
+    "type": "证候",
+    "alias": "stagnation of qi",
+    "description": "气滞证是指人体某一部位，或某一脏腑、经络的气机阻滞，运行不畅，以胀闷、疼痛、脉弦为主要表现的证。气滞证又称气郁证、气结证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z082",
+    "name": "气阴不足",
+    "type": "证候",
+    "alias": "insufficiency of qi and yin; deficiency of qi and yin",
+    "description": "本证指由于阴虚日久，阴不化气而气失化源，或因邪热疫毒伤损，伤阴耗气，导致机体气阴不足，功能减退所表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z083",
+    "name": "气阴两虚",
+    "type": "证候",
+    "alias": "insufficiency of qi and yin",
+    "description": "本证指由于阴虚日久，阴不化气而气失化源，或因邪热疫毒伤损，伤阴耗气，导致机体气阴不足，功能减退所表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z084",
+    "name": "气阴亏虚",
+    "type": "证候",
+    "alias": "deficiency of qi and yin",
+    "description": "本证指由于阴虚日久，阴不化气而气失化源，或因邪热疫毒伤损，伤阴耗气，导致机体气阴不足，功能减退所表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z085",
+    "name": "水血不足",
+    "type": "证候",
+    "alias": "anhydremia",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z086",
+    "name": "津亏",
+    "type": "证候",
+    "alias": "deficiency of fluid",
+    "description": "津液亏虚证是指机体津液亏少，形体、脏腑、官窍失却滋润濡养和充盈，以口渴欲饮、尿少便干、官窍及皮肤干燥等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z087",
+    "name": "津伤",
+    "type": "证候",
+    "alias": "deficiency of the body fluid",
+    "description": "津液亏虚证是指机体津液亏少，形体、脏腑、官窍失却滋润濡养和充盈，以口渴欲饮、尿少便干、官窍及皮肤干燥等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z088",
+    "name": "津枯肠燥",
+    "type": "证候",
+    "alias": "deficiency of body fluid with dryness in the intestines",
+    "description": "肠燥津亏证是指津液亏损，肠失濡润，传导失职，以大便燥结难下及津亏症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z089",
+    "name": "淤滞",
+    "type": "证候",
+    "alias": "stasis",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z090",
+    "name": "淤血肿痛",
+    "type": "证候",
+    "alias": "swelling and pain due to blood stasis",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z091",
+    "name": "淤血阻络",
+    "type": "证候",
+    "alias": "blood stasis in collaterals",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z092",
+    "name": "温毒",
+    "type": "证候",
+    "alias": "heat toxins",
+    "description": "温毒是指感受温毒病邪所引起的具有肿毒特征的一类温病。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z093",
+    "name": "温毒发斑",
+    "type": "证候",
+    "alias": "maculae caused by violent heat pathogen",
+    "description": "由於温热之毒内蕴肺胃，充斥三焦，波及营血，透发於肌肤而为斑。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z094",
+    "name": "温热入营",
+    "type": "证候",
+    "alias": "Warm into the camp",
+    "description": "热毒深传，侵入营血，以发热不退，抽搐频繁，牙关紧闭，两目上视，面色灰暗，甚或突然呼吸停止，肢厥脉绝，舌紫暗而干，或舌卷僵硬，脉细数为常见症的小儿暑温证候",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z095",
+    "name": "温病初起",
+    "type": "证候",
+    "alias": "Febrile disease early",
+    "description": "感受温邪所引起的一类外感急性热病的总称。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z096",
+    "name": "温邪伤营",
+    "type": "证候",
+    "alias": "Heat Evil camp injury",
+    "description": "热毒深传，侵入营血，以发热不退，抽搐频繁，牙关紧闭，两目上视，面色灰暗，甚或突然呼吸停止，肢厥脉绝，舌紫暗而干，或舌卷僵硬，脉细数为常见症的小儿暑温证候",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z097",
+    "name": "温邪伤阴",
+    "type": "证候",
+    "alias": "Warm evil and hurt yin",
+    "description": "风温余邪未净，肺胃阴伤，以低热或不发热，干咳或痰少而黏，口舌干燥而渴，舌干红，少苔，脉细等为常见症的风温证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z098",
+    "name": "湿浊中阻",
+    "type": "证候",
+    "alias": "Retention of Dampness and turbidity in Mtddle-energizer",
+    "description": "寒湿困脾证是指寒湿内盛，困阻脾阳，运化失职，以脘腹痞闷、纳呆、便溏、身重与寒湿症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z099",
+    "name": "湿温",
+    "type": "证候",
+    "alias": "damp fever",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z100",
+    "name": "湿温初起",
+    "type": "证候",
+    "alias": "Humidity at the beginning",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z101",
+    "name": "湿滞伤中",
+    "type": "证候",
+    "alias": "retention of dampness impair mtddle-energizer",
+    "description": "寒湿困脾证是指寒湿内盛，困阻脾阳，运化失职，以脘腹痞闷、纳呆、便溏、身重与寒湿症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z102",
+    "name": "湿热",
+    "type": "证候",
+    "alias": "wet fever",
+    "description": "指湿热蕴结体内，脏腑经络运行受阻，可见全身湿热症状的病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z103",
+    "name": "湿热中阻",
+    "type": "证候",
+    "alias": "Retention of Dampness and heat in Mtddle-energizer",
+    "description": "指湿热蕴结体内，脏腑经络运行受阻，可见全身湿热症状的病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z104",
+    "name": "湿热壅遏",
+    "type": "证候",
+    "alias": "Humidity and heat suppression",
+    "description": "指湿热蕴结体内，脏腑经络运行受阻，可见全身湿热症状的病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z105",
+    "name": "湿热痞满",
+    "type": "证候",
+    "alias": "sensation of fullness due to dampness and heat",
+    "description": "指湿热蕴结体内，脏腑经络运行受阻，可见全身湿热症状的病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z106",
+    "name": "湿痰",
+    "type": "证候",
+    "alias": "Damp Phlegm",
+    "description": "痰湿内阻，以咳吐多量黏稠痰，痰滑易咯，肢体困重，胸脘痞闷，食少口腻，苔白腻，脉濡缓或滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z107",
+    "name": "湿阻中焦",
+    "type": "证候",
+    "alias": "Retention of Dampness in Mtddle-energizer",
+    "description": "即湿邪阻滞脾胃，影响其运化功能。症见头重、怠倦、脘闷、腹胀、纳呆、口粘渴、喜热饮、小便短赤，舌苔厚白或腻，脉缓等。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z108",
+    "name": "湿阻气滞",
+    "type": "证候",
+    "alias": "damp obstruction leading to qi stagnation",
+    "description": "气机郁滞，湿浊内阻，以胸胁脘腹胀闷窜痛，恶心欲吐，肢体困重，头晕嗜睡，或有浮肿，苔白腻，脉弦滑或濡缓等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z109",
+    "name": "火毒",
+    "type": "证候",
+    "alias": "fire toxic",
+    "description": "是指以局部肿痛严重，伴有恶寒发热，烦躁为主要临床特征的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z110",
+    "name": "火毒蕴结",
+    "type": "证候",
+    "alias": "accumulation of fire toxins",
+    "description": "是指以局部肿痛严重，伴有恶寒发热，烦躁为主要临床特征的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z111",
+    "name": "热入心包",
+    "type": "证候",
+    "alias": "the heat attacts the pericardium",
+    "description": "温热病内陷营血阶段的证型之一。主要证候有高热、神昏、谵语、甚则昏迷不醒、四肢厥逆、或见抽搐等。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z112",
+    "name": "热入营血",
+    "type": "证候",
+    "alias": "heat attacking xuefen;heat invading blood",
+    "description": "是指由于感受火热毒邪，或恣食膏粱厚味，脏腑蕴热，亦或是皮肤破损染毒致火毒炽盛，内燔营血所表现出来的局部肿胀，身热夜甚，烦渴，舌红降，脉数一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z113",
+    "name": "热毒",
+    "type": "证候",
+    "alias": "heat toxic",
+    "description": "热毒证是以发热为主症，具有流行性和传染性的一类疾病，属温病中瘟疫范畴",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z114",
+    "name": "热毒内盛",
+    "type": "证候",
+    "alias": "domination of toxin-heat in the body",
+    "description": "热毒证是以发热为主症，具有流行性和传染性的一类疾病，属温病中瘟疫范畴",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z115",
+    "name": "热毒痰火郁结",
+    "type": "证候",
+    "alias": "accumulation of heat toxic and phlegm",
+    "description": "指无形之火与有形之痰煎熬胶结贮积于体内的病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z116",
+    "name": "热泻",
+    "type": "证候",
+    "alias": "diarrhea due to evil heat",
+    "description": "因热迫大肠所引起",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z117",
+    "name": "热病",
+    "type": "证候",
+    "alias": "heat disease",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z118",
+    "name": "热病伤阴",
+    "type": "证候",
+    "alias": "consumption of yin caused by febrile diseases",
+    "description": "津液亏虚证是指机体津液亏少，形体、脏腑、官窍失却滋润濡养和充盈，以口渴欲饮、尿少便干、官窍及皮肤干燥等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z119",
+    "name": "热病气虚",
+    "type": "证候",
+    "alias": "Fever and Qi Deficiency",
+    "description": "气虚证是指机体元气不足，脏腑组织机能减退，以神疲乏力、少气懒言、脉虚等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z120",
+    "name": "热病津伤",
+    "type": "证候",
+    "alias": "impairment of the body fluid",
+    "description": "津液亏虚证是指机体津液亏少，形体、脏腑、官窍失却滋润濡养和充盈，以口渴欲饮、尿少便干、官窍及皮肤干燥等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z121",
+    "name": "热病神昏",
+    "type": "证候",
+    "alias": "an unconscious patient with febrile diseases",
+    "description": "痰火扰神证是指火热痰浊交结，扰乱心神，以狂躁、神昏及痰热症状为主要表现的证。痰火扰神证又称痰火扰心（闭窍）证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z122",
+    "name": "热痰",
+    "type": "证候",
+    "alias": "heat-phlegm",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z123",
+    "name": "热盛伤津",
+    "type": "证候",
+    "alias": "consumption of the body fluid due to excessive heat",
+    "description": "津液亏虚证是指机体津液亏少，形体、脏腑、官窍失却滋润濡养和充盈，以口渴欲饮、尿少便干、官窍及皮肤干燥等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z124",
+    "name": "热结",
+    "type": "证候",
+    "alias": "accumulation of heat",
+    "description": "指热邪聚结而出现的病变。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z125",
+    "name": "热证",
+    "type": "证候",
+    "alias": "febrile symptoms",
+    "description": "是指感受热邪、或阳盛阴虚，人体的机能活动亢进所表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z126",
+    "name": "燥咳",
+    "type": "证候",
+    "alias": "cough caused by dryness",
+    "description": "因肺虚液少或燥邪伤肺所致的咳嗽。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z127",
+    "name": "痰厥",
+    "type": "证候",
+    "alias": "adverse rising of phlegm",
+    "description": "指因痰盛气闭而引起四肢厥冷，甚至昏厥的病症。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z128",
+    "name": "痰壅",
+    "type": "证候",
+    "alias": "accumulation of phlegm",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z129",
+    "name": "痰多",
+    "type": "证候",
+    "alias": "abundant sputum",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z130",
+    "name": "痰涎凝聚",
+    "type": "证候",
+    "alias": "phlegmatic saliva accumulated in the interior",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z131",
+    "name": "痰涎壅肺",
+    "type": "证候",
+    "alias": "phlegm-damoness obstructing lung",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z132",
+    "name": "痰涎积滞",
+    "type": "证候",
+    "alias": "stagnation of phlegm and drool",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z133",
+    "name": "痰滞气阻",
+    "type": "证候",
+    "alias": "phlegm and qi obstructing each other",
+    "description": "是指气郁痰凝，阻滞胸咽所表现出来的咽中如有物梗赛，胸胁胀痛，苔白腻，脉弦滑的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z134",
+    "name": "痰滞经络",
+    "type": "证候",
+    "alias": "retention of phlegm in Meridians and Collaterals",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z135",
+    "name": "痰火",
+    "type": "证候",
+    "alias": "phlegm fire",
+    "description": "痰火是指无形之火与有形之痰煎熬胶结贮积于肺的病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z136",
+    "name": "痰热",
+    "type": "证候",
+    "alias": "phlegm heat",
+    "description": "痰热壅肺证是指痰热交结，壅滞于肺，肺失清肃，以咳喘、痰黄稠及痰热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z137",
+    "name": "痰盛",
+    "type": "证候",
+    "alias": "abundant phlegm",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z138",
+    "name": "痰迷",
+    "type": "证候",
+    "alias": "phlegm covering",
+    "description": "痰蒙心神证是指痰浊内盛，蒙蔽心神，以神志抑郁、错乱、痴呆、昏迷及痰浊症状为主要表现的证。痰蒙心神证又称痰迷心窍证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z139",
+    "name": "痰阻",
+    "type": "证候",
+    "alias": "retention of phlegm",
+    "description": "是指因嗜酒无度，过食肥甘厚味，损伤脾胃，以致健运失司，水湿内停，积聚生痰，痰阻中焦，清阳不升，头窍失养所表现出来的眩晕，头重昏蒙，舌苔白腻，脉濡滑的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z140",
+    "name": "痰饮",
+    "type": "证候",
+    "alias": "sputum drink",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z141",
+    "name": "痰饮停滞",
+    "type": "证候",
+    "alias": "stagnation of phlegm retention",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z142",
+    "name": "痰饮停聚",
+    "type": "证候",
+    "alias": "retention of phlegm in the interior",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z143",
+    "name": "痰饮内停",
+    "type": "证候",
+    "alias": "retention of phlegm in the interior",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z144",
+    "name": "痰饮积聚",
+    "type": "证候",
+    "alias": "abdominal mass and gethering of phlegm retention",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z145",
+    "name": "痰饮蓄结",
+    "type": "证候",
+    "alias": "Phlegm build knot",
+    "description": "痰证是指痰浊停聚或流窜于脏腑、组织之间，临床以痰多、胸闷、呕恶、眩晕、体胖、包块等为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z146",
+    "name": "瘀滞",
+    "type": "证候",
+    "alias": "stasis stagnancy",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z147",
+    "name": "瘀滞肿痛",
+    "type": "证候",
+    "alias": "Stasis, swelling and pain",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z148",
+    "name": "瘀肿疼痛",
+    "type": "证候",
+    "alias": "pain caused by ecchymoma",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z149",
+    "name": "瘀血",
+    "type": "证候",
+    "alias": "stagnant blood",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z150",
+    "name": "瘀血阻络",
+    "type": "证候",
+    "alias": "blood stasis in collaterals",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z151",
+    "name": "瘀阻",
+    "type": "证候",
+    "alias": "Stagnation",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z152",
+    "name": "瘀阻经闭",
+    "type": "证候",
+    "alias": "amenorrhea due to congestion",
+    "description": "多因气滞、寒凝，瘀血阻滞冲任胞脉，积之而成经闭。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z153",
+    "name": "积滞不消",
+    "type": "证候",
+    "alias": "indigestion due to accumulation",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z154",
+    "name": "积滞内停",
+    "type": "证候",
+    "alias": "accumulation within the body",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z155",
+    "name": "积滞泻痢",
+    "type": "证候",
+    "alias": "indigestion accompanied with diarrhea and dysentery",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z156",
+    "name": "积滞胀满",
+    "type": "证候",
+    "alias": "dyspeptic abdonimal distention",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z157",
+    "name": "精亏",
+    "type": "证候",
+    "alias": "deficiency of spermatozoa",
+    "description": "是指肾精亏损、髓海空虚所致的发育迟缓、未老先衰、肢体痿弱不用的一类证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z158",
+    "name": "精冷",
+    "type": "证候",
+    "alias": "cold sperm",
+    "description": "是指男子因真阳不足而引起精气清冷，无生育能力者。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z159",
+    "name": "精血不足",
+    "type": "证候",
+    "alias": "deficiency of the essence and blood",
+    "description": "是指肾精亏损、髓海空虚所致的发育迟缓、未老先衰、肢体痿弱不用的一类证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z160",
+    "name": "精血亏虚",
+    "type": "证候",
+    "alias": "deficiency of the essence and blood",
+    "description": "是指肾精亏损、髓海空虚所致的发育迟缓、未老先衰、肢体痿弱不用的一类证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z161",
+    "name": "经寒",
+    "type": "证候",
+    "alias": "",
+    "description": "寒湿之邪侵袭经脉。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z162",
+    "name": "肉食积滞",
+    "type": "证候",
+    "alias": "retention of meat and food in the stomach",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z163",
+    "name": "肝气郁结",
+    "type": "证候",
+    "alias": "stagnation of liver-qi",
+    "description": "指肝失疏泄，气机郁滞，情志抑郁，气血不畅的病理变化。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z164",
+    "name": "肝火",
+    "type": "证候",
+    "alias": "the hepatic fire",
+    "description": "指肝经火胜，内扰于肝的一种病理现象。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z165",
+    "name": "肝热",
+    "type": "证候",
+    "alias": "heat in liver",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z166",
+    "name": "肝肾不足",
+    "type": "证候",
+    "alias": "deficiency of the liver and kidney",
+    "description": "是指肝肾精亏血少所表现出来的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z167",
+    "name": "肝肾亏虚",
+    "type": "证候",
+    "alias": "deficiency of the liver and kidney",
+    "description": "是指肝肾精亏血少所表现出来的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z168",
+    "name": "肝肾虚",
+    "type": "证候",
+    "alias": "asthenia of both liver and kidney; deficiency of both liver and kidney",
+    "description": "是指肝肾精亏血少所表现出来的一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z169",
+    "name": "肝肾阴虚",
+    "type": "证候",
+    "alias": "deficiency of the liver-yin and kidney-yin",
+    "description": "指肝肾阴液亏虚，虚热内扰，以腰酸胁痛、眩晕、耳鸣、遗精等为主要表现的虚热证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z170",
+    "name": "肝胃不和",
+    "type": "证候",
+    "alias": "disharmony between the liver and stomach",
+    "description": "肝气瘀滞，横逆犯胃，胃失和降，以胃脘、胁肋胀满疼痛，嗳气、呃逆、吞酸，情绪抑郁，不欲食，苔薄黄，脉弦等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z171",
+    "name": "肝胃气滞",
+    "type": "证候",
+    "alias": "stagnation of qi of the liver and stomach",
+    "description": "是指情志不畅，郁怒伤肝，横逆犯胃，导致胃失和降而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z172",
+    "name": "肝胆湿热",
+    "type": "证候",
+    "alias": "Dampness and Heat in Liver and Gallbladder",
+    "description": "指湿热之邪蕴结肝胆的病证。多由外感湿热之邪，或嗜酒，过食肥甘辛辣，湿邪内生，郁久化热所致，或脾胃运化失常，湿浊内生，蕴而化热，阻遏肝胆而成。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z173",
+    "name": "肝虚",
+    "type": "证候",
+    "alias": "liver weakness",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z174",
+    "name": "肝郁",
+    "type": "证候",
+    "alias": "liver depression",
+    "description": "是指肝失疏泄，气机郁滞，以情志抑郁、胸胁或少腹胀痛等为主要表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z175",
+    "name": "肝郁化火",
+    "type": "证候",
+    "alias": "the Depression of the liver generates pathogenic fire",
+    "description": "是指因情志不遂，或突然遭受精神刺激，或病邪侵扰，导致肝失疏泄，气机郁滞，日久化火，出现胸胁或少腹胀闷窜疼，急躁易怒，头晕胀疼，面红目赤，口苦，咽干，不寐，妇女乳房胀痛，月经不调，痛经，甚则闭经等症状的一种中医证型。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z176",
+    "name": "肝郁气滞",
+    "type": "证候",
+    "alias": "liver depression and qi stagnation",
+    "description": "是指肝失疏泄，气机郁滞，以情志抑郁、胸胁或少腹胀痛等为主要表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z177",
+    "name": "肝阳",
+    "type": "证候",
+    "alias": "liver yang",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z178",
+    "name": "肝风内动",
+    "type": "证候",
+    "alias": "internal movement of the liver-wind",
+    "description": "肝风内动证是指临床出现眩晕欲仆，震颤，抽搐等症状的病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z179",
+    "name": "肝风夹痰",
+    "type": "证候",
+    "alias": "Liver wind and phlegm",
+    "description": "指肝风夹痰，横窜经络所表现出来的以肢体麻木不仁，甚或瘫痪不遂，或肌肤麻木瘙痒，眩晕，口角流涎等为常见症的一类病症。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z180",
+    "name": "肠热",
+    "type": "证候",
+    "alias": "constipation due to heat in the large intestine",
+    "description": "小肠实热证是指心火下移小肠，热迫膀胱，气化失司，以小便赤涩疼痛、心烦、舌疮及实热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z181",
+    "name": "肠燥",
+    "type": "证候",
+    "alias": "dryness in the intestines",
+    "description": "肠燥津亏证是指津液亏损，肠失濡润，传导失职，以大便燥结难下及津亏症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z182",
+    "name": "肺寒",
+    "type": "证候",
+    "alias": "cold on the lungs",
+    "description": "寒邪客肺，肺失宣降，故见咳嗽，气喘，咯稀白痰等症",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z183",
+    "name": "肺气壅实",
+    "type": "证候",
+    "alias": "stasis of lung-energy",
+    "description": "是指邪实气壅，肺气不能宣降导致的证候",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z184",
+    "name": "肺热",
+    "type": "证候",
+    "alias": "heat in lung",
+    "description": "指火热炽盛，壅积于肺，肺失清肃，以咳喘气粗、鼻翼煽动等为主要表现的实热证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z185",
+    "name": "肺燥",
+    "type": "证候",
+    "alias": "dry lungs",
+    "description": "是指外感燥邪，肺失宣降，以干咳痰少、鼻咽口舌干燥等为主要表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z186",
+    "name": "肺肾不足",
+    "type": "证候",
+    "alias": "deficiency of the lung and kidney",
+    "description": "肺肾阴虚证是指肺肾阴液亏虚，虚热内扰，以干咳、少痰、腰酸、遗精及阴虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z187",
+    "name": "肺肾两虚",
+    "type": "证候",
+    "alias": "asthenia of both the lung and kidney",
+    "description": "肺肾阴虚证是指肺肾阴液亏虚，虚热内扰，以干咳、少痰、腰酸、遗精及阴虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z188",
+    "name": "肺胃阴伤",
+    "type": "证候",
+    "alias": "imperiment of yin in lung and stomach",
+    "description": "见于温病气分后期，为邪热已退(或渐退)，而肺胃津伤未复之候，病情属虚，病位在肺胃。以干咳，口干舌燥而渴，舌光红少苔，脉细数为辨证要点。多见于风温、春温、暑温、秋燥、温毒等病末期阶段。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z189",
+    "name": "肺虚",
+    "type": "证候",
+    "alias": "asthenia of lung",
+    "description": "肺气虚证是指肺气虚弱，宣肃、卫外功能减退，以咳嗽、气喘、自汗、易于感冒及气虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z190",
+    "name": "肾虚",
+    "type": "证候",
+    "alias": "deficiency in kidney",
+    "description": "肾气虚弱，以腰酸，耳鸣，性欲减退，头晕健忘，脉弱等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z191",
+    "name": "肾阳不足",
+    "type": "证候",
+    "alias": "deficiency of kidney-yang",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z192",
+    "name": "肾阳亏虚",
+    "type": "证候",
+    "alias": "deficiency of the kidney-yang",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z193",
+    "name": "肾阳虚",
+    "type": "证候",
+    "alias": "deficiency of the kidney-yang",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z194",
+    "name": "肾阳虚衰",
+    "type": "证候",
+    "alias": "kidney yang deficiency",
+    "description": "肾阳虚证是指肾阳亏虚，机体失其温煦，以腰膝酸冷、性欲减退、夜尿多及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z195",
+    "name": "胃寒",
+    "type": "证候",
+    "alias": "the stomach affected by cold",
+    "description": "是指脾胃阳气虚衰，过食生冷，或寒邪直中所致阴寒凝滞胃腑的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z196",
+    "name": "胃火",
+    "type": "证候",
+    "alias": "the stomach fire",
+    "description": "指胃热炽盛化火的病变。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z197",
+    "name": "胃火亢盛",
+    "type": "证候",
+    "alias": "excessiveness of the stomach-fire",
+    "description": "指胃热炽盛化火的病变。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z198",
+    "name": "胃热",
+    "type": "证候",
+    "alias": "stomach heat",
+    "description": "指胃热炽盛化火的病变。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z199",
+    "name": "胃阴不足",
+    "type": "证候",
+    "alias": "deficiency of the stomach-yin",
+    "description": "是指因饮食不节，过食辛辣厚味，积热于内，或热病后期伤津，或情志不畅，气郁化火伤阴，致胃失和降所表现出来的恶心、呕吐或呃逆，口燥咽干，舌红少苔，脉细数一类病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z200",
+    "name": "胆火挟痰",
+    "type": "证候",
+    "alias": "Bile fire and phlegm",
+    "description": "胆郁痰扰证是指痰热内扰，胆气不宁，以胆怯易惊、心烦失眠及痰热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z201",
+    "name": "胆胀",
+    "type": "证候",
+    "alias": "distending pain of the hypochondrium due to gallblsdder disorder",
+    "description": "胆胀是指胆腑气郁，胆失通降所引起的以右胁胀痛为主要临床表现的一种疾病。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z202",
+    "name": "脾寒",
+    "type": "证候",
+    "alias": "a presence of cold in the spleen",
+    "description": "脾胃虚寒证是由于素体脾气虚，或脾虚日久，波及脾阳，使脾阳也虚。或贪食生冷，损伤脾阳，导致脾阳虚不能温暖胃肠，寒气自内而生的病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z203",
+    "name": "脾肺气虚",
+    "type": "证候",
+    "alias": "asthenia of spleen and lung qi; deficiency of spleen and lung",
+    "description": "由于脾肺两脏气虚，出现脾失健运，肺失宣降的虚弱证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z204",
+    "name": "脾肾虚",
+    "type": "证候",
+    "alias": "splenonephric deficiency",
+    "description": "脾肾阳虚证是指脾肾阳气亏虚，温化失职，虚寒内生，以久泄久痢、浮肿、腰腹冷痛及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z205",
+    "name": "脾肾阳虚",
+    "type": "证候",
+    "alias": "deficiency of the spleen-yang and kidney-yang",
+    "description": "脾肾阳虚证是指脾肾阳气亏虚，温化失职，虚寒内生，以久泄久痢、浮肿、腰腹冷痛及阳虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z206",
+    "name": "脾胃亏虚",
+    "type": "证候",
+    "alias": "weak spleen and stomach",
+    "description": "脾胃气虚，中焦失运，以食欲不振，脘腹痞胀，食后尤甚，大便溏泻，神疲肢倦，舌淡，脉弱等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z207",
+    "name": "脾胃气滞",
+    "type": "证候",
+    "alias": "stagnation of gastrosplenic qi; stagnation of spleen and stomach qi",
+    "description": "指脾胃之气阻滞不畅。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z208",
+    "name": "脾胃气虚",
+    "type": "证候",
+    "alias": "efficiency of qi in the spleen and stomach",
+    "description": "脾胃气虚，中焦失运，以食欲不振，脘腹痞胀，食后尤甚，大便溏泻，神疲肢倦，舌淡，脉弱等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z209",
+    "name": "脾胃湿阻气滞",
+    "type": "证候",
+    "alias": "Spleen and stomach dampness block",
+    "description": "指湿邪阻滞中焦，运化功能减弱，以脘腹满闷，肢体困重，纳食呆滞等为主要临床特征的外感病。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z210",
+    "name": "脾胃虚",
+    "type": "证候",
+    "alias": "weak spleen and stomach",
+    "description": "脾胃气虚，中焦失运，以食欲不振，脘腹痞胀，食后尤甚，大便溏泻，神疲肢倦，舌淡，脉弱等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z211",
+    "name": "脾胃虚寒",
+    "type": "证候",
+    "alias": "cold syndrome of the spleen and the stomach of deficiency type",
+    "description": "脾胃虚寒证是由于素体脾气虚，或脾虚日久，波及脾阳，使脾阳也虚。或贪食生冷，损伤脾阳，导致脾阳虚不能温暖胃肠，寒气自内而生的病证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z212",
+    "name": "脾胃虚弱",
+    "type": "证候",
+    "alias": "weak spleen and stomach",
+    "description": "脾胃气虚，中焦失运，以食欲不振，脘腹痞胀，食后尤甚，大便溏泻，神疲肢倦，舌淡，脉弱等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z213",
+    "name": "脾虚",
+    "type": "证候",
+    "alias": "deficiency of spleen",
+    "description": "脾气虚证是指脾气不足，运化失职，以纳少、腹胀、便溏及气虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z214",
+    "name": "膀胱虚冷",
+    "type": "证候",
+    "alias": "asthenia cold of bladder",
+    "description": "肾阳亏虚，膀胱气化失司，以畏冷肢凉，小腹冷痛，小便失禁或不利，或夜尿多、尿清长，苔白滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z215",
+    "name": "虚劳",
+    "type": "证候",
+    "alias": "consumptive disease",
+    "description": "是由于禀赋薄弱、后天失养及外感内伤等多种原因引起的，以脏腑功能衰退，气血阴阳亏损，日久不复为主要病机，以五脏虚证为主要临床表现的多种慢性虚弱症候的总称。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z216",
+    "name": "虚喘",
+    "type": "证候",
+    "alias": "dyspnea due to deficiency",
+    "description": "虚喘常由慢性咳嗽、肺痨等肺系病症迁延未愈，病久肺虚，气失所主，肾元亏虚，肾不纳气而短气喘促。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z217",
+    "name": "虚寒",
+    "type": "证候",
+    "alias": "deficiency-cold",
+    "description": "阳虚证是指人体阳气亏损，其温养、推动、气化等功能减退，以畏寒肢冷为主要表现的虚寒证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z218",
+    "name": "虚烦",
+    "type": "证候",
+    "alias": "fidgetiness due to deficiency",
+    "description": "是因虚而致心胸烦热者。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z219",
+    "name": "虚热",
+    "type": "证候",
+    "alias": "asthenia-heat",
+    "description": "阴虚证是指人体阴液亏少，其滋润、濡养等功能减退，或阴不制阳，阳气偏亢，以口咽干燥、五心烦热、潮热盗汗等为主要表现的虚热证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z220",
+    "name": "虚痨",
+    "type": "证候",
+    "alias": "consumptive disease",
+    "description": "是由于禀赋薄弱、后天失养及外感内伤等多种原因引起的，以脏腑功能衰退，气血阴阳亏损，日久不复为主要病机，以五脏虚证为主要临床表现的多种慢性虚弱症候的总称。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z221",
+    "name": "虚脱",
+    "type": "证候",
+    "alias": "prostration syndrome",
+    "description": "以面色苍白、虚汗淋漓、头昏眼花、肢冷汗出、二便失禁、神情淡漠或烦躁甚则不省人事、脉微欲绝等为特征的内科急症。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z222",
+    "name": "虚阳上浮",
+    "type": "证候",
+    "alias": "floating of weak yang",
+    "description": "指体内阳气极虚，导致阴寒之气偏盛，格阳于外，阴阳寒热格拒，表现为内真寒外假热的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z223",
+    "name": "虚风内动",
+    "type": "证候",
+    "alias": "internal stirring of deficiency-wind",
+    "description": "是肾精肝血耗损，虚风内动之候。以手足蠕动，甚或瘛疭，舌干降为辨证要点。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z224",
+    "name": "虫积",
+    "type": "证候",
+    "alias": "abdominal pain due to parasitic infestation",
+    "description": "虫积肠道证是指蛔虫等寄居肠道，阻滞气机，噬耗营养，以腹痛、面黄体瘦、大便排虫及气滞症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z225",
+    "name": "血寒",
+    "type": "证候",
+    "alias": "blood cold",
+    "description": "血寒证是指寒邪客于血脉，凝滞气机，血行不畅，以拘急冷痛、形寒、肤色紫暗为主要表现的实寒证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z226",
+    "name": "血热",
+    "type": "证候",
+    "alias": "heat in blood",
+    "description": "血热证是指火热炽盛，热迫血分，以出血与实热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z227",
+    "name": "血热有瘀",
+    "type": "证候",
+    "alias": "heat in blood with ecchymosis",
+    "description": "外感火热邪气，或体内阳盛化火，入舍于血，血热互结，煎灼血中津液，使血液黏稠而运行不畅；或热灼脉络，迫血妄行导致内出血，以致血液壅滞于体内某些部位而不散而成瘀血。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z228",
+    "name": "血热毒盛",
+    "type": "证候",
+    "alias": "heat invading the blood phase",
+    "description": "血热证是指火热炽盛，热迫血分，以出血与实热症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z229",
+    "name": "血瘀",
+    "type": "证候",
+    "alias": "stasis of blood",
+    "description": "血瘀证是指瘀血内阻，以疼痛、肿块、出血、瘀血色脉征为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z230",
+    "name": "血虚",
+    "type": "证候",
+    "alias": "deficiency of blood",
+    "description": "血虚证是指血液亏虚，不能濡养脏腑、经络、组织，以面、睑、唇、舌色淡白，脉细为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z231",
+    "name": "表虚",
+    "type": "证候",
+    "alias": "Exteriat Syndrome of Deficiency",
+    "description": "外邪袭表，腠理不固，营卫之气不和所致的表证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z232",
+    "name": "酒毒伤中",
+    "type": "证候",
+    "alias": "impairment in the body due to alcohol toxin",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z233",
+    "name": "阳亢",
+    "type": "证候",
+    "alias": "excess of yang",
+    "description": "肝阳上亢证是指肝肾阴亏，阴不制阳，阳亢于上，以眩晕耳鸣、头目胀痛、头重脚轻、腰膝酸软等上盛下虚症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z234",
+    "name": "阳毒",
+    "type": "证候",
+    "alias": "yang virulence",
+    "description": "邪气深重。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z235",
+    "name": "阳虚",
+    "type": "证候",
+    "alias": "yang deficiency",
+    "description": "阳虚证是指人体阳气亏损，其温养、推动、气化等功能减退，以畏寒肢冷为主要表现的虚寒证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z236",
+    "name": "阳虚外感",
+    "type": "证候",
+    "alias": "externally infection due to yang deficiency",
+    "description": "阳虚证是指人体阳气亏损，其温养、推动、气化等功能减退，以畏寒肢冷为主要表现的虚寒证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z237",
+    "name": "阴亏",
+    "type": "证候",
+    "alias": "deficiency of yin",
+    "description": "阴虚证是指人体阴液亏少，其滋润、濡养等功能减退，或阴不制阳，阳气偏亢，以口咽干燥、五心烦热、潮热盗汗等为主要表现的虚热证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z238",
+    "name": "阴寒",
+    "type": "证候",
+    "alias": "coldness of yin",
+    "description": "外感之寒邪或阳虚所生之内寒。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z239",
+    "name": "阴疽肿毒",
+    "type": "证候",
+    "alias": "toxic swelling due to carbuncle of yin nature",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z240",
+    "name": "阴虚",
+    "type": "证候",
+    "alias": "deficiency of yin",
+    "description": "阴虚证是指人体阴液亏少，其滋润、濡养等功能减退，或阴不制阳，阳气偏亢，以口咽干燥、五心烦热、潮热盗汗等为主要表现的虚热证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z241",
+    "name": "阴虚火旺",
+    "type": "证候",
+    "alias": "flaming-up of fire due to dificiency of yin",
+    "description": "阴虚证是指人体阴液亏少，其滋润、濡养等功能减退，或阴不制阳，阳气偏亢，以口咽干燥、五心烦热、潮热盗汗等为主要表现的虚热证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z242",
+    "name": "阴血不足",
+    "type": "证候",
+    "alias": "insufficiency of the yin-blood",
+    "description": "血虚证是指血液亏虚，不能濡养脏腑、经络、组织，以面、睑、唇、舌色淡白，脉细为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z243",
+    "name": "顽痰",
+    "type": "证候",
+    "alias": "stubborn phlegm",
+    "description": "指坚结胶固之痰，亦称老痰、结痰、郁痰。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z244",
+    "name": "顽痰胶结",
+    "type": "证候",
+    "alias": "retention of stubborn phlegm",
+    "description": "指坚结胶固之痰，亦称老痰、结痰、郁痰。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z245",
+    "name": "风寒",
+    "type": "证候",
+    "alias": "wind-cold syndrome",
+    "description": "伤寒证是指寒邪外袭于肤表，阻遏卫阳所表现的表实寒证，又称风寒表证",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z246",
+    "name": "风寒挟湿",
+    "type": "证候",
+    "alias": "wind syndromes of cold type with damp symptoms",
+    "description": "指风、寒、湿三种邪气的结合。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z247",
+    "name": "风寒湿",
+    "type": "证候",
+    "alias": "wind-cold-damp syndrome",
+    "description": "指风、寒、湿三种邪气的结合。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z248",
+    "name": "风水",
+    "type": "证候",
+    "alias": "wind water",
+    "description": "指风邪外袭，肺卫失宣，水湿泛溢肌肤，以突起头面浮肿及卫表症状为主要表现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z249",
+    "name": "风温初起",
+    "type": "证候",
+    "alias": "onset of affection due to wind-warm syndrome",
+    "description": "风温初起，邪犯肺卫，以发热，微恶风寒，无汗或少汗，头痛，咳嗽，口微渴，舌边尖红，苔薄白，脉浮数等为常见症的风温证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z250",
+    "name": "风湿",
+    "type": "证候",
+    "alias": "wind-dampness",
+    "description": "指风邪与湿邪的结合。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z251",
+    "name": "风热",
+    "type": "证候",
+    "alias": "wind and heat",
+    "description": "感受风热之邪。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z252",
+    "name": "风热郁肺",
+    "type": "证候",
+    "alias": "retention of wind-heat in the lung",
+    "description": "风热犯肺证是指由于风热侵犯，肺卫失宣，以咳嗽及风热表证症状为主要表现的证。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z253",
+    "name": "风痰",
+    "type": "证候",
+    "alias": "wind-phlegm",
+    "description": "外风挟痰为患，或肝风痰浊内扰，以咳吐泡沫痰涎，胸闷，眩晕，头目胀痛；或喉中痰鸣，肢体麻木，口眼喎斜，苔白腻，脉弦滑等为常见症的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z254",
+    "name": "食物积滞",
+    "type": "证候",
+    "alias": "food accumulation",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z255",
+    "name": "食积",
+    "type": "证候",
+    "alias": "food stagnation",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z256",
+    "name": "食积不化",
+    "type": "证候",
+    "alias": "food accumulation",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z257",
+    "name": "食积不消",
+    "type": "证候",
+    "alias": "indigestion with food retention",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z258",
+    "name": "食积伤酒",
+    "type": "证候",
+    "alias": "Dyspepsia injury wine",
+    "description": "是指由于饮酒，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z259",
+    "name": "饮酒过多",
+    "type": "证候",
+    "alias": "Drinking too much",
+    "description": "",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z260",
+    "name": "饮食不消",
+    "type": "证候",
+    "alias": "indigestion",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z261",
+    "name": "饮食停滞",
+    "type": "证候",
+    "alias": "indigestion",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  },
+  {
+    "id": "Z262",
+    "name": "饮食积滞",
+    "type": "证候",
+    "alias": "food stagnation",
+    "description": "是指由于饮食不节，损伤脾胃而出现的证候。",
+    "properties": {
+      "source": "SymMap v2.0, SMSY file.xlsx",
+      "note": ""
+    }
+  }
+]

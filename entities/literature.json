@@ -1,0 +1,167 @@
+[
+  {
+    "id": "L001",
+    "name": "《方剂学》教材",
+    "type": "文献",
+    "alias": "",
+    "description": "全国中医药高等教育规划教材，系统介绍方剂学理论",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": "教学核心参考资料"
+    }
+  },
+  {
+    "id": "L003",
+    "name": "《中药学》教材",
+    "type": "文献",
+    "alias": "",
+    "description": "中药学高等教育教材，介绍中药性味归经功效",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": "单味药材知识来源"
+    }
+  },
+  {
+    "id": "L004",
+    "name": "《中医诊断学》教材",
+    "type": "文献",
+    "alias": "",
+    "description": "中医诊断学高等教育教材，介绍四诊与辨证",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": "症状与证候知识来源"
+    }
+  },
+  {
+    "id": "L011",
+    "name": "《黄帝内经》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医理论奠基之作，分素问灵枢",
+    "properties": {
+      "source": "",
+      "note": "四大经典之一"
+    }
+  },
+  {
+    "id": "L016",
+    "name": "《中医儿科学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医儿科学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L017",
+    "name": "《中医内科学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医内科学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L018",
+    "name": "《中医妇科学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医妇科学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L019",
+    "name": "《中医外科学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医外科学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L020",
+    "name": "《中医老年病学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医老年病学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L021",
+    "name": "《中医神志病学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医神志病学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L022",
+    "name": "《针灸学》",
+    "type": "文献",
+    "alias": "",
+    "description": "针灸学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L023",
+    "name": "《中药药理学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中药药理学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L024",
+    "name": "《中医体质学》",
+    "type": "文献",
+    "alias": "",
+    "description": "中医体质学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  },
+  {
+    "id": "L025",
+    "name": "《临床药学》",
+    "type": "文献",
+    "alias": "",
+    "description": "临床药学相关教材与指南",
+    "properties": {
+      "source": "",
+      "note": "中西药联用禁忌来源"
+    }
+  },
+  {
+    "id": "L026",
+    "name": "《温病学》",
+    "type": "文献",
+    "alias": "",
+    "description": "温病学高等教育教材",
+    "properties": {
+      "source": "中国中医药出版社",
+      "note": ""
+    }
+  }
+]

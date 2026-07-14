@@ -1,0 +1,134 @@
+[
+  {
+    "id": "J001",
+    "name": "手太阴肺经",
+    "type": "归经",
+    "alias": "肺经",
+    "description": "主气司呼吸，主宣发肃降，通调水道",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J002",
+    "name": "手阳明大肠经",
+    "type": "归经",
+    "alias": "大肠经",
+    "description": "主传化糟粕，与肺相表里",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J003",
+    "name": "足阳明胃经",
+    "type": "归经",
+    "alias": "胃经",
+    "description": "主受纳腐熟水谷，与脾相表里",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J004",
+    "name": "足太阴脾经",
+    "type": "归经",
+    "alias": "脾经",
+    "description": "主运化水谷精微，统摄血液，主肌肉四肢",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J005",
+    "name": "手少阴心经",
+    "type": "归经",
+    "alias": "心经",
+    "description": "主血脉，藏神，为君主之官",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J006",
+    "name": "手太阳小肠经",
+    "type": "归经",
+    "alias": "小肠经",
+    "description": "主受盛化物，泌别清浊",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J007",
+    "name": "足太阳膀胱经",
+    "type": "归经",
+    "alias": "膀胱经",
+    "description": "主贮藏尿液，排泄小便",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J008",
+    "name": "足少阴肾经",
+    "type": "归经",
+    "alias": "肾经",
+    "description": "主藏精，主水，主纳气，为先天之本",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J009",
+    "name": "手厥阴心包经",
+    "type": "归经",
+    "alias": "心包经",
+    "description": "代心受邪，护卫心脏",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J010",
+    "name": "手少阳三焦经",
+    "type": "归经",
+    "alias": "三焦经",
+    "description": "通行元气，运行水液",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J011",
+    "name": "足少阳胆经",
+    "type": "归经",
+    "alias": "胆经",
+    "description": "贮藏和排泄胆汁，主决断",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J012",
+    "name": "足厥阴肝经",
+    "type": "归经",
+    "alias": "肝经",
+    "description": "主疏泄，藏血，主筋",
+    "properties": {
+      "source": "《中医基础理论》",
+      "note": ""
+    }
+  }
+]

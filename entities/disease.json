@@ -1,0 +1,882 @@
+[
+  {
+    "id": "D001",
+    "name": "感冒",
+    "type": "疾病",
+    "alias": "伤风",
+    "description": "外感风邪所致的常见外感疾病，以鼻塞、流涕、喷嚏、咳嗽、头痛等为主要临床表现",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D002",
+    "name": "咳嗽",
+    "type": "疾病",
+    "alias": "",
+    "description": "以咳嗽为主要临床表现的病证，有声无痰谓之咳，有痰无声谓之嗽",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D003",
+    "name": "哮病",
+    "type": "疾病",
+    "alias": "哮喘",
+    "description": "以喉中哮鸣有声，呼吸急促困难，甚则喘息不能平卧为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D004",
+    "name": "喘证",
+    "type": "疾病",
+    "alias": "气喘",
+    "description": "以呼吸困难，甚则张口抬肩，鼻翼煽动，不能平卧为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D005",
+    "name": "肺胀",
+    "type": "疾病",
+    "alias": "慢阻肺",
+    "description": "以胸部膨满，喘息气促，咳嗽痰多，日久不愈为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D006",
+    "name": "肺痿",
+    "type": "疾病",
+    "alias": "",
+    "description": "以咳吐浊唾涎沫为主要表现的肺脏慢性虚损性疾患",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D007",
+    "name": "肺痈",
+    "type": "疾病",
+    "alias": "肺脓肿",
+    "description": "以发热、咳嗽、胸痛、咯吐腥臭浊痰或脓血痰为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D008",
+    "name": "心悸",
+    "type": "疾病",
+    "alias": "怔忡",
+    "description": "病人自觉心中悸动、惊惕不安，甚则不能自主的一种病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D009",
+    "name": "胸痹",
+    "type": "疾病",
+    "alias": "冠心病",
+    "description": "以胸部闷痛，甚则胸痛彻背，喘息不得卧为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D010",
+    "name": "不寐",
+    "type": "疾病",
+    "alias": "失眠",
+    "description": "以经常不能获得正常睡眠为特征的一类病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D011",
+    "name": "眩晕",
+    "type": "疾病",
+    "alias": "头晕",
+    "description": "以头晕、眼花为主症的一类病证，轻者闭目即止，重者如坐车船",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D012",
+    "name": "中风",
+    "type": "疾病",
+    "alias": "脑卒中",
+    "description": "以猝然昏仆，不省人事，半身不遂，口眼歪斜，言语不利为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D013",
+    "name": "头痛",
+    "type": "疾病",
+    "alias": "头风",
+    "description": "以头部疼痛为主要临床表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D014",
+    "name": "胃痛",
+    "type": "疾病",
+    "alias": "胃脘痛",
+    "description": "以上腹胃脘部近心窝处疼痛为主症的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D015",
+    "name": "呕吐",
+    "type": "疾病",
+    "alias": "",
+    "description": "以胃内容物上逆吐出为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D016",
+    "name": "呃逆",
+    "type": "疾病",
+    "alias": "打嗝",
+    "description": "以气逆上冲，喉间呃呃连声，声短而频，不能自制为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D017",
+    "name": "泄泻",
+    "type": "疾病",
+    "alias": "腹泻",
+    "description": "以排便次数增多，粪质稀薄或完谷不化，甚至泻出如水样为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D018",
+    "name": "痢疾",
+    "type": "疾病",
+    "alias": "",
+    "description": "以腹痛、里急后重、下痢赤白脓血为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D019",
+    "name": "便秘",
+    "type": "疾病",
+    "alias": "大便难",
+    "description": "以大便干燥坚硬，排便艰难，或排便间隔时间延长为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D020",
+    "name": "胁痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "以一侧或两侧胁肋部疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D021",
+    "name": "黄疸",
+    "type": "疾病",
+    "alias": "",
+    "description": "以目黄、身黄、小便黄为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D022",
+    "name": "鼓胀",
+    "type": "疾病",
+    "alias": "肝硬化腹水",
+    "description": "以腹部胀大如鼓，皮色苍黄，脉络显露为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D023",
+    "name": "水肿",
+    "type": "疾病",
+    "alias": "",
+    "description": "以眼睑、头面、四肢或全身浮肿为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D024",
+    "name": "淋证",
+    "type": "疾病",
+    "alias": "",
+    "description": "以小便频数短涩、滴沥刺痛、欲出未尽为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D025",
+    "name": "癃闭",
+    "type": "疾病",
+    "alias": "尿潴留",
+    "description": "以小便点滴而出或小便闭塞不通为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D026",
+    "name": "消渴",
+    "type": "疾病",
+    "alias": "糖尿病",
+    "description": "以多饮、多食、多尿、形体消瘦，或尿有甜味为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D027",
+    "name": "痹证",
+    "type": "疾病",
+    "alias": "关节痹痛",
+    "description": "以肢体关节、筋骨、肌肉疼痛、酸楚、麻木、重着为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D028",
+    "name": "痿证",
+    "type": "疾病",
+    "alias": "",
+    "description": "以肢体软弱无力，肌肉萎缩，弛缓不用为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D029",
+    "name": "腰痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "以腰部一侧或两侧疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D030",
+    "name": "虚劳",
+    "type": "疾病",
+    "alias": "",
+    "description": "以脏腑功能衰退，气血阴阳亏损，日久不复为主要表现的多种慢性虚弱证候的总称",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D031",
+    "name": "郁证",
+    "type": "疾病",
+    "alias": "抑郁症",
+    "description": "以心情抑郁，情绪不宁，或善怒易哭，或咽中如有物阻为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D032",
+    "name": "血证",
+    "type": "疾病",
+    "alias": "",
+    "description": "以血液溢出脉外，如鼻衄、齿衄、咳血、吐血、便血、尿血等为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D033",
+    "name": "汗证",
+    "type": "疾病",
+    "alias": "",
+    "description": "以汗出异常，如自汗、盗汗、大汗、黄汗等为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D034",
+    "name": "内伤发热",
+    "type": "疾病",
+    "alias": "",
+    "description": "以内伤因素导致的发热，或低热，或潮热，或五心烦热为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D035",
+    "name": "积聚",
+    "type": "疾病",
+    "alias": "",
+    "description": "以腹内结块，或胀或痛，固定不移或聚散无常为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D036",
+    "name": "瘿病",
+    "type": "疾病",
+    "alias": "甲状腺肿",
+    "description": "以颈前喉结两旁结块肿大为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D037",
+    "name": "疟疾",
+    "type": "疾病",
+    "alias": "",
+    "description": "以寒战、壮热、出汗，呈周期性发作为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D038",
+    "name": "月经不调",
+    "type": "疾病",
+    "alias": "",
+    "description": "以月经周期、经期、经量发生异常改变为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D039",
+    "name": "痛经",
+    "type": "疾病",
+    "alias": "",
+    "description": "以妇女正值经期或行经前后，出现周期性小腹疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D040",
+    "name": "闭经",
+    "type": "疾病",
+    "alias": "",
+    "description": "以女子年逾16岁月经尚未来潮，或已行经又中断6个月以上为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D041",
+    "name": "崩漏",
+    "type": "疾病",
+    "alias": "",
+    "description": "以经血非时暴下或淋漓不止为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D042",
+    "name": "带下病",
+    "type": "疾病",
+    "alias": "",
+    "description": "以带下量、色、质、气味异常为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D043",
+    "name": "妊娠恶阻",
+    "type": "疾病",
+    "alias": "妊娠呕吐",
+    "description": "以妊娠早期出现恶心呕吐，甚则食入即吐为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D044",
+    "name": "胎动不安",
+    "type": "疾病",
+    "alias": "先兆流产",
+    "description": "以妊娠期腰酸腹痛，或阴道少量流血，胎动下坠感为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D045",
+    "name": "产后身痛",
+    "type": "疾病",
+    "alias": "产后关节痛",
+    "description": "以产褥期间出现肢体关节疼痛、酸楚、麻木为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D046",
+    "name": "缺乳",
+    "type": "疾病",
+    "alias": "乳汁不足",
+    "description": "以产后乳汁甚少或全无，不能满足婴儿哺乳需要为主要表现的病证",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D047",
+    "name": "乳痈",
+    "type": "疾病",
+    "alias": "乳腺炎",
+    "description": "以乳房局部红肿热痛，或可触及硬块，甚则化脓为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D048",
+    "name": "瘰疬",
+    "type": "疾病",
+    "alias": "淋巴结结核",
+    "description": "以颈部或耳后出现大小不一的肿块，累累如串珠为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D049",
+    "name": "湿疮",
+    "type": "疾病",
+    "alias": "湿疹",
+    "description": "以皮肤出现红斑、丘疹、水疱、糜烂、渗液，瘙痒剧烈为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D050",
+    "name": "风疹",
+    "type": "疾病",
+    "alias": "荨麻疹",
+    "description": "以皮肤出现大小不等的风团，色红或白，骤起骤退，瘙痒为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D051",
+    "name": "痄腮",
+    "type": "疾病",
+    "alias": "流行性腮腺炎",
+    "description": "以耳下腮部肿胀疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D052",
+    "name": "小儿泄泻",
+    "type": "疾病",
+    "alias": "小儿腹泻",
+    "description": "以小儿大便次数增多，粪质稀薄，或如水样为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D053",
+    "name": "小儿肺炎喘嗽",
+    "type": "疾病",
+    "alias": "小儿肺炎",
+    "description": "以小儿发热、咳嗽、气喘、鼻翼煽动为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D054",
+    "name": "小儿疳积",
+    "type": "疾病",
+    "alias": "小儿营养不良",
+    "description": "以小儿形体消瘦，面黄发枯，食欲异常，肚腹胀大为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D055",
+    "name": "惊风",
+    "type": "疾病",
+    "alias": "惊厥",
+    "description": "以小儿抽搐、昏迷，或高热、神昏为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D056",
+    "name": "夜啼",
+    "type": "疾病",
+    "alias": "",
+    "description": "以小儿夜间啼哭不安，或定时啼哭，或彻夜啼哭为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D057",
+    "name": "小儿遗尿",
+    "type": "疾病",
+    "alias": "尿床",
+    "description": "以小儿睡眠中不自主排尿，或醒后方觉为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D058",
+    "name": "鹅口疮",
+    "type": "疾病",
+    "alias": "新生儿口腔念珠菌感染",
+    "description": "以口腔黏膜表面覆盖白色乳凝块样小点或小片状物为主要表现的病证",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D059",
+    "name": "耳鸣",
+    "type": "疾病",
+    "alias": "",
+    "description": "以耳内鸣响为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D060",
+    "name": "耳聋",
+    "type": "疾病",
+    "alias": "",
+    "description": "以听力减退或完全丧失为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D061",
+    "name": "鼻渊",
+    "type": "疾病",
+    "alias": "鼻窦炎",
+    "description": "以鼻流浊涕，量多不止为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D062",
+    "name": "喉痹",
+    "type": "疾病",
+    "alias": "咽喉炎",
+    "description": "以咽喉红肿疼痛，或喉间有异物感为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D063",
+    "name": "口疮",
+    "type": "疾病",
+    "alias": "口腔溃疡",
+    "description": "以口腔黏膜出现溃疡，疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D064",
+    "name": "牙痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "以牙齿疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D065",
+    "name": "目赤肿痛",
+    "type": "疾病",
+    "alias": "结膜炎",
+    "description": "以眼目红赤、肿胀、疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D066",
+    "name": "夜盲",
+    "type": "疾病",
+    "alias": "雀目",
+    "description": "以入暮或夜间视物不清为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D067",
+    "name": "遗精",
+    "type": "疾病",
+    "alias": "",
+    "description": "以不因性生活而精液频繁遗泄为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D068",
+    "name": "早泄",
+    "type": "疾病",
+    "alias": "",
+    "description": "以性交时过早排精为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D069",
+    "name": "阳痿",
+    "type": "疾病",
+    "alias": "",
+    "description": "以阴茎不能勃起，或勃起不坚，或坚而不久，不能完成性交为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D070",
+    "name": "精浊",
+    "type": "疾病",
+    "alias": "前列腺炎",
+    "description": "以尿频、尿急、尿痛，或尿道口有白色分泌物为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D071",
+    "name": "脱肛",
+    "type": "疾病",
+    "alias": "",
+    "description": "以直肠黏膜或直肠壁脱出肛门外为主要表现的病证",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D072",
+    "name": "痔疮",
+    "type": "疾病",
+    "alias": "",
+    "description": "以肛门内外出现小肉状突出物，或伴疼痛、出血为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D073",
+    "name": "肠痈",
+    "type": "疾病",
+    "alias": "阑尾炎",
+    "description": "以转移性右下腹痛，或右少腹固定压痛为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D074",
+    "name": "痤疮",
+    "type": "疾病",
+    "alias": "青春痘",
+    "description": "以颜面、胸背部出现粉刺、丘疹、脓疱为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D075",
+    "name": "斑秃",
+    "type": "疾病",
+    "alias": "鬼剃头",
+    "description": "以头部突然出现圆形或椭圆形脱发斑为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D076",
+    "name": "荨麻疹",
+    "type": "疾病",
+    "alias": "风疹块",
+    "description": "以皮肤出现红色或白色风团，瘙痒难忍，时起时消为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D077",
+    "name": "皮肤瘙痒症",
+    "type": "疾病",
+    "alias": "",
+    "description": "以全身或局部皮肤瘙痒，无原发性皮损为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D078",
+    "name": "蛇串疮",
+    "type": "疾病",
+    "alias": "带状疱疹",
+    "description": "以皮肤出现簇集性水疱，呈带状分布，疼痛剧烈为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D079",
+    "name": "扁平疣",
+    "type": "疾病",
+    "alias": "",
+    "description": "以皮肤出现扁平隆起的小丘疹，表面光滑，肤色或淡褐色为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "D080",
+    "name": "鸡眼",
+    "type": "疾病",
+    "alias": "",
+    "description": "以足底皮肤局限性圆锥状角质增生，行走疼痛为主要表现的病证",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  }
+]

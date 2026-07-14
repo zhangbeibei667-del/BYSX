@@ -1,0 +1,2862 @@
+[
+  {
+    "id": "S001",
+    "name": "失眠",
+    "type": "症状",
+    "alias": "不寐",
+    "description": "入睡困难，睡眠质量下降",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心系常见主诉"
+    }
+  },
+  {
+    "id": "S002",
+    "name": "多梦",
+    "type": "症状",
+    "alias": "",
+    "description": "睡眠中梦境纷纭",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S003",
+    "name": "心悸",
+    "type": "症状",
+    "alias": "怔忡",
+    "description": "自觉心跳不适，惊慌不安",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心血不足常见表现"
+    }
+  },
+  {
+    "id": "S004",
+    "name": "健忘",
+    "type": "症状",
+    "alias": "",
+    "description": "记忆力减退，遇事易忘",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心脾不足常见"
+    }
+  },
+  {
+    "id": "S005",
+    "name": "心烦",
+    "type": "症状",
+    "alias": "",
+    "description": "心中烦躁不安",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S006",
+    "name": "精神恍惚",
+    "type": "症状",
+    "alias": "",
+    "description": "神思不定，注意力涣散",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S007",
+    "name": "惊恐不安",
+    "type": "症状",
+    "alias": "",
+    "description": "易受惊吓，心中恐惧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S008",
+    "name": "注意力不集中",
+    "type": "症状",
+    "alias": "",
+    "description": "难以专注",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S009",
+    "name": "神疲",
+    "type": "症状",
+    "alias": "",
+    "description": "精神疲倦，萎靡不振",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚常见"
+    }
+  },
+  {
+    "id": "S010",
+    "name": "乏力",
+    "type": "症状",
+    "alias": "体倦",
+    "description": "全身疲乏无力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚典型表现"
+    }
+  },
+  {
+    "id": "S011",
+    "name": "气短",
+    "type": "症状",
+    "alias": "",
+    "description": "呼吸短促，气息不够用",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚常见"
+    }
+  },
+  {
+    "id": "S012",
+    "name": "少气懒言",
+    "type": "症状",
+    "alias": "",
+    "description": "气息微弱，不愿说话",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚典型表现"
+    }
+  },
+  {
+    "id": "S013",
+    "name": "面色萎黄",
+    "type": "症状",
+    "alias": "",
+    "description": "面部萎黄无华",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血不足望诊表现"
+    }
+  },
+  {
+    "id": "S014",
+    "name": "面色苍白",
+    "type": "症状",
+    "alias": "",
+    "description": "面部苍白无血色",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚望诊表现"
+    }
+  },
+  {
+    "id": "S015",
+    "name": "面色无华",
+    "type": "症状",
+    "alias": "",
+    "description": "面部缺乏光泽",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S016",
+    "name": "面色红赤",
+    "type": "症状",
+    "alias": "",
+    "description": "面部潮红",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证望诊表现"
+    }
+  },
+  {
+    "id": "S017",
+    "name": "头晕",
+    "type": "症状",
+    "alias": "眩晕",
+    "description": "头部昏沉或景物旋转",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚不能上荣头目"
+    }
+  },
+  {
+    "id": "S018",
+    "name": "目眩",
+    "type": "症状",
+    "alias": "",
+    "description": "视物昏花旋转",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S019",
+    "name": "头痛",
+    "type": "症状",
+    "alias": "",
+    "description": "头部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S020",
+    "name": "耳鸣",
+    "type": "症状",
+    "alias": "",
+    "description": "耳中鸣响",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚常见"
+    }
+  },
+  {
+    "id": "S021",
+    "name": "口燥咽干",
+    "type": "症状",
+    "alias": "",
+    "description": "口干咽燥",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚常见"
+    }
+  },
+  {
+    "id": "S022",
+    "name": "口苦",
+    "type": "症状",
+    "alias": "",
+    "description": "口中发苦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝胆有热"
+    }
+  },
+  {
+    "id": "S023",
+    "name": "口渴",
+    "type": "症状",
+    "alias": "",
+    "description": "口干欲饮",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证常见"
+    }
+  },
+  {
+    "id": "S024",
+    "name": "口淡无味",
+    "type": "症状",
+    "alias": "",
+    "description": "口中乏味",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃虚弱"
+    }
+  },
+  {
+    "id": "S025",
+    "name": "唇色淡白",
+    "type": "症状",
+    "alias": "",
+    "description": "口唇淡白无华",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚表现"
+    }
+  },
+  {
+    "id": "S026",
+    "name": "舌淡",
+    "type": "症状",
+    "alias": "",
+    "description": "舌质淡白",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "虚证舌象"
+    }
+  },
+  {
+    "id": "S027",
+    "name": "舌红",
+    "type": "症状",
+    "alias": "",
+    "description": "舌质红赤",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证舌象"
+    }
+  },
+  {
+    "id": "S028",
+    "name": "舌胖大",
+    "type": "症状",
+    "alias": "",
+    "description": "舌体胖大",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾虚湿盛"
+    }
+  },
+  {
+    "id": "S029",
+    "name": "舌有齿痕",
+    "type": "症状",
+    "alias": "",
+    "description": "舌边有齿印",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾虚"
+    }
+  },
+  {
+    "id": "S030",
+    "name": "舌苔白",
+    "type": "症状",
+    "alias": "",
+    "description": "舌苔色白",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S031",
+    "name": "舌苔黄",
+    "type": "症状",
+    "alias": "",
+    "description": "舌苔色黄",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证"
+    }
+  },
+  {
+    "id": "S032",
+    "name": "舌苔腻",
+    "type": "症状",
+    "alias": "",
+    "description": "舌苔厚腻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿浊内蕴"
+    }
+  },
+  {
+    "id": "S033",
+    "name": "舌苔少",
+    "type": "症状",
+    "alias": "",
+    "description": "舌苔稀少",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚"
+    }
+  },
+  {
+    "id": "S034",
+    "name": "食少",
+    "type": "症状",
+    "alias": "纳差",
+    "description": "食欲减退，进食量少",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃虚弱常见"
+    }
+  },
+  {
+    "id": "S035",
+    "name": "纳差",
+    "type": "症状",
+    "alias": "",
+    "description": "食欲不振",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S036",
+    "name": "腹胀",
+    "type": "症状",
+    "alias": "",
+    "description": "腹部胀满不适",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气滞或脾虚"
+    }
+  },
+  {
+    "id": "S037",
+    "name": "脘痞",
+    "type": "症状",
+    "alias": "",
+    "description": "胃脘部痞塞不舒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S038",
+    "name": "恶心",
+    "type": "症状",
+    "alias": "",
+    "description": "欲呕不呕",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃气上逆"
+    }
+  },
+  {
+    "id": "S039",
+    "name": "呕吐",
+    "type": "症状",
+    "alias": "",
+    "description": "胃内容物上逆吐出",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S040",
+    "name": "便溏",
+    "type": "症状",
+    "alias": "",
+    "description": "大便稀溏不成形",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾虚湿盛"
+    }
+  },
+  {
+    "id": "S041",
+    "name": "便秘",
+    "type": "症状",
+    "alias": "",
+    "description": "大便干结难解",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S042",
+    "name": "完谷不化",
+    "type": "症状",
+    "alias": "",
+    "description": "大便中含未消化食物",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃虚寒"
+    }
+  },
+  {
+    "id": "S043",
+    "name": "腹泻",
+    "type": "症状",
+    "alias": "",
+    "description": "大便次数增多，质稀",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S044",
+    "name": "胁痛",
+    "type": "症状",
+    "alias": "",
+    "description": "胁肋部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝气郁结"
+    }
+  },
+  {
+    "id": "S045",
+    "name": "胸闷",
+    "type": "症状",
+    "alias": "",
+    "description": "胸部满闷不舒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气滞"
+    }
+  },
+  {
+    "id": "S046",
+    "name": "胸痛",
+    "type": "症状",
+    "alias": "",
+    "description": "胸部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血瘀"
+    }
+  },
+  {
+    "id": "S047",
+    "name": "脘腹痛",
+    "type": "症状",
+    "alias": "",
+    "description": "胃脘或腹部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S048",
+    "name": "腰痛",
+    "type": "症状",
+    "alias": "",
+    "description": "腰部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或血瘀"
+    }
+  },
+  {
+    "id": "S049",
+    "name": "腰膝酸软",
+    "type": "症状",
+    "alias": "",
+    "description": "腰膝酸软无力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚常见"
+    }
+  },
+  {
+    "id": "S050",
+    "name": "四肢不温",
+    "type": "症状",
+    "alias": "",
+    "description": "手足发凉",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阳虚"
+    }
+  },
+  {
+    "id": "S051",
+    "name": "手足心热",
+    "type": "症状",
+    "alias": "五心烦热",
+    "description": "手足心及心胸烦热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚内热"
+    }
+  },
+  {
+    "id": "S052",
+    "name": "手足麻木",
+    "type": "症状",
+    "alias": "",
+    "description": "四肢麻木不仁",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚"
+    }
+  },
+  {
+    "id": "S053",
+    "name": "水肿",
+    "type": "症状",
+    "alias": "",
+    "description": "身体浮肿",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "水湿停聚"
+    }
+  },
+  {
+    "id": "S054",
+    "name": "自汗",
+    "type": "症状",
+    "alias": "",
+    "description": "白天不活动而出汗",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚"
+    }
+  },
+  {
+    "id": "S055",
+    "name": "盗汗",
+    "type": "症状",
+    "alias": "",
+    "description": "入睡后出汗，醒后汗止",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚"
+    }
+  },
+  {
+    "id": "S056",
+    "name": "潮热",
+    "type": "症状",
+    "alias": "",
+    "description": "定时发热如潮水",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚"
+    }
+  },
+  {
+    "id": "S057",
+    "name": "五心烦热",
+    "type": "症状",
+    "alias": "",
+    "description": "心胸及手足烦热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚"
+    }
+  },
+  {
+    "id": "S058",
+    "name": "发热",
+    "type": "症状",
+    "alias": "",
+    "description": "体温升高",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S059",
+    "name": "恶寒",
+    "type": "症状",
+    "alias": "",
+    "description": "自觉怕冷",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "表证"
+    }
+  },
+  {
+    "id": "S060",
+    "name": "畏寒肢冷",
+    "type": "症状",
+    "alias": "",
+    "description": "怕冷，四肢不温",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阳虚"
+    }
+  },
+  {
+    "id": "S061",
+    "name": "往来寒热",
+    "type": "症状",
+    "alias": "",
+    "description": "寒热交替出现",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "少阳证"
+    }
+  },
+  {
+    "id": "S062",
+    "name": "情志抑郁",
+    "type": "症状",
+    "alias": "",
+    "description": "情绪低落，闷闷不乐",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝气郁结"
+    }
+  },
+  {
+    "id": "S063",
+    "name": "烦躁易怒",
+    "type": "症状",
+    "alias": "",
+    "description": "心烦急躁，易发脾气",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝火"
+    }
+  },
+  {
+    "id": "S064",
+    "name": "善太息",
+    "type": "症状",
+    "alias": "",
+    "description": "频频叹气",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝气郁结"
+    }
+  },
+  {
+    "id": "S065",
+    "name": "悲伤欲哭",
+    "type": "症状",
+    "alias": "",
+    "description": "情绪悲伤，欲哭无泪",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脏躁"
+    }
+  },
+  {
+    "id": "S066",
+    "name": "脉细",
+    "type": "症状",
+    "alias": "",
+    "description": "脉管细小",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "虚证"
+    }
+  },
+  {
+    "id": "S067",
+    "name": "脉弱",
+    "type": "症状",
+    "alias": "",
+    "description": "脉搏无力",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚"
+    }
+  },
+  {
+    "id": "S068",
+    "name": "脉沉",
+    "type": "症状",
+    "alias": "",
+    "description": "重按始得",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "里证"
+    }
+  },
+  {
+    "id": "S069",
+    "name": "脉数",
+    "type": "症状",
+    "alias": "",
+    "description": "脉搏快速",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证"
+    }
+  },
+  {
+    "id": "S070",
+    "name": "脉弦",
+    "type": "症状",
+    "alias": "",
+    "description": "脉如琴弦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝病"
+    }
+  },
+  {
+    "id": "S071",
+    "name": "脉滑",
+    "type": "症状",
+    "alias": "",
+    "description": "脉来流利",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰湿"
+    }
+  },
+  {
+    "id": "S072",
+    "name": "脉紧",
+    "type": "症状",
+    "alias": "",
+    "description": "脉来绷紧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "寒证"
+    }
+  },
+  {
+    "id": "S073",
+    "name": "月经量少",
+    "type": "症状",
+    "alias": "",
+    "description": "经量明显减少",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚"
+    }
+  },
+  {
+    "id": "S074",
+    "name": "月经色淡",
+    "type": "症状",
+    "alias": "",
+    "description": "经血色淡质稀",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚"
+    }
+  },
+  {
+    "id": "S075",
+    "name": "月经后期",
+    "type": "症状",
+    "alias": "",
+    "description": "月经周期延后",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚或寒凝"
+    }
+  },
+  {
+    "id": "S076",
+    "name": "月经不调",
+    "type": "症状",
+    "alias": "",
+    "description": "月经周期或经量异常",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S077",
+    "name": "痛经",
+    "type": "症状",
+    "alias": "",
+    "description": "经期腹痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血瘀或寒凝"
+    }
+  },
+  {
+    "id": "S078",
+    "name": "咳嗽",
+    "type": "症状",
+    "alias": "",
+    "description": "肺气上逆作声",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺系常见"
+    }
+  },
+  {
+    "id": "S079",
+    "name": "气喘",
+    "type": "症状",
+    "alias": "",
+    "description": "呼吸困难，气息急促",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "S080",
+    "name": "痰多",
+    "type": "症状",
+    "alias": "",
+    "description": "咳痰量多",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰湿"
+    }
+  },
+  {
+    "id": "S081",
+    "name": "痰黄稠",
+    "type": "症状",
+    "alias": "",
+    "description": "咳痰色黄质稠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰热壅肺"
+    }
+  },
+  {
+    "id": "S082",
+    "name": "痰白清稀",
+    "type": "症状",
+    "alias": "",
+    "description": "咳痰色白质稀",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "寒痰或湿痰"
+    }
+  },
+  {
+    "id": "S083",
+    "name": "咽痛",
+    "type": "症状",
+    "alias": "",
+    "description": "咽喉疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺胃热盛"
+    }
+  },
+  {
+    "id": "S084",
+    "name": "声音嘶哑",
+    "type": "症状",
+    "alias": "",
+    "description": "发声不扬，音质嘶哑",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺阴虚或外邪束肺"
+    }
+  },
+  {
+    "id": "S085",
+    "name": "鼻塞",
+    "type": "症状",
+    "alias": "",
+    "description": "鼻腔不通畅",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "表证常见"
+    }
+  },
+  {
+    "id": "S086",
+    "name": "流涕",
+    "type": "症状",
+    "alias": "",
+    "description": "鼻流清涕或浊涕",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风寒或风热"
+    }
+  },
+  {
+    "id": "S087",
+    "name": "目赤",
+    "type": "症状",
+    "alias": "",
+    "description": "眼目红赤",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝火上炎"
+    }
+  },
+  {
+    "id": "S088",
+    "name": "视物模糊",
+    "type": "症状",
+    "alias": "",
+    "description": "视物不清",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝血不足或肝肾阴虚"
+    }
+  },
+  {
+    "id": "S089",
+    "name": "眼干涩",
+    "type": "症状",
+    "alias": "",
+    "description": "两目干涩不适",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴血亏虚"
+    }
+  },
+  {
+    "id": "S090",
+    "name": "皮肤干燥",
+    "type": "症状",
+    "alias": "",
+    "description": "皮肤缺乏润泽",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴血不足"
+    }
+  },
+  {
+    "id": "S091",
+    "name": "皮肤瘙痒",
+    "type": "症状",
+    "alias": "",
+    "description": "皮肤发痒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚生风或湿热"
+    }
+  },
+  {
+    "id": "S092",
+    "name": "面色黧黑",
+    "type": "症状",
+    "alias": "",
+    "description": "面部晦暗黧黑",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚血瘀"
+    }
+  },
+  {
+    "id": "S093",
+    "name": "面色青紫",
+    "type": "症状",
+    "alias": "",
+    "description": "面部青紫",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气滞血瘀"
+    }
+  },
+  {
+    "id": "S094",
+    "name": "指甲淡白",
+    "type": "症状",
+    "alias": "",
+    "description": "爪甲淡白无华",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚"
+    }
+  },
+  {
+    "id": "S095",
+    "name": "脱发",
+    "type": "症状",
+    "alias": "",
+    "description": "头发异常脱落",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或血虚"
+    }
+  },
+  {
+    "id": "S096",
+    "name": "白发",
+    "type": "症状",
+    "alias": "",
+    "description": "头发早白",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝肾亏虚"
+    }
+  },
+  {
+    "id": "S097",
+    "name": "牙齿松动",
+    "type": "症状",
+    "alias": "",
+    "description": "牙齿动摇不固",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚"
+    }
+  },
+  {
+    "id": "S098",
+    "name": "牙龈出血",
+    "type": "症状",
+    "alias": "",
+    "description": "齿龈出血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃热或气不摄血"
+    }
+  },
+  {
+    "id": "S099",
+    "name": "口臭",
+    "type": "症状",
+    "alias": "",
+    "description": "口中气味臭秽",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃热或食积"
+    }
+  },
+  {
+    "id": "S100",
+    "name": "口中黏腻",
+    "type": "症状",
+    "alias": "",
+    "description": "口中不爽，黏腻不清",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿浊内蕴"
+    }
+  },
+  {
+    "id": "S101",
+    "name": "反酸",
+    "type": "症状",
+    "alias": "",
+    "description": "胃中酸水上泛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝胃不和"
+    }
+  },
+  {
+    "id": "S102",
+    "name": "嗳气",
+    "type": "症状",
+    "alias": "",
+    "description": "胃气上逆出嗳声",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "食积或肝气犯胃"
+    }
+  },
+  {
+    "id": "S103",
+    "name": "呃逆",
+    "type": "症状",
+    "alias": "",
+    "description": "呃声不止",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃气上逆"
+    }
+  },
+  {
+    "id": "S104",
+    "name": "食欲亢进",
+    "type": "症状",
+    "alias": "消谷善饥",
+    "description": "食欲过于旺盛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃热"
+    }
+  },
+  {
+    "id": "S105",
+    "name": "消化不良",
+    "type": "症状",
+    "alias": "",
+    "description": "进食后脘腹胀满不舒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃虚弱或食积"
+    }
+  },
+  {
+    "id": "S106",
+    "name": "肛门灼热",
+    "type": "症状",
+    "alias": "",
+    "description": "肛门部位灼热感",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "大肠湿热"
+    }
+  },
+  {
+    "id": "S107",
+    "name": "里急后重",
+    "type": "症状",
+    "alias": "",
+    "description": "腹痛欲便，肛门重坠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痢疾"
+    }
+  },
+  {
+    "id": "S108",
+    "name": "大便不爽",
+    "type": "症状",
+    "alias": "",
+    "description": "排便不畅，有不尽感",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气滞或湿阻"
+    }
+  },
+  {
+    "id": "S109",
+    "name": "尿频",
+    "type": "症状",
+    "alias": "",
+    "description": "排尿次数增多",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或湿热"
+    }
+  },
+  {
+    "id": "S110",
+    "name": "尿急",
+    "type": "症状",
+    "alias": "",
+    "description": "排尿急迫不能自控",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "膀胱湿热"
+    }
+  },
+  {
+    "id": "S111",
+    "name": "尿痛",
+    "type": "症状",
+    "alias": "",
+    "description": "排尿时疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "下焦湿热"
+    }
+  },
+  {
+    "id": "S112",
+    "name": "尿黄",
+    "type": "症状",
+    "alias": "",
+    "description": "小便色黄",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热证"
+    }
+  },
+  {
+    "id": "S113",
+    "name": "夜尿多",
+    "type": "症状",
+    "alias": "",
+    "description": "夜间排尿次数增多",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾气不固"
+    }
+  },
+  {
+    "id": "S114",
+    "name": "遗精",
+    "type": "症状",
+    "alias": "",
+    "description": "不因性生活而精液遗泄",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚"
+    }
+  },
+  {
+    "id": "S115",
+    "name": "早泄",
+    "type": "症状",
+    "alias": "",
+    "description": "性交时过早排精",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚"
+    }
+  },
+  {
+    "id": "S116",
+    "name": "阳痿",
+    "type": "症状",
+    "alias": "",
+    "description": "阴茎痿软不举",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾阳虚或肝郁"
+    }
+  },
+  {
+    "id": "S117",
+    "name": "阴囊潮湿",
+    "type": "症状",
+    "alias": "",
+    "description": "阴囊部潮湿黏腻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热下注"
+    }
+  },
+  {
+    "id": "S118",
+    "name": "带下量多",
+    "type": "症状",
+    "alias": "",
+    "description": "白带量增多",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热或寒湿"
+    }
+  },
+  {
+    "id": "S119",
+    "name": "带下色黄",
+    "type": "症状",
+    "alias": "",
+    "description": "带下色黄质稠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热下注"
+    }
+  },
+  {
+    "id": "S120",
+    "name": "经闭",
+    "type": "症状",
+    "alias": "",
+    "description": "月经停闭不行",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚或血瘀"
+    }
+  },
+  {
+    "id": "S121",
+    "name": "崩漏",
+    "type": "症状",
+    "alias": "",
+    "description": "经血非时暴下或淋漓不止",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "冲任不固"
+    }
+  },
+  {
+    "id": "S122",
+    "name": "关节疼痛",
+    "type": "症状",
+    "alias": "",
+    "description": "肢体关节疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风寒湿痹"
+    }
+  },
+  {
+    "id": "S123",
+    "name": "关节屈伸不利",
+    "type": "症状",
+    "alias": "",
+    "description": "关节活动不便",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痹证"
+    }
+  },
+  {
+    "id": "S124",
+    "name": "肌肉酸痛",
+    "type": "症状",
+    "alias": "",
+    "description": "全身肌肉酸痛不适",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "表证或湿邪"
+    }
+  },
+  {
+    "id": "S125",
+    "name": "筋脉拘急",
+    "type": "症状",
+    "alias": "",
+    "description": "筋脉收引，屈伸不利",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "寒凝或肝血不足"
+    }
+  },
+  {
+    "id": "S126",
+    "name": "抽搐",
+    "type": "症状",
+    "alias": "",
+    "description": "四肢不自主抽动",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝风内动"
+    }
+  },
+  {
+    "id": "S127",
+    "name": "震颤",
+    "type": "症状",
+    "alias": "",
+    "description": "肢体不自主颤抖",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝风或血虚"
+    }
+  },
+  {
+    "id": "S128",
+    "name": "汗出不止",
+    "type": "症状",
+    "alias": "",
+    "description": "汗出淋漓不止",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚或亡阳"
+    }
+  },
+  {
+    "id": "S129",
+    "name": "半身不遂",
+    "type": "症状",
+    "alias": "",
+    "description": "一侧肢体不能随意运动",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "中风后遗症"
+    }
+  },
+  {
+    "id": "S130",
+    "name": "口眼歪斜",
+    "type": "症状",
+    "alias": "",
+    "description": "口角眼睑歪斜不正",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "中风或面瘫"
+    }
+  },
+  {
+    "id": "S131",
+    "name": "语言謇涩",
+    "type": "症状",
+    "alias": "",
+    "description": "言语艰涩不利",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "中风或痰浊阻窍"
+    }
+  },
+  {
+    "id": "S132",
+    "name": "神识不清",
+    "type": "症状",
+    "alias": "",
+    "description": "神志昏蒙，意识不清",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热闭心包或痰蒙心窍"
+    }
+  },
+  {
+    "id": "S133",
+    "name": "烦躁不安",
+    "type": "症状",
+    "alias": "",
+    "description": "坐卧不宁，烦闷不安",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热扰心神"
+    }
+  },
+  {
+    "id": "S134",
+    "name": "狂躁",
+    "type": "症状",
+    "alias": "",
+    "description": "精神亢奋，躁动不安",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰火扰心"
+    }
+  },
+  {
+    "id": "S135",
+    "name": "痴呆",
+    "type": "症状",
+    "alias": "",
+    "description": "智力减退，反应迟钝",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脑髓不足"
+    }
+  },
+  {
+    "id": "S136",
+    "name": "嗜睡",
+    "type": "症状",
+    "alias": "",
+    "description": "困倦多眠不易醒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰湿或阳气不足"
+    }
+  },
+  {
+    "id": "S137",
+    "name": "项强",
+    "type": "症状",
+    "alias": "",
+    "description": "颈部僵硬，转动不利",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外感风寒或落枕"
+    }
+  },
+  {
+    "id": "S138",
+    "name": "肩背痛",
+    "type": "症状",
+    "alias": "",
+    "description": "肩背部疼痛不适",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风湿或劳损"
+    }
+  },
+  {
+    "id": "S139",
+    "name": "下肢痿软",
+    "type": "症状",
+    "alias": "",
+    "description": "下肢无力，痿软难行",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝肾亏虚或湿热"
+    }
+  },
+  {
+    "id": "S140",
+    "name": "足跟痛",
+    "type": "症状",
+    "alias": "",
+    "description": "足跟部疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚"
+    }
+  },
+  {
+    "id": "S141",
+    "name": "虚劳",
+    "type": "症状",
+    "alias": "",
+    "description": "身体衰弱，诸虚不足",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血阴阳亏虚"
+    }
+  },
+  {
+    "id": "S142",
+    "name": "消瘦",
+    "type": "症状",
+    "alias": "",
+    "description": "形体明显消瘦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃虚弱或阴虚"
+    }
+  },
+  {
+    "id": "S143",
+    "name": "肥胖",
+    "type": "症状",
+    "alias": "",
+    "description": "形体肥胖",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰湿或气虚"
+    }
+  },
+  {
+    "id": "S144",
+    "name": "身重",
+    "type": "症状",
+    "alias": "",
+    "description": "身体沉重困倦",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿困"
+    }
+  },
+  {
+    "id": "S145",
+    "name": "恶风",
+    "type": "症状",
+    "alias": "",
+    "description": "见风则怕冷",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "表虚"
+    }
+  },
+  {
+    "id": "S146",
+    "name": "肢厥",
+    "type": "症状",
+    "alias": "",
+    "description": "四肢厥冷",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阳厥或寒证"
+    }
+  },
+  {
+    "id": "S147",
+    "name": "口渴喜饮",
+    "type": "症状",
+    "alias": "",
+    "description": "口干口渴，喜饮水",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热盛津伤"
+    }
+  },
+  {
+    "id": "S148",
+    "name": "口渴不欲饮",
+    "type": "症状",
+    "alias": "",
+    "description": "口干但不欲饮水",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿邪内阻"
+    }
+  },
+  {
+    "id": "S149",
+    "name": "便血",
+    "type": "症状",
+    "alias": "",
+    "description": "大便带血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肠风或湿热"
+    }
+  },
+  {
+    "id": "S150",
+    "name": "尿血",
+    "type": "症状",
+    "alias": "",
+    "description": "尿中带血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热伤血络"
+    }
+  },
+  {
+    "id": "S151",
+    "name": "齿衄",
+    "type": "症状",
+    "alias": "",
+    "description": "牙龈出血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃火上炎"
+    }
+  },
+  {
+    "id": "S152",
+    "name": "鼻衄",
+    "type": "症状",
+    "alias": "",
+    "description": "鼻中出血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺热或胃火"
+    }
+  },
+  {
+    "id": "S153",
+    "name": "肌衄",
+    "type": "症状",
+    "alias": "",
+    "description": "皮下溢血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血热或气虚"
+    }
+  },
+  {
+    "id": "S154",
+    "name": "吐血",
+    "type": "症状",
+    "alias": "",
+    "description": "吐血而出",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃热或肝火"
+    }
+  },
+  {
+    "id": "S155",
+    "name": "咯血",
+    "type": "症状",
+    "alias": "",
+    "description": "咳咯出血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺热或阴虚"
+    }
+  },
+  {
+    "id": "S156",
+    "name": "脉结代",
+    "type": "症状",
+    "alias": "",
+    "description": "脉来歇止，止有定数或不定",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血亏虚或瘀阻"
+    }
+  },
+  {
+    "id": "S157",
+    "name": "脉细数",
+    "type": "症状",
+    "alias": "",
+    "description": "脉细而数",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚火旺"
+    }
+  },
+  {
+    "id": "S158",
+    "name": "脉滑数",
+    "type": "症状",
+    "alias": "",
+    "description": "脉滑而数",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰热"
+    }
+  },
+  {
+    "id": "S159",
+    "name": "脉弦数",
+    "type": "症状",
+    "alias": "",
+    "description": "脉弦而数",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝火上炎"
+    }
+  },
+  {
+    "id": "S160",
+    "name": "脉弦滑",
+    "type": "症状",
+    "alias": "",
+    "description": "脉弦而滑",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝风夹痰"
+    }
+  },
+  {
+    "id": "S161",
+    "name": "心下痞硬",
+    "type": "症状",
+    "alias": "",
+    "description": "胃脘部堵塞满闷不适，按之硬满",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃气虚弱，邪气逆结"
+    }
+  },
+  {
+    "id": "S162",
+    "name": "胸胁苦满",
+    "type": "症状",
+    "alias": "",
+    "description": "胸胁部满闷不舒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "邪犯少阳，经气不畅"
+    }
+  },
+  {
+    "id": "S163",
+    "name": "咽中如有物阻",
+    "type": "症状",
+    "alias": "梅核气",
+    "description": "自觉咽喉部似有物梗阻，咯之不出，咽之不下",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰气郁结于咽喉"
+    }
+  },
+  {
+    "id": "S164",
+    "name": "奔豚气",
+    "type": "症状",
+    "alias": "奔豚",
+    "description": "自觉有气从少腹上冲胸咽，发作欲死，复还止",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝肾气逆"
+    }
+  },
+  {
+    "id": "S165",
+    "name": "脏躁",
+    "type": "症状",
+    "alias": "",
+    "description": "精神恍惚，悲伤欲哭，不能自主",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心血不足，心神失养"
+    }
+  },
+  {
+    "id": "S166",
+    "name": "肠鸣",
+    "type": "症状",
+    "alias": "",
+    "description": "腹中胃肠蠕动漉漉作响",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "水饮内停或肠胃不和"
+    }
+  },
+  {
+    "id": "S167",
+    "name": "疝气",
+    "type": "症状",
+    "alias": "小肠气",
+    "description": "腹股沟或阴囊部有肿物突起，或有疼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝气郁滞或寒湿下注"
+    }
+  },
+  {
+    "id": "S168",
+    "name": "小儿疳积",
+    "type": "症状",
+    "alias": "疳证",
+    "description": "形体消瘦，面黄发枯，食欲异常，肚腹胀大",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃受损，气液耗伤"
+    }
+  },
+  {
+    "id": "S169",
+    "name": "惊风",
+    "type": "症状",
+    "alias": "惊厥",
+    "description": "小儿抽搐、昏迷，或高热、神昏",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热极生风或痰热蒙窍"
+    }
+  },
+  {
+    "id": "S170",
+    "name": "脱肛",
+    "type": "症状",
+    "alias": "",
+    "description": "直肠黏膜或直肠壁脱出肛门外",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "中气下陷，固摄无权"
+    }
+  },
+  {
+    "id": "S171",
+    "name": "阴挺",
+    "type": "症状",
+    "alias": "子宫脱垂",
+    "description": "子宫位置下移，脱出阴道口外",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "中气下陷，肾虚不固"
+    }
+  },
+  {
+    "id": "S172",
+    "name": "恶露不尽",
+    "type": "症状",
+    "alias": "",
+    "description": "产后恶露逾期不止，淋漓不断",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气虚不摄或血瘀阻滞"
+    }
+  },
+  {
+    "id": "S173",
+    "name": "产后腹痛",
+    "type": "症状",
+    "alias": "",
+    "description": "产后小腹疼痛，拒按或喜按",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血瘀子宫或气血亏虚"
+    }
+  },
+  {
+    "id": "S174",
+    "name": "产后发热",
+    "type": "症状",
+    "alias": "",
+    "description": "产褥期内出现发热，或低热不退，或高热寒战",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "感染邪毒或血虚发热"
+    }
+  },
+  {
+    "id": "S175",
+    "name": "缺乳",
+    "type": "症状",
+    "alias": "产后缺乳",
+    "description": "产后乳汁甚少，或全无，不能满足婴儿需要",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血亏虚或肝郁气滞"
+    }
+  },
+  {
+    "id": "S176",
+    "name": "乳痈",
+    "type": "症状",
+    "alias": "乳腺炎",
+    "description": "乳房局部红肿热痛，或可触及硬块，甚则化脓",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝胃郁热，乳汁郁积"
+    }
+  },
+  {
+    "id": "S177",
+    "name": "瘰疬",
+    "type": "症状",
+    "alias": "淋巴结结核",
+    "description": "颈部或耳后出现大小不一的肿块，累累如串珠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺肾阴虚，痰火凝结"
+    }
+  },
+  {
+    "id": "S178",
+    "name": "癥瘕",
+    "type": "症状",
+    "alias": "腹部包块",
+    "description": "腹内结块，固定不移，或推之可动，或胀或痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气滞血瘀，痰湿凝结"
+    }
+  },
+  {
+    "id": "S179",
+    "name": "虚劳",
+    "type": "症状",
+    "alias": "",
+    "description": "五脏虚损，气血阴阳亏虚，出现一系列虚弱证候",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "禀赋不足或久病失养"
+    }
+  },
+  {
+    "id": "S180",
+    "name": "肺痿",
+    "type": "症状",
+    "alias": "",
+    "description": "咳吐浊唾涎沫，气短，或口干咽燥",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺脏虚损，津液耗伤"
+    }
+  },
+  {
+    "id": "S181",
+    "name": "肺痈",
+    "type": "症状",
+    "alias": "",
+    "description": "发热，咳嗽，胸痛，咯吐腥臭浊痰或脓血痰",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热毒瘀结于肺，肉败血腐"
+    }
+  },
+  {
+    "id": "S182",
+    "name": "肠痈",
+    "type": "症状",
+    "alias": "阑尾炎",
+    "description": "转移性右下腹痛，或右少腹固定压痛，可伴发热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热瘀滞，肠腑不通"
+    }
+  },
+  {
+    "id": "S183",
+    "name": "缠腰火丹",
+    "type": "症状",
+    "alias": "带状疱疹",
+    "description": "腰部或胁肋部出现簇集性水疱，呈带状分布，疼痛剧烈",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝经郁火，湿热毒蕴"
+    }
+  },
+  {
+    "id": "S184",
+    "name": "湿疮",
+    "type": "症状",
+    "alias": "湿疹",
+    "description": "皮肤出现红斑、丘疹、水疱、糜烂、渗液，瘙痒剧烈",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热内蕴，复感风邪"
+    }
+  },
+  {
+    "id": "S185",
+    "name": "风疹",
+    "type": "症状",
+    "alias": "荨麻疹",
+    "description": "皮肤出现大小不等的风团，色红或白，骤起骤退，瘙痒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风寒束表或风热犯表"
+    }
+  },
+  {
+    "id": "S186",
+    "name": "痄腮",
+    "type": "症状",
+    "alias": "流行性腮腺炎",
+    "description": "耳下腮部肿胀疼痛，或伴发热、咀嚼困难",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风温邪毒壅阻少阳"
+    }
+  },
+  {
+    "id": "S187",
+    "name": "时行感冒",
+    "type": "症状",
+    "alias": "流感",
+    "description": "起病急，高热，乏力，头痛，周身酸痛，伴有呼吸道症状",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "疫毒之邪侵犯肺卫"
+    }
+  },
+  {
+    "id": "S188",
+    "name": "疟疾",
+    "type": "症状",
+    "alias": "",
+    "description": "寒战、壮热、出汗，呈周期性发作",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "疟邪伏于半表半里"
+    }
+  },
+  {
+    "id": "S189",
+    "name": "痢疾",
+    "type": "症状",
+    "alias": "",
+    "description": "腹痛，里急后重，下痢赤白脓血",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热疫毒结于肠腑"
+    }
+  },
+  {
+    "id": "S190",
+    "name": "黄疸",
+    "type": "症状",
+    "alias": "",
+    "description": "目黄、身黄、小便黄，色泽或鲜明或晦暗",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热蕴结或寒湿困脾"
+    }
+  },
+  {
+    "id": "S191",
+    "name": "臌胀",
+    "type": "症状",
+    "alias": "肝硬化腹水",
+    "description": "腹部胀大如鼓，皮色苍黄，脉络显露",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝脾肾受损，气滞血瘀水停"
+    }
+  },
+  {
+    "id": "S192",
+    "name": "水肿",
+    "type": "症状",
+    "alias": "",
+    "description": "眼睑、头面、四肢或全身浮肿，按之凹陷不起",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺脾肾功能失调，水湿泛溢"
+    }
+  },
+  {
+    "id": "S193",
+    "name": "淋证",
+    "type": "症状",
+    "alias": "",
+    "description": "小便频数短涩，滴沥刺痛，欲出未尽，或小腹拘急",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热蕴结下焦，膀胱气化不利"
+    }
+  },
+  {
+    "id": "S194",
+    "name": "癃闭",
+    "type": "症状",
+    "alias": "尿潴留",
+    "description": "小便点滴而出，或小便闭塞不通",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "膀胱气化不利，或肾阳虚衰"
+    }
+  },
+  {
+    "id": "S195",
+    "name": "遗尿",
+    "type": "症状",
+    "alias": "尿床",
+    "description": "睡眠中不自主排尿，或醒后方觉",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾气不固，膀胱失约"
+    }
+  },
+  {
+    "id": "S196",
+    "name": "消渴",
+    "type": "症状",
+    "alias": "糖尿病",
+    "description": "多饮、多食、多尿、形体消瘦，或尿有甜味",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚燥热，脏腑受损"
+    }
+  },
+  {
+    "id": "S197",
+    "name": "痹证",
+    "type": "症状",
+    "alias": "关节痹痛",
+    "description": "肢体关节肌肉疼痛、酸楚、麻木、重着，或肿胀灼热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风寒湿热之邪侵袭经络"
+    }
+  },
+  {
+    "id": "S198",
+    "name": "痿证",
+    "type": "症状",
+    "alias": "",
+    "description": "肢体软弱无力，肌肉萎缩，弛缓不用",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺热叶焦或肝肾亏虚"
+    }
+  },
+  {
+    "id": "S199",
+    "name": "痉证",
+    "type": "症状",
+    "alias": "",
+    "description": "项背强直，四肢抽搐，甚则角弓反张",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热盛动风或阴血亏虚"
+    }
+  },
+  {
+    "id": "S200",
+    "name": "厥证",
+    "type": "症状",
+    "alias": "",
+    "description": "突然昏倒，不省人事，或伴四肢厥冷，但移时自醒",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气机逆乱，升降乖戾"
+    }
+  },
+  {
+    "id": "S201",
+    "name": "不寐",
+    "type": "症状",
+    "alias": "失眠",
+    "description": "入睡困难，或睡后易醒，醒后难以再睡，甚至彻夜不眠",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心神失养或邪扰心神"
+    }
+  },
+  {
+    "id": "S202",
+    "name": "虚烦",
+    "type": "症状",
+    "alias": "",
+    "description": "心胸烦热，或伴失眠、口干、心悸",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚火旺或津亏血少"
+    }
+  },
+  {
+    "id": "S203",
+    "name": "神昏",
+    "type": "症状",
+    "alias": "昏迷",
+    "description": "神识丧失，对环境刺激无反应，或呼之不应",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热闭心包或痰蒙心窍"
+    }
+  },
+  {
+    "id": "S204",
+    "name": "谵语",
+    "type": "症状",
+    "alias": "",
+    "description": "神志不清，胡言乱语，妄见妄闻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "热扰心神或痰火内扰"
+    }
+  },
+  {
+    "id": "S205",
+    "name": "癫狂",
+    "type": "症状",
+    "alias": "",
+    "description": "精神抑郁，沉默痴呆（癫），或精神亢奋，躁狂不宁（狂）",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "痰气郁结或痰火扰心"
+    }
+  },
+  {
+    "id": "S206",
+    "name": "痫证",
+    "type": "症状",
+    "alias": "癫痫",
+    "description": "突然仆倒，不省人事，口吐涎沫，两目上视，肢体抽搐，发作后如常",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风痰闭阻，或痰火内盛"
+    }
+  },
+  {
+    "id": "S207",
+    "name": "头痛",
+    "type": "症状",
+    "alias": "头风",
+    "description": "头部疼痛，或胀痛，或刺痛，或昏痛，部位不定",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外感或内伤所致清阳不升"
+    }
+  },
+  {
+    "id": "S208",
+    "name": "眩晕",
+    "type": "症状",
+    "alias": "头晕",
+    "description": "头晕目眩，视物旋转，或感觉自身或环境旋转",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝阳上亢或气血亏虚"
+    }
+  },
+  {
+    "id": "S209",
+    "name": "中风",
+    "type": "症状",
+    "alias": "脑卒中",
+    "description": "猝然昏仆，半身不遂，口眼歪斜，言语不利",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血逆乱，脑脉痹阻或血溢于脑"
+    }
+  },
+  {
+    "id": "S210",
+    "name": "胃痛",
+    "type": "症状",
+    "alias": "胃脘痛",
+    "description": "胃脘部疼痛，或胀痛，或刺痛，或隐痛，或灼痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "寒邪客胃或肝气犯胃"
+    }
+  },
+  {
+    "id": "S211",
+    "name": "腹痛",
+    "type": "症状",
+    "alias": "",
+    "description": "腹部疼痛，或寒痛，或热痛，或气滞痛，或血瘀痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "六腑不通或气血失和"
+    }
+  },
+  {
+    "id": "S212",
+    "name": "泄泻",
+    "type": "症状",
+    "alias": "腹泻",
+    "description": "排便次数增多，粪质稀薄，或如水样，或夹不消化食物",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾虚湿盛或肝木乘脾"
+    }
+  },
+  {
+    "id": "S213",
+    "name": "便秘",
+    "type": "症状",
+    "alias": "大便难",
+    "description": "大便干燥坚硬，排便艰难，或排便间隔时间延长",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肠燥津亏或气虚无力"
+    }
+  },
+  {
+    "id": "S214",
+    "name": "咳嗽",
+    "type": "症状",
+    "alias": "",
+    "description": "肺气上逆，发出咳声，或伴咳痰",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外感六淫或内伤脏腑"
+    }
+  },
+  {
+    "id": "S215",
+    "name": "喘证",
+    "type": "症状",
+    "alias": "气喘",
+    "description": "呼吸急促，气息喘促，或张口抬肩，不能平卧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺肾亏虚或痰浊壅肺"
+    }
+  },
+  {
+    "id": "S216",
+    "name": "哮病",
+    "type": "症状",
+    "alias": "哮喘",
+    "description": "喉中哮鸣有声，呼吸急促困难，甚则喘咳不能平卧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "宿痰伏肺，遇诱因触发"
+    }
+  },
+  {
+    "id": "S217",
+    "name": "肺胀",
+    "type": "症状",
+    "alias": "慢阻肺",
+    "description": "胸部膨满，喘息气促，咳嗽，痰多，日久不愈",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺脾肾虚，痰瘀阻肺"
+    }
+  },
+  {
+    "id": "S218",
+    "name": "心悸",
+    "type": "症状",
+    "alias": "怔忡",
+    "description": "自觉心中悸动不安，或惊惕不宁，或善惊易恐",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心血不足或痰火扰心"
+    }
+  },
+  {
+    "id": "S219",
+    "name": "胸痹",
+    "type": "症状",
+    "alias": "冠心病",
+    "description": "胸部闷痛，甚则胸痛彻背，喘息不得卧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心脉痹阻或阳气虚衰"
+    }
+  },
+  {
+    "id": "S220",
+    "name": "心衰",
+    "type": "症状",
+    "alias": "心功能不全",
+    "description": "心悸、气喘、水肿、乏力，动则加重",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心肾阳虚，水湿泛滥"
+    }
+  },
+  {
+    "id": "S221",
+    "name": "失眠",
+    "type": "症状",
+    "alias": "不寐",
+    "description": "入睡困难，或睡后易醒，或彻夜难眠，或多梦纷扰",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心神失养或邪扰心神"
+    }
+  },
+  {
+    "id": "S222",
+    "name": "健忘",
+    "type": "症状",
+    "alias": "",
+    "description": "记忆力减退，遇事善忘，或思维迟缓",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心脾两虚或肾精不足"
+    }
+  },
+  {
+    "id": "S223",
+    "name": "郁证",
+    "type": "症状",
+    "alias": "抑郁症",
+    "description": "心情抑郁，情绪不宁，或善怒易哭，或咽中如有物阻",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝气郁结，气机不畅"
+    }
+  },
+  {
+    "id": "S224",
+    "name": "血证",
+    "type": "症状",
+    "alias": "",
+    "description": "血液溢出脉外，如鼻衄、齿衄、咳血、吐血、便血、尿血等",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "火热迫血妄行或气虚不摄"
+    }
+  },
+  {
+    "id": "S225",
+    "name": "汗证",
+    "type": "症状",
+    "alias": "",
+    "description": "汗出异常，如自汗、盗汗、大汗、黄汗等",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴阳失调，腠理不固"
+    }
+  },
+  {
+    "id": "S226",
+    "name": "消渴",
+    "type": "症状",
+    "alias": "糖尿病",
+    "description": "多饮、多食、多尿、消瘦，或尿有甜味",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "阴虚燥热，脏腑受损"
+    }
+  },
+  {
+    "id": "S227",
+    "name": "内伤发热",
+    "type": "症状",
+    "alias": "",
+    "description": "非外感因素引起的发热，或低热，或潮热，或五心烦热",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血阴阳亏虚，脏腑功能失调"
+    }
+  },
+  {
+    "id": "S228",
+    "name": "虚劳",
+    "type": "症状",
+    "alias": "",
+    "description": "多种虚损性疾病的总称，表现为气、血、阴、阳亏虚",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "禀赋不足或久病失养"
+    }
+  },
+  {
+    "id": "S229",
+    "name": "积聚",
+    "type": "症状",
+    "alias": "",
+    "description": "腹内结块，或胀或痛，固定不移（积）或聚散无常（聚）",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝脾失调，气滞血瘀"
+    }
+  },
+  {
+    "id": "S230",
+    "name": "鼓胀",
+    "type": "症状",
+    "alias": "肝硬化腹水",
+    "description": "腹部胀大如鼓，皮色苍黄，或伴腹水、水肿",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝脾肾受损，气滞、血瘀、水停"
+    }
+  },
+  {
+    "id": "S231",
+    "name": "头痛",
+    "type": "症状",
+    "alias": "",
+    "description": "头部疼痛，部位、性质、程度各异",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外感或内伤因素导致头部经络不通"
+    }
+  },
+  {
+    "id": "S232",
+    "name": "眩晕",
+    "type": "症状",
+    "alias": "",
+    "description": "头晕眼花，或视物旋转，如坐车船",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝阳上亢或气血亏虚"
+    }
+  },
+  {
+    "id": "S233",
+    "name": "中风后遗症",
+    "type": "症状",
+    "alias": "",
+    "description": "中风后遗留的半身不遂、口眼歪斜、言语不利等",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "正气亏虚，瘀血阻络"
+    }
+  },
+  {
+    "id": "S234",
+    "name": "颤证",
+    "type": "症状",
+    "alias": "帕金森病",
+    "description": "头部或肢体摇动颤抖，不能自制",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肝风内动或筋脉失养"
+    }
+  },
+  {
+    "id": "S235",
+    "name": "痿证",
+    "type": "症状",
+    "alias": "",
+    "description": "肢体痿软无力，肌肉萎缩，甚则不能运动",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺热叶焦或肝肾亏虚"
+    }
+  },
+  {
+    "id": "S236",
+    "name": "痹证",
+    "type": "症状",
+    "alias": "",
+    "description": "肢体关节、筋骨、肌肉疼痛、酸楚、麻木、重着",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风寒湿热之邪侵袭经络"
+    }
+  },
+  {
+    "id": "S237",
+    "name": "腰痛",
+    "type": "症状",
+    "alias": "",
+    "description": "腰部一侧或两侧疼痛，或酸胀，或冷痛，或刺痛",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或外邪侵袭"
+    }
+  },
+  {
+    "id": "S238",
+    "name": "水肿",
+    "type": "症状",
+    "alias": "",
+    "description": "水液潴留，泛溢肌肤，引起头面、眼睑、四肢或全身浮肿",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肺、脾、肾三脏功能失调"
+    }
+  },
+  {
+    "id": "S239",
+    "name": "淋证",
+    "type": "症状",
+    "alias": "",
+    "description": "小便频数、涩痛、淋漓不畅，或小腹拘急",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热蕴结下焦，膀胱气化不利"
+    }
+  },
+  {
+    "id": "S240",
+    "name": "癃闭",
+    "type": "症状",
+    "alias": "",
+    "description": "小便量少，点滴而出，或小便闭塞不通",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾阳虚衰或膀胱气化不利"
+    }
+  },
+  {
+    "id": "S241",
+    "name": "遗精",
+    "type": "症状",
+    "alias": "",
+    "description": "不因性生活而精液频繁遗泄，或梦遗，或滑精",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾气不固或相火妄动"
+    }
+  },
+  {
+    "id": "S242",
+    "name": "阳痿",
+    "type": "症状",
+    "alias": "",
+    "description": "阴茎不能勃起，或勃起不坚，或坚而不久，不能完成性交",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾阳不足或肝气郁结"
+    }
+  },
+  {
+    "id": "S243",
+    "name": "闭经",
+    "type": "症状",
+    "alias": "",
+    "description": "女子年逾16岁，月经尚未来潮，或已行经又中断6个月以上",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或血瘀"
+    }
+  },
+  {
+    "id": "S244",
+    "name": "痛经",
+    "type": "症状",
+    "alias": "",
+    "description": "妇女正值经期或行经前后，出现周期性小腹疼痛，或痛引腰骶",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "寒凝血瘀或气滞血瘀"
+    }
+  },
+  {
+    "id": "S245",
+    "name": "月经不调",
+    "type": "症状",
+    "alias": "",
+    "description": "月经周期、经期、经量发生异常改变",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脏腑功能失调，气血不和"
+    }
+  },
+  {
+    "id": "S246",
+    "name": "带下病",
+    "type": "症状",
+    "alias": "",
+    "description": "带下量、色、质、气味异常，或伴全身症状",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾虚湿盛或湿热下注"
+    }
+  },
+  {
+    "id": "S247",
+    "name": "妊娠恶阻",
+    "type": "症状",
+    "alias": "妊娠呕吐",
+    "description": "妊娠早期出现恶心呕吐，甚则食入即吐",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "胃气上逆，冲气上逆"
+    }
+  },
+  {
+    "id": "S248",
+    "name": "胎动不安",
+    "type": "症状",
+    "alias": "先兆流产",
+    "description": "妊娠期腰酸腹痛，或阴道少量流血，胎动下坠感",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "肾虚或气血不足"
+    }
+  },
+  {
+    "id": "S249",
+    "name": "产后身痛",
+    "type": "症状",
+    "alias": "产后关节痛",
+    "description": "产褥期间出现肢体关节疼痛、酸楚、麻木",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "血虚或风寒湿邪侵袭"
+    }
+  },
+  {
+    "id": "S250",
+    "name": "缺乳",
+    "type": "症状",
+    "alias": "乳汁不足",
+    "description": "产后乳汁甚少，或全无，不能满足婴儿哺乳需要",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "气血亏虚或肝郁气滞"
+    }
+  },
+  {
+    "id": "S251",
+    "name": "小儿泄泻",
+    "type": "症状",
+    "alias": "小儿腹泻",
+    "description": "小儿大便次数增多，粪质稀薄，或如水样",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "感受外邪或内伤饮食"
+    }
+  },
+  {
+    "id": "S252",
+    "name": "小儿肺炎喘嗽",
+    "type": "症状",
+    "alias": "小儿肺炎",
+    "description": "小儿发热、咳嗽、气喘、鼻翼煽动",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外邪犯肺，肺气郁闭"
+    }
+  },
+  {
+    "id": "S253",
+    "name": "麻疹",
+    "type": "症状",
+    "alias": "",
+    "description": "发热、咳嗽、流泪、流涕，口腔出现麻疹黏膜斑，皮肤出现红色斑丘疹",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "麻毒时邪犯肺"
+    }
+  },
+  {
+    "id": "S254",
+    "name": "痄腮",
+    "type": "症状",
+    "alias": "",
+    "description": "耳下腮部肿胀疼痛，咀嚼时加剧",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "风热毒邪壅阻少阳"
+    }
+  },
+  {
+    "id": "S255",
+    "name": "顿咳",
+    "type": "症状",
+    "alias": "百日咳",
+    "description": "阵发性痉挛性咳嗽，咳后有鸡鸣样回声",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "外感时邪，痰热阻肺"
+    }
+  },
+  {
+    "id": "S256",
+    "name": "疳证",
+    "type": "症状",
+    "alias": "小儿营养不良",
+    "description": "小儿形体消瘦，面黄发枯，食欲异常，精神萎靡",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾胃受损，运化失常"
+    }
+  },
+  {
+    "id": "S257",
+    "name": "夜啼",
+    "type": "症状",
+    "alias": "",
+    "description": "小儿夜间啼哭不安，或定时啼哭，或彻夜啼哭",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "脾寒或心热"
+    }
+  },
+  {
+    "id": "S258",
+    "name": "胎黄",
+    "type": "症状",
+    "alias": "新生儿黄疸",
+    "description": "新生儿时期出现皮肤、面目发黄",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "湿热蕴蒸或寒湿困脾"
+    }
+  },
+  {
+    "id": "S259",
+    "name": "鹅口疮",
+    "type": "症状",
+    "alias": "新生儿口腔念珠菌感染",
+    "description": "口腔黏膜表面覆盖白色乳凝块样小点或小片状物",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "心脾积热上熏"
+    }
+  },
+  {
+    "id": "S260",
+    "name": "脐风",
+    "type": "症状",
+    "alias": "新生儿破伤风",
+    "description": "新生儿出现口噤、痉挛、抽搐，呈苦笑面容",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "断脐不慎，风邪侵入"
+    }
+  }
+]

@@ -1,0 +1,3302 @@
+[
+  {
+    "id": "J001",
+    "name": "阴虚火旺",
+    "type": "禁忌",
+    "alias": "",
+    "description": "阴液亏虚、虚火亢盛者忌用温燥升阳之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": "人参、肉桂等禁忌"
+    }
+  },
+  {
+    "id": "J002",
+    "name": "实热证",
+    "type": "禁忌",
+    "alias": "",
+    "description": "体内实热炽盛者忌用温补剂",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "温补剂通用禁忌"
+    }
+  },
+  {
+    "id": "J003",
+    "name": "脾胃虚寒",
+    "type": "禁忌",
+    "alias": "",
+    "description": "脾胃阳气不足者忌用苦寒之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄连等苦寒药禁忌"
+    }
+  },
+  {
+    "id": "J004",
+    "name": "湿阻中满",
+    "type": "禁忌",
+    "alias": "",
+    "description": "湿邪阻滞中焦者忌用滋腻之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": "熟地、阿胶等禁忌"
+    }
+  },
+  {
+    "id": "J005",
+    "name": "外感表证未解",
+    "type": "禁忌",
+    "alias": "",
+    "description": "表邪未解者不宜过早使用补益剂",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "补益剂通用禁忌"
+    }
+  },
+  {
+    "id": "J006",
+    "name": "孕妇禁用",
+    "type": "禁忌",
+    "alias": "",
+    "description": "妊娠期间禁用破血逐瘀峻下药物",
+    "properties": {
+      "source": "《中药学》",
+      "note": "桃仁、红花、大黄等"
+    }
+  },
+  {
+    "id": "J007",
+    "name": "孕妇慎用",
+    "type": "禁忌",
+    "alias": "",
+    "description": "妊娠期间慎用活血行气药物",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎、当归等"
+    }
+  },
+  {
+    "id": "J008",
+    "name": "月经过多",
+    "type": "禁忌",
+    "alias": "",
+    "description": "月经量多者慎用活血化瘀药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J009",
+    "name": "出血倾向",
+    "type": "禁忌",
+    "alias": "",
+    "description": "有出血倾向者禁用破血逐瘀药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J010",
+    "name": "高血压",
+    "type": "禁忌",
+    "alias": "",
+    "description": "血压偏高者慎用升阳温补药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄芪、麻黄等"
+    }
+  },
+  {
+    "id": "J011",
+    "name": "肝肾功能不全",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肝肾功能减退者慎用有毒中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "附子、朱砂等"
+    }
+  },
+  {
+    "id": "J012",
+    "name": "体虚多汗",
+    "type": "禁忌",
+    "alias": "",
+    "description": "体虚多汗者慎用发汗解表药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "麻黄等"
+    }
+  },
+  {
+    "id": "J013",
+    "name": "阴虚阳亢",
+    "type": "禁忌",
+    "alias": "",
+    "description": "阴不制阳者忌用温阳药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "附子、肉桂等"
+    }
+  },
+  {
+    "id": "J014",
+    "name": "气虚下陷",
+    "type": "禁忌",
+    "alias": "",
+    "description": "气虚下陷者慎用降气泻下药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J015",
+    "name": "津液不足",
+    "type": "禁忌",
+    "alias": "",
+    "description": "津液亏虚者慎用利水渗湿药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J016",
+    "name": "表虚自汗",
+    "type": "禁忌",
+    "alias": "",
+    "description": "卫气不固自汗者慎用发散药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "桂枝等"
+    }
+  },
+  {
+    "id": "J017",
+    "name": "内有湿热",
+    "type": "禁忌",
+    "alias": "",
+    "description": "湿热内蕴者忌用温补滋腻药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J018",
+    "name": "痰热内盛",
+    "type": "禁忌",
+    "alias": "",
+    "description": "痰热壅盛者忌用温化寒痰药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J019",
+    "name": "宿食停滞",
+    "type": "禁忌",
+    "alias": "",
+    "description": "食积未消者不宜过早使用补益药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J020",
+    "name": "过敏体质",
+    "type": "禁忌",
+    "alias": "",
+    "description": "对特定药物过敏者禁用",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J021",
+    "name": "不宜与藜芦同用",
+    "type": "禁忌",
+    "alias": "",
+    "description": "人参、党参、白芍等反藜芦",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J022",
+    "name": "不宜与乌头同用",
+    "type": "禁忌",
+    "alias": "",
+    "description": "半夏、瓜蒌、贝母等反乌头",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J023",
+    "name": "不宜与甘草同用",
+    "type": "禁忌",
+    "alias": "",
+    "description": "甘遂、大戟、海藻等反甘草",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J024",
+    "name": "阴虚咳嗽",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肺阴不足咳嗽者慎用辛温燥烈药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J025",
+    "name": "中满拒补",
+    "type": "禁忌",
+    "alias": "",
+    "description": "脘腹胀满属实者忌用补气药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J026",
+    "name": "阳虚水泛",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肾阳虚水湿泛滥者慎用滋阴药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J027",
+    "name": "热病后期",
+    "type": "禁忌",
+    "alias": "",
+    "description": "热病初愈余热未清者慎用温补药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J028",
+    "name": "气滞血瘀实证",
+    "type": "禁忌",
+    "alias": "",
+    "description": "气滞血瘀实证忌用收敛固涩药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J029",
+    "name": "疮疡初起",
+    "type": "禁忌",
+    "alias": "",
+    "description": "疮疡初起毒邪未清忌用温补托毒药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J030",
+    "name": "久病体虚",
+    "type": "禁忌",
+    "alias": "",
+    "description": "久病体虚者用药宜轻、补益宜缓",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J031",
+    "name": "小儿慎用峻下药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "小儿脏腑娇嫩，不耐攻伐，慎用大黄、芒硝、甘遂等峻下药",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J032",
+    "name": "老人慎用破血消癥药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "老年气血亏虚，慎用三棱、莪术、水蛭等破血消癥之品",
+    "properties": {
+      "source": "《中医老年病学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J033",
+    "name": "哺乳期慎用金石类药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "哺乳期妇女慎用朱砂、磁石、龙骨等重镇安神药，恐影响婴幼儿",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J034",
+    "name": "暑热证忌用温燥药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "暑热亢盛之时忌用附子、干姜、肉桂等温燥之品",
+    "properties": {
+      "source": "《温病学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J035",
+    "name": "寒凝证忌用寒凉药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "寒邪内盛或寒凝血脉者忌用黄连、黄芩、石膏等寒凉药",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J036",
+    "name": "血虚证慎用破气药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "血虚者慎用枳实、厚朴、青皮等破气耗气之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J037",
+    "name": "气阴两虚慎用淡渗利湿药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "气阴两虚者慎用茯苓、泽泻、猪苓等利水渗湿药，恐更伤津液",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J038",
+    "name": "肝阳上亢忌用升散药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肝阳上亢头痛眩晕者忌用麻黄、柴胡、升麻等升散之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J039",
+    "name": "胃热炽盛忌用温胃药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "胃火炽盛牙痛口臭者忌用干姜、吴茱萸、高良姜等温胃药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J040",
+    "name": "肠燥便秘慎用收涩药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肠燥津亏便秘者慎用五倍子、诃子、肉豆蔻等收涩止泻药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J041",
+    "name": "膀胱湿热忌用温肾助阳药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "膀胱湿热尿频涩痛者忌用鹿茸、巴戟天、仙茅等温肾药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J042",
+    "name": "心火亢盛忌用温心阳药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "心火亢盛心烦失眠者忌用肉桂、附子等温心阳之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J043",
+    "name": "肺热壅盛忌用温肺药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肺热咳嗽痰黄者忌用干姜、细辛、白芥子等温肺化痰药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J044",
+    "name": "肝郁气滞慎用滋补药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肝郁气滞胁胀者慎用熟地、阿胶、黄精等滋腻碍气之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J045",
+    "name": "脾虚湿盛慎用滋腻养阴药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "脾虚湿盛纳呆便溏者慎用熟地、麦冬、玉竹等滋腻养阴药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J046",
+    "name": "肾虚不固慎用利尿药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "肾气不固遗尿遗精者慎用泽泻、车前子、木通等利尿通淋药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J047",
+    "name": "血热妄行忌用活血药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "血热妄行吐衄者忌用川芎、丹参、红花等活血动血之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J048",
+    "name": "阴疽流注慎用寒凉解毒药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "阴疽漫肿无头者慎用金银花、连翘、板蓝根等寒凉解毒药",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J049",
+    "name": "麻疹初起忌用收涩药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "麻疹初起透发不畅者忌用五味子、乌梅、诃子等收涩药",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J050",
+    "name": "疟疾发作期慎用补益药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "疟疾寒热发作期间慎用黄芪、人参、当归等补益药，恐闭门留寇",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J051",
+    "name": "痢疾初起忌用涩肠止泻药",
+    "type": "禁忌",
+    "alias": "",
+    "description": "痢疾初起湿热未清者忌用罂粟壳、诃子、肉豆蔻等涩肠止泻药",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J052",
+    "name": "不宜与硫黄同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "朴硝畏硫黄，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J053",
+    "name": "不宜与朴硝同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "硫黄畏朴硝，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J054",
+    "name": "不宜与水银同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "砒霜畏水银，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J055",
+    "name": "不宜与砒霜同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "水银畏砒霜，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J056",
+    "name": "不宜与巴豆同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "牵牛子畏巴豆，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J057",
+    "name": "不宜与牵牛子同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "巴豆畏牵牛子，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J058",
+    "name": "不宜与丁香同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "郁金畏丁香，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J059",
+    "name": "不宜与郁金同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "丁香畏郁金，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J060",
+    "name": "不宜与牙硝同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "京三棱畏牙硝，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J061",
+    "name": "不宜与京三棱同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "牙硝畏京三棱，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J062",
+    "name": "不宜与肉桂同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "赤石脂畏肉桂，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J063",
+    "name": "不宜与赤石脂同用",
+    "type": "禁忌",
+    "alias": "十九畏",
+    "description": "肉桂畏赤石脂，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十九畏"
+    }
+  },
+  {
+    "id": "J064",
+    "name": "服人参忌食萝卜",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用人参期间不宜食萝卜，恐破气消导，降低补气之效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J065",
+    "name": "服地黄忌食葱蒜",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用生地黄、熟地黄期间不宜食葱、蒜、萝卜，影响药效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J066",
+    "name": "服土茯苓忌饮茶",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用土茯苓期间不宜饮茶，恐降低解毒功效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J067",
+    "name": "服薄荷忌食蟹",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用薄荷期间不宜食蟹，恐影响疏风散热之效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J068",
+    "name": "服茯苓忌食醋",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用茯苓期间不宜食醋及酸性食物，恐影响利水渗湿之功",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J069",
+    "name": "服甘草忌食猪肉",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用甘草期间不宜多食猪肉，恐助湿生痰",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J070",
+    "name": "服麦冬忌食鲫鱼",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用麦冬期间不宜食鲫鱼，恐影响养阴润肺之效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J071",
+    "name": "服荆芥忌食鱼蟹",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用荆芥期间不宜食鱼、蟹，恐引发过敏或影响解表功效",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J072",
+    "name": "春季慎用峻下药",
+    "type": "禁忌",
+    "alias": "季节禁忌",
+    "description": "春主升发，慎用大黄、甘遂等峻下攻伐之品，恐伤阳气",
+    "properties": {
+      "source": "《黄帝内经》",
+      "note": "四时用药禁忌"
+    }
+  },
+  {
+    "id": "J073",
+    "name": "夏季慎用温补药",
+    "type": "禁忌",
+    "alias": "季节禁忌",
+    "description": "夏暑炎热，慎用附子、肉桂、鹿茸等温补燥烈之品",
+    "properties": {
+      "source": "《黄帝内经》",
+      "note": "四时用药禁忌"
+    }
+  },
+  {
+    "id": "J074",
+    "name": "秋季慎用发汗药",
+    "type": "禁忌",
+    "alias": "季节禁忌",
+    "description": "秋燥主敛，慎用麻黄、桂枝等辛温发汗药，恐耗伤津液",
+    "properties": {
+      "source": "《黄帝内经》",
+      "note": "四时用药禁忌"
+    }
+  },
+  {
+    "id": "J075",
+    "name": "冬季慎用寒凉药",
+    "type": "禁忌",
+    "alias": "季节禁忌",
+    "description": "冬寒闭藏，慎用石膏、知母、黄芩等大寒之品，恐损阳气",
+    "properties": {
+      "source": "《黄帝内经》",
+      "note": "四时用药禁忌"
+    }
+  },
+  {
+    "id": "J076",
+    "name": "晨起慎用安神药",
+    "type": "禁忌",
+    "alias": "时辰禁忌",
+    "description": "晨起阳气升发，慎用酸枣仁、柏子仁、远志等安神药，恐困顿日间",
+    "properties": {
+      "source": "《中药学》",
+      "note": "择时服药"
+    }
+  },
+  {
+    "id": "J077",
+    "name": "夜间慎用利尿药",
+    "type": "禁忌",
+    "alias": "时辰禁忌",
+    "description": "夜间慎用茯苓、车前子等利尿药，恐影响睡眠",
+    "properties": {
+      "source": "《中药学》",
+      "note": "择时服药"
+    }
+  },
+  {
+    "id": "J078",
+    "name": "空腹慎用苦寒药",
+    "type": "禁忌",
+    "alias": "服药方法禁忌",
+    "description": "空腹时慎用黄连、龙胆草等苦寒药，恐伤胃气",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J079",
+    "name": "饭后慎用峻下逐水药",
+    "type": "禁忌",
+    "alias": "服药方法禁忌",
+    "description": "饭后不宜即用甘遂、大戟等峻下逐水药，恐刺激胃肠",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J080",
+    "name": "不宜与酒同服的药物",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "服用头孢类、硝咪唑类等西药期间及停药一周内禁饮酒，恐致双硫仑反应",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J081",
+    "name": "不宜与阿司匹林同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含有白芍、当归等活血成分的中药不宜与阿司匹林同用，恐增加出血风险",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J082",
+    "name": "不宜与华法林同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "丹参、三七、当归等活血药不宜与华法林同用，恐增强抗凝作用导致出血",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J083",
+    "name": "不宜与地高辛同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含强心苷类中药（如蟾酥、罗布麻）不宜与地高辛同用，恐增加毒性",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J084",
+    "name": "不宜与降糖药同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "人参、鹿茸等升糖中药不宜与降糖西药同用，恐影响血糖控制",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J085",
+    "name": "不宜与利尿剂同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含甘草的中药不宜与噻嗪类利尿剂同用，恐致低钾血症",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J086",
+    "name": "糖尿病慎用含糖中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "糖尿病患者慎用蜜丸、糖浆、含糖颗粒剂等剂型的中成药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J087",
+    "name": "青光眼慎用抗胆碱类中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "青光眼患者慎用含莨菪碱类成分的中药（如洋金花、天仙子）",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J088",
+    "name": "前列腺肥大慎用利尿药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "前列腺肥大患者慎用利尿药，恐加重排尿困难",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J089",
+    "name": "癫痫慎用马钱子",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "癫痫患者禁用或慎用马钱子及其制剂，恐诱发抽搐",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J090",
+    "name": "甲状腺功能亢进慎用含碘中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "甲亢患者慎用海藻、昆布等含碘丰富的中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J091",
+    "name": "心衰患者慎用含乌头碱中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "心功能不全者慎用川乌、草乌、附子等含乌头碱的中药，恐致心律失常",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J092",
+    "name": "低血压慎用降压类中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "低血压患者慎用钩藤、决明子、罗布麻等有降压作用的中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J093",
+    "name": "消化道溃疡慎用刺激性中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "胃十二指肠溃疡患者慎用乳香、没药、大黄等刺激性中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J094",
+    "name": "肾功能不全慎用含马兜铃酸中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "肾功能不全者慎用关木通、广防己、青木香等含马兜铃酸的中药",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J095",
+    "name": "肝功能不全慎用吡咯里西啶类中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "肝功能不全者慎用千里光、款冬花、紫草等含吡咯里西啶生物碱的中药",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J096",
+    "name": "痛风慎用嘌呤类中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "痛风患者慎用动物内脏类药材（如鸡内金、桑螵蛸）及豆蔻等嘌呤较高者",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J097",
+    "name": "精神分裂症慎用温阳兴奋药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "精神分裂症躁狂者慎用附子、肉桂、麻黄等温阳兴奋之品",
+    "properties": {
+      "source": "《中医神志病学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J098",
+    "name": "高脂血症慎用滋腻药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "高脂血症患者慎用熟地、阿胶、黄精等滋腻碍胃之品",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J099",
+    "name": "病毒性肝炎活动期忌用温补药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "病毒性肝炎活动期转氨酶升高者忌用黄芪、人参、鹿茸等温补药",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J100",
+    "name": "自身免疫病慎用免疫增强类中药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "系统性红斑狼疮、类风湿关节炎等自身免疫病慎用黄芪、人参、灵芝等免疫增强药",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J101",
+    "name": "麻黄禁用于表虚自汗",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "表虚自汗、卫气不固者禁用麻黄，恐发汗太过耗伤卫阳",
+    "properties": {
+      "source": "《中药学》",
+      "note": "麻黄"
+    }
+  },
+  {
+    "id": "J102",
+    "name": "麻黄禁用于虚喘",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "肺肾阴虚或肾不纳气之虚喘者禁用麻黄",
+    "properties": {
+      "source": "《中药学》",
+      "note": "麻黄"
+    }
+  },
+  {
+    "id": "J103",
+    "name": "桂枝禁用于温热病",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "风温、温热等温病初起者禁用桂枝，恐助热伤阴",
+    "properties": {
+      "source": "《中药学》",
+      "note": "桂枝"
+    }
+  },
+  {
+    "id": "J104",
+    "name": "桂枝禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺、咽干口燥者禁用桂枝，恐更助虚火",
+    "properties": {
+      "source": "《中药学》",
+      "note": "桂枝"
+    }
+  },
+  {
+    "id": "J105",
+    "name": "大黄禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用大黄，恐峻下逐瘀动胎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "大黄"
+    }
+  },
+  {
+    "id": "J106",
+    "name": "大黄禁用于脾虚便溏",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚运化无力、大便溏薄者禁用大黄，恐苦寒败胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "大黄"
+    }
+  },
+  {
+    "id": "J107",
+    "name": "附子禁用于阴虚阳亢",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚阳亢、五心烦热者禁用附子",
+    "properties": {
+      "source": "《中药学》",
+      "note": "附子"
+    }
+  },
+  {
+    "id": "J108",
+    "name": "附子禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用附子，因其大热有毒，恐动胎气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "附子"
+    }
+  },
+  {
+    "id": "J109",
+    "name": "附子内服须久煎",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "附子内服须先煎久煎（至少1小时）以减毒，未充分煎煮者禁用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "附子"
+    }
+  },
+  {
+    "id": "J110",
+    "name": "半夏禁用于阴虚燥咳",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚燥咳、痰中带血者禁用半夏，恐辛温燥烈更伤肺阴",
+    "properties": {
+      "source": "《中药学》",
+      "note": "半夏"
+    }
+  },
+  {
+    "id": "J111",
+    "name": "半夏禁用于血证",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "各种出血性疾病者慎用半夏，恐辛散动血",
+    "properties": {
+      "source": "《中药学》",
+      "note": "半夏"
+    }
+  },
+  {
+    "id": "J112",
+    "name": "石膏禁用于虚寒证",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒、大便溏泄者禁用石膏，恐寒凉伤中",
+    "properties": {
+      "source": "《中药学》",
+      "note": "石膏"
+    }
+  },
+  {
+    "id": "J113",
+    "name": "熟地禁用于脾虚湿盛",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚湿盛、纳呆腹胀者禁用熟地，恐滋腻碍胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "熟地"
+    }
+  },
+  {
+    "id": "J114",
+    "name": "熟地禁用于气滞痰多",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气滞痰多、胸胁胀满者禁用熟地",
+    "properties": {
+      "source": "《中药学》",
+      "note": "熟地"
+    }
+  },
+  {
+    "id": "J115",
+    "name": "川芎禁用于月经过多",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "月经过多及出血倾向者禁用川芎，恐辛散活血加重出血",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎"
+    }
+  },
+  {
+    "id": "J116",
+    "name": "川芎禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺、口燥咽干者慎用川芎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎"
+    }
+  },
+  {
+    "id": "J117",
+    "name": "丹参禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用丹参，因活血化瘀恐致流产",
+    "properties": {
+      "source": "《中药学》",
+      "note": "丹参"
+    }
+  },
+  {
+    "id": "J118",
+    "name": "丹参禁用于出血倾向",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "有出血倾向者禁用丹参，恐加重出血",
+    "properties": {
+      "source": "《中药学》",
+      "note": "丹参"
+    }
+  },
+  {
+    "id": "J119",
+    "name": "黄连禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒、大便溏薄者禁用黄连，恐苦寒伤阳",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄连"
+    }
+  },
+  {
+    "id": "J120",
+    "name": "黄芪禁用于表实邪盛",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "外感表实证恶寒发热无汗者禁用黄芪，恐闭门留寇",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄芪"
+    }
+  },
+  {
+    "id": "J121",
+    "name": "黄芪禁用于气滞湿阻",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气滞湿阻、脘腹胀满者禁用黄芪，恐滞气助满",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄芪"
+    }
+  },
+  {
+    "id": "J122",
+    "name": "甘草禁用于湿盛中满",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "湿盛中满、脘腹胀满者禁用甘草，恐甘壅助湿",
+    "properties": {
+      "source": "《中药学》",
+      "note": "甘草"
+    }
+  },
+  {
+    "id": "J123",
+    "name": "甘草久服致水肿",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "长期或大量服用甘草可致水钠潴留、浮肿、血压升高",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": "甘草"
+    }
+  },
+  {
+    "id": "J124",
+    "name": "细辛禁用于阴虚阳亢",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚阳亢、头痛目赤者禁用细辛",
+    "properties": {
+      "source": "《中药学》",
+      "note": "细辛"
+    }
+  },
+  {
+    "id": "J125",
+    "name": "细辛禁用于高血压",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "高血压患者慎用细辛，恐辛散升压",
+    "properties": {
+      "source": "《中药学》",
+      "note": "细辛"
+    }
+  },
+  {
+    "id": "J126",
+    "name": "朱砂禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用朱砂，因其有毒且重镇伤胎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "朱砂"
+    }
+  },
+  {
+    "id": "J127",
+    "name": "朱砂禁用于肝肾功能不全",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "肝肾功能不全者禁用朱砂，恐汞蓄积中毒",
+    "properties": {
+      "source": "《中药学》",
+      "note": "朱砂"
+    }
+  },
+  {
+    "id": "J128",
+    "name": "朱砂不宜久服",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "朱砂不宜长期服用，恐致汞中毒",
+    "properties": {
+      "source": "《中药学》",
+      "note": "朱砂"
+    }
+  },
+  {
+    "id": "J129",
+    "name": "麻黄汤禁用于阴虚外感",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "素体阴虚津亏者禁用麻黄汤，恐发汗更伤阴液",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "麻黄汤"
+    }
+  },
+  {
+    "id": "J130",
+    "name": "麻黄汤禁用于疮疡淋家",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "疮疡日久及淋病者禁用麻黄汤，恐损伤气血津液",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "麻黄汤"
+    }
+  },
+  {
+    "id": "J131",
+    "name": "桂枝汤禁用于温病内热",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "温病初起、内有实热者禁用桂枝汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桂枝汤"
+    }
+  },
+  {
+    "id": "J132",
+    "name": "桂枝汤禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "阴虚火旺、咽喉肿痛者禁用桂枝汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "桂枝汤"
+    }
+  },
+  {
+    "id": "J133",
+    "name": "承气汤类禁用于孕妇",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "大承气汤、小承气汤等峻下类方剂妊娠期禁用",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "承气汤类"
+    }
+  },
+  {
+    "id": "J134",
+    "name": "承气汤类禁用于虚证便秘",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "气血津亏所致虚性便秘者禁用承气汤类峻下",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "承气汤类"
+    }
+  },
+  {
+    "id": "J135",
+    "name": "六味地黄丸禁用于脾虚湿盛",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "脾虚湿盛、大便溏泄者禁用六味地黄丸，恐滋腻碍脾",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "六味地黄丸"
+    }
+  },
+  {
+    "id": "J136",
+    "name": "六味地黄丸禁用于实热证",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "实热炽盛者禁用六味地黄丸",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "六味地黄丸"
+    }
+  },
+  {
+    "id": "J137",
+    "name": "四君子汤禁用于实证",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "气滞、食积、湿热等实证者禁用四君子汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "四君子汤"
+    }
+  },
+  {
+    "id": "J138",
+    "name": "四物汤禁用于血热妄行",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "血热妄行、出血不止者禁用四物汤，恐温补助热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "四物汤"
+    }
+  },
+  {
+    "id": "J139",
+    "name": "四物汤禁用于湿盛中满",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "湿盛中满、纳差脘痞者禁用四物汤，恐滋腻",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "四物汤"
+    }
+  },
+  {
+    "id": "J140",
+    "name": "生大黄生用峻下",
+    "type": "禁忌",
+    "alias": "炮制禁忌",
+    "description": "生大黄泻下力峻，脾虚便溏者禁用；制大黄泻下缓和，可酌用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "大黄炮制"
+    }
+  },
+  {
+    "id": "J141",
+    "name": "生半夏有毒禁内服",
+    "type": "禁忌",
+    "alias": "炮制禁忌",
+    "description": "生半夏有毒，内服须经炮制（姜半夏、法半夏等），生品仅限外用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "半夏炮制"
+    }
+  },
+  {
+    "id": "J142",
+    "name": "生南星禁内服",
+    "type": "禁忌",
+    "alias": "炮制禁忌",
+    "description": "生天南星有毒，内服须经炮制，生品仅限外用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "天南星炮制"
+    }
+  },
+  {
+    "id": "J143",
+    "name": "生川乌生草乌禁内服",
+    "type": "禁忌",
+    "alias": "炮制禁忌",
+    "description": "生川乌、生草乌有大毒，严禁内服，须炮制后方可入药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "乌头炮制"
+    }
+  },
+  {
+    "id": "J144",
+    "name": "生马钱子禁内服",
+    "type": "禁忌",
+    "alias": "炮制禁忌",
+    "description": "生马钱子有大毒，严禁内服，须炮制去毛后入丸散",
+    "properties": {
+      "source": "《中药学》",
+      "note": "马钱子炮制"
+    }
+  },
+  {
+    "id": "J145",
+    "name": "皮肤破损禁用斑蝥",
+    "type": "禁忌",
+    "alias": "外用禁忌",
+    "description": "皮肤破损处禁用斑蝥外用，恐刺激过强致溃烂",
+    "properties": {
+      "source": "《中药学》",
+      "note": "斑蝥"
+    }
+  },
+  {
+    "id": "J146",
+    "name": "眼周禁用刺激性外用中药",
+    "type": "禁忌",
+    "alias": "外用禁忌",
+    "description": "眼周、黏膜部位禁用斑蝥、巴豆、芫花等刺激性外用中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "外用禁忌"
+    }
+  },
+  {
+    "id": "J147",
+    "name": "孕妇禁用穴位贴敷",
+    "type": "禁忌",
+    "alias": "外用禁忌",
+    "description": "妊娠期禁用腹部、腰骶部及合谷、三阴交等穴位的贴敷疗法",
+    "properties": {
+      "source": "《针灸学》",
+      "note": "穴位贴敷"
+    }
+  },
+  {
+    "id": "J148",
+    "name": "皮肤过敏禁用活血化瘀外敷药",
+    "type": "禁忌",
+    "alias": "外用禁忌",
+    "description": "皮肤过敏者慎用活血化瘀类外敷药（如红花、乳香、没药），恐加重过敏",
+    "properties": {
+      "source": "《中药学》",
+      "note": "外用禁忌"
+    }
+  },
+  {
+    "id": "J149",
+    "name": "面部禁用腐蚀性中药",
+    "type": "禁忌",
+    "alias": "外用禁忌",
+    "description": "面部禁用白降丹、红升丹、砒石等腐蚀性外用中药",
+    "properties": {
+      "source": "《中医外科学》",
+      "note": "外用禁忌"
+    }
+  },
+  {
+    "id": "J150",
+    "name": "过饥过饱慎用发汗药",
+    "type": "禁忌",
+    "alias": "生活禁忌",
+    "description": "过饥或过饱状态下慎用麻黄、桂枝等发汗药，恐致虚脱或胃脘不适",
+    "properties": {
+      "source": "《中药学》",
+      "note": "服药禁忌"
+    }
+  },
+  {
+    "id": "J151",
+    "name": "服药期间忌食辛辣",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用清热药、滋阴药期间忌食辛辣刺激食物（如辣椒、生姜、酒）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J152",
+    "name": "服药期间忌食生冷",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用温阳药、散寒药期间忌食生冷瓜果、冰饮",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J153",
+    "name": "服药期间忌食油腻",
+    "type": "禁忌",
+    "alias": "饮食禁忌",
+    "description": "服用健脾药、化湿药期间忌食肥甘厚味、油炸食品",
+    "properties": {
+      "source": "《中药学》",
+      "note": "饮食禁忌"
+    }
+  },
+  {
+    "id": "J154",
+    "name": "服解表药后忌吹风受寒",
+    "type": "禁忌",
+    "alias": "生活禁忌",
+    "description": "服用发汗解表药后应注意保暖、避风寒，忌吹风受凉",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "服药护理"
+    }
+  },
+  {
+    "id": "J155",
+    "name": "服泻下药后忌行房事",
+    "type": "禁忌",
+    "alias": "生活禁忌",
+    "description": "服用峻下逐水药后体力大耗，宜卧床休息，忌房事劳作",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "服药护理"
+    }
+  },
+  {
+    "id": "J156",
+    "name": "气虚体质慎用破气药",
+    "type": "禁忌",
+    "alias": "体质禁忌",
+    "description": "气虚体质（乏力、气短、自汗）慎用枳实、青皮、槟榔等破气药",
+    "properties": {
+      "source": "《中医体质学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J157",
+    "name": "阳虚体质慎用寒凉药",
+    "type": "禁忌",
+    "alias": "体质禁忌",
+    "description": "阳虚体质（畏寒、肢冷、便溏）慎用石膏、知母、黄芩等寒凉药",
+    "properties": {
+      "source": "《中医体质学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J158",
+    "name": "痰湿体质慎用滋腻药",
+    "type": "禁忌",
+    "alias": "体质禁忌",
+    "description": "痰湿体质（体型肥胖、苔腻痰多）慎用熟地、阿胶、黄精等滋腻药",
+    "properties": {
+      "source": "《中医体质学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J159",
+    "name": "阴虚体质慎用温燥药",
+    "type": "禁忌",
+    "alias": "体质禁忌",
+    "description": "阴虚体质（五心烦热、口干盗汗）慎用附子、肉桂、干姜等温燥药",
+    "properties": {
+      "source": "《中医体质学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J160",
+    "name": "血瘀体质慎用收涩药",
+    "type": "禁忌",
+    "alias": "体质禁忌",
+    "description": "血瘀体质（面色晦暗、舌有瘀斑）慎用五味子、乌梅、诃子等收涩药",
+    "properties": {
+      "source": "《中医体质学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J161",
+    "name": "经络针刺避开血管",
+    "type": "禁忌",
+    "alias": "经络禁忌",
+    "description": "针刺时须避开大血管、动脉搏动处，防止出血",
+    "properties": {
+      "source": "《针灸学》",
+      "note": "针刺禁忌"
+    }
+  },
+  {
+    "id": "J162",
+    "name": "重要脏器附近禁深刺",
+    "type": "禁忌",
+    "alias": "经络禁忌",
+    "description": "胸背近心肺、腰部近肾脏等处禁深刺、猛刺",
+    "properties": {
+      "source": "《针灸学》",
+      "note": "针刺禁忌"
+    }
+  },
+  {
+    "id": "J163",
+    "name": "孕妇禁针腰腹及特定穴",
+    "type": "禁忌",
+    "alias": "经络禁忌",
+    "description": "妊娠期禁针腰骶部、腹部及合谷、三阴交、昆仑等穴位",
+    "properties": {
+      "source": "《针灸学》",
+      "note": "针刺禁忌"
+    }
+  },
+  {
+    "id": "J164",
+    "name": "小儿囟门未闭禁刺百会",
+    "type": "禁忌",
+    "alias": "经络禁忌",
+    "description": "小儿囟门未闭合者禁用百会穴针刺",
+    "properties": {
+      "source": "《针灸学》",
+      "note": "针刺禁忌"
+    }
+  },
+  {
+    "id": "J165",
+    "name": "与阿奇霉素慎同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含鞣质的中药（如大黄、地榆、五倍子）不宜与阿奇霉素同服，恐影响吸收",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J166",
+    "name": "与左甲状腺素慎同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含碘中药（如海藻、昆布）不宜与左甲状腺素同用，恐干扰甲状腺素水平",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J167",
+    "name": "与地塞米松慎同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "甘草不宜与糖皮质激素（如地塞米松）长期同用，恐加重水钠潴留",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J168",
+    "name": "与多巴胺慎同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含麻黄碱的中药（如麻黄）不宜与多巴胺合用，恐血压骤升",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J169",
+    "name": "与氨基糖苷类慎同用",
+    "type": "禁忌",
+    "alias": "中西药联用禁忌",
+    "description": "含鞣质的中药不宜与氨基糖苷类抗生素同服，恐降低疗效",
+    "properties": {
+      "source": "《临床药学》",
+      "note": "中西药联用"
+    }
+  },
+  {
+    "id": "J170",
+    "name": "感冒期间忌用补益药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "外感风寒或风热期间忌用人参、黄芪、鹿茸等补益药，恐闭门留寇",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J171",
+    "name": "腹泻期间忌用润肠药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "急性腹泻期间忌用火麻仁、郁李仁、蜂蜜等润肠通便药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J172",
+    "name": "失眠患者忌用提神药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "失眠患者忌用麻黄、细辛、咖啡因类中药（如茶叶、咖啡）",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J173",
+    "name": "癫痫发作期忌用升散药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "癫痫发作频繁期忌用升散走窜之品（如麻黄、细辛、麝香）",
+    "properties": {
+      "source": "《中医神志病学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J174",
+    "name": "严重贫血慎用破血药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "严重贫血者慎用水蛭、虻虫、三棱等破血药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J175",
+    "name": "严重消瘦慎用峻下药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "严重消瘦、营养不足者慎用甘遂、大戟、芫花等峻下药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J176",
+    "name": "发热期间慎用温补药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "发热期间（体温>38.5℃）慎用附子、肉桂、鹿茸等温补药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J177",
+    "name": "鼻衄期间忌用活血药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "鼻衄活动期忌用川芎、丹参、红花等活血药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J178",
+    "name": "便血期间忌用泻下药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "便血期间忌用大黄、番泻叶等泻下药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J179",
+    "name": "痛经期间慎用寒凉药",
+    "type": "禁忌",
+    "alias": "病程禁忌",
+    "description": "痛经期间（尤其寒凝血瘀型）慎用黄连、黄芩、栀子等寒凉药",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J180",
+    "name": "产后慎用破血逐瘀药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "产后恶露已尽或无瘀滞者慎用三棱、莪术、水蛭等破血药",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J181",
+    "name": "产后慎用峻下药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "产后气血亏虚者慎用大黄、芒硝、甘遂等峻下药",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J182",
+    "name": "老年人慎用麻黄",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "老年人心功能减退者慎用麻黄，恐心动过速、血压升高",
+    "properties": {
+      "source": "《中医老年病学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J183",
+    "name": "儿童慎用苦寒药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "小儿脾胃薄弱，慎用黄连、黄芩、龙胆草等大苦大寒之品",
+    "properties": {
+      "source": "《中医儿科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J184",
+    "name": "育龄期妇女慎用破血药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "育龄期妇女月经期及备孕期间慎用水蛭、虻虫等破血药",
+    "properties": {
+      "source": "《中医妇科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J185",
+    "name": "过敏史者禁用已知过敏中药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "有明确中药过敏史者禁用致敏药物，如穿心莲、鱼腥草等",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J186",
+    "name": "高敏体质慎用动物类药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "高敏体质者慎用地龙、全蝎、蜈蚣、水蛭等动物类中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J187",
+    "name": "高敏体质慎用花粉类药",
+    "type": "禁忌",
+    "alias": "人群禁忌",
+    "description": "高敏体质者慎用蒲黄、松花粉、蜂花粉等花粉类中药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J188",
+    "name": "凝血功能障碍禁用破血药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "凝血功能障碍者禁用三棱、莪术、水蛭、虻虫等破血药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J189",
+    "name": "凝血功能障碍慎用活血药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "凝血功能障碍者慎用丹参、川芎、当归尾等活血药",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J190",
+    "name": "严重动脉硬化慎用升压药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "严重动脉硬化者慎用麻黄、细辛等升压作用明显的药物",
+    "properties": {
+      "source": "《中药学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J191",
+    "name": "心绞痛发作期慎用活血药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "不稳定性心绞痛发作期慎用川芎、丹参等活血药，应在医师指导下使用",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J192",
+    "name": "脑血管意外急性期禁用活血药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "脑出血急性期禁用丹参、川芎、红花等活血化瘀药",
+    "properties": {
+      "source": "《中药药理学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J193",
+    "name": "肝硬化腹水慎用滋腻药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "肝硬化腹水患者慎用熟地、阿胶等滋腻助湿之品",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J194",
+    "name": "肾病综合征慎用温补肾阳药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "肾病综合征水肿期慎用鹿茸、仙茅等温补肾阳药，恐温燥助热伤津",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J195",
+    "name": "肾病综合征慎用滋腻养阴药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "肾病综合征水肿期慎用熟地、麦冬等滋腻养阴药，恐助湿增肿",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J196",
+    "name": "黄疸期忌用温燥药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "黄疸（阳黄）期忌用附子、干姜、肉桂等温燥药",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J197",
+    "name": "黄疸期忌用补益滋腻药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "黄疸期忌用熟地、阿胶、党参等补益滋腻药，恐助湿困脾",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J198",
+    "name": "痹症热痹忌用温燥药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "热痹（关节红肿热痛）忌用附子、川乌、草乌等温燥通络药",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J199",
+    "name": "痹症寒痹慎用寒凉药",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "寒痹（关节冷痛遇寒加重）慎用石膏、知母、牡丹皮等寒凉药",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J200",
+    "name": "消渴病慎用含糖中药制剂",
+    "type": "禁忌",
+    "alias": "疾病禁忌",
+    "description": "消渴病（糖尿病）患者慎用蜜丸、糖浆、含糖颗粒剂、膏滋等剂型",
+    "properties": {
+      "source": "《中医内科学》",
+      "note": ""
+    }
+  },
+  {
+    "id": "J201",
+    "name": "荆芥禁用于表虚自汗",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "表虚自汗者禁用荆芥，恐辛散耗气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "荆芥"
+    }
+  },
+  {
+    "id": "J202",
+    "name": "防风禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺、骨蒸潮热者禁用防风",
+    "properties": {
+      "source": "《中药学》",
+      "note": "防风"
+    }
+  },
+  {
+    "id": "J203",
+    "name": "羌活禁用于阴虚头痛",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚血少所致头痛者禁用羌活",
+    "properties": {
+      "source": "《中药学》",
+      "note": "羌活"
+    }
+  },
+  {
+    "id": "J204",
+    "name": "白芷禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺、血热者慎用白芷",
+    "properties": {
+      "source": "《中药学》",
+      "note": "白芷"
+    }
+  },
+  {
+    "id": "J205",
+    "name": "苍耳子禁用于血虚头痛",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "血虚头痛者禁用苍耳子",
+    "properties": {
+      "source": "《中药学》",
+      "note": "苍耳子"
+    }
+  },
+  {
+    "id": "J206",
+    "name": "苍耳子有毒不可过量",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "苍耳子有毒，不可过量使用，过量可致肝肾功能损伤",
+    "properties": {
+      "source": "《中药学》",
+      "note": "苍耳子"
+    }
+  },
+  {
+    "id": "J207",
+    "name": "薄荷禁用于表虚自汗",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "表虚自汗者慎用薄荷",
+    "properties": {
+      "source": "《中药学》",
+      "note": "薄荷"
+    }
+  },
+  {
+    "id": "J208",
+    "name": "牛蒡子禁用于脾虚便溏",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚便溏者禁用牛蒡子，恐滑肠",
+    "properties": {
+      "source": "《中药学》",
+      "note": "牛蒡子"
+    }
+  },
+  {
+    "id": "J209",
+    "name": "桑叶禁用于虚寒证",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "虚寒体质者慎用桑叶",
+    "properties": {
+      "source": "《中药学》",
+      "note": "桑叶"
+    }
+  },
+  {
+    "id": "J210",
+    "name": "菊花禁用于气虚胃寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气虚胃寒、便溏泄泻者慎用菊花",
+    "properties": {
+      "source": "《中药学》",
+      "note": "菊花"
+    }
+  },
+  {
+    "id": "J211",
+    "name": "石膏禁用于风寒感冒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "风寒感冒恶寒发热者禁用石膏",
+    "properties": {
+      "source": "《中药学》",
+      "note": "石膏"
+    }
+  },
+  {
+    "id": "J212",
+    "name": "知母禁用于脾虚便溏",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚便溏者禁用知母",
+    "properties": {
+      "source": "《中药学》",
+      "note": "知母"
+    }
+  },
+  {
+    "id": "J213",
+    "name": "栀子禁用于脾虚便溏",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚便溏者慎用栀子，恐苦寒伤胃",
+    "properties": {
+      "source": "《中药学》",
+      "note": "栀子"
+    }
+  },
+  {
+    "id": "J214",
+    "name": "黄芩禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒者禁用黄芩",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄芩"
+    }
+  },
+  {
+    "id": "J215",
+    "name": "黄柏禁用于阳虚寒湿",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阳虚寒湿下注者慎用黄柏",
+    "properties": {
+      "source": "《中药学》",
+      "note": "黄柏"
+    }
+  },
+  {
+    "id": "J216",
+    "name": "龙胆草禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒者禁用龙胆草",
+    "properties": {
+      "source": "《中药学》",
+      "note": "龙胆草"
+    }
+  },
+  {
+    "id": "J217",
+    "name": "苦参禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒者慎用苦参",
+    "properties": {
+      "source": "《中药学》",
+      "note": "苦参"
+    }
+  },
+  {
+    "id": "J218",
+    "name": "穿心莲禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用穿心莲，因苦寒伤胎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "穿心莲"
+    }
+  },
+  {
+    "id": "J219",
+    "name": "大黄久煎可减毒",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "大黄泻下成分不耐久煎，久煎则泻下力减弱，用于清热活血时宜久煎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J220",
+    "name": "芒硝冲服不宜煎煮",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "芒硝宜冲入药液中融化，不宜与其他药物同煎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J221",
+    "name": "番泻叶泡服不宜久煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "番泻叶泻下成分不耐高温，宜开水泡服，不宜久煎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J222",
+    "name": "辛夷包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "辛夷表面密生绒毛，须用纱布包煎，否则刺激咽喉",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J223",
+    "name": "车前子包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "车前子含黏液质，须包煎防糊锅",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J224",
+    "name": "旋覆花包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "旋覆花有绒毛，须包煎防刺激咽喉",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J225",
+    "name": "蒲黄包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "蒲黄质轻浮于水面，须包煎以免药效流失",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J226",
+    "name": "滑石包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "滑石粉须包煎防混悬",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J227",
+    "name": "灶心土包煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "灶心土煎煮时须包煎，澄清后取汁",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J228",
+    "name": "阿胶烊化",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "阿胶须烊化（隔水蒸化）兑服，不宜与药同煎以免粘锅",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J229",
+    "name": "鹿角胶烊化",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "鹿角胶、龟板胶等胶类须烊化兑服",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J230",
+    "name": "犀角镑片另煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "贵重药材（犀角、羚羊角、水牛角）须另煎取汁，再与药液兑服",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J231",
+    "name": "石膏先煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "石膏质地坚硬，须先煎20-30分钟以充分煎出有效成分",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J232",
+    "name": "龙骨先煎",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "龙骨、牡蛎、石决明等贝壳类药物质地坚硬，须先煎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J233",
+    "name": "藿香后下",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "藿香、薄荷、紫苏叶等含挥发油药物宜后下（关火前5-10分钟放入）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J234",
+    "name": "鱼腥草后下",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "鱼腥草含挥发油，宜后下防药效散失",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J235",
+    "name": "木香后下",
+    "type": "禁忌",
+    "alias": "煎煮禁忌",
+    "description": "木香含挥发油，宜后下",
+    "properties": {
+      "source": "《中药学》",
+      "note": "煎煮方法"
+    }
+  },
+  {
+    "id": "J236",
+    "name": "川芎禁用于肝阳上亢",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "肝阳上亢所致头痛眩晕者慎用川芎",
+    "properties": {
+      "source": "《中药学》",
+      "note": "川芎"
+    }
+  },
+  {
+    "id": "J237",
+    "name": "独活禁用于阴虚血燥",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚血燥者慎用独活",
+    "properties": {
+      "source": "《中药学》",
+      "note": "独活"
+    }
+  },
+  {
+    "id": "J238",
+    "name": "威灵仙禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用威灵仙",
+    "properties": {
+      "source": "《中药学》",
+      "note": "威灵仙"
+    }
+  },
+  {
+    "id": "J239",
+    "name": "威灵仙禁用于气虚血弱",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气虚血弱者慎用威灵仙",
+    "properties": {
+      "source": "《中药学》",
+      "note": "威灵仙"
+    }
+  },
+  {
+    "id": "J240",
+    "name": "乌梢蛇禁用于血虚生风",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "血虚生风者慎用乌梢蛇等蛇类药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "乌梢蛇"
+    }
+  },
+  {
+    "id": "J241",
+    "name": "白花蛇禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用白花蛇（蕲蛇）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "白花蛇"
+    }
+  },
+  {
+    "id": "J242",
+    "name": "肉桂禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用肉桂，因其走窜动血",
+    "properties": {
+      "source": "《中药学》",
+      "note": "肉桂"
+    }
+  },
+  {
+    "id": "J243",
+    "name": "肉桂禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺、血热妄行者禁用肉桂",
+    "properties": {
+      "source": "《中药学》",
+      "note": "肉桂"
+    }
+  },
+  {
+    "id": "J244",
+    "name": "干姜禁用于阴虚内热",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚内热、血热妄行者禁用干姜",
+    "properties": {
+      "source": "《中药学》",
+      "note": "干姜"
+    }
+  },
+  {
+    "id": "J245",
+    "name": "吴茱萸禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚火旺者禁用吴茱萸",
+    "properties": {
+      "source": "《中药学》",
+      "note": "吴茱萸"
+    }
+  },
+  {
+    "id": "J246",
+    "name": "胡椒禁用于热证",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "热性病、阴虚火旺者禁用胡椒",
+    "properties": {
+      "source": "《中药学》",
+      "note": "胡椒"
+    }
+  },
+  {
+    "id": "J247",
+    "name": "花椒禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用花椒",
+    "properties": {
+      "source": "《中药学》",
+      "note": "花椒"
+    }
+  },
+  {
+    "id": "J248",
+    "name": "枳实禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用枳实，因破气行气过猛",
+    "properties": {
+      "source": "《中药学》",
+      "note": "枳实"
+    }
+  },
+  {
+    "id": "J249",
+    "name": "枳实禁用于脾虚气陷",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾虚气陷中气不足者慎用枳实",
+    "properties": {
+      "source": "《中药学》",
+      "note": "枳实"
+    }
+  },
+  {
+    "id": "J250",
+    "name": "青皮禁用于气虚者",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气虚者慎用青皮，恐破气太甚",
+    "properties": {
+      "source": "《中药学》",
+      "note": "青皮"
+    }
+  },
+  {
+    "id": "J251",
+    "name": "槟榔禁用于气虚下陷",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气虚下陷者禁用槟榔",
+    "properties": {
+      "source": "《中药学》",
+      "note": "槟榔"
+    }
+  },
+  {
+    "id": "J252",
+    "name": "槟榔禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用槟榔",
+    "properties": {
+      "source": "《中药学》",
+      "note": "槟榔"
+    }
+  },
+  {
+    "id": "J253",
+    "name": "山楂禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用山楂，大量可刺激子宫收缩",
+    "properties": {
+      "source": "《中药学》",
+      "note": "山楂"
+    }
+  },
+  {
+    "id": "J254",
+    "name": "山楂禁用于胃酸过多",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "胃酸过多、胃溃疡者慎用山楂",
+    "properties": {
+      "source": "《中药学》",
+      "note": "山楂"
+    }
+  },
+  {
+    "id": "J255",
+    "name": "麦芽禁用于哺乳期",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "哺乳期妇女慎用生麦芽（大剂量可回乳）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "麦芽"
+    }
+  },
+  {
+    "id": "J256",
+    "name": "莱菔子禁用于气虚者",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "气虚者慎用莱菔子，恐耗气",
+    "properties": {
+      "source": "《中药学》",
+      "note": "莱菔子"
+    }
+  },
+  {
+    "id": "J257",
+    "name": "使君子禁用于热证",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "热证及脾胃虚弱者慎用使君子",
+    "properties": {
+      "source": "《中药学》",
+      "note": "使君子"
+    }
+  },
+  {
+    "id": "J258",
+    "name": "苦楝皮禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用苦楝皮",
+    "properties": {
+      "source": "《中药学》",
+      "note": "苦楝皮"
+    }
+  },
+  {
+    "id": "J259",
+    "name": "雷丸禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用雷丸",
+    "properties": {
+      "source": "《中药学》",
+      "note": "雷丸"
+    }
+  },
+  {
+    "id": "J260",
+    "name": "大蓟禁用于虚寒出血",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "虚寒性出血者慎用大蓟",
+    "properties": {
+      "source": "《中药学》",
+      "note": "大蓟"
+    }
+  },
+  {
+    "id": "J261",
+    "name": "小蓟禁用于虚寒出血",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "虚寒性出血者慎用小蓟",
+    "properties": {
+      "source": "《中药学》",
+      "note": "小蓟"
+    }
+  },
+  {
+    "id": "J262",
+    "name": "地榆禁用于虚寒便血",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "虚寒性便血者慎用地榆",
+    "properties": {
+      "source": "《中药学》",
+      "note": "地榆"
+    }
+  },
+  {
+    "id": "J263",
+    "name": "槐花禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "脾胃虚寒者慎用槐花",
+    "properties": {
+      "source": "《中药学》",
+      "note": "槐花"
+    }
+  },
+  {
+    "id": "J264",
+    "name": "三七禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用三七",
+    "properties": {
+      "source": "《中药学》",
+      "note": "三七"
+    }
+  },
+  {
+    "id": "J265",
+    "name": "艾叶禁用于阴虚血热",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "阴虚血热者禁用艾叶",
+    "properties": {
+      "source": "《中药学》",
+      "note": "艾叶"
+    }
+  },
+  {
+    "id": "J266",
+    "name": "莪术禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用莪术",
+    "properties": {
+      "source": "《中药学》",
+      "note": "莪术"
+    }
+  },
+  {
+    "id": "J267",
+    "name": "三棱禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用三棱",
+    "properties": {
+      "source": "《中药学》",
+      "note": "三棱"
+    }
+  },
+  {
+    "id": "J268",
+    "name": "水蛭禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用凉水蛭",
+    "properties": {
+      "source": "《中药学》",
+      "note": "水蛭"
+    }
+  },
+  {
+    "id": "J269",
+    "name": "虻虫禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用虻虫",
+    "properties": {
+      "source": "《中药学》",
+      "note": "虻虫"
+    }
+  },
+  {
+    "id": "J270",
+    "name": "土鳖虫禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期禁用土鳖虫（䗪虫）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "土鳖虫"
+    }
+  },
+  {
+    "id": "J271",
+    "name": "乳香禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用乳香",
+    "properties": {
+      "source": "《中药学》",
+      "note": "乳香"
+    }
+  },
+  {
+    "id": "J272",
+    "name": "没药禁用于孕妇",
+    "type": "禁忌",
+    "alias": "单味药禁忌",
+    "description": "妊娠期慎用没药",
+    "properties": {
+      "source": "《中药学》",
+      "note": "没药"
+    }
+  },
+  {
+    "id": "J273",
+    "name": "半夏反乌头",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "半夏反乌头、附子，不宜同用（已列于J022，此处补充细目）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J274",
+    "name": "贝母反乌头",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "贝母反乌头、附子，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J275",
+    "name": "瓜蒌反乌头",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "瓜蒌反乌头、附子，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J276",
+    "name": "白蔹反乌头",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "白蔹反乌头、附子，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J277",
+    "name": "白及反乌头",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "白及反乌头、附子，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J278",
+    "name": "甘遂反甘草",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "甘遂反甘草，不宜同用（已列于J023，此处补充细目）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J279",
+    "name": "大戟反甘草",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "大戟反甘草，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J280",
+    "name": "海藻反甘草",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "海藻反甘草，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J281",
+    "name": "人参反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "人参反藜芦，不宜同用（已列于J021）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J282",
+    "name": "沙参反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "沙参反藜芦，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J283",
+    "name": "丹参反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "丹参反藜芦，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J284",
+    "name": "玄参反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "玄参反藜芦，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J285",
+    "name": "细辛反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "细辛反藜芦，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J286",
+    "name": "白芍反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "白芍反藜芦，不宜同用（已列于J021）",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J287",
+    "name": "赤芍反藜芦",
+    "type": "禁忌",
+    "alias": "十八反",
+    "description": "赤芍反藜芦，不宜同用",
+    "properties": {
+      "source": "《中药学》",
+      "note": "十八反"
+    }
+  },
+  {
+    "id": "J288",
+    "name": "逍遥散禁用于阴虚火旺",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "阴虚火旺者慎用逍遥散，恐温燥助热",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "逍遥散"
+    }
+  },
+  {
+    "id": "J289",
+    "name": "龙胆泻肝汤禁用于脾胃虚寒",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "脾胃虚寒者禁用龙胆泻肝汤，恐苦寒败胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "龙胆泻肝汤"
+    }
+  },
+  {
+    "id": "J290",
+    "name": "补中益气汤禁用于实证",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "外感实邪、气滞食积等实证者禁用补中益气汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "补中益气汤"
+    }
+  },
+  {
+    "id": "J291",
+    "name": "归脾汤禁用于实热证",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "实热炽盛、发热烦躁者禁用归脾汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "归脾汤"
+    }
+  },
+  {
+    "id": "J292",
+    "name": "金匮肾气丸禁用于阴虚阳亢",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "阴虚阳亢、五心烦热者禁用金匮肾气丸",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "金匮肾气丸"
+    }
+  },
+  {
+    "id": "J293",
+    "name": "金匮肾气丸禁用于湿热下注",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "湿热下注所致淋证、带下者禁用金匮肾气丸",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "金匮肾气丸"
+    }
+  },
+  {
+    "id": "J294",
+    "name": "独活寄生汤禁用于湿热痹",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "湿热痹证关节红肿热痛者禁用独活寄生汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "独活寄生汤"
+    }
+  },
+  {
+    "id": "J295",
+    "name": "小青龙汤禁用于阴虚久咳",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "阴虚久咳、痰中带血者禁用小青龙汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "小青龙汤"
+    }
+  },
+  {
+    "id": "J296",
+    "name": "大承气汤禁用于孕妇",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "妊娠期禁用大承气汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "大承气汤"
+    }
+  },
+  {
+    "id": "J297",
+    "name": "大承气汤禁用于老年体虚",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "老年体虚、气血不足者禁用大承气汤",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "大承气汤"
+    }
+  },
+  {
+    "id": "J298",
+    "name": "温胆汤禁用于脾虚便溏",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "脾虚便溏者慎用温胆汤（含枳实、竹茹），恐伤脾胃",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "温胆汤"
+    }
+  },
+  {
+    "id": "J299",
+    "name": "藿香正气水禁用于孕妇",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "妊娠期慎用藿香正气水（含辛温及酒精成分）",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "藿香正气水"
+    }
+  },
+  {
+    "id": "J300",
+    "name": "藿香正气水禁用于对酒精过敏",
+    "type": "禁忌",
+    "alias": "方剂禁忌",
+    "description": "对酒精过敏者禁用藿香正气水，可改用藿香正气软胶囊",
+    "properties": {
+      "source": "《方剂学》",
+      "note": "藿香正气水"
+    }
+  }
+]
