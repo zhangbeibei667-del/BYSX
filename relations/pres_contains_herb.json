@@ -1,0 +1,4882 @@
+[
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H003",
+    "target_name": "党参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H060",
+    "target_name": "升麻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "包含",
+    "target_id": "H076",
+    "target_name": "枳壳",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H003",
+    "target_name": "党参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H007",
+    "target_name": "山药",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H037",
+    "target_name": "薏苡仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H044",
+    "target_name": "砂仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H025",
+    "target_name": "远志",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H024",
+    "target_name": "酸枣仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H016",
+    "target_name": "龙眼肉",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H103",
+    "target_name": "火麻仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H007",
+    "target_name": "山药",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H101",
+    "target_name": "山茱萸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H036",
+    "target_name": "泽泻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H071",
+    "target_name": "牡丹皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "包含",
+    "target_id": "H017",
+    "target_name": "枸杞子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H019",
+    "target_name": "沙参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H017",
+    "target_name": "枸杞子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H102",
+    "target_name": "川楝子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H022",
+    "target_name": "女贞子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "包含",
+    "target_id": "H024",
+    "target_name": "酸枣仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "包含",
+    "target_id": "H063",
+    "target_name": "知母",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H024",
+    "target_name": "酸枣仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H025",
+    "target_name": "远志",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H026",
+    "target_name": "柏子仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H070",
+    "target_name": "玄参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H081",
+    "target_name": "丹参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "包含",
+    "target_id": "H093",
+    "target_name": "肉桂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H025",
+    "target_name": "远志",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H032",
+    "target_name": "龙骨",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H029",
+    "target_name": "茯神",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "包含",
+    "target_id": "H031",
+    "target_name": "磁石",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "包含",
+    "target_id": "H046",
+    "target_name": "麻黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "包含",
+    "target_id": "H087",
+    "target_name": "杏仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H055",
+    "target_name": "金银花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H056",
+    "target_name": "连翘",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H054",
+    "target_name": "薄荷",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H058",
+    "target_name": "桑叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H050",
+    "target_name": "荆芥",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H051",
+    "target_name": "防风",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H039",
+    "target_name": "滑石",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "包含",
+    "target_id": "H064",
+    "target_name": "栀子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H058",
+    "target_name": "桑叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H057",
+    "target_name": "菊花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H054",
+    "target_name": "薄荷",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H050",
+    "target_name": "荆芥",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H051",
+    "target_name": "防风",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H056",
+    "target_name": "连翘",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "包含",
+    "target_id": "H087",
+    "target_name": "杏仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H054",
+    "target_name": "薄荷",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "包含",
+    "target_id": "H062",
+    "target_name": "石膏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "包含",
+    "target_id": "H063",
+    "target_name": "知母",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "包含",
+    "target_id": "H037",
+    "target_name": "薏苡仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "包含",
+    "target_id": "H067",
+    "target_name": "黄柏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "包含",
+    "target_id": "H064",
+    "target_name": "栀子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H068",
+    "target_name": "龙胆",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H064",
+    "target_name": "栀子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H067",
+    "target_name": "黄柏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H070",
+    "target_name": "玄参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H071",
+    "target_name": "牡丹皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H072",
+    "target_name": "赤芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H058",
+    "target_name": "桑叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H056",
+    "target_name": "连翘",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H041",
+    "target_name": "苍术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H042",
+    "target_name": "厚朴",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H043",
+    "target_name": "藿香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H042",
+    "target_name": "厚朴",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H041",
+    "target_name": "苍术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H048",
+    "target_name": "紫苏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "包含",
+    "target_id": "H035",
+    "target_name": "猪苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "包含",
+    "target_id": "H036",
+    "target_name": "泽泻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "包含",
+    "target_id": "H091",
+    "target_name": "附子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "包含",
+    "target_id": "H091",
+    "target_name": "附子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "包含",
+    "target_id": "H042",
+    "target_name": "厚朴",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "包含",
+    "target_id": "H048",
+    "target_name": "紫苏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H078",
+    "target_name": "香附",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H076",
+    "target_name": "枳壳",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "包含",
+    "target_id": "H084",
+    "target_name": "延胡索",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H078",
+    "target_name": "香附",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H041",
+    "target_name": "苍术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H064",
+    "target_name": "栀子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H095",
+    "target_name": "山楂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H096",
+    "target_name": "神曲",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H071",
+    "target_name": "牡丹皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "包含",
+    "target_id": "H060",
+    "target_name": "升麻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H074",
+    "target_name": "地骨皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "包含",
+    "target_id": "H072",
+    "target_name": "赤芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H052",
+    "target_name": "羌活",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H051",
+    "target_name": "防风",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H054",
+    "target_name": "薄荷",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H050",
+    "target_name": "荆芥",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H053",
+    "target_name": "白芷",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H099",
+    "target_name": "天麻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H095",
+    "target_name": "山楂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H096",
+    "target_name": "神曲",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H097",
+    "target_name": "麦芽",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "包含",
+    "target_id": "H056",
+    "target_name": "连翘",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H087",
+    "target_name": "杏仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H050",
+    "target_name": "荆芥",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "包含",
+    "target_id": "H048",
+    "target_name": "紫苏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F041",
+    "source_name": "生脉散",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F041",
+    "source_name": "生脉散",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F041",
+    "source_name": "生脉散",
+    "relation": "包含",
+    "target_id": "H104",
+    "target_name": "五味子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F042",
+    "source_name": "玉屏风散",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F042",
+    "source_name": "玉屏风散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F042",
+    "source_name": "玉屏风散",
+    "relation": "包含",
+    "target_id": "H051",
+    "target_name": "防风",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H007",
+    "target_name": "山药",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H041",
+    "target_name": "苍术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H043",
+    "target_name": "藿香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "包含",
+    "target_id": "H061",
+    "target_name": "葛根",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H005",
+    "target_name": "黄芪",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H025",
+    "target_name": "远志",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H024",
+    "target_name": "酸枣仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H026",
+    "target_name": "柏子仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F046",
+    "source_name": "甘麦大枣汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F046",
+    "source_name": "甘麦大枣汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F047",
+    "source_name": "黄连阿胶汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F047",
+    "source_name": "黄连阿胶汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F047",
+    "source_name": "黄连阿胶汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F047",
+    "source_name": "黄连阿胶汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H076",
+    "target_name": "枳壳",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "包含",
+    "target_id": "H579",
+    "target_name": "竹茹",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H634",
+    "target_name": "胆南星",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H562",
+    "target_name": "瓜蒌子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H508",
+    "target_name": "枳实",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "包含",
+    "target_id": "H087",
+    "target_name": "杏仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H157",
+    "target_name": "川贝母",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H562",
+    "target_name": "瓜蒌子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H426",
+    "target_name": "天花粉",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H277",
+    "target_name": "橘红",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F051",
+    "source_name": "小陷胸汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F051",
+    "source_name": "小陷胸汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F051",
+    "source_name": "小陷胸汤",
+    "relation": "包含",
+    "target_id": "H562",
+    "target_name": "瓜蒌子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "包含",
+    "target_id": "H104",
+    "target_name": "五味子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "包含",
+    "target_id": "H457",
+    "target_name": "细辛",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F053",
+    "source_name": "三子养亲汤",
+    "relation": "包含",
+    "target_id": "H517",
+    "target_name": "紫苏子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F053",
+    "source_name": "三子养亲汤",
+    "relation": "包含",
+    "target_id": "H262",
+    "target_name": "芥子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F053",
+    "source_name": "三子养亲汤",
+    "relation": "包含",
+    "target_id": "H290",
+    "target_name": "莱菔子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H046",
+    "target_name": "麻黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H087",
+    "target_name": "杏仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H517",
+    "target_name": "紫苏子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H287",
+    "target_name": "款冬花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H392",
+    "target_name": "桑白皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H517",
+    "target_name": "紫苏子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H042",
+    "target_name": "厚朴",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H093",
+    "target_name": "肉桂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H476",
+    "target_name": "旋覆花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H694",
+    "target_name": "赭石",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H579",
+    "target_name": "竹茹",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F058",
+    "source_name": "丁香柿蒂汤",
+    "relation": "包含",
+    "target_id": "H186",
+    "target_name": "丁香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F058",
+    "source_name": "丁香柿蒂汤",
+    "relation": "包含",
+    "target_id": "H414",
+    "target_name": "柿蒂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F058",
+    "source_name": "丁香柿蒂汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F058",
+    "source_name": "丁香柿蒂汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "包含",
+    "target_id": "H089",
+    "target_name": "大黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "包含",
+    "target_id": "H090",
+    "target_name": "芒硝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H052",
+    "target_name": "羌活",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H372",
+    "target_name": "秦艽",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H078",
+    "target_name": "香附",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H354",
+    "target_name": "牛膝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H361",
+    "target_name": "蒲黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H084",
+    "target_name": "延胡索",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H078",
+    "target_name": "香附",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H076",
+    "target_name": "枳壳",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H072",
+    "target_name": "赤芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H361",
+    "target_name": "蒲黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H084",
+    "target_name": "延胡索",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H093",
+    "target_name": "肉桂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "包含",
+    "target_id": "H468",
+    "target_name": "小茴香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "包含",
+    "target_id": "H523",
+    "target_name": "炮姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H562",
+    "target_name": "瓜蒌子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H089",
+    "target_name": "大黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H582",
+    "target_name": "血竭",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H386",
+    "target_name": "乳香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H329",
+    "target_name": "没药",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H083",
+    "target_name": "红花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H197",
+    "target_name": "儿茶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H140",
+    "target_name": "冰片",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "包含",
+    "target_id": "H030",
+    "target_name": "朱砂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F066",
+    "source_name": "失笑散",
+    "relation": "包含",
+    "target_id": "H361",
+    "target_name": "蒲黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F066",
+    "source_name": "失笑散",
+    "relation": "包含",
+    "target_id": "H361",
+    "target_name": "蒲黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F067",
+    "source_name": "丹参饮",
+    "relation": "包含",
+    "target_id": "H081",
+    "target_name": "丹参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F067",
+    "source_name": "丹参饮",
+    "relation": "包含",
+    "target_id": "H424",
+    "target_name": "檀香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F067",
+    "source_name": "丹参饮",
+    "relation": "包含",
+    "target_id": "H044",
+    "target_name": "砂仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H094",
+    "target_name": "吴茱萸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H106",
+    "target_name": "艾叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H080",
+    "target_name": "川芎",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F070",
+    "source_name": "四生丸",
+    "relation": "包含",
+    "target_id": "H229",
+    "target_name": "荷叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F070",
+    "source_name": "四生丸",
+    "relation": "包含",
+    "target_id": "H106",
+    "target_name": "艾叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F070",
+    "source_name": "四生丸",
+    "relation": "包含",
+    "target_id": "H148",
+    "target_name": "侧柏叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F070",
+    "source_name": "四生丸",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F071",
+    "source_name": "槐花散",
+    "relation": "包含",
+    "target_id": "H248",
+    "target_name": "槐花",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F071",
+    "source_name": "槐花散",
+    "relation": "包含",
+    "target_id": "H148",
+    "target_name": "侧柏叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F071",
+    "source_name": "槐花散",
+    "relation": "包含",
+    "target_id": "H621",
+    "target_name": "荆芥炭",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F071",
+    "source_name": "槐花散",
+    "relation": "包含",
+    "target_id": "H076",
+    "target_name": "枳壳",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H091",
+    "target_name": "附子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F074",
+    "source_name": "大建中汤",
+    "relation": "包含",
+    "target_id": "H244",
+    "target_name": "花椒",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F074",
+    "source_name": "大建中汤",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F074",
+    "source_name": "大建中汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F075",
+    "source_name": "吴茱萸汤",
+    "relation": "包含",
+    "target_id": "H094",
+    "target_name": "吴茱萸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F075",
+    "source_name": "吴茱萸汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F075",
+    "source_name": "吴茱萸汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F075",
+    "source_name": "吴茱萸汤",
+    "relation": "包含",
+    "target_id": "H009",
+    "target_name": "大枣",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F076",
+    "source_name": "小半夏汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F076",
+    "source_name": "小半夏汤",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F077",
+    "source_name": "大半夏汤",
+    "relation": "包含",
+    "target_id": "H085",
+    "target_name": "半夏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F077",
+    "source_name": "大半夏汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H508",
+    "target_name": "枳实",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F079",
+    "source_name": "枳术丸",
+    "relation": "包含",
+    "target_id": "H508",
+    "target_name": "枳实",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F079",
+    "source_name": "枳术丸",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H095",
+    "target_name": "山楂",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H096",
+    "target_name": "神曲",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H097",
+    "target_name": "麦芽",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "包含",
+    "target_id": "H508",
+    "target_name": "枳实",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H089",
+    "target_name": "大黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H508",
+    "target_name": "枳实",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H096",
+    "target_name": "神曲",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "包含",
+    "target_id": "H036",
+    "target_name": "泽泻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H139",
+    "target_name": "槟榔",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H377",
+    "target_name": "青皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H089",
+    "target_name": "大黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "包含",
+    "target_id": "H367",
+    "target_name": "牵牛子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H096",
+    "target_name": "神曲",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H413",
+    "target_name": "使君子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H139",
+    "target_name": "槟榔",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "包含",
+    "target_id": "H097",
+    "target_name": "麦芽",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H448",
+    "target_name": "乌梅",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H457",
+    "target_name": "细辛",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H091",
+    "target_name": "附子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H244",
+    "target_name": "花椒",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H047",
+    "target_name": "桂枝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "包含",
+    "target_id": "H067",
+    "target_name": "黄柏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H448",
+    "target_name": "乌梅",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "包含",
+    "target_id": "H244",
+    "target_name": "花椒",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "包含",
+    "target_id": "H448",
+    "target_name": "乌梅",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "包含",
+    "target_id": "H014",
+    "target_name": "阿胶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F087",
+    "source_name": "白头翁汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F087",
+    "source_name": "白头翁汤",
+    "relation": "包含",
+    "target_id": "H067",
+    "target_name": "黄柏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F087",
+    "source_name": "白头翁汤",
+    "relation": "包含",
+    "target_id": "H373",
+    "target_name": "秦皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H089",
+    "target_name": "大黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H139",
+    "target_name": "槟榔",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F089",
+    "source_name": "葛根芩连汤",
+    "relation": "包含",
+    "target_id": "H061",
+    "target_name": "葛根",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F089",
+    "source_name": "葛根芩连汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F089",
+    "source_name": "葛根芩连汤",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F089",
+    "source_name": "葛根芩连汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H001",
+    "target_name": "人参",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H007",
+    "target_name": "山药",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H037",
+    "target_name": "薏苡仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H044",
+    "target_name": "砂仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H086",
+    "target_name": "桔梗",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H113",
+    "target_name": "白扁豆",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H638",
+    "target_name": "莲子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H091",
+    "target_name": "附子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H006",
+    "target_name": "白术",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H034",
+    "target_name": "茯苓",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H092",
+    "target_name": "干姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H042",
+    "target_name": "厚朴",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H077",
+    "target_name": "木香",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H339",
+    "target_name": "木瓜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "包含",
+    "target_id": "H625",
+    "target_name": "茯苓皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "包含",
+    "target_id": "H169",
+    "target_name": "大腹皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "包含",
+    "target_id": "H075",
+    "target_name": "陈皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "包含",
+    "target_id": "H049",
+    "target_name": "生姜",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "包含",
+    "target_id": "H392",
+    "target_name": "桑白皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F093",
+    "source_name": "导赤散",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F093",
+    "source_name": "导赤散",
+    "relation": "包含",
+    "target_id": "H342",
+    "target_name": "木通",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F093",
+    "source_name": "导赤散",
+    "relation": "包含",
+    "target_id": "H665",
+    "target_name": "淡竹叶",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F093",
+    "source_name": "导赤散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H068",
+    "target_name": "龙胆",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H065",
+    "target_name": "黄芩",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H064",
+    "target_name": "栀子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H036",
+    "target_name": "泽泻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H342",
+    "target_name": "木通",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H038",
+    "target_name": "车前子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H059",
+    "target_name": "柴胡",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F095",
+    "source_name": "左金丸",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F095",
+    "source_name": "左金丸",
+    "relation": "包含",
+    "target_id": "H094",
+    "target_name": "吴茱萸",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F096",
+    "source_name": "苇茎汤",
+    "relation": "包含",
+    "target_id": "H309",
+    "target_name": "芦根",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F096",
+    "source_name": "苇茎汤",
+    "relation": "包含",
+    "target_id": "H037",
+    "target_name": "薏苡仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F096",
+    "source_name": "苇茎汤",
+    "relation": "包含",
+    "target_id": "H189",
+    "target_name": "冬瓜子",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F096",
+    "source_name": "苇茎汤",
+    "relation": "包含",
+    "target_id": "H082",
+    "target_name": "桃仁",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F097",
+    "source_name": "泻白散",
+    "relation": "包含",
+    "target_id": "H392",
+    "target_name": "桑白皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F097",
+    "source_name": "泻白散",
+    "relation": "包含",
+    "target_id": "H074",
+    "target_name": "地骨皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F097",
+    "source_name": "泻白散",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H066",
+    "target_name": "黄连",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H069",
+    "target_name": "生地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H071",
+    "target_name": "牡丹皮",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H060",
+    "target_name": "升麻",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "包含",
+    "target_id": "H011",
+    "target_name": "当归",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H062",
+    "target_name": "石膏",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H012",
+    "target_name": "熟地黄",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H018",
+    "target_name": "麦冬",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H063",
+    "target_name": "知母",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "包含",
+    "target_id": "H354",
+    "target_name": "牛膝",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F100",
+    "source_name": "芍药甘草汤",
+    "relation": "包含",
+    "target_id": "H013",
+    "target_name": "白芍",
+    "evidence": "《方剂学》教材"
+  },
+  {
+    "source_id": "F100",
+    "source_name": "芍药甘草汤",
+    "relation": "包含",
+    "target_id": "H008",
+    "target_name": "甘草",
+    "evidence": "《方剂学》教材"
+  }
+]

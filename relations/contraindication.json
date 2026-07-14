@@ -1,0 +1,6814 @@
+[
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H001",
+    "source_name": "人参",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H002",
+    "source_name": "西洋参",
+    "relation": "禁忌",
+    "target_id": "J211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H002",
+    "source_name": "西洋参",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H003",
+    "source_name": "党参",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H004",
+    "source_name": "太子参",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H004",
+    "source_name": "太子参",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "禁忌",
+    "target_id": "J120",
+    "target_name": "黄芪禁用于表实邪盛",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "禁忌",
+    "target_id": "J121",
+    "target_name": "黄芪禁用于气滞湿阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H005",
+    "source_name": "黄芪",
+    "relation": "禁忌",
+    "target_id": "J010",
+    "target_name": "高血压",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H006",
+    "source_name": "白术",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H006",
+    "source_name": "白术",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H007",
+    "source_name": "山药",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H007",
+    "source_name": "山药",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "禁忌",
+    "target_id": "J023",
+    "target_name": "不宜与甘草同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "禁忌",
+    "target_id": "J122",
+    "target_name": "甘草禁用于湿盛中满",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H008",
+    "source_name": "甘草",
+    "relation": "禁忌",
+    "target_id": "J123",
+    "target_name": "甘草久服致水肿",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H009",
+    "source_name": "大枣",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H009",
+    "source_name": "大枣",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H010",
+    "source_name": "蜂蜜",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H010",
+    "source_name": "蜂蜜",
+    "relation": "禁忌",
+    "target_id": "S041",
+    "target_name": "便秘",
+    "evidence": "《中药学》"
+  },
+
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "禁忌",
+    "target_id": "J007",
+    "target_name": "孕妇慎用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H011",
+    "source_name": "当归",
+    "relation": "禁忌",
+    "target_id": "Z047",
+    "target_name": "实热积滞",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "禁忌",
+    "target_id": "J004",
+    "target_name": "湿阻中满",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "禁忌",
+    "target_id": "J045",
+    "target_name": "脾虚湿盛慎用滋腻养阴药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H012",
+    "source_name": "熟地黄",
+    "relation": "禁忌",
+    "target_id": "J114",
+    "target_name": "熟地禁用于气滞痰多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H013",
+    "source_name": "白芍",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H013",
+    "source_name": "白芍",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H014",
+    "source_name": "阿胶",
+    "relation": "禁忌",
+    "target_id": "J004",
+    "target_name": "湿阻中满",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H014",
+    "source_name": "阿胶",
+    "relation": "禁忌",
+    "target_id": "J045",
+    "target_name": "脾虚湿盛慎用滋腻养阴药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H015",
+    "source_name": "何首乌",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H015",
+    "source_name": "何首乌",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H016",
+    "source_name": "龙眼肉",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H016",
+    "source_name": "龙眼肉",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H017",
+    "source_name": "枸杞子",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H017",
+    "source_name": "枸杞子",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H018",
+    "source_name": "麦冬",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H018",
+    "source_name": "麦冬",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H019",
+    "source_name": "沙参",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H019",
+    "source_name": "沙参",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H020",
+    "source_name": "玉竹",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H020",
+    "source_name": "玉竹",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H021",
+    "source_name": "百合",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H021",
+    "source_name": "百合",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H022",
+    "source_name": "女贞子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H022",
+    "source_name": "女贞子",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H023",
+    "source_name": "龟甲",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H023",
+    "source_name": "龟甲",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H024",
+    "source_name": "酸枣仁",
+    "relation": "禁忌",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H024",
+    "source_name": "酸枣仁",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H025",
+    "source_name": "远志",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H025",
+    "source_name": "远志",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H026",
+    "source_name": "柏子仁",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H026",
+    "source_name": "柏子仁",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H027",
+    "source_name": "合欢皮",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H027",
+    "source_name": "合欢皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H028",
+    "source_name": "夜交藤",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H029",
+    "source_name": "茯神",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H030",
+    "source_name": "朱砂",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H030",
+    "source_name": "朱砂",
+    "relation": "禁忌",
+    "target_id": "J126",
+    "target_name": "朱砂禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H030",
+    "source_name": "朱砂",
+    "relation": "禁忌",
+    "target_id": "J128",
+    "target_name": "朱砂不宜久服",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H031",
+    "source_name": "磁石",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H031",
+    "source_name": "磁石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H032",
+    "source_name": "龙骨",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H032",
+    "source_name": "龙骨",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H033",
+    "source_name": "牡蛎",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H033",
+    "source_name": "牡蛎",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H034",
+    "source_name": "茯苓",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H034",
+    "source_name": "茯苓",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H035",
+    "source_name": "猪苓",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H035",
+    "source_name": "猪苓",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H036",
+    "source_name": "泽泻",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H036",
+    "source_name": "泽泻",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H037",
+    "source_name": "薏苡仁",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H037",
+    "source_name": "薏苡仁",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H038",
+    "source_name": "车前子",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H038",
+    "source_name": "车前子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H039",
+    "source_name": "滑石",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H039",
+    "source_name": "滑石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H040",
+    "source_name": "茵陈",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H040",
+    "source_name": "茵陈",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H041",
+    "source_name": "苍术",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H041",
+    "source_name": "苍术",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H042",
+    "source_name": "厚朴",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H042",
+    "source_name": "厚朴",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H043",
+    "source_name": "藿香",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H043",
+    "source_name": "藿香",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H044",
+    "source_name": "砂仁",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H044",
+    "source_name": "砂仁",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H045",
+    "source_name": "豆蔻",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H045",
+    "source_name": "豆蔻",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "禁忌",
+    "target_id": "J010",
+    "target_name": "高血压",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "禁忌",
+    "target_id": "J012",
+    "target_name": "体虚多汗",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "禁忌",
+    "target_id": "J101",
+    "target_name": "麻黄禁用于表虚自汗",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H046",
+    "source_name": "麻黄",
+    "relation": "禁忌",
+    "target_id": "J102",
+    "target_name": "麻黄禁用于虚喘",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H047",
+    "source_name": "桂枝",
+    "relation": "禁忌",
+    "target_id": "J103",
+    "target_name": "桂枝禁用于温热病",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H047",
+    "source_name": "桂枝",
+    "relation": "禁忌",
+    "target_id": "J104",
+    "target_name": "桂枝禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H047",
+    "source_name": "桂枝",
+    "relation": "禁忌",
+    "target_id": "J016",
+    "target_name": "表虚自汗",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H048",
+    "source_name": "紫苏",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H048",
+    "source_name": "紫苏",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H049",
+    "source_name": "生姜",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H049",
+    "source_name": "生姜",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H050",
+    "source_name": "荆芥",
+    "relation": "禁忌",
+    "target_id": "J201",
+    "target_name": "荆芥禁用于表虚自汗",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H050",
+    "source_name": "荆芥",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H051",
+    "source_name": "防风",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H051",
+    "source_name": "防风",
+    "relation": "禁忌",
+    "target_id": "J202",
+    "target_name": "防风禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H052",
+    "source_name": "羌活",
+    "relation": "禁忌",
+    "target_id": "J203",
+    "target_name": "羌活禁用于阴虚头痛",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H052",
+    "source_name": "羌活",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H053",
+    "source_name": "白芷",
+    "relation": "禁忌",
+    "target_id": "J204",
+    "target_name": "白芷禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H053",
+    "source_name": "白芷",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H054",
+    "source_name": "薄荷",
+    "relation": "禁忌",
+    "target_id": "J016",
+    "target_name": "表虚自汗",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H054",
+    "source_name": "薄荷",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H055",
+    "source_name": "金银花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H055",
+    "source_name": "金银花",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H056",
+    "source_name": "连翘",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H056",
+    "source_name": "连翘",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H057",
+    "source_name": "菊花",
+    "relation": "禁忌",
+    "target_id": "J210",
+    "target_name": "菊花禁用于气虚胃寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H057",
+    "source_name": "菊花",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H058",
+    "source_name": "桑叶",
+    "relation": "禁忌",
+    "target_id": "J209",
+    "target_name": "桑叶禁用于虚寒证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H058",
+    "source_name": "桑叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H059",
+    "source_name": "柴胡",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H059",
+    "source_name": "柴胡",
+    "relation": "禁忌",
+    "target_id": "J038",
+    "target_name": "肝阳上亢忌用升散药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H060",
+    "source_name": "升麻",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H060",
+    "source_name": "升麻",
+    "relation": "禁忌",
+    "target_id": "J038",
+    "target_name": "肝阳上亢忌用升散药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H061",
+    "source_name": "葛根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H061",
+    "source_name": "葛根",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H062",
+    "source_name": "石膏",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H062",
+    "source_name": "石膏",
+    "relation": "禁忌",
+    "target_id": "J211",
+    "target_name": "石膏禁用于风寒感冒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H063",
+    "source_name": "知母",
+    "relation": "禁忌",
+    "target_id": "J212",
+    "target_name": "知母禁用于脾虚便溏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H063",
+    "source_name": "知母",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H064",
+    "source_name": "栀子",
+    "relation": "禁忌",
+    "target_id": "J213",
+    "target_name": "栀子禁用于脾虚便溏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H064",
+    "source_name": "栀子",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H065",
+    "source_name": "黄芩",
+    "relation": "禁忌",
+    "target_id": "J214",
+    "target_name": "黄芩禁用于脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H065",
+    "source_name": "黄芩",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H066",
+    "source_name": "黄连",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H066",
+    "source_name": "黄连",
+    "relation": "禁忌",
+    "target_id": "J119",
+    "target_name": "黄连禁用于脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H067",
+    "source_name": "黄柏",
+    "relation": "禁忌",
+    "target_id": "J215",
+    "target_name": "黄柏禁用于阳虚寒湿",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H067",
+    "source_name": "黄柏",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H068",
+    "source_name": "龙胆",
+    "relation": "禁忌",
+    "target_id": "J216",
+    "target_name": "龙胆草禁用于脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H068",
+    "source_name": "龙胆",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H069",
+    "source_name": "生地黄",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H069",
+    "source_name": "生地黄",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H070",
+    "source_name": "玄参",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H070",
+    "source_name": "玄参",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H071",
+    "source_name": "牡丹皮",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H071",
+    "source_name": "牡丹皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H072",
+    "source_name": "赤芍",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H072",
+    "source_name": "赤芍",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H073",
+    "source_name": "青蒿",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H073",
+    "source_name": "青蒿",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H074",
+    "source_name": "地骨皮",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H074",
+    "source_name": "地骨皮",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H075",
+    "source_name": "陈皮",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H075",
+    "source_name": "陈皮",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H076",
+    "source_name": "枳壳",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H076",
+    "source_name": "枳壳",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H077",
+    "source_name": "木香",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H077",
+    "source_name": "木香",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H078",
+    "source_name": "香附",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H078",
+    "source_name": "香附",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H079",
+    "source_name": "佛手",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H079",
+    "source_name": "佛手",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H102",
+    "source_name": "川楝子",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H102",
+    "source_name": "川楝子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H152",
+    "source_name": "沉香",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H152",
+    "source_name": "沉香",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H169",
+    "source_name": "大腹皮",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H169",
+    "source_name": "大腹皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H207",
+    "source_name": "甘松",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H247",
+    "source_name": "化橘红",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H260",
+    "source_name": "降香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H276",
+    "source_name": "橘核",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H277",
+    "source_name": "橘红",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H278",
+    "source_name": "橘络",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H279",
+    "source_name": "橘叶",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H295",
+    "source_name": "荔枝核",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H330",
+    "source_name": "玫瑰花",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H331",
+    "source_name": "梅花",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H377",
+    "source_name": "青皮",
+    "relation": "禁忌",
+    "target_id": "J250",
+    "target_name": "青皮禁用于气虚者",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H377",
+    "source_name": "青皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H414",
+    "source_name": "柿蒂",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H423",
+    "source_name": "娑罗子",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H424",
+    "source_name": "檀香",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H449",
+    "source_name": "乌药",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H467",
+    "source_name": "香橼",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H471",
+    "source_name": "薤白",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H497",
+    "source_name": "预知子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H508",
+    "source_name": "枳实",
+    "relation": "禁忌",
+    "target_id": "J248",
+    "target_name": "枳实禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H508",
+    "source_name": "枳实",
+    "relation": "禁忌",
+    "target_id": "J249",
+    "target_name": "枳实禁用于脾虚气陷",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H520",
+    "source_name": "九里香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H521",
+    "source_name": "九香虫",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H525",
+    "source_name": "土木香",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H536",
+    "source_name": "川木香",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "禁忌",
+    "target_id": "J007",
+    "target_name": "孕妇慎用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "禁忌",
+    "target_id": "J115",
+    "target_name": "川芎禁用于月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H080",
+    "source_name": "川芎",
+    "relation": "禁忌",
+    "target_id": "J116",
+    "target_name": "川芎禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "禁忌",
+    "target_id": "J021",
+    "target_name": "不宜与藜芦同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "禁忌",
+    "target_id": "J117",
+    "target_name": "丹参禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H081",
+    "source_name": "丹参",
+    "relation": "禁忌",
+    "target_id": "J118",
+    "target_name": "丹参禁用于出血倾向",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H082",
+    "source_name": "桃仁",
+    "relation": "禁忌",
+    "target_id": "J009",
+    "target_name": "出血倾向",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H083",
+    "source_name": "红花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H083",
+    "source_name": "红花",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H083",
+    "source_name": "红花",
+    "relation": "禁忌",
+    "target_id": "J009",
+    "target_name": "出血倾向",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H084",
+    "source_name": "延胡索",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H084",
+    "source_name": "延胡索",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H128",
+    "source_name": "斑蝥",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H128",
+    "source_name": "斑蝥",
+    "relation": "禁忌",
+    "target_id": "J145",
+    "target_name": "皮肤破损禁用斑蝥",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H133",
+    "source_name": "北刘寄奴",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H154",
+    "source_name": "茺蔚子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H160",
+    "source_name": "川牛膝",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H178",
+    "source_name": "倒扣草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H195",
+    "source_name": "莪术",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H195",
+    "source_name": "莪术",
+    "relation": "禁忌",
+    "target_id": "J266",
+    "target_name": "莪术禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H197",
+    "source_name": "儿茶",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H222",
+    "source_name": "鬼箭羽",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H255",
+    "source_name": "鸡血藤",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H257",
+    "source_name": "急性子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H259",
+    "source_name": "姜黄",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H280",
+    "source_name": "卷柏",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H304",
+    "source_name": "凌霄花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H319",
+    "source_name": "马鞭草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H329",
+    "source_name": "没药",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H354",
+    "source_name": "牛膝",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H370",
+    "source_name": "茜草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H386",
+    "source_name": "乳香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H390",
+    "source_name": "三棱",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H401",
+    "source_name": "山楂叶",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H409",
+    "source_name": "石见穿",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H417",
+    "source_name": "水红花子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H444",
+    "source_name": "王不留行",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H455",
+    "source_name": "西红花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H462",
+    "source_name": "仙桃草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H485",
+    "source_name": "益母草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H495",
+    "source_name": "郁金",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H500",
+    "source_name": "月季花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H504",
+    "source_name": "泽兰",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H524",
+    "source_name": "干漆",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H526",
+    "source_name": "土鳖虫（䗪虫）",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H540",
+    "source_name": "小叶莲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H541",
+    "source_name": "小驳骨",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H549",
+    "source_name": "片姜黄",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H553",
+    "source_name": "水蛭",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H580",
+    "source_name": "自然铜",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H582",
+    "source_name": "血竭",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H585",
+    "source_name": "灯盏细辛（灯盏花）",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H594",
+    "source_name": "苏木",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H609",
+    "source_name": "枫香脂",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H635",
+    "source_name": "独一味",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H639",
+    "source_name": "桃枝",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H688",
+    "source_name": "滇鸡血藤",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "禁忌",
+    "target_id": "J110",
+    "target_name": "半夏禁用于阴虚燥咳",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "禁忌",
+    "target_id": "J111",
+    "target_name": "半夏禁用于血证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H085",
+    "source_name": "半夏",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H086",
+    "source_name": "桔梗",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H086",
+    "source_name": "桔梗",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H087",
+    "source_name": "杏仁",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H087",
+    "source_name": "杏仁",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H088",
+    "source_name": "瓜蒌",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H088",
+    "source_name": "瓜蒌",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H114",
+    "source_name": "白附子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H114",
+    "source_name": "白附子",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H123",
+    "source_name": "白前",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H157",
+    "source_name": "川贝母",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H157",
+    "source_name": "川贝母",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H174",
+    "source_name": "大皂角",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H174",
+    "source_name": "大皂角",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H189",
+    "source_name": "冬瓜子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H227",
+    "source_name": "海藻",
+    "relation": "禁忌",
+    "target_id": "J023",
+    "target_name": "不宜与甘草同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H227",
+    "source_name": "海藻",
+    "relation": "禁忌",
+    "target_id": "J090",
+    "target_name": "甲状腺功能亢进慎用含碘中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H237",
+    "source_name": "猴枣",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H251",
+    "source_name": "黄药子",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H262",
+    "source_name": "芥子",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H263",
+    "source_name": "金沸草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H288",
+    "source_name": "昆布",
+    "relation": "禁忌",
+    "target_id": "J090",
+    "target_name": "甲状腺功能亢进慎用含碘中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H314",
+    "source_name": "罗汉果",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H327",
+    "source_name": "猫眼草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H357",
+    "source_name": "胖大海",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H360",
+    "source_name": "平贝母",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H368",
+    "source_name": "前胡",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H396",
+    "source_name": "沙棘",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H415",
+    "source_name": "鼠曲草",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H428",
+    "source_name": "天南星",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H432",
+    "source_name": "天竺黄",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H433",
+    "source_name": "甜瓜子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H438",
+    "source_name": "土贝母",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H442",
+    "source_name": "瓦楞子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H450",
+    "source_name": "无患子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H451",
+    "source_name": "无患子皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H476",
+    "source_name": "旋覆花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H484",
+    "source_name": "伊贝母",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H502",
+    "source_name": "皂荚子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H503",
+    "source_name": "皂角刺",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H506",
+    "source_name": "浙贝母",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H510",
+    "source_name": "猪牙皂",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H516",
+    "source_name": "紫花前胡",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H556",
+    "source_name": "石吊兰",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H561",
+    "source_name": "瓜子金",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H562",
+    "source_name": "瓜蒌子",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H563",
+    "source_name": "炒瓜蒌子",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H564",
+    "source_name": "瓜蒌皮",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H567",
+    "source_name": "法半夏",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H568",
+    "source_name": "姜半夏",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H569",
+    "source_name": "清半夏",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H579",
+    "source_name": "竹茹",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H606",
+    "source_name": "青礞石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H613",
+    "source_name": "金龙胆草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H616",
+    "source_name": "金礞石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H634",
+    "source_name": "胆南星",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H656",
+    "source_name": "野马追",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H674",
+    "source_name": "蛤壳",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H679",
+    "source_name": "湖北贝母",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H696",
+    "source_name": "暴马子皮",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H105",
+    "source_name": "矮地茶",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H115",
+    "source_name": "白果",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H124",
+    "source_name": "白屈菜",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H126",
+    "source_name": "百部",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H246",
+    "source_name": "华山参",
+    "relation": "禁忌",
+    "target_id": "J087",
+    "target_name": "青光眼慎用抗胆碱类中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H287",
+    "source_name": "款冬花",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H322",
+    "source_name": "马兜铃",
+    "relation": "禁忌",
+    "target_id": "J094",
+    "target_name": "肾功能不全慎用含马兜铃酸中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H325",
+    "source_name": "满山红",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H337",
+    "source_name": "牡荆子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H352",
+    "source_name": "牛大力",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H359",
+    "source_name": "枇杷叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H366",
+    "source_name": "千日红",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H392",
+    "source_name": "桑白皮",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H431",
+    "source_name": "天仙子",
+    "relation": "禁忌",
+    "target_id": "J087",
+    "target_name": "青光眼慎用抗胆碱类中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H436",
+    "source_name": "葶苈子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H481",
+    "source_name": "洋金花",
+    "relation": "禁忌",
+    "target_id": "J087",
+    "target_name": "青光眼慎用抗胆碱类中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H488",
+    "source_name": "银杏叶",
+    "relation": "禁忌",
+    "target_id": "J009",
+    "target_name": "出血倾向",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H517",
+    "source_name": "紫苏子",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H518",
+    "source_name": "紫菀",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H648",
+    "source_name": "通关藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "禁忌",
+    "target_id": "J105",
+    "target_name": "大黄禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H089",
+    "source_name": "大黄",
+    "relation": "禁忌",
+    "target_id": "J106",
+    "target_name": "大黄禁用于脾虚便溏",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H090",
+    "source_name": "芒硝",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H090",
+    "source_name": "芒硝",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H110",
+    "source_name": "巴豆",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H110",
+    "source_name": "巴豆",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H198",
+    "source_name": "番泻叶",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H198",
+    "source_name": "番泻叶",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H208",
+    "source_name": "甘遂",
+    "relation": "禁忌",
+    "target_id": "J023",
+    "target_name": "不宜与甘草同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H208",
+    "source_name": "甘遂",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H271",
+    "source_name": "京大戟",
+    "relation": "禁忌",
+    "target_id": "J023",
+    "target_name": "不宜与甘草同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H271",
+    "source_name": "京大戟",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H310",
+    "source_name": "芦荟",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H310",
+    "source_name": "芦荟",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H364",
+    "source_name": "千金子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H367",
+    "source_name": "牵牛子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H402",
+    "source_name": "商陆",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H498",
+    "source_name": "芫花",
+    "relation": "禁忌",
+    "target_id": "J023",
+    "target_name": "不宜与甘草同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H498",
+    "source_name": "芫花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H551",
+    "source_name": "巴豆霜",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H586",
+    "source_name": "红大戟",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H642",
+    "source_name": "狼毒",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H103",
+    "source_name": "火麻仁",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H103",
+    "source_name": "火麻仁",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H421",
+    "source_name": "松子仁",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H480",
+    "source_name": "亚麻子",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H496",
+    "source_name": "郁李仁",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "禁忌",
+    "target_id": "J107",
+    "target_name": "附子禁用于阴虚阳亢",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "禁忌",
+    "target_id": "J108",
+    "target_name": "附子禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H091",
+    "source_name": "附子",
+    "relation": "禁忌",
+    "target_id": "J109",
+    "target_name": "附子内服须久煎",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H092",
+    "source_name": "干姜",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H092",
+    "source_name": "干姜",
+    "relation": "禁忌",
+    "target_id": "J244",
+    "target_name": "干姜禁用于阴虚内热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "禁忌",
+    "target_id": "J013",
+    "target_name": "阴虚阳亢",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "禁忌",
+    "target_id": "J242",
+    "target_name": "肉桂禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H093",
+    "source_name": "肉桂",
+    "relation": "禁忌",
+    "target_id": "J243",
+    "target_name": "肉桂禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H094",
+    "source_name": "吴茱萸",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H094",
+    "source_name": "吴茱萸",
+    "relation": "禁忌",
+    "target_id": "J245",
+    "target_name": "吴茱萸禁用于阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H108",
+    "source_name": "八角茴香",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H134",
+    "source_name": "荜茇",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H135",
+    "source_name": "荜澄茄",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H186",
+    "source_name": "丁香",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H209",
+    "source_name": "高良姜",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H239",
+    "source_name": "胡椒",
+    "relation": "禁忌",
+    "target_id": "J246",
+    "target_name": "胡椒禁用于热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H244",
+    "source_name": "花椒",
+    "relation": "禁忌",
+    "target_id": "J247",
+    "target_name": "花椒禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H400",
+    "source_name": "山柰",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H468",
+    "source_name": "小茴香",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H570",
+    "source_name": "母丁香",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H589",
+    "source_name": "红豆蔻",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "禁忌",
+    "target_id": "J253",
+    "target_name": "山楂禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "禁忌",
+    "target_id": "J254",
+    "target_name": "山楂禁用于胃酸过多",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H095",
+    "source_name": "山楂",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H096",
+    "source_name": "神曲",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H096",
+    "source_name": "神曲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H097",
+    "source_name": "麦芽",
+    "relation": "禁忌",
+    "target_id": "J255",
+    "target_name": "麦芽禁用于哺乳期",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H097",
+    "source_name": "麦芽",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H254",
+    "source_name": "鸡屎藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H290",
+    "source_name": "莱菔子",
+    "relation": "禁忌",
+    "target_id": "J256",
+    "target_name": "莱菔子禁用于气虚者",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H290",
+    "source_name": "莱菔子",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H452",
+    "source_name": "梧桐子",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H600",
+    "source_name": "谷芽",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H603",
+    "source_name": "阿魏",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H605",
+    "source_name": "鸡内金",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H697",
+    "source_name": "稻芽",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H139",
+    "source_name": "槟榔",
+    "relation": "禁忌",
+    "target_id": "J251",
+    "target_name": "槟榔禁用于气虚下陷",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H139",
+    "source_name": "槟榔",
+    "relation": "禁忌",
+    "target_id": "J252",
+    "target_name": "槟榔禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H231",
+    "source_name": "鹤虱",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H285",
+    "source_name": "苦楝皮",
+    "relation": "禁忌",
+    "target_id": "J258",
+    "target_name": "苦楝皮禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H294",
+    "source_name": "雷丸",
+    "relation": "禁忌",
+    "target_id": "J259",
+    "target_name": "雷丸禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H345",
+    "source_name": "南瓜子",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H346",
+    "source_name": "南鹤虱",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H413",
+    "source_name": "使君子",
+    "relation": "禁忌",
+    "target_id": "J257",
+    "target_name": "使君子禁用于热证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H690",
+    "source_name": "榧子",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H692",
+    "source_name": "焦槟榔",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H098",
+    "source_name": "三七",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H098",
+    "source_name": "三七",
+    "relation": "禁忌",
+    "target_id": "J264",
+    "target_name": "三七禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H098",
+    "source_name": "三七",
+    "relation": "禁忌",
+    "target_id": "J009",
+    "target_name": "出血倾向",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H106",
+    "source_name": "艾叶",
+    "relation": "禁忌",
+    "target_id": "J265",
+    "target_name": "艾叶禁用于阴虚血热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H118",
+    "source_name": "白及",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H122",
+    "source_name": "白茅根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H148",
+    "source_name": "侧柏叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H170",
+    "source_name": "大蓟",
+    "relation": "禁忌",
+    "target_id": "J260",
+    "target_name": "大蓟禁用于虚寒出血",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H184",
+    "source_name": "地榆",
+    "relation": "禁忌",
+    "target_id": "J262",
+    "target_name": "地榆禁用于虚寒便血",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H194",
+    "source_name": "断血流",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H218",
+    "source_name": "贯叶金丝桃",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H245",
+    "source_name": "花生衣",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H248",
+    "source_name": "槐花",
+    "relation": "禁忌",
+    "target_id": "J263",
+    "target_name": "槐花禁用于脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H249",
+    "source_name": "槐角",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H253",
+    "source_name": "鸡冠花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H269",
+    "source_name": "金盏菊花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H273",
+    "source_name": "景天三七",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H280",
+    "source_name": "卷柏",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H297",
+    "source_name": "莲房",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H356",
+    "source_name": "藕节",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H361",
+    "source_name": "蒲黄",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H419",
+    "source_name": "松花粉",
+    "relation": "禁忌",
+    "target_id": "J020",
+    "target_name": "过敏体质",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H460",
+    "source_name": "仙鹤草",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H469",
+    "source_name": "小蓟",
+    "relation": "禁忌",
+    "target_id": "J261",
+    "target_name": "小蓟禁用于虚寒出血",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H513",
+    "source_name": "苎麻根",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H527",
+    "source_name": "大叶紫珠",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H530",
+    "source_name": "大蓟炭",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H581",
+    "source_name": "血余炭",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H593",
+    "source_name": "花蕊石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H667",
+    "source_name": "棕榈",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H672",
+    "source_name": "紫珠叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H099",
+    "source_name": "天麻",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H099",
+    "source_name": "天麻",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H100",
+    "source_name": "钩藤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H101",
+    "source_name": "山茱萸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H101",
+    "source_name": "山茱萸",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H258",
+    "source_name": "蒺藜",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H313",
+    "source_name": "罗布麻叶",
+    "relation": "禁忌",
+    "target_id": "J092",
+    "target_name": "低血压慎用降压类中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H557",
+    "source_name": "石决明",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H619",
+    "source_name": "珍珠",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H620",
+    "source_name": "珍珠母",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H664",
+    "source_name": "羚羊角",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H694",
+    "source_name": "赭石",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H698",
+    "source_name": "僵蚕",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H104",
+    "source_name": "五味子",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H104",
+    "source_name": "五味子",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H206",
+    "source_name": "覆盆子",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H228",
+    "source_name": "诃子",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H268",
+    "source_name": "金樱子",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H298",
+    "source_name": "莲须",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H299",
+    "source_name": "莲子心",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H318",
+    "source_name": "麻黄根",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H349",
+    "source_name": "南五味子",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H355",
+    "source_name": "糯稻根",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H369",
+    "source_name": "芡实",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H385",
+    "source_name": "肉豆蔻",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H410",
+    "source_name": "石榴皮",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H448",
+    "source_name": "乌梅",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H453",
+    "source_name": "五倍子",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H490",
+    "source_name": "罂粟壳",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H538",
+    "source_name": "广东紫珠",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H592",
+    "source_name": "赤石脂",
+    "relation": "禁忌",
+    "target_id": "J062",
+    "target_name": "不宜与肉桂同用",
+    "evidence": "《中药学》十九畏"
+  },
+  {
+    "source_id": "H612",
+    "source_name": "岩白菜",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H638",
+    "source_name": "莲子",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H647",
+    "source_name": "海螵蛸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H649",
+    "source_name": "桑螵蛸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+
+  {
+    "source_id": "H112",
+    "source_name": "菝葜",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H142",
+    "source_name": "蚕沙",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H146",
+    "source_name": "草乌",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H146",
+    "source_name": "草乌",
+    "relation": "禁忌",
+    "target_id": "J143",
+    "target_name": "生川乌生草乌禁内服",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H155",
+    "source_name": "臭梧桐",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H162",
+    "source_name": "川乌",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H162",
+    "source_name": "川乌",
+    "relation": "禁忌",
+    "target_id": "J143",
+    "target_name": "生川乌生草乌禁内服",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H163",
+    "source_name": "穿山龙",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H181",
+    "source_name": "地枫皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H185",
+    "source_name": "丁公藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H191",
+    "source_name": "独活",
+    "relation": "禁忌",
+    "target_id": "J237",
+    "target_name": "独活禁用于阴虚血燥",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H191",
+    "source_name": "独活",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H200",
+    "source_name": "防己",
+    "relation": "禁忌",
+    "target_id": "J094",
+    "target_name": "肾功能不全慎用含马兜铃酸中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H203",
+    "source_name": "凤仙透骨草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H224",
+    "source_name": "海风藤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H226",
+    "source_name": "海桐皮",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H241",
+    "source_name": "槲寄生",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H291",
+    "source_name": "老鹳草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H293",
+    "source_name": "雷公藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H293",
+    "source_name": "雷公藤",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H300",
+    "source_name": "两面针",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H301",
+    "source_name": "两头尖",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H311",
+    "source_name": "鹿衔草",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H312",
+    "source_name": "路路通",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H315",
+    "source_name": "络石藤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H323",
+    "source_name": "马钱子",
+    "relation": "禁忌",
+    "target_id": "J089",
+    "target_name": "癫痫慎用马钱子",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H323",
+    "source_name": "马钱子",
+    "relation": "禁忌",
+    "target_id": "J144",
+    "target_name": "生马钱子禁内服",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H339",
+    "source_name": "木瓜",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H350",
+    "source_name": "闹羊花",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H363",
+    "source_name": "千斤拔",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H365",
+    "source_name": "千年健",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H371",
+    "source_name": "茄根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H372",
+    "source_name": "秦艽",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H375",
+    "source_name": "青风藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H389",
+    "source_name": "三分三",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H393",
+    "source_name": "桑寄生",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H395",
+    "source_name": "桑枝",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H405",
+    "source_name": "伸筋草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H420",
+    "source_name": "油松节",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H430",
+    "source_name": "天仙藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H434",
+    "source_name": "铁丝威灵仙",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H435",
+    "source_name": "铁线透骨草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H445",
+    "source_name": "威灵仙",
+    "relation": "禁忌",
+    "target_id": "J238",
+    "target_name": "威灵仙禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H445",
+    "source_name": "威灵仙",
+    "relation": "禁忌",
+    "target_id": "J239",
+    "target_name": "威灵仙禁用于气虚血弱",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H456",
+    "source_name": "豨莶草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H459",
+    "source_name": "夏天无",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H464",
+    "source_name": "香加皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H465",
+    "source_name": "香茅",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H473",
+    "source_name": "徐长卿",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H477",
+    "source_name": "寻骨风",
+    "relation": "禁忌",
+    "target_id": "J094",
+    "target_name": "肾功能不全慎用含马兜铃酸中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H537",
+    "source_name": "制川乌",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H547",
+    "source_name": "五加皮",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H550",
+    "source_name": "乌梢蛇",
+    "relation": "禁忌",
+    "target_id": "J240",
+    "target_name": "乌梢蛇禁用于血虚生风",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H571",
+    "source_name": "丝瓜络",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H614",
+    "source_name": "金钱白花蛇",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H615",
+    "source_name": "金铁锁",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H617",
+    "source_name": "狗脊",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H623",
+    "source_name": "制草乌",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H657",
+    "source_name": "野木瓜",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H658",
+    "source_name": "蛇蜕",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H695",
+    "source_name": "蕲蛇",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H111",
+    "source_name": "巴戟天",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H144",
+    "source_name": "草苁蓉",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H187",
+    "source_name": "冬虫夏草",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H192",
+    "source_name": "杜仲",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H215",
+    "source_name": "骨碎补",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H230",
+    "source_name": "核桃仁",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H240",
+    "source_name": "胡芦巴",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H274",
+    "source_name": "韭菜子",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H384",
+    "source_name": "肉苁蓉",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H397",
+    "source_name": "沙苑子",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H429",
+    "source_name": "天山雪莲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H441",
+    "source_name": "菟丝子",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H461",
+    "source_name": "仙茅",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H474",
+    "source_name": "续断",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H486",
+    "source_name": "益智",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H489",
+    "source_name": "淫羊藿",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H596",
+    "source_name": "巫山淫羊藿",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H602",
+    "source_name": "补骨脂",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H645",
+    "source_name": "海马",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H646",
+    "source_name": "海龙",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H660",
+    "source_name": "鹿角",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H661",
+    "source_name": "鹿角胶",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H662",
+    "source_name": "鹿角霜",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H663",
+    "source_name": "鹿茸",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H675",
+    "source_name": "蛤蚧",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H677",
+    "source_name": "锁阳",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H555",
+    "source_name": "艾片（左旋龙脑）",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H558",
+    "source_name": "石斛",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H601",
+    "source_name": "龟甲胶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H631",
+    "source_name": "钟乳石",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H107",
+    "source_name": "安息香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H140",
+    "source_name": "冰片",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H353",
+    "source_name": "牛黄",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H408",
+    "source_name": "石菖蒲",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H422",
+    "source_name": "苏合香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H545",
+    "source_name": "天然冰片（右旋龙脑）",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H704",
+    "source_name": "麝香",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H109",
+    "source_name": "八角莲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H117",
+    "source_name": "白花蛇舌草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H119",
+    "source_name": "白蔹",
+    "relation": "禁忌",
+    "target_id": "J022",
+    "target_name": "不宜与乌头同用",
+    "evidence": "《中药学》十八反"
+  },
+  {
+    "source_id": "H120",
+    "source_name": "白毛藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H121",
+    "source_name": "白毛夏枯草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H125",
+    "source_name": "白药子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H127",
+    "source_name": "败酱草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H129",
+    "source_name": "板蓝根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H130",
+    "source_name": "半边莲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H131",
+    "source_name": "半枝莲",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H132",
+    "source_name": "北豆根",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H147",
+    "source_name": "草乌叶",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H158",
+    "source_name": "川槿皮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H161",
+    "source_name": "川射干",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H164",
+    "source_name": "穿心莲",
+    "relation": "禁忌",
+    "target_id": "J218",
+    "target_name": "穿心莲禁用于孕妇",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H165",
+    "source_name": "垂盆草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H171",
+    "source_name": "大青叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H173",
+    "source_name": "大血藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H183",
+    "source_name": "地锦草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H199",
+    "source_name": "翻白草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H202",
+    "source_name": "凤尾草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H204",
+    "source_name": "凤眼草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H212",
+    "source_name": "功劳木",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H219",
+    "source_name": "绵马贯众",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H223",
+    "source_name": "鬼针草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H229",
+    "source_name": "荷叶",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H242",
+    "source_name": "虎耳草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H256",
+    "source_name": "积雪草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H264",
+    "source_name": "金果榄",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H265",
+    "source_name": "金莲花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H267",
+    "source_name": "金荞麦",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H270",
+    "source_name": "锦灯笼",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H283",
+    "source_name": "苦地丁",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H292",
+    "source_name": "了哥王根",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H302",
+    "source_name": "蓼大青叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H306",
+    "source_name": "龙葵",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H308",
+    "source_name": "漏芦",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H316",
+    "source_name": "绿豆",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H317",
+    "source_name": "葎草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H320",
+    "source_name": "马勃",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H321",
+    "source_name": "马齿苋",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H328",
+    "source_name": "猫爪草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H332",
+    "source_name": "猕猴桃根",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H340",
+    "source_name": "木蝴蝶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H344",
+    "source_name": "墓头回",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H374",
+    "source_name": "青黛",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H376",
+    "source_name": "青果",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H382",
+    "source_name": "拳参",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H391",
+    "source_name": "三七花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H398",
+    "source_name": "山慈菇",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H399",
+    "source_name": "山豆根",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H404",
+    "source_name": "射干",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H406",
+    "source_name": "十大功劳根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H407",
+    "source_name": "十大功劳叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H411",
+    "source_name": "石上柏",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H416",
+    "source_name": "水飞蓟",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H418",
+    "source_name": "四季青",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H427",
+    "source_name": "天葵子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H439",
+    "source_name": "土茯苓",
+    "relation": "禁忌",
+    "target_id": "J066",
+    "target_name": "服土茯苓忌饮茶",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H446",
+    "source_name": "委陵菜",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H447",
+    "source_name": "乌敛莓",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H463",
+    "source_name": "相思子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H478",
+    "source_name": "鸦胆子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H482",
+    "source_name": "野菊花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H491",
+    "source_name": "余甘子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H492",
+    "source_name": "鱼腥草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H509",
+    "source_name": "肿节风",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H512",
+    "source_name": "竹沥",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H515",
+    "source_name": "紫花地丁",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H532",
+    "source_name": "山香圆叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H533",
+    "source_name": "山银花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H534",
+    "source_name": "千里光",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H542",
+    "source_name": "飞扬草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H548",
+    "source_name": "毛诃子",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H565",
+    "source_name": "冬凌草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H595",
+    "source_name": "杠板归",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H607",
+    "source_name": "苦木",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H608",
+    "source_name": "苦玄参",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H626",
+    "source_name": "南板蓝根",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H632",
+    "source_name": "重楼",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H636",
+    "source_name": "洪连",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H641",
+    "source_name": "臭灵丹草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H643",
+    "source_name": "高山辣根菜",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H653",
+    "source_name": "黄藤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H655",
+    "source_name": "救必应",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H659",
+    "source_name": "猪胆粉",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H673",
+    "source_name": "紫萁贯众",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H678",
+    "source_name": "筋骨草",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H683",
+    "source_name": "蒲公英",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H701",
+    "source_name": "翼首草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H220",
+    "source_name": "广藿香",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H233",
+    "source_name": "黑老虎",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H275",
+    "source_name": "菊苣",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H307",
+    "source_name": "龙脷叶",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H341",
+    "source_name": "木棉花",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H501",
+    "source_name": "云芝",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H546",
+    "source_name": "木芙蓉叶",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H573",
+    "source_name": "亚乎奴（锡生藤）",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H577",
+    "source_name": "虫白蜡",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H630",
+    "source_name": "哈蟆油",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H650",
+    "source_name": "黄山药",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H654",
+    "source_name": "菥蓂",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H676",
+    "source_name": "黑种草子",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H681",
+    "source_name": "蓍草",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H682",
+    "source_name": "蓝布正",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H686",
+    "source_name": "蜂胶",
+    "relation": "禁忌",
+    "target_id": "J020",
+    "target_name": "过敏体质",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H687",
+    "source_name": "蜂蜡",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H689",
+    "source_name": "裸花紫珠",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H699",
+    "source_name": "颠茄草",
+    "relation": "禁忌",
+    "target_id": "J087",
+    "target_name": "青光眼慎用抗胆碱类中药",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H700",
+    "source_name": "藏菖蒲",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "H705",
+    "source_name": "地黄",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《中药学》"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F001",
+    "source_name": "四君子汤",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F002",
+    "source_name": "补中益气汤",
+    "relation": "禁忌",
+    "target_id": "J025",
+    "target_name": "中满拒补",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F003",
+    "source_name": "参苓白术散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "禁忌",
+    "target_id": "J138",
+    "target_name": "四物汤禁用于血热妄行",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "禁忌",
+    "target_id": "J139",
+    "target_name": "四物汤禁用于湿盛中满",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F004",
+    "source_name": "四物汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F005",
+    "source_name": "当归补血汤",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F006",
+    "source_name": "八珍汤",
+    "relation": "禁忌",
+    "target_id": "J025",
+    "target_name": "中满拒补",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F007",
+    "source_name": "归脾汤",
+    "relation": "禁忌",
+    "target_id": "J025",
+    "target_name": "中满拒补",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F008",
+    "source_name": "炙甘草汤",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "禁忌",
+    "target_id": "J004",
+    "target_name": "湿阻中满",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "禁忌",
+    "target_id": "J026",
+    "target_name": "阳虚水泛",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F009",
+    "source_name": "六味地黄丸",
+    "relation": "禁忌",
+    "target_id": "J136",
+    "target_name": "六味地黄丸禁用于实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F010",
+    "source_name": "一贯煎",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "禁忌",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F011",
+    "source_name": "酸枣仁汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F012",
+    "source_name": "天王补心丹",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F013",
+    "source_name": "交泰丸",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F014",
+    "source_name": "安神定志丸",
+    "relation": "禁忌",
+    "target_id": "Z028",
+    "target_name": "痰热扰心",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "禁忌",
+    "target_id": "J012",
+    "target_name": "体虚多汗",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "禁忌",
+    "target_id": "J016",
+    "target_name": "表虚自汗",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "禁忌",
+    "target_id": "J129",
+    "target_name": "麻黄汤禁用于阴虚外感",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F015",
+    "source_name": "麻黄汤",
+    "relation": "禁忌",
+    "target_id": "J130",
+    "target_name": "麻黄汤禁用于疮疡淋家",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "禁忌",
+    "target_id": "J131",
+    "target_name": "桂枝汤禁用于温病内热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F016",
+    "source_name": "桂枝汤",
+    "relation": "禁忌",
+    "target_id": "J132",
+    "target_name": "桂枝汤禁用于阴虚火旺",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F017",
+    "source_name": "银翘散",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "禁忌",
+    "target_id": "Z045",
+    "target_name": "外感风寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F018",
+    "source_name": "桑菊饮",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "禁忌",
+    "target_id": "J001",
+    "target_name": "阴虚火旺",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F019",
+    "source_name": "小柴胡汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "禁忌",
+    "target_id": "Z288",
+    "target_name": "逍遥散禁用于阴虚火旺",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F020",
+    "source_name": "逍遥散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F021",
+    "source_name": "白虎汤",
+    "relation": "禁忌",
+    "target_id": "J211",
+    "target_name": "石膏禁用于风寒感冒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "禁忌",
+    "target_id": "J003",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F022",
+    "source_name": "黄连解毒汤",
+    "relation": "禁忌",
+    "target_id": "J119",
+    "target_name": "黄连禁用于脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "禁忌",
+    "target_id": "J289",
+    "target_name": "龙胆泻肝汤禁用于脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F023",
+    "source_name": "龙胆泻肝汤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F024",
+    "source_name": "清营汤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F025",
+    "source_name": "平胃散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F026",
+    "source_name": "藿香正气散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "禁忌",
+    "target_id": "Z086",
+    "target_name": "津亏",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F027",
+    "source_name": "五苓散",
+    "relation": "禁忌",
+    "target_id": "J015",
+    "target_name": "津液不足",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "禁忌",
+    "target_id": "J013",
+    "target_name": "阴虚阳亢",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F028",
+    "source_name": "真武汤",
+    "relation": "禁忌",
+    "target_id": "J011",
+    "target_name": "肝肾功能不全",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "禁忌",
+    "target_id": "J013",
+    "target_name": "阴虚阳亢",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F029",
+    "source_name": "理中丸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "禁忌",
+    "target_id": "J013",
+    "target_name": "阴虚阳亢",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F030",
+    "source_name": "四逆汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F031",
+    "source_name": "半夏厚朴汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F032",
+    "source_name": "柴胡疏肝散",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F033",
+    "source_name": "越鞠丸",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J008",
+    "target_name": "月经过多",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F034",
+    "source_name": "血府逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J009",
+    "target_name": "出血倾向",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "禁忌",
+    "target_id": "J010",
+    "target_name": "高血压",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F035",
+    "source_name": "补阳还五汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F059",
+    "source_name": "桃核承气汤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F060",
+    "source_name": "身痛逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F061",
+    "source_name": "膈下逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F062",
+    "source_name": "少腹逐瘀汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "禁忌",
+    "target_id": "Z037",
+    "target_name": "产后瘀血",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F063",
+    "source_name": "生化汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F064",
+    "source_name": "复元活血汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F065",
+    "source_name": "七厘散",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F066",
+    "source_name": "失笑散",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F067",
+    "source_name": "丹参饮",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F068",
+    "source_name": "温经汤",
+    "relation": "禁忌",
+    "target_id": "J006",
+    "target_name": "孕妇禁用",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F069",
+    "source_name": "胶艾汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F070",
+    "source_name": "四生丸",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F071",
+    "source_name": "槐花散",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F072",
+    "source_name": "黄土汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F073",
+    "source_name": "小建中汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F074",
+    "source_name": "大建中汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F075",
+    "source_name": "吴茱萸汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F076",
+    "source_name": "小半夏汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F077",
+    "source_name": "大半夏汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "禁忌",
+    "target_id": "J019",
+    "target_name": "宿食停滞",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F038",
+    "source_name": "保和丸",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F078",
+    "source_name": "茯苓饮",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F079",
+    "source_name": "枳术丸",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F080",
+    "source_name": "健脾丸",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F081",
+    "source_name": "枳实导滞丸",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F082",
+    "source_name": "木香槟榔丸",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F083",
+    "source_name": "肥儿丸",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F084",
+    "source_name": "乌梅丸",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F085",
+    "source_name": "理中安蛔汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F086",
+    "source_name": "连梅汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F087",
+    "source_name": "白头翁汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F088",
+    "source_name": "芍药汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F089",
+    "source_name": "葛根芩连汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F090",
+    "source_name": "参苓白术散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F091",
+    "source_name": "实脾散",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F092",
+    "source_name": "五皮散",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F093",
+    "source_name": "导赤散",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F094",
+    "source_name": "龙胆泻肝汤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F095",
+    "source_name": "左金丸",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F096",
+    "source_name": "苇茎汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F097",
+    "source_name": "泻白散",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F098",
+    "source_name": "清胃散",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F099",
+    "source_name": "玉女煎",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F036",
+    "source_name": "川芎茶调散",
+    "relation": "禁忌",
+    "target_id": "Z025",
+    "target_name": "肝阳上亢",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F037",
+    "source_name": "半夏白术天麻汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F039",
+    "source_name": "二陈汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F040",
+    "source_name": "止嗽散",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F041",
+    "source_name": "生脉散",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F041",
+    "source_name": "生脉散",
+    "relation": "禁忌",
+    "target_id": "Z029",
+    "target_name": "食积停滞",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F042",
+    "source_name": "玉屏风散",
+    "relation": "禁忌",
+    "target_id": "J005",
+    "target_name": "外感表证未解",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F042",
+    "source_name": "玉屏风散",
+    "relation": "禁忌",
+    "target_id": "J002",
+    "target_name": "实热证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F043",
+    "source_name": "完带汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F044",
+    "source_name": "七味白术散",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F045",
+    "source_name": "养心汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F046",
+    "source_name": "甘麦大枣汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F047",
+    "source_name": "黄连阿胶汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F048",
+    "source_name": "温胆汤",
+    "relation": "禁忌",
+    "target_id": "Z009",
+    "target_name": "气虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F049",
+    "source_name": "清气化痰丸",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F050",
+    "source_name": "贝母瓜蒌散",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F051",
+    "source_name": "小陷胸汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F052",
+    "source_name": "苓甘五味姜辛汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F053",
+    "source_name": "三子养亲汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F054",
+    "source_name": "定喘汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F055",
+    "source_name": "苏子降气汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F056",
+    "source_name": "旋覆代赭汤",
+    "relation": "禁忌",
+    "target_id": "Z010",
+    "target_name": "阴虚证",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F057",
+    "source_name": "橘皮竹茹汤",
+    "relation": "禁忌",
+    "target_id": "Z211",
+    "target_name": "脾胃虚寒",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F058",
+    "source_name": "丁香柿蒂汤",
+    "relation": "禁忌",
+    "target_id": "Z046",
+    "target_name": "实热",
+    "evidence": "《方剂学》"
+  },
+  {
+    "source_id": "F100",
+    "source_name": "芍药甘草汤",
+    "relation": "禁忌",
+    "target_id": "Z098",
+    "target_name": "湿浊中阻",
+    "evidence": "《方剂学》"
+  }
+]
