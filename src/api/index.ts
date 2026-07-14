@@ -55,26 +55,61 @@ interface ApiResponse<T> {
 }
 
 // ===== 认证接口 =====
+// 开发模式 mock：提供两个测试账号可直接登录
+const isDev = import.meta.env.DEV
+
+const mockUserDb: Record<string, { password: string; user: { id: number; username: string; role: string } }> = {
+  admin: { password: '123456', user: { id: 1, username: 'admin', role: 'admin' } },
+  user01: { password: '123456', user: { id: 2, username: 'user01', role: 'user' } }
+}
+
 export const authApi = {
   // 登录
-  login: (data: { username: string; password: string }) =>
-    api.post<ApiResponse<{ token: string; user: { id: number; username: string; role: string } }>>('/auth/login', data),
+  login: (data: { username: string; password: string }) => {
+    if (isDev) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const record = mockUserDb[data.username]
+          if (record && record.password === data.password) {
+            resolve({ data: { code: 0, token: `mock-token-${Date.now()}`, user: record.user } })
+          } else {
+            reject({ response: { data: { code: 401, message: '用户名或密码错误' } } })
+          }
+        }, 300) // 模拟网络延迟
+      })
+    }
+    return api.post<ApiResponse<{ token: string; user: { id: number; username: string; role: string } }>>('/auth/login', data)
+  },
 
-  // 注册（后端仅支持注册普通用户角色）
-  register: (data: { username: string; password: string }) =>
-    api.post<ApiResponse<{ id: number; username: string; role: string }>>('/auth/register', data),
+  // 注册
+  register: (data: { username: string; password: string }) => {
+    if (isDev) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ data: { code: 0, id: Date.now(), username: data.username, role: 'user' } })
+        }, 300)
+      })
+    }
+    return api.post<ApiResponse<{ id: number; username: string; role: string }>>('/auth/register', data)
+  },
 
   // 获取当前用户信息
   getCurrentUser: () =>
-    api.get<ApiResponse<{ id: number; username: string; role: string; last_login?: string }>>('/auth/me'),
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0, id: 1, username: 'admin', role: 'admin' } }))
+      : api.get<ApiResponse<{ id: number; username: string; role: string; last_login?: string }>>('/auth/me'),
 
   // 修改密码
   changePassword: (data: { oldPassword: string; newPassword: string }) =>
-    api.put('/auth/password', data),
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0 } }))
+      : api.put('/auth/password', data),
 
-  // 退出登录（可选：后端销毁 token）
+  // 退出登录
   logout: () =>
-    api.post('/auth/logout')
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0 } }))
+      : api.post('/auth/logout')
 }
 
 // 问答接口

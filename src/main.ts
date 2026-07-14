@@ -9,6 +9,7 @@ import router from './router'
 import { permission } from '@/directives/permission'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 // 注册Element Plus图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -18,7 +19,12 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 // 注册自定义权限指令
 app.directive('permission', permission)
 
-app.use(createPinia())
+app.use(pinia)
+
+// 启动时从 localStorage 恢复登录状态，保证刷新后仍保持登录
+import { useUserStore } from '@/store'
+useUserStore().checkAuth()
+
 app.use(router)
 app.use(ElementPlus, { locale: zhCn })
 
