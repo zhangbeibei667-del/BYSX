@@ -44,9 +44,14 @@ class TCMTeachingOrchestratorAgent:
         if "graph_query" in selected:
             steps.append(self._step("图谱查询 Agent", f"证候：{self._join(graph.get('syndromes', []))}；方剂：{self._join(graph.get('formulas', []))}", graph))
 
-        sql = self.sql_agent.run(graph, case_text) if "sql_query" in selected else {"sql_result": {}}
+        sql = self.sql_agent.run(graph, case_text) if "sql_query" in selected else {"sql_result": {}, "generated_sql": "", "sql_explanation": ""}
         if "sql_query" in selected:
-            steps.append(self._step("图谱数据 Text-to-SQL Agent", "生成、校验并只读执行 SQL", sql))
+            sql_summary = sql.get("sql_explanation", "生成、校验并只读执行 SQL")
+            gen_sql = sql.get("generated_sql", "")
+            if gen_sql:
+                short = gen_sql[:80] + "..." if len(gen_sql) > 80 else gen_sql
+                sql_summary = f"{sql_summary}（SQL: {short}）"
+            steps.append(self._step("图谱数据 Text-to-SQL Agent", sql_summary, sql))
 
         rag = self.literature_agent.run(case_text, graph) if "literature_search" in selected else {"evidence": []}
         if "literature_search" in selected:
@@ -64,8 +69,7 @@ class TCMTeachingOrchestratorAgent:
         voice = self.voice_agent.run(symptom, graph, {**explanation, "answer": safety["answer"]})
 
         needs_clarification = bool(graph.get("needs_clarification")) or (
-            "symptom_analysis" in selected
-            and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
+            plan["intent"] == "case_analysis" and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
         )
         return {
             "answer": safety["answer"], "symptoms": symptom.get("symptoms", []),
