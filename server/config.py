@@ -20,7 +20,7 @@ MYSQL_USER = os.getenv("MYSQL_USER", "root")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "Qaz123456")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "tcm")
 
-# MySQL 连接串（供组员 SQL Agent 直连或你自己的管理工具）
+# MySQL 连接串（供组员 SQL Agent 直连）
 MYSQL_DSN = os.getenv(
     "MYSQL_DSN",
     f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}",

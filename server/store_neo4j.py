@@ -93,6 +93,21 @@ class Neo4jStore(GraphStore):
         )
         return e
 
+    def bulk_upsert_entities(self, entities: List[Entity]) -> int:
+        """UNWIND 批量写入实体，一次网络往返。"""
+        rows = [{"id": e.id, "name": e.name, "type": e.type,
+                 "alias": e.alias, "description": e.description,
+                 "props": json.dumps(e.properties or {}, ensure_ascii=False)}
+                for e in entities]
+        self._run_write(
+            """UNWIND $rows AS row
+               MERGE (n:Entity {id: row.id})
+               SET n.name=row.name, n.type=row.type, n.alias=row.alias,
+                   n.description=row.description, n.props_json=row.props""",
+            rows=rows,
+        )
+        return len(entities)
+
     def get_entity(self, eid: str) -> Optional[Entity]:
         rows = self._run_read("MATCH (n:Entity {id:$id}) RETURN n", id=eid)
         return _to_entity(rows[0]["n"]) if rows else None
@@ -146,6 +161,20 @@ class Neo4jStore(GraphStore):
                SET e.evidence=$ev""",
             sid=r.source_id, tid=r.target_id, rel=r.relation, ev=r.evidence)
         return r
+
+    def bulk_upsert_relations(self, relations: List[Relation]) -> int:
+        """UNWIND 批量写入关系，一次网络往返。"""
+        rows = [{"sid": r.source_id, "tid": r.target_id,
+                 "rel": r.relation, "ev": r.evidence or ""}
+                for r in relations]
+        self._run_write(
+            """UNWIND $rows AS row
+               MATCH (a:Entity {id: row.sid}), (b:Entity {id: row.tid})
+               MERGE (a)-[e:REL {relation: row.rel}]->(b)
+               SET e.evidence = row.ev""",
+            rows=rows,
+        )
+        return len(relations)
 
     def delete_relation(self, source_id, relation, target_id) -> bool:
         rows = self._run_write(

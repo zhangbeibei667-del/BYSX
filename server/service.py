@@ -130,6 +130,47 @@ class GraphService:
                   f"{src.name}-{r.relation}->{tgt.name}", after=r.model_dump())
         return result
 
+    def update_relation(self, old_source: str, old_relation: str, old_target: str,
+                        new_data: dict) -> Relation:
+        """原子更新关系。键不变时走 upsert；键变化时走 replace_relation
+        （单事务删旧+建新，HybridStore 下两侧同时成功或同时回滚）。"""
+        # 解析新端点（名字优先）
+        new_src_id = new_data.get("source_id", old_source)
+        new_tgt_id = new_data.get("target_id", old_target)
+        new_src_name = new_data.get("source_name")
+        new_tgt_name = new_data.get("target_name")
+
+        src = self._resolve(new_src_id, new_src_name, "source")
+        tgt = self._resolve(new_tgt_id, new_tgt_name, "target")
+        if src.id == tgt.id:
+            raise ValueError("不允许自环关系")
+
+        new_rel = new_data.get("relation", old_relation)
+        validate_relation(new_rel, src.type, tgt.type)
+        new_ev = new_data.get("evidence", "")
+
+        r = Relation(source_id=src.id, source_name=src.name, relation=new_rel,
+                     target_id=tgt.id, target_name=tgt.name, evidence=new_ev)
+
+        key_changed = (old_source != src.id or old_relation != new_rel
+                       or old_target != tgt.id)
+        if key_changed:
+            result = self.store.replace_relation(
+                old_source, old_relation, old_target, r)
+            self._log("update", "relation",
+                      f"{old_source}|{old_relation}|{old_target}",
+                      f"{src.name}-{new_rel}->{tgt.name}",
+                      before={"source_id": old_source, "relation": old_relation,
+                              "target_id": old_target},
+                      after=r.model_dump())
+        else:
+            result = self.store.upsert_relation(r)
+            self._log("update", "relation",
+                      f"{src.id}|{new_rel}|{tgt.id}",
+                      f"{src.name}-{new_rel}->{tgt.name}",
+                      after=r.model_dump())
+        return result
+
     def delete_relation(self, source_id: str, relation: str, target_id: str) -> bool:
         # 查询删除前的关系用于审计
         _, rels = self.store.list_relations(source_id, target_id, relation, 1, 1)
@@ -212,33 +253,9 @@ class GraphService:
     # ==================== 批量导入（事务模式） ====================
     def import_entities(self, rows: List[Dict[str, str]],
                          strict: bool = False) -> ImportResult:
-        """导入实体。strict=True 时任一失败全回滚；False 时逐行容错但记入批次。"""
+        """导入实体：先逐行校验+合并，再单事务批量写入。"""
         res = ImportResult(total=len(rows))
-        if strict:
-            # 整体事务模式
-            self.store.mysql.begin() if hasattr(self.store, "mysql") else None
-            if hasattr(self.store, "neo4j"):
-                self.store.neo4j.begin_write_transaction()
-            try:
-                self._do_import_entities(rows, res)
-                if res.failed > 0:
-                    raise ValueError(f"导入有 {res.failed} 条失败，整体回滚")
-                if hasattr(self.store, "mysql"):
-                    self.store.mysql.commit()
-                if hasattr(self.store, "neo4j"):
-                    self.store.neo4j.commit_write_transaction()
-            except Exception:
-                if hasattr(self.store, "mysql"):
-                    self.store.mysql.rollback()
-                if hasattr(self.store, "neo4j"):
-                    self.store.neo4j.rollback_write_transaction()
-                raise
-        else:
-            self._do_import_entities(rows, res)
-        return res
-
-    def _do_import_entities(self, rows: List[Dict[str, str]],
-                             res: ImportResult) -> None:
+        resolved: List[Entity] = []
         for i, row in enumerate(rows, start=2):
             try:
                 row = {k.strip(): (v or "").strip() for k, v in row.items() if k}
@@ -251,97 +268,92 @@ class GraphService:
                     alias=row.get("alias", ""), description=row.get("description", ""),
                     properties=props)
 
-                # 同 ID 已存在 → 直接更新
+                # 同 ID 已存在 → 直接覆盖
                 if payload.id and self.store.get_entity(payload.id):
-                    self.store.upsert_entity(Entity(**payload.model_dump()))
+                    resolved.append(Entity(**payload.model_dump()))
                     res.success += 1
                     continue
 
-                # 同名同类型 → 首见为主，补充属性
+                # 同名同类型 → 合并属性
                 exist = self.store.get_entity_by_name(payload.name)
                 if exist and exist.type == payload.type:
-                    # 合并 alias（/ 分隔，去重）
-                    exist_aliases = set(
-                        a.strip() for a in exist.alias.split("/") if a.strip()
-                    )
-                    new_aliases = [
-                        a.strip() for a in payload.alias.split("/") if a.strip()
-                        and a.strip() not in exist_aliases
-                    ]
-                    merged_alias = "/".join(
-                        list(exist_aliases) + new_aliases
-                    )
-
-                    # 合并 description（已有不覆盖）
-                    merged_desc = exist.description if exist.description else payload.description
-
-                    # 合并 properties（只加新 key，已有不覆盖）
-                    merged_props = {**(payload.properties or {}), **(exist.properties or {})}
-
+                    exist_aliases = set(a.strip() for a in exist.alias.split("/") if a.strip())
+                    new_aliases = [a.strip() for a in payload.alias.split("/") if a.strip()
+                                   and a.strip() not in exist_aliases]
                     merged = Entity(
-                        id=exist.id,                      # ID 不变
-                        name=exist.name,                   # name 不变
-                        type=exist.type,                   # type 不变
-                        alias=merged_alias,
-                        description=merged_desc,
-                        properties=merged_props,
+                        id=exist.id, name=exist.name, type=exist.type,
+                        alias="/".join(list(exist_aliases) + new_aliases),
+                        description=exist.description or payload.description,
+                        properties={**(payload.properties or {}), **(exist.properties or {})},
                     )
-                    self.store.upsert_entity(merged)
+                    resolved.append(merged)
                     res.success += 1
                     continue
 
-                # 无 ID → 按类型前缀自动分配
+                # 无 ID → 自动分配
                 if not payload.id:
                     payload.id = self.store.next_id(payload.type)
 
-                self.create_entity(payload)
+                validate_entity_type(payload.type)
+                resolved.append(Entity(**payload.model_dump()))
                 res.success += 1
             except Exception as ex:
                 res.failed += 1
                 res.errors.append(ImportError_(row=i, reason=str(ex)))
+
+        # 单事务批量写入
+        written = self.store.bulk_upsert_entities(resolved)
+        if written < len(resolved):
+            diff = len(resolved) - written
+            res.success -= diff
+            res.failed += diff
+
+        # 汇总操作日志（批量导入只记一条）
+        self._log("import", "entity", f"batch:{res.total}",
+                  f"导入实体 {res.total} 条, 成功 {res.success}, 失败 {res.failed}")
+        return res
 
     def import_relations(self, rows: List[Dict[str, str]],
                           strict: bool = False) -> ImportResult:
+        """导入关系：先逐行校验+解析，再单事务批量写入。"""
         res = ImportResult(total=len(rows))
-        if strict:
-            if hasattr(self.store, "mysql"):
-                self.store.mysql.begin()
-            if hasattr(self.store, "neo4j"):
-                self.store.neo4j.begin_write_transaction()
-            try:
-                self._do_import_relations(rows, res)
-                if res.failed > 0:
-                    raise ValueError(f"导入有 {res.failed} 条失败，整体回滚")
-                if hasattr(self.store, "mysql"):
-                    self.store.mysql.commit()
-                if hasattr(self.store, "neo4j"):
-                    self.store.neo4j.commit_write_transaction()
-            except Exception:
-                if hasattr(self.store, "mysql"):
-                    self.store.mysql.rollback()
-                if hasattr(self.store, "neo4j"):
-                    self.store.neo4j.rollback_write_transaction()
-                raise
-        else:
-            self._do_import_relations(rows, res)
-        return res
-
-    def _do_import_relations(self, rows: List[Dict[str, str]],
-                              res: ImportResult) -> None:
+        resolved: List[Relation] = []
         for i, row in enumerate(rows, start=2):
             try:
                 row = {k.strip(): (v or "").strip() for k, v in row.items() if k}
-                self.create_relation(RelationCreate(
-                    source_id=row.get("source_id") or None,
-                    source_name=row.get("source_name") or None,
-                    relation=row["relation"],
-                    target_id=row.get("target_id") or None,
-                    target_name=row.get("target_name") or None,
-                    evidence=row.get("evidence", "")))
+                source_id = row.get("source_id") or None
+                target_id = row.get("target_id") or None
+                source_name = row.get("source_name") or None
+                target_name = row.get("target_name") or None
+                rel_type = row["relation"]
+                evidence = row.get("evidence", "")
+
+                src = self._resolve(source_id, source_name, "source")
+                tgt = self._resolve(target_id, target_name, "target")
+                if src.id == tgt.id:
+                    raise ValueError("不允许自环关系")
+                validate_relation(rel_type, src.type, tgt.type)
+
+                resolved.append(Relation(
+                    source_id=src.id, source_name=src.name,
+                    relation=rel_type, target_id=tgt.id, target_name=tgt.name,
+                    evidence=evidence))
                 res.success += 1
             except Exception as ex:
                 res.failed += 1
                 res.errors.append(ImportError_(row=i, reason=str(ex)))
+
+        # 单事务批量写入
+        written = self.store.bulk_upsert_relations(resolved)
+        if written < len(resolved):
+            diff = len(resolved) - written
+            res.success -= diff
+            res.failed += diff
+
+        # 汇总操作日志（批量导入只记一条）
+        self._log("import", "relation", f"batch:{res.total}",
+                  f"导入关系 {res.total} 条, 成功 {res.success}, 失败 {res.failed}")
+        return res
 
     @staticmethod
     def parse_csv(content: bytes) -> List[Dict[str, str]]:

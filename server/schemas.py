@@ -30,6 +30,7 @@ _BASE_RELATION_SCHEMA: Dict[str, List[tuple]] = {
 _BASE_TYPE_PREFIX: Dict[str, str] = {
     "药材": "H", "方剂": "F", "症状": "S", "证候": "Z",
     "功效": "G", "禁忌": "J", "文献": "W",
+    "疾病": "D", "归经": "M", "性味": "T",
 }
 
 
@@ -221,19 +222,31 @@ def get_relation_schema() -> Dict[str, List[tuple]]:
     return result
 
 
+# 已警告过的类型 / 关系组合（避免导入时刷屏）
+_warned_types: set = set()
+_warned_relations: set = set()
+
+
 def validate_entity_type(t: str) -> None:
-    """校验实体类型，未知类型只警告不拒绝。"""
+    """校验实体类型，未知类型只警告不拒绝（每种类型只警告一次）。"""
+    if t in _warned_types:
+        return
     known = set(get_entity_types())
     if t not in known:
+        _warned_types.add(t)
         import sys
         print(f"[schemas] 新实体类型「{t}」未在已知列表中，自动接受", file=sys.stderr)
 
 
 def validate_relation(rel: str, src_type: str, tgt_type: str, strict: bool = False) -> None:
-    """校验关系域。strict=False 时未知组合只警告不拒绝。"""
+    """校验关系域。strict=False 时未知组合只警告不拒绝（每种组合只警告一次）。"""
+    key = (rel, src_type, tgt_type)
+    if key in _warned_relations:
+        return
     known_rels = set(get_relation_types())
     if rel not in known_rels:
         # 新关系类型 → 自动接受
+        _warned_relations.add(key)
         import sys
         print(f"[schemas] 新关系类型「{rel}」未在已知列表中，自动接受", file=sys.stderr)
         return
@@ -242,6 +255,7 @@ def validate_relation(rel: str, src_type: str, tgt_type: str, strict: bool = Fal
     if not allowed:
         return  # 没有约束，全接受
     if (src_type, tgt_type) not in allowed:
+        _warned_relations.add(key)
         msg = (
             f"关系「{rel}」: {src_type} → {tgt_type} 不在已知约束中"
         )

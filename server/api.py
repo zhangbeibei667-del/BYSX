@@ -213,19 +213,12 @@ def update_relation(old_source: str = Query(...), old_relation: str = Query(...)
                      payload: dict = Body(...),
                      user: dict = Depends(require_admin)):
     """更新关系：source/relation/target/evidence 均可修改。
-    查询参数标识旧关系，body 传新值。"""
+
+    查询参数标识旧关系，body 传新值。
+    键不变时走 upsert；键变化时 HybridStore 在单事务内删旧+建新。
+    """
     s = svc(); s.set_user(user)
-    # 解析新值（没传就用旧的）
-    new_src_id = payload.get("source_id", old_source)
-    new_tgt_id = payload.get("target_id", old_target)
-    new_rel = payload.get("relation", old_relation)
-    new_ev = payload.get("evidence", "")
-    # 删旧 + 建新（在同一 store 连接上，自然在一个事务里）
-    s.delete_relation(old_source, old_relation, old_target)
-    r = s.create_relation(RelationCreate(
-        source_id=new_src_id, target_id=new_tgt_id,
-        relation=new_rel, evidence=new_ev,
-    ))
+    r = s.update_relation(old_source, old_relation, old_target, payload)
     return ok(r.model_dump())
 
 

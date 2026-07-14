@@ -112,13 +112,19 @@ class MySQLStore(GraphStore):
                     INDEX idx_rel (relation)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             """)
-            # 类型前缀表（自动发现新类型时记录）
+            # 类型前缀表（自动发现新类型时记录，含原子序列号）
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS type_prefixes (
                     type VARCHAR(50) PRIMARY KEY,
-                    prefix VARCHAR(5) NOT NULL
+                    prefix VARCHAR(5) NOT NULL,
+                    next_val INT NOT NULL DEFAULT 1
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             """)
+            # 兼容旧表（无 next_val 列时自动补齐）
+            try:
+                cur.execute("ALTER TABLE type_prefixes ADD COLUMN next_val INT NOT NULL DEFAULT 1")
+            except Exception:
+                pass  # 列已存在
             # 用户表
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS users (
@@ -188,6 +194,30 @@ class MySQLStore(GraphStore):
                 (e.name, e.id))
         return e
 
+    _CHUNK_SIZE = 2000
+
+    def bulk_upsert_entities(self, entities: List[Entity]) -> int:
+        """分块批量写入实体。"""
+        total = 0
+        for i in range(0, len(entities), self._CHUNK_SIZE):
+            chunk = entities[i:i + self._CHUNK_SIZE]
+            with self._get_conn().cursor() as cur:
+                for e in chunk:
+                    try:
+                        cur.execute("""
+                            INSERT INTO entities (id, name, type, alias, description, props_json)
+                            VALUES (%s, %s, %s, %s, %s, %s)
+                            ON DUPLICATE KEY UPDATE
+                                name=VALUES(name), type=VALUES(type), alias=VALUES(alias),
+                                description=VALUES(description), props_json=VALUES(props_json)
+                        """, (e.id, e.name, e.type, e.alias, e.description,
+                              json.dumps(e.properties, ensure_ascii=False)))
+                        total += 1
+                    except Exception:
+                        pass
+            self._get_conn().commit()
+        return total
+
     def get_entity(self, eid: str) -> Optional[Entity]:
         with self._get_conn().cursor() as cur:
             cur.execute("SELECT * FROM entities WHERE id=%s", (eid,))
@@ -228,19 +258,35 @@ class MySQLStore(GraphStore):
         return total, items
 
     def next_id(self, type_: str) -> str:
+        """原子获取类型自增 ID。
+
+        使用 MySQL LAST_INSERT_ID 技巧：UPDATE type_prefixes
+        在单条语句内完成「读取→+1→写回」，不同连接之间不会产生
+        重复 ID，backend 和 server 各自直连 MySQL 也安全。
+        """
         prefix = self._ensure_type_prefix(type_)
-        with self._get_conn().cursor() as cur:
+        conn = self._get_conn()
+        with conn.cursor() as cur:
+            # 原子递增：LAST_INSERT_ID(next_val + 1) 把新值记入
+            # 当前会话的 last_insert_id，SELECT LAST_INSERT_ID() 取回
             cur.execute(
-                "SELECT id FROM entities WHERE id LIKE %s ORDER BY id DESC LIMIT 1",
-                (f"{prefix}%",))
-            row = cur.fetchone()
-        if not row:
-            return f"{prefix}001"
-        tail = row["id"][len(prefix):]
-        return f"{prefix}{(int(tail) + 1 if tail.isdigit() else 1):03d}"
+                "UPDATE type_prefixes SET next_val = LAST_INSERT_ID(next_val + 1) "
+                "WHERE type = %s",
+                (type_,))
+            if cur.rowcount == 0:
+                # 极端情况：_ensure_type_prefix 刚 INSERT 但未 commit
+                # → 手动初始化序列起点
+                cur.execute(
+                    "INSERT INTO type_prefixes (type, prefix, next_val) "
+                    "VALUES (%s, %s, 2) "
+                    "ON DUPLICATE KEY UPDATE next_val = LAST_INSERT_ID(next_val + 1)",
+                    (type_, prefix))
+            cur.execute("SELECT LAST_INSERT_ID() AS next_id")
+            next_val = cur.fetchone()["next_id"]
+        return f"{prefix}{next_val:03d}"
 
     def _ensure_type_prefix(self, type_: str) -> str:
-        """获取类型前缀，若新类型则自动生成并持久化。"""
+        """获取类型前缀，若新类型则自动生成并持久化（含序列起点）。"""
         from server.schemas import auto_prefix, get_type_prefixes
         known = get_type_prefixes()
         if type_ in known:
@@ -253,7 +299,7 @@ class MySQLStore(GraphStore):
         prefix = auto_prefix(type_)
         with self._get_conn().cursor() as cur:
             cur.execute(
-                "INSERT IGNORE INTO type_prefixes (type, prefix) VALUES (%s, %s)",
+                "INSERT IGNORE INTO type_prefixes (type, prefix, next_val) VALUES (%s, %s, 1)",
                 (type_, prefix))
         self._get_conn().commit()
         return prefix
@@ -276,6 +322,28 @@ class MySQLStore(GraphStore):
             """, (r.source_id, r.source_name, r.relation,
                   r.target_id, r.target_name, r.evidence))
         return r
+
+    def bulk_upsert_relations(self, relations: List[Relation]) -> int:
+        """分块批量写入关系。"""
+        total = 0
+        for i in range(0, len(relations), self._CHUNK_SIZE):
+            chunk = relations[i:i + self._CHUNK_SIZE]
+            with self._get_conn().cursor() as cur:
+                for r in chunk:
+                    try:
+                        cur.execute("""
+                            INSERT INTO relations (source_id, source_name, relation, target_id, target_name, evidence)
+                            VALUES (%s, %s, %s, %s, %s, %s)
+                            ON DUPLICATE KEY UPDATE
+                                source_name=VALUES(source_name), target_name=VALUES(target_name),
+                                evidence=VALUES(evidence)
+                        """, (r.source_id, r.source_name, r.relation,
+                              r.target_id, r.target_name, r.evidence))
+                        total += 1
+                    except Exception:
+                        pass
+            self._get_conn().commit()
+        return total
 
     def delete_relation(self, source_id, relation, target_id) -> bool:
         with self._get_conn().cursor() as cur:

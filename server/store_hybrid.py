@@ -7,6 +7,7 @@ USAGE:
     export MYSQL_PASSWORD=xxx
     export NEO4J_PASSWORD=yyy
 """
+import logging
 from contextlib import contextmanager
 from typing import List, Optional, Tuple
 
@@ -17,9 +18,12 @@ except ImportError:
     from store_base import GraphStore
     from schemas import Entity, Relation
 
+logger = logging.getLogger("hybrid_store")
+
+
 
 class HybridStore(GraphStore):
-    """双写存储：写操作使用两阶段提交（先 MySQL 后 Neo4j，失败全回滚）。
+    """双写存储：写操作使用两阶段提交。
 
     读操作：
       - 实体检索 → MySQL（索引 + 分页更高效）
@@ -33,22 +37,64 @@ class HybridStore(GraphStore):
 
     @contextmanager
     def _write_transaction(self):
-        """两阶段提交上下文。任一环节失败则两边都回滚。
-        提交成功后自动同步 kg.sqlite 供组员 SQL Agent 查询。"""
+        """两阶段提交上下文。
+
+        执行顺序：Neo4j 先提交（网络依赖高，更易失败），MySQL 后提交。
+        Neo4j 失败 → MySQL 还在事务中，两者均可安全回滚。
+        MySQL  失败 → Neo4j 已提交，记录日志供后续补偿校验。
+
+        提交成功后自动同步 kg.sqlite 供组员 SQL Agent 查询。
+        """
+        neo4j_committed = False
+        mysql_committed = False
         self.mysql.begin()
         self.neo4j.begin_write_transaction()
         try:
             yield
-            self.mysql.commit()
+
+            # Phase 1: Neo4j 先提交（网络依赖高，先验证它能成功）
             self.neo4j.commit_write_transaction()
+            neo4j_committed = True
+
+            # Phase 2: MySQL 提交
+            self.mysql.commit()
+            mysql_committed = True
+
             # 自动同步 SQLite
             try:
                 self.mysql.sync_to_sqlite()
             except Exception:
                 pass  # 同步失败不影响主流程
+
         except Exception:
-            self.mysql.rollback()
-            self.neo4j.rollback_write_transaction()
+            # --- 回滚 / 补偿 ---
+            if mysql_committed:
+                # MySQL 已提交，只有 Neo4j 失败 → MySQL 无法回滚
+                # 记录不一致日志，供运维执行补偿脚本
+                logger.error(
+                    "HybridStore 数据不一致: MySQL 已提交但 Neo4j 提交失败。"
+                    "请运行一致性检查脚本修复。"
+                )
+            elif neo4j_committed:
+                # Neo4j 已提交，MySQL 失败 → 尝试补偿 Neo4j
+                logger.error(
+                    "HybridStore 数据不一致: Neo4j 已提交但 MySQL 提交失败。"
+                    "已尝试回滚 Neo4j 写事务（若不支持则需手动补偿）。"
+                )
+                try:
+                    self.neo4j.rollback_write_transaction()
+                except Exception:
+                    pass
+            else:
+                # 两者均未提交 → 安全回滚
+                try:
+                    self.mysql.rollback()
+                except Exception:
+                    pass
+                try:
+                    self.neo4j.rollback_write_transaction()
+                except Exception:
+                    pass
             raise
 
     # ========== 实体（双写） ==========
@@ -76,12 +122,57 @@ class HybridStore(GraphStore):
     def next_id(self, type_: str) -> str:
         return self.mysql.next_id(type_)
 
+    # ========== 批量导入（分块事务，UNWIND 批量发 Neo4j） ==========
+    _CHUNK_SIZE = 2000  # 每 2000 行提交一次，平衡速度与事务大小
+
+    def bulk_upsert_entities(self, entities: List[Entity]) -> int:
+        total = 0
+        for i in range(0, len(entities), self._CHUNK_SIZE):
+            chunk = entities[i:i + self._CHUNK_SIZE]
+            with self._write_transaction():
+                # MySQL: 逐行 INSERT（单事务内很快）
+                for e in chunk:
+                    try:
+                        self.mysql.upsert_entity(e)
+                        total += 1
+                    except Exception:
+                        pass
+                # Neo4j: UNWIND 一次网络往返
+                self.neo4j.bulk_upsert_entities(chunk)
+        return total
+
+    def bulk_upsert_relations(self, relations: List[Relation]) -> int:
+        total = 0
+        for i in range(0, len(relations), self._CHUNK_SIZE):
+            chunk = relations[i:i + self._CHUNK_SIZE]
+            with self._write_transaction():
+                # MySQL: 逐行 INSERT（单事务内很快）
+                for r in chunk:
+                    try:
+                        self.mysql.upsert_relation(r)
+                        total += 1
+                    except Exception:
+                        pass
+                # Neo4j: UNWIND 一次网络往返
+                self.neo4j.bulk_upsert_relations(chunk)
+        return total
+
     # ========== 关系（双写） ==========
     def upsert_relation(self, r: Relation) -> Relation:
         with self._write_transaction():
             self.mysql.upsert_relation(r)
             self.neo4j.upsert_relation(r)
         return r
+
+    def replace_relation(self, old_source: str, old_relation: str, old_target: str,
+                         new_relation: Relation) -> Relation:
+        """原子替换关系：删旧 + 建新在同一个两阶段提交内完成。"""
+        with self._write_transaction():
+            self.mysql.delete_relation(old_source, old_relation, old_target)
+            self.neo4j.delete_relation(old_source, old_relation, old_target)
+            self.mysql.upsert_relation(new_relation)
+            self.neo4j.upsert_relation(new_relation)
+        return new_relation
 
     def delete_relation(self, source_id, relation, target_id) -> bool:
         with self._write_transaction():

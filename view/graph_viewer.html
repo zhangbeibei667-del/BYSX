@@ -11,6 +11,7 @@
     --ink:#232a26; --ink-soft:#5f6a63; --celadon:#7d9b8c; --seal:#a8443a;
     --t-yaocai:#5e8c61; --t-fangji:#b4763f; --t-zhengzhuang:#a8443a;
     --t-zhenghou:#4a6fa5; --t-gongxiao:#7a6ba8; --t-jinji:#3f4a52; --t-wenxian:#8a8256;
+    --t-jibing:#8b5a9e; --t-guijing:#2e8b7b; --t-xingwei:#c8873a;
     --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
   }
   *{box-sizing:border-box}
@@ -244,9 +245,11 @@
 <script>
 const API = location.origin + "/api";
 const COLOR = {"药材":"var(--t-yaocai)","方剂":"var(--t-fangji)","症状":"var(--t-zhengzhuang)",
-  "证候":"var(--t-zhenghou)","功效":"var(--t-gongxiao)","禁忌":"var(--t-jinji)","文献":"var(--t-wenxian)"};
+  "证候":"var(--t-zhenghou)","功效":"var(--t-gongxiao)","禁忌":"var(--t-jinji)","文献":"var(--t-wenxian)",
+  "疾病":"var(--t-jibing)","归经":"var(--t-guijing)","性味":"var(--t-xingwei)"};
 const HEX = {"药材":"#5e8c61","方剂":"#b4763f","症状":"#a8443a","证候":"#4a6fa5",
-  "功效":"#7a6ba8","禁忌":"#3f4a52","文献":"#8a8256"};
+  "功效":"#7a6ba8","禁忌":"#3f4a52","文献":"#8a8256",
+  "疾病":"#8b5a9e","归经":"#2e8b7b","性味":"#c8873a"};
 let META = {}, ACTIVE = new Set(), RAW = {nodes:[],edges:[]};
 let AUTH_TOKEN = localStorage.getItem("tcm_token") || "";
 let AUTH_USER = null;
@@ -374,8 +377,8 @@ document.querySelectorAll(".right-tab").forEach(tab => {
 /* ---------- 取数 ---------- */
 async function loadAll(){
   try {
-    const ents = (await api("/entities?size=500")).items;
-    const rels = (await api("/relations?size=2000")).items;
+    const ents = (await api("/entities?size=3000")).items;
+    const rels = (await api("/relations?size=20000")).items;
     RAW = { nodes: ents.map(e=>({id:e.id,label:e.name,type:e.type})),
             edges: rels.map(r=>({source:r.source_id,target:r.target_id,label:r.relation})) };
     render(RAW); say("已载入全图");
