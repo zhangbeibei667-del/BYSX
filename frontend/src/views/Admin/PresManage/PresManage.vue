@@ -2,11 +2,14 @@
   <div class="pres-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">方剂管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Document /></el-icon>
+        方剂管理
+      </h2>
       <div class="header-actions">
-        <el-button type="primary" :icon="Plus" @click="handleAdd">新建</el-button>
-        <el-button :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
-        <el-button :icon="Download" @click="handleExportTemplate">导出模板</el-button>
+        <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
+        <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExportTemplate">导出模板</el-button>
       </div>
     </div>
 
@@ -49,13 +52,13 @@
           :value="src"
         />
       </el-select>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button :icon="Refresh" @click="handleReset">重置</el-button>
+      <el-button class="btn-primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button class="btn-outline" :icon="Refresh" @click="handleReset">重置</el-button>
 
-      <!-- 批量删除按钮 -->
       <el-button
         v-if="selectedRows.length > 0"
-        type="danger"
+        v-permission="['admin']"
+        class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
       >
@@ -65,60 +68,61 @@
 
     <!-- 数据表格 -->
     <div class="table-wrapper">
-    <el-table
-      ref="tableRef"
-      v-loading="loading"
-      :data="tableData"
-      border
-      stripe
-      row-key="id"
-      @selection-change="handleSelectionChange"
-    >
-      <el-table-column type="selection" width="50" align="center" />
-      <el-table-column type="index" label="序号" width="65" align="center" />
-      <el-table-column prop="id" label="编号" width="100" align="center" />
-      <el-table-column prop="name" label="方剂名" width="140" align="center" />
-      <el-table-column label="组成" min-width="200" show-overflow-tooltip>
-        <template #default="{ row }">
-          <span class="composition-text">
-            {{ row.properties?.composition || '-' }}
-          </span>
-        </template>
-      </el-table-column>
-      <el-table-column label="功效" min-width="150" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.properties?.functions || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="主治" min-width="180" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.properties?.indications || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="禁忌" min-width="140" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.properties?.contraindications || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column prop="category" label="分类" width="110" align="center" />
-      <el-table-column label="来源" width="180" show-overflow-tooltip>
-        <template #default="{ row }">
-          {{ row.description || '-' }}
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" width="160" align="center" fixed="right">
-        <template #default="{ row }">
-          <el-button type="primary" link size="small" @click="handleEdit(row)">
-            <el-icon><Edit /></el-icon>
-            编辑
-          </el-button>
-          <el-button type="danger" link size="small" @click="handleDelete(row)">
-            <el-icon><Delete /></el-icon>
-            删除
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+      <el-table
+        ref="tableRef"
+        v-loading="loading"
+        :data="tableData"
+        border
+        stripe
+        row-key="id"
+        @selection-change="handleSelectionChange"
+        class="tcm-table"
+      >
+        <el-table-column type="selection" width="50" align="center" />
+        <el-table-column type="index" label="序号" width="65" align="center" />
+        <el-table-column prop="id" label="编号" width="100" align="center" />
+        <el-table-column prop="name" label="方剂名" width="140" align="center" />
+        <el-table-column label="组成" min-width="200" show-overflow-tooltip>
+          <template #default="{ row }">
+            <span class="composition-text">
+              {{ row.properties?.composition || '-' }}
+            </span>
+          </template>
+        </el-table-column>
+        <el-table-column label="功效" min-width="150" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.properties?.functions || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="主治" min-width="180" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.properties?.indications || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="禁忌" min-width="140" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.properties?.contraindications || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="category" label="分类" width="110" align="center" />
+        <el-table-column label="来源" width="180" show-overflow-tooltip>
+          <template #default="{ row }">
+            {{ row.description || '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="160" align="center" fixed="right">
+          <template #default="{ row }">
+            <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">
+              <el-icon><Edit /></el-icon>
+              编辑
+            </el-button>
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
+              <el-icon><Delete /></el-icon>
+              删除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
 
     <!-- 分页 -->
@@ -141,6 +145,7 @@
       width="750px"
       :close-on-click-modal="false"
       @closed="resetForm"
+      class="tcm-dialog"
     >
       <el-form
         ref="formRef"
@@ -230,7 +235,7 @@
             v-model="formData.preparation"
             type="textarea"
             :rows="2"
-            placeholder="请输入制备方法，如：上为粗末，每服三钱，水一盏半，煎至八分，去滓温服"
+            placeholder="请输入制备方法"
           />
         </el-form-item>
 
@@ -280,8 +285,8 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="submitLoading" @click="handleSubmit">
+        <el-button class="btn-cancel" @click="dialogVisible = false">取消</el-button>
+        <el-button class="btn-primary" :loading="submitLoading" @click="handleSubmit">
           {{ isEdit ? '更新' : '创建' }}
         </el-button>
       </template>
@@ -303,16 +308,17 @@
       title="确认删除"
       width="420px"
       :close-on-click-modal="false"
+      class="tcm-dialog"
     >
       <div class="delete-confirm-content">
-        <el-icon class="delete-icon" :size="48" color="#f56c6c">
+        <el-icon class="delete-icon" :size="48" color="#b35c5c">
           <WarningFilled />
         </el-icon>
         <p class="delete-message">{{ deleteMessage }}</p>
       </div>
       <template #footer>
-        <el-button @click="deleteDialogVisible = false">取消</el-button>
-        <el-button type="danger" :loading="deleteLoading" @click="confirmDelete">
+        <el-button class="btn-cancel" @click="deleteDialogVisible = false">取消</el-button>
+        <el-button class="btn-danger" :loading="deleteLoading" @click="confirmDelete">
           确认删除
         </el-button>
       </template>
@@ -331,7 +337,8 @@ import {
   Refresh,
   Delete,
   Edit,
-  WarningFilled
+  WarningFilled,
+  Document
 } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { entityApi } from '@/api'
@@ -350,10 +357,10 @@ const sourceOptions = [
   '《伤寒论》', '《金匮要略》', '《温病条辨》', '《太平惠民和剂局方》',
   '《伤寒杂病论》', '《千金要方》', '《外台秘要》', '《景岳全书》',
   '《医林改错》', '《脾胃论》', '《丹溪心法》', '《医学衷中参西录》',
-  '《温病条辨》', '《医宗金鉴》', '《肘后备急方》'
+  '《医宗金鉴》', '《肘后备急方》'
 ]
 
-// ==================== 药材列表（供组成选择） ====================
+// ==================== 药材列表 ====================
 const herbOptions = ref<HerbEntity[]>([])
 const herbLoading = ref(false)
 
@@ -519,7 +526,6 @@ const handleEdit = (row: PrescriptionEntity) => {
   editId.value = row.id
   formData.name = row.name
   formData.category = row.category
-  // 将逗号分隔的组成字符串拆分为数组
   const comp = row.properties?.composition || ''
   formData.composition = comp ? comp.split(/[,，]/).map((s: string) => s.trim()).filter(Boolean) : []
   formData.functions = row.properties?.functions || ''
@@ -643,7 +649,6 @@ onMounted(async () => {
   await fetchData()
   fetchHerbs()
 
-  // 从知识图谱跳转过来时，自动打开指定实体的编辑弹窗
   const editId = route.query.editId as string
   if (editId) {
     await nextTick()
@@ -657,8 +662,22 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
+// ==================== 国风色彩变量 ====================
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$gold-light: rgba(200, 168, 110, 0.15);
+$cream-bg: #f7f3eb;
+$cream-white: #faf6ef;
+$text-dark: #2c3630;
+$text-light: #6b7a72;
+$border-light: rgba(110, 135, 120, 0.12);
+$danger-red: #b35c5c;
+
 .pres-manage {
-  padding: 20px;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
 
   .page-header {
     display: flex;
@@ -669,8 +688,17 @@ onMounted(async () => {
     .page-title {
       margin: 0;
       font-size: 22px;
-      font-weight: 600;
-      color: #303133;
+      font-weight: 500;
+      color: $text-dark;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .title-icon {
+        color: $soft-gold;
+        font-size: 22px;
+      }
     }
 
     .header-actions {
@@ -683,80 +711,106 @@ onMounted(async () => {
     display: flex;
     gap: 12px;
     align-items: center;
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f5f7fa;
-    border-radius: 6px;
+    margin-bottom: 18px;
+    padding: 16px 20px;
+    background: $cream-white;
+    border-radius: 12px;
+    border: 1px solid $border-light;
     flex-wrap: wrap;
   }
 
   .composition-text {
-    color: #303133;
+    color: $text-dark;
   }
 
   .pagination-wrapper {
-    margin-top: 16px;
+    margin-top: 18px;
     display: flex;
     justify-content: flex-end;
+    
+    :deep(.el-pagination) {
+      .el-pagination__total { color: $text-light; }
+      .el-pager li {
+        border-radius: 4px;
+        &:hover { color: $mid-green; }
+        &.is-active { background: $gold-light; color: $mid-green; font-weight: 500; }
+      }
+      button:hover { color: $mid-green; }
+    }
   }
 
   .table-wrapper {
     width: 100%;
     overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid $border-light;
+    background: $cream-white;
   }
 
-  // 组成选择器
-  .composition-selector {
-    .selected-tags {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-
-      .tag-label {
-        font-size: 13px;
-        color: #909399;
-        margin-right: 4px;
-      }
-    }
-  }
-
-  // 药材下拉选项
-  .herb-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-
-    .herb-name {
-      color: #303133;
+  // ===== 国风表格 =====
+  :deep(.tcm-table) {
+    --el-table-border-color: $border-light;
+    --el-table-header-bg-color: $cream-bg;
+    --el-table-row-hover-bg-color: rgba(200, 168, 110, 0.06);
+    
+    .el-table__header-wrapper th {
+      background-color: $cream-bg !important;
+      color: $text-dark;
       font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.5px;
     }
-
-    .herb-category {
-      font-size: 12px;
-      color: #909399;
+    .el-table__body-wrapper td {
+      color: $text-light;
+      font-size: 13px;
+    }
+    .el-table__row--striped {
+      background-color: rgba(247, 243, 235, 0.3);
     }
   }
 
-  // 删除确认弹窗
+  // ===== 国风按钮 =====
+  .btn-primary {
+    background: $mid-green; border-color: $mid-green; color: #fff;
+    &:hover { background: lighten($mid-green, 8%); border-color: lighten($mid-green, 8%); color: #fff; }
+  }
+  .btn-outline {
+    background: transparent; border-color: $border-light; color: $text-light;
+    &:hover { border-color: $mid-green; color: $mid-green; background: rgba(70, 99, 80, 0.05); }
+  }
+  .btn-danger {
+    background: $danger-red; border-color: $danger-red; color: #fff;
+    &:hover { background: darken($danger-red, 8%); border-color: darken($danger-red, 8%); color: #fff; }
+  }
+  .btn-edit { color: $mid-green; &:hover { color: lighten($mid-green, 15%); } }
+  .btn-delete { color: $danger-red; &:hover { color: darken($danger-red, 10%); } }
+  .btn-cancel { color: $text-light; &:hover { color: $text-dark; } }
+
+  // ===== 弹窗 =====
+  :deep(.tcm-dialog) {
+    .el-dialog { border-radius: 16px; box-shadow: 0 8px 40px rgba(42, 64, 48, 0.12); }
+    .el-dialog__header { border-bottom: 1px solid $border-light; padding: 20px 24px 16px;
+      .el-dialog__title { color: $text-dark; font-weight: 500; font-size: 18px; }
+    }
+    .el-dialog__body { padding: 24px; }
+    .el-dialog__footer { border-top: 1px solid $border-light; padding: 16px 24px 20px; }
+  }
+
+  .composition-selector .selected-tags {
+    margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    .tag-label { font-size: 13px; color: $text-light; margin-right: 4px; }
+  }
+
+  .herb-option {
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    .herb-name { color: $text-dark; font-weight: 500; }
+    .herb-category { font-size: 12px; color: $text-light; }
+  }
+
   .delete-confirm-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px 0;
-
-    .delete-icon {
-      margin-bottom: 16px;
-    }
-
-    .delete-message {
-      font-size: 15px;
-      color: #303133;
-      text-align: center;
-      line-height: 1.6;
-    }
+    display: flex; flex-direction: column; align-items: center; padding: 16px 0;
+    .delete-icon { margin-bottom: 16px; }
+    .delete-message { font-size: 15px; color: $text-dark; text-align: center; line-height: 1.6; }
   }
 }
 </style>

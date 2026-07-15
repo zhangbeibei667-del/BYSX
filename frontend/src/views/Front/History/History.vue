@@ -123,7 +123,7 @@
         <!-- 空状态 -->
         <div v-else-if="filteredChats.length === 0" class="empty-state">
           <el-empty description="暂无对话记录">
-            <el-button type="primary" @click="goToChat">去提问 →</el-button>
+            <el-button type="primary" class="tcm-btn primary-tcm" @click="goToChat">去提问 →</el-button>
           </el-empty>
         </div>
 
@@ -142,7 +142,7 @@
               <span class="chat-msg-count">{{ item.messageCount || item.messages?.length || 1 }} 条消息</span>
               <span class="chat-time">{{ formatTime(item.timestamp || item.createdAt) }}</span>
               <div class="chat-actions">
-                <el-button text type="primary" size="small" @click="continueChat(item)">
+                <el-button text type="primary" size="small" class="tcm-link" @click="continueChat(item)">
                   继续对话
                 </el-button>
                 <el-button text type="danger" size="small" @click="handleDeleteChat(item)">
@@ -198,7 +198,7 @@
         <!-- 空状态 -->
         <div v-if="favorites.length === 0" class="empty-state">
           <el-empty description="暂无收藏内容">
-            <el-button type="primary" @click="goToGraph">去图谱探索 →</el-button>
+            <el-button type="primary" class="tcm-btn primary-tcm" @click="goToGraph">去图谱探索 →</el-button>
           </el-empty>
         </div>
 
@@ -297,7 +297,7 @@
         <!-- 空状态 -->
         <div v-else-if="filteredCases.length === 0" class="empty-state">
           <el-empty description="暂无教学病例">
-            <el-button type="primary" @click="goToCaseStudy">去录入 →</el-button>
+            <el-button type="primary" class="tcm-btn primary-tcm" @click="goToCaseStudy">去录入 →</el-button>
           </el-empty>
         </div>
 
@@ -349,8 +349,6 @@
         </div>
       </div>
     </main>
-
-    <!-- ==================== 删除确认弹窗（由 ElMessageBox 实现，无需 DOM） ==================== -->
   </div>
 </template>
 
@@ -388,7 +386,6 @@ const chatSort = ref<'time' | 'hot'>('time')
 const chatPage = ref(1)
 const chatPageSize = ref(10)
 
-// 时间分组
 const chatGroups = computed(() => {
   const now = new Date()
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
@@ -434,7 +431,6 @@ const filteredChats = computed(() => {
   if (chatSort.value === 'time') {
     list.sort((a, b) => new Date(b.timestamp || b.createdAt || 0).getTime() - new Date(a.timestamp || a.createdAt || 0).getTime())
   }
-  // 热度排序：按消息数量降序
   if (chatSort.value === 'hot') {
     list.sort((a, b) => (b.messageCount || b.messages?.length || 1) - (a.messageCount || a.messages?.length || 1))
   }
@@ -513,24 +509,22 @@ const filteredCases = computed(() => {
 
 // ==================== 工具函数 ====================
 const TYPE_COLORS: Record<string, string> = {
-  '药材': '#10b981',
-  '方剂': '#6366f1',
-  '症状': '#f59e0b',
-  '证候': '#b91c1c',
+  '药材': '#588264',
+  '方剂': '#8c6e4a',
+  '症状': '#c8a86e',
+  '证候': '#b13e3e',
 }
 
 function getTypeColor(type: string): string {
   return TYPE_COLORS[type] || '#94a3b8'
 }
 
-function truncateText(text: string | undefined, maxLen: number): string {
-  if (!text) return ''
+function truncateText(text: string | undefined | null, maxLen: number): string {
   if (!text) return ''
   return text.length > maxLen ? text.slice(0, maxLen) + '...' : text
 }
 
-function formatTime(dateStr: string | undefined): string {
-  if (!dateStr) return '--'
+function formatTime(dateStr: string | undefined | null): string {
   if (!dateStr) return ''
   const d = new Date(dateStr)
   if (isNaN(d.getTime())) return dateStr.slice(0, 10)
@@ -554,7 +548,6 @@ async function loadChatHistories() {
       chatHistories.value = res
     } else if (res?.data?.items) {
       chatHistories.value = res.data.items
-      // 支持分页
     } else {
       loadLocalChats()
     }
@@ -573,7 +566,6 @@ function loadFavorites() {
   const chatFavs: FavoriteItem[] = JSON.parse(localStorage.getItem('tcm_chat_favorites') || '[]')
   const graphFavIds: string[] = JSON.parse(localStorage.getItem('graph_favorites') || '[]')
 
-  // 图谱收藏节点可能需要在 GraphBrowse 页面中查看，这里仅展示 ID
   const graphFavs: FavoriteItem[] = graphFavIds.map((id: string) => ({
     id: `graph-${id}`,
     type: 'graph' as const,
@@ -617,13 +609,12 @@ function loadLocalCases() {
 function switchTab(tab: 'chat' | 'favorite' | 'case') {
   activeTab.value = tab
   router.replace({ query: { tab } })
-  chatPage.value = 1 // 重置分页
+  chatPage.value = 1
 }
 
 // ==================== 问答操作 ====================
 
 function selectChatItem(item: ChatHistoryItem) {
-  // 在右侧高亮显示对应条目
   const idx = filteredChats.value.findIndex(c => c.id === item.id)
   if (idx >= 0) {
     chatPage.value = Math.floor(idx / chatPageSize.value) + 1
@@ -647,9 +638,7 @@ async function handleDeleteChat(item: ChatHistoryItem) {
 
   try {
     await chatApi.deleteHistory(item.id)
-  } catch {
-    // 静默处理 API 错误
-  }
+  } catch {}
 
   chatHistories.value = chatHistories.value.filter(c => c.id !== item.id)
   saveLocalChats()
@@ -780,7 +769,6 @@ async function batchUnfavorite() {
   const ids = new Set(Object.keys(selectedFavIds.value).filter(k => selectedFavIds.value[k]))
   favorites.value = favorites.value.filter(f => !ids.has(f.id))
 
-  // 同步更新 localStorage
   const chatFavs: FavoriteItem[] = JSON.parse(localStorage.getItem('tcm_chat_favorites') || '[]')
   localStorage.setItem('tcm_chat_favorites', JSON.stringify(chatFavs.filter(f => !ids.has(f.id))))
   const graphFavs: string[] = JSON.parse(localStorage.getItem('graph_favorites') || '[]')
@@ -848,7 +836,7 @@ function exportCases() {
 }
 
 function exportCSV(data: Record<string, any>[], headers: string[], filename: string) {
-  const BOM = '﻿' // Excel 识别 UTF-8 中文
+  const BOM = '﻿'
   const headerRow = headers.join(',')
   const rows = data.map(row =>
     headers.map(h => {
@@ -884,19 +872,16 @@ function goToCaseStudy() {
 // ==================== 生命周期 ====================
 
 onMounted(() => {
-  // 读取 URL query 参数设置初始 tab
   const tabParam = route.query.tab as string
   if (tabParam === 'favorite' || tabParam === 'case' || tabParam === 'chat') {
     activeTab.value = tabParam
   }
 
-  // 并行加载数据
   loadChatHistories()
   loadFavorites()
   loadCases()
 })
 
-// 监听 tab 变化，刷新对应数据
 watch(activeTab, (tab) => {
   if (tab === 'chat') loadChatHistories()
   if (tab === 'favorite') loadFavorites()
@@ -905,28 +890,55 @@ watch(activeTab, (tab) => {
 </script>
 
 <style scoped lang="scss">
-// ==================== 变量 ====================
-$bg-warm: #faf8f5;
-$card-bg: #ffffff;
-$card-radius: 12px;
-$text-dark: #1e293b;
+// ==================== 国风变量 ====================
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$cream-bg: #f7f3eb;
+$light-cream: #faf6ef;
+$text-dark: #2c3630;
 $text-body: #475569;
-$text-muted: #94a3b8;
-$indigo: #6366f1;
-$indigo-light: #eef2ff;
-$rose: #b91c1c;
-$border-light: #e2e8f0;
+$text-light: #6b7a72;
+$card-shadow: 0 2px 16px rgba(42, 64, 48, 0.08);
+$card-border: rgba(110, 135, 120, 0.12);
+$white: #ffffff;
+$syndrome-red: #b13e3e;
 
 // ==================== 主容器 ====================
 .history-page {
   display: flex;
   gap: 20px;
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 32px;
   min-height: calc(100vh - 64px - 60px);
-  background: $bg-warm;
+  background: $cream-bg;
   border-radius: 8px;
+  margin-top: 50px;
+  
+  @media (max-width: 1200px) {
+    margin-top: -1020px;
+  }
+}
+
+// ==================== 国风按钮 ====================
+.tcm-btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 22px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+
+  &.primary-tcm {
+    background: rgba(70, 99, 80, 0.08);
+    color: $dark-green;
+    border-color: rgba(70, 99, 80, 0.2);
+    &:hover { background: $mid-green; color: #fff; }
+  }
+}
+
+.tcm-link {
+  color: $mid-green !important;
+  &:hover { color: $dark-green !important; }
 }
 
 // ==================== 左侧栏 ====================
@@ -941,21 +953,21 @@ $border-light: #e2e8f0;
 }
 
 .sidebar-card {
-  background: $card-bg;
-  border-radius: $card-radius;
+  background: $white;
+  border-radius: 14px;
   padding: 16px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: $card-shadow;
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(42, 64, 48, 0.1);
   }
 
   &.active {
-    border-color: $indigo;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    border-color: $mid-green;
+    box-shadow: 0 0 0 4px rgba(70, 99, 80, 0.1);
   }
 
   .sc-header {
@@ -975,8 +987,8 @@ $border-light: #e2e8f0;
     }
     .sc-count {
       font-size: 12px;
-      color: $text-muted;
-      background: #f1f5f9;
+      color: $text-light;
+      background: $cream-bg;
       padding: 2px 10px;
       border-radius: 12px;
       font-weight: 500;
@@ -985,7 +997,7 @@ $border-light: #e2e8f0;
 
   .sc-preview {
     .sc-empty {
-      color: $text-muted;
+      color: $text-light;
       font-size: 13px;
       padding: 8px 0;
       text-align: center;
@@ -996,7 +1008,7 @@ $border-light: #e2e8f0;
 
       .sc-group-label {
         font-size: 11px;
-        color: $text-muted;
+        color: $text-light;
         font-weight: 500;
         display: block;
         margin-bottom: 4px;
@@ -1013,7 +1025,7 @@ $border-light: #e2e8f0;
       transition: background 0.2s;
 
       &:hover {
-        background: #f8fafc;
+        background: $cream-bg;
       }
 
       .sci-title {
@@ -1027,7 +1039,7 @@ $border-light: #e2e8f0;
 
       .sci-count {
         font-size: 11px;
-        color: $text-muted;
+        color: $text-light;
         flex-shrink: 0;
       }
 
@@ -1039,7 +1051,7 @@ $border-light: #e2e8f0;
 
       .sci-syndrome {
         font-size: 11px;
-        color: $rose;
+        color: $syndrome-red;
         font-weight: 500;
         flex-shrink: 0;
         max-width: 80px;
@@ -1058,8 +1070,13 @@ $border-light: #e2e8f0;
   .sc-footer {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px solid $border-light;
+    border-top: 1px solid $card-border;
     text-align: center;
+
+    :deep(.el-button) {
+      color: $text-light;
+      &:hover { color: $syndrome-red; }
+    }
   }
 }
 
@@ -1070,10 +1087,10 @@ $border-light: #e2e8f0;
 }
 
 .content-panel {
-  background: $card-bg;
-  border-radius: $card-radius;
+  background: $white;
+  border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: $card-shadow;
   min-height: 100%;
 }
 
@@ -1094,6 +1111,24 @@ $border-light: #e2e8f0;
     gap: 6px;
     align-items: center;
     margin-left: auto;
+
+    :deep(.el-button) {
+      color: $text-light;
+      &:hover { color: $mid-green; }
+      &.el-button--danger:hover { color: $syndrome-red; }
+    }
+  }
+
+  :deep(.el-input__wrapper) {
+    border-radius: 8px;
+    border-color: $card-border;
+    box-shadow: none;
+    &:hover { border-color: $mid-green; }
+    &.is-focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
+  }
+
+  :deep(.el-select .el-input__wrapper) {
+    border-radius: 8px;
   }
 }
 
@@ -1103,14 +1138,15 @@ $border-light: #e2e8f0;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  border: 1px solid $border-light;
+  border: 1px solid $card-border;
   border-radius: 10px;
   margin-bottom: 10px;
   transition: all 0.25s;
+  background: $light-cream;
 
   &:hover {
-    border-color: $indigo;
-    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.08);
+    border-color: $mid-green;
+    box-shadow: 0 2px 12px rgba(70, 99, 80, 0.08);
   }
 
   .chat-card-left {
@@ -1127,7 +1163,7 @@ $border-light: #e2e8f0;
     .chat-preview {
       margin: 0;
       font-size: 13px;
-      color: $text-muted;
+      color: $text-light;
       line-height: 1.5;
     }
   }
@@ -1142,7 +1178,7 @@ $border-light: #e2e8f0;
 
     .chat-msg-count {
       font-size: 12px;
-      color: $text-muted;
+      color: $text-light;
     }
 
     .chat-time {
@@ -1153,6 +1189,11 @@ $border-light: #e2e8f0;
     .chat-actions {
       display: flex;
       gap: 6px;
+
+      :deep(.el-button--primary) {
+        color: $mid-green;
+        &:hover { color: $dark-green; }
+      }
     }
   }
 }
@@ -1171,8 +1212,8 @@ $border-light: #e2e8f0;
 }
 
 .fav-card {
-  background: #fafbfc;
-  border: 1px solid $border-light;
+  background: $light-cream;
+  border: 1px solid $card-border;
   border-radius: 10px;
   padding: 16px;
   cursor: pointer;
@@ -1187,13 +1228,13 @@ $border-light: #e2e8f0;
   }
 
   &.fav-selected {
-    border-color: $indigo;
-    background: $indigo-light;
+    border-color: $mid-green;
+    background: rgba(70, 99, 80, 0.06);
   }
 
   &:hover {
-    border-color: $indigo;
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+    border-color: $mid-green;
+    box-shadow: 0 4px 16px rgba(70, 99, 80, 0.1);
     transform: translateY(-2px);
 
     .fav-remove-btn {
@@ -1211,16 +1252,16 @@ $border-light: #e2e8f0;
       font-size: 11px;
       padding: 3px 10px;
       border-radius: 12px;
-      background: #f1f5f9;
+      background: $cream-bg;
       color: $text-body;
 
       &.chat {
-        background: #eef2ff;
-        color: $indigo;
+        background: rgba(70, 99, 80, 0.1);
+        color: $mid-green;
       }
       &.graph {
-        background: #ecfdf5;
-        color: #059669;
+        background: rgba(200, 168, 110, 0.15);
+        color: #8c6e4a;
       }
     }
 
@@ -1240,7 +1281,7 @@ $border-light: #e2e8f0;
   .fav-desc {
     margin: 0 0 10px 0;
     font-size: 13px;
-    color: $text-muted;
+    color: $text-light;
     line-height: 1.5;
   }
 
@@ -1250,7 +1291,7 @@ $border-light: #e2e8f0;
     font-size: 11px;
 
     .fav-source {
-      color: $text-muted;
+      color: $text-light;
     }
 
     .fav-node-type {
@@ -1271,8 +1312,8 @@ $border-light: #e2e8f0;
 }
 
 .case-card {
-  background: #fafbfc;
-  border: 1px solid $border-light;
+  background: $light-cream;
+  border: 1px solid $card-border;
   border-radius: 10px;
   padding: 16px;
   cursor: pointer;
@@ -1287,13 +1328,13 @@ $border-light: #e2e8f0;
   }
 
   &.case-selected {
-    border-color: $rose;
-    background: #fdf2f8;
+    border-color: $syndrome-red;
+    background: rgba(177, 62, 62, 0.06);
   }
 
   &:hover {
-    border-color: $indigo;
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+    border-color: $mid-green;
+    box-shadow: 0 4px 16px rgba(70, 99, 80, 0.1);
     transform: translateY(-2px);
 
     .case-delete-btn {
@@ -1317,7 +1358,7 @@ $border-light: #e2e8f0;
     .case-gender,
     .case-age {
       font-size: 12px;
-      color: $text-muted;
+      color: $text-light;
     }
   }
 
@@ -1336,8 +1377,8 @@ $border-light: #e2e8f0;
 
     .case-syndrome-tag {
       padding: 3px 12px;
-      background: #fdf2f8;
-      color: $rose;
+      background: rgba(177, 62, 62, 0.1);
+      color: $syndrome-red;
       border-radius: 14px;
       font-size: 12px;
       font-weight: 500;
@@ -1345,7 +1386,7 @@ $border-light: #e2e8f0;
 
     .case-no-syndrome {
       font-size: 12px;
-      color: $text-muted;
+      color: $text-light;
       font-style: italic;
     }
   }
@@ -1360,7 +1401,7 @@ $border-light: #e2e8f0;
     }
 
     .case-detail-link {
-      color: $indigo;
+      color: $mid-green;
       font-weight: 500;
     }
   }
@@ -1378,7 +1419,7 @@ $border-light: #e2e8f0;
 .skeleton-list {
   .skeleton-card {
     padding: 16px;
-    border: 1px solid $border-light;
+    border: 1px solid $card-border;
     border-radius: 10px;
     margin-bottom: 10px;
 
@@ -1413,6 +1454,34 @@ $border-light: #e2e8f0;
 .empty-state {
   padding: 60px 20px;
   text-align: center;
+}
+
+// ==================== Element Plus 覆盖 ====================
+:deep(.el-empty__description) {
+  color: $text-light;
+}
+
+:deep(.el-pagination) {
+  .el-pagination__total {
+    color: $text-light;
+  }
+  .btn-prev, .btn-next {
+    &:hover { color: $mid-green; }
+  }
+  .el-pager li {
+    &:hover { color: $mid-green; }
+    &.is-active { background: $mid-green; color: #fff; }
+  }
+}
+
+:deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
+  background: $mid-green;
+  border-color: $mid-green;
+  &:hover { background: $dark-green; border-color: $dark-green; }
+}
+
+:deep(.el-checkbox__input .el-checkbox__inner:hover) {
+  border-color: $mid-green;
 }
 
 // ==================== 响应式 ====================
@@ -1475,14 +1544,6 @@ $border-light: #e2e8f0;
 
   .panel-toolbar {
     flex-direction: column;
-  }
-}
-
-.history-page {
-  margin-top: -800px;
-  
-  @media (max-width: 1200px) {
-    margin-top: -1020px;
   }
 }
 </style>

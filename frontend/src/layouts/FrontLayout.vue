@@ -1,64 +1,44 @@
 <template>
   <div class="front-layout">
-    <!-- 顶部导航栏 -->
+    <!-- 顶部导航栏 - 国风样式 -->
     <header class="header">
       <div class="header-container">
-        <div class="logo">
-          <el-icon :size="28" color="#409eff"><FirstAidKit /></el-icon>
-          <span class="logo-text">中医药诊疗智能体</span>
+        <div class="logo" @click="goToHome">
+          <span class="logo-text">中医药智能诊疗平台</span>
         </div>
         
         <nav class="nav">
-          <router-link to="/" class="nav-item" :class="{ active: $route.name === 'home' }">
-            <el-icon><HomeFilled /></el-icon>
-            首页
-          </router-link>
-          <router-link to="/chat" class="nav-item" :class="{ active: $route.name === 'chat' }">
-            <el-icon><ChatDotRound /></el-icon>
-            智能问答
-          </router-link>
-          <router-link to="/graph" class="nav-item" :class="{ active: $route.name === 'graph' }">
-            <el-icon><DataAnalysis /></el-icon>
-            知识图谱
-          </router-link>
-          <router-link to="/case-study" class="nav-item" :class="{ active: $route.name === 'case-study' }">
-            <el-icon><Notebook /></el-icon>
-            病例教学
-          </router-link>
-          <router-link to="/history" class="nav-item" :class="{ active: $route.name === 'history' }">
-            <el-icon><Clock /></el-icon>
-            历史记录
-          </router-link>
-        </nav>
-        
-        <div class="header-right">
-          <el-button type="primary" link @click="goToAdmin">
-            <el-icon><Setting /></el-icon>
-            后台管理
-          </el-button>
-          <el-dropdown>
-            <div class="user-info">
-              <el-icon><User /></el-icon>
-              <span>{{ currentUser || '访客用户' }}</span>
-            </div>
+          <span class="nav-item" :class="{ active: $route.path === '/' }" @click="goToHome">首页</span>
+          <span class="nav-item" :class="{ active: $route.path === '/chat' }" @click="goToChat">开始问答</span>
+          <span class="nav-item" :class="{ active: $route.path === '/graph' }" @click="goToGraph">知识图谱</span>
+          <span class="nav-item" :class="{ active: $route.path === '/case-study' }" @click="goToCaseStudy">病例教学</span>
+          <span class="nav-item" :class="{ active: $route.path === '/history' }" @click="goToHistory">历史记录</span>
+          <span class="nav-item" :class="{ active: $route.path.startsWith('/admin') }" @click="goToAdmin">后台管理</span>
+
+          <!-- 未登录：显示登录/注册按钮 -->
+          <el-button v-if="!isLoggedIn" text class="login-btn" @click="login">登录 / 注册</el-button>
+
+          <!-- 已登录：用户头像 + 下拉菜单 -->
+          <el-dropdown v-else trigger="click" class="user-dropdown">
+            <span class="user-info">
+              <el-avatar :size="32" class="user-avatar">{{ userInitial }}</el-avatar>
+              <span class="user-name">{{ username }}</span>
+              <el-icon class="dropdown-icon"><ArrowDown /></el-icon>
+            </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="login">
-                  <el-icon><UserFilled /></el-icon>
-                  登录
+                <el-dropdown-item @click="goToProfile">
+                  <el-icon><User /></el-icon>
+                  个人中心
                 </el-dropdown-item>
-                <el-dropdown-item @click="register">
-                  <el-icon><EditPen /></el-icon>
-                  注册
-                </el-dropdown-item>
-                <el-dropdown-item divided @click="aboutSystem">
-                  <el-icon><InfoFilled /></el-icon>
-                  关于系统
+                <el-dropdown-item divided @click="handleLogout">
+                  <el-icon><SwitchButton /></el-icon>
+                  退出登录
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-        </div>
+        </nav>
       </div>
     </header>
     
@@ -71,28 +51,40 @@
       </router-view>
     </main>
     
-    <!-- 页脚 -->
+    <!-- 页脚 - 国风样式 -->
     <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-info">
-          <p>© 2026 中医药诊疗智能体系统 - 基于知识图谱的中医药学习与教学辅助平台</p>
-          <p class="disclaimer">本系统仅供中医药知识学习、教学辅助和研究参考使用，不构成医疗诊断或治疗建议。</p>
+      <div class="footer-inner">
+        <div class="footer-col">
+          <div class="footer-logo">东方草木</div>
+          <p>传承中医药文化，打造现代化智能本草平台</p>
         </div>
-        <div class="footer-links">
-          <el-link type="info" :underline="false">用户协议</el-link>
-          <el-link type="info" :underline="false">隐私政策</el-link>
-          <el-link type="info" :underline="false">联系我们</el-link>
+        <div class="footer-col">
+          <h4>网站导航</h4>
+          <div class="footer-link" @click="goToHome">首页</div>
+          <div class="footer-link" @click="goToChat">智能体问答</div>
+          <div class="footer-link" @click="goToGraph">图谱浏览</div>
+          <div class="footer-link" @click="goToCaseStudy">病例教学</div>
+          <div class="footer-link" @click="goToHistory">历史记录</div>
+          <div class="footer-link" @click="goToAdmin">后台管理</div>
+        </div>
+        <div class="footer-col">
+          <h4>帮助中心</h4>
+          <div class="footer-link">使用指南</div>
+          <div class="footer-link">常见问题</div>
+          <div class="footer-link">联系客服</div>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <div class="footer-link">邮箱：service@dongfangcaomu.com</div>
+          <div class="footer-link">客服电话：400-888-2688</div>
+          <div class="footer-link">工作时间：周一至周日 9:00-18:00</div>
         </div>
       </div>
+      <div class="copyright">©2026 东方草木 版权所有 | 本平台仅作教学科研使用</div>
     </footer>
     
-    <el-dialog v-model="authVisible" :title="authMode === 'login' ? '管理员登录' : '注册普通用户'" width="420px">
-      <el-form label-width="70px">
-        <el-form-item label="用户名"><el-input v-model="credentials.username" autocomplete="username" /></el-form-item>
-        <el-form-item label="密码"><el-input v-model="credentials.password" type="password" show-password autocomplete="current-password" @keyup.enter="submitAuth" /></el-form-item>
-      </el-form>
-      <template #footer><el-button @click="authVisible=false">取消</el-button><el-button type="primary" :loading="authLoading" @click="submitAuth">{{ authMode === 'login' ? '登录' : '注册' }}</el-button></template>
-    </el-dialog>
+    <!-- 人机验证弹窗 -->
+    <CaptchaVerify ref="captchaRef" />
 
     <!-- 关于系统对话框 -->
     <el-dialog v-model="aboutDialogVisible" title="关于系统" width="500px">
@@ -119,207 +111,246 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { kgApi } from '@/api'
-import {
-  HomeFilled,
-  ChatDotRound,
-  DataAnalysis,
-  Notebook,
-  Clock,
-  Setting,
-  User,
-  UserFilled,
-  EditPen,
-  InfoFilled,
-  FirstAidKit
-} from '@element-plus/icons-vue'
-const router = useRouter()
-const aboutDialogVisible = ref(false)
-const authVisible = ref(false)
-const authLoading = ref(false)
-const authMode = ref<'login'|'register'>('login')
-const credentials = ref({ username: 'admin', password: '' })
-const currentUser = ref(localStorage.getItem('admin_username') || '')
+import { ArrowDown, User, SwitchButton } from '@element-plus/icons-vue'
+import CaptchaVerify from '@/components/Common/CaptchaVerify.vue'
+import { useUserStore } from '@/store'
 
-const goToAdmin = () => {
-  if (localStorage.getItem('admin_token')) router.push('/admin/herbs')
-  else { authMode.value = 'login'; authVisible.value = true }
+const router = useRouter()
+const route = useRoute()
+const userStore = useUserStore()
+const aboutDialogVisible = ref(false)
+const captchaRef = ref<InstanceType<typeof CaptchaVerify>>()
+
+const isLoggedIn = computed(() => userStore.isAuthenticated)
+const username = computed(() => userStore.userInfo.username)
+const userInitial = computed(() => username.value.charAt(0).toUpperCase())
+
+const goToHome = () => router.push('/')
+const goToChat = () => router.push('/chat')
+const goToGraph = () => router.push('/graph')
+const goToCaseStudy = () => router.push('/case-study')
+const goToHistory = () => router.push('/history')
+
+const goToAdmin = async () => {
+  // 先检查是否已登录
+  if (!isLoggedIn.value) {
+    router.push('/login?redirect=' + encodeURIComponent('/admin/herbs'))
+    return
+  }
+  // 已登录则弹出人机验证弹窗
+  const passed = await captchaRef.value?.requireVerify()
+  if (passed) {
+    router.push('/admin/herbs')
+  }
 }
 
 const login = () => {
-  authMode.value = 'login'; authVisible.value = true
+  router.push('/login')
 }
 
-const register = () => {
-  authMode.value = 'register'; authVisible.value = true
+const handleLogout = () => {
+  userStore.logout()
+  router.push('/')
+  ElMessage.success('已退出登录')
 }
 
-const submitAuth = async () => {
-  if (!credentials.value.username || !credentials.value.password) return ElMessage.warning('请输入用户名和密码')
-  authLoading.value = true
-  try {
-    if (authMode.value === 'register') { await kgApi.register(credentials.value.username, credentials.value.password); authMode.value='login'; return ElMessage.success('注册成功，请登录') }
-    const result = await kgApi.login(credentials.value.username, credentials.value.password)
-    localStorage.setItem('admin_token', result.token); localStorage.setItem('admin_username', result.user.username); localStorage.setItem('admin_role', result.user.role)
-    currentUser.value = result.user.username; authVisible.value = false; ElMessage.success('登录成功')
-    if (result.user.role === 'admin') router.push('/admin/herbs')
-  } catch (error:any) { ElMessage.error(error.message || '认证失败') } finally { authLoading.value = false }
-}
-
-const aboutSystem = () => {
-  aboutDialogVisible.value = true
+const goToProfile = () => {
+  ElMessage.info('个人中心功能开发中')
 }
 </script>
 
 <style scoped lang="scss">
+// 国风色彩变量
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$cream-bg: #f7f3eb;
+$text-light: #6b7a72;
+
 .front-layout {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  
+  background-color: $cream-bg;
+
+  // ===== 顶部导航栏 - 国风样式 =====
   .header {
-    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-    color: white;
-    padding: 0 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    
+    width: 100%;
+    background: $dark-green;
+    padding: 14px 0;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     .header-container {
-      max-width: 1400px;
+      max-width: 1800px;
       margin: 0 auto;
+      padding: 0 32px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      height: 64px;
-      
+      align-items: center;
+
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        color: #f7f3eb;
+        font-size: 18px;
+        letter-spacing: 1px;
         cursor: pointer;
-        
+        user-select: none;
+
         .logo-text {
-          font-size: 20px;
-          font-weight: bold;
-          background: linear-gradient(45deg, #409eff, #67c23a);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          font-weight: 500;
         }
       }
-      
+
       .nav {
         display: flex;
-        gap: 30px;
-        
+        gap: 32px;
+        align-items: center;
+
         .nav-item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-          transition: all 0.3s;
-          
-          &:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-          }
-          
+          color: rgba(255, 255, 255, 0.75);
+          cursor: pointer;
+          transition: color 0.2s;
+          font-size: 15px;
+
           &.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
             font-weight: 500;
           }
-        }
-      }
-      
-      .header-right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        
-        .user-info {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: white;
-          cursor: pointer;
-          padding: 6px 12px;
-          border-radius: 4px;
-          
+
           &:hover {
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+          }
+        }
+
+        .login-btn {
+          color: $soft-gold;
+          font-size: 15px;
+
+          &:hover {
+            color: lighten($soft-gold, 15%);
+          }
+        }
+
+        .user-dropdown {
+          .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.85);
+
+            &:hover {
+              color: #fff;
+            }
+
+            .user-avatar {
+              background: $soft-gold;
+              color: #fff;
+              font-weight: 500;
+              font-size: 14px;
+            }
+
+            .user-name {
+              font-size: 14px;
+              max-width: 100px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .dropdown-icon {
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.6);
+            }
           }
         }
       }
     }
   }
-  
+
+  // ===== 主要内容区域 =====
   .main-content {
-  flex: 1;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 1000px auto 0;
-  width: 100%;
+    flex: 1;
+    padding: 24px 32px;
+    width: 100%;
   }
-  
+
+  // ===== 页脚 - 国风样式 =====
   .footer {
-    background: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px;
-    
-    .footer-container {
-      max-width: 1400px;
+    background: #1f3026;
+    padding: 50px 24px 26px;
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+
+    .footer-inner {
+      max-width: 1800px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      
-      .footer-info {
-        flex: 1;
-        min-width: 300px;
-        
-        p {
-          margin: 5px 0;
-          font-size: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      margin-bottom: 36px;
+
+      .footer-col {
+        .footer-logo {
+          color: #fff;
+          font-size: 20px;
+          margin-bottom: 14px;
+          letter-spacing: 1px;
         }
-        
-        .disclaimer {
-          font-size: 12px;
-          color: #bdc3c7;
-          font-style: italic;
+
+        h4 {
+          color: #fff;
+          font-size: 16px;
+          margin-bottom: 16px;
+          font-weight: 500;
         }
-      }
-      
-      .footer-links {
-        display: flex;
-        gap: 20px;
-        
-        .el-link {
-          color: #ecf0f1;
-          
+
+        .footer-link {
+          margin-bottom: 9px;
+          cursor: pointer;
+          transition: color 0.2s;
+
           &:hover {
-            color: #409eff;
+            color: $soft-gold;
           }
+        }
+
+        p {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.7);
         }
       }
     }
+
+    .copyright {
+      max-width: 1800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 13px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
-  
+
+  // ===== 关于系统对话框 =====
   .about-content {
     h3 {
       margin-top: 0;
-      color: #409eff;
+      color: $dark-green;
     }
-    
+
     ul {
       padding-left: 20px;
-      
+
       li {
         margin: 8px 0;
         color: #666;
@@ -328,7 +359,7 @@ const aboutSystem = () => {
   }
 }
 
-// 页面切换动画
+// ===== 页面切换动画 =====
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -337,5 +368,40 @@ const aboutSystem = () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+// ===== 移动端适配 =====
+@media (max-width: 992px) {
+  .front-layout {
+    .header .header-container {
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .footer .footer-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .front-layout {
+    .header .nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .footer .footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .main-content {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  }
 }
 </style>

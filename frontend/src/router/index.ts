@@ -9,6 +9,7 @@ import ChatAI from '@/views/Front/ChatAI/ChatAI.vue'
 import GraphBrowse from '@/views/Front/GraphBrowse/GraphBrowse.vue'
 import CaseStudy from '@/views/Front/CaseStudy/CaseStudy.vue'
 import History from '@/views/Front/History/History.vue'
+import Login from '@/views/Front/Login/Login.vue'
 
 // 后台布局
 import AdminLayout from '@/layouts/AdminLayout.vue'
@@ -21,7 +22,6 @@ import SyndromeManage from '@/views/Admin/SyndromeManage/SyndromeManage.vue'
 import RelationManage from '@/views/Admin/RelationManage/RelationManage.vue'
 import DocManage from '@/views/Admin/DocManage/DocManage.vue'
 import RecordManage from '@/views/Admin/RecordManage/RecordManage.vue'
-import { kgApi } from '@/api'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -48,12 +48,19 @@ const router = createRouter({
         {
           path: 'case-study',
           name: 'case-study',
-          component: CaseStudy
+          component: CaseStudy,
+          meta: { requiresAuth: true }
         },
         {
           path: 'history',
           name: 'history',
-          component: History
+          component: History,
+          meta: { requiresAuth: true }
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: Login
         }
       ]
     },
@@ -107,16 +114,45 @@ const router = createRouter({
 })
 
 // 路由守卫 - 权限检查
-router.beforeEach(async (to) => {
-  if (!to.matched.some(record => record.meta.requiresAuth)) return true
-  if (!localStorage.getItem('admin_token')) return '/'
-  try {
-    const user = await kgApi.me()
-    if (user.role !== 'admin') throw new Error('admin required')
-    return true
-  } catch {
-    for (const key of ['admin_token','admin_username','admin_role']) localStorage.removeItem(key)
-    return '/'
+router.beforeEach((to, _from, next) => {
+  const token = localStorage.getItem('admin_token')
+  const isAuthenticated = !!token
+
+  // 检查目标路由是否需要认证
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  if (requiresAuth) {
+    if (!isAuthenticated) {
+      // 无 token，跳转登录页并携带 redirect 参数
+      next('/login?redirect=' + encodeURIComponent(to.fullPath))
+      return
+    }
+
+    // 访问后台页面时检查是否有有效的用户信息（admin 和 user 均可访问）
+    if (to.path.startsWith('/admin')) {
+      const userInfoStr = localStorage.getItem('user_info')
+      if (!userInfoStr) {
+        next('/')
+        return
+      }
+      try {
+        const userInfo = JSON.parse(userInfoStr)
+        if (userInfo.role !== 'admin' && userInfo.role !== 'user') {
+          next('/')
+          return
+        }
+      } catch {
+        next('/')
+        return
+      }
+    }
+
+    next()
+  } else if (to.path === '/login' && isAuthenticated) {
+    // 已登录用户访问登录页，自动跳转首页
+    next('/')
+  } else {
+    next()
   }
 })
 

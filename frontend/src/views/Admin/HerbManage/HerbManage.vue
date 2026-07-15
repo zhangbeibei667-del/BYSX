@@ -2,11 +2,14 @@
   <div class="herb-manage">
     <!-- 顶部操作栏 -->
     <div class="page-header">
-      <h2 class="page-title">药材管理</h2>
+      <h2 class="page-title">
+        <el-icon class="title-icon"><Orange /></el-icon>
+        药材管理
+      </h2>
       <div class="header-actions">
-        <el-button type="primary" :icon="Plus" @click="handleAdd">新建</el-button>
-        <el-button :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
-        <el-button :icon="Download" @click="handleExportTemplate">导出模板</el-button>
+        <el-button v-permission="['admin']" class="btn-primary" :icon="Plus" @click="handleAdd">新建</el-button>
+        <el-button v-permission="['admin']" class="btn-outline" :icon="Upload" @click="showImportDialog = true">批量导入</el-button>
+        <el-button v-permission="['admin', 'user']" class="btn-outline" :icon="Download" @click="handleExportTemplate">导出模板</el-button>
       </div>
     </div>
 
@@ -36,13 +39,14 @@
           :value="cat"
         />
       </el-select>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button :icon="Refresh" @click="handleReset">重置</el-button>
+      <el-button class="btn-primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button class="btn-outline" :icon="Refresh" @click="handleReset">重置</el-button>
 
       <!-- 批量删除按钮 -->
       <el-button
         v-if="selectedRows.length > 0"
-        type="danger"
+        v-permission="['admin']"
+        class="btn-danger"
         :icon="Delete"
         @click="handleBatchDelete"
       >
@@ -61,6 +65,7 @@
         row-key="id"
         style="width: 100%;"
         @selection-change="handleSelectionChange"
+        class="tcm-table"
       >
         <el-table-column type="selection" width="50" align="center" fixed="left" />
         <el-table-column type="index" label="序号" width="70" align="center" fixed="left" />
@@ -99,11 +104,11 @@
         <el-table-column prop="category" label="分类" width="120" align="center" />
         <el-table-column label="操作" width="160" align="center" fixed="right">
           <template #default="{ row }">
-            <el-button type="primary" link size="small" @click="handleEdit(row)">
+            <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">
               <el-icon><Edit /></el-icon>
               编辑
             </el-button>
-            <el-button type="danger" link size="small" @click="handleDelete(row)">
+            <el-button v-permission="['admin']" class="btn-delete" link size="small" @click="handleDelete(row)">
               <el-icon><Delete /></el-icon>
               删除
             </el-button>
@@ -132,6 +137,7 @@
       width="700px"
       :close-on-click-modal="false"
       @closed="resetForm"
+      class="tcm-dialog"
     >
       <el-form
         ref="formRef"
@@ -214,8 +220,8 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="submitLoading" @click="handleSubmit">
+        <el-button class="btn-cancel" @click="dialogVisible = false">取消</el-button>
+        <el-button class="btn-primary" :loading="submitLoading" @click="handleSubmit">
           {{ isEdit ? '更新' : '创建' }}
         </el-button>
       </template>
@@ -237,16 +243,17 @@
       title="确认删除"
       width="420px"
       :close-on-click-modal="false"
+      class="tcm-dialog"
     >
       <div class="delete-confirm-content">
-        <el-icon class="delete-icon" :size="48" color="#f56c6c">
+        <el-icon class="delete-icon" :size="48" color="#b35c5c">
           <WarningFilled />
         </el-icon>
         <p class="delete-message">{{ deleteMessage }}</p>
       </div>
       <template #footer>
-        <el-button @click="deleteDialogVisible = false">取消</el-button>
-        <el-button type="danger" :loading="deleteLoading" @click="confirmDelete">
+        <el-button class="btn-cancel" @click="deleteDialogVisible = false">取消</el-button>
+        <el-button class="btn-danger" :loading="deleteLoading" @click="confirmDelete">
           确认删除
         </el-button>
       </template>
@@ -265,7 +272,8 @@ import {
   Refresh,
   Delete,
   Edit,
-  WarningFilled
+  WarningFilled,
+  Orange
 } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { entityApi } from '@/api'
@@ -366,7 +374,6 @@ const handleExportTemplate = async () => {
     window.URL.revokeObjectURL(url)
     ElMessage.success('模板下载成功')
   } catch (error) {
-    // 备选：直接通过链接下载
     const link = document.createElement('a')
     link.href = '/api/admin/herbs/export'
     link.download = '药材导入模板.xlsx'
@@ -541,7 +548,6 @@ const handleImportSuccess = () => {
 onMounted(async () => {
   await fetchData()
 
-  // 从知识图谱跳转过来时，自动打开指定实体的编辑弹窗
   const editId = route.query.editId as string
   if (editId) {
     await nextTick()
@@ -555,12 +561,24 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-.herb-manage {
-  padding: 20px;
-  max-width: 100%;
-  overflow: hidden;  // 防止整个页面溢出
+// ==================== 国风色彩变量 ====================
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$gold-light: rgba(200, 168, 110, 0.15);
+$cream-bg: #f7f3eb;
+$cream-white: #faf6ef;
+$text-dark: #2c3630;
+$text-light: #6b7a72;
+$border-light: rgba(110, 135, 120, 0.12);
+$danger-red: #b35c5c;
 
-  // 顶部操作栏
+.herb-manage {
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
+
+  // ===== 页面标题栏 =====
   .page-header {
     display: flex;
     justify-content: space-between;
@@ -570,8 +588,17 @@ onMounted(async () => {
     .page-title {
       margin: 0;
       font-size: 22px;
-      font-weight: 600;
-      color: #303133;
+      font-weight: 500;
+      color: $text-dark;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .title-icon {
+        color: $soft-gold;
+        font-size: 22px;
+      }
     }
 
     .header-actions {
@@ -580,44 +607,199 @@ onMounted(async () => {
     }
   }
 
-  // 搜索筛选栏
+  // ===== 搜索栏 =====
   .search-bar {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f5f7fa;
-    border-radius: 6px;
+    margin-bottom: 18px;
+    padding: 14px 20px;
+    background: $cream-white;
+    border-radius: 12px;
+    border: 1px solid rgba(110, 135, 120, 0.2);
     flex-wrap: wrap;
+
+    :deep(.el-input__wrapper) {
+      border-radius: 8px;
+      box-shadow: none !important;
+      border: 1px solid rgba(110, 135, 120, 0.25);
+      background: #fff;
+      transition: border-color 0.2s;
+
+      &:hover, &:focus-within {
+        border-color: $mid-green;
+      }
+    }
+
+    :deep(.el-input__prefix-inner .el-icon) {
+      color: $mid-green;
+    }
+
+    :deep(.el-select .el-input__wrapper) {
+      border: 1px solid rgba(110, 135, 120, 0.25);
+
+      &:hover, &.is-focus {
+        border-color: $mid-green;
+      }
+    }
+
+    :deep(.el-select .el-input__prefix .el-icon) {
+      color: $mid-green;
+    }
   }
 
-  // 表格滚动容器
+  // ===== 表格容器 =====
   .table-wrapper {
     width: 100%;
-    max-width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    border-radius: 12px;
+    border: 1px solid $border-light;
+    background: $cream-white;
+  }
+
+  // ===== 国风表格样式 =====
+  :deep(.tcm-table) {
+    --el-table-border-color: $border-light;
+    --el-table-header-bg-color: $cream-bg;
+    --el-table-row-hover-bg-color: rgba(200, 168, 110, 0.06);
     
-    // 让表格有最小宽度，触发横向滚动
-    :deep(.el-table) {
-      min-width: 1400px;  // 所有列宽之和 + 一些余量
-      width: 100%;
+    .el-table__header-wrapper th {
+      background-color: $cream-bg !important;
+      color: $text-dark;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    
+    .el-table__body-wrapper td {
+      color: $text-light;
+      font-size: 13px;
+    }
+    
+    .el-table__row--striped {
+      background-color: rgba(247, 243, 235, 0.3);
+    }
+  }
+
+  // ===== 分页 =====
+  .pagination-wrapper {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+    
+    :deep(.el-pagination) {
+      .el-pagination__total {
+        color: $text-light;
+      }
       
-      .el-table__body-wrapper {
-        overflow-x: auto;
+      .el-pager li {
+        border-radius: 4px;
+        &:hover {
+          color: $mid-green;
+        }
+        &.is-active {
+          background: $gold-light;
+          color: $mid-green;
+          font-weight: 500;
+        }
+      }
+      
+      button:hover {
+        color: $mid-green;
       }
     }
   }
 
-  // 分页
-  .pagination-wrapper {
-    margin-top: 16px;
-    display: flex;
-    justify-content: flex-end;
+  // ===== 国风按钮 =====
+  .btn-primary {
+    background: $mid-green;
+    border-color: $mid-green;
+    color: #fff;
+    
+    &:hover {
+      background: lighten($mid-green, 8%);
+      border-color: lighten($mid-green, 8%);
+      color: #fff;
+    }
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border-color: $border-light;
+    color: $text-light;
+    
+    &:hover {
+      border-color: $mid-green;
+      color: $mid-green;
+      background: rgba(70, 99, 80, 0.05);
+    }
+  }
+  
+  .btn-danger {
+    background: $danger-red;
+    border-color: $danger-red;
+    color: #fff;
+    
+    &:hover {
+      background: darken($danger-red, 8%);
+      border-color: darken($danger-red, 8%);
+      color: #fff;
+    }
+  }
+  
+  .btn-edit {
+    color: $mid-green;
+    
+    &:hover {
+      color: lighten($mid-green, 15%);
+    }
+  }
+  
+  .btn-delete {
+    color: $danger-red;
+    
+    &:hover {
+      color: darken($danger-red, 10%);
+    }
+  }
+  
+  .btn-cancel {
+    color: $text-light;
+    
+    &:hover {
+      color: $text-dark;
+    }
   }
 
-  // 删除确认弹窗
+  // ===== 弹窗 =====
+  :deep(.tcm-dialog) {
+    .el-dialog {
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(42, 64, 48, 0.12);
+    }
+    
+    .el-dialog__header {
+      border-bottom: 1px solid $border-light;
+      padding: 20px 24px 16px;
+      
+      .el-dialog__title {
+        color: $text-dark;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+    
+    .el-dialog__body {
+      padding: 24px;
+    }
+    
+    .el-dialog__footer {
+      border-top: 1px solid $border-light;
+      padding: 16px 24px 20px;
+    }
+  }
+
+  // ===== 删除确认弹窗 =====
   .delete-confirm-content {
     display: flex;
     flex-direction: column;
@@ -630,7 +812,7 @@ onMounted(async () => {
 
     .delete-message {
       font-size: 15px;
-      color: #303133;
+      color: $text-dark;
       text-align: center;
       line-height: 1.6;
     }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 import type {
   GraphResponse,
   AnswerResponse,
@@ -35,10 +36,35 @@ api.interceptors.response.use(
     return body && typeof body === 'object' && body.code === 0 ? { ...body, code: 200 } : body
   },
   (error) => {
+    if (error.response?.status === 401) {
+      ElMessage.error('登录已过期，请重新登录')
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('user_info')
+      // 动态导入 router 避免循环依赖
+      import('@/router').then(({ default: router }) => {
+        router.push('/login')
+      })
+    }
     console.error('API Error:', error)
     return Promise.reject(error)
   }
 )
+
+// 通用响应包裹结构
+interface ApiResponse<T> {
+  code: number
+  msg?: string
+  data: T
+}
+
+// ===== 认证接口：统一接入图谱管理 JWT =====
+export const authApi = {
+  login: (data: { username: string; password: string }) => api.post<ApiResponse<{ token: string; user: { id: number; username: string; role: string } }>>('/kg/auth/login', data),
+  register: (data: { username: string; password: string }) => api.post<ApiResponse<{ id: number; username: string; role: string }>>('/kg/auth/register', data),
+  getCurrentUser: () => api.get<ApiResponse<{ id: number; username: string; role: string; last_login?: string }>>('/kg/auth/me'),
+  changePassword: (data: { oldPassword: string; newPassword: string }) => api.post('/kg/auth/change-password', { old_password: data.oldPassword, new_password: data.newPassword }),
+  logout: async () => ({ code: 200 })
+}
 
 // 问答接口
 export const chatApi = {
@@ -262,18 +288,6 @@ export const recordApi = {
   toggleFavorite: async (id: string) => { const items: string[] = JSON.parse(localStorage.getItem('record_favorites') || '[]'); const next=items.includes(id)?items.filter(x=>x!==id):[...items,id];localStorage.setItem('record_favorites',JSON.stringify(next));return { toggled:true } },
   export: async (_params?: any) => { const result:any=await recordApi.list({page:1,pageSize:100}); const rows=[['question','answer','createdAt'],...result.data.list.map((x:any)=>[x.question,x.answer,x.createdAt])]; return new Blob(['\ufeff'+rows.map((row:any[])=>row.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n')],{type:'text/csv;charset=utf-8'}) },
   getStats: async () => { const result:any=await recordApi.list({page:1,pageSize:100}); const favorites=result.data.list.filter((x:any)=>x.isFavorite).length; return { code:200, data:{ today:0, thisWeek:0, total:result.data.total, favorites } } }
-}
-
-const authData = (body: any) => {
-  const normalized = body?.data ? body : { data: body }
-  if (body?.code !== 0 && body?.code !== 200) throw new Error(body?.msg || '认证失败')
-  return normalized.data
-}
-
-export const kgApi = {
-  login: async (username: string, password: string) => authData(await api.post('/kg/auth/login', { username, password })),
-  register: async (username: string, password: string) => authData(await api.post('/kg/auth/register', { username, password })),
-  me: async () => authData(await api.get('/kg/auth/me'))
 }
 
 // 统计接口
