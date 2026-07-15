@@ -12,5 +12,4 @@ declare module '*.scss' {
 }
 
 declare module 'markdown-it'
-
 declare module 'element-plus/dist/locale/zh-cn.mjs'

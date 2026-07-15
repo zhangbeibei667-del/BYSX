@@ -21,6 +21,7 @@ import SyndromeManage from '@/views/Admin/SyndromeManage/SyndromeManage.vue'
 import RelationManage from '@/views/Admin/RelationManage/RelationManage.vue'
 import DocManage from '@/views/Admin/DocManage/DocManage.vue'
 import RecordManage from '@/views/Admin/RecordManage/RecordManage.vue'
+import { kgApi } from '@/api'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -106,18 +107,16 @@ const router = createRouter({
 })
 
 // 路由守卫 - 权限检查
-router.beforeEach((to, from, next) => {
-  // 检查是否需要认证
-  if (to.meta.requiresAuth) {
-    const isAuthenticated = localStorage.getItem('admin_token')
-    if (isAuthenticated) {
-      next()
-    } else {
-      // 重定向到登录页或首页
-      next('/')
-    }
-  } else {
-    next()
+router.beforeEach(async (to) => {
+  if (!to.matched.some(record => record.meta.requiresAuth)) return true
+  if (!localStorage.getItem('admin_token')) return '/'
+  try {
+    const user = await kgApi.me()
+    if (user.role !== 'admin') throw new Error('admin required')
+    return true
+  } catch {
+    for (const key of ['admin_token','admin_username','admin_role']) localStorage.removeItem(key)
+    return '/'
   }
 })
 

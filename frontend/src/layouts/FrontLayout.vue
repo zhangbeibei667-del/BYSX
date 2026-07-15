@@ -39,7 +39,7 @@
           <el-dropdown>
             <div class="user-info">
               <el-icon><User /></el-icon>
-              <span>访客用户</span>
+              <span>{{ currentUser || '访客用户' }}</span>
             </div>
             <template #dropdown>
               <el-dropdown-menu>
@@ -86,6 +86,14 @@
       </div>
     </footer>
     
+    <el-dialog v-model="authVisible" :title="authMode === 'login' ? '管理员登录' : '注册普通用户'" width="420px">
+      <el-form label-width="70px">
+        <el-form-item label="用户名"><el-input v-model="credentials.username" autocomplete="username" /></el-form-item>
+        <el-form-item label="密码"><el-input v-model="credentials.password" type="password" show-password autocomplete="current-password" @keyup.enter="submitAuth" /></el-form-item>
+      </el-form>
+      <template #footer><el-button @click="authVisible=false">取消</el-button><el-button type="primary" :loading="authLoading" @click="submitAuth">{{ authMode === 'login' ? '登录' : '注册' }}</el-button></template>
+    </el-dialog>
+
     <!-- 关于系统对话框 -->
     <el-dialog v-model="aboutDialogVisible" title="关于系统" width="500px">
       <div class="about-content">
@@ -113,6 +121,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { kgApi } from '@/api'
 import {
   HomeFilled,
   ChatDotRound,
@@ -126,22 +136,37 @@ import {
   InfoFilled,
   FirstAidKit
 } from '@element-plus/icons-vue'
-
 const router = useRouter()
 const aboutDialogVisible = ref(false)
+const authVisible = ref(false)
+const authLoading = ref(false)
+const authMode = ref<'login'|'register'>('login')
+const credentials = ref({ username: 'admin', password: '' })
+const currentUser = ref(localStorage.getItem('admin_username') || '')
 
 const goToAdmin = () => {
-  router.push('/admin/herbs')
+  if (localStorage.getItem('admin_token')) router.push('/admin/herbs')
+  else { authMode.value = 'login'; authVisible.value = true }
 }
 
 const login = () => {
-  // 登录逻辑
-  console.log('登录')
+  authMode.value = 'login'; authVisible.value = true
 }
 
 const register = () => {
-  // 注册逻辑
-  console.log('注册')
+  authMode.value = 'register'; authVisible.value = true
+}
+
+const submitAuth = async () => {
+  if (!credentials.value.username || !credentials.value.password) return ElMessage.warning('请输入用户名和密码')
+  authLoading.value = true
+  try {
+    if (authMode.value === 'register') { await kgApi.register(credentials.value.username, credentials.value.password); authMode.value='login'; return ElMessage.success('注册成功，请登录') }
+    const result = await kgApi.login(credentials.value.username, credentials.value.password)
+    localStorage.setItem('admin_token', result.token); localStorage.setItem('admin_username', result.user.username); localStorage.setItem('admin_role', result.user.role)
+    currentUser.value = result.user.username; authVisible.value = false; ElMessage.success('登录成功')
+    if (result.user.role === 'admin') router.push('/admin/herbs')
+  } catch (error:any) { ElMessage.error(error.message || '认证失败') } finally { authLoading.value = false }
 }
 
 const aboutSystem = () => {
@@ -237,7 +262,7 @@ const aboutSystem = () => {
   flex: 1;
   padding: 20px;
   max-width: 1400px;
-  margin: 1100px auto 0;
+  margin: 1000px auto 0;
   width: 100%;
   }
   

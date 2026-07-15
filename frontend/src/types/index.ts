@@ -110,3 +110,34 @@ export interface SyndromeEntity extends BaseEntity {
     commonly_used_formulas?: string // 常用方剂
   }
 }
+
+// 文献实体
+export interface DocumentEntity extends BaseEntity {
+  type: '药典' | '教材' | '科普' | '期刊' // 文献类型
+  content: string // 文献内容
+  source?: string // 来源出处
+  fileName?: string // 附件文件名
+  fileUrl?: string // 附件URL
+  relatedEntities?: Array<{
+    id: string
+    name: string
+    type: string
+  }> // 关联的图谱实体
+}
+
+// 问答记录实体
+export interface RecordEntity {
+  id: string
+  question: string // 用户问题
+  answer: string // Agent回答
+  herbs?: string[] // 关联药材
+  formulas?: string[] // 关联方剂
+  symptoms?: string[] // 关联症状
+  syndromes?: string[] // 关联证候
+  evidence?: Array<{
+    title: string
+    content: string
+  }> // 引用文献片段
+  isFavorite: boolean // 是否收藏
+  createdAt: string // 提问时间
+}
