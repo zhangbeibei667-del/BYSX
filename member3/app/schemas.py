@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 
 # ============================================================
-# 1. 统一实体格式 
+# 1. 统一实体格式
 # ============================================================
 class EntityRecord(BaseModel):
     id: str
@@ -18,7 +18,7 @@ class EntityRecord(BaseModel):
 
 
 # ============================================================
-# 2. 统一关系格式 
+# 2. 统一关系格式
 # ============================================================
 class RelationRecord(BaseModel):
     source_id: str
@@ -30,7 +30,7 @@ class RelationRecord(BaseModel):
 
 
 # ============================================================
-# 3. 统一图谱返回格式 —— 前端直接读取 nodes / edges
+# 3. 统一图谱返回格式
 # ============================================================
 class GraphNode(BaseModel):
     id: str
@@ -50,7 +50,7 @@ class GraphData(BaseModel):
 
 
 # ============================================================
-# 4. 统一问答结果格式 
+# 4. 统一问答结果格式
 # ============================================================
 class EvidenceItem(BaseModel):
     title: str
@@ -65,9 +65,7 @@ class QAResult(BaseModel):
     herbs: list[str] = Field(default_factory=list)
     graph: GraphData = Field(default_factory=GraphData)
     evidence: list[EvidenceItem] = Field(default_factory=list)
-
     follow_up_questions: list[str] = Field(default_factory=list)
-
     safety_notice: str = (
         "本结果仅用于中医药知识学习和教学辅助，"
         "不构成医疗诊断或用药建议。"

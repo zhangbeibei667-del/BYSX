@@ -1123,24 +1123,33 @@ class GraphRAGService:
         matched_entity_count: int,
     ) -> bool:
         """判断是否启用轻量社区摘要，避免具体事实问题被全局摘要冲淡。"""
+        overview_keywords = [
+            "概览",
+            "总览",
+            "总结",
+            "知识结构",
+            "学习路线",
+            "有哪些模块",
+            "有哪些主题",
+            "关联",
+            "关系",
+            "相关",
+            "联系",
+            "脉络",
+        ]
+
         if intent == "global_summary":
             return True
 
-        if matched_entity_count > 0:
-            return False
-
-        return any(
+        asks_for_relation_view = any(
             keyword in query
-            for keyword in [
-                "概览",
-                "总览",
-                "总结",
-                "知识结构",
-                "学习路线",
-                "有哪些模块",
-                "有哪些主题",
-            ]
+            for keyword in overview_keywords
         )
+
+        if matched_entity_count > 0:
+            return asks_for_relation_view
+
+        return asks_for_relation_view
 
     # ========================================================
     # 6. Query
@@ -1218,6 +1227,11 @@ class GraphRAGService:
         # 当该图谱路径已经命中时，不再把文本片段中的图谱外方剂、食疗汤、粥方
         # 扩展进主答案，降低回答发散和 evidence 噪声。
         if intent == "symptom_to_formula" and graph.edges:
+            chunks = []
+
+        # 全局概览类问题以社区摘要为主。
+        # 避免向量检索偶然召回的药典片段污染知识结构说明。
+        if intent == "global_summary" and community_summaries:
             chunks = []
 
         print(
@@ -1433,6 +1447,13 @@ class GraphRAGService:
             "只回答用户直接询问的目标信息。",
         )
 
+        community_rule = (
+            "社区摘要只用于说明主题结构、关系脉络和相关知识范围；"
+            "当文本证据或图谱路径给出更具体事实时，以具体证据为准。"
+            if community_summaries
+            else "未启用社区摘要时，不要编造社区结构。"
+        )
+
         return f"""
 请依据下面证据回答用户问题。
 
@@ -1444,6 +1465,9 @@ class GraphRAGService:
 
 【意图规则】
 {intent_rules}
+
+【社区摘要使用规则】
+{community_rule}
 
 【文本证据】
 {text_block}
@@ -1464,8 +1488,10 @@ class GraphRAGService:
 7. 除非回答当前问题所必需，不得列举或解释无关的方剂、药材、功效、文献或其他图谱支路；
 8. 对与当前问题无关的证据直接忽略，不要为了说明“未使用”而再次复述这些证据；
 9. 回答要像教学辅助说明：先给结论，再用短句分层解释，避免堆砌证据标题；
-10. 药典/HKCMMS 类证据只回答来源、性状、鉴别、检查、含量测定等标准信息，不扩展成临床用药建议；
-11. 不构成医疗诊断或用药建议。
+10. 如果同时存在文本证据、图谱证据和社区摘要，按照直接答案、依据来源、必要补充的顺序组织；
+11. 社区摘要可以用于概括关系脉络，但不能替代具体药典条目或图谱路径中的事实；
+12. 药典/HKCMMS 类证据只回答来源、性状、鉴别、检查、含量测定等标准信息，不扩展成临床用药建议；
+13. 不构成医疗诊断或用药建议。
 """.strip()
 
     # ========================================================

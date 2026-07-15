@@ -11,7 +11,7 @@ from pathlib import Path
 class RetrievedChunk:
     title: str
     content: str
-    score: float
+    score: float = 0.0
 
 
 class VectorSearch:

@@ -10,12 +10,15 @@ from app.schemas import EntityRecord, RelationRecord
 
 @dataclass(frozen=True)
 class CommunitySummary:
-    """轻量 GraphRAG 社区摘要，作为成员三内部全局检索证据。"""
+    """轻量 GraphRAG 社区摘要，作为 RAG 内部全局检索证据。"""
 
     community_id: str
     title: str
     content: str
     node_ids: list[str]
+    entity_names: list[str]
+    entity_types: list[str]
+    relation_types: list[str]
     score: float = 0.0
 
 
@@ -24,8 +27,8 @@ class LightweightCommunitySearch:
     无额外依赖的轻量社区发现与摘要。
 
     边界：
-    - 只读取成员三已经加载的统一实体/关系；
-    - 不改写成员一图谱数据；
+    - 只读取当前服务已经加载的统一实体和关系；
+    - 不改写原始图谱数据；
     - 不新增对外 API 字段；
     - 社区摘要作为 RAG evidence 进入现有 QAResult。
     """
@@ -191,6 +194,15 @@ class LightweightCommunitySearch:
                 f"{source.name}--{relation.relation}-->{target.name}"
             )
 
+        entity_types = self._top_items(
+            type_counter,
+            6,
+        )
+        relation_types = self._top_items(
+            relation_counter,
+            6,
+        )
+
         type_text = "、".join(
             f"{name}{count}个"
             for name, count in type_counter.most_common()
@@ -211,6 +223,7 @@ class LightweightCommunitySearch:
 
         content = (
             f"该社区包含{len(entities)}个实体、{len(relations)}条关系。"
+            f"主题可以概括为围绕{top_text or '核心实体'}展开的知识联系。"
             f"实体类型分布：{type_text or '暂无'}。"
             f"主要关系：{relation_text or '暂无'}。"
             f"核心实体：{top_text or '暂无'}。"
@@ -224,6 +237,9 @@ class LightweightCommunitySearch:
             title=title,
             content=content,
             node_ids=node_ids,
+            entity_names=top_entities,
+            entity_types=entity_types,
+            relation_types=relation_types,
         )
 
     def _build_summaries(
@@ -265,6 +281,26 @@ class LightweightCommunitySearch:
 
         return ascii_tokens + zh_tokens
 
+    @staticmethod
+    def _is_overview_query(query: str) -> bool:
+        return any(
+            keyword in query
+            for keyword in [
+                "概览",
+                "总览",
+                "总结",
+                "社区",
+                "模块",
+                "知识结构",
+                "学习",
+                "关联",
+                "关系",
+                "相关",
+                "联系",
+                "脉络",
+            ]
+        )
+
     def search(
         self,
         query: str,
@@ -276,11 +312,18 @@ class LightweightCommunitySearch:
         query_tokens = set(
             self._tokens(query)
         )
+        overview_query = self._is_overview_query(query)
 
         scored: list[CommunitySummary] = []
 
         for summary in self.summaries:
-            text = f"{summary.title}\n{summary.content}"
+            entity_text = " ".join(summary.entity_names)
+            relation_text = " ".join(summary.relation_types)
+            type_text = " ".join(summary.entity_types)
+            text = (
+                f"{summary.title}\n{summary.content}\n"
+                f"{entity_text}\n{relation_text}\n{type_text}"
+            )
             text_tokens = set(
                 self._tokens(text)
             )
@@ -290,18 +333,15 @@ class LightweightCommunitySearch:
 
             score = float(overlap)
 
-            if any(
-                keyword in query
-                for keyword in [
-                    "概览",
-                    "总览",
-                    "总结",
-                    "社区",
-                    "模块",
-                    "知识结构",
-                    "学习",
-                ]
-            ):
+            for entity_name in summary.entity_names:
+                if entity_name and entity_name in query:
+                    score += 8.0
+
+            for relation_type in summary.relation_types:
+                if relation_type and relation_type in query:
+                    score += 3.0
+
+            if overview_query:
                 score += len(summary.node_ids) * 0.01
 
             if score <= 0:
@@ -313,6 +353,9 @@ class LightweightCommunitySearch:
                     title=summary.title,
                     content=summary.content,
                     node_ids=summary.node_ids,
+                    entity_names=summary.entity_names,
+                    entity_types=summary.entity_types,
+                    relation_types=summary.relation_types,
                     score=score,
                 )
             )
@@ -324,6 +367,9 @@ class LightweightCommunitySearch:
                     title=summary.title,
                     content=summary.content,
                     node_ids=summary.node_ids,
+                    entity_names=summary.entity_names,
+                    entity_types=summary.entity_types,
+                    relation_types=summary.relation_types,
                     score=len(summary.node_ids) * 0.01,
                 )
                 for summary in self.summaries[:top_k]
