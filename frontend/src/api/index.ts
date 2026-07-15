@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 import type {
   GraphResponse,
   AnswerResponse,
@@ -32,10 +33,84 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
+    if (error.response?.status === 401) {
+      ElMessage.error('登录已过期，请重新登录')
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('user_info')
+      // 动态导入 router 避免循环依赖
+      import('@/router').then(({ default: router }) => {
+        router.push('/login')
+      })
+    }
     console.error('API Error:', error)
     return Promise.reject(error)
   }
 )
+
+// 通用响应包裹结构
+interface ApiResponse<T> {
+  code: number
+  msg?: string
+  data: T
+}
+
+// ===== 认证接口 =====
+// 开发模式 mock：提供两个测试账号可直接登录
+const isDev = import.meta.env.DEV
+
+const mockUserDb: Record<string, { password: string; user: { id: number; username: string; role: string } }> = {
+  admin: { password: '123456', user: { id: 1, username: 'admin', role: 'admin' } },
+  user01: { password: '123456', user: { id: 2, username: 'user01', role: 'user' } }
+}
+
+export const authApi = {
+  // 登录
+  login: (data: { username: string; password: string }) => {
+    if (isDev) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const record = mockUserDb[data.username]
+          if (record && record.password === data.password) {
+            resolve({ data: { code: 0, token: `mock-token-${Date.now()}`, user: record.user } })
+          } else {
+            reject({ response: { data: { code: 401, message: '用户名或密码错误' } } })
+          }
+        }, 300) // 模拟网络延迟
+      })
+    }
+    return api.post<ApiResponse<{ token: string; user: { id: number; username: string; role: string } }>>('/auth/login', data)
+  },
+
+  // 注册
+  register: (data: { username: string; password: string }) => {
+    if (isDev) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ data: { code: 0, id: Date.now(), username: data.username, role: 'user' } })
+        }, 300)
+      })
+    }
+    return api.post<ApiResponse<{ id: number; username: string; role: string }>>('/auth/register', data)
+  },
+
+  // 获取当前用户信息
+  getCurrentUser: () =>
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0, id: 1, username: 'admin', role: 'admin' } }))
+      : api.get<ApiResponse<{ id: number; username: string; role: string; last_login?: string }>>('/auth/me'),
+
+  // 修改密码
+  changePassword: (data: { oldPassword: string; newPassword: string }) =>
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0 } }))
+      : api.put('/auth/password', data),
+
+  // 退出登录
+  logout: () =>
+    isDev
+      ? new Promise((resolve) => resolve({ data: { code: 0 } }))
+      : api.post('/auth/logout')
+}
 
 // 问答接口
 export const chatApi = {
@@ -49,11 +124,21 @@ export const chatApi = {
     return new EventSource(`/api/chat/ask/stream?question=${encodeURIComponent(question)}&historyId=${historyId || ''}`)
   },
   
-  // 获取问答历史
+  // 获取问答历史列表
   getHistory: (page = 1, pageSize = 20) => {
     return api.get('/chat/history', { params: { page, pageSize } })
   },
-  
+
+  // 获取单个对话的完整消息
+  getHistoryDetail: (id: string) => {
+    return api.get(`/chat/history/${id}`)
+  },
+
+  // 保存/更新对话（含完整消息列表，用于服务端持久化）
+  saveHistory: (data: { id: string; title: string; messages: any[] }) => {
+    return api.post('/chat/history/save', data)
+  },
+
   // 删除历史记录
   deleteHistory: (id: string) => {
     return api.delete(`/chat/history/${id}`)
@@ -91,6 +176,35 @@ export const graphApi = {
   getRelatedEntities: (id: string, depth = 2) => {
     return api.get<GraphResponse>(`/graph/related/${id}`, { params: { depth } })
   }
+}
+
+// 新增文献相关的 API（用于 ChatAI 回答中的溯源卡片）
+export const literatureApi = {
+  // 获取文献详情（用于回答溯源）
+  getDetail: (id: string) => api.get(`/literature/${id}`),
+
+  // 根据实体查询关联文献
+  getByEntity: (entityId: string) => api.get(`/literature/entity/${entityId}`),
+
+  // 搜索文献
+  search: (keyword: string, params?: any) => api.get('/literature/search', { params: { keyword, ...params } })
+}
+
+// 文献管理接口
+export const documentApi = {
+  list: (params: any) => api.get('/admin/documents', { params }),
+  create: (data: any) => api.post('/admin/documents', data),
+  update: (id: string, data: any) => api.put(`/admin/documents/${id}`, data),
+  delete: (id: string) => api.delete(`/admin/documents/${id}`),
+  batchDelete: (ids: string[]) => api.delete('/admin/documents/batch', { data: { ids } }),
+  upload: (file: File) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    return api.post('/admin/documents/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+  },
+  export: () => api.get('/admin/documents/export', { responseType: 'blob' })
 }
 
 // 实体管理接口
@@ -135,16 +249,32 @@ export const entityApi = {
     create: (data: Partial<SymptomEntity>) => api.post('/admin/symptoms', data),
     update: (id: string, data: Partial<SymptomEntity>) => api.put(`/admin/symptoms/${id}`, data),
     delete: (id: string) => api.delete(`/admin/symptoms/${id}`),
-    batchDelete: (ids: string[]) => api.delete('/admin/symptoms/batch', { data: { ids } })
+    batchDelete: (ids: string[]) => api.delete('/admin/symptoms/batch', { data: { ids } }),
+    import: (file: File) => {
+      const formData = new FormData()
+      formData.append('file', file)
+      return api.post('/admin/symptoms/import', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+    },
+    export: () => api.get('/admin/symptoms/export', { responseType: 'blob' })
   },
-  
+
   // 证候管理
   syndromes: {
     list: (params: any) => api.get<SyndromeEntity[]>('/admin/syndromes', { params }),
     create: (data: Partial<SyndromeEntity>) => api.post('/admin/syndromes', data),
     update: (id: string, data: Partial<SyndromeEntity>) => api.put(`/admin/syndromes/${id}`, data),
     delete: (id: string) => api.delete(`/admin/syndromes/${id}`),
-    batchDelete: (ids: string[]) => api.delete('/admin/syndromes/batch', { data: { ids } })
+    batchDelete: (ids: string[]) => api.delete('/admin/syndromes/batch', { data: { ids } }),
+    import: (file: File) => {
+      const formData = new FormData()
+      formData.append('file', file)
+      return api.post('/admin/syndromes/import', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+    },
+    export: () => api.get('/admin/syndromes/export', { responseType: 'blob' })
   }
 }
 
@@ -176,6 +306,46 @@ export const caseApi = {
   
   // 获取病例详情
   detail: (id: string) => api.get(`/case/${id}`)
+}
+
+// 问答记录管理接口
+export const recordApi = {
+  list: (params: any) => api.get('/admin/records', { params }),
+  detail: (id: string) => api.get(`/admin/records/${id}`),
+  delete: (id: string) => api.delete(`/admin/records/${id}`),
+  batchDelete: (ids: string[]) => api.delete('/admin/records/batch', { data: { ids } }),
+  toggleFavorite: (id: string) => api.post(`/admin/records/${id}/favorite`),
+  export: (params?: any) => api.get('/admin/records/export', { params, responseType: 'blob' }),
+  getStats: () => api.get('/admin/records/stats')
+}
+
+// 统计接口
+export const statsApi = {
+  // 获取平台统计数据
+  getPlatformStats: () => api.get<{
+    totalHerbs: number
+    totalPrescriptions: number
+    totalSymptoms: number
+    totalSyndromes: number
+    totalRelations: number
+    totalQuestions: number
+    totalCases: number
+  }>('/stats/platform'),
+  
+  // 获取热门实体统计
+  getPopularEntities: (type: 'herbs' | 'prescriptions' | 'symptoms', limit = 10) => {
+    return api.get(`/stats/popular/${type}`, { params: { limit } })
+  },
+  
+  // 获取每日问答统计
+  getDailyQuestions: (days = 7) => {
+    return api.get('/stats/daily-questions', { params: { days } })
+  },
+  
+  // 获取实体分类统计
+  getCategoryStats: () => {
+    return api.get('/stats/categories')
+  }
 }
 
 export default api

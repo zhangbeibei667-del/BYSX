@@ -1,44 +1,64 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { AnswerResponse } from '@/types'
+import { clearCaptchaVerified } from '@/utils/captcha'
+
+// 角色类型
+export type UserRole = 'guest' | 'user' | 'admin'
+
+// 用户信息
+export interface UserInfo {
+  id: number | string
+  username: string
+  role: UserRole
+}
 
 // 用户状态存储
 export const useUserStore = defineStore('user', () => {
   const isAuthenticated = ref(false)
-  const userInfo = ref({
+  const userInfo = ref<UserInfo>({
     id: '',
     username: '',
-    role: 'guest' as 'guest' | 'student' | 'admin'
+    role: 'guest'
   })
-  
+
   const isAdmin = computed(() => userInfo.value.role === 'admin')
-  const isStudent = computed(() => userInfo.value.role === 'student')
-  
-  const login = (token: string, userData: any) => {
+
+  const login = (token: string, userData: UserInfo) => {
     localStorage.setItem('admin_token', token)
+    localStorage.setItem('user_info', JSON.stringify(userData))
     isAuthenticated.value = true
     userInfo.value = userData
   }
-  
+
   const logout = () => {
     localStorage.removeItem('admin_token')
+    localStorage.removeItem('user_info')
+    clearCaptchaVerified()
     isAuthenticated.value = false
     userInfo.value = { id: '', username: '', role: 'guest' }
   }
-  
+
   const checkAuth = () => {
     const token = localStorage.getItem('admin_token')
     if (token) {
-      // 这里应该验证token有效性
       isAuthenticated.value = true
+      // 从 localStorage 恢复用户信息
+      const stored = localStorage.getItem('user_info')
+      if (stored) {
+        try {
+          userInfo.value = JSON.parse(stored)
+        } catch {
+          userInfo.value = { id: '', username: '', role: 'guest' }
+        }
+      }
     }
   }
-  
+
   return {
     isAuthenticated,
     userInfo,
     isAdmin,
-    isStudent,
     login,
     logout,
     checkAuth

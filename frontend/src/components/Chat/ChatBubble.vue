@@ -62,6 +62,64 @@
         <span></span>
       </div>
     </div>
+
+    <!-- RAG 依据来源面板 -->
+    <div
+      v-if="message.role === 'assistant' && hasSources"
+      class="sources-panel"
+    >
+      <el-collapse v-model="activeSourceNames">
+        <el-collapse-item title="📚 查看依据（RAG溯源）" name="sources">
+          <div
+            v-for="(source, idx) in message.response?.sources"
+            :key="`source-${idx}`"
+            class="source-item"
+          >
+            <div class="source-header">
+              <el-tag
+                :type="getSourceTypeColor(source.type)"
+                size="small"
+                effect="dark"
+              >
+                {{ source.type || '文献' }}
+              </el-tag>
+              <span class="source-title">{{ source.title || '未命名文献' }}</span>
+            </div>
+
+            <div class="source-meta" v-if="source.source_detail || source.chapter">
+              <span v-if="source.source_detail" class="source-detail">
+                📖 {{ source.source_detail }}
+              </span>
+              <span v-if="source.chapter" class="source-chapter">
+                📍 {{ source.chapter }}
+              </span>
+            </div>
+
+            <blockquote v-if="source.original_text" class="source-quote">
+              {{ source.original_text }}
+            </blockquote>
+
+            <div
+              v-if="source.related_entities && source.related_entities.length"
+              class="source-entities"
+            >
+              <span class="entities-label">关联实体：</span>
+              <el-tag
+                v-for="(entity, ei) in source.related_entities"
+                :key="`entity-${ei}`"
+                :type="getEntityColor(entity.type)"
+                size="small"
+                effect="plain"
+                class="entity-clickable"
+                @click="handleEntityClick(entity)"
+              >
+                [{{ entity.type }}] {{ entity.name }}
+              </el-tag>
+            </div>
+          </div>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
     
     <!-- 扩展信息 -->
     <div v-if="expanded && message.response" class="message-expansion">
@@ -215,6 +273,7 @@ import {
   VideoPlay,
   VideoPause
 } from '@element-plus/icons-vue'
+import type { SourceItem } from '@/types'
 
 interface Message {
   id: string
@@ -231,6 +290,7 @@ interface Message {
     evidence?: Array<{ title: string; content: string }>
     follow_up_questions?: string[]
     safety_notice: string
+    sources?: SourceItem[]
   }
 }
 
@@ -242,7 +302,38 @@ const props = defineProps<Props>()
 const emit = defineEmits<{
   favorite: [id: string]
   followup: [question: string]
+  navigateToGraph: [entityName: string]
 }>()
+
+// 文献类型 → el-tag type 映射（与 DocManage 保持一致）
+const sourceTypeColorMap: Record<string, string> = {
+  '药典': 'danger',
+  '教材': 'primary',
+  '古籍': 'warning',
+  '科普': 'info',
+  '期刊': 'success'
+}
+const getSourceTypeColor = (t?: string): string => sourceTypeColorMap[t || ''] || ''
+
+// 实体类型 → el-tag type 映射
+const entityColorMap: Record<string, string> = {
+  '药材': 'success',
+  '方剂': 'primary',
+  '症状': 'danger',
+  '证候': 'warning'
+}
+const getEntityColor = (t?: string): string => entityColorMap[t || ''] || 'info'
+
+const activeSourceNames = ref<string[]>([])
+
+const hasSources = computed(() => {
+  const sources = props.message.response?.sources
+  return sources && sources.length > 0
+})
+
+const handleEntityClick = (entity: { name: string; type: string; id: string }) => {
+  emit('navigateToGraph', entity.name)
+}
 
 const expanded = ref(false)
 const speaking = ref(false)
@@ -463,6 +554,119 @@ const handleSpeech = () => {
     }
   }
   
+  .sources-panel {
+    border-top: 1px solid #e4e7ed;
+    padding: 0;
+
+    :deep(.el-collapse) {
+      border: none;
+      --el-collapse-header-bg-color: transparent;
+      --el-collapse-content-bg-color: #fafafa;
+    }
+
+    :deep(.el-collapse-item__header) {
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #466350;
+      border: none;
+      background: rgba(70, 99, 80, 0.04);
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(70, 99, 80, 0.08);
+      }
+    }
+
+    :deep(.el-collapse-item__wrap) {
+      border: none;
+    }
+
+    :deep(.el-collapse-item__content) {
+      padding: 16px 20px;
+    }
+
+    .source-item {
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid rgba(110, 135, 120, 0.1);
+      transition: box-shadow 0.2s;
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(42, 64, 48, 0.06);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .source-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+
+        .source-title {
+          font-weight: 500;
+          color: #2c3630;
+          font-size: 14px;
+        }
+      }
+
+      .source-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        color: #6b7a72;
+
+        .source-detail, .source-chapter {
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
+        }
+      }
+
+      .source-quote {
+        margin: 8px 0 0 0;
+        padding: 10px 14px;
+        background: rgba(70, 99, 80, 0.04);
+        border-left: 3px solid #466350;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: #4a5c50;
+        font-style: italic;
+      }
+
+      .source-entities {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+
+        .entities-label {
+          font-size: 12px;
+          color: #6b7a72;
+        }
+
+        .entity-clickable {
+          cursor: pointer;
+          transition: transform 0.15s, box-shadow 0.15s;
+
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 1px 4px rgba(42, 64, 48, 0.15);
+          }
+        }
+      }
+    }
+  }
+
   .message-expansion {
     border-top: 1px solid #e4e7ed;
     padding: 16px;

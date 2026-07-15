@@ -12,11 +12,11 @@
               <span>病例教学</span>
             </h2>
             <div class="header-actions">
-              <el-button class="tcm-btn primary-tcm" @click="handleSaveCase" :loading="saving">
+              <el-button type="success" @click="handleSaveCase" :loading="saving">
                 <el-icon><FolderChecked /></el-icon>
                 保存病例
               </el-button>
-              <el-button plain class="tcm-btn ghost-tcm" @click="showHistory = !showHistory">
+              <el-button plain @click="showHistory = !showHistory">
                 <el-icon><Clock /></el-icon>
                 历史病例
               </el-button>
@@ -103,8 +103,9 @@
           <!-- 底部操作行 -->
           <div class="form-actions">
             <el-button
-              class="tcm-btn analyze-btn"
+              type="primary"
               size="large"
+              class="analyze-btn"
               @click="handleAnalyze"
               :loading="analyzing"
               :disabled="!canAnalyze"
@@ -220,7 +221,7 @@
       <div v-if="showHistory" class="case-history">
         <div class="history-header">
           <h3>📚 历史病例</h3>
-          <el-button text class="tcm-btn ghost-tcm" @click="loadHistoryCases" :loading="historyLoading">
+          <el-button text type="primary" @click="loadHistoryCases" :loading="historyLoading">
             <el-icon><Refresh /></el-icon>
             刷新
           </el-button>
@@ -312,15 +313,15 @@ const canAnalyze = computed(() => {
   return form.chiefComplaint.trim().length > 0
 })
 
-// ==================== 图谱颜色常量（国风色系） ====================
+// ==================== 图谱颜色常量 ====================
 const TYPE_COLORS: Record<string, string> = {
-  '药材': '#588264',
-  '方剂': '#8c6e4a',
-  '症状': '#c8a86e',
-  '证候': '#b13e3e',
-  '功效': '#5a8c7a',
-  '禁忌': '#b13e3e',
-  '文献': '#7a6a8a',
+  '药材': '#10b981',
+  '方剂': '#6366f1',
+  '症状': '#f59e0b',
+  '证候': '#b91c1c',
+  '功效': '#06b6d4',
+  '禁忌': '#ef4444',
+  '文献': '#8b5cf6',
 }
 
 // ==================== API 调用 ====================
@@ -350,6 +351,7 @@ async function handleAnalyze() {
       }
       currentCaseId.value = caseId
     } catch {
+      // 如果后端 API 未就绪，继续使用模拟数据
       console.log('病例创建 API 未就绪，使用本地分析')
     }
 
@@ -394,17 +396,27 @@ function buildCaseData() {
 }
 
 function useMockAnalysis() {
+  // 根据症状关键词模拟分析
   const text = form.chiefComplaint + form.tongueExam + form.pulseExam
 
+  // 心脾两虚模式
   const hasHeartSpleen = /(失眠|多梦|心悸|健忘|食少|乏力|面色萎黄|舌淡|脉细弱|脉细)/.test(text)
+  // 外感风寒模式
   const hasWindCold = /(畏寒|发热|咳嗽|鼻塞|流清涕|头痛|身痛|舌苔薄白|脉浮|脉浮紧)/.test(text)
+  // 少阳证模式
   const hasShaoyang = /(口苦|咽干|目眩|胸胁|往来寒热|心烦|喜呕)/.test(text)
+  // 血虚模式
   const hasBloodDeficiency = /(头晕|目眩|面色苍白|爪甲|月经|手足麻木|舌淡白|脉细无力)/.test(text)
+  // 肝气郁结模式
   const hasLiverQi = /(胁痛|胁肋|抑郁|善太息|胸闷|嗳气|情绪低落|脉弦|急躁|易怒|乳房胀|痛经|月经不调).*(抑郁|胸闷|胁|善太息|嗳气|叹息)/.test(text)
     || /(抑郁|胸闷|胁|善太息).*(胁痛|胁肋|嗳气|情绪|脉弦)/.test(text)
+  // 肾阴虚模式
   const hasKidneyYin = /(腰膝酸软|五心烦热|潮热|盗汗|口干咽燥|手足心热|耳鸣|遗精|舌红少苔|脉细数)/.test(text)
+  // 脾胃湿热模式
   const hasSpleenStomachDamp = /(脘腹|痞满|恶心|呕吐|纳呆|大便黏滞|里急后重|舌红苔黄腻|脉滑数|黄疸|身目发黄)/.test(text)
+  // 痰湿内阻模式
   const hasPhlegmDamp = /(痰多|胸闷|头重|肢体困重|眩晕|呕恶|舌苔白腻|脉濡滑|形体肥胖|嗜睡)/.test(text)
+  // 气虚模式
   const hasQiDeficiency = /(气短|懒言|自汗|神疲|乏力|面色.*白|舌淡胖|脉虚|脉弱).*(乏力|气短|自汗)/.test(text)
     || /(乏力|气短|自汗|神疲|懒言).*(乏力|气短|自汗|神疲|懒言)/.test(text)
 
@@ -718,6 +730,7 @@ function useMockAnalysis() {
     graph = { nodes: [], edges: [] }
   }
 
+  // 从主诉中提取症状关键词作为节点
   if (graph.nodes.length === 0) {
     const symptomKeywords = extractSymptoms(form.chiefComplaint)
     graph.nodes = symptomKeywords.map((s, i) => ({ id: `S_LOCAL_${i}`, label: s, type: '症状' }))
@@ -736,6 +749,7 @@ function useMockAnalysis() {
   }
 }
 
+// 从文本中提取症状关键词
 function extractSymptoms(text: string): string[] {
   const keywordList = ['失眠', '多梦', '心悸', '健忘', '乏力', '食少', '面色萎黄',
     '头晕', '目眩', '耳鸣', '畏寒', '发热', '咳嗽', '鼻塞', '流清涕',
@@ -777,7 +791,7 @@ function renderMiniGraph() {
       },
       label: {
         show: true,
-        color: '#4a5a4a',
+        color: '#e2e8f0',
         fontSize: 10,
         position: 'bottom' as const,
         distance: 4,
@@ -790,7 +804,7 @@ function renderMiniGraph() {
     target: e.target,
     name: e.label,
     lineStyle: {
-      color: 'rgba(120,140,120,0.4)',
+      color: 'rgba(148,163,184,0.5)',
       width: 1.2,
       curveness: 0.15,
     },
@@ -805,13 +819,13 @@ function renderMiniGraph() {
     animationEasing: 'cubicInOut' as const,
     tooltip: {
       show: true,
-      backgroundColor: 'rgba(247,243,235,0.95)',
-      borderColor: 'rgba(200,168,110,0.4)',
-      textStyle: { color: '#2a4030', fontSize: 12 },
+      backgroundColor: 'rgba(15,23,42,0.9)',
+      borderColor: 'rgba(148,163,184,0.3)',
+      textStyle: { color: '#e2e8f0', fontSize: 12 },
       formatter: (params: any) => {
         if (params.dataType === 'edge') {
-          return `<span style="color:#6b7a72">${params.data.sourceLabel || ''}</span>
-                  <span style="color:#c8a86e"> → ${params.data.name}</span>`
+          return `<span style="color:#94a3b8">${params.data.sourceLabel || ''}</span>
+                  <span style="color:#fbbf24"> → ${params.data.name}</span>`
         }
         return `<b>${params.data.name}</b>`
       },
@@ -844,12 +858,13 @@ function renderMiniGraph() {
         label: {
           fontSize: 12,
           fontWeight: 'bold',
-          color: '#2a4030',
+          color: '#ffffff',
         },
       },
     }],
   })
 
+  // 点击节点跳转图谱页
   miniChartInstance.off('click')
   miniChartInstance.on('click', (params: any) => {
     if (params.dataType === 'node') {
@@ -890,6 +905,7 @@ async function handleSaveCase() {
     currentCaseId.value = caseId || currentCaseId.value
     ElMessage.success('✅ 病例已保存')
   } catch {
+    // 本地保存降级
     saveToLocal()
     ElMessage.success('✅ 病例已保存（本地）')
   } finally {
@@ -955,6 +971,7 @@ async function loadCaseFromHistory(caseId: string) {
       await nextTick()
       renderMiniGraph()
     } else if (detail.syndromes?.length > 0) {
+      // 从历史数据构建分析结果
       analysisResult.value = {
         answer: detail.answer || '',
         symptoms: [],
@@ -1022,6 +1039,7 @@ function truncate(text: string, maxLen: number): string {
 
 // ==================== 监听 ====================
 
+// 当分析结果变化时重新渲染图谱
 watch(() => analysisResult.value, async (newVal) => {
   if (newVal?.graph?.nodes?.length) {
     await nextTick()
@@ -1029,6 +1047,7 @@ watch(() => analysisResult.value, async (newVal) => {
   }
 })
 
+// 历史病例展开时自动加载
 watch(showHistory, (val) => {
   if (val && historyCases.value.length === 0) {
     loadHistoryCases()
@@ -1038,6 +1057,7 @@ watch(showHistory, (val) => {
 // ==================== 生命周期 ====================
 
 onMounted(() => {
+  // 预加载历史病例到本地缓存
   loadLocalCases()
 })
 
@@ -1048,30 +1068,26 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
-// ==================== 国风变量 ====================
-$dark-green: #2a4030;
-$mid-green: #466350;
-$soft-gold: #c8a86e;
-$cream-bg: #f7f3eb;
-$light-cream: #faf6ef;
-$text-dark: #2c3630;
-$text-light: #6b7a72;
-$card-shadow: 0 2px 16px rgba(42, 64, 48, 0.08);
-$card-border: rgba(110, 135, 120, 0.12);
-$white: #ffffff;
-
-$syndrome-red: #b13e3e;
-$formula-brown: #8c6e4a;
-$herb-green: #588264;
+// ==================== 变量 ====================
+$card-bg: #ffffff;
+$card-radius: 14px;
+$text-dark: #1e293b;
+$text-muted: #94a3b8;
+$text-body: #475569;
+$indigo: #6366f1;
+$emerald: #10b981;
+$amber: #f59e0b;
+$rose: #b91c1c;
+$border-light: #e2e8f0;
 
 // ==================== 主容器 ====================
 .case-study {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 16px 32px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: $cream-bg;
 }
 
 // ==================== 两栏主体 ====================
@@ -1083,9 +1099,9 @@ $herb-green: #588264;
 
 // ==================== 面板通用 ====================
 .panel-card {
-  background: $white;
-  border-radius: 14px;
-  box-shadow: $card-shadow;
+  background: $card-bg;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   padding: 24px;
   height: 100%;
   display: flex;
@@ -1102,7 +1118,7 @@ $herb-green: #588264;
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid $card-border;
+    border-bottom: 1px solid $border-light;
 
     .panel-title {
       display: flex;
@@ -1110,10 +1126,10 @@ $herb-green: #588264;
       gap: 10px;
       margin: 0;
       font-size: 20px;
-      color: $dark-green;
+      color: $text-dark;
 
       .el-icon {
-        color: $mid-green;
+        color: $indigo;
         font-size: 22px;
       }
     }
@@ -1135,52 +1151,8 @@ $herb-green: #588264;
       width: 4px;
     }
     &::-webkit-scrollbar-thumb {
-      background: rgba(110, 135, 120, 0.25);
+      background: #cbd5e1;
       border-radius: 4px;
-    }
-  }
-}
-
-// 国风按钮
-.tcm-btn {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 10px 22px;
-  font-size: 15px;
-  transition: all 0.3s ease;
-
-  &.primary-tcm {
-    background: rgba(70, 99, 80, 0.08);
-    color: $dark-green;
-    border-color: rgba(70, 99, 80, 0.2);
-    &:hover { background: $mid-green; color: #fff; }
-  }
-
-  &.ghost-tcm {
-    color: $text-light;
-    border-color: $card-border;
-    background: transparent;
-    &:hover { background: $cream-bg; border-color: $mid-green; }
-  }
-
-  &.analyze-btn {
-    background: $mid-green;
-    color: #fff;
-    border: none;
-    padding: 12px 32px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 10px;
-
-    &:hover:not(:disabled) {
-      background: $dark-green;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(70, 99, 80, 0.35);
-    }
-
-    &:disabled {
-      background: rgba(110, 135, 120, 0.3);
-      cursor: not-allowed;
     }
   }
 }
@@ -1190,7 +1162,7 @@ $herb-green: #588264;
   .section-label {
     font-size: 14px;
     font-weight: 600;
-    color: $dark-green;
+    color: $text-dark;
     margin: 0 0 12px 0;
   }
 }
@@ -1210,27 +1182,13 @@ $herb-green: #588264;
   label {
     display: block;
     font-size: 13px;
-    color: $text-light;
+    color: $text-muted;
     margin-bottom: 6px;
     font-weight: 500;
   }
 
-  :deep(.el-input__wrapper) {
-    border-radius: 8px;
-    border-color: $card-border;
-    box-shadow: none;
-    &:hover { border-color: $mid-green; }
-    &.is-focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
-  }
-
-  :deep(.el-select) {
-    .el-input__wrapper {
-      border-radius: 8px;
-    }
-  }
-
   .input-suffix {
-    color: $text-light;
+    color: $text-muted;
     font-size: 13px;
   }
 }
@@ -1242,9 +1200,6 @@ $herb-green: #588264;
   :deep(.el-textarea__inner) {
     line-height: 1.7;
     font-size: 14px;
-    border-radius: 8px;
-    border-color: $card-border;
-    &:focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
   }
 
   .char-count {
@@ -1252,7 +1207,7 @@ $herb-green: #588264;
     bottom: 8px;
     right: 14px;
     font-size: 11px;
-    color: $text-light;
+    color: $text-muted;
     pointer-events: none;
     background: rgba(255, 255, 255, 0.8);
     padding: 2px 6px;
@@ -1266,8 +1221,29 @@ $herb-green: #588264;
   align-items: center;
   gap: 16px;
   padding-top: 20px;
-  border-top: 1px solid $card-border;
+  border-top: 1px solid $border-light;
   margin-top: auto;
+
+  .analyze-btn {
+    background: linear-gradient(135deg, $indigo, #4f46e5);
+    border: none;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    &:disabled {
+      background: #cbd5e1;
+      cursor: not-allowed;
+    }
+  }
 }
 
 // ==================== 右侧面板 ====================
@@ -1279,19 +1255,19 @@ $herb-green: #588264;
   }
 }
 
+// 分析区块
 .analysis-block {
   .block-title {
     font-size: 15px;
     font-weight: 600;
-    color: $dark-green;
+    color: $text-dark;
     margin: 0 0 12px 0;
   }
 }
 
-// 迷你图谱 - 国风浅色背景
+// 迷你图谱
 .mini-graph-wrapper {
-  background: $light-cream;
-  border: 1px solid $card-border;
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%);
   border-radius: 10px;
   min-height: 200px;
   position: relative;
@@ -1308,13 +1284,12 @@ $herb-green: #588264;
     align-items: center;
     justify-content: center;
     height: 200px;
-    color: $text-light;
+    color: $text-muted;
     gap: 12px;
 
     .el-icon {
       font-size: 36px;
-      opacity: 0.4;
-      color: $mid-green;
+      opacity: 0.5;
     }
 
     p {
@@ -1323,20 +1298,19 @@ $herb-green: #588264;
       text-align: center;
       line-height: 1.6;
       max-width: 280px;
-      color: $text-light;
     }
   }
 }
 
-// 诊断卡片 - 国风配色
+// 诊断卡片
 .diagnosis-card {
   padding: 16px;
   border-radius: 12px;
-  border: 1px solid $card-border;
+  border: 1px solid $border-light;
 
   &.syndrome-card {
-    background: #fdf6f0;
-    border-color: rgba(177, 62, 62, 0.15);
+    background: #fdf2f8;
+    border-color: #fce7f3;
 
     .syndrome-tags {
       display: flex;
@@ -1347,7 +1321,7 @@ $herb-green: #588264;
       .syndrome-tag {
         display: inline-block;
         padding: 8px 20px;
-        background: $syndrome-red;
+        background: linear-gradient(135deg, $rose, #9d174d);
         color: #fff;
         border-radius: 24px;
         font-size: 16px;
@@ -1357,7 +1331,7 @@ $herb-green: #588264;
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(177, 62, 62, 0.35);
+          box-shadow: 0 6px 16px rgba(185, 28, 28, 0.35);
         }
       }
     }
@@ -1365,14 +1339,14 @@ $herb-green: #588264;
     .diagnosis-basis {
       margin: 0;
       font-size: 13px;
-      color: $text-light;
+      color: #6b7280;
       line-height: 1.7;
     }
   }
 
   &.formula-card {
-    background: #f8f4ed;
-    border-color: rgba(140, 110, 74, 0.15);
+    background: #eff6ff;
+    border-color: #dbeafe;
 
     .formula-header {
       margin-bottom: 12px;
@@ -1380,7 +1354,7 @@ $herb-green: #588264;
       .formula-tag {
         display: inline-block;
         padding: 8px 20px;
-        background: $formula-brown;
+        background: linear-gradient(135deg, $indigo, #4f46e5);
         color: #fff;
         border-radius: 24px;
         font-size: 16px;
@@ -1390,7 +1364,7 @@ $herb-green: #588264;
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(140, 110, 74, 0.35);
+          box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
         }
       }
     }
@@ -1401,19 +1375,19 @@ $herb-green: #588264;
 
       .herb-label {
         font-size: 13px;
-        color: $text-light;
+        color: $text-muted;
         font-weight: 500;
       }
 
       .herb-tag {
         font-size: 14px;
-        color: $herb-green;
+        color: $emerald;
         font-weight: 500;
         cursor: pointer;
         transition: color 0.2s;
 
         &:hover {
-          color: $dark-green;
+          color: #059669;
           text-decoration: underline;
         }
 
@@ -1428,18 +1402,18 @@ $herb-green: #588264;
       .evidence-item {
         font-size: 12px;
         line-height: 1.6;
-        color: $text-light;
+        color: #64748b;
 
         .evidence-title {
           font-weight: 600;
-          color: $dark-green;
+          color: #475569;
         }
       }
     }
   }
 
   .no-result {
-    color: $text-light;
+    color: $text-muted;
     font-size: 14px;
     font-style: italic;
   }
@@ -1449,25 +1423,23 @@ $herb-green: #588264;
 .note-textarea {
   :deep(.el-textarea__inner) {
     border-style: dashed;
-    border-color: $card-border;
-    background: $cream-bg;
+    border-color: #cbd5e1;
+    background: #fafbfc;
     font-size: 14px;
     line-height: 1.7;
-    border-radius: 8px;
 
     &:focus {
-      border-color: $mid-green;
+      border-color: $indigo;
       border-style: dashed;
-      box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.08);
     }
   }
 }
 
 // ==================== 历史病例 ====================
 .case-history {
-  background: $white;
-  border-radius: 14px;
-  box-shadow: $card-shadow;
+  background: $card-bg;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   padding: 20px 24px;
 
   .history-header {
@@ -1479,7 +1451,7 @@ $herb-green: #588264;
     h3 {
       margin: 0;
       font-size: 16px;
-      color: $dark-green;
+      color: $text-dark;
     }
   }
 
@@ -1493,7 +1465,7 @@ $herb-green: #588264;
       height: 6px;
     }
     &::-webkit-scrollbar-thumb {
-      background: rgba(110, 135, 120, 0.25);
+      background: #cbd5e1;
       border-radius: 4px;
     }
   }
@@ -1502,22 +1474,22 @@ $herb-green: #588264;
     min-width: 200px;
     max-width: 220px;
     padding: 14px;
-    border: 2px solid $card-border;
+    border: 2px solid $border-light;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.25s;
     flex-shrink: 0;
-    background: $cream-bg;
+    background: #fafbfc;
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(42, 64, 48, 0.1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
     &.active {
-      border-color: $mid-green;
-      box-shadow: 0 0 0 3px rgba(70, 99, 80, 0.15);
-      background: #f0f5ed;
+      border-color: $indigo;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      background: #eef2ff;
     }
 
     .hc-header {
@@ -1527,13 +1499,13 @@ $herb-green: #588264;
 
       .hc-id {
         font-size: 12px;
-        color: $text-light;
+        color: $text-muted;
         font-family: monospace;
       }
 
       .hc-date {
         font-size: 11px;
-        color: $text-light;
+        color: #a1a1aa;
       }
     }
 
@@ -1544,7 +1516,7 @@ $herb-green: #588264;
         .hc-label {
           display: block;
           font-size: 11px;
-          color: $text-light;
+          color: $text-muted;
           margin-bottom: 2px;
         }
 
@@ -1555,7 +1527,7 @@ $herb-green: #588264;
         }
 
         .syndrome-name {
-          color: $syndrome-red;
+          color: $rose;
           font-weight: 500;
         }
       }
@@ -1566,7 +1538,7 @@ $herb-green: #588264;
   .history-loading {
     text-align: center;
     padding: 16px 0;
-    color: $text-light;
+    color: $text-muted;
 
     .loading-icon {
       font-size: 22px;
@@ -1597,15 +1569,6 @@ $herb-green: #588264;
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-// ==================== Element Plus 样式覆盖 ====================
-:deep(.el-empty__description) {
-  color: $text-light;
-}
-
-:deep(.el-button) {
-  --el-button-border-radius: 8px;
 }
 
 // ==================== 响应式 ====================
@@ -1663,7 +1626,7 @@ $herb-green: #588264;
 }
 
 .case-study {
-  margin-top: 50px;
+  margin-top: -800px;
   
   @media (max-width: 1200px) {
     margin-top: -1020px;
