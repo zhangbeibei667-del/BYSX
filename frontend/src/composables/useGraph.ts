@@ -1,35 +1,60 @@
 import { ref } from 'vue'
+import { graphApi } from '@/api'
+import type { GraphNode, GraphResponse } from '@/types'
 
-// 图谱相关组合函数 - 待完善
 export function useGraph() {
-  const graphData = ref(null)
-  const selectedNode = ref(null)
+  const graphData = ref<GraphResponse>({ nodes: [], edges: [] })
+  const selectedNode = ref<GraphNode | null>(null)
   const loading = ref(false)
+  const error = ref<string | null>(null)
 
   const loadGraphData = async () => {
     loading.value = true
+    error.value = null
     try {
-      // TODO: 加载图谱数据
-      console.log('加载图谱数据')
+      graphData.value = await graphApi.getFullGraph() as unknown as GraphResponse
+      return graphData.value
+    } catch (cause) {
+      error.value = cause instanceof Error ? cause.message : '图谱加载失败'
+      throw cause
     } finally {
       loading.value = false
     }
   }
 
   const searchNode = async (query: string) => {
-    // TODO: 搜索节点
-    console.log('搜索节点:', query)
+    loading.value = true
+    error.value = null
+    try {
+      graphData.value = await graphApi.searchEntities(query.trim()) as unknown as GraphResponse
+      return graphData.value
+    } catch (cause) {
+      error.value = cause instanceof Error ? cause.message : '实体搜索失败'
+      throw cause
+    } finally {
+      loading.value = false
+    }
   }
 
   const getNodeRelations = async (nodeId: string) => {
-    // TODO: 获取节点关系
-    console.log('获取节点关系:', nodeId)
+    loading.value = true
+    error.value = null
+    try {
+      graphData.value = await graphApi.getRelatedEntities(nodeId, 2) as unknown as GraphResponse
+      return graphData.value
+    } catch (cause) {
+      error.value = cause instanceof Error ? cause.message : '关联关系加载失败'
+      throw cause
+    } finally {
+      loading.value = false
+    }
   }
 
   return {
     graphData,
     selectedNode,
     loading,
+    error,
     loadGraphData,
     searchNode,
     getNodeRelations

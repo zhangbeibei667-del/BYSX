@@ -7,9 +7,14 @@ from backend.services.data_quality_service import DataQualityService
 from backend.tools.sql_tool import GraphSQLTool
 from backend.services.llm_client import LLMClient
 from backend.services.conversation_service import ConversationService
+from backend.db.database import init_db
 
 
 class DeliveryFeatureTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        init_db()
+
     def test_dynamic_planner_selects_case_tools(self):
         plan = AgentPlanner().plan("患者失眠多梦，舌淡，脉细，请分析")
         self.assertEqual(plan["intent"], "case_analysis")
@@ -39,6 +44,12 @@ class DeliveryFeatureTests(unittest.TestCase):
         available = {item["category"] for item in report["corpus"]["categories"]}
         self.assertTrue(set(report["corpus"]["required_categories"]).issubset(available))
         self.assertEqual(report["vector_database"]["status"], "ready")
+
+    def test_kg_quality_gate_is_clean(self):
+        gate = DataQualityService().report()["quality_gate"]
+        self.assertTrue(gate["passed"])
+        self.assertTrue(all(value == 0 for value in gate["critical"].values()))
+        self.assertEqual(gate["warnings"]["endpoint_name_mismatches"], 0)
 
     def test_llm_status_never_exposes_key(self):
         status = LLMClient().status()

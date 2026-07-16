@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -47,6 +46,8 @@ class Relation:
     target_id: str
     target_name: str
     evidence: str = ""
+    source_type: str = ""
+    target_type: str = ""
 
 
 @dataclass(frozen=True)
@@ -67,13 +68,9 @@ class LocalGraphRAGService:
     """
 
     def __init__(self) -> None:
-        self.workspace_root = Path(__file__).resolve().parents[2]
-        self.graph_repo_root = self.workspace_root / "integrated_entities_graphrag"
+        self.graph_repo_root = Path(__file__).resolve().parents[2]
         self.graph_root = self.graph_repo_root / "data"
-        self.member3_root = self.workspace_root / "integrated_entities_graphrag" / "member3"
-        self.enable_symmap_data = os.getenv("ENABLE_SYMMAP_DATA", "false").strip().lower() in {
-            "1", "true", "yes", "on"
-        }
+        self.member3_root = self.graph_repo_root / "member3"
 
         self.deleted_entity_ids, self.deleted_relation_keys = self._load_admin_deletions()
         self.entities = [
@@ -171,6 +168,8 @@ class LocalGraphRAGService:
             "intent": intent,
             "intent_label": INTENT_LABELS.get(intent, "一般知识查询"),
             "graph": graph,
+            "related_entities": graph.get("nodes", []),
+            "reasoning_paths": self._reasoning_paths(graph),
             "evidence": evidence,
             "answer": answer,
             **structured,
@@ -223,6 +222,9 @@ class LocalGraphRAGService:
                 "推荐什么方剂",
                 "对应什么方剂",
                 "可用什么方剂",
+                "关联哪些方剂",
+                "相关方剂",
+                "哪些证候和方剂",
             ]
         ):
             return "symptom_to_formula"
@@ -264,7 +266,7 @@ class LocalGraphRAGService:
         if any(keyword in text for keyword in ["禁忌", "慎用", "不宜", "注意事项", "不能用"]):
             return "contraindication_query"
 
-        if any(keyword in text for keyword in ["是什么", "定义", "解释一下", "介绍一下", "概念"]):
+        if any(keyword in text for keyword in ["是什么", "什么是", "定义", "解释一下", "介绍一下", "概念"]):
             return "definition_query"
 
         return "general"
@@ -453,7 +455,9 @@ class LocalGraphRAGService:
                     edges.append(
                         {
                             "source": relation.source_id,
+                            "source_name": relation.source_name,
                             "target": relation.target_id,
+                            "target_name": relation.target_name,
                             "label": relation.relation,
                             "evidence": relation.evidence,
                         }
@@ -494,8 +498,8 @@ class LocalGraphRAGService:
     def _bridge_symptom_to_linked_symptoms(self, symptom: Entity, limit: int = 3) -> list[tuple[Entity, float]]:
         """Map entity-only symptoms to nearby symptoms that already have KG edges.
 
-        External resources such as SymMap often provide high-quality symptom
-        entities without direct symptom→syndrome/formula relations.  Instead of
+        Some imported resources provide symptom entities without direct
+        symptom→syndrome/formula relations. Instead of
         leaving those entities dead-ended, bridge fine-grained or synonymous
         symptom names to the closest existing linked symptom, then continue the
         normal graph reasoning through the linked symptom's real relations.
@@ -529,11 +533,11 @@ class LocalGraphRAGService:
     def _entity_terms_for_bridge(self, entity: Entity) -> list[str]:
         terms = [entity.name, entity.alias]
         # Keep descriptions as weak evidence only for the compact curated graph.
-        # Imported SymMap descriptions are too broad for safe relation creation.
+        # Imported descriptions may be too broad for safe relation creation.
         source = ""
         if entity.properties:
             source = str(entity.properties.get("source") or "")
-        if "SymMap" not in source:
+        if not source.lower().startswith("external"):
             terms.extend(
                 part.strip()
                 for part in re.split(r"[，、；;。\s]+", entity.description or "")
@@ -568,42 +572,24 @@ class LocalGraphRAGService:
         return 0.55 * containment + 0.45 * jaccard
 
     def _load_entity_sources(self) -> list[Entity]:
-        modern_dir = self.graph_repo_root / "entities"
-        legacy_dir = self.graph_root / "entities"
-        if modern_dir.exists():
-            entities = self._load_entities(modern_dir)
-            entities.extend(self._load_entities(legacy_dir, supplemental_only=True))
-            return self._dedupe_entities_by_id(entities)
-        return self._dedupe_entities_by_id(self._load_entities(legacy_dir))
+        entities_dir = self.graph_repo_root / "entities"
+        return self._dedupe_entities_by_id(self._load_entities(entities_dir))
 
     def _load_relation_sources(self) -> list[Relation]:
-        modern_dir = self.graph_repo_root / "relations"
-        legacy_dir = self.graph_root / "relations"
-        if modern_dir.exists():
-            relations = self._load_relations(modern_dir)
-            relations.extend(self._load_relations(legacy_dir, supplemental_only=True))
-            return self._dedupe_relations(relations)
-        return self._dedupe_relations(self._load_relations(legacy_dir))
+        relations_dir = self.graph_repo_root / "relations"
+        return self._dedupe_relations(self._load_relations(relations_dir))
 
-    @staticmethod
-    def _is_supplemental_file(path: Path) -> bool:
-        name = path.name.lower()
-        return any(keyword in name for keyword in ["supplement", "symmap", "external", "import"])
-
-    def _is_disabled_source_file(self, path: Path) -> bool:
-        """Keep optional third-party datasets out of the active KG by default."""
-        return not self.enable_symmap_data and "symmap" in path.name.lower()
-
-    def _load_entities(self, entities_dir: Path, supplemental_only: bool = False) -> list[Entity]:
+    def _load_entities(self, entities_dir: Path) -> list[Entity]:
         entities: list[Entity] = []
         if not entities_dir.exists():
             return entities
 
-        for path in sorted(entities_dir.glob("*.json")):
-            if self._is_disabled_source_file(path):
-                continue
-            if supplemental_only and not self._is_supplemental_file(path):
-                continue
+        paths = sorted(entities_dir.glob("*.json"))
+        # 后台编辑采用同 ID 的补充记录覆盖只读基础数据，因此管理补充文件
+        # 必须最后加载。否则按字母顺序它会先于 herb/symptom 等原始文件，
+        # 随后的去重逻辑又把用户刚保存的内容覆盖回旧值。
+        paths.sort(key=lambda path: path.name == "entities_admin_supplement.json")
+        for path in paths:
             for item in self._read_json_items(path, "entities"):
                 entities.append(
                     Entity(
@@ -617,16 +603,14 @@ class LocalGraphRAGService:
                 )
         return [entity for entity in entities if entity.id and entity.name]
 
-    def _load_relations(self, relations_dir: Path, supplemental_only: bool = False) -> list[Relation]:
+    def _load_relations(self, relations_dir: Path) -> list[Relation]:
         relations: list[Relation] = []
         if not relations_dir.exists():
             return relations
 
-        for path in sorted(relations_dir.glob("*.json")):
-            if self._is_disabled_source_file(path):
-                continue
-            if supplemental_only and not self._is_supplemental_file(path):
-                continue
+        paths = sorted(relations_dir.glob("*.json"))
+        paths.sort(key=lambda path: path.name == "relations_admin_supplement.json")
+        for path in paths:
             for item in self._read_json_items(path, "relations"):
                 source_id = str(item.get("source_id", "")).strip()
                 target_id = str(item.get("target_id", "")).strip()
@@ -643,6 +627,8 @@ class LocalGraphRAGService:
                         target_id=target_id,
                         target_name=str(item.get("target_name") or (target.name if target else "")).strip(),
                         evidence=str(item.get("evidence", "")).strip(),
+                        source_type=str(item.get("source_type") or (source.type if source else "")).strip(),
+                        target_type=str(item.get("target_type") or (target.type if target else "")).strip(),
                     )
                 )
         return relations

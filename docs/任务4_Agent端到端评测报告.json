@@ -1,0 +1,3509 @@
+{
+  "passed": true,
+  "cases": 60,
+  "passed_cases": 60,
+  "metrics": {
+    "intent_accuracy": 1.0,
+    "entity_recall": 1.0,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "hallucination_rate": 0.0,
+    "followup_effectiveness": 1.0,
+    "safety_compliance": 1.0,
+    "sql_read_only_rate": 1.0,
+    "multi_turn_retention": 1.0
+  },
+  "multi_turn": {
+    "passed": true,
+    "first_status": "awaiting_clarification",
+    "second_status": "answered"
+  },
+  "results": [
+    {
+      "id": "knowledge_001",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_002",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_003",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_004",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_005",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_006",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_007",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_008",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_009",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_010",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_011",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_012",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_013",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_014",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_015",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_016",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_017",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_018",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_019",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "knowledge_020",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "knowledge_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_001",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "食积停滞",
+          "脾胃气虚",
+          "气虚证",
+          "肺气不足",
+          "湿浊中阻",
+          "阴虚证",
+          "阴虚血少",
+          "肝气郁结",
+          "气阴不足",
+          "气阴两虚"
+        ],
+        "formulas": [
+          "四君子汤",
+          "一贯煎",
+          "生脉散",
+          "越鞠丸",
+          "保和丸",
+          "丁香柿蒂汤",
+          "枳术丸",
+          "健脾丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "补中益气汤",
+          "参苓白术散",
+          "理中丸",
+          "七味白术散",
+          "旋覆代赭汤",
+          "小建中汤",
+          "茯苓饮",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "桃核承气汤",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "八珍汤",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤",
+          "止嗽散"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "生地黄",
+          "麦冬",
+          "沙参",
+          "当归",
+          "枸杞子",
+          "川楝子",
+          "女贞子",
+          "白芍",
+          "陈皮",
+          "五味子",
+          "香附",
+          "川芎",
+          "苍术",
+          "栀子",
+          "山楂",
+          "神曲",
+          "半夏"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_002",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "中气下陷",
+          "脾胃气虚",
+          "气虚证",
+          "食积停滞",
+          "肺气不足",
+          "实热",
+          "脾虚湿困",
+          "阳虚证",
+          "阴虚证"
+        ],
+        "formulas": [
+          "补中益气汤",
+          "四君子汤",
+          "参苓白术散",
+          "理中丸",
+          "七味白术散",
+          "旋覆代赭汤",
+          "小建中汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "桃核承气汤",
+          "保和丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "八珍汤",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤"
+        ],
+        "herbs": [
+          "黄芪",
+          "党参",
+          "白术",
+          "甘草",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "人参",
+          "茯苓",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "莲子",
+          "干姜",
+          "木香",
+          "藿香",
+          "葛根",
+          "旋覆花"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_003",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "实热",
+          "脾虚湿困",
+          "脾胃气虚",
+          "气虚证",
+          "食积停滞",
+          "肺气不足",
+          "中气下陷",
+          "气血两虚",
+          "血虚证",
+          "心脾两虚",
+          "肝气郁结",
+          "津亏",
+          "肾阳虚",
+          "阳虚证"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "归脾汤",
+          "逍遥散",
+          "五苓散",
+          "真武汤",
+          "理中丸",
+          "半夏白术天麻汤",
+          "保和丸",
+          "玉屏风散",
+          "完带汤",
+          "七味白术散",
+          "黄土汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "枳实导滞丸",
+          "理中安蛔汤",
+          "实脾散"
+        ],
+        "herbs": [
+          "白术",
+          "党参",
+          "茯苓",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "陈皮",
+          "甘草",
+          "桔梗",
+          "大枣",
+          "人参",
+          "白扁豆",
+          "莲子",
+          "黄芪",
+          "柴胡",
+          "升麻",
+          "生姜",
+          "枳壳",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "薄荷",
+          "猪苓",
+          "泽泻",
+          "桂枝",
+          "附子"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_004",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "血虚证",
+          "肝血不足",
+          "气血两虚",
+          "气虚证",
+          "心脾两虚",
+          "实热",
+          "肝气郁结",
+          "血瘀证",
+          "血寒"
+        ],
+        "formulas": [
+          "四物汤",
+          "当归补血汤",
+          "八珍汤",
+          "归脾汤",
+          "逍遥散",
+          "养心汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "芍药甘草汤",
+          "酸枣仁汤"
+        ],
+        "herbs": [
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "黄芪",
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "大枣",
+          "生姜",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "柴胡",
+          "薄荷",
+          "柏子仁",
+          "桂枝",
+          "吴茱萸",
+          "阿胶",
+          "艾叶"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_005",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "血虚证",
+          "气血两虚",
+          "肝血不足",
+          "气虚证",
+          "心脾两虚",
+          "湿浊中阻",
+          "阴虚血少",
+          "食积停滞",
+          "阴虚证",
+          "肝气郁结",
+          "肝火炽盛",
+          "湿热蕴脾"
+        ],
+        "formulas": [
+          "四物汤",
+          "当归补血汤",
+          "八珍汤",
+          "归脾汤",
+          "炙甘草汤",
+          "一贯煎",
+          "龙胆泻肝汤",
+          "血府逐瘀汤",
+          "补阳还五汤",
+          "养心汤",
+          "苏子降气汤",
+          "身痛逐瘀汤",
+          "膈下逐瘀汤",
+          "少腹逐瘀汤",
+          "生化汤",
+          "复元活血汤",
+          "温经汤",
+          "胶艾汤",
+          "乌梅丸",
+          "芍药汤",
+          "清胃散"
+        ],
+        "herbs": [
+          "当归",
+          "黄芪",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "大枣",
+          "生姜",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "生地黄",
+          "阿胶",
+          "麦冬",
+          "火麻仁",
+          "桂枝",
+          "沙参",
+          "枸杞子",
+          "川楝子",
+          "女贞子",
+          "陈皮",
+          "龙胆",
+          "栀子",
+          "黄芩",
+          "黄柏",
+          "柴胡",
+          "泽泻",
+          "木通",
+          "车前子",
+          "桃仁",
+          "红花"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_006",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "气血两虚",
+          "血虚证",
+          "气虚证",
+          "心脾两虚",
+          "湿浊中阻"
+        ],
+        "formulas": [
+          "八珍汤",
+          "当归补血汤",
+          "归脾汤",
+          "炙甘草汤",
+          "四物汤",
+          "逍遥散",
+          "养心汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "芍药甘草汤",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "桃核承气汤",
+          "保和丸",
+          "枳术丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "大枣",
+          "生姜",
+          "黄芪",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "生地黄",
+          "阿胶",
+          "麦冬",
+          "火麻仁",
+          "桂枝"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_007",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "心脾两虚",
+          "气血两虚",
+          "血虚证",
+          "痰热扰心",
+          "实热",
+          "肝血不足",
+          "气虚证",
+          "湿浊中阻"
+        ],
+        "formulas": [
+          "归脾汤",
+          "酸枣仁汤",
+          "养心汤",
+          "甘麦大枣汤",
+          "当归补血汤",
+          "八珍汤",
+          "炙甘草汤",
+          "四物汤",
+          "逍遥散",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "芍药甘草汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "黄芪",
+          "当归",
+          "茯苓",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "甘草",
+          "大枣",
+          "生姜",
+          "知母",
+          "川芎",
+          "柏子仁",
+          "白芍",
+          "熟地黄"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_008",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "湿浊中阻",
+          "阴虚血少",
+          "气血两虚",
+          "食积停滞",
+          "脾胃气虚",
+          "气虚证",
+          "肺气不足",
+          "中气下陷",
+          "实热",
+          "脾虚湿困"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "归脾汤",
+          "炙甘草汤",
+          "酸枣仁汤",
+          "天王补心丹",
+          "麻黄汤",
+          "桂枝汤",
+          "银翘散",
+          "桑菊饮",
+          "小柴胡汤",
+          "逍遥散",
+          "白虎汤",
+          "龙胆泻肝汤",
+          "清营汤",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "柴胡疏肝散",
+          "血府逐瘀汤",
+          "川芎茶调散",
+          "二陈汤",
+          "止嗽散",
+          "完带汤",
+          "七味白术散",
+          "养心汤",
+          "甘麦大枣汤",
+          "温胆汤",
+          "苓甘五味姜辛汤",
+          "定喘汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "橘皮竹茹汤",
+          "桃核承气汤",
+          "身痛逐瘀汤",
+          "膈下逐瘀汤",
+          "生化汤",
+          "复元活血汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "芍药汤",
+          "葛根芩连汤",
+          "实脾散",
+          "导赤散",
+          "泻白散",
+          "芍药甘草汤"
+        ],
+        "herbs": [
+          "甘草",
+          "人参",
+          "生地黄",
+          "阿胶",
+          "麦冬",
+          "火麻仁",
+          "桂枝",
+          "生姜",
+          "大枣",
+          "熟地黄",
+          "当归",
+          "白术",
+          "茯苓",
+          "黄芪",
+          "党参",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "枳壳",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "莲子",
+          "川芎"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_009",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "肾阴虚",
+          "阴虚证",
+          "实热",
+          "胃气不和",
+          "湿热蕴脾",
+          "痰湿内阻",
+          "外感风寒",
+          "肝气郁结",
+          "气虚证"
+        ],
+        "formulas": [
+          "六味地黄丸",
+          "平胃散",
+          "藿香正气散",
+          "半夏厚朴汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "小半夏汤",
+          "实脾散",
+          "半夏白术天麻汤",
+          "二陈汤",
+          "止嗽散",
+          "苓甘五味姜辛汤",
+          "三子养亲汤",
+          "定喘汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "一贯煎",
+          "天王补心丹",
+          "生脉散",
+          "黄连阿胶汤",
+          "贝母瓜蒌散",
+          "连梅汤",
+          "玉女煎"
+        ],
+        "herbs": [
+          "熟地黄",
+          "山药",
+          "山茱萸",
+          "泽泻",
+          "牡丹皮",
+          "茯苓",
+          "枸杞子",
+          "苍术",
+          "厚朴",
+          "陈皮",
+          "甘草",
+          "生姜",
+          "大枣",
+          "藿香",
+          "半夏",
+          "紫苏",
+          "桔梗",
+          "柴胡",
+          "香附",
+          "川芎",
+          "白芍"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_010",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "湿浊中阻",
+          "食积停滞",
+          "阴虚证",
+          "阴虚血少",
+          "肝气郁结"
+        ],
+        "formulas": [
+          "一贯煎",
+          "炙甘草汤",
+          "天王补心丹",
+          "贝母瓜蒌散",
+          "芍药甘草汤",
+          "四君子汤",
+          "生脉散",
+          "越鞠丸",
+          "保和丸",
+          "丁香柿蒂汤",
+          "枳术丸",
+          "健脾丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "平胃散",
+          "藿香正气散",
+          "半夏厚朴汤",
+          "柴胡疏肝散",
+          "小半夏汤",
+          "实脾散",
+          "半夏白术天麻汤",
+          "二陈汤",
+          "止嗽散",
+          "苓甘五味姜辛汤",
+          "三子养亲汤",
+          "定喘汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "六味地黄丸",
+          "黄连阿胶汤",
+          "连梅汤",
+          "玉女煎"
+        ],
+        "herbs": [
+          "生地黄",
+          "麦冬",
+          "沙参",
+          "当归",
+          "枸杞子",
+          "川楝子",
+          "女贞子",
+          "白芍",
+          "陈皮"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_011",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "痰热扰心",
+          "实热",
+          "肝血不足",
+          "心脾两虚",
+          "气血两虚",
+          "血虚证",
+          "湿浊中阻",
+          "阴虚血少",
+          "阴虚证",
+          "心肾不交"
+        ],
+        "formulas": [
+          "归脾汤",
+          "酸枣仁汤",
+          "天王补心丹",
+          "养心汤",
+          "安神定志丸",
+          "二陈汤",
+          "温胆汤",
+          "清气化痰丸",
+          "参苓白术散",
+          "小柴胡汤",
+          "逍遥散",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "补阳还五汤",
+          "生化汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "大建中汤",
+          "吴茱萸汤",
+          "大半夏汤",
+          "茯苓饮",
+          "乌梅丸",
+          "理中安蛔汤",
+          "完带汤",
+          "七味白术散",
+          "甘麦大枣汤",
+          "丁香柿蒂汤"
+        ],
+        "herbs": [
+          "酸枣仁",
+          "知母",
+          "茯苓",
+          "川芎",
+          "甘草",
+          "人参",
+          "白术",
+          "黄芪",
+          "当归",
+          "远志",
+          "龙眼肉",
+          "木香",
+          "大枣",
+          "生姜",
+          "柏子仁",
+          "麦冬",
+          "生地黄",
+          "玄参",
+          "丹参",
+          "桔梗",
+          "熟地黄"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_012",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "湿浊中阻",
+          "实热",
+          "阴虚血少",
+          "阴虚证",
+          "心肾不交"
+        ],
+        "formulas": [
+          "天王补心丹",
+          "炙甘草汤",
+          "一贯煎",
+          "贝母瓜蒌散",
+          "芍药甘草汤",
+          "参苓白术散",
+          "酸枣仁汤",
+          "安神定志丸",
+          "小柴胡汤",
+          "逍遥散",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "补阳还五汤",
+          "生化汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "大建中汤",
+          "吴茱萸汤",
+          "大半夏汤",
+          "茯苓饮",
+          "乌梅丸",
+          "理中安蛔汤",
+          "二陈汤",
+          "完带汤",
+          "七味白术散",
+          "养心汤",
+          "甘麦大枣汤",
+          "丁香柿蒂汤",
+          "半夏厚朴汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "小半夏汤",
+          "实脾散",
+          "半夏白术天麻汤",
+          "止嗽散",
+          "苓甘五味姜辛汤",
+          "三子养亲汤",
+          "定喘汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "六味地黄丸",
+          "生脉散",
+          "黄连阿胶汤",
+          "连梅汤",
+          "玉女煎"
+        ],
+        "herbs": [
+          "酸枣仁",
+          "远志",
+          "柏子仁",
+          "麦冬",
+          "生地黄",
+          "茯苓",
+          "玄参",
+          "丹参",
+          "桔梗",
+          "甘草",
+          "熟地黄",
+          "黄芪"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_013",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "脾胃虚寒",
+          "心肾不交",
+          "心火亢盛",
+          "风热表证",
+          "外感风寒",
+          "气虚证",
+          "气分热盛",
+          "血热",
+          "肝肾虚"
+        ],
+        "formulas": [
+          "交泰丸",
+          "银翘散",
+          "桑菊饮",
+          "清营汤",
+          "四生丸",
+          "槐花散",
+          "肥儿丸",
+          "连梅汤",
+          "白头翁汤",
+          "芍药汤",
+          "葛根芩连汤",
+          "导赤散",
+          "左金丸",
+          "苇茎汤",
+          "泻白散",
+          "清胃散",
+          "玉女煎",
+          "黄连阿胶汤",
+          "清气化痰丸",
+          "小陷胸汤",
+          "橘皮竹茹汤",
+          "天王补心丹",
+          "安神定志丸",
+          "黄连解毒汤"
+        ],
+        "herbs": [
+          "黄连",
+          "肉桂",
+          "金银花",
+          "连翘",
+          "薄荷",
+          "桑叶",
+          "荆芥",
+          "防风",
+          "桔梗",
+          "甘草",
+          "滑石",
+          "栀子",
+          "菊花",
+          "杏仁",
+          "玄参",
+          "生地黄",
+          "牡丹皮",
+          "赤芍",
+          "麦冬",
+          "荷叶",
+          "艾叶",
+          "侧柏叶",
+          "槐花",
+          "荆芥炭",
+          "枳壳",
+          "神曲",
+          "使君子",
+          "槟榔",
+          "木香",
+          "麦芽"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_014",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "实热",
+          "痰热扰心",
+          "心肾不交",
+          "脾虚湿困",
+          "脾胃气虚",
+          "气虚证",
+          "肝血不足",
+          "心脾两虚",
+          "湿浊中阻",
+          "阴虚血少",
+          "阴虚证"
+        ],
+        "formulas": [
+          "安神定志丸",
+          "参苓白术散",
+          "酸枣仁汤",
+          "天王补心丹",
+          "小柴胡汤",
+          "逍遥散",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "补阳还五汤",
+          "生化汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "大建中汤",
+          "吴茱萸汤",
+          "大半夏汤",
+          "茯苓饮",
+          "乌梅丸",
+          "理中安蛔汤",
+          "二陈汤",
+          "完带汤",
+          "七味白术散",
+          "养心汤",
+          "甘麦大枣汤",
+          "丁香柿蒂汤",
+          "温胆汤",
+          "清气化痰丸",
+          "交泰丸",
+          "黄连阿胶汤"
+        ],
+        "herbs": [
+          "远志",
+          "茯苓",
+          "人参",
+          "龙骨",
+          "茯神",
+          "磁石",
+          "党参",
+          "白术",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "陈皮",
+          "甘草",
+          "桔梗",
+          "大枣",
+          "白扁豆",
+          "莲子",
+          "酸枣仁",
+          "知母",
+          "川芎",
+          "柏子仁",
+          "麦冬",
+          "生地黄",
+          "玄参",
+          "丹参",
+          "熟地黄",
+          "黄芪",
+          "柴胡",
+          "黄芩",
+          "半夏"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "formula_015",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [
+          "风寒表证",
+          "外感风寒",
+          "阴虚证",
+          "肺热",
+          "虚喘"
+        ],
+        "formulas": [
+          "麻黄汤",
+          "定喘汤",
+          "桂枝汤",
+          "小柴胡汤",
+          "藿香正气散",
+          "止嗽散",
+          "平胃散",
+          "半夏厚朴汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "小半夏汤",
+          "实脾散",
+          "半夏白术天麻汤",
+          "二陈汤",
+          "苓甘五味姜辛汤",
+          "三子养亲汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "六味地黄丸",
+          "一贯煎",
+          "天王补心丹",
+          "生脉散",
+          "黄连阿胶汤",
+          "贝母瓜蒌散",
+          "连梅汤",
+          "玉女煎",
+          "泻白散"
+        ],
+        "herbs": [
+          "麻黄",
+          "桂枝",
+          "杏仁",
+          "甘草",
+          "半夏",
+          "紫苏子",
+          "款冬花",
+          "桑白皮",
+          "黄芩",
+          "白芍",
+          "生姜"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_001",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "食积停滞",
+          "脾胃气虚",
+          "气虚证",
+          "肺气不足",
+          "气血两虚",
+          "血虚证",
+          "心脾两虚",
+          "湿浊中阻",
+          "阴虚血少",
+          "实热",
+          "痰热扰心",
+          "心肾不交",
+          "风寒表证",
+          "风热表证",
+          "阳虚证",
+          "气阴不足",
+          "气阴两虚",
+          "阴虚证"
+        ],
+        "formulas": [
+          "四君子汤",
+          "八珍汤",
+          "归脾汤",
+          "炙甘草汤",
+          "安神定志丸",
+          "小柴胡汤",
+          "理中丸",
+          "生脉散",
+          "七味白术散",
+          "养心汤",
+          "旋覆代赭汤",
+          "橘皮竹茹汤",
+          "丁香柿蒂汤",
+          "温经汤",
+          "大建中汤",
+          "吴茱萸汤",
+          "大半夏汤",
+          "茯苓饮",
+          "健脾丸",
+          "乌梅丸",
+          "理中安蛔汤",
+          "参苓白术散"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "大枣",
+          "生姜",
+          "黄芪",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "生地黄",
+          "阿胶",
+          "麦冬",
+          "火麻仁",
+          "桂枝",
+          "龙骨",
+          "茯神",
+          "磁石",
+          "柴胡",
+          "黄芩",
+          "半夏",
+          "干姜",
+          "五味子"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_002",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_003",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "中气下陷",
+          "脾胃气虚",
+          "气虚证",
+          "实热",
+          "脾虚湿困"
+        ],
+        "formulas": [
+          "补中益气汤",
+          "参苓白术散",
+          "四君子汤",
+          "理中丸",
+          "七味白术散",
+          "旋覆代赭汤",
+          "小建中汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "桃核承气汤",
+          "保和丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "八珍汤",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤",
+          "酸枣仁汤",
+          "天王补心丹",
+          "安神定志丸",
+          "小柴胡汤",
+          "逍遥散",
+          "平胃散",
+          "藿香正气散",
+          "四逆汤",
+          "生化汤",
+          "胶艾汤",
+          "黄土汤",
+          "大建中汤",
+          "吴茱萸汤"
+        ],
+        "herbs": [
+          "党参",
+          "黄芪",
+          "白术",
+          "甘草",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "茯苓",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "人参",
+          "白扁豆",
+          "莲子"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_004",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_005",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "中气下陷",
+          "脾胃气虚",
+          "气虚证",
+          "血虚证",
+          "气血两虚",
+          "心脾两虚",
+          "湿浊中阻",
+          "实热",
+          "阴虚血少",
+          "阴虚证",
+          "心肾不交",
+          "肝气郁结",
+          "血瘀证",
+          "表虚"
+        ],
+        "formulas": [
+          "补中益气汤",
+          "当归补血汤",
+          "归脾汤",
+          "天王补心丹",
+          "逍遥散",
+          "补阳还五汤",
+          "玉屏风散",
+          "养心汤"
+        ],
+        "herbs": [
+          "黄芪",
+          "党参",
+          "白术",
+          "甘草",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "当归",
+          "人参",
+          "茯苓",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "柏子仁",
+          "麦冬",
+          "生地黄",
+          "玄参",
+          "丹参",
+          "桔梗",
+          "熟地黄",
+          "白芍",
+          "薄荷",
+          "川芎",
+          "红花",
+          "桃仁",
+          "地骨皮",
+          "赤芍",
+          "防风"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_006",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "食积停滞",
+          "脾胃气虚",
+          "气虚证",
+          "肺气不足",
+          "中气下陷",
+          "实热",
+          "脾虚湿困",
+          "气血两虚",
+          "血虚证",
+          "心脾两虚",
+          "肝气郁结",
+          "津亏",
+          "肾阳虚",
+          "阳虚证"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "归脾汤",
+          "逍遥散",
+          "五苓散",
+          "真武汤",
+          "理中丸",
+          "半夏白术天麻汤",
+          "保和丸",
+          "玉屏风散",
+          "完带汤",
+          "七味白术散",
+          "黄土汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "枳实导滞丸",
+          "理中安蛔汤",
+          "实脾散"
+        ],
+        "herbs": [
+          "白术",
+          "人参",
+          "茯苓",
+          "甘草",
+          "黄芪",
+          "党参",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "莲子",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "薄荷",
+          "猪苓",
+          "泽泻",
+          "桂枝",
+          "附子"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_007",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "实热",
+          "脾虚湿困",
+          "脾胃气虚",
+          "气虚证",
+          "肾阴虚",
+          "阴虚证",
+          "肝气郁结"
+        ],
+        "formulas": [
+          "参苓白术散",
+          "六味地黄丸",
+          "完带汤",
+          "酸枣仁汤",
+          "天王补心丹",
+          "安神定志丸",
+          "小柴胡汤",
+          "逍遥散",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "补阳还五汤",
+          "生化汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "大建中汤",
+          "吴茱萸汤",
+          "大半夏汤",
+          "茯苓饮",
+          "乌梅丸",
+          "理中安蛔汤",
+          "二陈汤",
+          "七味白术散",
+          "养心汤",
+          "甘麦大枣汤",
+          "丁香柿蒂汤",
+          "五苓散",
+          "参苓白术散（同名新方）",
+          "实脾散",
+          "五皮散",
+          "四君子汤",
+          "补中益气汤",
+          "旋覆代赭汤",
+          "枳术丸",
+          "健脾丸",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "桃核承气汤",
+          "保和丸"
+        ],
+        "herbs": [
+          "山药",
+          "党参",
+          "白术",
+          "茯苓",
+          "薏苡仁",
+          "砂仁",
+          "陈皮",
+          "甘草",
+          "桔梗",
+          "大枣",
+          "人参",
+          "白扁豆",
+          "莲子",
+          "熟地黄",
+          "山茱萸",
+          "泽泻",
+          "牡丹皮",
+          "枸杞子",
+          "白芍",
+          "苍术",
+          "柴胡"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_008",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "食积停滞",
+          "脾胃气虚",
+          "气虚证",
+          "肺气不足",
+          "中气下陷",
+          "实热",
+          "脾虚湿困",
+          "气血两虚",
+          "血虚证"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "归脾汤",
+          "炙甘草汤",
+          "酸枣仁汤",
+          "天王补心丹",
+          "麻黄汤",
+          "桂枝汤",
+          "银翘散",
+          "桑菊饮",
+          "小柴胡汤",
+          "逍遥散",
+          "白虎汤",
+          "龙胆泻肝汤",
+          "清营汤",
+          "平胃散",
+          "藿香正气散",
+          "理中丸",
+          "四逆汤",
+          "柴胡疏肝散",
+          "血府逐瘀汤",
+          "川芎茶调散",
+          "二陈汤",
+          "止嗽散",
+          "完带汤",
+          "七味白术散",
+          "养心汤",
+          "甘麦大枣汤",
+          "温胆汤",
+          "苓甘五味姜辛汤",
+          "定喘汤",
+          "苏子降气汤",
+          "旋覆代赭汤",
+          "橘皮竹茹汤",
+          "桃核承气汤",
+          "身痛逐瘀汤",
+          "膈下逐瘀汤",
+          "生化汤",
+          "复元活血汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "小建中汤",
+          "芍药汤",
+          "葛根芩连汤",
+          "实脾散",
+          "导赤散",
+          "泻白散",
+          "芍药甘草汤"
+        ],
+        "herbs": [
+          "甘草",
+          "人参",
+          "白术",
+          "茯苓",
+          "黄芪",
+          "党参",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "莲子",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_009",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [
+          "中气下陷",
+          "脾胃气虚",
+          "气虚证",
+          "实热",
+          "脾虚湿困",
+          "气血两虚",
+          "血虚证",
+          "心脾两虚",
+          "湿浊中阻",
+          "阴虚血少",
+          "外感风寒",
+          "风寒表证",
+          "风热表证",
+          "阴虚证",
+          "胃气不和",
+          "湿热蕴脾",
+          "痰湿内阻"
+        ],
+        "formulas": [
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "归脾汤",
+          "炙甘草汤",
+          "桂枝汤",
+          "小柴胡汤",
+          "平胃散",
+          "藿香正气散",
+          "甘麦大枣汤",
+          "旋覆代赭汤",
+          "橘皮竹茹汤",
+          "小建中汤",
+          "吴茱萸汤"
+        ],
+        "herbs": [
+          "大枣",
+          "黄芪",
+          "党参",
+          "白术",
+          "甘草",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "生姜",
+          "枳壳",
+          "茯苓",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "人参",
+          "白扁豆",
+          "莲子",
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "生地黄",
+          "阿胶",
+          "麦冬",
+          "火麻仁",
+          "桂枝",
+          "黄芩",
+          "半夏",
+          "苍术",
+          "厚朴"
+        ]
+      },
+      "followups": []
+    },
+    {
+      "id": "literature_010",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "literature_query",
+      "tools": [
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "case_001",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "痰热扰心",
+          "心脾两虚",
+          "心肾不交"
+        ],
+        "formulas": [
+          "酸枣仁汤",
+          "安神定志丸",
+          "二陈汤",
+          "温胆汤",
+          "清气化痰丸",
+          "归脾汤",
+          "养心汤",
+          "甘麦大枣汤",
+          "天王补心丹",
+          "交泰丸",
+          "黄连阿胶汤"
+        ],
+        "herbs": [
+          "酸枣仁",
+          "知母",
+          "茯苓",
+          "川芎",
+          "甘草",
+          "远志",
+          "人参",
+          "龙骨",
+          "茯神",
+          "磁石",
+          "半夏",
+          "陈皮",
+          "生姜",
+          "枳壳",
+          "竹茹"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_002",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "心脾两虚",
+          "心阳不足",
+          "心虚"
+        ],
+        "formulas": [
+          "归脾汤",
+          "酸枣仁汤",
+          "养心汤",
+          "甘麦大枣汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "黄芪",
+          "当归",
+          "茯苓",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "甘草",
+          "大枣",
+          "生姜",
+          "知母",
+          "川芎",
+          "柏子仁"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_003",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "心脾两虚",
+          "心脾不足"
+        ],
+        "formulas": [
+          "归脾汤",
+          "酸枣仁汤",
+          "养心汤",
+          "甘麦大枣汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "黄芪",
+          "当归",
+          "茯苓",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香",
+          "甘草",
+          "大枣",
+          "生姜",
+          "知母",
+          "川芎",
+          "柏子仁"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_004",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "肝气郁结",
+          "气虚证",
+          "心虚"
+        ],
+        "formulas": [
+          "一贯煎",
+          "逍遥散",
+          "半夏厚朴汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "完带汤",
+          "复元活血汤",
+          "左金丸",
+          "龙胆泻肝汤",
+          "清营汤",
+          "桃核承气汤",
+          "保和丸",
+          "枳术丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "八珍汤",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤"
+        ],
+        "herbs": [
+          "生地黄",
+          "麦冬",
+          "沙参",
+          "当归",
+          "枸杞子",
+          "川楝子",
+          "女贞子",
+          "白芍",
+          "陈皮",
+          "柴胡",
+          "黄芪",
+          "白术",
+          "茯苓",
+          "薄荷",
+          "甘草",
+          "生姜",
+          "半夏",
+          "厚朴",
+          "紫苏",
+          "香附",
+          "川芎",
+          "枳壳",
+          "延胡索"
+        ]
+      },
+      "followups": [
+        "还伴有哪些主要症状，症状之间是否同时出现？",
+        "症状持续多久，是否有劳累、情绪或饮食等诱因？",
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_005",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "脾胃气虚",
+          "心脾两虚",
+          "风热"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "理中丸",
+          "七味白术散",
+          "旋覆代赭汤",
+          "小建中汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "归脾汤",
+          "酸枣仁汤",
+          "养心汤",
+          "甘麦大枣汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "黄芪",
+          "党参",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "干姜"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_006",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "脾胃气虚",
+          "肺气不足",
+          "气虚证"
+        ],
+        "formulas": [
+          "四君子汤",
+          "补中益气汤",
+          "参苓白术散",
+          "理中丸",
+          "七味白术散",
+          "旋覆代赭汤",
+          "小建中汤",
+          "茯苓饮",
+          "枳术丸",
+          "健脾丸",
+          "止嗽散",
+          "龙胆泻肝汤",
+          "清营汤",
+          "柴胡疏肝散",
+          "越鞠丸",
+          "桃核承气汤",
+          "保和丸",
+          "枳实导滞丸",
+          "木香槟榔丸",
+          "五皮散",
+          "川芎茶调散",
+          "温胆汤",
+          "八珍汤",
+          "补阳还五汤",
+          "玉屏风散",
+          "大半夏汤"
+        ],
+        "herbs": [
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "黄芪",
+          "党参",
+          "柴胡",
+          "升麻",
+          "陈皮",
+          "大枣",
+          "生姜",
+          "枳壳",
+          "山药",
+          "薏苡仁",
+          "砂仁",
+          "桔梗",
+          "白扁豆",
+          "干姜"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_007",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "血虚证",
+          "气血两虚"
+        ],
+        "formulas": [
+          "四物汤",
+          "当归补血汤",
+          "八珍汤",
+          "归脾汤",
+          "逍遥散",
+          "养心汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "芍药甘草汤",
+          "炙甘草汤"
+        ],
+        "herbs": [
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "黄芪",
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "大枣",
+          "生姜",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香"
+        ]
+      },
+      "followups": [
+        "还伴有哪些主要症状，症状之间是否同时出现？",
+        "症状持续多久，是否有劳累、情绪或饮食等诱因？",
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_008",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "血虚证",
+          "血虚",
+          "肝阳上亢"
+        ],
+        "formulas": [
+          "四物汤",
+          "当归补血汤",
+          "八珍汤",
+          "归脾汤",
+          "逍遥散",
+          "养心汤",
+          "温经汤",
+          "胶艾汤",
+          "黄土汤",
+          "芍药甘草汤",
+          "川芎茶调散",
+          "半夏白术天麻汤"
+        ],
+        "herbs": [
+          "当归",
+          "川芎",
+          "白芍",
+          "熟地黄",
+          "黄芪",
+          "人参",
+          "白术",
+          "茯苓",
+          "甘草",
+          "大枣",
+          "生姜",
+          "远志",
+          "酸枣仁",
+          "龙眼肉",
+          "木香"
+        ]
+      },
+      "followups": [
+        "还伴有哪些主要症状，症状之间是否同时出现？",
+        "症状持续多久，是否有劳累、情绪或饮食等诱因？",
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_009",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "肝阳上亢",
+          "风邪上扰",
+          "阳亢"
+        ],
+        "formulas": [
+          "川芎茶调散",
+          "半夏白术天麻汤"
+        ],
+        "herbs": [
+          "川芎",
+          "羌活",
+          "防风",
+          "薄荷",
+          "荆芥",
+          "白芷",
+          "甘草",
+          "半夏",
+          "白术",
+          "天麻",
+          "陈皮",
+          "茯苓",
+          "生姜"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "case_010",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "case_analysis",
+      "tools": [
+        "followup",
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query",
+        "symptom_analysis"
+      ],
+      "entities": {
+        "syndromes": [
+          "风邪上扰",
+          "风寒表证",
+          "阳亢"
+        ],
+        "formulas": [
+          "川芎茶调散",
+          "半夏白术天麻汤",
+          "麻黄汤",
+          "桂枝汤",
+          "小柴胡汤"
+        ],
+        "herbs": [
+          "川芎",
+          "羌活",
+          "防风",
+          "薄荷",
+          "荆芥",
+          "白芷",
+          "甘草",
+          "半夏",
+          "白术",
+          "天麻",
+          "陈皮",
+          "茯苓",
+          "生姜",
+          "麻黄",
+          "桂枝",
+          "杏仁",
+          "白芍",
+          "大枣"
+        ]
+      },
+      "followups": [
+        "是否有舌象信息，例如舌质颜色、舌苔厚薄和颜色？",
+        "是否有脉象信息，例如脉细、脉弱、脉弦或脉数？"
+      ]
+    },
+    {
+      "id": "insufficient_001",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "insufficient_002",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "insufficient_003",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "insufficient_004",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    },
+    {
+      "id": "insufficient_005",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "entities": true,
+        "tools": true,
+        "grounded_claims": true,
+        "followup": true,
+        "safety": true,
+        "sql_read_only": true,
+        "trace": true
+      },
+      "intent": "formula_query",
+      "tools": [
+        "formula_explanation",
+        "graph_query",
+        "knowledge_explanation",
+        "literature_search",
+        "safety_review",
+        "sql_query"
+      ],
+      "entities": {
+        "syndromes": [],
+        "formulas": [],
+        "herbs": []
+      },
+      "followups": []
+    }
+  ]
+}

@@ -2364,7 +2364,7 @@
     "source_name": "往来寒热",
     "relation": "提示",
     "target_id": "Z021",
-    "target_name": "和解少阳",
+    "target_name": "脾虚湿困",
     "evidence": "《中医诊断学》"
   },
   {
@@ -2468,7 +2468,7 @@
     "source_name": "悲伤欲哭",
     "relation": "提示",
     "target_id": "Z165",
-    "target_name": "脏躁",
+    "target_name": "肝热",
     "evidence": "《中医诊断学》"
   },
   {
@@ -3748,7 +3748,7 @@
     "source_name": "里急后重",
     "relation": "提示",
     "target_id": "Z189",
-    "target_name": "痢疾",
+    "target_name": "肺虚",
     "evidence": "《中医诊断学》"
   },
   {
@@ -4380,7 +4380,7 @@
     "source_name": "狂躁",
     "relation": "提示",
     "target_id": "Z205",
-    "target_name": "癫狂",
+    "target_name": "脾肾阳虚",
     "evidence": "《中医诊断学》"
   },
   {
@@ -4452,7 +4452,7 @@
     "source_name": "项强",
     "relation": "提示",
     "target_id": "Z199",
-    "target_name": "痉证",
+    "target_name": "胃阴不足",
     "evidence": "《中医诊断学》"
   },
   {
@@ -4492,7 +4492,7 @@
     "source_name": "下肢痿软",
     "relation": "提示",
     "target_id": "Z198",
-    "target_name": "痿证",
+    "target_name": "胃热",
     "evidence": "《中医诊断学》"
   },
   {
@@ -5044,7 +5044,7 @@
     "source_name": "胸胁苦满",
     "relation": "提示",
     "target_id": "Z021",
-    "target_name": "和解少阳",
+    "target_name": "脾虚湿困",
     "evidence": "《中医诊断学》"
   },
   {
@@ -5180,7 +5180,7 @@
     "source_name": "小儿疳积",
     "relation": "提示",
     "target_id": "Z256",
-    "target_name": "疳证",
+    "target_name": "食积不化",
     "evidence": "《中医诊断学》"
   },
   {
@@ -5612,7 +5612,7 @@
     "source_name": "疟疾",
     "relation": "提示",
     "target_id": "Z021",
-    "target_name": "和解少阳",
+    "target_name": "脾虚湿困",
     "evidence": "《中医诊断学》"
   },
   {
@@ -7731,24 +7731,8 @@
     "source_id": "S079",
     "source_name": "气喘",
     "relation": "提示",
-    "target_id": "Z183",
-    "target_name": "肺气壅实",
-    "evidence": "《中医诊断学》"
-  },
-  {
-    "source_id": "S079",
-    "source_name": "气喘",
-    "relation": "提示",
     "target_id": "Z187",
     "target_name": "肺肾两虚",
-    "evidence": "《中医诊断学》"
-  },
-  {
-    "source_id": "S049",
-    "source_name": "腰膝酸软",
-    "relation": "提示",
-    "target_id": "Z190",
-    "target_name": "肾虚",
     "evidence": "《中医诊断学》"
   },
   {
@@ -7917,14 +7901,6 @@
     "relation": "提示",
     "target_id": "Z246",
     "target_name": "风寒挟湿",
-    "evidence": "《中医诊断学》"
-  },
-  {
-    "source_id": "S053",
-    "source_name": "水肿",
-    "relation": "提示",
-    "target_id": "Z248",
-    "target_name": "风水",
     "evidence": "《中医诊断学》"
   },
   {

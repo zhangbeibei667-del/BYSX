@@ -197,15 +197,17 @@ python -m server.import_data
 ### 3. 启动服务
 
 ```bash
-python -m uvicorn server.main:app --host 0.0.0.0 --port 8000 --reload
+python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### 4. 访问
 
 | 地址 | 说明 |
 |------|------|
-| `http://localhost:8000/` | 图谱管理控制台（可视化） |
+| `http://localhost:8000/graph` | Vue 图谱浏览 |
+| `http://localhost:8000/admin/relations` | Vue 关系管理 |
+| `http://localhost:8000/kg-viewer` | 独立完整图谱管理器 |
 | `http://localhost:8000/docs` | Swagger 交互文档 |
-| `http://localhost:8000/health` | 健康检查 |
+| `http://localhost:8000/api/health` | 健康检查 |
 
-默认管理员：`admin` / `admin123`
+默认管理员用户名为 `admin`。首次启动若未设置 `ADMIN_PASSWORD`，随机初始密码保存在 `data/.admin_initial_password`。

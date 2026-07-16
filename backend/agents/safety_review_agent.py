@@ -1,4 +1,4 @@
-from backend.mock_data.tcm_mock_data import SAFETY_NOTICE
+from backend.domain.clinical_terms import SAFETY_NOTICE
 
 
 class SafetyReviewAgent:

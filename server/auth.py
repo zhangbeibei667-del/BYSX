@@ -13,18 +13,19 @@ JWT 认证与权限。
         ...
 """
 import re
+import base64
+import hashlib
+import hmac
+import os
 from datetime import datetime, timedelta
 
 import jwt
 from fastapi import Depends, Header, HTTPException
-from passlib.context import CryptContext
 
 try:
     from .config import JWT_ALGORITHM, JWT_EXPIRE_HOURS, JWT_SECRET
 except ImportError:
     from config import JWT_ALGORITHM, JWT_EXPIRE_HOURS, JWT_SECRET
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # 角色层级
 ROLE_LEVEL = {"admin": 2, "user": 1}
@@ -32,11 +33,36 @@ ROLE_LEVEL = {"admin": 2, "user": 1}
 
 # ---------- 密码 ----------
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    salt = os.urandom(16)
+    iterations = 310_000
+    digest = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, iterations)
+    return "pbkdf2_sha256${}${}${}".format(
+        iterations,
+        base64.urlsafe_b64encode(salt).decode("ascii"),
+        base64.urlsafe_b64encode(digest).decode("ascii"),
+    )
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
+    if hashed.startswith("pbkdf2_sha256$"):
+        try:
+            _, rounds, salt_text, digest_text = hashed.split("$", 3)
+            digest = hashlib.pbkdf2_hmac(
+                "sha256", plain.encode("utf-8"),
+                base64.urlsafe_b64decode(salt_text.encode("ascii")), int(rounds),
+            )
+            return hmac.compare_digest(
+                base64.urlsafe_b64encode(digest).decode("ascii"), digest_text)
+        except (ValueError, TypeError):
+            return False
+    # 兼容既有 bcrypt 账号；新部署不依赖 passlib。
+    if hashed.startswith(("$2a$", "$2b$", "$2y$")):
+        try:
+            import bcrypt
+            return bcrypt.checkpw(plain.encode("utf-8"), hashed.encode("utf-8"))
+        except (ImportError, ValueError):
+            return False
+    return False
 
 
 # ---------- JWT ----------

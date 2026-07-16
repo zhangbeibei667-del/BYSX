@@ -22,5 +22,12 @@ frontend_vite*.log
 *.sqlite-wal
 *.sqlite-shm
 backend/data/*.db
+backend/data/qdrant/
+backend/data/qdrant_v3/
+backend/data/qdrant_import_state.json
+backend/data/data_quality_report.json
+data/store.json
+data/.jwt_secret
+data/.admin_initial_password
 backend/data/*.sqlite
 backend/data/*.sqlite3

@@ -6,6 +6,7 @@ import json
 import os
 import threading
 from collections import deque
+from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
 try:
@@ -22,6 +23,9 @@ class MemoryStore(GraphStore):
         self._lock = threading.RLock()
         self.entities: Dict[str, Entity] = {}
         self.relations: Dict[Tuple[str, str, str], Relation] = {}
+        self.users: List[dict] = []
+        self.operation_logs: List[dict] = []
+        self.import_batches: List[dict] = []
         self._load()
 
     # ---------- 持久化 ----------
@@ -35,6 +39,9 @@ class MemoryStore(GraphStore):
         for r in raw.get("relations", []):
             rel = Relation(**r)
             self.relations[(rel.source_id, rel.relation, rel.target_id)] = rel
+        self.users = raw.get("users", [])
+        self.operation_logs = raw.get("operation_logs", [])
+        self.import_batches = raw.get("import_batches", [])
 
     def _save(self) -> None:
         os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
@@ -43,6 +50,9 @@ class MemoryStore(GraphStore):
             json.dump({
                 "entities": [e.model_dump() for e in self.entities.values()],
                 "relations": [r.model_dump() for r in self.relations.values()],
+                "users": self.users,
+                "operation_logs": self.operation_logs,
+                "import_batches": self.import_batches,
             }, f, ensure_ascii=False, indent=2)
         os.replace(tmp, self.path)
 
@@ -58,6 +68,13 @@ class MemoryStore(GraphStore):
                     r.target_name = e.name
             self._save()
         return e
+
+    def bulk_upsert_entities(self, entities: List[Entity]) -> int:
+        with self._lock:
+            for entity in entities:
+                self.entities[entity.id] = entity
+            self._save()
+        return len(entities)
 
     def get_entity(self, eid: str) -> Optional[Entity]:
         return self.entities.get(eid)
@@ -105,6 +122,13 @@ class MemoryStore(GraphStore):
             self.relations[(r.source_id, r.relation, r.target_id)] = r
             self._save()
         return r
+
+    def bulk_upsert_relations(self, relations: List[Relation]) -> int:
+        with self._lock:
+            for relation in relations:
+                self.relations[(relation.source_id, relation.relation, relation.target_id)] = relation
+            self._save()
+        return len(relations)
 
     def delete_relation(self, source_id: str, relation: str, target_id: str) -> bool:
         with self._lock:
@@ -187,3 +211,101 @@ class MemoryStore(GraphStore):
             by_rel[r.relation] = by_rel.get(r.relation, 0) + 1
         return {"entity_count": len(self.entities), "relation_count": len(self.relations),
                 "entity_by_type": by_type, "relation_by_type": by_rel}
+
+    # ---------- 用户、审计与导入批次 ----------
+    @staticmethod
+    def _now() -> str:
+        return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    @staticmethod
+    def _next_record_id(records: List[dict]) -> int:
+        return max((int(item.get("id", 0)) for item in records), default=0) + 1
+
+    def create_user(self, username: str, password_hash: str, role: str = "user") -> int:
+        with self._lock:
+            uid = self._next_record_id(self.users)
+            self.users.append({"id": uid, "username": username, "password_hash": password_hash,
+                               "role": role, "is_active": 1, "created_at": self._now(),
+                               "last_login": None})
+            self._save()
+            return uid
+
+    def get_user_by_username(self, username: str) -> Optional[dict]:
+        return next((dict(u) for u in self.users
+                     if u.get("username") == username and u.get("is_active", 1)), None)
+
+    def get_user_by_id(self, user_id: int) -> Optional[dict]:
+        return next((dict(u) for u in self.users if int(u.get("id", 0)) == user_id), None)
+
+    def update_last_login(self, user_id: int) -> None:
+        with self._lock:
+            for user in self.users:
+                if int(user.get("id", 0)) == user_id:
+                    user["last_login"] = self._now()
+                    self._save()
+                    return
+
+    def list_users(self) -> List[dict]:
+        return [{k: v for k, v in user.items() if k != "password_hash"}
+                for user in sorted(self.users, key=lambda item: int(item.get("id", 0)))]
+
+    def change_password(self, user_id: int, password_hash: str) -> bool:
+        with self._lock:
+            for user in self.users:
+                if int(user.get("id", 0)) == user_id:
+                    user["password_hash"] = password_hash
+                    self._save()
+                    return True
+        return False
+
+    def insert_operation_log(self, user_id: int = 0, username: str = "", action: str = "",
+                             target_type: str = "", target_id: str = "", target_name: str = "",
+                             before_snapshot: dict | None = None,
+                             after_snapshot: dict | None = None, ip_address: str = "") -> int:
+        with self._lock:
+            log_id = self._next_record_id(self.operation_logs)
+            self.operation_logs.append({"id": log_id, "user_id": user_id, "username": username,
+                "action": action, "target_type": target_type, "target_id": target_id,
+                "target_name": target_name, "before_snapshot": before_snapshot,
+                "after_snapshot": after_snapshot, "ip_address": ip_address,
+                "created_at": self._now()})
+            self._save()
+            return log_id
+
+    def list_operation_log(self, user_id: int | None = None, action: str | None = None,
+                           target_type: str | None = None, target_id: str | None = None,
+                           page: int = 1, size: int = 20) -> Tuple[int, List[dict]]:
+        items = list(self.operation_logs)
+        if user_id is not None:
+            items = [item for item in items if int(item.get("user_id", 0)) == user_id]
+        if action:
+            items = [item for item in items if item.get("action") == action]
+        if target_type:
+            items = [item for item in items if item.get("target_type") == target_type]
+        if target_id:
+            items = [item for item in items if item.get("target_id") == target_id]
+        items.sort(key=lambda item: (item.get("created_at", ""), item.get("id", 0)), reverse=True)
+        return len(items), [dict(item) for item in items[(page - 1) * size:page * size]]
+
+    def get_operation_log(self, log_id: int) -> Optional[dict]:
+        return next((dict(item) for item in self.operation_logs
+                     if int(item.get("id", 0)) == log_id), None)
+
+    def insert_import_batch(self, user_id: int = 0, username: str = "",
+                            kind: str = "entity", file_name: str = "", total: int = 0,
+                            success: int = 0, failed: int = 0,
+                            errors: list | None = None) -> int:
+        with self._lock:
+            batch_id = self._next_record_id(self.import_batches)
+            self.import_batches.append({"id": batch_id, "user_id": user_id,
+                "username": username, "kind": kind, "file_name": file_name,
+                "total": total, "success": success, "failed": failed,
+                "errors_json": errors or [], "created_at": self._now()})
+            self._save()
+            return batch_id
+
+    def list_import_batches(self, page: int = 1, size: int = 20) -> Tuple[int, List[dict]]:
+        items = sorted(self.import_batches,
+                       key=lambda item: (item.get("created_at", ""), item.get("id", 0)),
+                       reverse=True)
+        return len(items), [dict(item) for item in items[(page - 1) * size:page * size]]

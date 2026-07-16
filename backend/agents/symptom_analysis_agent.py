@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from backend.mock_data.tcm_mock_data import PULSE_KEYWORDS, SYMPTOM_KEYWORDS, TONGUE_KEYWORDS
+from backend.domain.clinical_terms import PULSE_KEYWORDS, SYMPTOM_KEYWORDS, TONGUE_KEYWORDS
 from backend.services.local_graphrag_service import Entity, get_local_graphrag_service
 
 
@@ -167,8 +167,6 @@ class SymptomAnalysisAgent:
             for alias in self._entity_aliases(entity):
                 if not alias:
                     continue
-                if self._is_symmap_entity(entity) and len(alias) <= 2 and alias not in clauses:
-                    continue
                 if alias in text:
                     if self._is_contextually_blocked(entity.name, alias, text):
                         continue
@@ -185,7 +183,6 @@ class SymptomAnalysisAgent:
             for entity in symptom_entities:
                 if self._is_contextually_blocked(entity.name, "", text):
                     continue
-                is_symmap = self._is_symmap_entity(entity)
                 entity_terms = self._entity_aliases(entity)
 
                 for alias in entity_terms:
@@ -194,23 +191,16 @@ class SymptomAnalysisAgent:
                         continue
 
                     if normalized_alias in normalized_clause:
-                        if is_symmap and len(normalized_alias) <= 2:
-                            continue
                         self._keep_best(
                             matches,
                             EntityMatch(entity.name, entity.id, entity.type, 0.92, f"normalized:{clause}->{alias}"),
                         )
                         continue
                     if normalized_clause in normalized_alias:
-                        if is_symmap:
-                            continue
                         self._keep_best(
                             matches,
                             EntityMatch(entity.name, entity.id, entity.type, 0.92, f"normalized:{clause}->{alias}"),
                         )
-                        continue
-
-                    if is_symmap:
                         continue
 
                     score = self._char_overlap_score(normalized_clause, normalized_alias)
@@ -229,25 +219,18 @@ class SymptomAnalysisAgent:
 
         # Use short KG description fragments as weak aliases.  Example:
         # "食欲减退，进食量少" helps normalize "食欲下降".
-        # SymMap imports thousands of rich descriptions. Treating every short
-        # description fragment as an alias makes the matcher over-eager, so for
-        # external SymMap entities we keep matching to names/aliases only.
+        # Imported descriptions can be broad, so only short fragments are used
+        # as weak aliases.
         source = ""
         if entity.properties:
             source = str(entity.properties.get("source") or "")
-        if "SymMap" not in source:
+        if not source.lower().startswith("external"):
             for part in re.split(r"[，、；;。\s]+", entity.description or ""):
                 part = part.strip()
                 if 2 <= len(part) <= 8:
                     aliases.append(part)
 
         return self._unique([alias for alias in aliases if alias])
-
-    @staticmethod
-    def _is_symmap_entity(entity: Entity) -> bool:
-        if not entity.properties:
-            return False
-        return "SymMap" in str(entity.properties.get("source") or "")
 
     def _prune_subsumed_terms(self, terms: list[str]) -> list[str]:
         """Remove noisy external child terms once a more specific term exists."""

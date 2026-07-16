@@ -89,11 +89,6 @@
             </span>
           </template>
         </el-table-column>
-        <el-table-column label="功效" min-width="150" show-overflow-tooltip>
-          <template #default="{ row }">
-            {{ row.properties?.functions || '-' }}
-          </template>
-        </el-table-column>
         <el-table-column label="主治" min-width="180" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.indications || '-' }}

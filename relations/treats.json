@@ -771,7 +771,7 @@
     "source_id": "F046",
     "source_name": "甘麦大枣汤",
     "relation": "主治",
-    "target_id": "Z165",
+    "target_id": "S165",
     "target_name": "脏躁",
     "evidence": "《方剂学》教材，养心安神，和中缓急"
   },
@@ -980,7 +980,7 @@
     "source_name": "身痛逐瘀汤",
     "relation": "主治",
     "target_id": "Z197",
-    "target_name": "痹证",
+    "target_name": "胃火亢盛",
     "evidence": "《方剂学》教材，活血化瘀，祛风除湿，通络止痛"
   },
   {
@@ -1308,7 +1308,7 @@
     "source_name": "肥儿丸",
     "relation": "主治",
     "target_id": "Z168",
-    "target_name": "小儿疳积",
+    "target_name": "肝肾虚",
     "evidence": "《方剂学》教材，杀虫消积，健脾清热"
   },
   {
@@ -1372,7 +1372,7 @@
     "source_name": "白头翁汤",
     "relation": "主治",
     "target_id": "Z189",
-    "target_name": "痢疾",
+    "target_name": "肺虚",
     "evidence": "《方剂学》教材，清热解毒，凉血止痢"
   },
   {
@@ -1388,7 +1388,7 @@
     "source_name": "芍药汤",
     "relation": "主治",
     "target_id": "Z189",
-    "target_name": "痢疾",
+    "target_name": "肺虚",
     "evidence": "《方剂学》教材，清热解毒，调气行血"
   },
   {
@@ -1412,7 +1412,7 @@
     "source_name": "葛根芩连汤",
     "relation": "主治",
     "target_id": "Z212",
-    "target_name": "泄泻",
+    "target_name": "脾胃虚弱",
     "evidence": "《方剂学》教材，解表清里，升清止泻"
   },
   {
@@ -1428,7 +1428,7 @@
     "source_name": "参苓白术散（同名新方）",
     "relation": "主治",
     "target_id": "Z212",
-    "target_name": "泄泻",
+    "target_name": "脾胃虚弱",
     "evidence": "《方剂学》教材，益气健脾，渗湿止泻"
   },
   {
@@ -1452,7 +1452,7 @@
     "source_name": "五皮散",
     "relation": "主治",
     "target_id": "Z192",
-    "target_name": "水肿",
+    "target_name": "肾阳亏虚",
     "evidence": "《方剂学》教材，行气利水，健脾化湿"
   },
   {
@@ -1476,7 +1476,7 @@
     "source_name": "导赤散",
     "relation": "主治",
     "target_id": "Z193",
-    "target_name": "淋证",
+    "target_name": "肾阳虚",
     "evidence": "《方剂学》教材，清心利水养阴"
   },
   {
@@ -1516,7 +1516,7 @@
     "source_name": "苇茎汤",
     "relation": "主治",
     "target_id": "Z181",
-    "target_name": "肺痈",
+    "target_name": "肠燥",
     "evidence": "《方剂学》教材，清肺化痰，逐瘀排脓"
   },
   {
@@ -1540,7 +1540,7 @@
     "source_name": "泻白散",
     "relation": "主治",
     "target_id": "Z214",
-    "target_name": "咳嗽",
+    "target_name": "膀胱虚冷",
     "evidence": "《方剂学》教材，清泻肺热，平喘止咳"
   },
   {

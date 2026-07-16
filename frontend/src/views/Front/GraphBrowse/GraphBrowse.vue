@@ -58,10 +58,10 @@
           </div>
           <div class="stats-overview">
             <div class="stats-count">
-              <span class="count-num">{{ filteredNodeCount }}</span>
+              <span class="count-num">{{ overviewStats.nodeCount }}</span>
               <span class="count-unit">个节点</span>
               <span class="count-divider">·</span>
-              <span class="count-num">{{ filteredEdgeCount }}</span>
+              <span class="count-num">{{ overviewStats.relationCount }}</span>
               <span class="count-unit">条关系</span>
             </div>
             <div class="legend-grid">
@@ -388,6 +388,8 @@ const PROPERTY_LABEL_MAP: Record<string, string> = {
 
 const allNodes = ref<GraphNode[]>([])
 const allEdges = ref<GraphEdge[]>([])
+const overviewStats = reactive({ nodeCount: 0, relationCount: 0 })
+const pathEntityOptions = ref<GraphNode[]>([])
 const loading = ref(false)
 
 const searchKeyword = ref('')
@@ -416,7 +418,8 @@ const favorites = ref<Set<string>>(new Set(JSON.parse(localStorage.getItem('grap
 const chartRef = ref<HTMLDivElement>()
 const canvasContainer = ref<HTMLElement>()
 let chartInstance: echarts.ECharts | null = null
-const zoomLevel = ref(1)
+const DEFAULT_GRAPH_ZOOM = 0.82
+const zoomLevel = ref(DEFAULT_GRAPH_ZOOM)
 
 const isAdmin = computed(() => !!localStorage.getItem('admin_token'))
 const isFavorited = computed(() => selectedNode.value ? favorites.value.has(selectedNode.value.id) : false)
@@ -435,15 +438,12 @@ const filteredEdges = computed(() => {
   )
 })
 
-const filteredNodeCount = computed(() => filteredNodes.value.length)
-const filteredEdgeCount = computed(() => filteredEdges.value.length)
-
 const legendItems = computed(() =>
   filterTypes.map(f => ({ type: f.type, label: f.label, color: f.color }))
 )
 
 const allEntityOptions = computed(() =>
-  allNodes.value.map(n => ({
+  pathEntityOptions.value.map(n => ({
     value: n.id,
     label: n.label,
     type: n.type,
@@ -523,10 +523,12 @@ function buildChartOption(
 
   const chartNodes = nodes.map(n => {
     const degree = degreeMap[n.id] || 0
-    const size = Math.min(25 + degree * 4, 60)
+    // 高关联节点略大，但严格限制尺寸，避免核心区域被大圆点填满。
+    const size = Math.min(19 + Math.sqrt(degree) * 4.2, 48)
     const color = getTypeColor(n.type)
     const inPath = pathNodeSet.has(n.id)
     const dimmed = isPathActive && !inPath
+    const isCoreNode = degree >= 7
 
     return {
       id: n.id,
@@ -545,11 +547,12 @@ function buildChartOption(
         opacity: dimmed ? 0.25 : 1,
       },
       label: {
-        show: !dimmed || inPath,
+        // 默认只标注核心节点；普通节点悬停时由 emphasis 显示名称。
+        show: inPath || (!dimmed && isCoreNode),
         color: dimmed ? 'rgba(107,122,114,0.3)' : '#2c3630',
-        fontSize: 11,
+        fontSize: 10,
         position: 'bottom' as const,
-        distance: 6,
+        distance: 4,
         textShadowColor: inPath ? '#c8a86e' : 'transparent',
         textShadowBlur: inPath ? 8 : 0,
       },
@@ -560,6 +563,7 @@ function buildChartOption(
           shadowColor: inPath ? '#c8a86e' : color,
         },
         label: {
+          show: true,
           fontSize: 14,
           fontWeight: 'bold',
           color: '#2a4030',
@@ -580,10 +584,10 @@ function buildChartOption(
       name: e.label,
       _rawLabel: e.label,
       lineStyle: {
-        color: inPath ? '#c8a86e' : 'rgba(110,135,120,0.35)',
-        width: inPath ? 2.5 : 1,
-        opacity: dimmed ? 0.1 : (inPath ? 1 : 0.7),
-        curveness: 0.15,
+        color: inPath ? '#c8a86e' : 'rgba(82,108,91,0.24)',
+        width: inPath ? 2.5 : 0.7,
+        opacity: dimmed ? 0.05 : (inPath ? 1 : 0.45),
+        curveness: 0.08,
         shadowColor: inPath ? '#c8a86e' : 'transparent',
         shadowBlur: inPath ? 6 : 0,
       },
@@ -630,12 +634,12 @@ function buildChartOption(
         zoom: zoomLevel.value,
         center: ['50%', '50%'],
         force: {
-          initIterations: 300,
-          repulsion: 350,
-          gravity: 0.06,
-          edgeLength: [120, 250],
+          initIterations: 500,
+          repulsion: 1100,
+          gravity: 0.018,
+          edgeLength: [170, 340],
           layoutAnimation: true,
-          friction: 0.6,
+          friction: 0.45,
         },
         data: chartNodes,
         edges: chartEdges,
@@ -649,6 +653,9 @@ function buildChartOption(
             itemStyle: { opacity: 0.3 },
             lineStyle: { opacity: 0.1 },
           },
+        },
+        labelLayout: {
+          hideOverlap: true,
         },
         scaleLimit: {
           min: 0.1,
@@ -717,7 +724,10 @@ function resizeChart() {
 async function loadGraphData() {
   loading.value = true
   try {
-    const response: any = await graphApi.getFullGraph()
+    const [response, overview]: any[] = await Promise.all([
+      graphApi.getFullGraph(),
+      graphApi.getOverview(),
+    ])
     if (response?.data && response.data.nodes?.length > 0) {
       allNodes.value = response.data.nodes
       allEdges.value = response.data.edges || []
@@ -725,89 +735,28 @@ async function loadGraphData() {
       allNodes.value = response.nodes
       allEdges.value = response.edges || []
     } else {
-      useMockGraphData()
+      allNodes.value = []
+      allEdges.value = []
+      ElMessage.warning('图谱服务未返回可展示数据，请检查后端数据状态')
     }
-  } catch {
-    console.log('API 未就绪，使用模拟图谱数据')
-    useMockGraphData()
+    const overviewData = overview?.data || overview
+    overviewStats.nodeCount = Number(overviewData?.nodeCount || allNodes.value.length)
+    overviewStats.relationCount = Number(overviewData?.relationCount || allEdges.value.length)
+    pathEntityOptions.value = overviewData?.entities || [...allNodes.value]
+  } catch (error) {
+    console.error('图谱数据加载失败:', error)
+    allNodes.value = []
+    allEdges.value = []
+    overviewStats.nodeCount = 0
+    overviewStats.relationCount = 0
+    pathEntityOptions.value = []
+    ElMessage.error('图谱服务暂不可用，未加载任何模拟数据')
   } finally {
     loading.value = false
     await nextTick()
     initChart()
     updateHotEntities()
   }
-}
-
-function useMockGraphData() {
-  allNodes.value = [
-    { id: 'H001', label: '酸枣仁', type: '药材' },
-    { id: 'H002', label: '远志', type: '药材' },
-    { id: 'H003', label: '人参', type: '药材' },
-    { id: 'H004', label: '黄芪', type: '药材' },
-    { id: 'H005', label: '当归', type: '药材' },
-    { id: 'H006', label: '茯苓', type: '药材' },
-    { id: 'H007', label: '甘草', type: '药材' },
-    { id: 'H008', label: '白术', type: '药材' },
-    { id: 'H009', label: '麻黄', type: '药材' },
-    { id: 'H010', label: '桂枝', type: '药材' },
-    { id: 'H011', label: '杏仁', type: '药材' },
-    { id: 'H012', label: '柴胡', type: '药材' },
-    { id: 'H013', label: '黄芩', type: '药材' },
-    { id: 'H014', label: '陈皮', type: '药材' },
-    { id: 'H015', label: '升麻', type: '药材' },
-    { id: 'F001', label: '归脾汤', type: '方剂' },
-    { id: 'F002', label: '麻黄汤', type: '方剂' },
-    { id: 'F003', label: '小柴胡汤', type: '方剂' },
-    { id: 'F004', label: '补中益气汤', type: '方剂' },
-    { id: 'F005', label: '四物汤', type: '方剂' },
-    { id: 'S001', label: '失眠', type: '症状' },
-    { id: 'S002', label: '心悸', type: '症状' },
-    { id: 'S003', label: '畏寒', type: '症状' },
-    { id: 'S004', label: '咳嗽', type: '症状' },
-    { id: 'S005', label: '食少', type: '症状' },
-    { id: 'Z001', label: '心脾两虚', type: '证候' },
-    { id: 'Z002', label: '外感风寒', type: '证候' },
-    { id: 'Z003', label: '少阳证', type: '证候' },
-    { id: 'Z004', label: '脾虚气陷', type: '证候' },
-    { id: 'Z005', label: '血虚证', type: '证候' },
-  ]
-
-  allEdges.value = [
-    { source: 'F001', target: 'H001', label: '包含' },
-    { source: 'F001', target: 'H002', label: '包含' },
-    { source: 'F001', target: 'H003', label: '包含' },
-    { source: 'F001', target: 'H004', label: '包含' },
-    { source: 'F001', target: 'H005', label: '包含' },
-    { source: 'F001', target: 'H006', label: '包含' },
-    { source: 'F001', target: 'Z001', label: '主治' },
-    { source: 'S001', target: 'Z001', label: '提示' },
-    { source: 'S002', target: 'Z001', label: '提示' },
-    { source: 'S005', target: 'Z001', label: '提示' },
-    { source: 'F002', target: 'H009', label: '包含' },
-    { source: 'F002', target: 'H010', label: '包含' },
-    { source: 'F002', target: 'H011', label: '包含' },
-    { source: 'F002', target: 'H007', label: '包含' },
-    { source: 'F002', target: 'Z002', label: '主治' },
-    { source: 'S003', target: 'Z002', label: '提示' },
-    { source: 'S004', target: 'Z002', label: '提示' },
-    { source: 'F003', target: 'H012', label: '包含' },
-    { source: 'F003', target: 'H013', label: '包含' },
-    { source: 'F003', target: 'H003', label: '包含' },
-    { source: 'F003', target: 'H007', label: '包含' },
-    { source: 'F003', target: 'Z003', label: '主治' },
-    { source: 'F004', target: 'H004', label: '包含' },
-    { source: 'F004', target: 'H008', label: '包含' },
-    { source: 'F004', target: 'H005', label: '包含' },
-    { source: 'F004', target: 'H014', label: '包含' },
-    { source: 'F004', target: 'H015', label: '包含' },
-    { source: 'F004', target: 'Z004', label: '主治' },
-    { source: 'F005', target: 'H005', label: '包含' },
-    { source: 'F005', target: 'H006', label: '包含' },
-    { source: 'F005', target: 'Z005', label: '主治' },
-    { source: 'H009', target: 'H007', label: '配伍' },
-    { source: 'H003', target: 'H004', label: '配伍' },
-    { source: 'H005', target: 'H003', label: '配伍' },
-  ]
 }
 
 function updateHotEntities() {
@@ -1107,9 +1056,10 @@ function applyZoom() {
 }
 
 function resetView() {
-  zoomLevel.value = 1
+  zoomLevel.value = DEFAULT_GRAPH_ZOOM
   if (chartInstance) {
     chartInstance.dispatchAction({ type: 'restore' })
+    applyZoom()
   }
 }
 

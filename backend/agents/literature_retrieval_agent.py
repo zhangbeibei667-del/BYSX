@@ -2,7 +2,7 @@ from backend.tools.rag_tool import RAGRetrievalTool
 
 
 class LiteratureRetrievalAgent:
-    """Retrieve supporting teaching snippets from mock RAG data."""
+    """Retrieve traceable text and graph evidence from the unified RAG service."""
 
     def __init__(self, rag_tool: RAGRetrievalTool | None = None) -> None:
         self.rag_tool = rag_tool or RAGRetrievalTool()

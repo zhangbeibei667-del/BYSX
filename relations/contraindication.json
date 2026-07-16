@@ -36,7 +36,7 @@
     "source_name": "西洋参",
     "relation": "禁忌",
     "target_id": "J211",
-    "target_name": "脾胃虚寒",
+    "target_name": "石膏禁用于风寒感冒",
     "evidence": "《中药学》"
   },
   {
@@ -207,7 +207,6 @@
     "target_name": "便秘",
     "evidence": "《中药学》"
   },
-
   {
     "source_id": "H011",
     "source_name": "当归",
@@ -2080,7 +2079,6 @@
     "target_name": "月经过多",
     "evidence": "《中药学》"
   },
-
   {
     "source_id": "H085",
     "source_name": "半夏",
@@ -3498,14 +3496,6 @@
     "evidence": "《中药学》"
   },
   {
-    "source_id": "H280",
-    "source_name": "卷柏",
-    "relation": "禁忌",
-    "target_id": "J006",
-    "target_name": "孕妇禁用",
-    "evidence": "《中药学》"
-  },
-  {
     "source_id": "H297",
     "source_name": "莲房",
     "relation": "禁忌",
@@ -3889,7 +3879,6 @@
     "target_name": "实热",
     "evidence": "《中药学》"
   },
-
   {
     "source_id": "H112",
     "source_name": "菝葜",
@@ -5950,7 +5939,7 @@
     "source_id": "F020",
     "source_name": "逍遥散",
     "relation": "禁忌",
-    "target_id": "Z288",
+    "target_id": "J288",
     "target_name": "逍遥散禁用于阴虚火旺",
     "evidence": "《方剂学》"
   },
@@ -6506,23 +6495,6 @@
     "target_name": "脾胃虚寒",
     "evidence": "《方剂学》"
   },
-
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "禁忌",
-    "target_id": "J005",
-    "target_name": "外感表证未解",
-    "evidence": "《方剂学》"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "禁忌",
-    "target_id": "Z046",
-    "target_name": "实热",
-    "evidence": "《方剂学》"
-  },
   {
     "source_id": "F091",
     "source_name": "实脾散",
@@ -6545,14 +6517,6 @@
     "relation": "禁忌",
     "target_id": "Z211",
     "target_name": "脾胃虚寒",
-    "evidence": "《方剂学》"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "禁忌",
-    "target_id": "Z009",
-    "target_name": "气虚证",
     "evidence": "《方剂学》"
   },
   {

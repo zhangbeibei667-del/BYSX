@@ -1,7 +1,7 @@
 # 中医药知识图谱管理模块 · API 文档
 
-> Base URL: `http://localhost:8000/api`  
-> 统一响应格式: `{"code": 0, "msg": "ok", "data": ...}` — code=0 表示成功  
+> Base URL: `http://localhost:8000/api/kg`
+> 统一响应格式: `{"code": 0, "msg": "ok", "data": ...}` — code=0 表示成功
 > 所有接口(除 /auth/login 和 /auth/register)都需要 Header: `Authorization: Bearer <token>`
 
 ---
@@ -12,7 +12,7 @@
 ```
 POST /auth/login
 ```
-请求: `{"username": "admin", "password": "admin123"}`
+请求: `{"username": "admin", "password": "<data/.admin_initial_password 中的初始密码>"}`
 返回:
 ```json
 {"code": 0, "msg": "ok", "data": {

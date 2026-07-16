@@ -4,9 +4,13 @@ import json
 import time
 
 from backend.db.database import get_connection
+from backend.db.database import init_db
 
 
 class ConversationService:
+    def __init__(self) -> None:
+        init_db()
+
     def load(self, session_id: str | None) -> dict:
         session_id = session_id or str(int(time.time() * 1000))
         with get_connection() as conn:

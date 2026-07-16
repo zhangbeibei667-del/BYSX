@@ -11185,7 +11185,7 @@
   },
   {
     "source_id": "H526",
-    "source_name": "土鳖虫",
+    "source_name": "土鳖虫（䗪虫）",
     "relation": "具有",
     "target_id": "T012",
     "target_name": "咸",
@@ -11193,7 +11193,7 @@
   },
   {
     "source_id": "H526",
-    "source_name": "土鳖虫",
+    "source_name": "土鳖虫（䗪虫）",
     "relation": "具有",
     "target_id": "T011",
     "target_name": "寒",
@@ -11201,7 +11201,7 @@
   },
   {
     "source_id": "H526",
-    "source_name": "土鳖虫",
+    "source_name": "土鳖虫（䗪虫）",
     "relation": "具有",
     "target_id": "T022",
     "target_name": "有小毒",
@@ -11617,7 +11617,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "T010",
     "target_name": "辛",
@@ -11625,7 +11625,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "T004",
     "target_name": "苦",
@@ -11633,7 +11633,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "T006",
     "target_name": "凉",
@@ -11825,7 +11825,7 @@
   },
   {
     "source_id": "H555",
-    "source_name": "艾片",
+    "source_name": "艾片（左旋龙脑）",
     "relation": "具有",
     "target_id": "T010",
     "target_name": "辛",
@@ -11833,7 +11833,7 @@
   },
   {
     "source_id": "H555",
-    "source_name": "艾片",
+    "source_name": "艾片（左旋龙脑）",
     "relation": "具有",
     "target_id": "T004",
     "target_name": "苦",
@@ -11841,7 +11841,7 @@
   },
   {
     "source_id": "H555",
-    "source_name": "艾片",
+    "source_name": "艾片（左旋龙脑）",
     "relation": "具有",
     "target_id": "T009",
     "target_name": "微寒",
@@ -12169,7 +12169,7 @@
   },
   {
     "source_id": "H573",
-    "source_name": "亚乎奴",
+    "source_name": "亚乎奴（锡生藤）",
     "relation": "具有",
     "target_id": "T001",
     "target_name": "甘",
@@ -12177,7 +12177,7 @@
   },
   {
     "source_id": "H573",
-    "source_name": "亚乎奴",
+    "source_name": "亚乎奴（锡生藤）",
     "relation": "具有",
     "target_id": "T004",
     "target_name": "苦",
@@ -12185,7 +12185,7 @@
   },
   {
     "source_id": "H573",
-    "source_name": "亚乎奴",
+    "source_name": "亚乎奴（锡生藤）",
     "relation": "具有",
     "target_id": "T005",
     "target_name": "温",
@@ -12417,7 +12417,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "T010",
     "target_name": "辛",
@@ -12425,7 +12425,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "T002",
     "target_name": "微苦",
@@ -12433,7 +12433,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "T005",
     "target_name": "温",
@@ -12713,7 +12713,7 @@
   },
   {
     "source_id": "H599",
-    "source_name": "皂矾",
+    "source_name": "皂矾（绿矾）",
     "relation": "具有",
     "target_id": "T008",
     "target_name": "酸",
@@ -12721,7 +12721,7 @@
   },
   {
     "source_id": "H599",
-    "source_name": "皂矾",
+    "source_name": "皂矾（绿矾）",
     "relation": "具有",
     "target_id": "T006",
     "target_name": "凉",

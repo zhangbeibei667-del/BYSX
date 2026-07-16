@@ -1,4 +1,5 @@
 import os
+import secrets
 
 try:
     from .store_base import GraphStore
@@ -6,18 +7,18 @@ except ImportError:
     from store_base import GraphStore
 
 # STORE_BACKEND = memory | mysql | neo4j | hybrid (MySQL + Neo4j 双写)
-STORE_BACKEND = os.getenv("STORE_BACKEND", "hybrid")
+STORE_BACKEND = os.getenv("STORE_BACKEND", "memory").lower()
 
 # Neo4j
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "Qaz123456")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "")
 
 # MySQL
 MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
 MYSQL_PORT = int(os.getenv("MYSQL_PORT", "3306"))
 MYSQL_USER = os.getenv("MYSQL_USER", "root")
-MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "Qaz123456")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "tcm")
 
 # MySQL 连接串（供组员 SQL Agent 直连）
@@ -27,7 +28,23 @@ MYSQL_DSN = os.getenv(
 )
 
 # JWT
-JWT_SECRET = os.getenv("JWT_SECRET", "tcm-kg-jwt-secret-change-in-production")
+def _load_or_create_secret() -> str:
+    configured = os.getenv("JWT_SECRET", "").strip()
+    if configured:
+        return configured
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(root, "data", ".jwt_secret")
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as handle:
+            return handle.read().strip()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    value = secrets.token_urlsafe(48)
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(value)
+    return value
+
+
+JWT_SECRET = _load_or_create_secret()
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_HOURS = int(os.getenv("JWT_EXPIRE_HOURS", "24"))
 

@@ -24,7 +24,7 @@ except ImportError:
                           get_relation_schema)
     from service import GraphService
 
-router = APIRouter(prefix="/api")
+router = APIRouter(prefix="/api/kg", tags=["图谱管理"])
 
 
 def svc() -> GraphService:
@@ -253,13 +253,13 @@ def import_template(kind: str = Query("entity", pattern="^(entity|relation)$"),
     if kind == "entity":
         return ("id,name,type,alias,description,source,note\n"
                 "F001,归脾汤,方剂,归脾汤,\"益气补血，健脾养心\",方剂学资料,\n")
-    return ("source_id,source_name,relation,target_id,target_name,evidence\n"
-            "F001,归脾汤,包含,H001,酸枣仁,方剂组成资料\n")
+    return ("source_id,source_name,relation,target_id,target_name,evidence,evidence_level,confidence,locator,excerpt,version,review_status\n"
+            "F001,归脾汤,包含,H001,酸枣仁,《方剂学》归脾汤条目,A_权威教材,0.95,\"{}\",,1.0,reviewed\n")
 
 
 @router.post("/import/entities", response_model=ApiResponse)
 async def import_entities(file: UploadFile = File(...),
-                           strict: bool = Query(False),
+                           strict: bool = Query(True),
                            user: dict = Depends(require_admin)):
     s = svc(); s.set_user(user)
     rows = s.parse_file(file.filename or "", await file.read())
@@ -278,7 +278,7 @@ async def import_entities(file: UploadFile = File(...),
 
 @router.post("/import/relations", response_model=ApiResponse)
 async def import_relations(file: UploadFile = File(...),
-                            strict: bool = Query(False),
+                            strict: bool = Query(True),
                             user: dict = Depends(require_admin)):
     s = svc(); s.set_user(user)
     rows = s.parse_file(file.filename or "", await file.read())

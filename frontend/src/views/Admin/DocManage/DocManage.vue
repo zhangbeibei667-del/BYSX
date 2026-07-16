@@ -33,14 +33,6 @@
       >
         <el-option v-for="t in docTypeOptions" :key="t" :label="t" :value="t" />
       </el-select>
-      <el-select
-        v-model="searchParams.entityType"
-        placeholder="关联实体类型"
-        clearable
-        style="width: 150px"
-      >
-        <el-option v-for="t in entityTypeOptions" :key="t" :label="t" :value="t" />
-      </el-select>
       <el-button class="btn-primary" :icon="Search" @click="handleSearch">搜索</el-button>
       <el-button class="btn-outline" :icon="Refresh" @click="handleReset">重置</el-button>
 
@@ -100,22 +92,6 @@
         <el-table-column label="类型" width="100" align="center">
           <template #default="{ row }">
             <el-tag :type="getDocTypeColor(row.type)" size="small">{{ row.type || '-' }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column label="关联实体" min-width="220">
-          <template #default="{ row }">
-            <div class="tag-list" v-if="getRelatedEntities(row).length">
-              <el-tag
-                v-for="(entity, i) in getRelatedEntities(row)"
-                :key="i"
-                :type="getEntityTypeColor(entity.type)"
-                size="small"
-                effect="light"
-              >
-                {{ entity.name }}
-              </el-tag>
-            </div>
-            <span v-else class="text-placeholder">未关联</span>
           </template>
         </el-table-column>
         <el-table-column label="来源" width="160" show-overflow-tooltip>
@@ -234,65 +210,6 @@
           </div>
         </el-form-item>
 
-        <el-form-item label="关联实体">
-          <div class="association-section">
-            <div
-              v-for="(entity, index) in formData.relatedEntities"
-              :key="index"
-              class="association-row"
-            >
-              <el-select
-                v-model="entity.type"
-                placeholder="实体类型"
-                style="width: 110px"
-                @change="onAssociationTypeChange($event, entity)"
-              >
-                <el-option v-for="t in entityTypeOptions" :key="t" :label="t" :value="t" />
-              </el-select>
-              <el-select
-                v-model="entity.id"
-                filterable
-                placeholder="搜索并选择实体"
-                style="flex: 1"
-                :disabled="!entity.type"
-                @change="onEntitySelect(index, $event)"
-              >
-                <el-option
-                  v-for="e in getEntitiesByType(entity.type)"
-                  :key="e._key"
-                  :label="e.name"
-                  :value="e._key"
-                />
-              </el-select>
-              <el-button
-                class="btn-danger"
-                :icon="Delete"
-                circle
-                size="small"
-                @click="removeAssociation(index)"
-              />
-            </div>
-            <el-button class="btn-edit" link :icon="Plus" @click="addAssociation">
-              添加关联实体
-            </el-button>
-            <div v-if="formData.relatedEntities.length > 0" class="associated-preview">
-              <span class="preview-label">已关联：</span>
-              <el-tag
-                v-for="(entity, i) in formData.relatedEntities"
-                :key="i"
-                v-show="entity.name"
-                closable
-                size="small"
-                :type="getEntityTypeColor(entity.type)"
-                effect="light"
-                @close="removeAssociation(i)"
-              >
-                [{{ entity.type }}] {{ entity.name }}
-              </el-tag>
-            </div>
-          </div>
-        </el-form-item>
-
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item label="来源出处">
@@ -361,19 +278,6 @@
           </div>
         </div>
 
-        <div class="doc-relations" v-if="getRelatedEntities(viewDoc).length">
-          <span class="section-label">关联实体：</span>
-          <el-tag
-            v-for="(entity, i) in getRelatedEntities(viewDoc)"
-            :key="i"
-            :type="getEntityTypeColor(entity.type)"
-            size="small"
-            effect="plain"
-          >
-            [{{ entity.type }}] {{ entity.name }}
-          </el-tag>
-        </div>
-
         <div class="doc-body">
           <div class="section-label">文献内容：</div>
           <div class="markdown-body" v-html="renderMarkdown(viewDoc.content || '')"></div>
@@ -420,61 +324,16 @@ import { ref, reactive, computed, onMounted } from 'vue'
 import { Plus, Upload, Download, Search, Refresh, Delete, Edit, View, WarningFilled, Files } from '@element-plus/icons-vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import MarkdownIt from 'markdown-it'
-import { documentApi, entityApi } from '@/api'
+import { documentApi } from '@/api'
 import type { DocumentEntity } from '@/types'
 
-interface EntityOption { _key: string; id: string; name: string; type: string }
-interface Association { type: string; id: string; name: string }
-
 const docTypeOptions = ['药典', '教材', '古籍', '科普', '期刊']
-const entityTypeOptions = ['药材', '方剂', '症状', '证候']
 
 const docTypeColorMap: Record<string, string> = { '药典': 'danger', '教材': 'primary', '古籍': 'warning', '科普': 'info', '期刊': 'success' }
 const getDocTypeColor = (t?: string): string => docTypeColorMap[t || ''] || 'info'
 const getDocTypeLabel = (t?: string): string => {
   const map: Record<string, string> = { '药典': '药典', '教材': '教材', '古籍': '古籍', '科普': '科普', '期刊': '期刊' }
   return map[t || ''] || t || '-'
-}
-
-const entityTypeColorMap: Record<string, string> = { '药材': 'success', '方剂': 'primary', '症状': 'danger', '证候': 'warning' }
-const getEntityTypeColor = (t?: string): string => entityTypeColorMap[t || ''] || 'info'
-
-// ==================== 全部实体 ====================
-const allEntities = ref<EntityOption[]>([])
-
-const fetchAllEntities = async () => {
-  try {
-    const fetchers = [
-      entityApi.herbs.list({ pageSize: 9999 }).then((r: any) => ({ type: '药材', data: resolveList(r) })),
-      entityApi.prescriptions.list({ pageSize: 9999 }).then((r: any) => ({ type: '方剂', data: resolveList(r) })),
-      entityApi.symptoms.list({ pageSize: 9999 }).then((r: any) => ({ type: '症状', data: resolveList(r) })),
-      entityApi.syndromes.list({ pageSize: 9999 }).then((r: any) => ({ type: '证候', data: resolveList(r) }))
-    ]
-    const results = await Promise.all(fetchers)
-    const list: EntityOption[] = []
-    for (const { type, data } of results) {
-      for (const item of data) list.push({ _key: `${type}:${item.id}`, id: item.id, name: item.name, type })
-    }
-    allEntities.value = list
-  } catch (error) { console.error('获取实体数据失败:', error) }
-}
-
-const resolveList = (res: any): any[] => {
-  if (res.code === 200) return res.data?.list ?? res.data?.records ?? []
-  if (Array.isArray(res)) return res
-  if (res.data && Array.isArray(res.data)) return res.data
-  return []
-}
-
-const getEntitiesByType = (type: string): EntityOption[] => {
-  if (!type) return []
-  return allEntities.value.filter((e) => e.type === type)
-}
-
-const getRelatedEntities = (doc: DocumentEntity | null): Array<{ id: string; name: string; type: string }> => {
-  if (!doc?.relatedEntities) return []
-  if (Array.isArray(doc.relatedEntities)) return doc.relatedEntities
-  return []
 }
 
 // ==================== Markdown 工具 ====================
@@ -506,7 +365,7 @@ const loading = ref(false)
 const tableData = ref<DocumentEntity[]>([])
 const selectedRows = ref<DocumentEntity[]>([])
 
-const searchParams = reactive({ keyword: '', type: '', entityType: '' })
+const searchParams = reactive({ keyword: '', type: '' })
 const pagination = reactive({ page: 1, pageSize: 20, total: 0 })
 
 const fetchData = async () => {
@@ -515,8 +374,7 @@ const fetchData = async () => {
     const res: any = await documentApi.list({
       page: pagination.page, pageSize: pagination.pageSize,
       keyword: searchParams.keyword || undefined,
-      type: searchParams.type || undefined,
-      entityType: searchParams.entityType || undefined
+      type: searchParams.type || undefined
     })
     if (res.code === 200) { tableData.value = res.data?.list ?? res.data?.records ?? []; pagination.total = res.data?.total ?? 0 }
     else if (Array.isArray(res)) { tableData.value = res; pagination.total = res.length }
@@ -527,7 +385,7 @@ const fetchData = async () => {
 }
 
 const handleSearch = () => { pagination.page = 1; fetchData() }
-const handleReset = () => { searchParams.keyword = ''; searchParams.type = ''; searchParams.entityType = ''; handleSearch() }
+const handleReset = () => { searchParams.keyword = ''; searchParams.type = ''; handleSearch() }
 const handleSelectionChange = (rows: DocumentEntity[]) => { selectedRows.value = rows }
 
 // ==================== 导出 ====================
@@ -553,7 +411,7 @@ const formRef = ref<FormInstance>()
 const uploadRef = ref()
 const uploadFile = ref<File | null>(null)
 
-const initFormData = () => ({ name: '', type: '', source_detail: '', original_text: '', chapter: '', content: '', source: '', relatedEntities: [] as Association[] })
+const initFormData = () => ({ name: '', type: '', source_detail: '', original_text: '', chapter: '', content: '', source: '' })
 const formData = reactive(initFormData())
 
 const formRules: FormRules = {
@@ -571,20 +429,10 @@ const handleEdit = (row: DocumentEntity) => {
   formData.original_text = (row as any).original_text || row.original_text || ''
   formData.chapter = (row as any).chapter || row.chapter || ''
   formData.source = row.source || ''
-  formData.relatedEntities = Array.isArray(row.relatedEntities) ? row.relatedEntities.map((e) => ({ ...e })) : []
   dialogVisible.value = true
 }
 
 const resetForm = () => { Object.assign(formData, initFormData()); formRef.value?.resetFields(); uploadFile.value = null; uploadRef.value?.clearFiles() }
-
-const addAssociation = () => { formData.relatedEntities.push({ type: '', id: '', name: '' }) }
-const removeAssociation = (index: number) => { formData.relatedEntities.splice(index, 1) }
-
-const onEntitySelect = (index: number, key: string) => {
-  const entity = allEntities.value.find((e) => e._key === key)
-  if (entity) { formData.relatedEntities[index].id = entity.id; formData.relatedEntities[index].name = entity.name }
-}
-const onAssociationTypeChange = (_val: string, entity: Association) => { entity.id = ''; entity.name = '' }
 
 const handleFileChange = (file: any) => { uploadFile.value = file.raw || file }
 const handleFileRemove = () => { uploadFile.value = null }
@@ -595,12 +443,10 @@ const handleSubmit = async () => {
     if (!valid) return
     submitLoading.value = true
     try {
-      const relatedEntities = formData.relatedEntities.filter((e) => e.id && e.name)
       const payload: any = {
         name: formData.name, type: formData.type, content: formData.content,
         source: formData.source, source_detail: formData.source_detail,
-        original_text: formData.original_text, chapter: formData.chapter,
-        relatedEntities
+        original_text: formData.original_text, chapter: formData.chapter
       }
       if (uploadFile.value) {
         try {
@@ -654,7 +500,7 @@ const confirmDelete = async () => {
 }
 
 // ==================== 初始化 ====================
-onMounted(() => { fetchData(); fetchAllEntities() })
+onMounted(fetchData)
 </script>
 
 <style scoped lang="scss">
@@ -724,15 +570,6 @@ $danger-red: #b35c5c;
     :deep(.el-textarea__inner) { border-radius: 0 0 4px 4px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.8; }
   }
 
-  // ===== 关联实体 =====
-  .association-section {
-    width: 100%;
-    .association-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
-    .associated-preview { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
-      .preview-label { font-size: 13px; color: $text-light; }
-    }
-  }
-
   .upload-tip { font-size: 12px; color: $text-light; margin-left: 8px; }
 
   // ===== 查看弹窗 =====
@@ -752,7 +589,6 @@ $danger-red: #b35c5c;
         .original-text-block { margin: 6px 0 0 0; padding: 10px 14px; background: rgba(70, 99, 80, 0.05); border-left: 3px solid $mid-green; border-radius: 4px; font-size: 14px; line-height: 1.8; color: $text-dark; font-style: italic; }
       }
     }
-    .doc-relations { margin-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
     .doc-body { margin-bottom: 16px;
       .markdown-body { padding: 16px; background: $cream-bg; border-radius: 8px; line-height: 1.8; color: $text-dark; font-size: 14px; max-height: 400px; overflow-y: auto; }
     }

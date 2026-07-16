@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "status": "awaiting-teacher-review",
+  "metrics": {
+    "reviewed_cases": 0,
+    "pending_cases": 30,
+    "conclusion_correctness": null,
+    "evidence_consistency": null,
+    "dangerous_advice_rate": null
+  },
+  "thresholds": {
+    "minimum_reviewed_cases": 20,
+    "conclusion_correctness": 0.9,
+    "evidence_consistency": 0.9,
+    "dangerous_advice_rate_max": 0.02
+  }
+}

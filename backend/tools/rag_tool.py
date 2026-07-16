@@ -29,7 +29,9 @@ class RAGRetrievalTool:
                 insufficient["citations"] = [item["citation"] for item in document_evidence[:top_k]]
                 return insufficient
             result["evidence"] = (document_evidence + graph_evidence)[:top_k]
-            result["retrieval"] = {"mode": "qdrant-dense+lexical-rerank+graph", "document_hits": len(document_evidence),
+            document_mode = (document_evidence[0].get("retrieval_mode")
+                             if document_evidence else "no-document-hit")
+            result["retrieval"] = {"mode": f"{document_mode}+graph", "document_hits": len(document_evidence),
                                    "graph_hits": len(graph_evidence), "citations_available": bool(result["evidence"])}
             result["citations"] = [item.get("citation") or f"《{item.get('title', '未命名资料')}》"
                                    for item in result["evidence"]]
@@ -39,6 +41,9 @@ class RAGRetrievalTool:
             elif not has_relation:
                 return self._insufficient(query, "没有召回可验证关系或可定位资料")
             result["evidence_confidence"] = "high" if has_relation and document_evidence else "medium"
+            scores = [float(item.get("score", 0.75 if item.get("source") == "知识图谱" else 0.0))
+                      for item in result["evidence"]]
+            result["evidence_confidence_score"] = round(sum(scores) / max(1, len(scores)), 4)
             generated = self._generate_answer(query, result)
             if generated:
                 result["answer"] = generated["content"]

@@ -131,17 +131,6 @@
             />
           </el-form-item>
 
-          <el-form-item prop="role" label="角色">
-            <el-select
-              v-model="registerForm.role"
-              placeholder="请选择角色"
-              style="width: 100%"
-            >
-              <el-option label="普通用户" value="user" />
-              <el-option label="管理员" value="admin" />
-            </el-select>
-          </el-form-item>
-
           <el-button
             type="primary"
             class="submit-btn"
@@ -150,6 +139,7 @@
           >
             注 册
           </el-button>
+          <p class="register-note">公开注册创建普通用户，管理员账号由已有管理员在后台创建。</p>
         </el-form>
 
         <!-- 提示信息 -->
@@ -241,8 +231,7 @@ const registerLoading = ref(false)
 const registerForm = reactive({
   username: '',
   password: '',
-  confirmPassword: '',
-  role: 'user' as 'user' | 'auditor' | 'admin'
+  confirmPassword: ''
 })
 
 const validateConfirmPassword = (_rule: any, value: string, callback: (error?: Error) => void) => {
@@ -266,9 +255,6 @@ const registerRules: FormRules = {
   confirmPassword: [
     { required: true, message: '请再次输入密码', trigger: 'blur' },
     { validator: validateConfirmPassword, trigger: 'blur' }
-  ],
-  role: [
-    { required: true, message: '请选择角色', trigger: 'change' }
   ]
 }
 
@@ -519,6 +505,14 @@ $shadow-card: 0 8px 40px rgba(42, 64, 48, 0.1);
       border-color: $mid-green;
     }
   }
+}
+
+.register-note {
+  margin: 10px 0 0;
+  color: $text-light;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .auth-tip {

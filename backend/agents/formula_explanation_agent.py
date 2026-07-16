@@ -1,27 +1,14 @@
 from __future__ import annotations
 
-from backend.mock_data.tcm_mock_data import FORMULA_DATA
 from backend.services.local_graphrag_service import Entity, Relation, get_local_graphrag_service
 
 
 class FormulaExplanationAgent:
     """Explain formula composition, effects and teaching notes.
 
-    The original implementation only looked up a tiny mock dictionary, so most
-    formulas returned "暂无 mock 方剂数据" even though the knowledge graph already
-    contained formula entities and formula-herb relations.  This version uses the
-    full local KG first and only falls back to mock data when the KG is missing.
+    Only verified knowledge-graph entities and relationships are used. Unknown
+    formulas return an explicit evidence-insufficient result.
     """
-
-    SUPPLEMENTAL_FORMULA_DATA = {
-        "清胃散": {
-            "name": "清胃散（待入库）",
-            "composition": ["黄连", "生地黄", "牡丹皮", "当归", "升麻"],
-            "effects": ["清胃凉血"],
-            "main_indications": ["胃火炽盛（补充规则）", "胃热上攻（补充规则）"],
-            "notes": "补充教学规则：当前正式知识图谱未收录清胃散及胃火炽盛节点，建议后续入库校验。",
-        }
-    }
 
     def run(self, formulas: list[str]) -> dict:
         print("[FormulaExplanationAgent] start")
@@ -29,7 +16,9 @@ class FormulaExplanationAgent:
         for formula in self._unique(formulas):
             explanation = self._explain_from_kg(formula)
             if explanation is None:
-                explanation = self._explain_from_mock(formula)
+                explanation = {"name": formula, "composition": [], "effects": [],
+                               "main_indications": [], "evidence_status": "insufficient",
+                               "notes": "证据不足：该方剂不在当前正式知识图谱中，未使用非正式数据补全。"}
             explanations.append(explanation)
 
         result = {"formula_explanations": explanations}
@@ -118,25 +107,6 @@ class FormulaExplanationAgent:
         return FormulaExplanationAgent._unique(
             [relation.evidence for relation in relations if relation.evidence]
         )
-
-    @staticmethod
-    def _explain_from_mock(formula: str) -> dict:
-        normalized = formula.replace("（待入库）", "").replace("(待入库)", "").strip()
-        supplemental = FormulaExplanationAgent.SUPPLEMENTAL_FORMULA_DATA.get(normalized)
-        if supplemental:
-            return supplemental
-
-        data = FORMULA_DATA.get(formula)
-        if data:
-            return data
-
-        return {
-            "name": formula,
-            "composition": [],
-            "effects": [],
-            "main_indications": [],
-            "notes": "当前方剂未在本地知识图谱或 mock 方剂库中找到，可后续补充。",
-        }
 
     @staticmethod
     def _unique(values: list[str]) -> list[str]:

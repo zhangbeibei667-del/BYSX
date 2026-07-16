@@ -33,7 +33,17 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     const body = response.data
-    return body && typeof body === 'object' && body.code === 0 ? { ...body, code: 200 } : body
+    if (body && typeof body === 'object' && typeof body.code === 'number') {
+      if (body.code === 0 || body.code === 200) {
+        return body.code === 0 ? { ...body, code: 200 } : body
+      }
+      // 图谱管理接口使用 HTTP 200 + 业务 code 表示失败。必须转成 rejected
+      // Promise，否则注册页会把“用户名已存在”等失败结果显示成注册成功。
+      const applicationError: any = new Error(body.msg || body.message || '请求失败')
+      applicationError.response = { ...response, status: body.code, data: body }
+      return Promise.reject(applicationError)
+    }
+    return body
   },
   (error) => {
     if (error.response?.status === 401) {
@@ -106,9 +116,18 @@ export const chatApi = {
 
 // 图谱接口
 export const graphApi = {
-  // 获取完整图谱
+  // 获取用于画布展示的 100 节点关系子图
   getFullGraph: () => {
-    return api.get<GraphResponse>('/graph/full')
+    return api.get<GraphResponse>('/graph/full', { params: { limit: 100 } })
+  },
+
+  // 获取真实全量统计及路径查询的全部实体选项
+  getOverview: () => {
+    return api.get<{
+      nodeCount: number
+      relationCount: number
+      entities: Array<{ id: string; label: string; type: string }>
+    }>('/graph/overview')
   },
   
   // 搜索实体

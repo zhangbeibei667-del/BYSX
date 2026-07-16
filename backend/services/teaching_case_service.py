@@ -47,3 +47,8 @@ class TeachingCaseService:
             ).fetchall()
         return {"list": [self.get(row["id"]) for row in rows], "total": total}
 
+    def delete(self, case_id: str) -> bool:
+        with get_connection() as conn:
+            cursor = conn.execute("DELETE FROM teaching_cases WHERE id=?", (case_id,))
+            conn.commit()
+        return cursor.rowcount > 0

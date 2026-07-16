@@ -3135,7 +3135,7 @@
     "target_name": "固精缩尿",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H105",
     "source_name": "矮地茶",
     "relation": "具有",
@@ -4103,7 +4103,7 @@
     "target_name": "化痰",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H151",
     "source_name": "车前草",
     "relation": "具有",
@@ -5239,7 +5239,7 @@
     "target_name": "行气止痛",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H201",
     "source_name": "粉萆薢",
     "relation": "具有",
@@ -6319,7 +6319,7 @@
     "target_name": "滋阴润燥",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H251",
     "source_name": "黄药子",
     "relation": "具有",
@@ -7391,7 +7391,7 @@
     "target_name": "活血化瘀",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H301",
     "source_name": "两头尖",
     "relation": "具有",
@@ -8415,7 +8415,7 @@
     "target_name": "行气止痛",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H351",
     "source_name": "牛蒡子",
     "relation": "具有",
@@ -9567,7 +9567,7 @@
     "target_name": "消食和胃",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H401",
     "source_name": "山楂叶",
     "relation": "具有",
@@ -10695,7 +10695,7 @@
     "target_name": "清热解毒",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H451",
     "source_name": "无患子皮",
     "relation": "具有",
@@ -11615,7 +11615,7 @@
     "target_name": "止咳平喘",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H491",
     "source_name": "余甘子",
     "relation": "具有",
@@ -12343,7 +12343,7 @@
     "target_name": "祛风除湿",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H521",
     "source_name": "九香虫",
     "relation": "具有",
@@ -12449,7 +12449,7 @@
   },
   {
     "source_id": "H526",
-    "source_name": "土鳖虫",
+    "source_name": "土鳖虫（䗪虫）",
     "relation": "具有",
     "target_id": "G026",
     "target_name": "活血化瘀",
@@ -12457,7 +12457,7 @@
   },
   {
     "source_id": "H526",
-    "source_name": "土鳖虫",
+    "source_name": "土鳖虫（䗪虫）",
     "relation": "具有",
     "target_id": "G081",
     "target_name": "续筋接骨",
@@ -12809,7 +12809,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "G086",
     "target_name": "开窍醒神",
@@ -12817,7 +12817,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "G017",
     "target_name": "清热解毒",
@@ -12825,7 +12825,7 @@
   },
   {
     "source_id": "H545",
-    "source_name": "天然冰片",
+    "source_name": "天然冰片（右旋龙脑）",
     "relation": "具有",
     "target_id": "G023",
     "target_name": "行气止痛",
@@ -13017,7 +13017,7 @@
   },
   {
     "source_id": "H555",
-    "source_name": "艾片",
+    "source_name": "艾片（左旋龙脑）",
     "relation": "具有",
     "target_id": "G086",
     "target_name": "开窍醒神",
@@ -13025,7 +13025,7 @@
   },
   {
     "source_id": "H555",
-    "source_name": "艾片",
+    "source_name": "艾片（左旋龙脑）",
     "relation": "具有",
     "target_id": "G017",
     "target_name": "清热解毒",
@@ -13127,7 +13127,7 @@
     "target_name": "止血",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H561",
     "source_name": "瓜子金",
     "relation": "具有",
@@ -13401,7 +13401,7 @@
   },
   {
     "source_id": "H573",
-    "source_name": "亚乎奴",
+    "source_name": "亚乎奴（锡生藤）",
     "relation": "具有",
     "target_id": "G026",
     "target_name": "活血化瘀",
@@ -13409,7 +13409,7 @@
   },
   {
     "source_id": "H573",
-    "source_name": "亚乎奴",
+    "source_name": "亚乎奴（锡生藤）",
     "relation": "具有",
     "target_id": "G023",
     "target_name": "行气止痛",
@@ -13633,7 +13633,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "G026",
     "target_name": "活血化瘀",
@@ -13641,7 +13641,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "G023",
     "target_name": "行气止痛",
@@ -13649,7 +13649,7 @@
   },
   {
     "source_id": "H585",
-    "source_name": "灯盏细辛",
+    "source_name": "灯盏细辛（灯盏花）",
     "relation": "具有",
     "target_id": "G039",
     "target_name": "祛风除湿",
@@ -13921,7 +13921,7 @@
   },
   {
     "source_id": "H599",
-    "source_name": "皂矾",
+    "source_name": "皂矾（绿矾）",
     "relation": "具有",
     "target_id": "G002",
     "target_name": "补血",
@@ -13929,7 +13929,7 @@
   },
   {
     "source_id": "H599",
-    "source_name": "皂矾",
+    "source_name": "皂矾（绿矾）",
     "relation": "具有",
     "target_id": "G082",
     "target_name": "杀虫",
@@ -13951,7 +13951,7 @@
     "target_name": "益气健脾",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H601",
     "source_name": "龟甲胶",
     "relation": "具有",
@@ -14767,7 +14767,7 @@
     "target_name": "滋阴润燥",
     "evidence": "《中药学》教材"
   },
-    {
+  {
     "source_id": "H641",
     "source_name": "臭灵丹草",
     "relation": "具有",

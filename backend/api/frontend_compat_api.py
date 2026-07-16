@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import csv
 import io
+import re
 import time
 from datetime import datetime
 from pathlib import Path
@@ -10,6 +11,7 @@ from typing import Any
 
 from fastapi import APIRouter, Body, File, HTTPException, Query, UploadFile
 from fastapi.responses import Response, StreamingResponse
+from openpyxl import Workbook, load_workbook
 from pydantic import BaseModel
 
 from backend.services.agent_service import AgentService
@@ -19,6 +21,7 @@ from backend.services.rag_service import RAGService
 from backend.services.local_graphrag_service import Entity, Relation, get_local_graphrag_service
 from backend.services.teaching_case_service import TeachingCaseService
 from backend.services.llm_client import get_llm_client
+from backend.services.document_service import DocumentService
 
 
 router = APIRouter(prefix="/api", tags=["Frontend compatibility"])
@@ -48,15 +51,19 @@ ENTITY_TYPE_BY_ADMIN_KIND = {
 
 
 def graph_data_root() -> Path:
-    return Path(__file__).resolve().parents[2] / "integrated_entities_graphrag" / "data"
+    return Path(__file__).resolve().parents[2] / "data"
+
+
+def graph_repo_root() -> Path:
+    return Path(__file__).resolve().parents[2]
 
 
 def admin_entities_path() -> Path:
-    return graph_data_root() / "entities" / "entities_admin_supplement.json"
+    return graph_repo_root() / "entities" / "entities_admin_supplement.json"
 
 
 def admin_relations_path() -> Path:
-    return graph_data_root() / "relations" / "relations_admin_supplement.json"
+    return graph_repo_root() / "relations" / "relations_admin_supplement.json"
 
 
 def admin_overlay_path() -> Path:
@@ -174,14 +181,74 @@ def now_iso() -> str:
     return datetime.now().isoformat(timespec="seconds")
 
 
-def entity_to_admin(entity: Entity) -> dict[str, Any]:
-    props = entity.properties or {}
+def build_relation_property_index(service) -> dict[str, dict[str, list[str]]]:
+    """把规范化图谱关系聚合成管理表单需要的可读属性。"""
+    index: dict[str, dict[str, list[str]]] = {}
+    for relation in service.relations:
+        source = service.entities_by_id.get(relation.source_id)
+        target = service.entities_by_id.get(relation.target_id)
+        if source is None or target is None:
+            continue
+        field = ""
+        if relation.relation == "具有" and target.type == "性味":
+            field = "nature_and_flavor"
+        elif relation.relation == "具有" and target.type == "功效":
+            field = "functions" if source.type == "方剂" else "efficacy"
+        elif relation.relation == "归经" and target.type == "归经":
+            field = "channel_tropism"
+        elif relation.relation == "禁忌" and target.type == "禁忌":
+            field = "contraindications"
+        elif relation.relation == "包含" and source.type == "方剂" and target.type == "药材":
+            field = "composition"
+        elif relation.relation == "主治" and target.type in {"疾病", "症状", "证候"}:
+            field = "indications"
+        elif relation.relation == "提示" and source.type == "症状" and target.type == "证候":
+            field = "differentiation"
+        if field:
+            values = index.setdefault(relation.source_id, {}).setdefault(field, [])
+            if target.name not in values:
+                values.append(target.name)
+
+        # 为证候管理页生成反向可读字段，不改变图谱关系方向。
+        if relation.relation == "提示" and source.type == "症状" and target.type == "证候":
+            values = index.setdefault(target.id, {}).setdefault("clinical_manifestations", [])
+            if source.name not in values:
+                values.append(source.name)
+        if relation.relation == "主治" and source.type == "方剂" and target.type == "证候":
+            values = index.setdefault(target.id, {}).setdefault("commonly_used_formulas", [])
+            if source.name not in values:
+                values.append(source.name)
+    return index
+
+
+def entity_to_admin(
+    entity: Entity,
+    relation_properties: dict[str, dict[str, list[str]]] | None = None,
+) -> dict[str, Any]:
+    props = dict(entity.properties or {})
+    for field, values in (relation_properties or {}).get(entity.id, {}).items():
+        if not props.get(field) and values:
+            props[field] = "、".join(values)
+
+    # 药材原始 description 中包含“性味。归经。分类药。”，归经尚未作为
+    # 药材关系单独保存时从原始说明提取，避免管理页丢失已有数据。
+    derived_category = ""
+    if entity.type == "药材" and entity.description:
+        sections = [part.strip() for part in entity.description.split("。") if part.strip()]
+        if sections and not props.get("nature_and_flavor"):
+            props["nature_and_flavor"] = sections[0].replace(",", "、").replace("，", "、")
+        meridian_match = re.search(r"归([^。]+?经)(?:。|$)", entity.description)
+        if meridian_match and not props.get("channel_tropism"):
+            props["channel_tropism"] = meridian_match.group(1).replace(",", "、").replace("，", "、")
+        if len(sections) >= 3 and sections[-1].endswith("药"):
+            derived_category = sections[-1]
+
     return {
         "id": entity.id,
         "name": entity.name,
         "type": entity.type,
         "alias": entity.alias,
-        "category": props.get("category") or entity.type,
+        "category": props.get("category") or derived_category or entity.type,
         "description": entity.description,
         "properties": props,
         "createdAt": props.get("createdAt") or "",
@@ -306,6 +373,11 @@ def get_case(case_id: str) -> dict[str, Any]:
     return ok(case_data)
 
 
+@router.delete("/case/{case_id}")
+def delete_case(case_id: str) -> dict[str, Any]:
+    return ok({"deleted": TeachingCaseService().delete(case_id)})
+
+
 @router.post("/chat/ask")
 def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
     conversations = ConversationService()
@@ -416,18 +488,113 @@ def delete_chat_history(history_id: str) -> dict[str, Any]:
     return ok({"deleted": ConversationService().delete(history_id)})
 
 
-@router.get("/graph/full")
-def full_graph(limit: int = Query(1200, ge=100, le=5000)) -> dict[str, Any]:
+@router.post("/chat/favorite/{history_id}")
+def favorite_chat(history_id: str) -> dict[str, Any]:
+    """收藏状态由前端本地维护；接口用于保持新版前端调用契约完整。"""
+    session = ConversationService().load(history_id)
+    return ok({"id": session["id"], "favorite": True})
+
+
+def literature_item(document: dict[str, Any]) -> dict[str, Any]:
+    return {
+        **document,
+        "id": str(document.get("id", "")),
+        "name": document.get("title", ""),
+        "type": document.get("category", "未分类"),
+    }
+
+
+@router.get("/literature/entity/{entity_id}")
+def literature_by_entity(entity_id: str) -> dict[str, Any]:
+    graph = get_local_graphrag_service()
+    entity = graph.entities_by_id.get(entity_id)
+    terms = [entity_id]
+    if entity:
+        terms.extend([entity.name, entity.alias])
+    documents = DocumentService().list_documents(limit=100, offset=0)
+    items = [
+        literature_item(document)
+        for document in documents
+        if any(term and term in f"{document.get('title', '')}\n{document.get('content', '')}" for term in terms)
+    ]
+    return ok({"list": items, "total": len(items)})
+
+
+@router.get("/literature/search")
+def search_literature(keyword: str = "") -> dict[str, Any]:
+    documents = DocumentService().list_documents(limit=100, offset=0)
+    items = [
+        literature_item(document)
+        for document in documents
+        if not keyword or keyword in f"{document.get('title', '')}\n{document.get('source', '')}\n{document.get('content', '')}"
+    ]
+    return ok({"list": items, "total": len(items)})
+
+
+@router.get("/literature/{document_id}")
+def literature_detail(document_id: int) -> dict[str, Any]:
+    document = DocumentService().get_document(document_id)
+    if document is None:
+        raise HTTPException(status_code=404, detail="literature not found")
+    return ok(literature_item(document))
+
+
+@router.get("/graph/overview")
+def graph_overview() -> dict[str, Any]:
+    """返回真实全量统计和路径查询所需的全部实体轻量选项。"""
     service = get_local_graphrag_service()
-    # Keep a readable demo graph: include all non-disease nodes first, then cap.
-    entities = [e for e in service.entities if e.type != "疾病"][:limit]
+    return {
+        "nodeCount": len(service.entities),
+        "relationCount": len(service.relations),
+        "entities": [
+            {"id": entity.id, "label": entity.name, "type": entity.type}
+            for entity in service.entities
+        ],
+    }
+
+
+@router.get("/graph/full")
+def full_graph(limit: int = Query(100, ge=20, le=500)) -> dict[str, Any]:
+    service = get_local_graphrag_service()
+    # 画布只展示一个关系密集且类型均衡的子图；全量统计与路径选项由
+    # /graph/overview 单独提供，避免数千节点进入力导向布局。
+    visible_types = {"药材", "方剂", "症状", "证候"}
+    degree: dict[str, int] = {}
+    for relation in service.relations:
+        degree[relation.source_id] = degree.get(relation.source_id, 0) + 1
+        degree[relation.target_id] = degree.get(relation.target_id, 0) + 1
+
+    ratios = {"药材": 0.4, "方剂": 0.2, "症状": 0.2, "证候": 0.2}
+    entities = []
+    selected_ids: set[str] = set()
+    for entity_type, ratio in ratios.items():
+        quota = max(1, int(limit * ratio))
+        candidates = sorted(
+            (entity for entity in service.entities if entity.type == entity_type),
+            key=lambda entity: (-degree.get(entity.id, 0), entity.id),
+        )
+        for entity in candidates[:quota]:
+            entities.append(entity)
+            selected_ids.add(entity.id)
+
+    if len(entities) < limit:
+        remaining = sorted(
+            (
+                entity
+                for entity in service.entities
+                if entity.type in visible_types and entity.id not in selected_ids
+            ),
+            key=lambda entity: (-degree.get(entity.id, 0), entity.id),
+        )
+        entities.extend(remaining[: limit - len(entities)])
+
     ids = {entity.id for entity in entities}
     nodes = [{"id": e.id, "label": e.name, "type": e.type, "properties": e.properties or {}} for e in entities]
     edges = [
         {"source": r.source_id, "target": r.target_id, "label": r.relation, "properties": {"evidence": r.evidence}}
         for r in service.relations
         if r.source_id in ids and r.target_id in ids
-    ][: limit * 2]
+    ][: limit * 5]
     return graph_response(nodes, edges)
 
 
@@ -468,7 +635,7 @@ def entity_detail(entity_id: str) -> dict[str, Any]:
     entity = service.entities_by_id.get(entity_id)
     if not entity:
         raise HTTPException(status_code=404, detail="entity not found")
-    return ok(entity_to_admin(entity))
+    return ok(entity_to_admin(entity, build_relation_property_index(service)))
 
 
 @router.get("/graph/related/{entity_id}")
@@ -494,13 +661,17 @@ def graph_path(sourceId: str, targetId: str) -> dict[str, Any]:
 
 def list_entities_by_type(entity_type: str, page: int = 1, pageSize: int = 20, name: str | None = None) -> dict[str, Any]:
     service = get_local_graphrag_service()
-    items = [
-        entity_to_admin(entity)
-        for entity in service.entities
+    entities = [
+        entity for entity in service.entities
         if entity.type == entity_type and (not name or name in entity.name)
     ]
     start = (page - 1) * pageSize
-    return ok({"list": items[start : start + pageSize], "total": len(items)})
+    relation_properties = build_relation_property_index(service)
+    items = [
+        entity_to_admin(entity, relation_properties)
+        for entity in entities[start : start + pageSize]
+    ]
+    return ok({"list": items, "total": len(entities)})
 
 
 def create_entity(kind: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -569,19 +740,40 @@ async def import_entities(kind: str, file: UploadFile) -> dict[str, Any]:
     filename = file.filename or ""
     rows: list[dict[str, Any]] = []
 
-    if filename.lower().endswith(".json"):
-        data = json.loads(content.decode("utf-8-sig"))
-        if isinstance(data, dict):
-            rows = data.get("entities") or data.get("list") or []
-        elif isinstance(data, list):
-            rows = data
-    else:
-        text = content.decode("utf-8-sig")
-        rows = list(csv.DictReader(io.StringIO(text)))
+    try:
+        if filename.lower().endswith(".xlsx"):
+            workbook = load_workbook(io.BytesIO(content), read_only=True, data_only=True)
+            worksheet = workbook.active
+            values = worksheet.iter_rows(values_only=True)
+            raw_headers = next(values, ())
+            headers = [str(value).strip() if value is not None else "" for value in raw_headers]
+            rows = [
+                {header: value for header, value in zip(headers, row) if header}
+                for row in values
+                if any(value not in (None, "") for value in row)
+            ]
+            workbook.close()
+        elif filename.lower().endswith(".json"):
+            data = json.loads(content.decode("utf-8-sig"))
+            if isinstance(data, dict):
+                rows = data.get("entities") or data.get("list") or []
+            elif isinstance(data, list):
+                rows = data
+        elif filename.lower().endswith(".csv"):
+            text = content.decode("utf-8-sig")
+            rows = list(csv.DictReader(io.StringIO(text)))
+        else:
+            raise HTTPException(status_code=400, detail="仅支持 .xlsx、.csv 或 .json 文件")
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=f"无法解析导入文件：{exc}") from exc
 
     existing = {entity.get("id"): entity for entity in read_admin_entities()}
     imported = 0
-    for row in rows:
+    errors: list[dict[str, Any]] = []
+    imported_ids: set[str] = set()
+    for row_number, row in enumerate(rows, start=2):
         if not isinstance(row, dict):
             continue
         payload = {
@@ -594,17 +786,37 @@ async def import_entities(kind: str, file: UploadFile) -> dict[str, Any]:
         }
         item = entity_payload_to_item(payload, entity_type, prefix)
         if not item["name"]:
+            errors.append({"row": row_number, "field": "name", "message": "名称不能为空"})
             continue
         existing[item["id"]] = item
+        imported_ids.add(item["id"])
         imported += 1
     write_admin_entities(list(existing.values()))
-    return ok({"imported": imported})
+
+    if imported_ids:
+        overlay = read_admin_overlay()
+        overlay["deleted_entity_ids"] = [
+            entity_id for entity_id in overlay["deleted_entity_ids"] if entity_id not in imported_ids
+        ]
+        write_admin_overlay(overlay)
+
+    return ok({
+        "imported": imported,
+        "total": len(rows),
+        "successCount": imported,
+        "errorCount": len(errors),
+        "errors": errors,
+    })
 
 
 def export_entities(kind: str) -> Response:
     entity_type, _prefix = ENTITY_TYPE_BY_ADMIN_KIND[kind]
     service = get_local_graphrag_service()
-    rows = [entity_to_admin(entity) for entity in service.entities if entity.type == entity_type]
+    relation_properties = build_relation_property_index(service)
+    rows = [
+        entity_to_admin(entity, relation_properties)
+        for entity in service.entities if entity.type == entity_type
+    ]
     output = io.StringIO()
     writer = csv.DictWriter(output, fieldnames=["id", "name", "type", "alias", "category", "description"])
     writer.writeheader()
@@ -618,14 +830,43 @@ def export_entities(kind: str) -> Response:
 
 
 def template_entities(kind: str) -> Response:
-    output = io.StringIO()
-    writer = csv.DictWriter(output, fieldnames=["id", "name", "alias", "category", "description"])
-    writer.writeheader()
-    writer.writerow({"id": "", "name": "示例名称", "alias": "", "category": "", "description": "示例描述"})
+    fields_by_kind = {
+        "herbs": [
+            "id", "name", "alias", "category", "description", "nature_and_flavor",
+            "channel_tropism", "efficacy", "indications", "usage_dosage",
+            "contraindications", "processing_method",
+        ],
+        "prescriptions": [
+            "id", "name", "alias", "category", "description", "composition", "functions",
+            "indications", "preparation", "usage_dosage", "contraindications", "modern_application",
+        ],
+        "symptoms": [
+            "id", "name", "alias", "category", "description", "body_part", "nature",
+            "differentiation", "associated_symptoms",
+        ],
+        "syndromes": [
+            "id", "name", "alias", "category", "description", "clinical_manifestations",
+            "commonly_used_formulas", "pathogenesis", "treatment_principle",
+        ],
+    }
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.title = "import_template"
+    fields = fields_by_kind[kind]
+    worksheet.append(fields)
+    worksheet.append(["", "示例名称", "", "", "示例描述"] + [""] * (len(fields) - 5))
+    worksheet.freeze_panes = "A2"
+    worksheet.auto_filter.ref = f"A1:{worksheet.cell(row=1, column=len(fields)).column_letter}2"
+    for column in worksheet.columns:
+        worksheet.column_dimensions[column[0].column_letter].width = max(14, len(str(column[0].value)) + 2)
+
+    output = io.BytesIO()
+    workbook.save(output)
+    workbook.close()
     return Response(
-        content=output.getvalue().encode("utf-8-sig"),
-        media_type="text/csv",
-        headers={"Content-Disposition": f'attachment; filename="{kind}_template.csv"'},
+        content=output.getvalue(),
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        headers={"Content-Disposition": f'attachment; filename="{kind}_template.xlsx"'},
     )
 
 

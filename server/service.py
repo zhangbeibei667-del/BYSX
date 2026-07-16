@@ -4,6 +4,7 @@ API 层只负责收发 HTTP，不写业务逻辑。
 """
 import csv
 import io
+import json
 from typing import Any, Dict, List, Optional, Tuple
 
 try:
@@ -20,7 +21,11 @@ except ImportError:
     from store_base import GraphStore
 
 RESERVED_ENTITY_COLS = {"id", "name", "type", "alias", "description"}
-RELATION_COLS = ["source_id", "source_name", "relation", "target_id", "target_name", "evidence"]
+RELATION_COLS = [
+    "source_id", "source_name", "relation", "target_id", "target_name",
+    "evidence", "evidence_level", "confidence", "locator", "excerpt",
+    "version", "review_status",
+]
 
 
 class GraphService:
@@ -122,9 +127,13 @@ class GraphService:
         tgt = self._resolve(payload.target_id, payload.target_name, "target")
         if src.id == tgt.id:
             raise ValueError("不允许自环关系")
-        validate_relation(payload.relation, src.type, tgt.type)
+        validate_relation(payload.relation, src.type, tgt.type, strict=True)
         r = Relation(source_id=src.id, source_name=src.name, relation=payload.relation,
-                     target_id=tgt.id, target_name=tgt.name, evidence=payload.evidence)
+                     target_id=tgt.id, target_name=tgt.name,
+                     evidence=payload.evidence, evidence_level=payload.evidence_level,
+                     confidence=payload.confidence, locator=payload.locator,
+                     excerpt=payload.excerpt, version=payload.version,
+                     review_status=payload.review_status)
         result = self.store.upsert_relation(r)
         self._log("create", "relation", f"{src.id}|{r.relation}|{tgt.id}",
                   f"{src.name}-{r.relation}->{tgt.name}", after=r.model_dump())
@@ -146,11 +155,24 @@ class GraphService:
             raise ValueError("不允许自环关系")
 
         new_rel = new_data.get("relation", old_relation)
-        validate_relation(new_rel, src.type, tgt.type)
-        new_ev = new_data.get("evidence", "")
+        validate_relation(new_rel, src.type, tgt.type, strict=True)
+        _, old_items = self.store.list_relations(old_source, old_target, old_relation, 1, 1)
+        old_item = old_items[0] if old_items else None
+
+        def relation_value(name: str, default):
+            if name in new_data:
+                return new_data[name]
+            return getattr(old_item, name, default) if old_item else default
 
         r = Relation(source_id=src.id, source_name=src.name, relation=new_rel,
-                     target_id=tgt.id, target_name=tgt.name, evidence=new_ev)
+                     target_id=tgt.id, target_name=tgt.name,
+                     evidence=relation_value("evidence", ""),
+                     evidence_level=relation_value("evidence_level", "E_待验证"),
+                     confidence=relation_value("confidence", 0.5),
+                     locator=relation_value("locator", {}),
+                     excerpt=relation_value("excerpt", ""),
+                     version=relation_value("version", "1.0"),
+                     review_status=relation_value("review_status", "draft"))
 
         key_changed = (old_source != src.id or old_relation != new_rel
                        or old_target != tgt.id)
@@ -294,7 +316,7 @@ class GraphService:
                 if not payload.id:
                     payload.id = self.store.next_id(payload.type)
 
-                validate_entity_type(payload.type)
+                validate_entity_type(payload.type, strict=strict)
                 resolved.append(Entity(**payload.model_dump()))
                 res.success += 1
             except Exception as ex:
@@ -327,17 +349,25 @@ class GraphService:
                 target_name = row.get("target_name") or None
                 rel_type = row["relation"]
                 evidence = row.get("evidence", "")
+                locator_raw = row.get("locator", "")
+                locator = json.loads(locator_raw) if locator_raw else {}
 
                 src = self._resolve(source_id, source_name, "source")
                 tgt = self._resolve(target_id, target_name, "target")
                 if src.id == tgt.id:
                     raise ValueError("不允许自环关系")
-                validate_relation(rel_type, src.type, tgt.type)
+                validate_relation(rel_type, src.type, tgt.type, strict=strict)
 
                 resolved.append(Relation(
                     source_id=src.id, source_name=src.name,
                     relation=rel_type, target_id=tgt.id, target_name=tgt.name,
-                    evidence=evidence))
+                    evidence=evidence,
+                    evidence_level=row.get("evidence_level") or "E_待验证",
+                    confidence=float(row.get("confidence") or 0.5),
+                    locator=locator,
+                    excerpt=row.get("excerpt", ""),
+                    version=row.get("version") or "1.0",
+                    review_status=row.get("review_status") or "draft"))
                 res.success += 1
             except Exception as ex:
                 res.failed += 1

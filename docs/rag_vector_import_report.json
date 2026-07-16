@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "collection": "tcm_documents_v5",
+  "provider": "dashscope",
+  "model": "text-embedding-v4",
+  "dimensions": 1024,
+  "sqlite_chunks": 1567,
+  "corpus_records": 7951,
+  "expected_points": 9518,
+  "actual_points": 9518,
+  "corpus_sha256": "bf354abc9443ad516623c6e6db52be482143af9a68650d727bde2569799428a0"
+}

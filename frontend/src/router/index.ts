@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { authApi } from '@/api'
 
 // 前台布局
 import FrontLayout from '@/layouts/FrontLayout.vue'
@@ -113,47 +114,37 @@ const router = createRouter({
   ]
 })
 
-// 路由守卫 - 权限检查
-router.beforeEach((to, _from, next) => {
+// 路由守卫：受保护页面必须使用后端校验过的 token，后台仅管理员可进入。
+router.beforeEach(async (to) => {
   const token = localStorage.getItem('admin_token')
-  const isAuthenticated = !!token
-
-  // 检查目标路由是否需要认证
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   if (requiresAuth) {
-    if (!isAuthenticated) {
-      // 无 token，跳转登录页并携带 redirect 参数
-      next('/login?redirect=' + encodeURIComponent(to.fullPath))
-      return
+    if (!token) {
+      return { path: '/login', query: { redirect: to.fullPath } }
     }
 
-    // 访问后台页面时检查是否有有效的用户信息（admin 和 user 均可访问）
-    if (to.path.startsWith('/admin')) {
-      const userInfoStr = localStorage.getItem('user_info')
-      if (!userInfoStr) {
-        next('/')
-        return
+    try {
+      const response: any = await authApi.getCurrentUser()
+      const user = response?.data || response
+      if (!user?.username || !user?.role) {
+        throw new Error('用户信息无效')
       }
-      try {
-        const userInfo = JSON.parse(userInfoStr)
-        if (userInfo.role !== 'admin' && userInfo.role !== 'user') {
-          next('/')
-          return
-        }
-      } catch {
-        next('/')
-        return
-      }
-    }
+      localStorage.setItem('user_info', JSON.stringify(user))
 
-    next()
-  } else if (to.path === '/login' && isAuthenticated) {
-    // 已登录用户访问登录页，自动跳转首页
-    next('/')
-  } else {
-    next()
+      if (to.path.startsWith('/admin') && user.role !== 'admin') {
+        return { path: '/', query: { forbidden: 'admin' } }
+      }
+    } catch {
+      localStorage.removeItem('admin_token')
+      localStorage.removeItem('user_info')
+      return { path: '/login', query: { redirect: to.fullPath } }
+    }
+  } else if (to.path === '/login' && token) {
+    return '/'
   }
+
+  return true
 })
 
 export default router

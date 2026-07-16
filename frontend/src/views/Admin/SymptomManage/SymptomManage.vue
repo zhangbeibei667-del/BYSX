@@ -79,11 +79,6 @@
             {{ row.description || row.properties?.nature || '-' }}
           </template>
         </el-table-column>
-        <el-table-column label="部位" width="100" align="center">
-          <template #default="{ row }">
-            {{ row.properties?.body_part || '-' }}
-          </template>
-        </el-table-column>
         <el-table-column label="辨证要点" min-width="160" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.differentiation || '-' }}
@@ -281,11 +276,6 @@
           <el-table-column prop="id" label="编号" width="90" align="center" />
           <el-table-column prop="name" label="证候名称" width="140" align="center" />
           <el-table-column prop="category" label="分类" width="100" align="center" />
-          <el-table-column label="病机" min-width="180" show-overflow-tooltip>
-            <template #default="{ row }">
-              {{ row.properties?.pathogenesis || '-' }}
-            </template>
-          </el-table-column>
         </el-table>
       </div>
       <template #footer>
@@ -608,7 +598,14 @@ const showRelatedSyndromes = async (row: SymptomEntity) => {
   try {
     const res: any = await graphApi.getRelatedEntities(row.id, 1)
     const nodes: any[] = res?.nodes ?? res?.data?.nodes ?? []
-    relatedSyndromes.value = nodes.filter((n: any) => n.type === '证候')
+    relatedSyndromes.value = nodes
+      .filter((n: any) => n.type === '证候')
+      .map((n: any) => ({
+        ...n,
+        // 图谱接口使用 label/type，管理表格使用 name/category。
+        name: n.name || n.label || '',
+        category: n.category || n.type || '',
+      }))
   } catch (error) {
     console.error('获取关联证候失败:', error)
     ElMessage.error('获取关联证候失败')

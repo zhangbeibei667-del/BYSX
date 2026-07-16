@@ -80,7 +80,7 @@ curl -X POST "http://127.0.0.1:8000/api/sql/query" ^
 ```bash
 curl -X POST "http://127.0.0.1:8000/api/documents" ^
   -H "Content-Type: application/json" ^
-  -d "{\"title\":\"归脾汤资料\",\"source\":\"mock\",\"content\":\"归脾汤用于课程设计资料管理测试。\"}"
+  -d "{\"title\":\"归脾汤资料\",\"source\":\"方剂学课程资料\",\"content\":\"归脾汤用于课程设计资料管理测试。\"}"
 ```
 
 查询历史：
@@ -114,10 +114,9 @@ from agents.orchestrator_agent import TCMTeachingOrchestratorAgent
 
 ## 后续真实接口替换点
 
-- `backend/services/graph_client.py`：替换真实知识图谱服务。
 - `backend/services/rag_service.py`：替换真实向量库、GraphRAG 或文档检索服务。
 - `backend/services/sql_service.py`：替换真实图谱数据 SQL Agent。
 - `backend/services/document_service.py`：后续可接对象存储、文档解析、切片入库。
 - `backend/services/agent_service.py`：保留统一入口，继续调用已有 Agent 总控。
 
-当前 RAG、SQL、GraphClient 仍是 mock，但接口路径和返回结构已经固定，前端可以先对接。
+当前 RAG 已统一接入正式知识图谱、SQLite 文档库和 Qdrant；SQL Agent 使用只读 MySQL/SQLite，图谱查询使用根目录正式实体与关系数据。

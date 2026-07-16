@@ -116,12 +116,14 @@ class TestRelationUpdate(unittest.TestCase):
     def test_update_source_and_relation(self):
         """同时改 source 和 relation：键变化。"""
         f2 = self.svc.create_entity(EntityCreate(name='四君子汤', type='方剂'))
+        s1 = self.svc.create_entity(EntityCreate(name='食少乏力', type='症状'))
         updated = self.svc.update_relation(
             self.f1.id, '包含', self.h1.id,
             {'source_id': f2.id, 'relation': '主治',
-             'target_id': self.h1.id})
+             'target_id': s1.id})
         self.assertEqual(updated.source_id, f2.id)
         self.assertEqual(updated.relation, '主治')
+        self.assertEqual(updated.target_id, s1.id)
         # 验证只有一条关系存在
         _, all_rels = self.svc.list_relations()
         self.assertEqual(len(all_rels), 1)

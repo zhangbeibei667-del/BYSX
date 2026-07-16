@@ -26,10 +26,10 @@ app.include_router(router)
 @app.on_event("startup")
 def _ensure_admin():
     try:
-        from server.init_admin import ensure_admin
+        from server.bootstrap import initialize_graph_management
     except ImportError:
-        from init_admin import ensure_admin
-    ensure_admin()
+        from bootstrap import initialize_graph_management
+    initialize_graph_management()
 
 
 FRONT = os.path.join(os.path.dirname(__file__), "..", "view", "graph_viewer.html")
@@ -53,6 +53,6 @@ if __name__ == "__main__":
         sys.path.insert(0, _root)
     # reload 需要 import string；根据 CWD 选择正确的模块路径
     if os.path.basename(os.getcwd()) == "server":
-        uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+        uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)
     else:
-        uvicorn.run("server.main:app", host="0.0.0.0", port=8000, reload=True)
+        uvicorn.run("server.main:app", host="0.0.0.0", port=8001, reload=True)

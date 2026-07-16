@@ -1,0 +1,249 @@
+{
+  "quality_gate": {
+    "passed": true,
+    "critical": {
+      "duplicate_entity_ids": 0,
+      "duplicate_relations": 0,
+      "dangling_relations": 0,
+      "missing_evidence": 0,
+      "invalid_relation_constraints": 0
+    },
+    "warnings": {
+      "endpoint_name_mismatches": 0
+    },
+    "summary": {
+      "entities": 2041,
+      "relations": 9357,
+      "evidence_coverage": 1.0,
+      "entity_types": {
+        "功效": 100,
+        "归经": 12,
+        "性味": 24,
+        "文献": 51,
+        "方剂": 100,
+        "疾病": 227,
+        "症状": 260,
+        "禁忌": 300,
+        "药材": 705,
+        "证候": 262
+      },
+      "relation_types": {
+        "主治": 200,
+        "具有": 3886,
+        "包含": 595,
+        "常见证候": 858,
+        "归经": 188,
+        "提示": 997,
+        "来源于": 1725,
+        "禁忌": 847,
+        "记载": 61
+      },
+      "evidence_levels": {
+        "A_权威教材": 2568,
+        "B_药典标准": 61,
+        "E_待验证": 17,
+        "未标注": 6711
+      },
+      "diseases": 227,
+      "diseases_with_syndrome_relations": 227
+    }
+  },
+  "kg": {
+    "entities": 2041,
+    "relations": 9357,
+    "entities_with_relations": 2036,
+    "relation_coverage": 0.9976,
+    "relations_with_evidence": 9357,
+    "evidence_coverage": 1.0,
+    "by_type": {
+      "禁忌": {
+        "entities": 300,
+        "related": 300,
+        "coverage": 1.0
+      },
+      "疾病": {
+        "entities": 227,
+        "related": 227,
+        "coverage": 1.0
+      },
+      "功效": {
+        "entities": 100,
+        "related": 100,
+        "coverage": 1.0
+      },
+      "性味": {
+        "entities": 24,
+        "related": 24,
+        "coverage": 1.0
+      },
+      "药材": {
+        "entities": 705,
+        "related": 705,
+        "coverage": 1.0
+      },
+      "文献": {
+        "entities": 51,
+        "related": 46,
+        "coverage": 0.902
+      },
+      "归经": {
+        "entities": 12,
+        "related": 12,
+        "coverage": 1.0
+      },
+      "方剂": {
+        "entities": 100,
+        "related": 100,
+        "coverage": 1.0
+      },
+      "症状": {
+        "entities": 260,
+        "related": 260,
+        "coverage": 1.0
+      },
+      "证候": {
+        "entities": 262,
+        "related": 262,
+        "coverage": 1.0
+      }
+    }
+  },
+  "corpus": {
+    "categories": [
+      {
+        "category": "教材",
+        "documents": 100,
+        "chunks": 100
+      },
+      {
+        "category": "方剂说明",
+        "documents": 100,
+        "chunks": 100
+      },
+      {
+        "category": "科普资料",
+        "documents": 662,
+        "chunks": 662
+      },
+      {
+        "category": "药典",
+        "documents": 738,
+        "chunks": 2222
+      }
+    ],
+    "required_categories": [
+      "教材",
+      "药典",
+      "方剂说明",
+      "科普资料"
+    ],
+    "source_corpora": [
+      {
+        "path": "member3\\data\\processed\\rag_corpus_clean.jsonl",
+        "exists": true,
+        "records": 7951,
+        "sha256": "bf354abc9443ad516623c6e6db52be482143af9a68650d727bde2569799428a0",
+        "bytes": 12825899
+      },
+      {
+        "path": "member3\\data\\pharmacopoeia\\processed\\hkcmms\\index_ready\\chunks_for_milvus.jsonl",
+        "exists": true,
+        "records": 1094,
+        "sha256": "c1586c63cb7815c93685813d0cccfe08a62192dee5397b0f6ac6bf57a020e334",
+        "bytes": 2392329
+      }
+    ],
+    "ready": true
+  },
+  "vector_database": {
+    "status": "ready",
+    "configured": true,
+    "deployment": "remote-service",
+    "url": "http://127.0.0.1:6333",
+    "collection": "tcm_documents_v5",
+    "embedding_provider": "dashscope",
+    "model": "text-embedding-v4",
+    "dimensions": 1024,
+    "query_embedding_available": false,
+    "points": 9518,
+    "expected_points": 11035,
+    "corpus_fully_indexed": false,
+    "semantic_embeddings": true,
+    "active_backend": "qdrant",
+    "external_backends": {
+      "qdrant": {
+        "status": "ready",
+        "configured": true,
+        "deployment": "remote-service",
+        "url": "http://127.0.0.1:6333",
+        "collection": "tcm_documents_v5",
+        "embedding_provider": "dashscope",
+        "model": "text-embedding-v4",
+        "dimensions": 1024,
+        "query_embedding_available": false,
+        "points": 9518,
+        "expected_points": 11035,
+        "corpus_fully_indexed": false,
+        "semantic_embeddings": true
+      },
+      "milvus": {
+        "status": "disabled",
+        "configured": false,
+        "uri": "http://127.0.0.1:19530",
+        "collection": "tcm_rag_chunks",
+        "import_artifact": {
+          "path": "member3\\data\\pharmacopoeia\\processed\\hkcmms\\index_ready\\chunks_for_milvus.jsonl",
+          "exists": true,
+          "records": 1094,
+          "sha256": "c1586c63cb7815c93685813d0cccfe08a62192dee5397b0f6ac6bf57a020e334",
+          "bytes": 2392329
+        }
+      }
+    }
+  },
+  "runtime": {
+    "llm": {
+      "provider": "aliyun-bailian",
+      "enabled": false,
+      "configured": false,
+      "available": false,
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "model": "qwen-plus",
+      "last_error": "",
+      "status": "disabled"
+    },
+    "milvus": {
+      "status": "disabled",
+      "configured": false,
+      "uri": "http://127.0.0.1:19530",
+      "collection": "tcm_rag_chunks",
+      "import_artifact": {
+        "path": "member3\\data\\pharmacopoeia\\processed\\hkcmms\\index_ready\\chunks_for_milvus.jsonl",
+        "exists": true,
+        "records": 1094,
+        "sha256": "c1586c63cb7815c93685813d0cccfe08a62192dee5397b0f6ac6bf57a020e334",
+        "bytes": 2392329
+      }
+    },
+    "qdrant": {
+      "status": "ready",
+      "configured": true,
+      "deployment": "remote-service",
+      "url": "http://127.0.0.1:6333",
+      "collection": "tcm_documents_v5",
+      "embedding_provider": "dashscope",
+      "model": "text-embedding-v4",
+      "dimensions": 1024,
+      "query_embedding_available": false,
+      "points": 9518,
+      "expected_points": 11035,
+      "corpus_fully_indexed": false,
+      "semantic_embeddings": true
+    }
+  },
+  "known_data_limits": [
+    "疾病、药材与证候关系以根目录正式图谱中可验证的数据为准，不能据此宣称覆盖全部临床关联。",
+    "药典资料为项目整理的来源索引，不等同于《中国药典》全文授权数据库。",
+    "系统对缺少有依据关系的查询执行证据不足提示，不自动编造关系。"
+  ]
+}

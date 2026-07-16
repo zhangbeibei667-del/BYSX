@@ -3440,14 +3440,6 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F066",
-    "source_name": "失笑散",
-    "relation": "包含",
-    "target_id": "H361",
-    "target_name": "蒲黄",
-    "evidence": "《方剂学》教材"
-  },
-  {
     "source_id": "F067",
     "source_name": "丹参饮",
     "relation": "包含",
@@ -4416,7 +4408,7 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F090",
+    "source_id": "F003",
     "source_name": "参苓白术散",
     "relation": "包含",
     "target_id": "H001",
@@ -4424,55 +4416,7 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H006",
-    "target_name": "白术",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H034",
-    "target_name": "茯苓",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H007",
-    "target_name": "山药",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H037",
-    "target_name": "薏苡仁",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H044",
-    "target_name": "砂仁",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H086",
-    "target_name": "桔梗",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
+    "source_id": "F003",
     "source_name": "参苓白术散",
     "relation": "包含",
     "target_id": "H113",
@@ -4480,19 +4424,11 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F090",
+    "source_id": "F003",
     "source_name": "参苓白术散",
     "relation": "包含",
     "target_id": "H638",
     "target_name": "莲子",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F090",
-    "source_name": "参苓白术散",
-    "relation": "包含",
-    "target_id": "H008",
-    "target_name": "甘草",
     "evidence": "《方剂学》教材"
   },
   {
@@ -4632,31 +4568,7 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H068",
-    "target_name": "龙胆",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H065",
-    "target_name": "黄芩",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H064",
-    "target_name": "栀子",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
+    "source_id": "F023",
     "source_name": "龙胆泻肝汤",
     "relation": "包含",
     "target_id": "H036",
@@ -4664,7 +4576,7 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F094",
+    "source_id": "F023",
     "source_name": "龙胆泻肝汤",
     "relation": "包含",
     "target_id": "H342",
@@ -4672,43 +4584,11 @@
     "evidence": "《方剂学》教材"
   },
   {
-    "source_id": "F094",
+    "source_id": "F023",
     "source_name": "龙胆泻肝汤",
     "relation": "包含",
     "target_id": "H038",
     "target_name": "车前子",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H011",
-    "target_name": "当归",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H069",
-    "target_name": "生地黄",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H059",
-    "target_name": "柴胡",
-    "evidence": "《方剂学》教材"
-  },
-  {
-    "source_id": "F094",
-    "source_name": "龙胆泻肝汤",
-    "relation": "包含",
-    "target_id": "H008",
-    "target_name": "甘草",
     "evidence": "《方剂学》教材"
   },
   {

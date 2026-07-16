@@ -1,0 +1,3874 @@
+{
+  "passed": true,
+  "total_cases": 120,
+  "top_k": 5,
+  "metrics": {
+    "document_hit_rate": 1.0,
+    "recall_at_5": 1.0,
+    "mrr": 1.0,
+    "category_match_rate": 1.0,
+    "source_match_rate": 1.0,
+    "citation_locatable_rate": 1.0,
+    "case_pass_rate": 1.0
+  },
+  "thresholds": {
+    "document_hit_rate": 1.0,
+    "recall_at_5": 0.9,
+    "mrr": 0.75,
+    "category_match_rate": 0.9,
+    "source_match_rate": 0.95,
+    "citation_locatable_rate": 1.0,
+    "case_pass_rate": 0.85
+  },
+  "gates": {
+    "document_hit_rate": true,
+    "recall_at_5": true,
+    "mrr": true,
+    "category_match_rate": true,
+    "source_match_rate": true,
+    "citation_locatable_rate": true,
+    "case_pass_rate": true
+  },
+  "results": [
+    {
+      "id": "rag_qg_001",
+      "query": "什么类型的胆囊结石可不作治疗？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_1240",
+          "title": "TCM-QG 文档 1240",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 1240》，literature_qa（片段 TCMQG_1240）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_002",
+      "query": "起搏器类型有什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_1282",
+          "title": "TCM-QG 文档 1282",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 1282》，literature_qa（片段 TCMQG_1282）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_003",
+      "query": "足少阴之别，名曰大钟。当踝后绕跟，别走太阳；其别者，并经上走于心包下，外贯腰脊。其病气逆则烦闷，实则闭癃，虚则腰痛。取之所别者也。\"出自哪里？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_675",
+          "title": "TCM-QG 文档 675",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 675》，literature_qa（片段 TCMQG_675）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_004",
+      "query": "50公斤体重的妇女每天所需要的热量为多少？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_1251",
+          "title": "TCM-QG 文档 1251",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 1251》，literature_qa（片段 TCMQG_1251）"
+        },
+        {
+          "id": "doc-1592-chunk-18",
+          "title": "HKCMMS《黃芪》",
+          "source": "香港中药材标准（HKCMMS）",
+          "category": "药典",
+          "score": 0.304,
+          "citation": "《HKCMMS《黃芪》》，黃芪 / 供試品溶液 / 第 3 页（片段 19）"
+        },
+        {
+          "id": "doc-1588-chunk-9",
+          "title": "HKCMMS《佩蘭》",
+          "source": "香港中药材标准（HKCMMS）",
+          "category": "药典",
+          "score": 0.3008,
+          "citation": "《HKCMMS《佩蘭》》，佩蘭 / 粉末 / 第 3 页（片段 10）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_005",
+      "query": "影响健康生命木桶的短板中生物遗传因素是指什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_1258",
+          "title": "TCM-QG 文档 1258",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 1258》，literature_qa（片段 TCMQG_1258）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_006",
+      "query": "风寒咳嗽证候有什么症状？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_797",
+          "title": "TCM-QG 文档 797",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 797》，literature_qa（片段 TCMQG_797）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_007",
+      "query": "消食粥长期服用有什么功效？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_277",
+          "title": "TCM-QG 文档 277",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 277》，literature_qa（片段 TCMQG_277）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_008",
+      "query": "宫颈癌常发病与什么年龄范围？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_1232",
+          "title": "TCM-QG 文档 1232",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 1232》，literature_qa（片段 TCMQG_1232）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_009",
+      "query": "阳光直射会导致皮损呈现什么分布？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_60",
+          "title": "TCM-QG 文档 60",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 60》，literature_qa（片段 TCMQG_60）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_010",
+      "query": "杨桃中毒的症状是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14460",
+          "title": "TCM-QG 文档 14460",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14460》，literature_qa（片段 TCMQG_14460）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_011",
+      "query": "枸杞有什么功效？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14367",
+          "title": "TCM-QG 文档 14367",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14367》，literature_qa（片段 TCMQG_14367）"
+        },
+        {
+          "id": "TCMQG_12126",
+          "title": "TCM-QG 文档 12126",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12126》，literature_qa（片段 TCMQG_12126）"
+        },
+        {
+          "id": "TCMQG_17779",
+          "title": "TCM-QG 文档 17779",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17779》，literature_qa（片段 TCMQG_17779）"
+        },
+        {
+          "id": "TCMQG_11605",
+          "title": "TCM-QG 文档 11605",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11605》，literature_qa（片段 TCMQG_11605）"
+        },
+        {
+          "id": "TCMQG_12030",
+          "title": "TCM-QG 文档 12030",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12030》，literature_qa（片段 TCMQG_12030）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_012",
+      "query": "什么人群不适合食用玫瑰花茶？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17739",
+          "title": "TCM-QG 文档 17739",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17739》，literature_qa（片段 TCMQG_17739）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_013",
+      "query": "男性如何保持肺活量？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13412",
+          "title": "TCM-QG 文档 13412",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13412》，literature_qa（片段 TCMQG_13412）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_014",
+      "query": "为什么会口臭？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11140",
+          "title": "TCM-QG 文档 11140",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11140》，literature_qa（片段 TCMQG_11140）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_015",
+      "query": "类风湿性关节炎是种什么疾病？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10309",
+          "title": "TCM-QG 文档 10309",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10309》，literature_qa（片段 TCMQG_10309）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_016",
+      "query": "过度疲劳会使人怎么样？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_19082",
+          "title": "TCM-QG 文档 19082",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 19082》，literature_qa（片段 TCMQG_19082）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_017",
+      "query": "中医认为毛发与哪些脏腑关系密切？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14493",
+          "title": "TCM-QG 文档 14493",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14493》，literature_qa（片段 TCMQG_14493）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_018",
+      "query": "冠心病症状的主要特点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_18841",
+          "title": "TCM-QG 文档 18841",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 18841》，literature_qa（片段 TCMQG_18841）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_019",
+      "query": "患了慢性前列腺炎的患者需要治疗吗？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17801",
+          "title": "TCM-QG 文档 17801",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17801》，literature_qa（片段 TCMQG_17801）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_020",
+      "query": "什么样的人群易患贲门癌?",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_18472",
+          "title": "TCM-QG 文档 18472",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 18472》，literature_qa（片段 TCMQG_18472）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_021",
+      "query": "中年人应该睡多长时间最好？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11037",
+          "title": "TCM-QG 文档 11037",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11037》，literature_qa（片段 TCMQG_11037）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_022",
+      "query": "心脏跳得太快会导致什么后果？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17224",
+          "title": "TCM-QG 文档 17224",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17224》，literature_qa（片段 TCMQG_17224）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_023",
+      "query": "饭后如果吃含鞣酸多的水果会导致什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14044",
+          "title": "TCM-QG 文档 14044",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14044》，literature_qa（片段 TCMQG_14044）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_024",
+      "query": "指甲营养不良导致的凹凸不平有什么特点？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_12060",
+          "title": "TCM-QG 文档 12060",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12060》，literature_qa（片段 TCMQG_12060）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_025",
+      "query": "皮肤对机体有什么作用？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11694",
+          "title": "TCM-QG 文档 11694",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11694》，literature_qa（片段 TCMQG_11694）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_026",
+      "query": "大蒜素有什么功效?",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13256",
+          "title": "TCM-QG 文档 13256",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13256》，literature_qa（片段 TCMQG_13256）"
+        },
+        {
+          "id": "TCMQG_14437",
+          "title": "TCM-QG 文档 14437",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0411,
+          "citation": "《TCM-QG 文档 14437》，literature_qa（片段 TCMQG_14437）"
+        },
+        {
+          "id": "TCMQG_14162",
+          "title": "TCM-QG 文档 14162",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0411,
+          "citation": "《TCM-QG 文档 14162》，literature_qa（片段 TCMQG_14162）"
+        },
+        {
+          "id": "TCMQG_13845",
+          "title": "TCM-QG 文档 13845",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0411,
+          "citation": "《TCM-QG 文档 13845》，literature_qa（片段 TCMQG_13845）"
+        },
+        {
+          "id": "TCMQG_13622",
+          "title": "TCM-QG 文档 13622",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0411,
+          "citation": "《TCM-QG 文档 13622》，literature_qa（片段 TCMQG_13622）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_027",
+      "query": "肺癌有什么症状？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17496",
+          "title": "TCM-QG 文档 17496",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17496》，literature_qa（片段 TCMQG_17496）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_028",
+      "query": "“柑橘具有芳香气味有什么功效？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14491",
+          "title": "TCM-QG 文档 14491",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14491》，literature_qa（片段 TCMQG_14491）"
+        },
+        {
+          "id": "TCMQG_14104",
+          "title": "TCM-QG 文档 14104",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14104》，literature_qa（片段 TCMQG_14104）"
+        },
+        {
+          "id": "TCMQG_13852",
+          "title": "TCM-QG 文档 13852",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13852》，literature_qa（片段 TCMQG_13852）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_029",
+      "query": "最具抗癌潜力的植物是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_12958",
+          "title": "TCM-QG 文档 12958",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12958》，literature_qa（片段 TCMQG_12958）"
+        },
+        {
+          "id": "TCMQG_15686",
+          "title": "TCM-QG 文档 15686",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15686》，literature_qa（片段 TCMQG_15686）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_030",
+      "query": "哪些因素会影响精子活力？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_15177",
+          "title": "TCM-QG 文档 15177",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15177》，literature_qa（片段 TCMQG_15177）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_031",
+      "query": "釉下彩的陶瓷为什么使用起来比较安全？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13201",
+          "title": "TCM-QG 文档 13201",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13201》，literature_qa（片段 TCMQG_13201）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_032",
+      "query": "如何保持胡子的整洁？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_16976",
+          "title": "TCM-QG 文档 16976",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 16976》，literature_qa（片段 TCMQG_16976）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_033",
+      "query": "肾最重要的生理功能是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_15236",
+          "title": "TCM-QG 文档 15236",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15236》，literature_qa（片段 TCMQG_15236）"
+        },
+        {
+          "id": "TCMQG_15324",
+          "title": "TCM-QG 文档 15324",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15324》，literature_qa（片段 TCMQG_15324）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_034",
+      "query": "西红柿中含有胡萝卜素，鸡蛋中含有核黄素，两种营养物质相融合有什么功效？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14549",
+          "title": "TCM-QG 文档 14549",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14549》，literature_qa（片段 TCMQG_14549）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_035",
+      "query": "拔罐疗法拔罐疗法有什么目的",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10218",
+          "title": "TCM-QG 文档 10218",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10218》，literature_qa（片段 TCMQG_10218）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_036",
+      "query": "如果出现肛肠问题，应该做什么措施？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11616",
+          "title": "TCM-QG 文档 11616",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11616》，literature_qa（片段 TCMQG_11616）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_037",
+      "query": "心率快慢与长寿有关吗？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11344",
+          "title": "TCM-QG 文档 11344",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11344》，literature_qa（片段 TCMQG_11344）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_038",
+      "query": "海带中膳食纤维含量较高有什么作用？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13290",
+          "title": "TCM-QG 文档 13290",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13290》，literature_qa（片段 TCMQG_13290）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_039",
+      "query": "为什么将头部暴露在雾霾中会加重脱发？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13738",
+          "title": "TCM-QG 文档 13738",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13738》，literature_qa（片段 TCMQG_13738）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_040",
+      "query": "“鬼压床”是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10984",
+          "title": "TCM-QG 文档 10984",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10984》，literature_qa（片段 TCMQG_10984）"
+        },
+        {
+          "id": "TCMQG_13295",
+          "title": "TCM-QG 文档 13295",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13295》，literature_qa（片段 TCMQG_13295）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_041",
+      "query": "铁元素有什么作用？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17436",
+          "title": "TCM-QG 文档 17436",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17436》，literature_qa（片段 TCMQG_17436）"
+        },
+        {
+          "id": "TCMQG_16395",
+          "title": "TCM-QG 文档 16395",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 16395》，literature_qa（片段 TCMQG_16395）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_042",
+      "query": "黑豆含有哪些营养物质？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_14127",
+          "title": "TCM-QG 文档 14127",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14127》，literature_qa（片段 TCMQG_14127）"
+        },
+        {
+          "id": "TCMQG_12941",
+          "title": "TCM-QG 文档 12941",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12941》，literature_qa（片段 TCMQG_12941）"
+        },
+        {
+          "id": "TCMQG_14391",
+          "title": "TCM-QG 文档 14391",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14391》，literature_qa（片段 TCMQG_14391）"
+        },
+        {
+          "id": "TCMQG_15655",
+          "title": "TCM-QG 文档 15655",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15655》，literature_qa（片段 TCMQG_15655）"
+        },
+        {
+          "id": "TCMQG_13379",
+          "title": "TCM-QG 文档 13379",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13379》，literature_qa（片段 TCMQG_13379）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_043",
+      "query": "皮肤出疹子不过敏的人，皮肤上突然出疹子可能是由哪些疾病导致的?",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17660",
+          "title": "TCM-QG 文档 17660",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17660》，literature_qa（片段 TCMQG_17660）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_044",
+      "query": "玉米含有哪些成分？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11942",
+          "title": "TCM-QG 文档 11942",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11942》，literature_qa（片段 TCMQG_11942）"
+        },
+        {
+          "id": "TCMQG_10959",
+          "title": "TCM-QG 文档 10959",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10959》，literature_qa（片段 TCMQG_10959）"
+        },
+        {
+          "id": "TCMQG_12047",
+          "title": "TCM-QG 文档 12047",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12047》，literature_qa（片段 TCMQG_12047）"
+        },
+        {
+          "id": "TCMQG_11834",
+          "title": "TCM-QG 文档 11834",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11834》，literature_qa（片段 TCMQG_11834）"
+        },
+        {
+          "id": "TCMQG_12183",
+          "title": "TCM-QG 文档 12183",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 12183》，literature_qa（片段 TCMQG_12183）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_045",
+      "query": "中外学者通过全基因组关联研究(GWAS)，鉴定出了国人群中喉鳞状细胞癌(LSCC)的哪3个易感基因位点？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_18566",
+          "title": "TCM-QG 文档 18566",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 18566》，literature_qa（片段 TCMQG_18566）"
+        },
+        {
+          "id": "doc-1608-chunk-35",
+          "title": "HKCMMS《北沙參》",
+          "source": "香港中药材标准（HKCMMS）",
+          "category": "药典",
+          "score": 0.3129,
+          "citation": "《HKCMMS《北沙參》》，北沙參 / 供試品溶液 / 第 9 页（片段 36）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_046",
+      "query": "黄精有什么功效？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10766",
+          "title": "TCM-QG 文档 10766",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10766》，literature_qa（片段 TCMQG_10766）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_047",
+      "query": "健脾化湿的食物有哪些？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_16434",
+          "title": "TCM-QG 文档 16434",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 16434》，literature_qa（片段 TCMQG_16434）"
+        },
+        {
+          "id": "TCMQG_15596",
+          "title": "TCM-QG 文档 15596",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15596》，literature_qa（片段 TCMQG_15596）"
+        },
+        {
+          "id": "TCMQG_16060",
+          "title": "TCM-QG 文档 16060",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 16060》，literature_qa（片段 TCMQG_16060）"
+        },
+        {
+          "id": "TCMQG_10879",
+          "title": "TCM-QG 文档 10879",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10879》，literature_qa（片段 TCMQG_10879）"
+        },
+        {
+          "id": "TCMQG_13740",
+          "title": "TCM-QG 文档 13740",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13740》，literature_qa（片段 TCMQG_13740）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_048",
+      "query": "“心绞痛”是由什么引起的？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10156",
+          "title": "TCM-QG 文档 10156",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10156》，literature_qa（片段 TCMQG_10156）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_049",
+      "query": "常吃西红柿有什么好处？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10280",
+          "title": "TCM-QG 文档 10280",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10280》，literature_qa（片段 TCMQG_10280）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_050",
+      "query": "便秘如不尽快改善会有什么坏处？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13167",
+          "title": "TCM-QG 文档 13167",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13167》，literature_qa（片段 TCMQG_13167）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_051",
+      "query": "为什么说有些食物最好到正规超市选购？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10489",
+          "title": "TCM-QG 文档 10489",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10489》，literature_qa（片段 TCMQG_10489）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_052",
+      "query": "小米味甘、咸，性凉，入肾、脾、胃经有何作用？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_17200",
+          "title": "TCM-QG 文档 17200",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 17200》，literature_qa（片段 TCMQG_17200）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_053",
+      "query": "荠菜中含有哪些营养物质？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13819",
+          "title": "TCM-QG 文档 13819",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13819》，literature_qa（片段 TCMQG_13819）"
+        },
+        {
+          "id": "TCMQG_15638",
+          "title": "TCM-QG 文档 15638",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15638》，literature_qa（片段 TCMQG_15638）"
+        },
+        {
+          "id": "TCMQG_13686",
+          "title": "TCM-QG 文档 13686",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13686》，literature_qa（片段 TCMQG_13686）"
+        },
+        {
+          "id": "TCMQG_15256",
+          "title": "TCM-QG 文档 15256",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0531,
+          "citation": "《TCM-QG 文档 15256》，literature_qa（片段 TCMQG_15256）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_054",
+      "query": "黑芝麻的营养价值高于白芝麻吗？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_16945",
+          "title": "TCM-QG 文档 16945",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 16945》，literature_qa（片段 TCMQG_16945）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_055",
+      "query": "压力会导致白发吗？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_18872",
+          "title": "TCM-QG 文档 18872",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 18872》，literature_qa（片段 TCMQG_18872）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_056",
+      "query": "圆白菜含有哪些营养物质？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_15664",
+          "title": "TCM-QG 文档 15664",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 15664》，literature_qa（片段 TCMQG_15664）"
+        },
+        {
+          "id": "TCMQG_14891",
+          "title": "TCM-QG 文档 14891",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14891》，literature_qa（片段 TCMQG_14891）"
+        },
+        {
+          "id": "TCMQG_14475",
+          "title": "TCM-QG 文档 14475",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 14475》，literature_qa（片段 TCMQG_14475）"
+        },
+        {
+          "id": "TCMQG_15258",
+          "title": "TCM-QG 文档 15258",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0531,
+          "citation": "《TCM-QG 文档 15258》，literature_qa（片段 TCMQG_15258）"
+        },
+        {
+          "id": "TCMQG_16131",
+          "title": "TCM-QG 文档 16131",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.0531,
+          "citation": "《TCM-QG 文档 16131》，literature_qa（片段 TCMQG_16131）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_057",
+      "query": "詹姆斯·布朗在演讲时说的包治百病的“神药”是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_10794",
+          "title": "TCM-QG 文档 10794",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 10794》，literature_qa（片段 TCMQG_10794）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_058",
+      "query": "怎么避免射精无力？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_18004",
+          "title": "TCM-QG 文档 18004",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 18004》，literature_qa（片段 TCMQG_18004）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_059",
+      "query": "长时间不出汗的人有什么坏处？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_11572",
+          "title": "TCM-QG 文档 11572",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 11572》，literature_qa（片段 TCMQG_11572）"
+        }
+      ]
+    },
+    {
+      "id": "rag_qg_060",
+      "query": "身体不健康的人在运动时心率和血压增加过大、过快后会有怎样的危害？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMQG_13762",
+          "title": "TCM-QG 文档 13762",
+          "source": "TCM-QG",
+          "category": "文献问答",
+          "score": 1.08,
+          "citation": "《TCM-QG 文档 13762》，literature_qa（片段 TCMQG_13762）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_001",
+      "query": "风寒袭肺证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_0_OVERVIEW",
+          "title": "风寒袭肺证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《风寒袭肺证：定义与典型表现》，overview（片段 TCMSD_KNOW_0_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_0_COMMON_1",
+          "title": "风寒袭肺证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《风寒袭肺证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_0_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_002",
+      "query": "寒饮停胃证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_17_OVERVIEW",
+          "title": "寒饮停胃证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《寒饮停胃证：定义与典型表现》，overview（片段 TCMSD_KNOW_17_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_17_COMMON_1",
+          "title": "寒饮停胃证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《寒饮停胃证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_17_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_003",
+      "query": "血瘀动血证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_34_OVERVIEW",
+          "title": "血瘀动血证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《血瘀动血证：定义与典型表现》，overview（片段 TCMSD_KNOW_34_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_91_OVERVIEW",
+          "title": "血证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.5792,
+          "citation": "《血证：定义与典型表现》，overview（片段 TCMSD_KNOW_91_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_34_COMMON_1",
+          "title": "血瘀动血证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血瘀动血证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_34_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_004",
+      "query": "痰火上扰证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_51_OVERVIEW",
+          "title": "痰火上扰证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《痰火上扰证：定义与典型表现》，overview（片段 TCMSD_KNOW_51_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_51_COMMON_1",
+          "title": "痰火上扰证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《痰火上扰证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_51_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_005",
+      "query": "脾胃不和证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_68_OVERVIEW",
+          "title": "脾胃不和证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《脾胃不和证：定义与典型表现》，overview（片段 TCMSD_KNOW_68_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_68_COMMON_1",
+          "title": "脾胃不和证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《脾胃不和证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_68_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_006",
+      "query": "少阴寒化证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_85_OVERVIEW",
+          "title": "少阴寒化证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《少阴寒化证：定义与典型表现》，overview（片段 TCMSD_KNOW_85_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_85_COMMON_1",
+          "title": "少阴寒化证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《少阴寒化证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_85_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_007",
+      "query": "邪犯肺胃证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_102_OVERVIEW",
+          "title": "邪犯肺胃证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《邪犯肺胃证：定义与典型表现》，overview（片段 TCMSD_KNOW_102_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_102_COMMON_1",
+          "title": "邪犯肺胃证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《邪犯肺胃证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_102_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_008",
+      "query": "湿热毒盛证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_119_OVERVIEW",
+          "title": "湿热毒盛证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《湿热毒盛证：定义与典型表现》，overview（片段 TCMSD_KNOW_119_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_119_COMMON_1",
+          "title": "湿热毒盛证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《湿热毒盛证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_119_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_009",
+      "query": "寒邪偏盛证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_136_OVERVIEW",
+          "title": "寒邪偏盛证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《寒邪偏盛证：定义与典型表现》，overview（片段 TCMSD_KNOW_136_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_136_COMMON_1",
+          "title": "寒邪偏盛证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《寒邪偏盛证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_136_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_010",
+      "query": "余毒伤阴证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_153_OVERVIEW",
+          "title": "余毒伤阴证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6813,
+          "citation": "《余毒伤阴证：定义与典型表现》，overview（片段 TCMSD_KNOW_153_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_153_COMMON_1",
+          "title": "余毒伤阴证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《余毒伤阴证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_153_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_011",
+      "query": "胃热炽盛证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_170_OVERVIEW",
+          "title": "胃热炽盛证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《胃热炽盛证：定义与典型表现》，overview（片段 TCMSD_KNOW_170_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_170_COMMON_1",
+          "title": "胃热炽盛证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《胃热炽盛证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_170_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_012",
+      "query": "胞宫虚寒证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_187_OVERVIEW",
+          "title": "胞宫虚寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《胞宫虚寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_187_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_110_OVERVIEW",
+          "title": "虚寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《虚寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_110_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_969_OVERVIEW",
+          "title": "寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_969_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_187_COMMON_1",
+          "title": "胞宫虚寒证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《胞宫虚寒证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_187_COMMON_1）"
+        },
+        {
+          "id": "TCMSD_KNOW_187_COMMON_2",
+          "title": "胞宫虚寒证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《胞宫虚寒证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_187_COMMON_2）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_013",
+      "query": "热入心包证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_204_OVERVIEW",
+          "title": "热入心包证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《热入心包证：定义与典型表现》，overview（片段 TCMSD_KNOW_204_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_204_COMMON_1",
+          "title": "热入心包证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《热入心包证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_204_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_014",
+      "query": "风热俱盛证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_221_OVERVIEW",
+          "title": "风热俱盛证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《风热俱盛证：定义与典型表现》，overview（片段 TCMSD_KNOW_221_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_221_COMMON_1",
+          "title": "风热俱盛证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《风热俱盛证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_221_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_015",
+      "query": "邪阻膜原证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_238_OVERVIEW",
+          "title": "邪阻膜原证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《邪阻膜原证：定义与典型表现》，overview（片段 TCMSD_KNOW_238_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_238_COMMON_1",
+          "title": "邪阻膜原证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《邪阻膜原证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_238_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_016",
+      "query": "脾胃湿热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_255_OVERVIEW",
+          "title": "脾胃湿热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《脾胃湿热证：定义与典型表现》，overview（片段 TCMSD_KNOW_255_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_486_OVERVIEW",
+          "title": "湿热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6521,
+          "citation": "《湿热证：定义与典型表现》，overview（片段 TCMSD_KNOW_486_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_486_COMMON_1",
+          "title": "湿热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《湿热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_486_COMMON_1）"
+        },
+        {
+          "id": "TCMSD_KNOW_486_COMMON_3",
+          "title": "湿热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《湿热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_486_COMMON_3）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_017",
+      "query": "肝经风热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_272_OVERVIEW",
+          "title": "肝经风热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《肝经风热证：定义与典型表现》，overview（片段 TCMSD_KNOW_272_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_272_COMMON_1",
+          "title": "肝经风热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《肝经风热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_272_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_018",
+      "query": "痰热内扰证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_289_OVERVIEW",
+          "title": "痰热内扰证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《痰热内扰证：定义与典型表现》，overview（片段 TCMSD_KNOW_289_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_289_COMMON_1",
+          "title": "痰热内扰证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《痰热内扰证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_289_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_019",
+      "query": "火毒迫血证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_306_OVERVIEW",
+          "title": "火毒迫血证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《火毒迫血证：定义与典型表现》，overview（片段 TCMSD_KNOW_306_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_91_OVERVIEW",
+          "title": "血证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.5792,
+          "citation": "《血证：定义与典型表现》，overview（片段 TCMSD_KNOW_91_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_306_COMMON_1",
+          "title": "火毒迫血证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《火毒迫血证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_306_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_020",
+      "query": "湿浊下注证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_323_OVERVIEW",
+          "title": "湿浊下注证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《湿浊下注证：定义与典型表现》，overview（片段 TCMSD_KNOW_323_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_323_COMMON_1",
+          "title": "湿浊下注证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《湿浊下注证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_323_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_021",
+      "query": "疫毒攻喉证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_340_OVERVIEW",
+          "title": "疫毒攻喉证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《疫毒攻喉证：定义与典型表现》，overview（片段 TCMSD_KNOW_340_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_340_COMMON_1",
+          "title": "疫毒攻喉证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《疫毒攻喉证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_340_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_022",
+      "query": "血热瘀滞证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_357_OVERVIEW",
+          "title": "血热瘀滞证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《血热瘀滞证：定义与典型表现》，overview（片段 TCMSD_KNOW_357_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_357_COMMON_1",
+          "title": "血热瘀滞证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血热瘀滞证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_357_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_023",
+      "query": "胞宫血热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_374_OVERVIEW",
+          "title": "胞宫血热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《胞宫血热证：定义与典型表现》，overview（片段 TCMSD_KNOW_374_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_855_OVERVIEW",
+          "title": "血热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《血热证：定义与典型表现》，overview（片段 TCMSD_KNOW_855_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_855_COMMON_2",
+          "title": "血热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_855_COMMON_2）"
+        },
+        {
+          "id": "TCMSD_KNOW_374_COMMON_1",
+          "title": "胞宫血热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《胞宫血热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_374_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_024",
+      "query": "血虚气脱证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_391_OVERVIEW",
+          "title": "血虚气脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《血虚气脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_391_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_275_OVERVIEW",
+          "title": "气脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《气脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_275_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_646_OVERVIEW",
+          "title": "脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6083,
+          "citation": "《脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_646_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_391_COMMON_1",
+          "title": "血虚气脱证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血虚气脱证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_391_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_025",
+      "query": "肝肺风热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_408_OVERVIEW",
+          "title": "肝肺风热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《肝肺风热证：定义与典型表现》，overview（片段 TCMSD_KNOW_408_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_408_COMMON_1",
+          "title": "肝肺风热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《肝肺风热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_408_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_026",
+      "query": "气郁化火证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_425_OVERVIEW",
+          "title": "气郁化火证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《气郁化火证：定义与典型表现》，overview（片段 TCMSD_KNOW_425_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_109_OVERVIEW",
+          "title": "火证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《火证：定义与典型表现》，overview（片段 TCMSD_KNOW_109_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_425_COMMON_1",
+          "title": "气郁化火证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《气郁化火证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_425_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_027",
+      "query": "心脾两虚证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_442_OVERVIEW",
+          "title": "心脾两虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《心脾两虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_442_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_442_COMMON_1",
+          "title": "心脾两虚证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《心脾两虚证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_442_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_028",
+      "query": "心肝阴虚证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_459_OVERVIEW",
+          "title": "心肝阴虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《心肝阴虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_459_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_135_OVERVIEW",
+          "title": "肝阴虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6521,
+          "citation": "《肝阴虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_135_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_197_OVERVIEW",
+          "title": "阴虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《阴虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_197_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_459_COMMON_1",
+          "title": "心肝阴虚证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《心肝阴虚证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_459_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_029",
+      "query": "痰火内扰证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_476_OVERVIEW",
+          "title": "痰火内扰证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《痰火内扰证：定义与典型表现》，overview（片段 TCMSD_KNOW_476_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_476_COMMON_1",
+          "title": "痰火内扰证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《痰火内扰证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_476_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_030",
+      "query": "膀胱虚寒证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_493_OVERVIEW",
+          "title": "膀胱虚寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《膀胱虚寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_493_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_110_OVERVIEW",
+          "title": "虚寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《虚寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_110_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_969_OVERVIEW",
+          "title": "寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_969_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_493_COMMON_1",
+          "title": "膀胱虚寒证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《膀胱虚寒证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_493_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_031",
+      "query": "肺阴虚证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_510_OVERVIEW",
+          "title": "肺阴虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6521,
+          "citation": "《肺阴虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_510_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_197_OVERVIEW",
+          "title": "阴虚证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《阴虚证：定义与典型表现》，overview（片段 TCMSD_KNOW_197_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_197_COMMON_1",
+          "title": "阴虚证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《阴虚证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_197_COMMON_1）"
+        },
+        {
+          "id": "TCMSD_KNOW_510_COMMON_1",
+          "title": "肺阴虚证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《肺阴虚证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_510_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_032",
+      "query": "肝阳上亢证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_527_OVERVIEW",
+          "title": "肝阳上亢证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《肝阳上亢证：定义与典型表现》，overview（片段 TCMSD_KNOW_527_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_033",
+      "query": "肉轮痰湿证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 4,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_544_OVERVIEW",
+          "title": "肉轮痰湿证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《肉轮痰湿证：定义与典型表现》，overview（片段 TCMSD_KNOW_544_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_810_OVERVIEW",
+          "title": "痰湿证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《痰湿证：定义与典型表现》，overview（片段 TCMSD_KNOW_810_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_636_OVERVIEW",
+          "title": "湿证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《湿证：定义与典型表现》，overview（片段 TCMSD_KNOW_636_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_544_COMMON_1",
+          "title": "肉轮痰湿证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《肉轮痰湿证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_544_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_034",
+      "query": "热毒凝结证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_561_OVERVIEW",
+          "title": "热毒凝结证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《热毒凝结证：定义与典型表现》，overview（片段 TCMSD_KNOW_561_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_561_COMMON_1",
+          "title": "热毒凝结证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《热毒凝结证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_561_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_035",
+      "query": "血瘀水停证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_578_OVERVIEW",
+          "title": "血瘀水停证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《血瘀水停证：定义与典型表现》，overview（片段 TCMSD_KNOW_578_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_801_OVERVIEW",
+          "title": "水停证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《水停证：定义与典型表现》，overview（片段 TCMSD_KNOW_801_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_578_COMMON_1",
+          "title": "血瘀水停证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血瘀水停证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_578_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_036",
+      "query": "燥伤鼻窍证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_595_OVERVIEW",
+          "title": "燥伤鼻窍证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《燥伤鼻窍证：定义与典型表现》，overview（片段 TCMSD_KNOW_595_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_595_COMMON_1",
+          "title": "燥伤鼻窍证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《燥伤鼻窍证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_595_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_037",
+      "query": "痰瘀滞络证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_612_OVERVIEW",
+          "title": "痰瘀滞络证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《痰瘀滞络证：定义与典型表现》，overview（片段 TCMSD_KNOW_612_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_612_COMMON_1",
+          "title": "痰瘀滞络证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《痰瘀滞络证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_612_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_038",
+      "query": "湿浊阻滞证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_629_OVERVIEW",
+          "title": "湿浊阻滞证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《湿浊阻滞证：定义与典型表现》，overview（片段 TCMSD_KNOW_629_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_629_COMMON_1",
+          "title": "湿浊阻滞证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《湿浊阻滞证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_629_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_039",
+      "query": "脱证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_646_OVERVIEW",
+          "title": "脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6167,
+          "citation": "《脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_646_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_040",
+      "query": "风湿犯表证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_663_OVERVIEW",
+          "title": "风湿犯表证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《风湿犯表证：定义与典型表现》，overview（片段 TCMSD_KNOW_663_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_663_COMMON_1",
+          "title": "风湿犯表证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《风湿犯表证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_663_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_041",
+      "query": "湿郁卫气证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_680_OVERVIEW",
+          "title": "湿郁卫气证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《湿郁卫气证：定义与典型表现》，overview（片段 TCMSD_KNOW_680_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_680_COMMON_1",
+          "title": "湿郁卫气证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《湿郁卫气证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_680_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_042",
+      "query": "热毒入营证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_697_OVERVIEW",
+          "title": "热毒入营证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《热毒入营证：定义与典型表现》，overview（片段 TCMSD_KNOW_697_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_697_COMMON_1",
+          "title": "热毒入营证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《热毒入营证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_697_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_043",
+      "query": "忧郁伤神证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_714_OVERVIEW",
+          "title": "忧郁伤神证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《忧郁伤神证：定义与典型表现》，overview（片段 TCMSD_KNOW_714_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_714_COMMON_1",
+          "title": "忧郁伤神证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《忧郁伤神证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_714_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_044",
+      "query": "邪袭卫表证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_731_OVERVIEW",
+          "title": "邪袭卫表证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《邪袭卫表证：定义与典型表现》，overview（片段 TCMSD_KNOW_731_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_731_COMMON_1",
+          "title": "邪袭卫表证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《邪袭卫表证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_731_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_045",
+      "query": "痰瘀阻肺证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_748_OVERVIEW",
+          "title": "痰瘀阻肺证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《痰瘀阻肺证：定义与典型表现》，overview（片段 TCMSD_KNOW_748_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_748_COMMON_1",
+          "title": "痰瘀阻肺证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《痰瘀阻肺证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_748_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_046",
+      "query": "风湿袭表证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_765_OVERVIEW",
+          "title": "风湿袭表证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《风湿袭表证：定义与典型表现》，overview（片段 TCMSD_KNOW_765_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_765_COMMON_1",
+          "title": "风湿袭表证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《风湿袭表证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_765_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_047",
+      "query": "火热炽盛证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_782_OVERVIEW",
+          "title": "火热炽盛证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《火热炽盛证：定义与典型表现》，overview（片段 TCMSD_KNOW_782_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_782_COMMON_1",
+          "title": "火热炽盛证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《火热炽盛证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_782_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_048",
+      "query": "虫积证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_799_OVERVIEW",
+          "title": "虫积证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6455,
+          "citation": "《虫积证：定义与典型表现》，overview（片段 TCMSD_KNOW_799_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_049",
+      "query": "热闭心包证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_816_OVERVIEW",
+          "title": "热闭心包证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《热闭心包证：定义与典型表现》，overview（片段 TCMSD_KNOW_816_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_816_COMMON_1",
+          "title": "热闭心包证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《热闭心包证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_816_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_050",
+      "query": "燥证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_833_OVERVIEW",
+          "title": "燥证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6333,
+          "citation": "《燥证：定义与典型表现》，overview（片段 TCMSD_KNOW_833_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_051",
+      "query": "乳食壅积证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_850_OVERVIEW",
+          "title": "乳食壅积证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《乳食壅积证：定义与典型表现》，overview（片段 TCMSD_KNOW_850_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_850_COMMON_1",
+          "title": "乳食壅积证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《乳食壅积证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_850_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_052",
+      "query": "少腹瘀热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_867_OVERVIEW",
+          "title": "少腹瘀热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《少腹瘀热证：定义与典型表现》，overview（片段 TCMSD_KNOW_867_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_867_COMMON_1",
+          "title": "少腹瘀热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《少腹瘀热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_867_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_053",
+      "query": "厥证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_884_OVERVIEW",
+          "title": "厥证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.5833,
+          "citation": "《厥证：定义与典型表现》，overview（片段 TCMSD_KNOW_884_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_054",
+      "query": "血分证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_901_OVERVIEW",
+          "title": "血分证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6455,
+          "citation": "《血分证：定义与典型表现》，overview（片段 TCMSD_KNOW_901_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_055",
+      "query": "风热血热证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 5,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_918_OVERVIEW",
+          "title": "风热血热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《风热血热证：定义与典型表现》，overview（片段 TCMSD_KNOW_918_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_855_OVERVIEW",
+          "title": "血热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《血热证：定义与典型表现》，overview（片段 TCMSD_KNOW_855_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_838_OVERVIEW",
+          "title": "热证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6229,
+          "citation": "《热证：定义与典型表现》，overview（片段 TCMSD_KNOW_838_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_855_COMMON_1",
+          "title": "血热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《血热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_855_COMMON_1）"
+        },
+        {
+          "id": "TCMSD_KNOW_918_COMMON_1",
+          "title": "风热血热证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《风热血热证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_918_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_056",
+      "query": "下焦滑脱证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_935_OVERVIEW",
+          "title": "下焦滑脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《下焦滑脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_935_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_646_OVERVIEW",
+          "title": "脱证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6083,
+          "citation": "《脱证：定义与典型表现》，overview（片段 TCMSD_KNOW_646_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_935_COMMON_1",
+          "title": "下焦滑脱证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《下焦滑脱证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_935_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_057",
+      "query": "食滞痰阻证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_952_OVERVIEW",
+          "title": "食滞痰阻证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《食滞痰阻证：定义与典型表现》，overview（片段 TCMSD_KNOW_952_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_952_COMMON_1",
+          "title": "食滞痰阻证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.3415,
+          "citation": "《食滞痰阻证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_952_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_058",
+      "query": "寒证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 1,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_969_OVERVIEW",
+          "title": "寒证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6333,
+          "citation": "《寒证：定义与典型表现》，overview（片段 TCMSD_KNOW_969_OVERVIEW）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_059",
+      "query": "寒凝气滞证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 3,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_986_OVERVIEW",
+          "title": "寒凝气滞证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《寒凝气滞证：定义与典型表现》，overview（片段 TCMSD_KNOW_986_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_675_OVERVIEW",
+          "title": "气滞证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6375,
+          "citation": "《气滞证：定义与典型表现》，overview（片段 TCMSD_KNOW_675_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_986_COMMON_1",
+          "title": "寒凝气滞证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《寒凝气滞证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_986_COMMON_1）"
+        }
+      ]
+    },
+    {
+      "id": "rag_sd_060",
+      "query": "肝瘀痰结证的定义、典型表现和辨证要点是什么？",
+      "passed": true,
+      "checks": {
+        "document_hits_gt_0": true,
+        "relevant_hit_at_k": true,
+        "category_match": true,
+        "source_match": true,
+        "citations_locatable": true
+      },
+      "hit_count": 2,
+      "relevant_rank": 1,
+      "top_hits": [
+        {
+          "id": "TCMSD_KNOW_1003_OVERVIEW",
+          "title": "肝瘀痰结证：定义与典型表现",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.6667,
+          "citation": "《肝瘀痰结证：定义与典型表现》，overview（片段 TCMSD_KNOW_1003_OVERVIEW）"
+        },
+        {
+          "id": "TCMSD_KNOW_1003_COMMON_1",
+          "title": "肝瘀痰结证：常见疾病与相关说明",
+          "source": "TCM-SD",
+          "category": "证候知识",
+          "score": 0.304,
+          "citation": "《肝瘀痰结证：常见疾病与相关说明》，common_disease（片段 TCMSD_KNOW_1003_COMMON_1）"
+        }
+      ]
+    }
+  ]
+}

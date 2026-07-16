@@ -163,5 +163,640 @@
       "source": "中国中医药出版社",
       "note": ""
     }
+  },
+  {
+    "id": "LHK001",
+    "name": "香港中药材标准（HKCMMS）",
+    "type": "文献",
+    "alias": "HKCMMS",
+    "description": "香港特别行政区政府发布的中药材质量与鉴别标准资料集。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "source_url": "https://www.cmro.gov.hk/html/eng/useful_information/hkcmms/cmmlist.html",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "source_type": "public_government_standard"
+    }
+  },
+  {
+    "id": "LHKM001",
+    "name": "HKCMMS《一枝黃花》",
+    "type": "文献",
+    "alias": "Solidaginis Herba",
+    "description": "HKCMMS 第6册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第6册",
+      "chapter": "一枝黃花",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol6/pdf_c/Solidaginis_Herba_v6_c.pdf",
+      "identifier": "hkcmms_0a78ae3550f6c6c1a77f",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "一枝黃花一枝黃花一枝黃花一枝黃花 CC DD 11 cmcm BB 55 cmcm EE 11cmcm AA 55 cmcm圖 1 一枝黃花外觀圖圖 1 一枝黃花外觀圖 A.一枝黃花 B.帶花小枝 C.葉表面 D.葉背面A.一枝黃花 B.帶花小枝 C.葉表面 D.葉背面 E.頭狀花序放大圖E.頭狀花序放大圖"
+    }
+  },
+  {
+    "id": "LHKM002",
+    "name": "HKCMMS《秦皮》",
+    "type": "文献",
+    "alias": "Fraxini Cortex",
+    "description": "HKCMMS 第6册中药材标准条目，覆盖第1—16页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第6册",
+      "chapter": "秦皮",
+      "page_start": 1,
+      "page_end": 16,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol6/pdf_c/Fraxini_Cortex_v6_c.pdf",
+      "identifier": "hkcmms_149ad2ea6434389d78cb",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "秦皮秦皮秦皮秦皮 BB 55 mmmm AA 22 cmcm 圖圖 1(i)1(i) 白蠟樹乾燥枝皮及幹皮外觀圖白蠟樹乾燥枝皮及幹皮外觀圖 A.A.枝皮(上)及幹皮(下)圖枝皮(上)及幹皮(下)圖 B.B.枝皮(左)及幹皮(右)放大圖枝皮(左)及幹皮(右)放大圖 B 5 mm B 5 mm B 5 mm B 5 mm A A 3 cm 3 cm圖 1(ii) 尖葉白蠟樹乾燥枝皮及圖 1(iii) 宿柱白蠟樹乾燥枝皮及圖 1(ii) 尖葉白蠟樹乾燥枝皮及圖 1(iii) 宿柱白蠟樹乾燥枝皮及幹皮外觀圖幹皮外觀圖幹皮外觀圖幹皮外觀圖 A.枝皮(上)及幹皮(下)圖 A.枝皮(上)及幹皮(下)圖 A.枝皮(上)及幹皮(下)圖 A.枝皮(上)及幹皮(下)圖 B.枝皮(左)及幹皮(右)放大圖 B.枝皮(左)及幹皮(右)放大圖B.枝皮(左)及幹皮(右)放大圖 B.枝皮(左)及幹皮(右)放大圖"
+    }
+  },
+  {
+    "id": "LHKM003",
+    "name": "HKCMMS《瓜蔞皮》",
+    "type": "文献",
+    "alias": "Trichosanthis Pericarpium",
+    "description": "HKCMMS 第8册中药材标准条目，覆盖第1—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第8册",
+      "chapter": "瓜蔞皮",
+      "page_start": 1,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol8/pdf_c/Trichosanthis_Pericarpium_v8_c.pdf",
+      "identifier": "hkcmms_19f7319ea8b99468080d",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "瓜蔞皮瓜蔞皮瓜蔞皮瓜蔞皮 22cmcm DD圖 1 瓜蔞皮外觀圖圖 1 瓜蔞皮外觀圖 525525"
+    }
+  },
+  {
+    "id": "LHKM004",
+    "name": "HKCMMS《甘草》",
+    "type": "文献",
+    "alias": "Radix et Rhizoma Glycyrrhizae",
+    "description": "HKCMMS 第2册中药材标准条目，覆盖第2—16页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第2册",
+      "chapter": "甘草",
+      "page_start": 2,
+      "page_end": 16,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol2/pdf_c/Radix_et_Rhizoma_Glycyrrhizae_v2_c.pdf",
+      "identifier": "hkcmms_232524ce18406049ec11",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "1.名稱藥材正名：Radix et Rhizoma Glycyrrhizae中文名：甘草漢語拼音名：Gancao本品為豆科植物甘草 Glycyrrhiza uralensis Fisch.she 58 Af Glycyrrhiza inflata Bat.FYAZERAR ALAR SE ° ARs PK ZTE > RAZR > MERZ ©"
+    }
+  },
+  {
+    "id": "LHKM005",
+    "name": "HKCMMS《黑種草子》",
+    "type": "文献",
+    "alias": "Nigellae Semen",
+    "description": "HKCMMS 第10册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第10册",
+      "chapter": "黑種草子",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol10/pdf_c/Nigellae_Semen_v10_c.pdf",
+      "identifier": "hkcmms_360c4036795f5103dbcf",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "黑種黑種黑種黑種黑種黑種草黑黑黑黑黑黑種草子種草子種草子種草子種草子種草子種種草種種種草種草草草子子 A 5 mm B 1 mm C 1 mm圖1 黑種草子外觀圖 A.黑種草子 B.黑種草子放大圖 C.黑種草子切面放大圖 251251251"
+    }
+  },
+  {
+    "id": "LHKM006",
+    "name": "HKCMMS《三七》",
+    "type": "文献",
+    "alias": "Radix Notoginseng",
+    "description": "HKCMMS 第1册中药材标准条目，覆盖第2—10页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第1册",
+      "chapter": "三七",
+      "page_start": 2,
+      "page_end": 10,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol1/pdf_c/Radix_Notoginseng_v1_c.pdf",
+      "identifier": "hkcmms_4f6547526d00ffc93d92",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "1.名稱藥材正名：Radix Notoginseng中文名：三七漢語拼音名：Sanqi本品為五加科植物三七 nax notoginseng (Burk.) F.H.Chen 的乾燥根。栽培 3至4年,於秋季花開前採挖,除去支根及根莖,洗淨,曬乾。"
+    }
+  },
+  {
+    "id": "LHKM007",
+    "name": "HKCMMS《黃芩》",
+    "type": "文献",
+    "alias": "Radix Scutellariae",
+    "description": "HKCMMS 第3册中药材标准条目，覆盖第1—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第3册",
+      "chapter": "黃芩",
+      "page_start": 1,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol3/pdf_c/Radix_Scutellariae_v3_c.pdf",
+      "identifier": "hkcmms_5d209491dab349153837",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "11 cmcm圖 1 黃芩外觀圖圖 1 黃芩外觀圖"
+    }
+  },
+  {
+    "id": "LHKM008",
+    "name": "HKCMMS《黃藤》",
+    "type": "文献",
+    "alias": "Fibraureae Caulis",
+    "description": "HKCMMS 第8册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第8册",
+      "chapter": "黃藤",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol8/pdf_c/Fibraureae_Caulis_v8_c.pdf",
+      "identifier": "hkcmms_5f343da1cc6065f69224",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "黃藤黃藤黃藤黃藤 BB 22cmcm AA 22 cmcm CC 22cmcm圖 1 黃藤外觀圖圖 1 黃藤外觀圖 A.黃藤 B.斜切片 A.黃藤 B.斜切片 C.莖橫切面放大圖 C.莖橫切面放大圖 149149"
+    }
+  },
+  {
+    "id": "LHKM009",
+    "name": "HKCMMS《京大戟》",
+    "type": "文献",
+    "alias": "Euphorbiae Pekinensis Radix",
+    "description": "HKCMMS 第10册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第10册",
+      "chapter": "京大戟",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol10/pdf_c/Euphorbiae_Pekinensis_Radix_v10_c.pdf",
+      "identifier": "hkcmms_793cc29c80a65d0915e0",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "京大戟京大戟京大戟京大戟京大戟京大戟京大戟京京京大戟京京京大大大戟戟戟戟 A 1 cm B 5 mm圖1 京大戟外觀圖 A.京大戟 B.根斷面放大圖 145145145"
+    }
+  },
+  {
+    "id": "LHKM010",
+    "name": "HKCMMS《田基黃》",
+    "type": "文献",
+    "alias": "Hyperici Japonici Herba",
+    "description": "HKCMMS 第5册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第5册",
+      "chapter": "田基黃",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol5/pdf_c/Hyperici_Japonici_Herba_v5_c.pdf",
+      "identifier": "hkcmms_8935942469360c162d6a",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "田基黃田基黃田基黃田基黃 BB 11 cmcm CC 11cmcm 1010cmcm AA圖 1 田基黃外觀圖圖 1 田基黃外觀圖 A.田基黃 B.莖葉放大圖 C.花放大圖A.田基黃 B.莖葉放大圖 C.花放大圖 Tritici Levis Fructus 金錢草 Selaginellae Herba Zanthoxyli Radix 石菖蒲桃仁卷柏兩面針 Acori Tatarinowii Rhizoma 浮小麥 Trachelospermi Caulis et Folium Xanthii Fructus紫蘇梗巴戟天西紅花Croci StigmaPerillae Caulis Morindae Officinalis Radix 絡石藤羅布麻葉蒼耳子 Eupatorii Herba Caulis Apocyni Veneti Folium 田基黃佩蘭雞血藤Spatholobi"
+    }
+  },
+  {
+    "id": "LHKM011",
+    "name": "HKCMMS《丁香》",
+    "type": "文献",
+    "alias": "Caryophylli Flos",
+    "description": "HKCMMS 第11册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第11册",
+      "chapter": "丁香",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol11/pdf_c/Caryophylli Flos_v11_c.pdf",
+      "identifier": "hkcmms_8ce854ff85ace1f3a403",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "丁香丁香丁香丁香花冠萼筒 A 1 cm B 5 mm C 5 mm D 5 mm E圖1 丁香外觀圖 A.丁香 B.丁香放大圖 C.丁香頂面觀放大圖 D.丁香縱切面放大圖(雄蕊)E.丁香縱切面放大圖(花柱)111111 StoraxGalangae Fructus 枸杞子 Perillae Folium 廣藿香 Ziziphi Spinosae Semen Stellariae銀柴胡Radix 紅豆蔻丁香 Pogostemonis Herba 酸棗仁蘇合香"
+    }
+  },
+  {
+    "id": "LHKM012",
+    "name": "HKCMMS《佩蘭》",
+    "type": "文献",
+    "alias": "Eupatorii Herba",
+    "description": "HKCMMS 第5册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第5册",
+      "chapter": "佩蘭",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol5/pdf_c/Eupatorii_Herba_v5_c.pdf",
+      "identifier": "hkcmms_8f6befef2f90d389be8d",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "佩蘭佩蘭佩蘭佩蘭 BB 11 cmcm AA 33 cmcm圖 1 佩蘭外觀圖圖 1 佩蘭外觀圖 A.佩蘭 B.莖上的葉 A.佩蘭 B.莖上的葉 Tritici Levis Fructus 金錢草 Selaginellae Herba Zanthoxyli Radix 石菖蒲桃仁Persicae Semen 卷柏兩面針 Acori Tatarinowii Rhizoma 浮小麥 Lysimachiae Herba Trachelospermi Caulis et Folium Xanthii Fructus紫蘇梗巴戟天西紅花Croci StigmaPerillae Caulis Morindae Officinalis Radix 絡石藤羅布麻葉蒼耳子 Eupatorii Herba Caulis Apocyni Veneti Folium 佩蘭佩蘭雞血藤Spatholobi"
+    }
+  },
+  {
+    "id": "LHKM013",
+    "name": "HKCMMS《浙貝母》",
+    "type": "文献",
+    "alias": "Bulbus Fritillariae Thunbergii",
+    "description": "HKCMMS 第3册中药材标准条目，覆盖第1—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第3册",
+      "chapter": "浙貝母",
+      "page_start": 1,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol3/pdf_c/Bulbus_Fritillariae_Thunbergii_v3_c.pdf",
+      "identifier": "hkcmms_92537c6225db739c4d7f",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "1 1 11 cmcm圖 1 浙貝母外觀圖圖 1 浙貝母外觀圖1.大貝 2.珠貝 1.大貝 2.珠貝"
+    }
+  },
+  {
+    "id": "LHKM014",
+    "name": "HKCMMS《瓜子金》",
+    "type": "文献",
+    "alias": "Polygalae Japonicae Herba",
+    "description": "HKCMMS 第9册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第9册",
+      "chapter": "瓜子金",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol9/pdf_c/Polygalae_Japonicae_Herba_v9_c.pdf",
+      "identifier": "hkcmms_94ccf8f8c76eb684c936",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "瓜子金瓜子金 A 2 cm B C D 1 cm E圖1 瓜子金外觀圖 A.瓜子金 B.葉上表面放大圖 C.葉下表面放大圖 D.花放大圖 E.根放大圖 243243"
+    }
+  },
+  {
+    "id": "LHKM015",
+    "name": "HKCMMS《人參葉》",
+    "type": "文献",
+    "alias": "Ginseng Folium",
+    "description": "HKCMMS 第7册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第7册",
+      "chapter": "人參葉",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol7/pdf_c/Ginseng_Folium_v7_c.pdf",
+      "identifier": "hkcmms_9ff1b3f99aa34b472787",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "人參葉人參葉人參葉人參葉 BB 11 cmcm CC 11cmcm AA 11 cmcm圖 1 人參葉外觀圖圖 1 人參葉外觀圖 A.人參葉 B.掌狀複葉上表面 A.人參葉 B.掌狀複葉上表面 C.掌狀複葉下表面 C.掌狀複葉下表面"
+    }
+  },
+  {
+    "id": "LHKM016",
+    "name": "HKCMMS《黃芪》",
+    "type": "文献",
+    "alias": "Radix Astragali",
+    "description": "HKCMMS 第1册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第1册",
+      "chapter": "黃芪",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol1/pdf_c/Radix_Astragali_v1_c.pdf",
+      "identifier": "hkcmms_a19e71cb793077fb8c53",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "黃芪黃芪黃芪黃芪圖圖 7(7(i)i) 膜莢黃芪外觀圖膜莢黃芪外觀圖 33 mmmm 11cmcm 3 mm 3 mm 1 cm 圖 1 cm 圖 7(7(i)i) 蒙古黃芪外觀圖蒙古黃芪外觀圖"
+    }
+  },
+  {
+    "id": "LHKM017",
+    "name": "HKCMMS《三棱》",
+    "type": "文献",
+    "alias": "Sparganii Rhizoma",
+    "description": "HKCMMS 第9册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第9册",
+      "chapter": "三棱",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol9/pdf_c/Sparganii_Rhizoma_v9_c.pdf",
+      "identifier": "hkcmms_a4f553eee10051a25823",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "三棱三棱 A 1 cm B 1 cm圖1 三棱外觀圖 A.三棱 B.根莖切面 321321"
+    }
+  },
+  {
+    "id": "LHKM018",
+    "name": "HKCMMS《龍脷葉》",
+    "type": "文献",
+    "alias": "Sauropi Folium",
+    "description": "HKCMMS 第11册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第11册",
+      "chapter": "龍脷葉",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol11/pdf_c/Sauropi Folium_v11_c.pdf",
+      "identifier": "hkcmms_a9d37645c3138106aa00",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "龍脷葉龍脷葉龍脷葉龍脷葉 A 2 cm B 1 cm C圖1 龍脷葉外觀圖 A.龍脷葉 B.葉上表面放大圖 C.葉下表面放大圖 157157157 StoraxGalangae Fructus 枸杞子 Perillae Folium 廣藿香 Ziziphi Spinosae Semen Stellariae銀柴胡Radix 紅豆蔻龍脷葉 Pogostemonis Herba 酸棗仁蘇合香"
+    }
+  },
+  {
+    "id": "LHKM019",
+    "name": "HKCMMS《何首烏》",
+    "type": "文献",
+    "alias": "Radix Polygoni Multiflori",
+    "description": "HKCMMS 第2册中药材标准条目，覆盖第2—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第2册",
+      "chapter": "何首烏",
+      "page_start": 2,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol2/pdf_c/Radix_Polygoni_Multiflori_v2_c.pdf",
+      "identifier": "hkcmms_b321c317872813468c77",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "1.名稱藥材正名：Radix Polygoni Multiflori中文名：何首烏漢語拼音名：Heshouwu本品為鞭科植物何首烏 Polygonum multiflorum Thunb.的乾燥塊根。秋、冬二季柴枯萎時採搖。將挖得的塊根前去兩端,洗淨,個大的切成塊,乾燥。"
+    }
+  },
+  {
+    "id": "LHKM020",
+    "name": "HKCMMS《苦木》",
+    "type": "文献",
+    "alias": "Picrasmae Ramulus et Folium",
+    "description": "HKCMMS 第10册中药材标准条目，覆盖第1—13页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第10册",
+      "chapter": "苦木",
+      "page_start": 1,
+      "page_end": 13,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol10/pdf_c/Picrasmae_Ramulus_et_Folium_v10_c.pdf",
+      "identifier": "hkcmms_b40fec286bf31cea34a8",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "苦木苦木苦木苦木苦木苦木苦木 A 5 cm B 5 cm C 1 cm D E 1 cm圖1 苦木外觀圖 A.苦木 B.帶葉的枝 C.葉上表面放大圖 D.葉下表面放大圖 E.枝切面放大圖 293293293"
+    }
+  },
+  {
+    "id": "LHKM021",
+    "name": "HKCMMS《魚腥草》",
+    "type": "文献",
+    "alias": "Houttuyniae Herba",
+    "description": "HKCMMS 第4册中药材标准条目，覆盖第1—14页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第4册",
+      "chapter": "魚腥草",
+      "page_start": 1,
+      "page_end": 14,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol4/pdf_c/Houttuyniae_Herba_v4_c.pdf",
+      "identifier": "hkcmms_b9a36391fe0a5b43fbcc",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "魚腥草魚腥草魚腥草魚腥草 11 cmcm 圖圖 11 (i) 魚腥草外觀圖(i) 魚腥草外觀圖 1 cm圖 1 (ii) 魚腥草花穗及葉片外觀圖圖 1 (ii) 魚腥草花穗及葉片外觀圖"
+    }
+  },
+  {
+    "id": "LHKM022",
+    "name": "HKCMMS《鬱金》",
+    "type": "文献",
+    "alias": "Curcumae Radix",
+    "description": "HKCMMS 第6册中药材标准条目，覆盖第1—26页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第6册",
+      "chapter": "鬱金",
+      "page_start": 1,
+      "page_end": 26,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol6/pdf_c/Curcumae_Radix_v6_c.pdf",
+      "identifier": "hkcmms_bf3bcb198bc40d8f3719",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "鬱金鬱金鬱金鬱金 BB 11 cmcm BB 1 1cmcm AA 11cmcm AA 1 1cmcm 圖圖1(i)1(i) 溫鬱金乾燥塊根外觀圖溫鬱金乾燥塊根外觀圖圖圖 1(ii)1(ii) 廣西莪朮乾燥塊根外觀圖廣西莪朮乾燥塊根外觀圖 A.A.塊根 B.塊根 B.塊根橫切面放大圖塊根橫切面放大圖 A.A.塊根 B.塊根 B.塊根橫切面放大圖塊根橫切面放大圖 BB BB 11cmcm 1 1cmcm A A A 1 cm A 1 cm 1 cm 1 cm圖 1(iii) 蓬莪朮乾燥塊根外觀圖圖 1(iv) 薑黃乾燥塊根外觀圖圖 1(iii) 蓬莪朮乾燥塊根外觀圖圖 1(iv) 薑黃乾燥塊根外觀圖 A.塊根 B.塊根橫切面放大圖 A.塊根 B.塊根橫切面放大圖A.塊根 B.塊根橫切面放大圖 A.塊根 B.塊根橫切面放大圖"
+    }
+  },
+  {
+    "id": "LHKM023",
+    "name": "HKCMMS《白降丹》",
+    "type": "文献",
+    "alias": "Hydrargyrum Chloratum Compositum",
+    "description": "HKCMMS 第4册中药材标准条目，覆盖第1—7页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第4册",
+      "chapter": "白降丹",
+      "page_start": 1,
+      "page_end": 7,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol4/pdf_c/Hydrargyrum_Chloratum_Compositum_v4_c.pdf",
+      "identifier": "hkcmms_cc177b2f11508afe1f79",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "白降丹白降丹 1 cm圖 1(i) 板塊狀白降丹 1 cm圖 1(ii) 粉末狀白降丹"
+    }
+  },
+  {
+    "id": "LHKM024",
+    "name": "HKCMMS《澤瀉 (Rhizoma Alismatis)》",
+    "type": "文献",
+    "alias": "Rhizoma Alismatis",
+    "description": "HKCMMS 第1册中药材标准条目，覆盖第2—9页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第1册",
+      "chapter": "澤瀉 (Rhizoma Alismatis)",
+      "page_start": 2,
+      "page_end": 9,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol1/pdf_c/Rhizoma_Alismatis_v1_c.pdf",
+      "identifier": "hkcmms_ceaa134585afe69df857",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "1.名稱藥材正名：Rhizoma Alismatis漢語拼音名：Zexie本品為澤瀉科植物澤瀉 Alisma orientalis (Sam.) Juzep.的乾燥塊莖。冬季巷葉開始枯萎時採控,洗淨,乾燥,除去鬚根及粗皮。"
+    }
+  },
+  {
+    "id": "LHKM025",
+    "name": "HKCMMS《紅豆蔻》",
+    "type": "文献",
+    "alias": "Galangae Fructus",
+    "description": "HKCMMS 第11册中药材标准条目，覆盖第1—15页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第11册",
+      "chapter": "紅豆蔻",
+      "page_start": 1,
+      "page_end": 15,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol11/pdf_c/Galangae Fructus_v11_c.pdf",
+      "identifier": "hkcmms_d919ccbe091d60a72fa0",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "紅豆蔻紅豆蔻紅豆蔻紅豆蔻 B-1 2 mm B-2 2 mm B-3 A C 2 mm圖1 紅豆蔻外觀圖 A.紅豆蔻 B.種子放大圖(B-1 除去果皮,外被黃白色膜質假種皮;B-2 種子外被黃白色膜質假種皮;B-3 種子除去膜質假種皮)C.種子橫切面放大圖(顯示胚乳)373737 StoraxGalangae Fructus 枸杞子 Perillae Folium 廣藿香 Ziziphi Spinosae Semen Stellariae銀柴胡Radix 紅豆蔻紅豆蔻 Pogostemonis Herba 酸棗仁蘇合香"
+    }
+  },
+  {
+    "id": "LHKM026",
+    "name": "HKCMMS《靈芝》",
+    "type": "文献",
+    "alias": "Ganoderma",
+    "description": "HKCMMS 第9册中药材标准条目，覆盖第1—24页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第9册",
+      "chapter": "靈芝",
+      "page_start": 1,
+      "page_end": 24,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol9/pdf_c/Ganoderma_v9_c.pdf",
+      "identifier": "hkcmms_d96d023524d453b35b6a",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "靈芝靈芝 A 2 cm 1 3 B 5 mm C 0.5 mm圖 1(i) 赤芝乾燥子實體外觀圖 A.子實體 B.菌蓋縱切面 C.菌蓋下表面放大圖1.菌肉 2.菌管層 3.菌管口A 2 cm 2 3 B 10 mm C 0.5 mm圖1(ii) 紫芝乾燥子實體外觀圖 A.子實體 B.菌蓋縱切面 C.菌蓋下表面放大圖1.菌肉 2.菌管層 3.菌管口"
+    }
+  },
+  {
+    "id": "LHKM027",
+    "name": "HKCMMS《鹿茸》",
+    "type": "文献",
+    "alias": "Cervi Cornu Pantotrichum",
+    "description": "HKCMMS 第7册中药材标准条目，覆盖第1—16页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第7册",
+      "chapter": "鹿茸",
+      "page_start": 1,
+      "page_end": 16,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol7/pdf_c/Cervi_Cornu_Pantotrichum_v7_c.pdf",
+      "identifier": "hkcmms_e42022f9c657eb44e5b5",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "鹿茸鹿茸鹿茸鹿茸 BB 11 cmcm AA 22 cmcm 圖圖1(i)1(i)梅花鹿的雄鹿未骨化密生茸毛的幼角外觀圖梅花鹿的雄鹿未骨化密生茸毛的幼角外觀圖 A.A.鹿茸鹿茸(二杠)(二杠) B.B.切片切片 B 1 cm B 1 cm A 10 cm A 10 cm圖 1(ii)馬鹿的雄鹿未骨化密生茸毛的幼角外觀圖圖 1(ii)馬鹿的雄鹿未骨化密生茸毛的幼角外觀圖 A.鹿茸(三岔) B.切片 A.鹿茸(三岔) B.切片"
+    }
+  },
+  {
+    "id": "LHKM028",
+    "name": "HKCMMS《香附》",
+    "type": "文献",
+    "alias": "Cyperi Rhizoma",
+    "description": "HKCMMS 第5册中药材标准条目，覆盖第1—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第5册",
+      "chapter": "香附",
+      "page_start": 1,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol5/pdf_c/Cyperi_Rhizoma_v5_c.pdf",
+      "identifier": "hkcmms_e4532c7b7a1ca370b47b",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "香附香附香附香附 BB CC DD 55 mmmm AA 11 cmcm圖 1 香附外觀圖圖 1 香附外觀圖 A.香附 B.香附放大圖A.香附 B.香附放大圖 C.未經蒸煮香附斷面觀 D.經蒸煮香附斷面觀C.未經蒸煮香附斷面觀 D.經蒸煮香附斷面觀 Tritici Levis Fructus 金錢草 Selaginellae Herba Zanthoxyli Radix 石菖蒲桃仁Persicae Semen 卷柏兩面針 Acori Tatarinowii Rhizoma 浮小麥 Lysimachiae Herba"
+    }
+  },
+  {
+    "id": "LHKM029",
+    "name": "HKCMMS《五味子》",
+    "type": "文献",
+    "alias": "Schisandrae Chinensis Fructus",
+    "description": "HKCMMS 第4册中药材标准条目，覆盖第1—12页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第4册",
+      "chapter": "五味子",
+      "page_start": 1,
+      "page_end": 12,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol4/pdf_c/Schisandrae_Chinensis_Fructus_v4_c.pdf",
+      "identifier": "hkcmms_e47a86b0ff236bfc7b2f",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "五味子五味子五味子五味子 BB 0.50.5cmcm AA 11 cmcm圖 1 五味子外觀圖(A:果實 B:種子)圖 1 五味子外觀圖(A:果實 B:種子)"
+    }
+  },
+  {
+    "id": "LHKM030",
+    "name": "HKCMMS《龍膽》",
+    "type": "文献",
+    "alias": "Radix et Rhizoma Gentianae",
+    "description": "HKCMMS 第2册中药材标准条目，覆盖第1—15页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第2册",
+      "chapter": "龍膽",
+      "page_start": 1,
+      "page_end": 15,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol2/pdf_c/Radix_et_Rhizoma_Gentianae_v2_c.pdf",
+      "identifier": "hkcmms_e565b31fcc3fe45324e2",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "龍膽龍膽龍膽龍膽 1 1 11 cmcm 圖圖 1(1(i)i) 龍膽外觀圖龍膽外觀圖1...根莖根莖根莖 2.2.根根1 cm 1 cm圖 1(i) 堅龍膽外觀圖圖 1(i) 堅龍膽外觀圖 1.1.根莖莖 2.2.根根 1.莖 2.根"
+    }
+  },
+  {
+    "id": "LHKM031",
+    "name": "HKCMMS《石上柏》",
+    "type": "文献",
+    "alias": "Selaginellae Doederleinii Herba",
+    "description": "HKCMMS 第7册中药材标准条目，覆盖第1—10页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第7册",
+      "chapter": "石上柏",
+      "page_start": 1,
+      "page_end": 10,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol7/pdf_c/Selaginellae_Doederleinii_Herba_v7_c.pdf",
+      "identifier": "hkcmms_ea1ce9b9fd7075c482e0",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "石上柏石上柏石上柏石上柏 BB 55 mmmm CC 55mmmm AA 11cmcm圖 1 石上柏外觀圖圖 1 石上柏外觀圖 A.石上柏 B.莖放大圖 C.小枝放大圖 A.石上柏 B.莖放大圖 C.小枝放大圖"
+    }
+  },
+  {
+    "id": "LHKM032",
+    "name": "HKCMMS《北沙參》",
+    "type": "文献",
+    "alias": "Radix Glehniae",
+    "description": "HKCMMS 第3册中药材标准条目，覆盖第1—10页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第3册",
+      "chapter": "北沙參",
+      "page_start": 1,
+      "page_end": 10,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol3/pdf_c/Radix_Glehniae_v3_c.pdf",
+      "identifier": "hkcmms_f9109231e4d95b6378c7",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "11 cmcm圖 1 北沙參外觀圖圖 1 北沙參外觀圖"
+    }
+  },
+  {
+    "id": "LHKM033",
+    "name": "HKCMMS《三叉苦》",
+    "type": "文献",
+    "alias": "Melicopes Pteleifoliae Caulis",
+    "description": "HKCMMS 第8册中药材标准条目，覆盖第1—11页。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第8册",
+      "chapter": "三叉苦",
+      "page_start": 1,
+      "page_end": 11,
+      "source_url": "https://www.cmro.gov.hk/files/hkcmms/vol8/pdf_c/Melicopes_Pteleifoliae_Caulis_v8_c.pdf",
+      "identifier": "hkcmms_fdf3a5539b868a20d7c1",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "original_excerpt": "三叉苦三叉苦三叉苦三叉苦 AA 22 cmcm BB 11 cmcm圖 1 三叉苦外觀圖圖 1 三叉苦外觀圖 A.三叉苦 B.莖切片放大圖 A.三叉苦 B.莖切片放大圖 219219"
+    }
+  },
+  {
+    "id": "LHKV01",
+    "name": "《香港中药材标准》第1册",
+    "type": "文献",
+    "alias": "",
+    "description": "HKCMMS 第1册官方中药材标准汇编。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第1册",
+      "source_url": "https://www.cmro.gov.hk/html/eng/useful_information/hkcmms/cmmlist.html",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "source_type": "public_government_standard"
+    }
+  },
+  {
+    "id": "LHKV02",
+    "name": "《香港中药材标准》第2册",
+    "type": "文献",
+    "alias": "",
+    "description": "HKCMMS 第2册官方中药材标准汇编。",
+    "properties": {
+      "publisher": "香港特别行政区政府卫生署中医药规管办公室",
+      "edition": "第2册",
+      "source_url": "https://www.cmro.gov.hk/html/eng/useful_information/hkcmms/cmmlist.html",
+      "license": "官方公开网页/PDF；版权归发布机构，课程项目仅作检索与引用",
+      "source_type": "public_government_standard"
+    }
   }
 ]

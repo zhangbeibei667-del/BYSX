@@ -1,7 +1,7 @@
 """
 Neo4j 实现。图模型：
   节点  (:Entity {id, name, type, alias, description, props_json})
-  关系  (:Entity)-[:REL {relation, evidence}]->(:Entity)
+  关系  (:Entity)-[:REL {relation, evidence, metadata_json}]->(:Entity)
 用统一的 :REL 关系类型 + relation 属性，写变长路径查询时最省事。
 
 事务控制：read_transaction（图查询）/ write_transaction（增删改）。
@@ -158,20 +158,22 @@ class Neo4jStore(GraphStore):
         self._run_write(
             """MATCH (a:Entity {id:$sid}), (b:Entity {id:$tid})
                MERGE (a)-[e:REL {relation:$rel}]->(b)
-               SET e.evidence=$ev""",
-            sid=r.source_id, tid=r.target_id, rel=r.relation, ev=r.evidence)
+               SET e.evidence=$ev, e.metadata_json=$meta""",
+            sid=r.source_id, tid=r.target_id, rel=r.relation, ev=r.evidence,
+            meta=self._relation_metadata_json(r))
         return r
 
     def bulk_upsert_relations(self, relations: List[Relation]) -> int:
         """UNWIND 批量写入关系，一次网络往返。"""
         rows = [{"sid": r.source_id, "tid": r.target_id,
-                 "rel": r.relation, "ev": r.evidence or ""}
+                 "rel": r.relation, "ev": r.evidence or "",
+                 "meta": self._relation_metadata_json(r)}
                 for r in relations]
         self._run_write(
             """UNWIND $rows AS row
                MATCH (a:Entity {id: row.sid}), (b:Entity {id: row.tid})
                MERGE (a)-[e:REL {relation: row.rel}]->(b)
-               SET e.evidence = row.ev""",
+               SET e.evidence = row.ev, e.metadata_json = row.meta""",
             rows=rows,
         )
         return len(relations)
@@ -202,9 +204,26 @@ class Neo4jStore(GraphStore):
     @staticmethod
     def _rel(row) -> Relation:
         a, e, b = row["a"], row["e"], row["b"]
+        metadata = json.loads(e.get("metadata_json", "{}") or "{}")
         return Relation(source_id=a["id"], source_name=a["name"], relation=e["relation"],
                         target_id=b["id"], target_name=b["name"],
-                        evidence=e.get("evidence", "") or "")
+                        evidence=e.get("evidence", "") or "",
+                        evidence_level=metadata.get("evidence_level", "E_待验证"),
+                        confidence=metadata.get("confidence", 0.5),
+                        locator=metadata.get("locator", {}), excerpt=metadata.get("excerpt", ""),
+                        version=metadata.get("version", "1.0"),
+                        review_status=metadata.get("review_status", "draft"))
+
+    @staticmethod
+    def _relation_metadata_json(relation: Relation) -> str:
+        return json.dumps({
+            "evidence_level": relation.evidence_level,
+            "confidence": relation.confidence,
+            "locator": relation.locator,
+            "excerpt": relation.excerpt,
+            "version": relation.version,
+            "review_status": relation.review_status,
+        }, ensure_ascii=False)
 
     # ---------- 图查询（只读） ----------
     def neighbors(self, eid, relation, limit):
@@ -243,7 +262,8 @@ class Neo4jStore(GraphStore):
                              relation=e["relation"],
                              target_id=e.end_node["id"],
                              target_name=e.end_node["name"],
-                             evidence=e.get("evidence", "") or "")
+                             evidence=e.get("evidence", "") or "",
+                             **json.loads(e.get("metadata_json", "{}") or "{}"))
                     for e in p.relationships]
             out.append((ents, rels))
         return out

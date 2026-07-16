@@ -1,0 +1,368 @@
+{
+  "passed": true,
+  "total": 20,
+  "passed_cases": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "id": "formula_001",
+      "query": "归脾汤包含哪些药材？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "formula_composition",
+      "mode": "local-graphrag",
+      "evidence": 3,
+      "edges": 12
+    },
+    {
+      "id": "formula_002",
+      "query": "四君子汤包含哪些药材？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "formula_composition",
+      "mode": "local-graphrag",
+      "evidence": 4,
+      "edges": 4
+    },
+    {
+      "id": "formula_003",
+      "query": "六味地黄丸包含哪些药材？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "formula_composition",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 7
+    },
+    {
+      "id": "formula_004",
+      "query": "麻黄汤包含哪些药材？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "formula_composition",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 4
+    },
+    {
+      "id": "effect_001",
+      "query": "黄芪有什么功效？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "effect_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 6
+    },
+    {
+      "id": "effect_002",
+      "query": "当归有什么功效？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "effect_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 5
+    },
+    {
+      "id": "effect_003",
+      "query": "人参有什么功效？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "effect_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 6
+    },
+    {
+      "id": "contra_001",
+      "query": "人参有哪些禁忌？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "contraindication_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 4
+    },
+    {
+      "id": "contra_002",
+      "query": "附子有哪些禁忌？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "contraindication_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 5
+    },
+    {
+      "id": "symptom_001",
+      "query": "失眠可能关联哪些证候和方剂？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "symptom_to_formula",
+      "mode": "local-graphrag",
+      "evidence": 3,
+      "edges": 13
+    },
+    {
+      "id": "symptom_002",
+      "query": "心悸可能关联哪些证候和方剂？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "symptom_to_formula",
+      "mode": "local-graphrag",
+      "evidence": 3,
+      "edges": 10
+    },
+    {
+      "id": "syndrome_001",
+      "query": "心脾两虚有哪些典型症状表现？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "syndrome_manifestation",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 18
+    },
+    {
+      "id": "syndrome_002",
+      "query": "肝气郁结有哪些典型症状表现？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "syndrome_manifestation",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 35
+    },
+    {
+      "id": "definition_001",
+      "query": "什么是气虚证？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "definition_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 120
+    },
+    {
+      "id": "definition_002",
+      "query": "介绍一下黄芪",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "definition_query",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 120
+    },
+    {
+      "id": "corpus_001",
+      "query": "方剂组成与主治说明资料中如何介绍归脾汤？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "formula_composition",
+      "mode": "local-graphrag",
+      "evidence": 3,
+      "edges": 12
+    },
+    {
+      "id": "corpus_002",
+      "query": "中医药科普资料如何解释失眠相关证候？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "general",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 120
+    },
+    {
+      "id": "corpus_003",
+      "query": "药典来源索引中的黄芪条目有哪些依据？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": "general",
+      "mode": "local-graphrag",
+      "evidence": 5,
+      "edges": 120
+    },
+    {
+      "id": "insufficient_001",
+      "query": "火星回魂神方是否治疗失眠？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": null,
+      "mode": "evidence-insufficient",
+      "evidence": 0,
+      "edges": 0
+    },
+    {
+      "id": "insufficient_002",
+      "query": "量子养生丹是否主治心脾两虚？",
+      "passed": true,
+      "checks": {
+        "intent": true,
+        "graph": true,
+        "reasoning_paths": true,
+        "evidence": true,
+        "citations": true,
+        "insufficient": true,
+        "no_mock": true
+      },
+      "intent": null,
+      "mode": "evidence-insufficient",
+      "evidence": 0,
+      "edges": 0
+    }
+  ]
+}

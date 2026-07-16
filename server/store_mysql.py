@@ -105,6 +105,7 @@ class MySQLStore(GraphStore):
                     target_id VARCHAR(10) NOT NULL,
                     target_name VARCHAR(200) DEFAULT '',
                     evidence TEXT,
+                    metadata_json TEXT,
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     PRIMARY KEY (source_id, relation, target_id),
                     INDEX idx_src (source_id),
@@ -112,6 +113,10 @@ class MySQLStore(GraphStore):
                     INDEX idx_rel (relation)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             """)
+            try:
+                cur.execute("ALTER TABLE relations ADD COLUMN metadata_json TEXT")
+            except Exception:
+                pass
             # 类型前缀表（自动发现新类型时记录，含原子序列号）
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS type_prefixes (
@@ -314,13 +319,14 @@ class MySQLStore(GraphStore):
     def upsert_relation(self, r: Relation) -> Relation:
         with self._get_conn().cursor() as cur:
             cur.execute("""
-                INSERT INTO relations (source_id, source_name, relation, target_id, target_name, evidence)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                INSERT INTO relations (source_id, source_name, relation, target_id, target_name, evidence, metadata_json)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
                 ON DUPLICATE KEY UPDATE
                     source_name=VALUES(source_name), target_name=VALUES(target_name),
-                    evidence=VALUES(evidence)
+                    evidence=VALUES(evidence), metadata_json=VALUES(metadata_json)
             """, (r.source_id, r.source_name, r.relation,
-                  r.target_id, r.target_name, r.evidence))
+                  r.target_id, r.target_name, r.evidence,
+                  self._relation_metadata_json(r)))
         return r
 
     def bulk_upsert_relations(self, relations: List[Relation]) -> int:
@@ -332,13 +338,14 @@ class MySQLStore(GraphStore):
                 for r in chunk:
                     try:
                         cur.execute("""
-                            INSERT INTO relations (source_id, source_name, relation, target_id, target_name, evidence)
-                            VALUES (%s, %s, %s, %s, %s, %s)
+                            INSERT INTO relations (source_id, source_name, relation, target_id, target_name, evidence, metadata_json)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s)
                             ON DUPLICATE KEY UPDATE
                                 source_name=VALUES(source_name), target_name=VALUES(target_name),
-                                evidence=VALUES(evidence)
+                                evidence=VALUES(evidence), metadata_json=VALUES(metadata_json)
                         """, (r.source_id, r.source_name, r.relation,
-                              r.target_id, r.target_name, r.evidence))
+                              r.target_id, r.target_name, r.evidence,
+                              self._relation_metadata_json(r)))
                         total += 1
                     except Exception:
                         pass
@@ -686,9 +693,26 @@ class MySQLStore(GraphStore):
 
     @staticmethod
     def _row_to_relation(row) -> Relation:
+        metadata = json.loads(row.get("metadata_json") or "{}")
         return Relation(
             source_id=row["source_id"], source_name=row.get("source_name", "") or "",
             relation=row["relation"], target_id=row["target_id"],
             target_name=row.get("target_name", "") or "",
             evidence=row.get("evidence", "") or "",
+            evidence_level=metadata.get("evidence_level", "E_待验证"),
+            confidence=metadata.get("confidence", 0.5),
+            locator=metadata.get("locator", {}), excerpt=metadata.get("excerpt", ""),
+            version=metadata.get("version", "1.0"),
+            review_status=metadata.get("review_status", "draft"),
         )
+
+    @staticmethod
+    def _relation_metadata_json(relation: Relation) -> str:
+        return json.dumps({
+            "evidence_level": relation.evidence_level,
+            "confidence": relation.confidence,
+            "locator": relation.locator,
+            "excerpt": relation.excerpt,
+            "version": relation.version,
+            "review_status": relation.review_status,
+        }, ensure_ascii=False)

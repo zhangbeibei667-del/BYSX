@@ -1,0 +1,81 @@
+{
+  "passed": false,
+  "primary_service": "backend.services.rag_service.RAGService",
+  "legacy_member3_role": "offline corpus/Milvus utilities and compatibility adapter",
+  "sqlite": {
+    "ready": true,
+    "categories": {
+      "教材": {
+        "documents": 100,
+        "chunks": 100
+      },
+      "方剂说明": {
+        "documents": 100,
+        "chunks": 100
+      },
+      "科普资料": {
+        "documents": 662,
+        "chunks": 662
+      },
+      "药典": {
+        "documents": 738,
+        "chunks": 2222
+      }
+    },
+    "database": "D:\\UNIVERSITY\\junior_second\\BYSX\\integrated_entities_graphrag\\backend\\data\\tcm_agent.db"
+  },
+  "qdrant": {
+    "status": "ready",
+    "configured": true,
+    "deployment": "remote-service",
+    "url": "http://127.0.0.1:6333",
+    "collection": "tcm_documents_v5",
+    "embedding_provider": "dashscope",
+    "model": "text-embedding-v4",
+    "dimensions": 1024,
+    "query_embedding_available": false,
+    "points": 9518,
+    "expected_points": 11035,
+    "corpus_fully_indexed": false,
+    "semantic_embeddings": true
+  },
+  "milvus": {
+    "status": "disabled",
+    "configured": false,
+    "uri": "http://127.0.0.1:19530",
+    "collection": "tcm_rag_chunks",
+    "import_artifact": {
+      "path": "member3\\data\\pharmacopoeia\\processed\\hkcmms\\index_ready\\chunks_for_milvus.jsonl",
+      "exists": true,
+      "records": 1094,
+      "sha256": "c1586c63cb7815c93685813d0cccfe08a62192dee5397b0f6ac6bf57a020e334",
+      "bytes": 2392329
+    }
+  },
+  "llm": {
+    "provider": "aliyun-bailian",
+    "enabled": false,
+    "configured": false,
+    "available": false,
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "last_error": "",
+    "status": "disabled"
+  },
+  "source_corpora": [
+    {
+      "path": "member3\\data\\processed\\rag_corpus_clean.jsonl",
+      "exists": true,
+      "records": 7951,
+      "sha256": "bf354abc9443ad516623c6e6db52be482143af9a68650d727bde2569799428a0",
+      "bytes": 12825899
+    },
+    {
+      "path": "member3\\data\\pharmacopoeia\\processed\\hkcmms\\index_ready\\chunks_for_milvus.jsonl",
+      "exists": true,
+      "records": 1094,
+      "sha256": "c1586c63cb7815c93685813d0cccfe08a62192dee5397b0f6ac6bf57a020e334",
+      "bytes": 2392329
+    }
+  ]
+}

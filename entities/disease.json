@@ -878,5 +878,1916 @@
       "source": "《中医外科学》",
       "note": ""
     }
+  },
+  {
+    "id": "D081",
+    "name": "痞满",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D082",
+    "name": "鼻衄",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D083",
+    "name": "肺痨",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D084",
+    "name": "痰饮",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D085",
+    "name": "自汗",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D086",
+    "name": "盗汗",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D087",
+    "name": "癫狂",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D088",
+    "name": "痫病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D089",
+    "name": "痉证",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D090",
+    "name": "颤证",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D091",
+    "name": "水肿（阴水）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D092",
+    "name": "水肿（阳水）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D093",
+    "name": "关格",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D094",
+    "name": "腰痛（肾虚）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D095",
+    "name": "腰痛（寒湿）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D096",
+    "name": "腰痛（瘀血）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D097",
+    "name": "经行腹痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D098",
+    "name": "月经先期",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D099",
+    "name": "月经后期",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D100",
+    "name": "月经先后不定期",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D101",
+    "name": "月经过多",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D102",
+    "name": "月经过少",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D103",
+    "name": "产后恶露不尽",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D104",
+    "name": "产后缺乳",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D105",
+    "name": "产后发热",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D106",
+    "name": "产后腹痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D107",
+    "name": "癥瘕",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D108",
+    "name": "不孕症",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D109",
+    "name": "小儿厌食",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D110",
+    "name": "小儿积滞",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D111",
+    "name": "小儿疳证",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D112",
+    "name": "小儿惊风",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D113",
+    "name": "麻疹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D114",
+    "name": "水痘",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D115",
+    "name": "黄疸（新生儿）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D116",
+    "name": "时行感冒",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D117",
+    "name": "温病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D118",
+    "name": "暑温",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D119",
+    "name": "湿温",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D120",
+    "name": "风温",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D121",
+    "name": "春温",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D122",
+    "name": "秋燥",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D123",
+    "name": "霍乱",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D124",
+    "name": "痢疾（疫毒痢）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D125",
+    "name": "瘴疟",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D126",
+    "name": "乳癖",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D127",
+    "name": "脱疽",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D128",
+    "name": "筋瘤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D129",
+    "name": "疝气",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D130",
+    "name": "阴囊湿疹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D131",
+    "name": "湿疹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D132",
+    "name": "银屑病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D133",
+    "name": "痈疽",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D134",
+    "name": "丹毒",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D135",
+    "name": "骨痹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D136",
+    "name": "筋痹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D137",
+    "name": "脉痹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D138",
+    "name": "肌痹",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D139",
+    "name": "骨折",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D140",
+    "name": "脱臼",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D141",
+    "name": "伤筋",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D142",
+    "name": "腰痛（跌打损伤）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D143",
+    "name": "落枕",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D144",
+    "name": "肩周炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D145",
+    "name": "颈椎病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D146",
+    "name": "腰椎间盘突出",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D147",
+    "name": "坐骨神经痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D148",
+    "name": "面瘫",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D149",
+    "name": "三叉神经痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D150",
+    "name": "眩晕（耳石症）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D151",
+    "name": "突发性耳聋",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D152",
+    "name": "梅尼埃病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D153",
+    "name": "鼻鼽",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D154",
+    "name": "鼻窒",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D155",
+    "name": "喉喑",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D156",
+    "name": "乳蛾",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D157",
+    "name": "口糜",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D158",
+    "name": "牙宣",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D159",
+    "name": "目赤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D160",
+    "name": "目痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D161",
+    "name": "目昏",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D162",
+    "name": "内障",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D163",
+    "name": "外障",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D164",
+    "name": "妇人腹痛",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D165",
+    "name": "妇人脏躁",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D166",
+    "name": "更年期综合征",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D167",
+    "name": "乳岩",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D168",
+    "name": "卵巢囊肿",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D169",
+    "name": "子宫肌瘤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D170",
+    "name": "盆腔炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D171",
+    "name": "阴道炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D172",
+    "name": "宫颈炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D173",
+    "name": "乳腺增生",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D174",
+    "name": "胆囊炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D175",
+    "name": "胆结石",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D176",
+    "name": "脂肪肝",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D177",
+    "name": "肝硬化",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D178",
+    "name": "慢性胃炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D179",
+    "name": "胃溃疡",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D180",
+    "name": "十二指肠溃疡",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D181",
+    "name": "结肠炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D182",
+    "name": "肠易激综合征",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D183",
+    "name": "反流性食管炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D184",
+    "name": "慢性胰腺炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D185",
+    "name": "糖尿病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D186",
+    "name": "高血压病",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D187",
+    "name": "高脂血症",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D188",
+    "name": "痛风",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D189",
+    "name": "类风湿关节炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D190",
+    "name": "强直性脊柱炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D191",
+    "name": "干燥综合征",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D192",
+    "name": "慢性肾炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D193",
+    "name": "肾衰竭",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D194",
+    "name": "前列腺炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D195",
+    "name": "前列腺增生",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D196",
+    "name": "附睾炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D197",
+    "name": "精索静脉曲张",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D198",
+    "name": "男性不育",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D199",
+    "name": "脱发",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D200",
+    "name": "白发",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D201",
+    "name": "黄褐斑",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D202",
+    "name": "白癜风",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D203",
+    "name": "银屑病（血热型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D204",
+    "name": "银屑病（血虚型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D205",
+    "name": "荨麻疹（风热型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D206",
+    "name": "荨麻疹（风寒型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D207",
+    "name": "湿疹（湿热型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D208",
+    "name": "湿疹（血虚型）",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D209",
+    "name": "神经性皮炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D210",
+    "name": "瘙痒症",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D211",
+    "name": "下肢静脉曲张",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D212",
+    "name": "血栓性浅静脉炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D213",
+    "name": "淋巴水肿",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D214",
+    "name": "褥疮",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D215",
+    "name": "烧烫伤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D216",
+    "name": "冻伤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D217",
+    "name": "虫咬皮炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D218",
+    "name": "药物性皮炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D219",
+    "name": "放射性皮炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D220",
+    "name": "压疮",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D221",
+    "name": "腱鞘炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D222",
+    "name": "腱鞘囊肿",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D223",
+    "name": "滑囊炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D224",
+    "name": "跟痛症",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D225",
+    "name": "足底筋膜炎",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D226",
+    "name": "网球肘",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
+  },
+  {
+    "id": "D227",
+    "name": "肩袖损伤",
+    "type": "疾病",
+    "alias": "",
+    "description": "",
+    "properties": {
+      "source": "《中医诊断学》",
+      "note": "由疾病—证候关系表补齐，待补充疾病条目描述",
+      "review_status": "draft",
+      "version": "1.0"
+    }
   }
 ]

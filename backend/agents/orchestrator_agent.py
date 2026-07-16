@@ -39,7 +39,7 @@ class TCMTeachingOrchestratorAgent:
         if "followup" in selected:
             steps.append(self._step("症状追问 Agent", f"生成 {len(followup['follow_up_questions'])} 条上下文追问", followup))
 
-        graph = self.graph_agent.run(symptom) if "graph_query" in selected else {
+        graph = self.graph_agent.run(symptom, case_text) if "graph_query" in selected else {
             "syndromes": [], "formulas": [], "herbs": [], "graph": {"nodes": [], "edges": []}}
         if "graph_query" in selected:
             steps.append(self._step("图谱查询 Agent", f"证候：{self._join(graph.get('syndromes', []))}；方剂：{self._join(graph.get('formulas', []))}", graph))

@@ -106,11 +106,6 @@
             <span v-else class="text-placeholder">-</span>
           </template>
         </el-table-column>
-        <el-table-column label="病机" min-width="160" show-overflow-tooltip>
-          <template #default="{ row }">
-            {{ row.properties?.pathogenesis || '-' }}
-          </template>
-        </el-table-column>
         <el-table-column label="操作" width="160" align="center" fixed="right">
           <template #default="{ row }">
             <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">

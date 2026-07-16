@@ -69,39 +69,29 @@
       >
         <el-table-column type="selection" width="50" align="center" fixed="left" />
         <el-table-column type="index" label="序号" width="70" align="center" fixed="left" />
-        <el-table-column prop="id" label="编号" width="100" align="center" />
-        <el-table-column prop="name" label="名称" width="120" align="center" />
-        <el-table-column label="性味" width="120" show-overflow-tooltip>
+        <el-table-column prop="id" label="编号" min-width="110" align="center" />
+        <el-table-column prop="name" label="名称" min-width="140" align="center" />
+        <el-table-column label="性味" min-width="160" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.nature_and_flavor || '-' }}
           </template>
         </el-table-column>
-        <el-table-column label="归经" width="120" show-overflow-tooltip>
+        <el-table-column label="归经" min-width="160" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.channel_tropism || '-' }}
           </template>
         </el-table-column>
-        <el-table-column label="功效" width="150" show-overflow-tooltip>
+        <el-table-column label="功效" min-width="240" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.efficacy || '-' }}
           </template>
         </el-table-column>
-        <el-table-column label="主治" width="180" show-overflow-tooltip>
-          <template #default="{ row }">
-            {{ row.properties?.indications || '-' }}
-          </template>
-        </el-table-column>
-        <el-table-column label="用量" width="120" show-overflow-tooltip>
-          <template #default="{ row }">
-            {{ row.properties?.usage_dosage || '-' }}
-          </template>
-        </el-table-column>
-        <el-table-column label="禁忌" width="150" show-overflow-tooltip>
+        <el-table-column label="禁忌" min-width="240" show-overflow-tooltip>
           <template #default="{ row }">
             {{ row.properties?.contraindications || '-' }}
           </template>
         </el-table-column>
-        <el-table-column prop="category" label="分类" width="120" align="center" />
+        <el-table-column prop="category" label="分类" min-width="130" align="center" />
         <el-table-column label="操作" width="160" align="center" fixed="right">
           <template #default="{ row }">
             <el-button v-permission="['admin']" class="btn-edit" link size="small" @click="handleEdit(row)">

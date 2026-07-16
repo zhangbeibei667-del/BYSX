@@ -16,6 +16,7 @@
           <el-button
             type="primary"
             :icon="Download"
+            :loading="templateDownloading"
             @click="downloadTemplate"
           >
             下载Excel模板
@@ -126,6 +127,7 @@ import {
   CircleCloseFilled
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import api from '@/api'
 
 interface Props {
   modelValue: boolean
@@ -152,7 +154,7 @@ interface UploadResult {
 
 const props = withDefaults(defineProps<Props>(), {
   title: '批量导入',
-  accept: '.xlsx,.xls',
+  accept: '.xlsx,.csv,.json',
   showOptions: true,
   templateUrl: '/api/template/download',
   entityType: ''
@@ -171,6 +173,7 @@ const visible = computed({
 
 const uploadRef = ref()
 const uploading = ref(false)
+const templateDownloading = ref(false)
 const uploadResult = ref<UploadResult | null>(null)
 
 const options = ref({
@@ -193,13 +196,30 @@ const uploadData = computed(() => ({
   ...options.value
 }))
 
-const downloadTemplate = () => {
-  const link = document.createElement('a')
-  link.href = `${props.templateUrl}?type=${props.entityType}`
-  link.download = `${props.entityType}_template.xlsx`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+const downloadTemplate = async () => {
+  templateDownloading.value = true
+  try {
+    const templatePath = props.templateUrl.startsWith('/api/')
+      ? props.templateUrl.slice('/api'.length)
+      : props.templateUrl
+    const response = await api.get(templatePath, {
+      params: { type: props.entityType },
+      responseType: 'blob'
+    }) as unknown as Blob
+    const blob = response instanceof Blob ? response : new Blob([response])
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `${props.entityType}_template.xlsx`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  } catch (error) {
+    ElMessage.error('模板下载失败，请确认管理员登录状态')
+  } finally {
+    templateDownloading.value = false
+  }
 }
 
 const viewTemplateFormat = () => {
@@ -210,11 +230,11 @@ const viewTemplateFormat = () => {
 }
 
 const beforeUpload = (file: File) => {
-  const isExcel = file.type.includes('excel') || file.type.includes('spreadsheet')
+  const isSupported = /\.(xlsx|csv|json)$/i.test(file.name)
   const isSizeValid = file.size / 1024 / 1024 <= 10
   
-  if (!isExcel) {
-    ElMessage.error('请上传 Excel 文件')
+  if (!isSupported) {
+    ElMessage.error('请上传 .xlsx、.csv 或 .json 文件')
     return false
   }
   
@@ -232,13 +252,14 @@ const handleSuccess = (response: any) => {
   uploading.value = false
   
   if (response.code === 200) {
+    const imported = response.data.imported ?? 0
     uploadResult.value = {
       success: true,
       message: '导入成功',
-      total: response.data.total,
-      successCount: response.data.successCount,
-      errorCount: response.data.errorCount,
-      errors: response.data.errors
+      total: response.data.total ?? imported,
+      successCount: response.data.successCount ?? imported,
+      errorCount: response.data.errorCount ?? 0,
+      errors: response.data.errors ?? []
     }
     
     ElMessage.success('导入成功')

@@ -17,3 +17,48 @@
 6. Agent 实现：封装图谱查询、图谱数据 SQL Agent、资料检索、追问生成、解释生成、流式语音中医药问答和结果整理工具。
 7. 前端实现：完成智能问答、图谱可视化、实体详情、病例教学和历史记录页面。
 8. 后台实现：完成药材、方剂、症状、证候、病例、资料和问答记录等业务对象管理。
+
+## 启动方式
+
+本地开发：
+
+```powershell
+docker compose -f docker-compose.storage.yml up -d
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+cd frontend
+npm ci
+npm run dev
+```
+
+浏览器访问 `http://127.0.0.1:3000`。正式容器化部署使用：
+
+```powershell
+Copy-Item backend/.env.example backend/.env
+# 在 backend/.env 中填写新生成的密钥，不要提交该文件
+docker compose up -d --build
+```
+
+默认启动前端、统一后端和独立 Qdrant。需要同时启动 MySQL 与 Neo4j 时使用
+`docker compose --profile hybrid up -d --build`，并将 `STORE_BACKEND` 设置为 `hybrid`。
+
+## 发布质量检查
+
+```powershell
+python -m backend.scripts.check_kg_quality
+python -m backend.scripts.build_extended_evaluation_sets
+python -m backend.scripts.evaluate_rag_formal
+python -m backend.scripts.evaluate_agent_delivery
+cd frontend
+npm run build
+```
+
+GitHub Actions 会执行后端测试、前端构建、悬空关系检查、RAG/Agent 评测、密钥扫描和
+Compose 配置检查。教师复核请填写 `evaluation/human_review_template.csv`，再运行
+`python -m backend.scripts.evaluate_human_review`。
+
+## 密钥规则
+
+- 仓库只提交 `.env.example`，真实密钥只放在被 Git 忽略的 `backend/.env`。
+- 聊天或日志中暴露过的 Key 必须在云控制台吊销后重新生成，不能仅从文件中删除。
+- 新 Key 配置完成后运行 `python -m backend.scripts.import_rag_corpus_qdrant --reset`，
+  使 SQLite 文档块和 7,951 条研究语料全部使用同一向量模型重建索引。

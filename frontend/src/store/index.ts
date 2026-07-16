@@ -109,6 +109,13 @@ export const useChatStore = defineStore('chat', () => {
   
   const appendToStream = (chunk: string) => {
     currentAnswer.value += chunk
+    if (messages.value.length > 0) {
+      const lastMsg = messages.value[messages.value.length - 1]
+      if (lastMsg.role === 'assistant') {
+        lastMsg.content = currentAnswer.value
+        lastMsg.loading = true
+      }
+    }
   }
   
   const endStream = (response?: AnswerResponse) => {

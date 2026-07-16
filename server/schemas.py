@@ -1,140 +1,175 @@
-"""
-统一数据契约 —— 类型/前缀/关系域全部从数据动态发现，不硬编码。
-任务 1 新增类型只需放数据文件，零协调成本。
-"""
-from typing import Any, Dict, List, Optional, Tuple
-from pydantic import BaseModel, Field
+"""中医药知识图谱的统一数据契约与严格关系约束。"""
 
-# ---------- 已知的基础关系约束（自动扩展，新组合只警告不拒绝） ----------
-_BASE_RELATION_SCHEMA: Dict[str, List[tuple]] = {
-    "包含":   [("方剂", "药材")],
-    "主治":   [("方剂", "症状"), ("方剂", "证候"), ("药材", "症状"), ("药材", "证候")],
-    "提示":   [("症状", "证候")],
-    "对应":   [("证候", "方剂")],
-    "具有":   [("药材", "功效"), ("方剂", "功效")],
-    "禁忌":   [("药材", "禁忌"), ("方剂", "禁忌")],
+from __future__ import annotations
+
+import re
+import sys
+from typing import Any, Dict, List, Literal, Optional
+
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+ENTITY_TYPE_PREFIX: Dict[str, str] = {
+    "药材": "H",
+    "方剂": "F",
+    "症状": "S",
+    "证候": "Z",
+    "功效": "G",
+    "禁忌": "J",
+    "文献": "L",
+    "疾病": "D",
+    "归经": "M",
+    "性味": "T",
+}
+
+# 方向固定。严格模式下，不在此表中的关系或端点组合一律拒绝。
+RELATION_SCHEMA: Dict[str, List[tuple[str, str]]] = {
+    "包含": [("方剂", "药材")],
+    "主治": [
+        ("方剂", "症状"), ("方剂", "证候"), ("方剂", "疾病"),
+        ("药材", "症状"), ("药材", "证候"), ("药材", "疾病"),
+    ],
+    "提示": [("症状", "证候")],
+    "对应": [("证候", "方剂")],
+    "常见证候": [("疾病", "证候")],
+    "具有": [("药材", "功效"), ("方剂", "功效"), ("药材", "性味")],
+    "性味": [("药材", "性味")],
+    "归经": [("药材", "归经"), ("方剂", "归经")],
+    "禁忌": [
+        ("药材", "禁忌"), ("药材", "证候"), ("药材", "症状"),
+        ("方剂", "禁忌"), ("方剂", "证候"), ("方剂", "症状"),
+    ],
     "来源于": [
-        ("药材", "文献"), ("方剂", "文献"),
-        ("症状", "文献"), ("证候", "文献"),
-        ("功效", "文献"), ("禁忌", "文献"),
+        ("药材", "文献"), ("方剂", "文献"), ("症状", "文献"),
+        ("证候", "文献"), ("功效", "文献"), ("禁忌", "文献"),
+        ("疾病", "文献"), ("归经", "文献"), ("性味", "文献"),
     ],
     "记载": [
-        ("文献", "方剂"), ("文献", "药材"),
-        ("文献", "证候"), ("文献", "症状"),
-        ("文献", "功效"), ("文献", "禁忌"),
+        ("文献", "方剂"), ("文献", "药材"), ("文献", "证候"),
+        ("文献", "症状"), ("文献", "功效"), ("文献", "禁忌"),
+        ("文献", "疾病"),
     ],
 }
 
-
-# ---------- 已知类型前缀（新增类型自动生成） ----------
-_BASE_TYPE_PREFIX: Dict[str, str] = {
-    "药材": "H", "方剂": "F", "症状": "S", "证候": "Z",
-    "功效": "G", "禁忌": "J", "文献": "W",
-    "疾病": "D", "归经": "M", "性味": "T",
-}
+EvidenceLevel = Literal["A_权威教材", "B_药典标准", "C_研究文献", "D_经验总结", "E_待验证"]
+ReviewStatus = Literal["draft", "reviewed", "approved"]
 
 
-def get_type_prefixes() -> Dict[str, str]:
-    """返回当前所有类型→前缀映射。先取已知，再从数据库补。"""
-    result = dict(_BASE_TYPE_PREFIX)
-    try:
-        from config import get_store  # 懒加载避免循环导入
-        store = get_store()
-        if hasattr(store, "list_type_prefixes"):
-            for tp in store.list_type_prefixes():
-                result.setdefault(tp["type"], tp["prefix"])
-    except Exception:
-        pass
-    return result
+def _not_blank(value: str, field_name: str) -> str:
+    value = value.strip()
+    if not value:
+        raise ValueError(f"{field_name} 不能为空")
+    return value
 
 
-def auto_prefix(type_name: str) -> str:
-    """根据类型名自动生成 ASCII 字母前缀。永不会返回中文。"""
-    existing = set(get_type_prefixes().values())
-    # 26 个字母中未被占用的
-    free_letters = [chr(c) for c in range(ord('A'), ord('Z') + 1)
-                    if chr(c) not in existing]
-    # 拼音映射（按类型名的字顺序尝试）
-    pinyin_map = {
-        "疾": "J", "病": "B", "治": "Z", "法": "F", "经": "J",
-        "络": "L", "归": "G", "性": "X", "味": "W", "剂": "J",
-        "量": "L", "配": "P", "角": "J", "色": "S",
-    }
-    # ① 按类型名逐字尝试拼音映射
-    for char in type_name:
-        letter = pinyin_map.get(char)
-        if letter and letter in free_letters:
-            return letter
-    # ② 映射命中了但被占用 → 从 free_letters 里挑第一个
-    if free_letters:
-        return free_letters[0]
-    # ③ 全部 26 个字母被占用 → 双字母
-    for a in range(ord('A'), ord('Z') + 1):
-        for b in range(ord('A'), ord('Z') + 1):
-            prefix = chr(a) + chr(b)
-            if prefix not in existing:
-                return prefix
-    return "XX"  # 理论上不可能走到这里
-
-
-_RELATION_CONFIDENCE_LEVELS = ["A_权威教材", "B_药典标准", "C_研究文献", "D_经验总结", "E_待验证"]
-_REVIEW_STATUSES = ["draft", "reviewed", "approved"]
-
-
-# ---------- 实体 ----------
 class Entity(BaseModel):
-    id: str = Field(..., examples=["F001"])
-    name: str = Field(..., examples=["归脾汤"])
-    type: str = Field(..., examples=["方剂"])
-    alias: str = ""
+    id: str = Field(..., min_length=2, max_length=32, examples=["F001"])
+    name: str = Field(..., min_length=1, max_length=200, examples=["归脾汤"])
+    type: str = Field(..., min_length=1, max_length=50, examples=["方剂"])
+    alias: str = Field(default="", max_length=500)
     description: str = ""
     properties: Dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("id")
+    @classmethod
+    def validate_id(cls, value: str) -> str:
+        value = _not_blank(value, "id")
+        if not re.fullmatch(r"[A-Z][A-Z0-9_-]{1,31}", value):
+            raise ValueError("id 必须以大写英文字母开头，且只能包含大写字母、数字、下划线或连字符")
+        return value
+
+    @field_validator("name", "type")
+    @classmethod
+    def validate_required_text(cls, value: str, info) -> str:
+        return _not_blank(value, info.field_name)
+
+    @model_validator(mode="after")
+    def validate_prefix(self):
+        prefix = ENTITY_TYPE_PREFIX.get(self.type)
+        if prefix and not self.id.startswith(prefix):
+            raise ValueError(f"{self.type}实体 ID 必须以 {prefix} 开头")
+        return self
 
 
 class EntityCreate(BaseModel):
     id: Optional[str] = None
-    name: str
-    type: str
-    alias: str = ""
+    name: str = Field(..., min_length=1, max_length=200)
+    type: str = Field(..., min_length=1, max_length=50)
+    alias: str = Field(default="", max_length=500)
     description: str = ""
     properties: Dict[str, Any] = Field(default_factory=dict)
 
+    @field_validator("name", "type")
+    @classmethod
+    def validate_required_text(cls, value: str, info) -> str:
+        return _not_blank(value, info.field_name)
+
 
 class EntityUpdate(BaseModel):
-    name: Optional[str] = None
-    alias: Optional[str] = None
+    name: Optional[str] = Field(default=None, min_length=1, max_length=200)
+    alias: Optional[str] = Field(default=None, max_length=500)
     description: Optional[str] = None
     properties: Optional[Dict[str, Any]] = None
 
 
-# ---------- 关系（含组长要求的置信度/证据等级/版本/审核字段） ----------
 class Relation(BaseModel):
-    source_id: str
+    source_id: str = Field(..., min_length=2, max_length=32)
     source_name: str = ""
-    relation: str
-    target_id: str
+    relation: str = Field(..., min_length=1, max_length=50)
+    target_id: str = Field(..., min_length=2, max_length=32)
     target_name: str = ""
     evidence: str = ""
-    confidence: float = Field(default=1.0, ge=0.0, le=1.0)
-    evidence_level: str = Field(default="C_研究文献")
-    version: str = Field(default="1.0")
-    review_status: str = Field(default="draft")
+    evidence_level: EvidenceLevel = "E_待验证"
+    confidence: float = Field(default=0.5, ge=0.0, le=1.0)
+    locator: Dict[str, str] = Field(default_factory=dict)
+    excerpt: str = ""
+    version: str = Field(default="1.0", pattern=r"^\d+\.\d+$")
+    review_status: ReviewStatus = "draft"
+
+    @field_validator("source_id", "target_id", "relation")
+    @classmethod
+    def validate_required_text(cls, value: str, info) -> str:
+        return _not_blank(value, info.field_name)
+
+    @model_validator(mode="after")
+    def validate_relation_record(self):
+        if self.source_id == self.target_id:
+            raise ValueError("不允许自环关系")
+        if self.review_status in {"reviewed", "approved"} and not self.evidence.strip():
+            raise ValueError(f"{self.review_status} 关系必须填写 evidence")
+        return self
 
 
 class RelationCreate(BaseModel):
     source_id: Optional[str] = None
     source_name: Optional[str] = None
-    relation: str
+    relation: str = Field(..., min_length=1, max_length=50)
     target_id: Optional[str] = None
     target_name: Optional[str] = None
     evidence: str = ""
-    confidence: float = Field(default=1.0, ge=0.0, le=1.0)
-    evidence_level: str = Field(default="C_研究文献")
-    version: str = Field(default="1.0")
-    review_status: str = Field(default="draft")
+    evidence_level: EvidenceLevel = "E_待验证"
+    confidence: float = Field(default=0.5, ge=0.0, le=1.0)
+    locator: Dict[str, str] = Field(default_factory=dict)
+    excerpt: str = ""
+    version: str = Field(default="1.0", pattern=r"^\d+\.\d+$")
+    review_status: ReviewStatus = "draft"
+
+    @field_validator("relation")
+    @classmethod
+    def validate_relation_name(cls, value: str) -> str:
+        return _not_blank(value, "relation")
+
+    @model_validator(mode="after")
+    def validate_evidence(self):
+        if self.review_status in {"reviewed", "approved"} and not self.evidence.strip():
+            raise ValueError(f"{self.review_status} 关系必须填写 evidence")
+        if not (self.source_id or self.source_name):
+            raise ValueError("source_id 和 source_name 至少填写一个")
+        if not (self.target_id or self.target_name):
+            raise ValueError("target_id 和 target_name 至少填写一个")
+        return self
 
 
-# ---------- 图谱 ----------
 class GraphNode(BaseModel):
     id: str
     label: str
@@ -152,10 +187,6 @@ class GraphData(BaseModel):
     edges: List[GraphEdge] = Field(default_factory=list)
 
 
-# ---------- 问答（已删除，图谱查询请用 GraphData） ----------
-
-
-# ---------- 统一 HTTP 响应 ----------
 class ApiResponse(BaseModel):
     code: int = 0
     msg: str = "ok"
@@ -174,92 +205,68 @@ class ImportResult(BaseModel):
     errors: List[ImportError_] = Field(default_factory=list)
 
 
-# ---------- 动态校验（不再拒绝未知类型） ----------
-def _discovered_entity_types() -> List[str]:
-    """从数据库中自动发现所有实体类型。"""
+def get_type_prefixes() -> Dict[str, str]:
+    result = dict(ENTITY_TYPE_PREFIX)
     try:
-        from config import get_store
+        from server.config import get_store
         store = get_store()
-        stats = store.stats()
-        return sorted(stats.get("entity_by_type", {}).keys())
+        if hasattr(store, "list_type_prefixes"):
+            for item in store.list_type_prefixes():
+                result.setdefault(item["type"], item["prefix"])
     except Exception:
-        return list(_BASE_TYPE_PREFIX.keys())
-
-
-def _discovered_relation_types() -> List[str]:
-    """从数据库中自动发现所有关系类型。"""
-    try:
-        from config import get_store
-        store = get_store()
-        stats = store.stats()
-        return sorted(stats.get("relation_by_type", {}).keys())
-    except Exception:
-        return list(_BASE_RELATION_SCHEMA.keys())
-
-
-def get_entity_types() -> List[str]:
-    """实体类型：数据库中已有 + 已知基础。"""
-    return sorted(set(_discovered_entity_types()) | set(_BASE_TYPE_PREFIX.keys()))
-
-
-def get_relation_types() -> List[str]:
-    """关系类型：数据库中已有 + 已知基础。"""
-    return sorted(set(_discovered_relation_types()) | set(_BASE_RELATION_SCHEMA.keys()))
-
-
-def get_relation_schema() -> Dict[str, List[tuple]]:
-    """关系域约束：已知 + 动态扩展。未知组合自动加入并标记来源。"""
-    result = dict(_BASE_RELATION_SCHEMA)
-    discovered_src_types = set(_discovered_entity_types())
-    discovered_tgt_types = set(_discovered_entity_types())
-    # 为所有已知关系类型，把未覆盖的 (src_type, tgt_type) 加入为允许
-    for rel in list(result.keys()):
-        existing_pairs = set(result[rel])
-        for st in discovered_src_types:
-            for tt in discovered_tgt_types:
-                if (st, tt) not in existing_pairs:
-                    result[rel].append((st, tt))
+        pass
     return result
 
 
-# 已警告过的类型 / 关系组合（避免导入时刷屏）
-_warned_types: set = set()
-_warned_relations: set = set()
+def auto_prefix(type_name: str) -> str:
+    existing = set(get_type_prefixes().values())
+    for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        if letter not in existing:
+            return letter
+    for first in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        for second in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            prefix = first + second
+            if prefix not in existing:
+                return prefix
+    return "XX"
 
 
-def validate_entity_type(t: str) -> None:
-    """校验实体类型，未知类型只警告不拒绝（每种类型只警告一次）。"""
-    if t in _warned_types:
+def get_entity_types() -> List[str]:
+    return sorted(ENTITY_TYPE_PREFIX)
+
+
+def get_relation_types() -> List[str]:
+    return sorted(RELATION_SCHEMA)
+
+
+def get_relation_schema() -> Dict[str, List[tuple[str, str]]]:
+    return {name: list(pairs) for name, pairs in RELATION_SCHEMA.items()}
+
+
+def validate_entity_type(entity_type: str, strict: bool = False) -> None:
+    entity_type = _not_blank(entity_type, "type")
+    if entity_type in ENTITY_TYPE_PREFIX:
         return
-    known = set(get_entity_types())
-    if t not in known:
-        _warned_types.add(t)
-        import sys
-        print(f"[schemas] 新实体类型「{t}」未在已知列表中，自动接受", file=sys.stderr)
+    message = f"未知实体类型：{entity_type}"
+    if strict:
+        raise ValueError(message)
+    print(f"[schemas] {message}，非严格模式下接受", file=sys.stderr)
 
 
-def validate_relation(rel: str, src_type: str, tgt_type: str, strict: bool = False) -> None:
-    """校验关系域。strict=False 时未知组合只警告不拒绝（每种组合只警告一次）。"""
-    key = (rel, src_type, tgt_type)
-    if key in _warned_relations:
+def validate_relation(
+    relation: str,
+    source_type: str,
+    target_type: str,
+    strict: bool = False,
+) -> None:
+    relation = _not_blank(relation, "relation")
+    allowed = RELATION_SCHEMA.get(relation)
+    if allowed is None:
+        message = f"未知关系类型：{relation}"
+    elif (source_type, target_type) not in allowed:
+        message = f"关系“{relation}”不允许 {source_type} → {target_type}"
+    else:
         return
-    known_rels = set(get_relation_types())
-    if rel not in known_rels:
-        # 新关系类型 → 自动接受
-        _warned_relations.add(key)
-        import sys
-        print(f"[schemas] 新关系类型「{rel}」未在已知列表中，自动接受", file=sys.stderr)
-        return
-    schema = get_relation_schema()
-    allowed = schema.get(rel, [])
-    if not allowed:
-        return  # 没有约束，全接受
-    if (src_type, tgt_type) not in allowed:
-        _warned_relations.add(key)
-        msg = (
-            f"关系「{rel}」: {src_type} → {tgt_type} 不在已知约束中"
-        )
-        if strict:
-            raise ValueError(msg)
-        import sys
-        print(f"[schemas] {msg}，自动接受", file=sys.stderr)
+    if strict:
+        raise ValueError(message)
+    print(f"[schemas] {message}，非严格模式下接受", file=sys.stderr)
