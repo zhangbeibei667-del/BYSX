@@ -4,7 +4,7 @@
     <div class="message-header">
       <div class="avatar">
         <el-icon v-if="message.role === 'user'" :size="20"><User /></el-icon>
-        <el-icon v-else :size="20"><Robot /></el-icon>
+        <el-icon v-else :size="20"><Service /></el-icon>
       </div>
       <div class="header-info">
         <span class="username">{{ message.role === 'user' ? '我' : '中医药智能体' }}</span>
@@ -416,42 +416,85 @@ const handleSpeech = () => {
 </script>
 
 <style scoped lang="scss">
+$dark-green: #2a4030;
+$mid-green: #466350;
+$soft-gold: #c8a86e;
+$cream-bg: #f7f3eb;
+$text-dark: #2c3630;
+$text-body: #46544d;
+$text-light: #6b7a72;
+$user-green: #f0f6f0;
+$user-green-deep: #e7f0e7;
+$assistant-white: #fffefb;
+$assistant-white-deep: #fbf7ee;
+
 .chat-bubble {
-  margin: 20px 0;
-  border-radius: 12px;
+  width: fit-content;
+  max-width: min(720px, 74%);
+  margin: 16px 0;
+  border-radius: 10px;
   overflow: hidden;
+  border: 1px solid rgba(110, 135, 120, 0.14);
   background: white;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 12px rgba(42, 64, 48, 0.06);
   
   &.role-user {
+    margin-left: auto;
+    margin-right: 24px;
+    background: $user-green;
+    border-color: rgba(70, 99, 80, 0.16);
+
     .message-header {
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      background: $user-green-deep;
+      border-bottom: 1px solid rgba(70, 99, 80, 0.1);
+    }
+
+    .avatar {
+      background: rgba(255, 255, 255, 0.78);
+
+      .el-icon {
+        color: $mid-green;
+      }
     }
   }
   
   &.role-assistant {
+    margin-left: 24px;
+    margin-right: auto;
+    background: $assistant-white;
+    border-color: rgba(110, 135, 120, 0.14);
+
     .message-header {
-      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      background: $assistant-white-deep;
+      border-bottom: 1px solid rgba(110, 135, 120, 0.1);
+    }
+
+    .avatar {
+      background: rgba(255, 255, 255, 0.78);
+
+      .el-icon {
+        color: $mid-green;
+      }
     }
   }
   
   .message-header {
-    padding: 12px 16px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     
     .avatar {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background: white;
+      background: rgba(255, 255, 255, 0.82);
       display: flex;
       align-items: center;
       justify-content: center;
       
       .el-icon {
-        color: #666;
+        color: $text-light;
       }
     }
     
@@ -460,13 +503,14 @@ const handleSpeech = () => {
       
       .username {
         font-weight: bold;
-        color: #333;
-        margin-right: 12px;
+        color: $text-dark;
+        margin-right: 10px;
+        font-size: 13px;
       }
       
       .timestamp {
-        color: #666;
-        font-size: 12px;
+        color: $text-light;
+        font-size: 11px;
       }
     }
     
@@ -477,14 +521,15 @@ const handleSpeech = () => {
   }
   
   .message-content {
-    padding: 16px;
+    padding: 13px 15px;
     
     .content-text {
+      font-size: 14px;
       line-height: 1.6;
-      color: #333;
+      color: $text-body;
       
       :deep(*) {
-        margin: 8px 0;
+        margin: 6px 0;
         
         &:first-child {
           margin-top: 0;
@@ -496,9 +541,10 @@ const handleSpeech = () => {
       }
       
       :deep(h1), :deep(h2), :deep(h3), :deep(h4) {
-        color: #409eff;
-        border-bottom: 1px solid #e4e7ed;
+        color: $dark-green;
+        border-bottom: 1px solid rgba(110, 135, 120, 0.14);
         padding-bottom: 8px;
+        font-size: 15px;
       }
       
       :deep(ul), :deep(ol) {
@@ -506,14 +552,14 @@ const handleSpeech = () => {
       }
       
       :deep(code) {
-        background: #f5f7fa;
+        background: rgba(70, 99, 80, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
         font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Consolas', monospace;
       }
       
       :deep(pre) {
-        background: #f5f7fa;
+        background: rgba(255, 255, 255, 0.58);
         padding: 12px;
         border-radius: 8px;
         overflow-x: auto;
@@ -539,7 +585,7 @@ const handleSpeech = () => {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background: #409eff;
+          background: $mid-green;
           animation: loading 1.4s ease-in-out infinite;
           
           &:nth-child(2) {
@@ -555,20 +601,20 @@ const handleSpeech = () => {
   }
   
   .sources-panel {
-    border-top: 1px solid #e4e7ed;
+    border-top: 1px solid rgba(110, 135, 120, 0.14);
     padding: 0;
 
     :deep(.el-collapse) {
       border: none;
       --el-collapse-header-bg-color: transparent;
-      --el-collapse-content-bg-color: #fafafa;
+      --el-collapse-content-bg-color: #fff9ed;
     }
 
     :deep(.el-collapse-item__header) {
       padding: 14px 20px;
       font-size: 14px;
       font-weight: 500;
-      color: #466350;
+      color: $mid-green;
       border: none;
       background: rgba(70, 99, 80, 0.04);
       transition: background 0.2s;
@@ -591,7 +637,7 @@ const handleSpeech = () => {
       margin-bottom: 12px;
       background: #fff;
       border-radius: 8px;
-      border: 1px solid rgba(110, 135, 120, 0.1);
+      border: 1px solid rgba(110, 135, 120, 0.14);
       transition: box-shadow 0.2s;
 
       &:hover {
@@ -610,7 +656,7 @@ const handleSpeech = () => {
 
         .source-title {
           font-weight: 500;
-          color: #2c3630;
+          color: $text-dark;
           font-size: 14px;
         }
       }
@@ -621,7 +667,7 @@ const handleSpeech = () => {
         gap: 16px;
         margin-bottom: 8px;
         font-size: 12px;
-        color: #6b7a72;
+        color: $text-light;
 
         .source-detail, .source-chapter {
           display: inline-flex;
@@ -634,11 +680,11 @@ const handleSpeech = () => {
         margin: 8px 0 0 0;
         padding: 10px 14px;
         background: rgba(70, 99, 80, 0.04);
-        border-left: 3px solid #466350;
+        border-left: 3px solid $mid-green;
         border-radius: 4px;
         font-size: 13px;
         line-height: 1.7;
-        color: #4a5c50;
+        color: $text-body;
         font-style: italic;
       }
 
@@ -651,7 +697,7 @@ const handleSpeech = () => {
 
         .entities-label {
           font-size: 12px;
-          color: #6b7a72;
+          color: $text-light;
         }
 
         .entity-clickable {
@@ -668,7 +714,7 @@ const handleSpeech = () => {
   }
 
   .message-expansion {
-    border-top: 1px solid #e4e7ed;
+    border-top: 1px solid rgba(110, 135, 120, 0.14);
     padding: 16px;
     
     .expansion-section {
@@ -683,7 +729,7 @@ const handleSpeech = () => {
         align-items: center;
         gap: 8px;
         margin: 0 0 12px 0;
-        color: #409eff;
+        color: $mid-green;
         font-size: 15px;
         
         .el-icon {
@@ -700,7 +746,7 @@ const handleSpeech = () => {
       .entity-group {
         h5 {
           margin: 0 0 8px 0;
-          color: #666;
+          color: $text-light;
           font-size: 14px;
         }
         
@@ -722,7 +768,8 @@ const handleSpeech = () => {
       .evidence-item {
         margin-bottom: 12px;
         padding: 12px;
-        background: #f5f7fa;
+        background: rgba(255, 255, 255, 0.56);
+        border: 1px solid rgba(110, 135, 120, 0.12);
         border-radius: 8px;
         
         &:last-child {
@@ -731,13 +778,13 @@ const handleSpeech = () => {
         
         h6 {
           margin: 0 0 8px 0;
-          color: #333;
+          color: $text-dark;
           font-size: 14px;
         }
         
         p {
           margin: 0;
-          color: #666;
+          color: $text-light;
           font-size: 13px;
           line-height: 1.5;
         }
@@ -759,7 +806,7 @@ const handleSpeech = () => {
   
   .message-actions {
     padding: 0 16px 12px 16px;
-    border-top: 1px solid #e4e7ed;
+    border-top: 1px solid rgba(110, 135, 120, 0.14);
     padding-top: 12px;
   }
 }

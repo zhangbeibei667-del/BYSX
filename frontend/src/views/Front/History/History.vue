@@ -538,16 +538,43 @@ function formatTime(dateStr: string | undefined | null): string {
 
 // ==================== 数据加载 ====================
 
+function normalizeChatHistoryItem(item: any): ChatHistoryItem {
+  const messages = Array.isArray(item?.messages) ? item.messages : []
+  const firstUser = messages.find((message: any) => message?.role === 'user')
+  const lastAssistant = [...messages].reverse().find((message: any) => message?.role === 'assistant')
+  const title = item?.title || item?.question || firstUser?.content || '未命名对话'
+
+  return {
+    ...item,
+    id: String(item?.id || Date.now()),
+    title,
+    question: item?.question || firstUser?.content || title,
+    preview: item?.preview || item?.answer || item?.content || lastAssistant?.content || '',
+    timestamp: item?.timestamp || item?.updatedAt || item?.createdAt || new Date().toISOString(),
+    createdAt: item?.createdAt,
+    messageCount: item?.messageCount || messages.length || 1,
+    messages
+  }
+}
+
+function getChatHistoryListFromResponse(res: any): any[] {
+  if (Array.isArray(res)) return res
+  if (Array.isArray(res?.data)) return res.data
+  if (Array.isArray(res?.data?.list)) return res.data.list
+  if (Array.isArray(res?.data?.items)) return res.data.items
+  if (Array.isArray(res?.list)) return res.list
+  if (Array.isArray(res?.items)) return res.items
+  return []
+}
+
 async function loadChatHistories() {
   chatLoading.value = true
   try {
     const res: any = await chatApi.getHistory(1, 50)
-    if (res?.data?.length > 0) {
-      chatHistories.value = res.data
-    } else if (Array.isArray(res)) {
-      chatHistories.value = res
-    } else if (res?.data?.items) {
-      chatHistories.value = res.data.items
+    const list = getChatHistoryListFromResponse(res)
+    if (list.length > 0) {
+      chatHistories.value = list.map(normalizeChatHistoryItem)
+      saveLocalChats()
     } else {
       loadLocalChats()
     }
@@ -559,7 +586,13 @@ async function loadChatHistories() {
 }
 
 function loadLocalChats() {
-  chatHistories.value = JSON.parse(localStorage.getItem('tcm_chat_histories') || '[]')
+  const saved = localStorage.getItem('tcm_chat_histories') || localStorage.getItem('tcm_chat_history') || '[]'
+  try {
+    const parsed = JSON.parse(saved)
+    chatHistories.value = Array.isArray(parsed) ? parsed.map(normalizeChatHistoryItem) : []
+  } catch {
+    chatHistories.value = []
+  }
 }
 
 function loadFavorites() {
@@ -662,7 +695,9 @@ async function handleClearAllChats() {
 }
 
 function saveLocalChats() {
-  localStorage.setItem('tcm_chat_histories', JSON.stringify(chatHistories.value))
+  const payload = JSON.stringify(chatHistories.value)
+  localStorage.setItem('tcm_chat_histories', payload)
+  localStorage.setItem('tcm_chat_history', payload)
 }
 
 // ==================== 收藏操作 ====================
@@ -1004,7 +1039,7 @@ $syndrome-red: #b13e3e;
     }
 
     .sc-group {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
 
       .sc-group-label {
         font-size: 11px;
@@ -1020,17 +1055,21 @@ $syndrome-red: #b13e3e;
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 8px;
-      border-radius: 6px;
-      transition: background 0.2s;
+      padding: 7px 9px;
+      border: 1px solid rgba(110, 135, 120, 0.08);
+      border-radius: 8px;
+      margin-bottom: 6px;
+      background: rgba(255, 254, 251, 0.72);
+      transition: background 0.2s, border-color 0.2s;
 
       &:hover {
-        background: $cream-bg;
+        background: #fffefb;
+        border-color: rgba(70, 99, 80, 0.16);
       }
 
       .sci-title {
         flex: 1;
-        font-size: 13px;
+        font-size: 12px;
         color: $text-dark;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1137,16 +1176,18 @@ $syndrome-red: #b13e3e;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  border: 1px solid $card-border;
+  padding: 12px 14px;
+  border: 1px solid rgba(110, 135, 120, 0.12);
   border-radius: 10px;
-  margin-bottom: 10px;
-  transition: all 0.25s;
-  background: $light-cream;
+  margin-bottom: 9px;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  background: rgba(255, 254, 251, 0.82);
 
   &:hover {
-    border-color: $mid-green;
-    box-shadow: 0 2px 12px rgba(70, 99, 80, 0.08);
+    transform: translateY(-1px);
+    border-color: rgba(70, 99, 80, 0.2);
+    background: #fffefb;
+    box-shadow: 0 4px 14px rgba(42, 64, 48, 0.06);
   }
 
   .chat-card-left {
@@ -1154,17 +1195,23 @@ $syndrome-red: #b13e3e;
     min-width: 0;
 
     .chat-title {
-      margin: 0 0 6px 0;
-      font-size: 15px;
+      margin: 0 0 5px 0;
+      font-size: 13px;
       color: $text-dark;
       font-weight: 600;
+      line-height: 1.35;
     }
 
     .chat-preview {
       margin: 0;
-      font-size: 13px;
+      font-size: 12px;
       color: $text-light;
-      line-height: 1.5;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 
@@ -1177,7 +1224,7 @@ $syndrome-red: #b13e3e;
     margin-left: 16px;
 
     .chat-msg-count {
-      font-size: 12px;
+      font-size: 11px;
       color: $text-light;
     }
 
@@ -1189,12 +1236,17 @@ $syndrome-red: #b13e3e;
     .chat-actions {
       display: flex;
       gap: 6px;
+      opacity: 0.8;
 
       :deep(.el-button--primary) {
         color: $mid-green;
         &:hover { color: $dark-green; }
       }
     }
+  }
+
+  &:hover .chat-actions {
+    opacity: 1;
   }
 }
 
