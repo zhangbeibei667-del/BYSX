@@ -315,6 +315,8 @@ def answer_with_graphrag(question: str) -> dict[str, Any]:
         "syndromes": result.get("syndromes", []),
         "formulas": result.get("formulas", []),
         "herbs": result.get("herbs", []),
+        "follow_up_questions": result.get("follow_up_questions", []),
+        "needs_clarification": result.get("needs_clarification", False),
         "graph": result.get("graph", {"nodes": [], "edges": []}),
         "evidence": result.get("evidence", []),
         "intent": result.get("intent"),

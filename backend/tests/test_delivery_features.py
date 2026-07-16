@@ -5,6 +5,7 @@ from backend.services.agent_planner import AgentPlanner
 from backend.services.vector_retrieval_service import VectorRetrievalService
 from backend.services.data_quality_service import DataQualityService
 from backend.tools.sql_tool import GraphSQLTool
+from backend.tools.rag_tool import RAGRetrievalTool
 from backend.services.llm_client import LLMClient
 from backend.services.conversation_service import ConversationService
 from backend.db.database import init_db
@@ -64,6 +65,14 @@ class DeliveryFeatureTests(unittest.TestCase):
         context = ConversationService.contextualize(session, "那该怎么办？")
         self.assertIn("失眠应该用什么方剂", context)
         self.assertIn("本轮问题：那该怎么办", context)
+
+    def test_lone_symptom_never_becomes_formula_recommendation(self):
+        result = RAGRetrievalTool().query("失眠应该用什么方剂治疗？")
+        self.assertEqual(result["mode"], "evidence-needs-clarification")
+        self.assertTrue(result["needs_clarification"])
+        self.assertEqual(result["formulas"], [])
+        self.assertGreaterEqual(len(result["follow_up_questions"]), 3)
+        self.assertIn("不推荐具体方剂", result["answer"])
 
 
     def test_conversation_round_trip_and_followup_state(self):

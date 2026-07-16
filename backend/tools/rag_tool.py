@@ -20,8 +20,12 @@ class RAGRetrievalTool:
             return self._insufficient(query, f"“{unknown}”不在当前知识图谱实体中，无法验证该治疗关系")
         try:
             result = graph_service.search(query=query, syndromes=syndromes or [], formulas=formulas or [], top_k=top_k)
-            document_evidence = VectorRetrievalService().search(query, top_k=top_k)
             graph_evidence = result.get("evidence", [])
+            if result.get("intent") == "symptom_to_formula" and self._needs_symptom_clarification(
+                query, graph_service
+            ):
+                return self._clarification_required(query, result, graph_evidence, top_k)
+            document_evidence = VectorRetrievalService().search(query, top_k=top_k)
             has_relation = bool(result.get("graph", {}).get("edges"))
             if result.get("intent") in self.RELATION_INTENTS and not has_relation:
                 insufficient = self._insufficient(query, "检索到的实体之间没有带来源依据的目标关系")
@@ -66,6 +70,67 @@ class RAGRetrievalTool:
         subject = match.group(1).lstrip("请问关于想知道")
         known = any(subject == entity.name or subject == entity.alias for entity in graph_service.entities)
         return "" if known else subject
+
+    @staticmethod
+    def _needs_symptom_clarification(query: str, graph_service) -> bool:
+        """Do not turn a lone symptom into an individualized formula list."""
+        symptom_names = {
+            entity.name for entity in graph_service.entities
+            if entity.type == "症状" and entity.name and entity.name in query
+        }
+        syndrome_or_formula_named = any(
+            entity.name and entity.name in query
+            for entity in graph_service.entities
+            if entity.type in {"证候", "方剂"}
+        )
+        discriminators = ("舌", "苔", "脉", "兼", "伴", "口苦", "痰", "心悸", "乏力", "盗汗", "腹胀", "便")
+        return bool(symptom_names) and len(symptom_names) <= 1 \
+            and not syndrome_or_formula_named and not any(marker in query for marker in discriminators)
+
+    @staticmethod
+    def _clarification_required(query: str, result: dict, graph_evidence: list[dict], top_k: int) -> dict:
+        syndromes = result.get("syndromes", [])[:4]
+        candidate_text = "、".join(syndromes) if syndromes else "多个不同证候"
+        questions = [
+            "主要是入睡困难、易醒、早醒，还是多梦？持续多久了？",
+            "是否伴心悸、乏力、口苦、胸闷痰多、盗汗或腰膝酸软？",
+            "舌质、舌苔和脉象分别是什么情况？",
+        ]
+        evidence = graph_evidence[:top_k]
+        citations = [item.get("citation") or f"《{item.get('title', '知识图谱关系')}》" for item in evidence]
+        graph = result.get("graph", {"nodes": [], "edges": []})
+        nodes_by_id = {node.get("id"): node for node in graph.get("nodes", [])}
+        safe_edges = [
+            edge for edge in graph.get("edges", [])
+            if nodes_by_id.get(edge.get("source"), {}).get("type") == "症状"
+            and nodes_by_id.get(edge.get("target"), {}).get("type") == "证候"
+            and edge.get("label") == "提示"
+        ]
+        safe_node_ids = {value for edge in safe_edges for value in (edge.get("source"), edge.get("target"))}
+        safe_graph = {"nodes": [node for node in graph.get("nodes", []) if node.get("id") in safe_node_ids],
+                      "edges": safe_edges}
+        return {
+            **result,
+            "query": query,
+            "mode": "evidence-needs-clarification",
+            "answer": (
+                f"仅凭“失眠”这一项症状，不能可靠判断应该使用哪一个方剂。"
+                f"当前图谱只能提示可能涉及{candidate_text}等不同证候；它们的治法并不相同，"
+                "这些关联不能直接当作处方建议。请先补充失眠特点、伴随症状、舌象和脉象。"
+                "在辨证信息不足前，系统不推荐具体方剂。"
+            ),
+            "formulas": [],
+            "herbs": [],
+            "follow_up_questions": questions,
+            "needs_clarification": True,
+            "graph": safe_graph,
+            "evidence": evidence,
+            "citations": citations,
+            "evidence_confidence": "insufficient",
+            "retrieval": {"mode": "graph-evidence-gated", "document_hits": 0,
+                          "graph_hits": len(evidence), "citations_available": bool(citations)},
+            "generation": {"mode": "evidence-gated-clarification"},
+        }
 
     @staticmethod
     def _insufficient(query: str, reason: str) -> dict:
