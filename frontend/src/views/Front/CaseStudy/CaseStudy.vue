@@ -1,7 +1,7 @@
 <template>
   <div class="case-study">
     <!-- ==================== 主体：左右两栏 ==================== -->
-    <div class="case-main">
+    <div class="case-main" :class="{ 'has-analysis': analysisResult }">
       <!-- ========== 左侧：病例录入区（50%） ========== -->
       <section class="left-panel">
         <div class="panel-card">
@@ -27,7 +27,10 @@
           <div class="form-body">
             <!-- 患者信息区（三列网格） -->
             <div class="form-section">
-              <h3 class="section-label">👤 患者信息</h3>
+              <h3 class="section-label">
+                <el-icon><User /></el-icon>
+                <span>患者信息</span>
+              </h3>
               <div class="info-grid">
                 <div class="form-item">
                   <label>姓名</label>
@@ -61,7 +64,10 @@
 
             <!-- 主诉与症状区 -->
             <div class="form-section">
-              <h3 class="section-label">📝 主诉与症状</h3>
+              <h3 class="section-label">
+                <el-icon><EditPen /></el-icon>
+                <span>主诉与症状</span>
+              </h3>
               <div class="symptom-textarea-wrapper">
                 <el-input
                   v-model="form.chiefComplaint"
@@ -72,13 +78,15 @@
                   :maxlength="2000"
                   show-word-limit
                 />
-                <span class="char-count">{{ form.chiefComplaint.length }} / 2000</span>
               </div>
             </div>
 
             <!-- 舌脉体征区（两列网格） -->
             <div class="form-section">
-              <h3 class="section-label">👅 舌脉体征</h3>
+              <h3 class="section-label">
+                <el-icon><FirstAidKit /></el-icon>
+                <span>舌脉体征</span>
+              </h3>
               <div class="info-grid two-col">
                 <div class="form-item">
                   <label>舌象</label>
@@ -110,7 +118,7 @@
               :disabled="!canAnalyze"
             >
               <el-icon v-if="!analyzing"><Search /></el-icon>
-              🔍 智能分析
+              智能分析
             </el-button>
             <el-button text type="info" size="large" @click="handleClearForm">
               清空
@@ -124,84 +132,115 @@
         <div class="panel-card">
           <!-- 小型关联图谱 -->
           <div class="analysis-block">
-            <h3 class="block-title">🔬 辨证论治图谱</h3>
+            <h3 class="block-title">
+              <el-icon><DataAnalysis /></el-icon>
+              <span>辨证论治图谱</span>
+            </h3>
             <div class="mini-graph-wrapper" ref="miniGraphContainer">
               <div v-if="!analysisResult" class="graph-placeholder">
                 <el-icon><DataAnalysis /></el-icon>
                 <p>录入症状后点击分析，将自动生成关联图谱</p>
               </div>
-              <div v-else ref="miniChartRef" class="mini-chart"></div>
+              <template v-else>
+                <div class="graph-tools">
+                  <el-button text class="graph-tool-btn" title="放大" @click.stop="zoomMiniGraph(0.12)">
+                    <el-icon><ZoomIn /></el-icon>
+                  </el-button>
+                  <el-button text class="graph-tool-btn" title="缩小" @click.stop="zoomMiniGraph(-0.12)">
+                    <el-icon><ZoomOut /></el-icon>
+                  </el-button>
+                  <el-button text class="graph-tool-btn" title="重置" @click.stop="resetMiniGraphZoom">
+                    <el-icon><RefreshLeft /></el-icon>
+                  </el-button>
+                </div>
+                <div ref="miniChartRef" class="mini-chart"></div>
+              </template>
             </div>
           </div>
 
           <!-- 证候诊断卡片 -->
-          <transition name="fade-up">
-            <div v-if="analysisResult" class="diagnosis-card syndrome-card">
-              <h3 class="block-title">🏥 证候诊断</h3>
-              <div class="syndrome-tags">
-                <span
-                  v-for="s in analysisResult.syndromes"
-                  :key="s"
-                  class="syndrome-tag"
-                  @click="goToGraphPage(s)"
-                >
-                  {{ s }}
-                </span>
-                <span v-if="analysisResult.syndromes.length === 0" class="no-result">
-                  未匹配到对应证候
-                </span>
-              </div>
-              <p class="diagnosis-basis">{{ analysisResult.answer }}</p>
+          <div class="diagnosis-card syndrome-card">
+            <h3 class="block-title">
+              <el-icon><Tickets /></el-icon>
+              <span>证候诊断</span>
+            </h3>
+            <div class="diagnosis-scroll">
+              <template v-if="analysisResult">
+                <div class="syndrome-tags">
+                  <span
+                    v-for="s in analysisResult.syndromes"
+                    :key="s"
+                    class="syndrome-tag"
+                    @click="goToGraphPage(s)"
+                  >
+                    {{ s }}
+                  </span>
+                  <span v-if="analysisResult.syndromes.length === 0" class="no-result">
+                    未匹配到对应证候
+                  </span>
+                </div>
+                <p class="diagnosis-basis">{{ analysisResult.answer }}</p>
+              </template>
+              <div v-else class="diagnosis-empty">录入症状后点击分析，将自动生成证候诊断与辨证依据</div>
             </div>
-          </transition>
+          </div>
 
           <!-- 推荐方剂卡片 -->
-          <transition name="fade-up">
-            <div v-if="analysisResult" class="diagnosis-card formula-card">
-              <h3 class="block-title">💊 推荐方剂</h3>
-              <div class="formula-header">
-                <span
-                  v-for="f in analysisResult.formulas"
-                  :key="f"
-                  class="formula-tag"
-                  @click="goToGraphPage(f)"
-                >
-                  {{ f }}
-                </span>
-                <span v-if="analysisResult.formulas.length === 0" class="no-result">
-                  未匹配到对应方剂
-                </span>
-              </div>
-              <div class="herb-list">
-                <span class="herb-label">核心药材：</span>
-                <span
-                  v-for="(h, i) in analysisResult.herbs"
-                  :key="h"
-                  class="herb-tag"
-                  @click="goToGraphPage(h)"
-                >
-                  {{ h }}<span v-if="i < analysisResult.herbs.length - 1" class="herb-sep"> · </span>
-                </span>
-                <span v-if="analysisResult.herbs.length === 0" class="no-result">
-                  暂无药材信息
-                </span>
-              </div>
-              <div v-if="analysisResult.evidence.length > 0" class="evidence-list">
-                <div
-                  v-for="ev in analysisResult.evidence"
-                  :key="ev.title"
-                  class="evidence-item"
-                >
-                  <span class="evidence-title">{{ ev.title }}：</span>
-                  <span class="evidence-content">{{ ev.content }}</span>
+          <div class="diagnosis-card formula-card">
+            <h3 class="block-title">
+              <el-icon><Collection /></el-icon>
+              <span>推荐方剂</span>
+            </h3>
+            <div class="diagnosis-scroll">
+              <template v-if="analysisResult">
+                <div class="formula-header">
+                  <span
+                    v-for="f in analysisResult.formulas"
+                    :key="f"
+                    class="formula-tag"
+                    @click="goToGraphPage(f)"
+                  >
+                    {{ f }}
+                  </span>
+                  <span v-if="analysisResult.formulas.length === 0" class="no-result">
+                    未匹配到对应方剂
+                  </span>
                 </div>
-              </div>
+                <div class="herb-list">
+                  <span class="herb-label">核心药材：</span>
+                  <span
+                    v-for="(h, i) in analysisResult.herbs"
+                    :key="h"
+                    class="herb-tag"
+                    @click="goToGraphPage(h)"
+                  >
+                    {{ h }}<span v-if="i < analysisResult.herbs.length - 1" class="herb-sep"> · </span>
+                  </span>
+                  <span v-if="analysisResult.herbs.length === 0" class="no-result">
+                    暂无药材信息
+                  </span>
+                </div>
+                <div v-if="analysisResult.evidence.length > 0" class="evidence-list">
+                  <div
+                    v-for="ev in analysisResult.evidence"
+                    :key="ev.title"
+                    class="evidence-item"
+                  >
+                    <span class="evidence-title">{{ ev.title }}：</span>
+                    <span class="evidence-content">{{ ev.content }}</span>
+                  </div>
+                </div>
+              </template>
+              <div v-else class="diagnosis-empty">录入症状后点击分析，将自动生成推荐方剂、核心药材与依据片段</div>
             </div>
-          </transition>
+          </div>
 
           <!-- 教学笔记区 -->
           <div class="analysis-block">
-            <h3 class="block-title">📒 教学笔记</h3>
+            <h3 class="block-title">
+              <el-icon><Memo /></el-icon>
+              <span>教学笔记</span>
+            </h3>
             <el-input
               v-model="teachingNote"
               type="textarea"
@@ -219,7 +258,10 @@
     <transition name="fade-up">
       <div v-if="showHistory" class="case-history">
         <div class="history-header">
-          <h3>📚 历史病例</h3>
+          <h3>
+            <el-icon><Clock /></el-icon>
+            <span>历史病例</span>
+          </h3>
           <el-button text class="tcm-btn ghost-tcm" @click="loadHistoryCases" :loading="historyLoading">
             <el-icon><Refresh /></el-icon>
             刷新
@@ -272,7 +314,9 @@ import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import {
   Notebook, FolderChecked, Clock, Search,
-  DataAnalysis, Refresh, Loading
+  DataAnalysis, Refresh, Loading, User,
+  EditPen, FirstAidKit, Tickets, Collection, Memo,
+  ZoomIn, ZoomOut, RefreshLeft
 } from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
 import { caseApi } from '@/api'
@@ -306,6 +350,7 @@ const currentCaseId = ref<string | null>(null)
 const miniChartRef = ref<HTMLDivElement>()
 const miniGraphContainer = ref<HTMLElement>()
 let miniChartInstance: echarts.ECharts | null = null
+const miniGraphZoom = ref(0.9)
 
 // ==================== 计算属性 ====================
 const canAnalyze = computed(() => {
@@ -394,6 +439,7 @@ function renderMiniGraph() {
   }
 
   miniChartInstance = echarts.init(miniChartRef.value)
+  miniGraphZoom.value = 0.9
 
   const { nodes, edges } = analysisResult.value.graph
 
@@ -458,9 +504,9 @@ function renderMiniGraph() {
     series: [{
       type: 'graph',
       layout: 'force',
-      roam: false,
-      draggable: false,
-      zoom: 0.9,
+      roam: true,
+      draggable: true,
+      zoom: miniGraphZoom.value,
       center: ['50%', '50%'],
       force: {
         initIterations: 200,
@@ -494,6 +540,27 @@ function renderMiniGraph() {
     if (params.dataType === 'node') {
       router.push('/graph')
     }
+  })
+}
+
+function zoomMiniGraph(delta: number) {
+  if (!miniChartInstance) return
+  miniGraphZoom.value = Math.min(1.6, Math.max(0.55, miniGraphZoom.value + delta))
+  miniChartInstance.setOption({
+    series: [{
+      zoom: miniGraphZoom.value,
+    }],
+  })
+}
+
+function resetMiniGraphZoom() {
+  if (!miniChartInstance) return
+  miniGraphZoom.value = 0.9
+  miniChartInstance.setOption({
+    series: [{
+      zoom: miniGraphZoom.value,
+      center: ['50%', '50%'],
+    }],
   })
 }
 
@@ -680,8 +747,8 @@ $cream-bg: #f7f3eb;
 $light-cream: #faf6ef;
 $text-dark: #2c3630;
 $text-light: #6b7a72;
-$card-shadow: 0 2px 16px rgba(42, 64, 48, 0.08);
-$card-border: rgba(110, 135, 120, 0.12);
+$card-shadow: 0 6px 24px rgba(42, 64, 48, 0.08);
+$card-border: rgba(110, 135, 120, 0.14);
 $white: #ffffff;
 
 $syndrome-red: #b13e3e;
@@ -691,26 +758,48 @@ $herb-green: #588264;
 // ==================== 主容器 ====================
 .case-study {
   margin: 0 auto;
-  padding: 16px 32px;
+  padding: 18px 32px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   background-color: $cream-bg;
+  min-height: calc(100vh - 64px);
 }
 
 // ==================== 两栏主体 ====================
 .case-main {
   display: flex;
-  gap: 20px;
+  align-items: stretch;
+  gap: 18px;
   min-height: calc(100vh - 64px - 220px);
+
+  &.has-analysis {
+    align-items: flex-start;
+
+    .left-panel {
+      .panel-card {
+        height: auto;
+      }
+
+      .form-body {
+        flex: none;
+        overflow-y: visible;
+      }
+    }
+
+    .form-actions {
+      margin-top: 18px;
+    }
+  }
 }
 
 // ==================== 面板通用 ====================
 .panel-card {
-  background: $white;
-  border-radius: 14px;
+  background: #fffefb;
+  border: 1px solid $card-border;
+  border-radius: 12px;
   box-shadow: $card-shadow;
-  padding: 24px;
+  padding: 22px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -724,8 +813,8 @@ $herb-green: #588264;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
     border-bottom: 1px solid $card-border;
 
     .panel-title {
@@ -733,12 +822,13 @@ $herb-green: #588264;
       align-items: center;
       gap: 10px;
       margin: 0;
-      font-size: 20px;
+      font-size: 18px;
+      font-weight: 600;
       color: $dark-green;
 
       .el-icon {
         color: $mid-green;
-        font-size: 22px;
+        font-size: 20px;
       }
     }
 
@@ -753,7 +843,7 @@ $herb-green: #588264;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 
     &::-webkit-scrollbar {
       width: 4px;
@@ -769,37 +859,46 @@ $herb-green: #588264;
 .tcm-btn {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 10px 22px;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
 
   &.primary-tcm {
-    background: rgba(70, 99, 80, 0.08);
-    color: $dark-green;
-    border-color: rgba(70, 99, 80, 0.2);
-    &:hover { background: $mid-green; color: #fff; }
+    background: $dark-green;
+    color: #fff;
+    border-color: $dark-green;
+    &:hover {
+      background: $mid-green;
+      border-color: $mid-green;
+      box-shadow: 0 6px 16px rgba(42, 64, 48, 0.16);
+    }
   }
 
   &.ghost-tcm {
     color: $text-light;
     border-color: $card-border;
-    background: transparent;
-    &:hover { background: $cream-bg; border-color: $mid-green; }
+    background: rgba(255, 254, 251, 0.72);
+    &:hover {
+      color: $dark-green;
+      background: $light-cream;
+      border-color: rgba(70, 99, 80, 0.24);
+    }
   }
 
   &.analyze-btn {
-    background: $mid-green;
+    background: $dark-green;
     color: #fff;
     border: none;
-    padding: 12px 32px;
-    font-size: 16px;
+    padding: 11px 28px;
+    font-size: 15px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 9px;
 
     &:hover:not(:disabled) {
-      background: $dark-green;
+      background: $mid-green;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(70, 99, 80, 0.35);
+      box-shadow: 0 8px 20px rgba(42, 64, 48, 0.18);
     }
 
     &:disabled {
@@ -812,10 +911,18 @@ $herb-green: #588264;
 // 表单区块
 .form-section {
   .section-label {
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
     font-weight: 600;
     color: $dark-green;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
+
+    .el-icon {
+      color: $mid-green;
+      font-size: 15px;
+    }
   }
 }
 
@@ -833,7 +940,7 @@ $herb-green: #588264;
 .form-item {
   label {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     color: $text-light;
     margin-bottom: 6px;
     font-weight: 500;
@@ -841,10 +948,11 @@ $herb-green: #588264;
 
   :deep(.el-input__wrapper) {
     border-radius: 8px;
-    border-color: $card-border;
-    box-shadow: none;
-    &:hover { border-color: $mid-green; }
-    &.is-focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
+    background: #fff;
+    box-shadow: 0 0 0 1px $card-border inset;
+    transition: box-shadow 0.2s, background-color 0.2s;
+    &:hover { box-shadow: 0 0 0 1px rgba(70, 99, 80, 0.28) inset; }
+    &.is-focus { box-shadow: 0 0 0 1px $mid-green inset, 0 0 0 3px rgba(70, 99, 80, 0.1); }
   }
 
   :deep(.el-select) {
@@ -865,31 +973,22 @@ $herb-green: #588264;
 
   :deep(.el-textarea__inner) {
     line-height: 1.7;
-    font-size: 14px;
+    font-size: 13px;
     border-radius: 8px;
-    border-color: $card-border;
-    &:focus { border-color: $mid-green; box-shadow: 0 0 0 2px rgba(70, 99, 80, 0.12); }
+    background: #fff;
+    border-color: transparent;
+    box-shadow: 0 0 0 1px $card-border inset;
+    &:focus { box-shadow: 0 0 0 1px $mid-green inset, 0 0 0 3px rgba(70, 99, 80, 0.1); }
   }
 
-  .char-count {
-    position: absolute;
-    bottom: 8px;
-    right: 14px;
-    font-size: 11px;
-    color: $text-light;
-    pointer-events: none;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
 }
 
 // 表单底部操作
 .form-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding-top: 20px;
+  gap: 12px;
+  padding-top: 18px;
   border-top: 1px solid $card-border;
   margin-top: auto;
 }
@@ -905,25 +1004,72 @@ $herb-green: #588264;
 
 .analysis-block {
   .block-title {
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
     font-weight: 600;
     color: $dark-green;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
+
+    .el-icon {
+      color: $mid-green;
+      font-size: 16px;
+    }
   }
 }
 
 // 迷你图谱 - 国风浅色背景
 .mini-graph-wrapper {
-  background: $light-cream;
-  border: 1px solid $card-border;
+  background: #fffdfb;
+  border: 1px solid rgba(110, 135, 120, 0.14);
   border-radius: 10px;
-  min-height: 200px;
+  min-height: 220px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 6px 18px rgba(42, 64, 48, 0.06);
 
   .mini-chart {
     width: 100%;
-    height: 200px;
+    height: 220px;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  .graph-tools {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid rgba(110, 135, 120, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 254, 251, 0.88);
+    box-shadow: 0 4px 14px rgba(42, 64, 48, 0.08);
+    backdrop-filter: blur(6px);
+  }
+
+  .graph-tool-btn {
+    width: 26px;
+    height: 26px;
+    min-height: 26px;
+    padding: 0;
+    border-radius: 7px;
+    color: $mid-green;
+
+    &:hover {
+      color: $dark-green;
+      background: rgba(70, 99, 80, 0.08);
+    }
+
+    .el-icon {
+      font-size: 15px;
+    }
   }
 
   .graph-placeholder {
@@ -954,83 +1100,154 @@ $herb-green: #588264;
 
 // 诊断卡片 - 国风配色
 .diagnosis-card {
-  padding: 16px;
-  border-radius: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
   border: 1px solid $card-border;
+  background: #fffefb;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-shadow: 0 6px 18px rgba(42, 64, 48, 0.06);
+
+  > .block-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: $dark-green;
+
+    .el-icon {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      color: $mid-green;
+      font-size: 16px;
+    }
+
+    span {
+      line-height: 18px;
+    }
+  }
+
+  .diagnosis-scroll {
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(110, 135, 120, 0.24);
+      border-radius: 5px;
+    }
+  }
+
+  .diagnosis-empty {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    color: rgba(107, 122, 114, 0.78);
+    font-size: 12px;
+    line-height: 1.6;
+  }
 
   &.syndrome-card {
-    background: #fdf6f0;
-    border-color: rgba(177, 62, 62, 0.15);
+    background: #fffefb;
+    border-color: rgba(110, 135, 120, 0.14);
+    max-height: 190px;
+
+    .diagnosis-scroll {
+      max-height: 132px;
+    }
 
     .syndrome-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 7px;
+      margin-bottom: 8px;
 
       .syndrome-tag {
         display: inline-block;
-        padding: 8px 20px;
-        background: $syndrome-red;
-        color: #fff;
-        border-radius: 24px;
-        font-size: 16px;
-        font-weight: 600;
+        padding: 4px 10px;
+        background: rgba(177, 62, 62, 0.08);
+        color: #8f3434;
+        border: 1px solid rgba(177, 62, 62, 0.16);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.35;
         cursor: pointer;
         transition: all 0.25s;
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(177, 62, 62, 0.35);
+          background: rgba(177, 62, 62, 0.12);
+          box-shadow: 0 6px 14px rgba(177, 62, 62, 0.12);
         }
       }
     }
 
     .diagnosis-basis {
       margin: 0;
-      font-size: 13px;
+      font-size: 12px;
       color: $text-light;
-      line-height: 1.7;
+      line-height: 1.65;
     }
   }
 
   &.formula-card {
-    background: #f8f4ed;
-    border-color: rgba(140, 110, 74, 0.15);
+    background: #fffefb;
+    border-color: rgba(110, 135, 120, 0.14);
+    max-height: 220px;
+
+    .diagnosis-scroll {
+      max-height: 162px;
+    }
 
     .formula-header {
-      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 10px;
 
       .formula-tag {
         display: inline-block;
-        padding: 8px 20px;
-        background: $formula-brown;
-        color: #fff;
-        border-radius: 24px;
-        font-size: 16px;
-        font-weight: 600;
+        padding: 4px 10px;
+        background: rgba(200, 168, 110, 0.14);
+        color: #7d623c;
+        border: 1px solid rgba(200, 168, 110, 0.22);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.35;
         cursor: pointer;
         transition: all 0.25s;
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(140, 110, 74, 0.35);
+          background: rgba(200, 168, 110, 0.2);
+          box-shadow: 0 6px 14px rgba(140, 110, 74, 0.12);
         }
       }
     }
 
     .herb-list {
-      margin-bottom: 12px;
-      line-height: 1.8;
+      margin-bottom: 10px;
+      line-height: 1.7;
 
       .herb-label {
-        font-size: 13px;
+        font-size: 12px;
         color: $text-light;
         font-weight: 500;
       }
 
       .herb-tag {
-        font-size: 14px;
+        font-size: 12px;
         color: $herb-green;
         font-weight: 500;
         cursor: pointer;
@@ -1073,11 +1290,12 @@ $herb-green: #588264;
 .note-textarea {
   :deep(.el-textarea__inner) {
     border-style: dashed;
-    border-color: $card-border;
-    background: $cream-bg;
-    font-size: 14px;
+    border-color: transparent;
+    background: #fffdfb;
+    font-size: 13px;
     line-height: 1.7;
     border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(110, 135, 120, 0.14) inset, 0 6px 18px rgba(42, 64, 48, 0.06);
 
     &:focus {
       border-color: $mid-green;
@@ -1089,21 +1307,31 @@ $herb-green: #588264;
 
 // ==================== 历史病例 ====================
 .case-history {
-  background: $white;
-  border-radius: 14px;
+  background: #fffefb;
+  border: 1px solid $card-border;
+  border-radius: 12px;
   box-shadow: $card-shadow;
-  padding: 20px 24px;
+  padding: 18px 20px;
 
   .history-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
     h3 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       margin: 0;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 600;
       color: $dark-green;
+
+      .el-icon {
+        color: $mid-green;
+        font-size: 16px;
+      }
     }
   }
 
@@ -1125,23 +1353,25 @@ $herb-green: #588264;
   .history-card {
     min-width: 200px;
     max-width: 220px;
-    padding: 14px;
-    border: 2px solid $card-border;
+    padding: 12px;
+    border: 1px solid rgba(110, 135, 120, 0.12);
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     flex-shrink: 0;
-    background: $cream-bg;
+    background: #fbf7ee;
 
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(42, 64, 48, 0.1);
+      transform: translateY(-2px);
+      border-color: rgba(70, 99, 80, 0.22);
+      box-shadow: 0 8px 18px rgba(42, 64, 48, 0.08);
+      background: #fffefb;
     }
 
     &.active {
-      border-color: $mid-green;
-      box-shadow: 0 0 0 3px rgba(70, 99, 80, 0.15);
-      background: #f0f5ed;
+      border-color: rgba(200, 168, 110, 0.36);
+      box-shadow: inset 0 0 0 1px rgba(200, 168, 110, 0.18);
+      background: #fffefb;
     }
 
     .hc-header {
