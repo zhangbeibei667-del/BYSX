@@ -118,7 +118,7 @@ export const chatApi = {
 export const graphApi = {
   // 获取用于画布展示的 100 节点关系子图
   getFullGraph: () => {
-    return api.get<GraphResponse>('/graph/full', { params: { limit: 100 } })
+    return api.get<GraphResponse>('/graph/full', { params: { limit: 300 } })
   },
 
   // 获取真实全量统计及路径查询的全部实体选项

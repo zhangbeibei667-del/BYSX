@@ -554,7 +554,7 @@ def graph_overview() -> dict[str, Any]:
 
 
 @router.get("/graph/full")
-def full_graph(limit: int = Query(100, ge=20, le=500)) -> dict[str, Any]:
+def full_graph(limit: int = Query(300, ge=20, le=500)) -> dict[str, Any]:
     service = get_local_graphrag_service()
     # 画布只展示一个关系密集且类型均衡的子图；全量统计与路径选项由
     # /graph/overview 单独提供，避免数千节点进入力导向布局。
@@ -594,7 +594,7 @@ def full_graph(limit: int = Query(100, ge=20, le=500)) -> dict[str, Any]:
         {"source": r.source_id, "target": r.target_id, "label": r.relation, "properties": {"evidence": r.evidence}}
         for r in service.relations
         if r.source_id in ids and r.target_id in ids
-    ][: limit * 5]
+    ]
     return graph_response(nodes, edges)
 
 
