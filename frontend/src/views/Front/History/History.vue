@@ -2,14 +2,14 @@
   <div class="history-page">
     <!-- ==================== 左侧：分类导航栏（30%） ==================== -->
     <aside class="left-sidebar">
-      <!-- 💬 问答历史 -->
+      <!-- 问答历史 -->
       <div
         class="sidebar-card"
         :class="{ active: activeTab === 'chat' }"
         @click="switchTab('chat')"
       >
         <div class="sc-header">
-          <span class="sc-icon">💬</span>
+          <el-icon class="sc-icon"><ChatDotRound /></el-icon>
           <span class="sc-title">问答历史</span>
           <span class="sc-count">{{ chatHistories.length }}</span>
         </div>
@@ -40,14 +40,14 @@
         </div>
       </div>
 
-      <!-- ⭐ 我的收藏 -->
+      <!-- 我的收藏 -->
       <div
         class="sidebar-card"
         :class="{ active: activeTab === 'favorite' }"
         @click="switchTab('favorite')"
       >
         <div class="sc-header">
-          <span class="sc-icon">⭐</span>
+          <el-icon class="sc-icon"><Star /></el-icon>
           <span class="sc-title">我的收藏</span>
           <span class="sc-count">{{ favorites.length }}</span>
         </div>
@@ -59,7 +59,8 @@
             class="sc-item sc-fav-item"
           >
             <span class="sci-type-tag" :class="fav.type">
-              {{ fav.type === 'chat' ? '💬' : '🎯' }}
+              <el-icon v-if="fav.type === 'chat'"><ChatDotRound /></el-icon>
+              <el-icon v-else><DataAnalysis /></el-icon>
             </span>
             <span class="sci-title">{{ truncateText(fav.title, 14) }}</span>
             <span class="sci-time">{{ formatTime(fav.time) }}</span>
@@ -67,14 +68,14 @@
         </div>
       </div>
 
-      <!-- 📋 教学病例 -->
+      <!-- 教学病例 -->
       <div
         class="sidebar-card"
         :class="{ active: activeTab === 'case' }"
         @click="switchTab('case')"
       >
         <div class="sc-header">
-          <span class="sc-icon">📋</span>
+          <el-icon class="sc-icon"><Notebook /></el-icon>
           <span class="sc-title">教学病例</span>
           <span class="sc-count">{{ cases.length }}</span>
         </div>
@@ -113,7 +114,7 @@
 
         <!-- 加载骨架 -->
         <div v-if="chatLoading" class="skeleton-list">
-          <div v-for="i in 4" :key="i" class="skeleton-card">
+          <div v-for="i in 5" :key="i" class="skeleton-card">
             <div class="sk-line sk-title"></div>
             <div class="sk-line sk-text"></div>
             <div class="sk-line sk-text short"></div>
@@ -219,7 +220,9 @@
             />
             <div class="fav-card-header">
               <span class="fav-type-badge" :class="fav.type">
-                {{ fav.type === 'chat' ? '💬 问答' : '🎯 节点' }}
+                <el-icon v-if="fav.type === 'chat'"><ChatDotRound /></el-icon>
+                <el-icon v-else><DataAnalysis /></el-icon>
+                <span>{{ fav.type === 'chat' ? '问答' : '节点' }}</span>
               </span>
               <el-button
                 text
@@ -356,7 +359,10 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Search, Delete, StarFilled } from '@element-plus/icons-vue'
+import {
+  Search, Delete, StarFilled, ChatDotRound,
+  Star, Notebook, DataAnalysis
+} from '@element-plus/icons-vue'
 import { chatApi, caseApi } from '@/api'
 
 const router = useRouter()
@@ -384,7 +390,7 @@ const chatLoading = ref(false)
 const chatSearch = ref('')
 const chatSort = ref<'time' | 'hot'>('time')
 const chatPage = ref(1)
-const chatPageSize = ref(10)
+const chatPageSize = ref(5)
 
 const chatGroups = computed(() => {
   const now = new Date()
@@ -557,6 +563,20 @@ function normalizeChatHistoryItem(item: any): ChatHistoryItem {
   }
 }
 
+function isCaseLikeHistoryItem(item: any): boolean {
+  if (!item || typeof item !== 'object') return false
+  const textType = String(item.type || item.recordType || item.category || item.module || item.source || '').toLowerCase()
+  if (['case', 'case-study', 'teaching-case', 'clinical-case'].includes(textType)) return true
+  if (item.caseId || item.patientId || item.patientName) return true
+  if (item.chiefComplaint || item.tongueExam || item.pulseExam || item.teachingNote) return true
+  if (item.analysisResult && (item.analysisResult.syndromes || item.analysisResult.formulas || item.analysisResult.herbs)) return true
+  if (Array.isArray(item.syndromes) || Array.isArray(item.formulas)) {
+    return !!(item.name || item.age || item.gender || item.symptoms)
+  }
+  if (item.name && (item.age || item.gender) && (item.symptoms || item.complaint || item.diagnosis)) return true
+  return false
+}
+
 function getChatHistoryListFromResponse(res: any): any[] {
   if (Array.isArray(res)) return res
   if (Array.isArray(res?.data)) return res.data
@@ -572,8 +592,9 @@ async function loadChatHistories() {
   try {
     const res: any = await chatApi.getHistory(1, 50)
     const list = getChatHistoryListFromResponse(res)
-    if (list.length > 0) {
-      chatHistories.value = list.map(normalizeChatHistoryItem)
+    const chatList = list.filter(item => !isCaseLikeHistoryItem(item))
+    if (chatList.length > 0) {
+      chatHistories.value = chatList.map(normalizeChatHistoryItem)
       saveLocalChats()
     } else {
       loadLocalChats()
@@ -589,7 +610,10 @@ function loadLocalChats() {
   const saved = localStorage.getItem('tcm_chat_histories') || localStorage.getItem('tcm_chat_history') || '[]'
   try {
     const parsed = JSON.parse(saved)
-    chatHistories.value = Array.isArray(parsed) ? parsed.map(normalizeChatHistoryItem) : []
+    chatHistories.value = Array.isArray(parsed)
+      ? parsed.filter(item => !isCaseLikeHistoryItem(item)).map(normalizeChatHistoryItem)
+      : []
+    saveLocalChats()
   } catch {
     chatHistories.value = []
   }
@@ -922,6 +946,15 @@ watch(activeTab, (tab) => {
   if (tab === 'favorite') loadFavorites()
   if (tab === 'case') loadCases()
 })
+
+watch([chatSearch, chatSort], () => {
+  chatPage.value = 1
+})
+
+watch(filteredChats, (list) => {
+  const maxPage = Math.max(1, Math.ceil(list.length / chatPageSize.value))
+  if (chatPage.value > maxPage) chatPage.value = maxPage
+})
 </script>
 
 <style scoped lang="scss">
@@ -934,8 +967,9 @@ $light-cream: #faf6ef;
 $text-dark: #2c3630;
 $text-body: #475569;
 $text-light: #6b7a72;
-$card-shadow: 0 2px 16px rgba(42, 64, 48, 0.08);
-$card-border: rgba(110, 135, 120, 0.12);
+$card-shadow: 0 6px 24px rgba(42, 64, 48, 0.08);
+$card-border: rgba(110, 135, 120, 0.14);
+$panel-white: #fffefb;
 $white: #ffffff;
 $syndrome-red: #b13e3e;
 
@@ -988,31 +1022,44 @@ $syndrome-red: #b13e3e;
 }
 
 .sidebar-card {
-  background: $white;
-  border-radius: 14px;
-  padding: 16px;
-  border: 2px solid transparent;
+  background: $panel-white;
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid $card-border;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   box-shadow: $card-shadow;
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(42, 64, 48, 0.1);
+    transform: translateY(-1px);
+    border-color: rgba(70, 99, 80, 0.22);
+    box-shadow: 0 8px 26px rgba(42, 64, 48, 0.1);
   }
 
   &.active {
-    border-color: $mid-green;
-    box-shadow: 0 0 0 4px rgba(70, 99, 80, 0.1);
+    border-color: rgba(70, 99, 80, 0.36);
+    background: linear-gradient(180deg, #fffefb 0%, #faf6ef 100%);
+    box-shadow: 0 0 0 3px rgba(70, 99, 80, 0.08), $card-shadow;
   }
 
   .sc-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     margin-bottom: 12px;
 
     .sc-icon {
-      font-size: 18px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      color: $mid-green;
+      background: rgba(70, 99, 80, 0.08);
+      border: 1px solid rgba(70, 99, 80, 0.12);
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
     .sc-title {
       font-size: 15px;
@@ -1023,9 +1070,9 @@ $syndrome-red: #b13e3e;
     .sc-count {
       font-size: 12px;
       color: $text-light;
-      background: $cream-bg;
+      background: rgba(200, 168, 110, 0.12);
       padding: 2px 10px;
-      border-radius: 12px;
+      border-radius: 999px;
       font-weight: 500;
     }
   }
@@ -1059,11 +1106,11 @@ $syndrome-red: #b13e3e;
       border: 1px solid rgba(110, 135, 120, 0.08);
       border-radius: 8px;
       margin-bottom: 6px;
-      background: rgba(255, 254, 251, 0.72);
+      background: rgba(250, 246, 239, 0.48);
       transition: background 0.2s, border-color 0.2s;
 
       &:hover {
-        background: #fffefb;
+        background: rgba(70, 99, 80, 0.05);
         border-color: rgba(70, 99, 80, 0.16);
       }
 
@@ -1100,7 +1147,16 @@ $syndrome-red: #b13e3e;
       }
 
       .sci-type-tag {
-        font-size: 13px;
+        width: 22px;
+        height: 22px;
+        border-radius: 7px;
+        color: $mid-green;
+        background: rgba(70, 99, 80, 0.08);
+        border: 1px solid rgba(70, 99, 80, 0.12);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
         flex-shrink: 0;
       }
     }
@@ -1126,9 +1182,10 @@ $syndrome-red: #b13e3e;
 }
 
 .content-panel {
-  background: $white;
-  border-radius: 14px;
-  padding: 24px;
+  background: $panel-white;
+  border: 1px solid $card-border;
+  border-radius: 12px;
+  padding: 22px;
   box-shadow: $card-shadow;
   min-height: 100%;
 }
@@ -1176,18 +1233,19 @@ $syndrome-red: #b13e3e;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 14px;
+  min-height: 82px;
+  padding: 11px 14px;
   border: 1px solid rgba(110, 135, 120, 0.12);
-  border-radius: 10px;
-  margin-bottom: 9px;
+  border-radius: 9px;
+  margin-bottom: 10px;
   transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  background: rgba(255, 254, 251, 0.82);
+  background: rgba(250, 246, 239, 0.42);
 
   &:hover {
     transform: translateY(-1px);
     border-color: rgba(70, 99, 80, 0.2);
     background: #fffefb;
-    box-shadow: 0 4px 14px rgba(42, 64, 48, 0.06);
+    box-shadow: 0 5px 16px rgba(42, 64, 48, 0.07);
   }
 
   .chat-card-left {
@@ -1200,13 +1258,16 @@ $syndrome-red: #b13e3e;
       color: $text-dark;
       font-weight: 600;
       line-height: 1.35;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .chat-preview {
       margin: 0;
       font-size: 12px;
       color: $text-light;
-      line-height: 1.45;
+      line-height: 1.42;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
@@ -1219,9 +1280,10 @@ $syndrome-red: #b13e3e;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 6px;
+    gap: 5px;
     flex-shrink: 0;
     margin-left: 16px;
+    min-width: 104px;
 
     .chat-msg-count {
       font-size: 11px;
@@ -1253,7 +1315,7 @@ $syndrome-red: #b13e3e;
 .pagination-row {
   display: flex;
   justify-content: center;
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
 // ==================== 收藏网格 ====================
@@ -1264,7 +1326,7 @@ $syndrome-red: #b13e3e;
 }
 
 .fav-card {
-  background: $light-cream;
+  background: rgba(250, 246, 239, 0.62);
   border: 1px solid $card-border;
   border-radius: 10px;
   padding: 16px;
@@ -1286,8 +1348,9 @@ $syndrome-red: #b13e3e;
 
   &:hover {
     border-color: $mid-green;
-    box-shadow: 0 4px 16px rgba(70, 99, 80, 0.1);
-    transform: translateY(-2px);
+    background: $panel-white;
+    box-shadow: 0 5px 18px rgba(70, 99, 80, 0.09);
+    transform: translateY(-1px);
 
     .fav-remove-btn {
       opacity: 1;
@@ -1301,9 +1364,12 @@ $syndrome-red: #b13e3e;
     margin-bottom: 10px;
 
     .fav-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       font-size: 11px;
       padding: 3px 10px;
-      border-radius: 12px;
+      border-radius: 999px;
       background: $cream-bg;
       color: $text-body;
 
@@ -1364,7 +1430,7 @@ $syndrome-red: #b13e3e;
 }
 
 .case-card {
-  background: $light-cream;
+  background: rgba(250, 246, 239, 0.62);
   border: 1px solid $card-border;
   border-radius: 10px;
   padding: 16px;
@@ -1386,8 +1452,9 @@ $syndrome-red: #b13e3e;
 
   &:hover {
     border-color: $mid-green;
-    box-shadow: 0 4px 16px rgba(70, 99, 80, 0.1);
-    transform: translateY(-2px);
+    background: $panel-white;
+    box-shadow: 0 5px 18px rgba(70, 99, 80, 0.09);
+    transform: translateY(-1px);
 
     .case-delete-btn {
       opacity: 1;
@@ -1402,7 +1469,7 @@ $syndrome-red: #b13e3e;
 
     .case-name {
       margin: 0;
-      font-size: 16px;
+      font-size: 14px;
       color: $text-dark;
       font-weight: 600;
     }
@@ -1416,9 +1483,14 @@ $syndrome-red: #b13e3e;
 
   .case-complaint {
     margin: 0 0 10px 0;
-    font-size: 13px;
+    font-size: 12px;
     color: $text-body;
     line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .case-syndromes {
@@ -1428,11 +1500,11 @@ $syndrome-red: #b13e3e;
     gap: 6px;
 
     .case-syndrome-tag {
-      padding: 3px 12px;
+      padding: 3px 10px;
       background: rgba(177, 62, 62, 0.1);
       color: $syndrome-red;
-      border-radius: 14px;
-      font-size: 12px;
+      border-radius: 999px;
+      font-size: 11px;
       font-weight: 500;
     }
 
