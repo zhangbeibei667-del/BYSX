@@ -14,12 +14,16 @@ class RAGService:
         syndromes: list[str] | None = None,
         formulas: list[str] | None = None,
         top_k: int = 5,
+        generate_answer: bool = True,
+        answer_mode: str = "concise",
     ) -> dict:
         result = self.rag_tool.query(
             query=" ".join([query, case_text, *(syndromes or []), *(formulas or [])]).strip(),
             syndromes=syndromes or [],
             formulas=formulas or [],
             top_k=top_k,
+            generate_answer=generate_answer,
+            answer_mode=answer_mode,
         )
         result["query"] = query
         result["top_k"] = top_k

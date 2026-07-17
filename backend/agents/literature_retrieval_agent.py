@@ -13,12 +13,16 @@ class LiteratureRetrievalAgent:
             query=case_text,
             syndromes=graph_result.get("syndromes", []),
             formulas=graph_result.get("formulas", []),
+            generate_answer=False,
         )
         result = {
             "evidence": rag_result.get("evidence", []),
             "graph": rag_result.get("graph", {"nodes": [], "edges": []}),
             "answer": rag_result.get("answer", ""),
             "mode": rag_result.get("mode", "local-graphrag"),
+            "retrieval": rag_result.get("retrieval", {}),
+            "clinical_dimensions": rag_result.get("clinical_dimensions", {}),
+            "differential_evidence": rag_result.get("differential_evidence", []),
         }
         print("[LiteratureRetrievalAgent] completed")
         return result

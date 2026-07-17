@@ -79,13 +79,13 @@ export const authApi = {
 // 问答接口
 export const chatApi = {
   // 发送问题
-  askQuestion: (question: string, historyId?: string) => {
-    return api.post<AnswerResponse>('/chat/ask', { question, historyId })
+  askQuestion: (question: string, historyId?: string, answerMode = 'concise') => {
+    return api.post<AnswerResponse>('/chat/ask', { question, historyId, answerMode })
   },
   
   // 流式问答
-  askQuestionStream: (question: string, historyId?: string) => {
-    return new EventSource(`/api/chat/ask/stream?question=${encodeURIComponent(question)}&historyId=${historyId || ''}`)
+  askQuestionStream: (question: string, historyId?: string, answerMode = 'concise') => {
+    return new EventSource(`/api/chat/ask/stream?question=${encodeURIComponent(question)}&historyId=${historyId || ''}&answerMode=${encodeURIComponent(answerMode)}`)
   },
   
   // 获取问答历史列表
@@ -132,7 +132,11 @@ export const graphApi = {
   
   // 搜索实体
   searchEntities: (keyword: string, types?: string[]) => {
-    return api.get<GraphResponse>('/graph/search', { params: { keyword, types } })
+    // FastAPI 接口接收逗号分隔的 types。直接传数组时 axios 会序列化为
+    // types[]=...，后端无法读取，导致类型筛选实际没有生效。
+    return api.get<GraphResponse>('/graph/search', {
+      params: { keyword, types: types?.join(',') }
+    })
   },
   
   // 获取实体详情
@@ -284,7 +288,12 @@ export const caseApi = {
   create: (data: any) => api.post('/case/create', data),
   
   // 分析病例
-  analyze: (caseId: string) => api.post<AnswerResponse>(`/case/analyze/${caseId}`),
+  // 病例分析需要依次完成图谱、SQL、RAG 与真实 LLM 推理，不能沿用普通 CRUD 的 30 秒超时。
+  analyze: (caseId: string) => api.post<AnswerResponse>(
+    `/case/analyze/${caseId}`,
+    undefined,
+    { timeout: 180000 }
+  ),
   
   // 获取病例列表
   list: (params: any) => api.get('/case/list', { params }),

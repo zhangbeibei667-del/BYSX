@@ -103,6 +103,18 @@
             
             <div class="input-actions">
               <div class="action-left">
+                <el-select
+                  v-model="answerMode"
+                  size="small"
+                  class="answer-mode-select"
+                  :disabled="isStreaming"
+                  aria-label="回答模式"
+                >
+                  <el-option label="简洁回答" value="concise" />
+                  <el-option label="教学解释" value="teaching" />
+                  <el-option label="深入分析" value="deep" />
+                </el-select>
+
                 <el-tooltip content="快捷问题模板" placement="top">
                   <el-button type="info" link @click="showQuickTemplates">
                     <el-icon><MagicStick /></el-icon>
@@ -122,6 +134,21 @@
                     {{ listening ? '停止录音' : '语音输入' }}
                   </el-button>
                 </el-tooltip>
+
+                <el-checkbox
+                  v-model="autoSendVoice"
+                  class="voice-option"
+                  :disabled="isStreaming"
+                >
+                  识别后发送
+                </el-checkbox>
+
+                <el-checkbox
+                  v-model="autoSpeakStream"
+                  class="voice-option"
+                >
+                  边答边读
+                </el-checkbox>
                 
                 <el-tooltip content="朗读最新回答" placement="top">
                   <el-button
@@ -255,14 +282,24 @@ const chatStore = useChatStore()
 const messagesContainer = ref<HTMLElement>()
 const inputRef = ref()
 const inputMessage = ref('')
+const answerMode = ref<'concise' | 'teaching' | 'deep'>(
+  (localStorage.getItem('tcm_answer_mode') as 'concise' | 'teaching' | 'deep') || 'concise'
+)
 const showTemplates = ref(false)
 const activeTemplateTab = ref('symptoms')
 const chatHistory = ref<any[]>([])
 const activeHistoryId = ref<string | null>(null)
 const speaking = ref(false)
 const listening = ref(false)
+const autoSendVoice = ref(localStorage.getItem('tcm_voice_auto_send') === 'true')
+const autoSpeakStream = ref(localStorage.getItem('tcm_voice_auto_speak') === 'true')
 let activeEventSource: EventSource | null = null
 let speechRecognition: any = null
+let recognitionShouldSubmit = false
+let finalVoiceTranscript = ''
+let speechBuffer = ''
+const speechQueue: string[] = []
+let activeUtterance: SpeechSynthesisUtterance | null = null
 
 const messages = computed(() => chatStore.messages)
 const isStreaming = computed(() => chatStore.isStreaming)
@@ -272,12 +309,69 @@ const hasAssistantMessage = computed(() => {
   return messages.value.some(m => m.role === 'assistant' && !m.loading && m.content)
 })
 
-const handleGlobalSpeech = () => {
-  if (speaking.value) {
-    speaking.value = false
-    window.speechSynthesis.cancel()
+const normalizeSpeechText = (text: string) => text
+  .replace(/```[\s\S]*?```/g, ' ')
+  .replace(/https?:\/\/\S+/g, ' ')
+  .replace(/\[\d+(?:[，,、\s]+\d+)*\]/g, '')
+  .replace(/[*_#>`~|]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+
+const stopSpeechQueue = () => {
+  speechBuffer = ''
+  speechQueue.splice(0)
+  activeUtterance = null
+  speaking.value = false
+  window.speechSynthesis?.cancel()
+}
+
+const speakNext = () => {
+  if (activeUtterance || speechQueue.length === 0) {
+    if (!activeUtterance && speechQueue.length === 0) speaking.value = false
     return
   }
+
+  const content = speechQueue.shift()
+  if (!content) return speakNext()
+
+  const utterance = new SpeechSynthesisUtterance(content)
+  activeUtterance = utterance
+  speaking.value = true
+  utterance.lang = 'zh-CN'
+  utterance.rate = 0.92
+  utterance.pitch = 1
+  utterance.volume = 1
+  utterance.onend = () => {
+    activeUtterance = null
+    speakNext()
+  }
+  utterance.onerror = () => {
+    activeUtterance = null
+    speakNext()
+  }
+  window.speechSynthesis.speak(utterance)
+}
+
+const enqueueSpeech = (text: string, flush = false) => {
+  speechBuffer += text
+  const sentencePattern = /^([\s\S]*?[。！？!?；;\n]+)/
+  let match = speechBuffer.match(sentencePattern)
+  while (match) {
+    const sentence = normalizeSpeechText(match[1])
+    speechBuffer = speechBuffer.slice(match[1].length)
+    if (sentence) speechQueue.push(sentence)
+    match = speechBuffer.match(sentencePattern)
+  }
+  if (flush && speechBuffer.trim()) {
+    const remainder = normalizeSpeechText(speechBuffer)
+    speechBuffer = ''
+    if (remainder) speechQueue.push(remainder)
+  }
+  speakNext()
+}
+
+const handleGlobalSpeech = () => {
+  if (speaking.value) return stopSpeechQueue()
 
   const lastAssistantMsg = [...messages.value].reverse().find(
     m => m.role === 'assistant' && !m.loading && m.content
@@ -287,24 +381,8 @@ const handleGlobalSpeech = () => {
     return
   }
 
-  speaking.value = true
-
-  const utterance = new SpeechSynthesisUtterance(lastAssistantMsg.content)
-  utterance.lang = 'zh-CN'
-  utterance.rate = 0.9
-  utterance.pitch = 1
-  utterance.volume = 1
-
-  utterance.onend = () => {
-    speaking.value = false
-  }
-
-  utterance.onerror = () => {
-    speaking.value = false
-    ElMessage.error('语音播放失败')
-  }
-
-  window.speechSynthesis.speak(utterance)
+  stopSpeechQueue()
+  enqueueSpeech(lastAssistantMsg.content, true)
 }
 
 const exampleQuestions = [
@@ -351,15 +429,31 @@ onMounted(() => {
     speechRecognition.continuous = false
     speechRecognition.interimResults = true
     speechRecognition.onresult = (event: any) => {
-      let transcript = ''
-      for (let i = event.resultIndex; i < event.results.length; i += 1) {
-        transcript += event.results[i][0]?.transcript || ''
+      let finalText = ''
+      let interimText = ''
+      for (let i = 0; i < event.results.length; i += 1) {
+        const transcript = event.results[i][0]?.transcript || ''
+        if (event.results[i].isFinal) finalText += transcript
+        else interimText += transcript
       }
-      if (transcript.trim()) inputMessage.value = transcript.trim()
+      finalVoiceTranscript = finalText.trim()
+      const visibleText = `${finalText}${interimText}`.trim()
+      if (visibleText) inputMessage.value = visibleText
     }
-    speechRecognition.onend = () => { listening.value = false }
+    speechRecognition.onend = () => {
+      listening.value = false
+      const textToSubmit = (finalVoiceTranscript || inputMessage.value).trim()
+      const shouldSubmit = recognitionShouldSubmit && autoSendVoice.value && Boolean(textToSubmit)
+      recognitionShouldSubmit = false
+      finalVoiceTranscript = ''
+      if (shouldSubmit && !isStreaming.value) {
+        inputMessage.value = textToSubmit
+        nextTick(() => sendMessage())
+      }
+    }
     speechRecognition.onerror = (event: any) => {
       listening.value = false
+      recognitionShouldSubmit = false
       if (event.error !== 'aborted' && event.error !== 'no-speech') {
         ElMessage.error('语音识别失败，请检查浏览器麦克风权限')
       }
@@ -369,8 +463,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   activeEventSource?.close()
+  recognitionShouldSubmit = false
   speechRecognition?.abort?.()
-  window.speechSynthesis?.cancel()
+  stopSpeechQueue()
 })
 
 const toggleVoiceInput = () => {
@@ -384,9 +479,12 @@ const toggleVoiceInput = () => {
     return
   }
   try {
+    finalVoiceTranscript = ''
+    recognitionShouldSubmit = true
     speechRecognition.start()
     listening.value = true
   } catch {
+    recognitionShouldSubmit = false
     speechRecognition.abort()
     listening.value = false
   }
@@ -452,7 +550,7 @@ const loadChatHistory = async () => {
       chatHistory.value = list.map(normalizeHistoryItem)
       saveLocalChatHistory()
       return
-    } 
+    }
   } catch (apiError) {
     console.log('chatApi.getHistory 未就绪，使用本地数据')
   }
@@ -479,7 +577,13 @@ const loadHistory = async (historyId: string) => {
       messages = res.messages
     }
     if (messages && Array.isArray(messages) && messages.length > 0) {
-      chatStore.loadHistory(historyId, messages)
+      chatStore.loadHistory(historyId, messages.map((item: any, index: number) => ({
+        id: item.id || `${historyId}-${index}`,
+        role: item.role,
+        content: item.content || '',
+        timestamp: item.timestamp || new Date().toISOString(),
+        response: item.response
+      })))
       scrollToBottom()
       return
     }
@@ -525,6 +629,8 @@ const sendMessage = async () => {
 
   const userMessage = inputMessage.value.trim()
 
+  if (autoSpeakStream.value) stopSpeechQueue()
+
   chatStore.addMessage('user', userMessage)
   inputMessage.value = ''
 
@@ -545,7 +651,9 @@ const sendMessage = async () => {
       }, 90000)
 
       activeEventSource?.close()
-      activeEventSource = chatApi.askQuestionStream(userMessage, activeHistoryId.value || undefined)
+      activeEventSource = chatApi.askQuestionStream(
+        userMessage, activeHistoryId.value || undefined, answerMode.value
+      )
 
       activeEventSource.onmessage = (event) => {
         if (event.data === '[DONE]') return
@@ -553,12 +661,16 @@ const sendMessage = async () => {
           const payload = JSON.parse(event.data)
           if (payload.type === 'chunk' && payload.content) {
             chatStore.appendToStream(payload.content)
+            if (autoSpeakStream.value) {
+              enqueueSpeech(payload.content, payload.sentence === true)
+            }
             scrollToBottom()
           } else if (payload.type === 'result' && payload.result && !settled) {
             settled = true
             window.clearTimeout(timeout)
             activeEventSource?.close()
             activeEventSource = null
+            if (autoSpeakStream.value) enqueueSpeech('', true)
             chatStore.endStream(payload.result)
             scrollToBottom()
             resolve(payload.result as AnswerResponse)
@@ -628,6 +740,7 @@ const sendMessage = async () => {
 
   } catch (error) {
     console.error('Error sending message:', error)
+    if (autoSpeakStream.value) stopSpeechQueue()
     chatStore.endStream()
     chatStore.updateLastMessage('问答服务暂时不可用，未生成任何诊疗结论。请检查后端连接后重试。')
     ElMessage.error(error instanceof Error ? error.message : '发送失败，请重试')
@@ -705,6 +818,19 @@ const formatTime = (timestamp: string) => {
 watch(messages, () => {
   scrollToBottom()
 }, { deep: true })
+
+watch(answerMode, (mode) => {
+  localStorage.setItem('tcm_answer_mode', mode)
+})
+
+watch(autoSendVoice, (enabled) => {
+  localStorage.setItem('tcm_voice_auto_send', String(enabled))
+})
+
+watch(autoSpeakStream, (enabled) => {
+  localStorage.setItem('tcm_voice_auto_speak', String(enabled))
+  if (!enabled) stopSpeechQueue()
+})
 </script>
 
 <style scoped lang="scss">
@@ -1020,7 +1146,23 @@ $white: #ffffff;
             
             .action-left {
               display: flex;
+              align-items: center;
               gap: 16px;
+
+              .answer-mode-select {
+                width: 112px;
+              }
+
+              .voice-option {
+                margin-right: 0;
+                color: $text-light;
+                font-size: 12px;
+
+                :deep(.el-checkbox__label) {
+                  padding-left: 5px;
+                  font-size: 12px;
+                }
+              }
               
               :deep(.el-button.is-link) {
                 color: $text-light;

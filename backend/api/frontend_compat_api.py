@@ -7,7 +7,7 @@ import re
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import APIRouter, Body, File, HTTPException, Query, UploadFile
 from fastapi.responses import Response, StreamingResponse
@@ -22,6 +22,7 @@ from backend.services.local_graphrag_service import Entity, Relation, get_local_
 from backend.services.teaching_case_service import TeachingCaseService
 from backend.services.llm_client import get_llm_client
 from backend.services.document_service import DocumentService
+from backend.tools.rag_tool import RAGRetrievalTool
 
 
 router = APIRouter(prefix="/api", tags=["Frontend compatibility"])
@@ -29,6 +30,7 @@ router = APIRouter(prefix="/api", tags=["Frontend compatibility"])
 class ChatAskRequest(BaseModel):
     question: str
     historyId: str | None = None
+    answerMode: Literal["concise", "teaching", "deep"] = "concise"
 
 
 class CaseCreateRequest(BaseModel):
@@ -305,9 +307,57 @@ def is_case_like_question(text: str) -> bool:
     return False
 
 
-def answer_with_graphrag(question: str) -> dict[str, Any]:
-    result = RAGService().search(question, top_k=5)
+def evidence_to_sources(evidence: list[dict[str, Any]], *, clinical: bool = False) -> list[dict[str, Any]]:
+    """Expose provenance separately from the natural-language answer body."""
+    sources = []
+    for item in evidence:
+        locator = item.get("locator") if isinstance(item.get("locator"), dict) else {}
+        is_graph_relation = (
+            str(item.get("source") or "") == "知识图谱"
+            or str(item.get("content") or "").startswith("知识图谱关系：")
+        )
+        is_document = bool(item.get("category") or item.get("document_id"))
+        is_graph_entity = not is_document and not is_graph_relation
+        raw_score = item.get("score")
+        normalized_score = None
+        metric_label = None
+        status_label = None
+        if is_document and raw_score is not None:
+            normalized_score = max(0.0, min(1.0, float(raw_score)))
+            metric_label = "检索相关度"
+        elif is_graph_relation:
+            status_label = "已验证关系"
+        elif is_graph_entity:
+            status_label = "命中图谱实体"
+        original_text = str(item.get("content") or item.get("excerpt") or "")
+        contains_treatment = any(marker in original_text for marker in ("治宜", "方用", "方选", "药用"))
+        if clinical and is_document and contains_treatment:
+            original_text = RAGRetrievalTool._sanitize_clinical_evidence(original_text)
+        sources.append({
+            "title": item.get("title") or item.get("citation") or "未命名资料",
+            "type": (
+                "图谱关系" if is_graph_relation else "图谱实体" if is_graph_entity
+                else item.get("source_type") or item.get("category") or item.get("type") or "文献"
+            ),
+            "source_detail": item.get("citation") or item.get("source") or "",
+            "original_text": original_text,
+            "chapter": item.get("chapter") or locator.get("chapter") or locator.get("page") or "",
+            "score": normalized_score,
+            "metric_label": metric_label,
+            "status_label": status_label,
+            "contains_treatment": contains_treatment,
+        })
+    return sources
+
+
+def answer_with_graphrag(question: str, *, generate_answer: bool = True,
+                         answer_mode: str = "concise") -> dict[str, Any]:
+    result = RAGService().search(
+        question, top_k=5, generate_answer=generate_answer, answer_mode=answer_mode
+    )
+    evidence = result.get("evidence", [])
     return {
+        "query": result.get("query", question),
         "answer": result.get("answer", ""),
         "symptoms": [],
         "tongue": [],
@@ -318,7 +368,10 @@ def answer_with_graphrag(question: str) -> dict[str, Any]:
         "follow_up_questions": result.get("follow_up_questions", []),
         "needs_clarification": result.get("needs_clarification", False),
         "graph": result.get("graph", {"nodes": [], "edges": []}),
-        "evidence": result.get("evidence", []),
+        "evidence": evidence,
+        "sources": evidence_to_sources(
+            evidence, clinical=RAGRetrievalTool.is_personal_clinical_request(question)
+        ),
         "intent": result.get("intent"),
         "intent_label": result.get("intent_label"),
         "mode": result.get("mode", "local-graphrag"),
@@ -326,7 +379,58 @@ def answer_with_graphrag(question: str) -> dict[str, Any]:
         "retrieval": result.get("retrieval", {}),
         "generation": result.get("generation", {"mode": "local-evidence-template"}),
         "evidence_confidence": result.get("evidence_confidence", "insufficient"),
+        "answer_mode": result.get("answer_mode", answer_mode),
+        "clarification_topic": result.get("clarification_topic"),
+        "clarification_progress": result.get("clarification_progress"),
+        "clinical_dimensions": result.get("clinical_dimensions", {}),
+        "differential_evidence": result.get("differential_evidence", []),
+        "safety_notice": "内容用于中医药知识学习与辨证辅助，不替代医师诊断和处方。",
     }
+
+
+def attach_teaching_agent_trace(result: dict[str, Any]) -> dict[str, Any]:
+    """Expose the real graph/RAG teaching workflow instead of presenting it as a black box."""
+    retrieval = result.get("retrieval", {})
+    document_hits = int(retrieval.get("document_hits") or 0)
+    graph_hits = int(retrieval.get("graph_hits") or 0)
+    needs_clarification = bool(result.get("needs_clarification"))
+    steps = [
+        {
+            "name": "症状追问 Agent",
+            "status": "awaiting_input" if needs_clarification else "completed",
+            "summary": (
+                f"仍需补充 {len(result.get('follow_up_questions', []))} 组辨证信息"
+                if needs_clarification else "已整理本轮症状、病程、兼症与舌脉信息"
+            ),
+        },
+        {
+            "name": "知识图谱查询",
+            "status": "completed",
+            "summary": f"召回 {graph_hits} 条症状—证候关系证据",
+        },
+        {
+            "name": "RAG 文献检索",
+            "status": "completed" if document_hits else "insufficient",
+            "summary": f"召回 {document_hits} 条可定位知识库片段",
+        },
+        {
+            "name": "知识解释与安全审查",
+            "status": "completed",
+            "summary": "融合图谱与文献进行教学性鉴别，并阻止个体化处方输出",
+        },
+    ]
+    result["agent_plan"] = {
+        "agent": "诊疗教学 Agent",
+        "tools": ["symptom_followup", "graph_query", "literature_search", "knowledge_explanation", "safety_review"],
+        "evidence_fusion": "knowledge-graph+rag",
+    }
+    result["agent_steps"] = steps
+    result["evidence_summary"] = {
+        "graph_relations": graph_hits,
+        "knowledge_base_documents": document_hits,
+        "sources_available": len(result.get("sources", [])),
+    }
+    return result
 
 
 @router.post("/case/create")
@@ -382,15 +486,143 @@ def delete_case(case_id: str) -> dict[str, Any]:
 
 @router.post("/chat/ask")
 def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
+    return prepare_chat(payload, generate_answer=True)
+
+
+def prepare_chat(payload: ChatAskRequest, *, generate_answer: bool) -> dict[str, Any]:
     conversations = ConversationService()
     session = conversations.load(payload.historyId)
     contextualized = conversations.contextualize(session, payload.question)
-    continuing_case = bool(session["turns"]) and session.get("status") == "awaiting_clarification"
+    clinical_query = contextualized
+    last_result = session.get("last_result", {})
+    awaiting_clarification = bool(session["turns"]) and session.get("status") == "awaiting_clarification"
+    resumable_clarification = bool(session["turns"]) and (
+        last_result.get("mode") == "evidence-insufficient"
+        and bool(last_result.get("clarification_progress"))
+        and len(payload.question.strip()) <= 100
+        and not payload.question.rstrip().endswith(("?", "？"))
+    )
+    has_clarification_context = awaiting_clarification or resumable_clarification
+    is_reply = has_clarification_context and (
+        not payload.question.rstrip().endswith(("?", "？"))
+        or ConversationService.requires_context(payload.question)
+    )
+    continuing_case = has_clarification_context and is_reply
     previous_result = session.get("last_result", {}) if continuing_case else {}
-    if is_case_like_question(payload.question) or continuing_case:
-        result = AgentService().analyze_case(contextualized, has_context=bool(session["turns"]))
+    previous_is_gated_rag = (
+        previous_result.get("mode") == "evidence-needs-clarification"
+        or (
+            previous_result.get("mode") == "evidence-insufficient"
+            and bool(previous_result.get("clarification_progress") or previous_result.get("clarification_topic"))
+        )
+    )
+    if continuing_case and previous_is_gated_rag:
+        topic_query = str(previous_result.get("clarification_topic") or previous_result.get("query") or "")
+        prior_user_turns = [
+            str(turn.get("content") or "") for turn in session["turns"] if turn.get("role") == "user"
+        ]
+        # The first turn is the question that triggered clarification, not an answer to it.
+        prior_user_text = "\n".join(prior_user_turns[1:])
+        clinical_query = (
+            f"{topic_query}\n补充信息：\n{prior_user_text}\n{payload.question}"
+        ).strip()
+        progress = RAGRetrievalTool.clarification_progress(
+            topic_query, f"{prior_user_text}\n{payload.question}"
+        )
+        if progress["complete"]:
+            result = answer_with_graphrag(
+                clinical_query, generate_answer=generate_answer, answer_mode=payload.answerMode
+            )
+            result["clarification_progress"] = progress
+            result["clinical_dimensions"] = progress["clinical_dimensions"]
+            result["differential_evidence"] = RAGRetrievalTool.build_differential_evidence(
+                clinical_query, result
+            )
+        elif progress["finished"]:
+            result = {
+                **previous_result,
+                "mode": "evidence-insufficient",
+                "answer": (
+                    "已记录你能提供的信息。由于关键舌脉信息目前无法确认，现有内容仍不足以可靠判断具体证候。"
+                    "系统不会继续猜测主证，也不会据此推荐方剂、药材、剂量、穴位或食疗。"
+                    "可以继续保持规律作息，减少睡前咖啡因、酒精和电子屏幕刺激；"
+                    "如果睡眠问题持续存在或明显影响白天功能，建议由专业人员面诊评估。"
+                ),
+                "follow_up_questions": [],
+                "needs_clarification": False,
+                "formulas": [],
+                "herbs": [],
+                "generation": {"mode": "evidence-gated-insufficient", "calls": 0},
+                "evidence_confidence": "insufficient",
+                "clarification_progress": progress,
+                "clinical_dimensions": progress["clinical_dimensions"],
+                "differential_evidence": RAGRetrievalTool.build_differential_evidence(
+                    clinical_query, previous_result
+                ),
+            }
+        else:
+            answered_count = len(progress["answered"])
+            result = {
+                **previous_result,
+                "answer": (
+                    f"已记录你这次补充的信息（已完成 {answered_count} 项）。"
+                    "目前仍不足以可靠判断具体证候，也不会据此推荐方剂、药材或穴位。"
+                    "请继续补充下面尚缺的信息；如果舌象或脉象不清楚，可以直接说明“不清楚”。"
+                ),
+                "follow_up_questions": progress["remaining_questions"],
+                "needs_clarification": True,
+                "formulas": [],
+                "herbs": [],
+                "generation": {"mode": "evidence-gated-clarification", "calls": 0},
+                "clarification_progress": progress,
+                "clinical_dimensions": progress["clinical_dimensions"],
+                "differential_evidence": RAGRetrievalTool.build_differential_evidence(
+                    clinical_query, previous_result
+                ),
+            }
+    elif is_case_like_question(payload.question) or continuing_case:
+        result = AgentService().analyze_case(
+            contextualized,
+            has_context=bool(session["turns"]),
+            generate_answer=generate_answer,
+        )
     else:
-        result = answer_with_graphrag(contextualized)
+        rag_question = (
+            contextualized
+            if ConversationService.requires_context(payload.question)
+            else payload.question
+        )
+        result = answer_with_graphrag(
+            rag_question, generate_answer=generate_answer, answer_mode=payload.answerMode
+        )
+    clinical_context = (
+        continuing_case
+        or is_case_like_question(payload.question)
+        or RAGRetrievalTool.is_personal_clinical_request(payload.question)
+    )
+    generation_mode = str(result.get("generation", {}).get("mode") or "")
+    already_gated = generation_mode.startswith("evidence-gated") or generation_mode == "retrieval-only"
+    if clinical_context and generation_mode.startswith("llm"):
+        result["answer"] = RAGRetrievalTool.sanitize_clinical_answer(
+            str(result.get("answer") or "")
+        )
+    if clinical_context and not already_gated and not RAGRetrievalTool.clinical_output_is_safe(
+        str(result.get("answer") or "")
+    ):
+        fallback_answer = RAGRetrievalTool.clinical_safety_fallback(clinical_query, result)
+        result = {
+            **result,
+            "answer": fallback_answer,
+            "formulas": [],
+            "herbs": [],
+            "generation": {"mode": "agent-clinical-safety-fallback", "calls": 1},
+            "evidence_confidence": "insufficient",
+            "clinical_dimensions": result.get("clinical_dimensions", {}),
+            "differential_evidence": result.get("differential_evidence", []),
+        }
+    if clinical_context:
+        result.setdefault("sources", evidence_to_sources(result.get("evidence", []), clinical=True))
+        attach_teaching_agent_trace(result)
     conversations.save_turn(session, payload.question, result)
     history_id = session["id"]
     result["conversation"] = {
@@ -410,8 +642,15 @@ def ask_chat(payload: ChatAskRequest) -> dict[str, Any]:
 
 
 @router.get("/chat/ask/stream")
-def ask_chat_token_stream(question: str, historyId: str | None = None) -> StreamingResponse:
-    result = ask_chat(ChatAskRequest(question=question, historyId=historyId))
+def ask_chat_token_stream(
+    question: str,
+    historyId: str | None = None,
+    answerMode: Literal["concise", "teaching", "deep"] = "concise",
+) -> StreamingResponse:
+    result = prepare_chat(
+        ChatAskRequest(question=question, historyId=historyId, answerMode=answerMode),
+        generate_answer=False,
+    )
     fallback_text = result.get("answer", "")
     session_id = result.get("conversation", {}).get("id")
 
@@ -419,19 +658,68 @@ def ask_chat_token_stream(question: str, historyId: str | None = None) -> Stream
         import re
         client = get_llm_client()
         streamed: list[str] = []
-        evidence = "\n".join(
-            str(item.get("citation") or item.get("title") or "")
-            for item in result.get("evidence", [])[:5]
+        llm_generated = False
+        is_retrieval_only = result.get("generation", {}).get("mode") == "retrieval-only"
+        can_generate = is_retrieval_only and result.get("mode") not in {
+            "evidence-insufficient", "evidence-needs-clarification", "retrieval-error"
+        }
+        messages = RAGRetrievalTool.build_generation_messages(
+            str(result.get("query") or question), result, answerMode
         )
-        messages = [
-            {"role": "system", "content": (
-                "你是中医药知识学习与病例教学助手。把给定的已验证结果整理成自然清晰的中文回答。"
-                "不得增加结果中没有的证候、方剂、功效或剂量；资料不足时明确追问并保留引用编号。"
-                "不得作出临床诊断或个体化处方，结尾说明仅用于知识学习与辨证辅助。")},
-            {"role": "user", "content": f"用户问题：{question}\n已验证结果：{fallback_text}\n引用：{evidence}"},
-        ]
-        if client.available:
+        query_for_safety = str(result.get("query") or question)
+        clinical_request = RAGRetrievalTool.is_personal_clinical_request(query_for_safety)
+        generation_mode = ""
+        generation_usage: dict[str, Any] = {}
+        if client.available and can_generate and clinical_request:
+            # Clinical answers use the provider's real token stream, but are only released
+            # after a complete sentence has passed the safety gate.  This keeps the UI and
+            # speech output genuinely progressive without exposing an unchecked half-sentence.
+            result["formulas"] = []
+            result["herbs"] = []
+            sentence_buffer = ""
+            chunk_index = 0
+            filtered_violations: list[str] = []
+
+            def safe_sentence(raw_sentence: str) -> str:
+                candidate = RAGRetrievalTool.sanitize_clinical_answer(raw_sentence)
+                violations = RAGRetrievalTool.clinical_output_violations(candidate)
+                if violations:
+                    filtered_violations.extend(violations)
+                    candidate = RAGRetrievalTool.remove_unsafe_clinical_sentences(candidate)
+                if not candidate or not RAGRetrievalTool.clinical_output_is_safe(candidate):
+                    return ""
+                return candidate
+
+            for token in client.stream(messages, temperature=0.2) or []:
+                sentence_buffer += token
+                while True:
+                    boundary = re.search(r"[。！？!?；;\n]", sentence_buffer)
+                    if not boundary:
+                        break
+                    raw_sentence = sentence_buffer[:boundary.end()]
+                    sentence_buffer = sentence_buffer[boundary.end():]
+                    chunk = safe_sentence(raw_sentence)
+                    if not chunk:
+                        continue
+                    llm_generated = True
+                    streamed.append(chunk)
+                    yield f"data: {json.dumps({'type': 'chunk', 'index': chunk_index, 'content': chunk, 'sentence': True}, ensure_ascii=False)}\n\n"
+                    chunk_index += 1
+
+            if sentence_buffer.strip():
+                chunk = safe_sentence(sentence_buffer)
+                if chunk:
+                    llm_generated = True
+                    streamed.append(chunk)
+                    yield f"data: {json.dumps({'type': 'chunk', 'index': chunk_index, 'content': chunk, 'sentence': True}, ensure_ascii=False)}\n\n"
+
+            generation_mode = "llm-clinical-safe-sentence-stream"
+            generation_usage = {"streamed_sentences": len(streamed)}
+            if filtered_violations:
+                generation_usage["safety_filter"] = list(dict.fromkeys(filtered_violations))[:6]
+        elif client.available and can_generate:
             for index, token in enumerate(client.stream(messages, temperature=0.2) or []):
+                llm_generated = True
                 streamed.append(token)
                 yield f"data: {json.dumps({'type': 'chunk', 'index': index, 'content': token}, ensure_ascii=False)}\n\n"
         if not streamed:
@@ -440,8 +728,14 @@ def ask_chat_token_stream(question: str, historyId: str | None = None) -> Stream
                 yield f"data: {json.dumps({'type': 'chunk', 'index': index, 'content': chunk}, ensure_ascii=False)}\n\n"
         text = "".join(streamed)
         result["answer"] = text
-        result["generation"] = {"mode": "llm-token-stream" if client.available else "local-stream-fallback",
-                                "provider": client.provider, "model": client.model}
+        if llm_generated:
+            result["generation"] = {"mode": generation_mode or "llm-token-stream",
+                                    "provider": client.provider, "model": client.model, "calls": 1,
+                                    "usage": generation_usage}
+        elif is_retrieval_only:
+            result["generation"] = {"mode": "local-stream-fallback", "provider": client.provider,
+                                    "model": client.model, "calls": 0}
+        result["answer_mode"] = answerMode
         if session_id:
             ConversationService().replace_last_answer(session_id, text, result)
         yield f"data: {json.dumps({'type': 'result', 'content': text, 'result': result}, ensure_ascii=False)}\n\n"

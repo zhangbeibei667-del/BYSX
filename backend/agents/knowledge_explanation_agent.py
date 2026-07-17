@@ -9,7 +9,8 @@ class KnowledgeExplanationAgent:
     """
 
     def run(self, case_text: str, symptom_result: dict, graph_result: dict,
-            sql_result: dict, rag_result: dict, formula_result: dict) -> dict:
+            sql_result: dict, rag_result: dict, formula_result: dict,
+            generate_answer: bool = True) -> dict:
         symptoms = symptom_result.get("symptoms", [])
         tongue = symptom_result.get("tongue", [])
         pulse = symptom_result.get("pulse", [])
@@ -60,7 +61,7 @@ class KnowledgeExplanationAgent:
             case_text, symptoms, tongue, pulse, syndromes, formulas,
             paths, evidence, citations, confidence,
             sql_explanation=sql_explanation, sql_rows=sql_rows,
-        )
+        ) if generate_answer else None
         answer = generated["content"] if generated else "\n\n".join(sections)
         return {
             "answer": answer, "learning_summary": learning_summary,
@@ -68,7 +69,7 @@ class KnowledgeExplanationAgent:
             "citations": citations, "evidence_confidence": confidence,
             "generation": ({"mode": "llm-grounded", "provider": generated["provider"],
                             "model": generated["model"], "usage": generated["usage"]}
-                           if generated else {"mode": "local-evidence-template"}),
+                           if generated else {"mode": "retrieval-only" if not generate_answer else "local-evidence-template"}),
         }
 
     @staticmethod
@@ -102,8 +103,9 @@ class KnowledgeExplanationAgent:
         )
         return client.complete([
             {"role": "system", "content": (
-                "你是中医药病例学习与辨证思路讲解助手。用自然、循序渐进的中文解释，不要像数据库报告。"
-                "先概括已知信息，再说明辨证分歧与理由；资料不足时主动提出最关键的追问。"
+                "你是中医药病例学习与辨证思路讲解助手。像教师与学习者交流一样自然回答，不要像数据库报告。"
+                "检索、图谱和SQL只用于内部取证，正文不得汇报检索过程、资料比对过程或工具名称。"
+                "先直接回应当前辨证范围，再说明至多两个方向及关键区分；资料不足时只提出最关键的追问。"
                 "只能依据给定图谱和资料，每个关键知识结论标注[编号]，不得下诊断、开处方或给剂量。"
                 "结尾明确仅用于知识学习和辨证辅助。")},
             {"role": "user", "content": prompt}], temperature=0.25)

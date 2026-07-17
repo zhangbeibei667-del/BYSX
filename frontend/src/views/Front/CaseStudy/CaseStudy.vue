@@ -16,7 +16,7 @@
                 <el-icon><FolderChecked /></el-icon>
                 保存病例
               </el-button>
-              <el-button plain class="tcm-btn ghost-tcm" @click="showHistory = !showHistory">
+              <el-button plain class="tcm-btn ghost-tcm" @click="toggleHistory" :loading="historyLoading">
                 <el-icon><Clock /></el-icon>
                 历史病例
               </el-button>
@@ -125,6 +125,48 @@
             </el-button>
           </div>
         </div>
+
+        <!-- 总控 Agent 放在病例录入与执行流程之间 -->
+        <div v-if="analysisResult?.agent_steps?.length" class="orchestrator-card left-orchestrator-card">
+          <div class="orchestrator-heading">
+            <div>
+              <span class="orchestrator-kicker">TASK 4 · 诊疗教学多 AGENT</span>
+              <h3>诊疗教学总控 Agent</h3>
+              <p>{{ analysisResult.agent_plan?.reason || '根据病例意图动态选择并调用中医药教学工具' }}</p>
+            </div>
+            <span class="run-status"><i></i> 执行完成</span>
+          </div>
+          <div class="orchestrator-meta">
+            <span>识别意图<strong>{{ formatIntent(analysisResult.agent_plan?.intent) }}</strong></span>
+            <span>规划方式<strong>{{ formatPlanner(analysisResult.agent_plan?.planner) }}</strong></span>
+            <span>执行模块<strong>{{ analysisResult.agent_steps.length }} 步</strong></span>
+          </div>
+          <div class="agent-chain">
+            <template v-for="(step, index) in analysisResult.agent_steps" :key="`chain-${step.name}-${index}`">
+              <span class="agent-chip">{{ shortAgentName(step.name) }}</span>
+              <span v-if="index < analysisResult.agent_steps.length - 1" class="chain-arrow">→</span>
+            </template>
+          </div>
+        </div>
+
+        <!-- Agent 执行流程放在病例录入区下方，平衡左右栏高度 -->
+        <div v-if="analysisResult?.agent_steps?.length" class="diagnosis-card agent-execution-card left-agent-execution">
+          <h3 class="block-title"><span>Agent 执行流程</span><em>真实后端调用轨迹</em></h3>
+          <div class="execution-list">
+            <div v-for="(step, index) in analysisResult.agent_steps" :key="`${step.name}-${index}`" class="execution-step">
+              <span class="step-index">{{ index + 1 }}</span>
+              <div class="step-content">
+                <strong>{{ step.name }}</strong>
+                <p>{{ step.summary }}</p>
+                <details v-if="step.output && Object.keys(step.output).length" class="structured-output">
+                  <summary>查看该步结构化输出</summary>
+                  <pre>{{ formatJson(step.output) }}</pre>
+                </details>
+              </div>
+              <span class="step-status">✓ {{ step.status === 'completed' ? '已完成' : step.status }}</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- ========== 右侧：分析结果区（50%） ========== -->
@@ -179,7 +221,7 @@
                     未匹配到对应证候
                   </span>
                 </div>
-                <p class="diagnosis-basis">{{ analysisResult.answer }}</p>
+                <div class="diagnosis-basis markdown-body" v-html="renderedDiagnosis"></div>
               </template>
               <div v-else class="diagnosis-empty">录入症状后点击分析，将自动生成证候诊断与辨证依据</div>
             </div>
@@ -235,6 +277,56 @@
             </div>
           </div>
 
+          <!-- 症状追问 Agent -->
+          <div v-if="analysisResult?.follow_up_questions?.length" class="diagnosis-card tool-output-card followup-output">
+            <h3 class="block-title"><span>症状追问 Agent</span><em>上下文补充</em></h3>
+            <p class="tool-description">当前四诊信息仍可补充，系统生成以下教学追问：</p>
+            <div class="followup-questions">
+              <button v-for="(question, index) in analysisResult.follow_up_questions" :key="question" type="button" @click="addFollowupToNote(question)">
+                <b>{{ index + 1 }}</b>{{ question }}
+              </button>
+            </div>
+          </div>
+
+          <!-- 图谱数据 SQL Agent -->
+          <div v-if="analysisResult?.sql_result" class="diagnosis-card tool-output-card sql-output">
+            <h3 class="block-title"><span>图谱数据 SQL Agent</span><em>只读结构化查询</em></h3>
+            <div class="sql-metrics">
+              <span>执行状态<strong>{{ analysisResult.sql_result.text_to_sql?.status || analysisResult.sql_result.status || 'completed' }}</strong></span>
+              <span>返回记录<strong>{{ analysisResult.sql_result.text_to_sql?.row_count ?? analysisResult.sql_result.row_count ?? analysisResult.sql_result.text_to_sql?.rows?.length ?? analysisResult.sql_result.rows?.length ?? 0 }}</strong></span>
+              <span>安全模式<strong>SELECT 只读</strong></span>
+            </div>
+            <details v-if="analysisResult.sql_result.text_to_sql?.rows?.length || analysisResult.sql_result.rows?.length" class="structured-output">
+              <summary>查看 SQL 结构化结果</summary>
+              <pre>{{ formatJson(analysisResult.sql_result.text_to_sql?.rows || analysisResult.sql_result.rows) }}</pre>
+            </details>
+          </div>
+
+          <!-- 方剂说明 Agent -->
+          <div v-if="analysisResult?.formula_explanations?.length" class="diagnosis-card tool-output-card formula-output">
+            <h3 class="block-title"><span>方剂说明 Agent</span><em>组成 · 功效 · 证候</em></h3>
+            <div v-for="item in analysisResult.formula_explanations" :key="item.name" class="formula-explanation">
+              <strong>{{ item.name }}</strong>
+              <p><b>组成：</b>{{ item.composition?.join('、') || '暂无组成数据' }}</p>
+              <p><b>功效：</b>{{ item.effects?.join('；') || '暂无功效数据' }}</p>
+              <p><b>适用证候：</b>{{ item.main_indications?.join('、') || '暂无对应证候' }}</p>
+              <small v-if="item.notes">依据：{{ item.notes }}</small>
+            </div>
+          </div>
+
+          <!-- 文献检索 Agent -->
+          <div v-if="analysisResult?.evidence?.length" class="diagnosis-card tool-output-card literature-output">
+            <h3 class="block-title"><span>文献检索 Agent</span><em>可追溯依据 · {{ formatConfidence(analysisResult.evidence_confidence) }}</em></h3>
+            <div class="literature-list">
+              <div v-for="(ev, index) in analysisResult.evidence" :key="`${ev.title}-${index}`" class="literature-item">
+                <b>[{{ index + 1 }}]</b>
+                <div><strong>{{ ev.title }}</strong><p>{{ ev.content }}</p><small v-if="ev.citation || ev.source">来源：{{ ev.citation || ev.source }}</small></div>
+              </div>
+            </div>
+          </div>
+
+          <el-alert v-if="analysisResult?.safety_notice" :title="analysisResult.safety_notice" type="warning" :closable="false" show-icon />
+
           <!-- 教学笔记区 -->
           <div class="analysis-block">
             <h3 class="block-title">
@@ -256,7 +348,7 @@
 
     <!-- ==================== 底部：历史病例（横向滚动） ==================== -->
     <transition name="fade-up">
-      <div v-if="showHistory" class="case-history">
+      <div v-if="showHistory" ref="historySectionRef" class="case-history">
         <div class="history-header">
           <h3>
             <el-icon><Clock /></el-icon>
@@ -288,7 +380,7 @@
               <div class="hc-item">
                 <span class="hc-label">证候</span>
                 <span class="hc-value syndrome-name">
-                  {{ (c.syndromes || []).join('、') || '待分析' }}
+                  {{ historySyndromeText(c) }}
                 </span>
               </div>
             </div>
@@ -319,6 +411,7 @@ import {
   ZoomIn, ZoomOut, RefreshLeft
 } from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
+import MarkdownIt from 'markdown-it'
 import { caseApi } from '@/api'
 import type { GraphResponse, AnswerResponse } from '@/types'
 
@@ -345,6 +438,7 @@ const showHistory = ref(false)
 const historyCases = ref<any[]>([])
 const historyLoading = ref(false)
 const currentCaseId = ref<string | null>(null)
+const historySectionRef = ref<HTMLElement>()
 
 // 迷你图谱
 const miniChartRef = ref<HTMLDivElement>()
@@ -355,6 +449,17 @@ const miniGraphZoom = ref(0.9)
 // ==================== 计算属性 ====================
 const canAnalyze = computed(() => {
   return form.chiefComplaint.trim().length > 0
+})
+
+const markdown = new MarkdownIt({
+  html: false,
+  linkify: false,
+  breaks: true,
+  typographer: true,
+})
+
+const renderedDiagnosis = computed(() => {
+  return markdown.render(analysisResult.value?.answer || '')
 })
 
 // ==================== 图谱颜色常量（国风色系） ====================
@@ -608,8 +713,12 @@ async function loadHistoryCases() {
   historyLoading.value = true
   try {
     const res: any = await caseApi.list({ page: 1, pageSize: 20 })
-    if (res?.data?.length > 0) {
+    if (Array.isArray(res?.data?.list)) {
+      historyCases.value = res.data.list
+    } else if (res?.data?.length > 0) {
       historyCases.value = res.data
+    } else if (Array.isArray(res?.list)) {
+      historyCases.value = res.list
     } else if (Array.isArray(res)) {
       historyCases.value = res
     } else {
@@ -620,6 +729,15 @@ async function loadHistoryCases() {
   } finally {
     historyLoading.value = false
   }
+}
+
+async function toggleHistory() {
+  showHistory.value = !showHistory.value
+  if (!showHistory.value) return
+
+  await loadHistoryCases()
+  await nextTick()
+  historySectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function loadLocalCases() {
@@ -711,18 +829,65 @@ function truncate(text: string, maxLen: number): string {
   return text.length > maxLen ? text.slice(0, maxLen) + '...' : text
 }
 
+function historySyndromeText(caseItem: any): string {
+  const syndromes = caseItem?.analysisResult?.syndromes || caseItem?.syndromes || []
+  return Array.isArray(syndromes) && syndromes.length > 0 ? syndromes.join('、') : '待分析'
+}
+
+const intentLabels: Record<string, string> = {
+  case_analysis: '病例辨证教学',
+  formula_query: '方剂知识查询',
+  literature_query: '文献依据查询',
+  knowledge_query: '中医药知识解释',
+}
+
+function formatIntent(intent?: string): string {
+  return intentLabels[intent || ''] || intent || '自动识别'
+}
+
+function formatPlanner(planner?: string): string {
+  if (planner === 'llm-dynamic') return '大模型动态规划'
+  if (planner === 'local-dynamic') return '本地动态规划'
+  return planner || '动态工具规划'
+}
+
+function shortAgentName(name: string): string {
+  return name
+    .replace('动态工具规划', '总控规划')
+    .replace('图谱数据 Text-to-SQL Agent', '图谱 SQL')
+    .replace('向量文献检索 Agent', '文献检索')
+    .replace('流式语音问答 Agent', '流式语音')
+    .replace('症状分析 Agent', '症状分析')
+    .replace('症状追问 Agent', '症状追问')
+    .replace('图谱查询 Agent', '图谱查询')
+    .replace('方剂说明 Agent', '方剂说明')
+    .replace('知识解释 Agent', '知识解释')
+    .replace('安全审查 Agent', '安全审查')
+}
+
+function formatConfidence(confidence?: string): string {
+  const labels: Record<string, string> = { high: '高可信度', medium: '中可信度', low: '低可信度', insufficient: '资料不足' }
+  return labels[confidence || ''] || confidence || '待评估'
+}
+
+function formatJson(value: any): string {
+  return JSON.stringify(value, null, 2)
+}
+
+function addFollowupToNote(question: string) {
+  const line = `待追问：${question}`
+  if (!teachingNote.value.includes(line)) {
+    teachingNote.value = teachingNote.value ? `${teachingNote.value}\n${line}` : line
+  }
+  ElMessage.success('已加入教学笔记')
+}
+
 // ==================== 监听 ====================
 
 watch(() => analysisResult.value, async (newVal) => {
   if (newVal?.graph?.nodes?.length) {
     await nextTick()
     renderMiniGraph()
-  }
-})
-
-watch(showHistory, (val) => {
-  if (val && historyCases.value.length === 0) {
-    loadHistoryCases()
   }
 })
 
@@ -1002,6 +1167,55 @@ $herb-green: #588264;
   }
 }
 
+.orchestrator-card {
+  padding: 18px;
+  border: 1px solid rgba(200, 168, 110, 0.3);
+  border-radius: 12px;
+  color: #f7f3eb;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(200, 168, 110, 0.2), transparent 34%),
+    linear-gradient(135deg, #263b2c, $dark-green 55%, #3d5946);
+  box-shadow: 0 10px 26px rgba(42, 64, 48, 0.18);
+
+  .orchestrator-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    h3 { margin: 4px 0; color: #fff; font-size: 18px; }
+    p { margin: 0; color: #d9e2d9; font-size: 11px; }
+  }
+
+  .orchestrator-kicker { color: $soft-gold; font-size: 9px; letter-spacing: 0.14em; }
+  .run-status {
+    flex: 0 0 auto;
+    padding: 5px 9px;
+    border: 1px solid rgba(220, 235, 222, 0.22);
+    border-radius: 999px;
+    color: #d9eadb;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 10px;
+    i { display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: #8fc49a; box-shadow: 0 0 7px #8fc49a; }
+  }
+
+  .orchestrator-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin: 13px 0;
+    span { padding: 7px 9px; border-radius: 7px; background: rgba(255, 255, 255, 0.07); color: #c8d3ca; font-size: 10px; }
+    strong { display: block; margin-top: 2px; color: #fff; font-size: 11px; }
+  }
+
+  .agent-chain { display: flex; align-items: center; gap: 5px; overflow-x: auto; padding-bottom: 3px; }
+  .agent-chip { flex: 0 0 auto; padding: 5px 8px; border: 1px solid rgba(200, 168, 110, 0.2); border-radius: 7px; background: rgba(255, 255, 255, 0.07); color: #f7f3eb; font-size: 10px; }
+  .chain-arrow { color: $soft-gold; font-size: 10px; }
+}
+
+.left-orchestrator-card {
+  margin-top: 16px;
+}
+
 .analysis-block {
   .block-title {
     display: flex;
@@ -1197,6 +1411,25 @@ $herb-green: #588264;
       font-size: 12px;
       color: $text-light;
       line-height: 1.65;
+
+      :deep(p) {
+        margin: 0 0 6px;
+      }
+
+      :deep(p:last-child) {
+        margin-bottom: 0;
+      }
+
+      :deep(ul),
+      :deep(ol) {
+        margin: 4px 0 6px;
+        padding-left: 20px;
+      }
+
+      :deep(strong) {
+        color: $text-dark;
+        font-weight: 600;
+      }
     }
   }
 
@@ -1284,6 +1517,73 @@ $herb-green: #588264;
     font-size: 14px;
     font-style: italic;
   }
+}
+
+.tool-output-card,
+.agent-execution-card {
+  .block-title {
+    justify-content: space-between;
+    span { color: $dark-green; }
+    em { color: $text-light; font-size: 10px; font-style: normal; font-weight: 400; }
+  }
+}
+
+.tool-description { margin: -3px 0 9px; color: $text-light; font-size: 11px; }
+
+.followup-output {
+  background: #f4f8f3;
+  .followup-questions { display: flex; flex-direction: column; gap: 7px; }
+  button { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid rgba(70, 99, 80, 0.16); border-radius: 8px; background: #fffefb; color: $dark-green; text-align: left; cursor: pointer; }
+  button:hover { border-color: $mid-green; }
+  button b { color: $mid-green; }
+}
+
+.sql-output {
+  background: #f8f6ef;
+  .sql-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .sql-metrics span { padding: 8px; border-radius: 8px; background: #fffefb; color: $text-light; font-size: 10px; }
+  .sql-metrics strong { display: block; margin-top: 3px; color: $dark-green; font-size: 12px; }
+}
+
+.formula-output {
+  background: #fbf7ee;
+  .formula-explanation > strong { display: block; margin-bottom: 6px; color: $formula-brown; }
+  p { margin: 4px 0; color: $text-light; font-size: 11px; line-height: 1.55; }
+  p b { color: $text-dark; }
+  small { display: block; margin-top: 7px; padding-top: 6px; border-top: 1px dashed rgba(200, 168, 110, 0.36); color: $text-light; }
+}
+
+.literature-output {
+  background: #faf8f2;
+  .literature-list { display: flex; flex-direction: column; gap: 8px; }
+  .literature-item { display: flex; gap: 8px; padding: 9px; border: 1px solid $card-border; border-radius: 8px; background: #fffefb; }
+  .literature-item > b { color: $formula-brown; font-size: 11px; }
+  .literature-item strong { color: $dark-green; font-size: 11px; }
+  .literature-item p { margin: 3px 0; color: $text-light; font-size: 11px; line-height: 1.5; }
+  .literature-item small { color: #8a938d; font-size: 9px; }
+}
+
+.agent-execution-card {
+  background: #f3f7f3;
+  border-color: rgba(70, 99, 80, 0.2);
+  .execution-list { display: flex; flex-direction: column; gap: 7px; }
+  .execution-step { display: flex; align-items: flex-start; gap: 9px; padding: 9px; border: 1px solid rgba(70, 99, 80, 0.12); border-radius: 8px; background: #fffefb; }
+  .step-index { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 23px; height: 23px; border-radius: 50%; background: $mid-green; color: #fff; font-size: 10px; font-weight: 700; }
+  .step-content { flex: 1; min-width: 0; }
+  .step-content strong { color: $dark-green; font-size: 11px; }
+  .step-content p { margin: 2px 0; color: $text-light; font-size: 10px; line-height: 1.45; }
+  .step-status { flex: 0 0 auto; color: $herb-green; font-size: 9px; font-weight: 600; }
+}
+
+.left-agent-execution {
+  margin-top: 16px;
+  box-shadow: $card-shadow;
+}
+
+.structured-output {
+  margin-top: 6px;
+  summary { width: fit-content; color: $mid-green; font-size: 9px; cursor: pointer; }
+  pre { max-height: 210px; margin: 6px 0 0; padding: 9px; overflow: auto; border-radius: 7px; background: #213126; color: #d9e2d9; font: 9px/1.5 Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
 }
 
 // 教学笔记

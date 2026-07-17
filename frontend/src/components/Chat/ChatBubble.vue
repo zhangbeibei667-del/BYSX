@@ -6,6 +6,7 @@
         <el-icon v-if="message.role === 'user'" :size="20"><User /></el-icon>
         <el-icon v-else :size="20"><Service /></el-icon>
       </div>
+
       <div class="header-info">
         <span class="username">{{ message.role === 'user' ? '我' : '中医药智能体' }}</span>
         <span class="timestamp">{{ formatTime(message.timestamp) }}</span>
@@ -63,15 +64,41 @@
       </div>
     </div>
 
+    <div
+      v-if="message.role === 'assistant' && message.response?.needs_clarification && message.response.follow_up_questions?.length"
+      class="inline-followups"
+    >
+      <div class="inline-followups-title">为了进一步辨证，请补充：</div>
+      <el-button
+        v-for="(question, index) in message.response.follow_up_questions"
+        :key="`inline-question-${index}`"
+        type="info"
+        plain
+        size="small"
+        @click="handleFollowUp(question)"
+      >
+        {{ question }}
+      </el-button>
+    </div>
+
     <!-- RAG 依据来源面板 -->
     <div
       v-if="message.role === 'assistant' && hasSources"
       class="sources-panel"
     >
       <el-collapse v-model="activeSourceNames">
-        <el-collapse-item title="📚 查看依据（RAG溯源）" name="sources">
+        <el-collapse-item title="📚 查看依据" name="sources">
+          <div v-if="message.response?.generation" class="generation-meta">
+            <span>回答方式：{{ answerModeLabel }}</span>
+            <span v-if="message.response.generation.model">
+              生成模型：{{ message.response.generation.model }}
+            </span>
+            <span v-if="message.response.evidence_confidence">
+              证据强度：{{ confidenceLabel }}
+            </span>
+          </div>
           <div
-            v-for="(source, idx) in message.response?.sources"
+            v-for="(source, idx) in displaySources"
             :key="`source-${idx}`"
             class="source-item"
           >
@@ -98,6 +125,22 @@
             <blockquote v-if="source.original_text" class="source-quote">
               {{ source.original_text }}
             </blockquote>
+
+            <el-alert
+              v-if="source.contains_treatment"
+              class="source-treatment-notice"
+              title="原文含传统治法或方药记载，仅作证据溯源，不构成对当前用户的治疗建议。"
+              type="warning"
+              :closable="false"
+              show-icon
+            />
+
+            <div v-if="source.score !== undefined && source.score !== null" class="source-score">
+              {{ source.metric_label || '检索相关度' }}：{{ formatScore(source.score) }}
+            </div>
+            <div v-else-if="source.status_label" class="source-status">
+              证据状态：{{ source.status_label }}
+            </div>
 
             <div
               v-if="source.related_entities && source.related_entities.length"
@@ -187,6 +230,58 @@
           </div>
         </div>
       </div>
+
+      <div v-if="clinicalDimensionList.length" class="expansion-section">
+        <h4 class="section-title">
+          <el-icon><Connection /></el-icon>
+          四诊信息结构化
+        </h4>
+        <div class="clinical-dimensions">
+          <div
+            v-for="dimension in clinicalDimensionList"
+            :key="dimension.key"
+            class="clinical-dimension"
+            :class="{ missing: !dimension.observed }"
+          >
+            <span class="dimension-label">{{ dimension.label }}</span>
+            <span class="dimension-value">
+              {{ dimension.observed ? dimension.values.join('、') : '待补充' }}
+            </span>
+            <el-tag v-if="dimension.confidence === 'low'" size="small" type="warning">低精度自述</el-tag>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="message.response.differential_evidence?.length" class="expansion-section">
+        <h4 class="section-title">
+          <el-icon><Connection /></el-icon>
+          候选证候证据对照
+        </h4>
+        <div class="differential-grid">
+          <div
+            v-for="(item, index) in message.response.differential_evidence"
+            :key="`differential-${index}`"
+            class="differential-card"
+          >
+            <div class="differential-title">
+              <strong>{{ item.candidate }}</strong>
+              <span>{{ item.source_title }}</span>
+            </div>
+            <div class="differential-row support">
+              <span>支持</span>
+              <p>{{ item.support.length ? item.support.join('、') : '暂无直接支持' }}</p>
+            </div>
+            <div class="differential-row difference">
+              <span>差异</span>
+              <p>{{ item.differences.length ? item.differences.join('；') : '未发现同维度冲突' }}</p>
+            </div>
+            <div class="differential-row missing">
+              <span>缺失</span>
+              <p>{{ item.missing.length ? item.missing.join('、') : '暂无' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- 追问建议 -->
       <div v-if="message.response.follow_up_questions?.length" class="expansion-section">
@@ -207,24 +302,28 @@
         </div>
       </div>
       
-      <!-- 依据文献 -->
-      <div v-if="message.response.evidence?.length" class="expansion-section">
+      <div v-if="message.response.agent_steps?.length" class="expansion-section">
         <h4 class="section-title">
-          <el-icon><Document /></el-icon>
-          依据文献
+          <el-icon><Connection /></el-icon>
+          诊疗教学 Agent 执行过程
         </h4>
-        <div class="evidence-list">
+        <div class="agent-trace">
           <div
-            v-for="(item, index) in message.response.evidence"
-            :key="`evidence-${index}`"
-            class="evidence-item"
+            v-for="(step, index) in message.response.agent_steps"
+            :key="`agent-step-${index}`"
+            class="agent-step"
           >
-            <h6>{{ item.title }}</h6>
-            <p>{{ item.content }}</p>
+            <el-tag :type="step.status === 'completed' ? 'success' : step.status === 'awaiting_input' ? 'warning' : 'info'" size="small">
+              {{ step.status === 'completed' ? '已完成' : step.status === 'awaiting_input' ? '待补充' : '证据有限' }}
+            </el-tag>
+            <div>
+              <strong>{{ step.name }}</strong>
+              <p>{{ step.summary }}</p>
+            </div>
           </div>
         </div>
       </div>
-      
+
       <!-- 安全提示 -->
       <div class="expansion-section safety-notice">
         <el-alert
@@ -269,11 +368,10 @@ import {
   StarFilled,
   Connection,
   ChatLineSquare,
-  Document,
   VideoPlay,
   VideoPause
 } from '@element-plus/icons-vue'
-import type { SourceItem } from '@/types'
+import type { ClinicalDimension, DifferentialEvidence, SourceItem } from '@/types'
 
 interface Message {
   id: string
@@ -289,8 +387,15 @@ interface Message {
     herbs: string[]
     evidence?: Array<{ title: string; content: string }>
     follow_up_questions?: string[]
+    needs_clarification?: boolean
     safety_notice: string
     sources?: SourceItem[]
+    answer_mode?: 'concise' | 'teaching' | 'deep'
+    evidence_confidence?: string
+    generation?: { mode: string; provider?: string; model?: string; calls?: number }
+    agent_steps?: Array<{ name: string; status: string; summary: string }>
+    clinical_dimensions?: Record<string, ClinicalDimension>
+    differential_evidence?: DifferentialEvidence[]
   }
 }
 
@@ -311,7 +416,10 @@ const sourceTypeColorMap: Record<string, string> = {
   '教材': 'primary',
   '古籍': 'warning',
   '科普': 'info',
-  '期刊': 'success'
+  '期刊': 'success',
+  '证候知识': 'primary',
+  '图谱关系': 'success',
+  '图谱实体': 'warning'
 }
 const getSourceTypeColor = (t?: string): string => sourceTypeColorMap[t || ''] || ''
 
@@ -327,9 +435,47 @@ const getEntityColor = (t?: string): string => entityColorMap[t || ''] || 'info'
 const activeSourceNames = ref<string[]>([])
 
 const hasSources = computed(() => {
-  const sources = props.message.response?.sources
-  return sources && sources.length > 0
+  return displaySources.value.length > 0 || Boolean(props.message.response?.generation)
 })
+
+const displaySources = computed<SourceItem[]>(() => {
+  const sources = props.message.response?.sources || []
+  if (sources.length) {
+    return sources.map(source => {
+      const relation = source.type === '图谱关系' || source.original_text?.startsWith('知识图谱关系：')
+      const entity = source.type === '图谱实体' || source.source_detail?.startsWith('图谱实体/')
+      if (relation) {
+        return { ...source, type: '图谱关系', score: null, metric_label: undefined, status_label: '已验证关系' }
+      }
+      if (entity) {
+        return { ...source, type: '图谱实体', score: null, metric_label: undefined, status_label: '命中图谱实体' }
+      }
+      return { ...source, score: source.score === undefined || source.score === null ? source.score : Math.max(0, Math.min(1, source.score)) }
+    })
+  }
+  return (props.message.response?.evidence || []).map(item => ({
+    title: item.title,
+    original_text: item.content,
+    type: '文献'
+  }))
+})
+
+const answerModeLabel = computed(() => ({
+  concise: '简洁回答',
+  teaching: '教学解释',
+  deep: '深入分析'
+}[props.message.response?.answer_mode || 'concise']))
+
+const confidenceLabel = computed(() => ({
+  high: '较高',
+  medium: '中等',
+  insufficient: '不足'
+}[props.message.response?.evidence_confidence || ''] || props.message.response?.evidence_confidence))
+
+const formatScore = (score?: number | null) => {
+  if (score === undefined || score === null || !Number.isFinite(score)) return '-'
+  return `${Math.round(Math.max(0, Math.min(1, score)) * 100)}%`
+}
 
 const handleEntityClick = (entity: { name: string; type: string; id: string }) => {
   emit('navigateToGraph', entity.name)
@@ -338,6 +484,10 @@ const handleEntityClick = (entity: { name: string; type: string; id: string }) =
 const expanded = ref(false)
 const speaking = ref(false)
 const md = new MarkdownIt()
+
+const clinicalDimensionList = computed(() => Object.entries(props.message.response?.clinical_dimensions || {}).map(
+  ([key, value]) => ({ key, ...value })
+))
 
 const hasRelatedEntities = computed(() => {
   const resp = props.message.response
@@ -632,6 +782,18 @@ $assistant-white-deep: #fbf7ee;
       padding: 16px 20px;
     }
 
+    .generation-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(70, 99, 80, 0.06);
+      color: #52645a;
+      font-size: 12px;
+    }
+
     .source-item {
       padding: 14px 16px;
       margin-bottom: 12px;
@@ -688,6 +850,21 @@ $assistant-white-deep: #fbf7ee;
         font-style: italic;
       }
 
+      .source-score, .source-status {
+        margin-top: 8px;
+        color: #7a887f;
+        font-size: 12px;
+      }
+
+      .source-treatment-notice {
+        margin-top: 10px;
+
+        :deep(.el-alert__title) {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+
       .source-entities {
         margin-top: 10px;
         display: flex;
@@ -710,6 +887,30 @@ $assistant-white-deep: #fbf7ee;
           }
         }
       }
+    }
+  }
+
+  .inline-followups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 20px 16px;
+
+    .inline-followups-title {
+      flex-basis: 100%;
+      color: #52645a;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    :deep(.el-button) {
+      height: auto;
+      max-width: 100%;
+      margin-left: 0;
+      padding: 7px 10px;
+      white-space: normal;
+      text-align: left;
+      line-height: 1.45;
     }
   }
 
@@ -762,6 +963,121 @@ $assistant-white-deep: #fbf7ee;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+    }
+
+    .clinical-dimensions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+
+      .clinical-dimension {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 38px;
+        padding: 8px 10px;
+        border: 1px solid #dfe8e2;
+        border-radius: 7px;
+        background: #f7faf8;
+
+        &.missing {
+          background: #fafafa;
+          color: #8b948f;
+        }
+
+        .dimension-label {
+          color: #405448;
+          font-size: 12px;
+          font-weight: 600;
+        }
+
+        .dimension-value {
+          flex: 1;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .differential-grid {
+      display: grid;
+      gap: 10px;
+
+      .differential-card {
+        overflow: hidden;
+        border: 1px solid #e1e7e3;
+        border-radius: 8px;
+
+        .differential-title {
+          display: flex;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 9px 12px;
+          background: #f4f7f5;
+
+          strong {
+            color: #31483a;
+          }
+
+          span {
+            color: #859087;
+            font-size: 12px;
+          }
+        }
+
+        .differential-row {
+          display: grid;
+          grid-template-columns: 52px 1fr;
+          gap: 8px;
+          padding: 8px 12px;
+          border-top: 1px solid #eef1ef;
+
+          > span {
+            width: fit-content;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+          }
+
+          p {
+            margin: 0;
+            color: #5b675f;
+            font-size: 13px;
+            line-height: 1.5;
+          }
+
+          &.support > span { background: #e8f4eb; color: #39734a; }
+          &.difference > span { background: #fff3e4; color: #a26618; }
+          &.missing > span { background: #f1f2f1; color: #6e7771; }
+        }
+      }
+    }
+
+    .agent-trace {
+      display: grid;
+      gap: 8px;
+
+      .agent-step {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        align-items: start;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid #e5e9e6;
+        border-radius: 7px;
+        background: #f8faf8;
+
+        strong {
+          color: #34483c;
+          font-size: 13px;
+        }
+
+        p {
+          margin: 3px 0 0;
+          color: #6f7d75;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
     }
     
     .evidence-list {

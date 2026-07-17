@@ -7,27 +7,38 @@ from backend.services.llm_client import get_llm_client
 
 
 AVAILABLE_TOOLS = {"symptom_analysis", "followup", "graph_query", "sql_query", "literature_search",
-                   "formula_explanation", "knowledge_explanation", "safety_review"}
+                   "formula_explanation", "knowledge_explanation", "streaming_voice", "safety_review"}
+
+CASE_TOOLS = ["symptom_analysis", "followup", "graph_query", "sql_query", "literature_search",
+              "formula_explanation", "knowledge_explanation", "streaming_voice", "safety_review"]
 
 
 class AgentPlanner:
     def plan(self, text: str, has_context: bool = False) -> dict:
         llm_plan = self._llm_plan(text, has_context)
         if llm_plan:
+            if self._looks_like_case(text) or has_context:
+                llm_plan["intent"] = "case_analysis"
+                llm_plan["tools"] = list(dict.fromkeys([*llm_plan.get("tools", []), *CASE_TOOLS]))
             return llm_plan
-        if any(marker in text for marker in ("患者", "舌", "脉", "症状", "疼", "痛", "失眠", "咳", "便", "口渴")) or has_context:
-            tools = ["symptom_analysis", "followup", "graph_query", "sql_query", "literature_search",
-                     "formula_explanation", "knowledge_explanation", "safety_review"]
+        if self._looks_like_case(text) or has_context:
+            tools = CASE_TOOLS.copy()
             intent = "case_analysis"
         elif any(marker in text for marker in ("方", "汤", "丸", "散", "组成", "药材")):
             tools = ["graph_query", "sql_query", "literature_search", "formula_explanation",
-                     "knowledge_explanation", "safety_review"]
+                     "knowledge_explanation", "streaming_voice", "safety_review"]
             intent = "formula_query"
         elif any(marker in text for marker in ("文献", "教材", "药典", "出处", "依据")):
-            tools, intent = ["graph_query", "literature_search", "knowledge_explanation", "safety_review"], "literature_query"
+            tools, intent = ["graph_query", "literature_search", "knowledge_explanation", "streaming_voice", "safety_review"], "literature_query"
         else:
-            tools, intent = ["graph_query", "literature_search", "knowledge_explanation", "safety_review"], "knowledge_query"
+            tools, intent = ["graph_query", "literature_search", "knowledge_explanation", "streaming_voice", "safety_review"], "knowledge_query"
         return {"intent": intent, "tools": tools, "planner": "local-dynamic", "reason": "按问题意图选择必要工具"}
+
+    @staticmethod
+    def _looks_like_case(text: str) -> bool:
+        return any(marker in text for marker in (
+            "患者", "舌", "脉", "症状", "主诉", "辨证", "疼", "痛", "失眠", "咳", "便", "口渴"
+        ))
 
     def _llm_plan(self, text: str, has_context: bool) -> dict | None:
         client = get_llm_client()
@@ -48,7 +59,8 @@ class AgentPlanner:
             if "symptom_analysis" in tools or any(word in intent for word in ("辨证", "病例", "症状")):
                 intent = "case_analysis"
                 for required in ("symptom_analysis", "followup", "graph_query", "sql_query",
-                                 "literature_search", "formula_explanation", "knowledge_explanation"):
+                                 "literature_search", "formula_explanation", "knowledge_explanation",
+                                 "streaming_voice"):
                     if required not in tools:
                         tools.append(required)
             elif "formula_explanation" in tools:

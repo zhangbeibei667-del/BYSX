@@ -388,6 +388,9 @@ const PROPERTY_LABEL_MAP: Record<string, string> = {
 
 const allNodes = ref<GraphNode[]>([])
 const allEdges = ref<GraphEdge[]>([])
+// 默认画布只保留 300 个节点；搜索时切换为命中实体的局部子图，清空搜索后恢复。
+const defaultNodes = ref<GraphNode[]>([])
+const defaultEdges = ref<GraphEdge[]>([])
 const overviewStats = reactive({ nodeCount: 0, relationCount: 0 })
 const pathEntityOptions = ref<GraphNode[]>([])
 const loading = ref(false)
@@ -739,6 +742,8 @@ async function loadGraphData() {
       allEdges.value = []
       ElMessage.warning('图谱服务未返回可展示数据，请检查后端数据状态')
     }
+    defaultNodes.value = [...allNodes.value]
+    defaultEdges.value = [...allEdges.value]
     const overviewData = overview?.data || overview
     overviewStats.nodeCount = Number(overviewData?.nodeCount || allNodes.value.length)
     overviewStats.relationCount = Number(overviewData?.relationCount || allEdges.value.length)
@@ -804,35 +809,35 @@ async function handleSearch() {
       return
     }
 
-    const existingIds = new Set(allNodes.value.map(n => n.id))
-    newNodes.forEach(n => {
-      if (!existingIds.has(n.id)) {
-        allNodes.value.push(n)
-        existingIds.add(n.id)
-      }
-    })
-    const existingEdgeKeys = new Set(allEdges.value.map(e => `${e.source}->${e.target}`))
-    newEdges.forEach(e => {
-      const key = `${e.source}->${e.target}`
-      if (!existingEdgeKeys.has(key)) {
-        allEdges.value.push(e)
-        existingEdgeKeys.add(key)
-      }
-    })
+    // 搜索结果不再混入 300 节点的大图，否则目标节点即使存在也很难被看见。
+    // 这里展示命中实体及其直接关系构成的局部子图，左侧概览仍保持全量统计。
+    allNodes.value = newNodes
+    allEdges.value = newEdges
+
+    const keywordLower = keyword.toLowerCase()
+    const visibleTypes = new Set(checkedTypes)
+    const candidates = newNodes.filter(node => visibleTypes.has(node.type))
+    const targetNode =
+      candidates.find(node => node.label.toLowerCase() === keywordLower) ||
+      candidates.find(node => node.label.toLowerCase().includes(keywordLower)) ||
+      newNodes.find(node => node.label.toLowerCase() === keywordLower) ||
+      newNodes.find(node => node.label.toLowerCase().includes(keywordLower))
 
     await nextTick()
     renderChart()
     updateHotEntities()
 
-    const targetNode = allNodes.value.find(n => n.id === newNodes[0].id)
     if (targetNode) {
+      handleNodeClick(targetNode.id)
       blinkNode(targetNode.id)
+      ElMessage.success(`已定位到“${targetNode.label}”，当前展示其关联子图`)
     }
   } catch {
     console.log('graphApi.searchEntities 未就绪，使用本地搜索')
     const keywordLower = keyword.toLowerCase()
     const checkedTypes = filterTypes.filter(f => f.checked).map(f => f.type)
-    const matched = allNodes.value.filter(n => {
+    const sourceNodes = defaultNodes.value.length ? defaultNodes.value : allNodes.value
+    const matched = sourceNodes.filter(n => {
       const typeMatch = checkedTypes.length === 0 || checkedTypes.includes(n.type)
       const textMatch = n.label.includes(keyword) || n.id.toLowerCase().includes(keywordLower)
       return typeMatch && textMatch
@@ -859,6 +864,18 @@ async function handleSearch() {
 function clearSearch() {
   searchKeyword.value = ''
   router.replace({ query: {} })
+  if (defaultNodes.value.length) {
+    allNodes.value = [...defaultNodes.value]
+    allEdges.value = [...defaultEdges.value]
+    selectedNode.value = null
+    entityDetail.value = null
+    activePath.value = { nodes: [], edges: [] }
+    zoomLevel.value = DEFAULT_GRAPH_ZOOM
+    nextTick(() => {
+      renderChart()
+      updateHotEntities()
+    })
+  }
 }
 
 // ==================== 筛选 ====================
@@ -1195,15 +1212,29 @@ function goToAdminDetail() {
 
 // ==================== 生命周期 ====================
 
-onMounted(() => {
-  loadGraphData()
+onMounted(async () => {
   window.addEventListener('resize', resizeChart)
 
-  const initSearch = route.query.search as string
+  // 首页卡片会通过 ?search=实体名 进入本页。必须先等默认图谱加载完成，
+  // 否则自动搜索得到的局部图会被稍后返回的默认 300 节点覆盖。
+  await loadGraphData()
+
+  const initSearch = typeof route.query.search === 'string'
+    ? route.query.search.trim()
+    : ''
   if (initSearch) {
     searchKeyword.value = initSearch
-    nextTick(() => handleSearch())
+    await nextTick()
+    await handleSearch()
   }
+})
+
+// 支持组件未卸载时从其他入口切换搜索实体。
+watch(() => route.query.search, async (value) => {
+  const keyword = typeof value === 'string' ? value.trim() : ''
+  if (!keyword || keyword === searchKeyword.value.trim()) return
+  searchKeyword.value = keyword
+  await handleSearch()
 })
 
 onBeforeUnmount(() => {

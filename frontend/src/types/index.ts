@@ -34,6 +34,23 @@ export interface GraphResponse {
 export interface AnswerEvidence {
   title: string
   content: string
+  citation?: string
+  source?: string
+}
+
+export interface ClinicalDimension {
+  label: string
+  values: string[]
+  observed: boolean
+  confidence: 'self_reported' | 'low' | 'missing' | string
+}
+
+export interface DifferentialEvidence {
+  candidate: string
+  source_title: string
+  support: string[]
+  differences: string[]
+  missing: string[]
 }
 
 // 统一问答结果格式
@@ -46,8 +63,68 @@ export interface AnswerResponse {
   graph: GraphResponse
   evidence: AnswerEvidence[]
   follow_up_questions: string[]
+  needs_clarification?: boolean
   safety_notice: string
   sources?: SourceItem[]  // RAG 引用资料来源
+  answer_mode?: 'concise' | 'teaching' | 'deep'
+  evidence_confidence?: string
+  generation?: {
+    mode: string
+    provider?: string
+    model?: string
+    calls?: number
+  }
+  agent_plan?: {
+    agent?: string
+    tools: string[]
+    evidence_fusion?: string
+    intent?: string
+    planner?: string
+    reason?: string
+    model?: string
+  }
+  agent_steps?: Array<{
+    name: string
+    status: 'completed' | 'awaiting_input' | 'insufficient' | string
+    summary: string
+    output?: any
+  }>
+  sql_result?: {
+    rows?: Array<Record<string, any>>
+    row_count?: number
+    status?: string
+    read_only?: boolean
+    text_to_sql?: {
+      question?: string
+      generated_sql?: string
+      rows?: Array<Record<string, any>>
+      row_count?: number
+      status?: string
+      generator?: string
+      model_used?: string
+    }
+  }
+  formula_explanations?: Array<{
+    name: string
+    composition: string[]
+    effects: string[]
+    main_indications: string[]
+    notes: string
+  }>
+  voice_qa?: {
+    enabled?: boolean
+    mode?: string
+    asr?: { engine?: string; language?: string; interim_results?: boolean }
+    tts?: { engine?: string; language?: string; stream_by_sentence?: boolean }
+    streaming_text?: string[]
+  }
+  evidence_summary?: {
+    graph_relations: number
+    knowledge_base_documents: number
+    sources_available: number
+  }
+  clinical_dimensions?: Record<string, ClinicalDimension>
+  differential_evidence?: DifferentialEvidence[]
 }
 
 // RAG 引用来源项
@@ -57,6 +134,10 @@ export interface SourceItem {
   source_detail?: string // 来源详情
   original_text?: string // 原文片段
   chapter?: string       // 页码/章节
+  score?: number | null
+  metric_label?: string
+  status_label?: string
+  contains_treatment?: boolean
   related_entities?: Array<{  // 关联实体列表
     id: string
     name: string

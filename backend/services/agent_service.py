@@ -14,9 +14,14 @@ class AgentService:
         init_db()
         self.history_service = history_service or HistoryService()
 
-    def analyze_case(self, case_text: str, has_context: bool = False) -> dict:
+    def analyze_case(self, case_text: str, has_context: bool = False,
+                     generate_answer: bool = True) -> dict:
         agent = TCMTeachingOrchestratorAgent()
-        result = agent.run(case_text, has_context=has_context)
+        result = agent.run(
+            case_text,
+            has_context=has_context,
+            generate_answer=generate_answer,
+        )
 
         history_id = self.history_service.save_case_result(case_text, result)
         result["history_id"] = history_id

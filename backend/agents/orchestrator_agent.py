@@ -25,7 +25,8 @@ class TCMTeachingOrchestratorAgent:
         self.safety_agent = SafetyReviewAgent()
         self.planner = AgentPlanner()
 
-    def run(self, case_text: str, has_context: bool = False) -> dict:
+    def run(self, case_text: str, has_context: bool = False,
+            generate_answer: bool = True) -> dict:
         plan = self.planner.plan(case_text, has_context)
         selected = set(plan["tools"])
         steps = [self._step("动态工具规划", f"识别意图：{plan['intent']}；选择 {len(selected)} 个工具", plan)]
@@ -61,22 +62,34 @@ class TCMTeachingOrchestratorAgent:
         if "formula_explanation" in selected:
             steps.append(self._step("方剂说明 Agent", f"解释：{self._join(graph.get('formulas', []))}", formula))
 
-        explanation = self.knowledge_agent.run(case_text, symptom, graph, sql, rag, formula)
+        explanation = self.knowledge_agent.run(
+            case_text, symptom, graph, sql, rag, formula,
+            generate_answer=generate_answer,
+        )
         steps.append(self._step("知识解释 Agent", "融合图谱、SQL 与文献证据生成解释", explanation))
 
         safety = self.safety_agent.run(explanation["answer"])
         steps.append(self._step("安全审查 Agent", "完成医疗安全边界审查", {"safety_notice": safety["safety_notice"]}))
         voice = self.voice_agent.run(symptom, graph, {**explanation, "answer": safety["answer"]})
+        steps.append(self._step(
+            "流式语音问答 Agent",
+            "已生成浏览器语音识别、分句流式输出与语音播报协议",
+            voice,
+        ))
 
         needs_clarification = bool(graph.get("needs_clarification")) or (
             plan["intent"] == "case_analysis" and (len(symptom.get("symptoms", [])) < 2 or not symptom.get("tongue") or not symptom.get("pulse"))
         )
         return {
+            "query": case_text,
             "answer": safety["answer"], "symptoms": symptom.get("symptoms", []),
             "tongue": symptom.get("tongue", []), "pulse": symptom.get("pulse", []),
             "syndromes": graph.get("syndromes", []), "formulas": graph.get("formulas", []),
             "herbs": graph.get("herbs", []), "graph": graph.get("graph", {"nodes": [], "edges": []}),
             "sql_result": sql.get("sql_result", {}), "evidence": rag.get("evidence", []),
+            "retrieval": rag.get("retrieval", {}),
+            "clinical_dimensions": rag.get("clinical_dimensions", {}),
+            "differential_evidence": rag.get("differential_evidence", []),
             "formula_explanations": formula.get("formula_explanations", []),
             "follow_up_questions": followup.get("follow_up_questions", []),
             "learning_summary": explanation.get("learning_summary", ""), "voice_qa": voice.get("voice_qa", {}),
