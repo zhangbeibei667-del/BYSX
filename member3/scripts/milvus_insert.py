@@ -30,7 +30,7 @@ DEFAULT_CORPUS_PATH = (
     / "rag_corpus_clean.jsonl"
 )
 
-# text-embedding-v4 单批最多 10 条
+# SiliconFlow Qwen embedding 单批最多 10 条
 EMBEDDING_BATCH_SIZE = 10
 
 # Milvus 每累计多少条执行一次 insert

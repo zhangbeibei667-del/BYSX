@@ -64,7 +64,12 @@ class RAGRetrievalTool:
                 insufficient["evidence"] = document_evidence[:top_k]
                 insufficient["citations"] = [item["citation"] for item in document_evidence[:top_k]]
                 return insufficient
-            result["evidence"] = self._merge_evidence(document_evidence, graph_evidence, top_k)
+            needs_expanded_evidence = getattr(graph_service, "_needs_expanded_evidence", lambda _: False)
+            evidence_top_k = max(top_k, 10) if needs_expanded_evidence(query) else top_k
+            if needs_expanded_evidence(query):
+                result["evidence"] = self._merge_expanded_evidence(document_evidence, graph_evidence, evidence_top_k)
+            else:
+                result["evidence"] = self._merge_evidence(document_evidence, graph_evidence, evidence_top_k)
             if personal_clinical:
                 result["clinical_dimensions"] = self.parse_clinical_dimensions(query)
                 # Differential rows must come from the richer RAG candidate set, not only the
@@ -188,6 +193,18 @@ class RAGRetrievalTool:
         merged = documents[:document_limit] + graph_items[:graph_limit]
         if len(merged) < top_k:
             merged.extend(documents[document_limit:document_limit + top_k - len(merged)])
+        if len(merged) < top_k:
+            merged.extend(graph_items[graph_limit:graph_limit + top_k - len(merged)])
+        return merged[:top_k]
+
+    @staticmethod
+    def _merge_expanded_evidence(documents: list[dict], graph_items: list[dict], top_k: int) -> list[dict]:
+        """For explanation-style answers, keep graph entities and paths visible first."""
+        if not graph_items:
+            return documents[:top_k]
+        graph_limit = min(len(graph_items), max(6, top_k - 3))
+        merged = graph_items[:graph_limit]
+        merged.extend(documents[:max(0, top_k - len(merged))])
         if len(merged) < top_k:
             merged.extend(graph_items[graph_limit:graph_limit + top_k - len(merged)])
         return merged[:top_k]

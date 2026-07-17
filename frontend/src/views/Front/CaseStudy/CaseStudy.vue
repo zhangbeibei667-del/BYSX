@@ -163,7 +163,10 @@
                   <pre>{{ formatJson(step.output) }}</pre>
                 </details>
               </div>
-              <span class="step-status">✓ {{ step.status === 'completed' ? '已完成' : step.status }}</span>
+              <span class="step-status">
+                <el-icon v-if="step.status === 'completed'"><CircleCheck /></el-icon>
+                {{ step.status === 'completed' ? '已完成' : step.status }}
+              </span>
             </div>
           </div>
         </div>
@@ -408,7 +411,7 @@ import {
   Notebook, FolderChecked, Clock, Search,
   DataAnalysis, Refresh, Loading, User,
   EditPen, FirstAidKit, Tickets, Collection, Memo,
-  ZoomIn, ZoomOut, RefreshLeft
+  ZoomIn, ZoomOut, RefreshLeft, CircleCheck
 } from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
 import MarkdownIt from 'markdown-it'
@@ -699,7 +702,7 @@ async function handleSaveCase() {
     else if (typeof res === 'string') caseId = res
 
     currentCaseId.value = caseId || currentCaseId.value
-    ElMessage.success('✅ 病例已保存')
+    ElMessage.success('病例已保存')
   } catch {
     ElMessage.error('病例服务不可用，未保存本次病例')
   } finally {
@@ -1572,7 +1575,19 @@ $herb-green: #588264;
   .step-content { flex: 1; min-width: 0; }
   .step-content strong { color: $dark-green; font-size: 11px; }
   .step-content p { margin: 2px 0; color: $text-light; font-size: 10px; line-height: 1.45; }
-  .step-status { flex: 0 0 auto; color: $herb-green; font-size: 9px; font-weight: 600; }
+  .step-status {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: $herb-green;
+    font-size: 9px;
+    font-weight: 600;
+
+    .el-icon {
+      font-size: 11px;
+    }
+  }
 }
 
 .left-agent-execution {

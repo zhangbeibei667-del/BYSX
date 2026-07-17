@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 from pymilvus import DataType, MilvusClient
 
 
-EMBEDDING_DIM = 1024
-
 OPTIONAL_TEXT_FIELDS = {
     "record_type": 64,
     "chinese_name": 128,
@@ -28,6 +26,7 @@ def main() -> None:
 
     milvus_uri = os.getenv("MILVUS_URI", "http://127.0.0.1:19530")
     collection_name = os.getenv("MILVUS_COLLECTION", "tcm_rag_chunks")
+    embedding_dim = int(os.getenv("EMBEDDING_DIM", os.getenv("EMBEDDING_DIMENSIONS", "1024")))
 
     client = MilvusClient(uri=milvus_uri)
 
@@ -88,7 +87,7 @@ def main() -> None:
     schema.add_field(
         field_name="embedding",
         datatype=DataType.FLOAT_VECTOR,
-        dim=EMBEDDING_DIM,
+        dim=embedding_dim,
     )
 
     index_params = client.prepare_index_params()

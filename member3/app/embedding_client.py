@@ -11,7 +11,10 @@ class EmbeddingClient:
 
     def __init__(self) -> None:
         api_key = os.getenv("EMBEDDING_API_KEY")
-        base_url = os.getenv("EMBEDDING_BASE_URL")
+        base_url = os.getenv(
+            "EMBEDDING_BASE_URL",
+            "https://api.siliconflow.cn/v1",
+        )
 
         if not api_key:
             raise ValueError(
@@ -25,20 +28,27 @@ class EmbeddingClient:
 
         self.client = OpenAI(
             api_key=api_key,
-            base_url=base_url,
+            base_url=self._normalize_openai_base_url(base_url),
         )
 
         self.model = os.getenv(
             "EMBEDDING_MODEL",
-            "text-embedding-v4",
+            "Qwen/Qwen3-VL-Embedding-8B",
         )
 
         self.dimensions = int(
             os.getenv(
                 "EMBEDDING_DIM",
-                "1024",
+                os.getenv("EMBEDDING_DIMENSIONS", "1024"),
             )
         )
+
+    @staticmethod
+    def _normalize_openai_base_url(base_url: str) -> str:
+        clean_base_url = base_url.strip().rstrip("/")
+        if clean_base_url.endswith("/embeddings"):
+            return clean_base_url[: -len("/embeddings")]
+        return clean_base_url
 
     def embed(self, text: str) -> list[float]:
         """
@@ -70,7 +80,7 @@ class EmbeddingClient:
         """
         批量文本向量化。
 
-        text-embedding-v4 当前按最多 10 条一批调用。
+        SiliconFlow Qwen embedding 当前按最多 10 条一批调用。
         """
         cleaned_texts = [
             text.strip()

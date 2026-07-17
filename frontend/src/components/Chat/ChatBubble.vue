@@ -87,7 +87,13 @@
       class="sources-panel"
     >
       <el-collapse v-model="activeSourceNames">
-        <el-collapse-item title="📚 查看依据" name="sources">
+        <el-collapse-item name="sources">
+          <template #title>
+            <span class="sources-title">
+              <el-icon><Document /></el-icon>
+              <span>查看依据</span>
+            </span>
+          </template>
           <div v-if="message.response?.generation" class="generation-meta">
             <span>回答方式：{{ answerModeLabel }}</span>
             <span v-if="message.response.generation.model">
@@ -115,10 +121,12 @@
 
             <div class="source-meta" v-if="source.source_detail || source.chapter">
               <span v-if="source.source_detail" class="source-detail">
-                📖 {{ source.source_detail }}
+                <el-icon><Reading /></el-icon>
+                {{ source.source_detail }}
               </span>
               <span v-if="source.chapter" class="source-chapter">
-                📍 {{ source.chapter }}
+                <el-icon><Location /></el-icon>
+                {{ source.chapter }}
               </span>
             </div>
 
@@ -368,6 +376,9 @@ import {
   StarFilled,
   Connection,
   ChatLineSquare,
+  Document,
+  Reading,
+  Location,
   VideoPlay,
   VideoPause
 } from '@element-plus/icons-vue'
@@ -778,6 +789,17 @@ $assistant-white-deep: #fbf7ee;
       border: none;
     }
 
+    .sources-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      .el-icon {
+        font-size: 15px;
+        color: $soft-gold;
+      }
+    }
+
     :deep(.el-collapse-item__content) {
       padding: 16px 20px;
     }
@@ -834,7 +856,12 @@ $assistant-white-deep: #fbf7ee;
         .source-detail, .source-chapter {
           display: inline-flex;
           align-items: center;
-          gap: 2px;
+          gap: 4px;
+
+          .el-icon {
+            font-size: 13px;
+            color: $soft-gold;
+          }
         }
       }
 

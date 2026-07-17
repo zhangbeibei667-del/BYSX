@@ -311,18 +311,18 @@ EMBEDDING_API_KEY = os.getenv(
 
 EMBEDDING_BASE_URL = os.getenv(
     "EMBEDDING_BASE_URL",
-    "",
+    "https://api.siliconflow.cn/v1",
 )
 
 EMBEDDING_MODEL = os.getenv(
     "EMBEDDING_MODEL",
-    "text-embedding-v4",
+    "Qwen/Qwen3-VL-Embedding-8B",
 )
 
 EMBEDDING_DIM = int(
     os.getenv(
         "EMBEDDING_DIM",
-        "1024",
+        os.getenv("EMBEDDING_DIMENSIONS", "1024"),
     )
 )
 

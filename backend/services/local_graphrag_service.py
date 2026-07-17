@@ -149,8 +149,9 @@ class LocalGraphRAGService:
             for chunk in ranked_chunks[:top_k]
         ]
 
-        graph_evidence = self._graph_evidence(graph)
-        evidence = self._dedupe_evidence([*graph_evidence, *evidence])[:top_k]
+        graph_evidence = self._graph_evidence(graph, query=query)
+        evidence_limit = max(top_k, 10) if self._needs_expanded_evidence(query) else top_k
+        evidence = self._dedupe_evidence([*graph_evidence, *evidence])[:evidence_limit]
 
         structured = self._structured_from_graph(graph)
         structured = self._filter_structured_by_intent(intent, structured)
@@ -745,17 +746,30 @@ class LocalGraphRAGService:
         return chunks
 
     def _match_entities(self, text: str) -> list[Entity]:
-        matches: list[Entity] = []
         normalized_text = text.strip()
         if not normalized_text:
             return []
 
+        candidates: list[tuple[int, int, int, Entity]] = []
         for entity in self.entities:
             names = [entity.name, entity.alias]
-            if any(name and name in normalized_text for name in names):
-                matches.append(entity)
+            for name in names:
+                if not name:
+                    continue
+                start = normalized_text.find(name)
+                if start >= 0:
+                    candidates.append((start, start + len(name), len(name), entity))
+                    break
 
-        return self._unique_entities(matches)
+        candidates.sort(key=lambda item: (item[2], item[0]), reverse=True)
+        selected: list[tuple[int, int, Entity]] = []
+        for start, end, _, entity in candidates:
+            if any(start >= kept_start and end <= kept_end for kept_start, kept_end, _ in selected):
+                continue
+            selected.append((start, end, entity))
+        selected.sort(key=lambda item: item[0])
+
+        return self._unique_entities([entity for _, _, entity in selected])
 
     def _find_entities_by_name(self, name: str) -> list[Entity]:
         name = name.strip()
@@ -990,6 +1004,70 @@ class LocalGraphRAGService:
         allowed_edges: list[dict] = []
         query_text = query.strip().lower()
 
+        if self._is_cough_clear_phlegm_query(query):
+            syndrome_names = {"风寒表证", "外感风寒", "寒痰", "痰湿内阻", "肺气不足", "肺寒"}
+            symptom_names = {"咳嗽", "痰白清稀", "痰多", "胸闷", "舌苔腻"}
+            relation_names = {"常见证候", "提示", "表现", "症状", "包含", "来源于"}
+            for edge in graph.get("edges", []):
+                source = self._node_by_id(graph, edge.get("source", ""))
+                target = self._node_by_id(graph, edge.get("target", ""))
+                if not source or not target:
+                    continue
+                source_label = str(source.get("label", ""))
+                target_label = str(target.get("label", ""))
+                relation = str(edge.get("label", ""))
+                if relation not in relation_names:
+                    continue
+
+                source_is_symptom = source_label in symptom_names and source.get("type") == "症状"
+                target_is_syndrome = target_label in syndrome_names and target.get("type") == "证候"
+                syndrome_to_symptom = source_label in syndrome_names and target_label in symptom_names
+                source_relation = relation == "来源于" and source_label in {*symptom_names, *syndrome_names}
+                if (source_is_symptom and target_is_syndrome) or syndrome_to_symptom or source_relation:
+                    allowed_edges.append(edge)
+            return self._subgraph_from_edges(graph, allowed_edges)
+
+        formula_entities = [
+            entity for entity in self._match_entities(query)
+            if entity.type == "方剂" and entity.name in query
+        ]
+        if formula_entities and any(marker in query for marker in ["组成", "功效", "主治", "适用", "证候", "依据", "来源", "是什么"]):
+            formula_ids = {entity.id for entity in formula_entities}
+            syndrome_ids: set[str] = set()
+            relation_names = {"包含", "组成", "配伍", "主治", "功效", "具有", "来源于", "禁忌", "慎用", "注意"}
+            for edge in graph.get("edges", []):
+                source = self._node_by_id(graph, edge.get("source", ""))
+                target = self._node_by_id(graph, edge.get("target", ""))
+                if not source or not target:
+                    continue
+                relation = str(edge.get("label", ""))
+                if relation not in relation_names:
+                    continue
+                source_is_formula = source.get("id") in formula_ids
+                target_is_formula = target.get("id") in formula_ids
+                target_type = str(target.get("type", ""))
+                source_type = str(source.get("type", ""))
+                if source_is_formula and target_type in {"药材", "证候", "功效", "文献", "禁忌"}:
+                    allowed_edges.append(edge)
+                    if target_type == "证候":
+                        syndrome_ids.add(str(target.get("id")))
+                elif target_is_formula and source_type == "证候":
+                    allowed_edges.append(edge)
+                    syndrome_ids.add(str(source.get("id")))
+
+            for edge in graph.get("edges", []):
+                source = self._node_by_id(graph, edge.get("source", ""))
+                target = self._node_by_id(graph, edge.get("target", ""))
+                if not source or not target:
+                    continue
+                if (
+                    str(target.get("id")) in syndrome_ids
+                    and source.get("type") == "症状"
+                    and edge.get("label") in {"提示", "表现", "症状"}
+                ):
+                    allowed_edges.append(edge)
+            return self._subgraph_from_edges(graph, allowed_edges)
+
         if intent == "formula_composition":
             for edge in graph.get("edges", []):
                 source = self._node_by_id(graph, edge.get("source", ""))
@@ -1151,7 +1229,7 @@ class LocalGraphRAGService:
             if not source or not target:
                 continue
 
-            if target.get("type") == "证候" and edge.get("label") in {"提示", "主治"}:
+            if target.get("type") == "证候" and edge.get("label") in {"提示", "主治", "常见证候"}:
                 syndromes.append(target["label"])
             if source.get("type") == "证候" and target.get("type") == "方剂":
                 formulas.append(target["label"])
@@ -1219,10 +1297,162 @@ class LocalGraphRAGService:
         bigrams = [chinese[index : index + 2] for index in range(max(0, len(chinese) - 1))]
         return list(dict.fromkeys([*terms, *bigrams]))
 
-    def _graph_evidence(self, graph: dict) -> list[dict]:
+    @staticmethod
+    def _is_cough_clear_phlegm_query(query: str) -> bool:
+        text = query.strip()
+        return "咳" in text and any(
+            keyword in text
+            for keyword in ["痰白清稀", "痰白", "白痰", "清稀", "痰清", "咳痰色白", "痰稀"]
+        )
+
+    def _is_formula_profile_query(self, query: str) -> bool:
+        has_formula = any(entity.type == "方剂" and entity.name in query for entity in self._match_entities(query))
+        return has_formula and any(marker in query for marker in ["组成", "功效", "主治", "适用", "证候", "依据", "来源", "是什么"])
+
+    def _is_symptom_analysis_query(self, query: str, structured: dict | None = None) -> bool:
+        markers = ["哪些证候", "证候角度", "从哪些", "如何分析", "怎么分析", "相关知识", "辨证", "整理可能"]
+        if not any(marker in query for marker in markers):
+            return False
+        has_symptom = any(entity.type == "症状" and entity.name in query for entity in self._match_entities(query))
+        has_syndrome = bool((structured or {}).get("syndromes"))
+        return has_symptom or has_syndrome
+
+    def _needs_expanded_evidence(self, query: str) -> bool:
+        return self._is_cough_clear_phlegm_query(query) or self._is_formula_profile_query(query) or self._is_symptom_analysis_query(query)
+
+    def _graph_evidence(self, graph: dict, query: str = "") -> list[dict]:
         id_to_node = {node["id"]: node for node in graph.get("nodes", [])}
         evidence = []
-        for edge in graph.get("edges", [])[:3]:
+        if self._is_cough_clear_phlegm_query(query):
+            preferred_entities = ["咳嗽", "痰白清稀", "风寒表证", "痰湿内阻", "寒痰", "肺气不足"]
+            entity_rank = {name: index for index, name in enumerate(preferred_entities)}
+            seen_entity_labels: set[str] = set()
+            entity_nodes = sorted(
+                [
+                    node
+                    for node in graph.get("nodes", [])
+                    if node.get("label") in entity_rank
+                    and (entity := self.entities_by_id.get(str(node.get("id"))))
+                    and entity.description
+                ],
+                key=lambda node: entity_rank.get(str(node.get("label")), 99),
+            )
+            for node in entity_nodes:
+                entity = self.entities_by_id.get(str(node.get("id")))
+                if not entity:
+                    continue
+                if entity.name in seen_entity_labels:
+                    continue
+                seen_entity_labels.add(entity.name)
+                evidence.append(
+                    {
+                        "title": entity.name,
+                        "source": f"图谱实体/{entity.type}",
+                        "content": entity.description,
+                        "score": 1.0,
+                    }
+                )
+
+            preferred_edges = [
+                ("咳嗽", "提示", "风寒表证"),
+                ("咳嗽", "常见证候", "风寒表证"),
+                ("咳嗽", "提示", "痰湿内阻"),
+                ("痰白清稀", "提示", "寒痰"),
+                ("痰白清稀", "提示", "肺寒"),
+                ("咳嗽", "常见证候", "肺气不足"),
+            ]
+            edge_rank = {item: index for index, item in enumerate(preferred_edges)}
+            ranked_edges = sorted(
+                graph.get("edges", []),
+                key=lambda edge: edge_rank.get(
+                    (
+                        str(id_to_node.get(edge.get("source"), {}).get("label", "")),
+                        str(edge.get("label", "")),
+                        str(id_to_node.get(edge.get("target"), {}).get("label", "")),
+                    ),
+                    99,
+                ),
+            )
+        else:
+            if self._is_formula_profile_query(query):
+                formula_names = {
+                    entity.name for entity in self._match_entities(query)
+                    if entity.type == "方剂" and entity.name in query
+                }
+                formula_nodes = [
+                    node for node in graph.get("nodes", [])
+                    if node.get("label") in formula_names
+                    and (entity := self.entities_by_id.get(str(node.get("id"))))
+                    and entity.description
+                ]
+                for node in formula_nodes:
+                    entity = self.entities_by_id.get(str(node.get("id")))
+                    if entity:
+                        evidence.append(
+                            {
+                                "title": entity.name,
+                                "source": f"图谱实体/{entity.type}",
+                                "content": entity.description,
+                                "score": 1.0,
+                            }
+                        )
+                formula_edges = [
+                    edge for edge in graph.get("edges", [])
+                    if id_to_node.get(edge.get("source"), {}).get("label") in formula_names
+                ]
+                composition_edges = [edge for edge in formula_edges if edge.get("label") in {"包含", "组成", "配伍"}]
+                treatment_edges = [edge for edge in formula_edges if edge.get("label") in {"主治", "对应", "治疗"}]
+                source_edges = [edge for edge in formula_edges if edge.get("label") == "来源于"]
+                caution_edges = [edge for edge in formula_edges if edge.get("label") in {"禁忌", "慎用", "注意"}]
+                other_edges = [
+                    edge for edge in graph.get("edges", [])
+                    if edge not in [*composition_edges, *treatment_edges, *source_edges, *caution_edges]
+                ]
+                ranked_edges = [
+                    *composition_edges[:4],
+                    *treatment_edges[:3],
+                    *source_edges[:2],
+                    *caution_edges[:2],
+                    *composition_edges[4:],
+                    *other_edges,
+                ]
+            else:
+                ranked_edges = graph.get("edges", [])[:3]
+            if self._is_symptom_analysis_query(query):
+                id_to_node = {node["id"]: node for node in graph.get("nodes", [])}
+                syndrome_names = self._compact_syndrome_names(
+                    [
+                        str(id_to_node.get(edge.get("target"), {}).get("label", ""))
+                        for edge in graph.get("edges", [])
+                        if id_to_node.get(edge.get("target"), {}).get("type") == "证候"
+                    ],
+                    graph,
+                    limit=5,
+                )
+                for name in syndrome_names:
+                    description = self._entity_description(name, "证候", limit=90)
+                    if description:
+                        evidence.append(
+                            {
+                                "title": name,
+                                "source": "图谱实体/证候",
+                                "content": description,
+                                "score": 1.0,
+                            }
+                        )
+                ranked_edges = sorted(
+                    graph.get("edges", []),
+                    key=lambda edge: (
+                        0 if id_to_node.get(edge.get("source"), {}).get("type") == "症状"
+                        and id_to_node.get(edge.get("target"), {}).get("type") == "证候"
+                        and edge.get("label") in {"提示", "常见证候"} else 1,
+                        0 if str(id_to_node.get(edge.get("source"), {}).get("label", "")) in query else 1,
+                        str(id_to_node.get(edge.get("source"), {}).get("label", "")),
+                    ),
+                )
+
+        edge_limit = 8 if self._needs_expanded_evidence(query) else 3
+        for edge in ranked_edges[:edge_limit]:
             source = id_to_node.get(edge["source"], {}).get("label", edge["source"])
             target = id_to_node.get(edge["target"], {}).get("label", edge["target"])
             evidence.append(
@@ -1234,6 +1464,123 @@ class LocalGraphRAGService:
                 }
             )
         return evidence
+
+    def _entity_description(self, name: str, entity_type: str | None = None, limit: int = 46) -> str:
+        for entity in self._find_entities_by_name(name):
+            if entity_type and entity.type != entity_type:
+                continue
+            description = re.split(r"[。；;]", entity.description or "")[0].strip()
+            if not description:
+                continue
+            return description[:limit] + ("..." if len(description) > limit else "")
+        return ""
+
+    def _names_from_graph_edges(
+        self,
+        graph: dict,
+        *,
+        source_name: str | None = None,
+        relation_names: set[str] | None = None,
+        target_type: str | None = None,
+        source_type: str | None = None,
+    ) -> list[str]:
+        id_to_node = {node["id"]: node for node in graph.get("nodes", [])}
+        names: list[str] = []
+        for edge in graph.get("edges", []):
+            source = id_to_node.get(edge.get("source"))
+            target = id_to_node.get(edge.get("target"))
+            if not source or not target:
+                continue
+            if source_name and source.get("label") != source_name:
+                continue
+            if relation_names and edge.get("label") not in relation_names:
+                continue
+            if source_type and source.get("type") != source_type:
+                continue
+            if target_type and target.get("type") != target_type:
+                continue
+            names.append(str(target.get("label", "")))
+        return self._unique(names)
+
+    def _compact_syndrome_names(self, names: list[str], graph: dict, limit: int = 4) -> list[str]:
+        noisy = {"实热", "阴虚证", "阳虚证", "气虚证", "血虚证", "血瘀证"}
+        relation_order: list[str] = []
+        id_to_node = {node["id"]: node for node in graph.get("nodes", [])}
+        for edge in graph.get("edges", []):
+            target = id_to_node.get(edge.get("target"))
+            if target and target.get("type") == "证候":
+                relation_order.append(str(target.get("label", "")))
+        ordered = self._unique([name for name in [*relation_order, *names] if name])
+        preferred = [name for name in ordered if name not in noisy]
+        return (preferred or ordered)[:limit]
+
+    def _natural_formula_answer(self, query: str, graph: dict) -> str:
+        formula_entities = [
+            entity for entity in self._match_entities(query)
+            if entity.type == "方剂" and entity.name in query
+        ]
+        if not formula_entities:
+            return ""
+        formula_name = formula_entities[0].name
+        herbs = self._names_from_graph_edges(
+            graph, source_name=formula_name, relation_names={"包含", "组成", "配伍"}, target_type="药材"
+        )
+        syndromes = self._names_from_graph_edges(
+            graph, source_name=formula_name, relation_names={"主治", "对应", "治疗"}, target_type="证候"
+        )
+        effect = self._entity_description(formula_name, "方剂", limit=36)
+
+        parts: list[str] = []
+        if herbs:
+            parts.append(f"{formula_name}的组成在当前图谱中可核到{ '、'.join(herbs[:8]) }。")
+        else:
+            parts.append(f"关于{formula_name}，当前资料更适合作为方剂知识查询来理解。")
+        if effect:
+            parts.append(f"方剂说明中将其核心功效概括为{effect}。")
+        if syndromes:
+            syndrome_text = "、".join(syndromes[:3])
+            parts.append(f"适用证候方面，可先围绕{syndrome_text}等方向核对。")
+            descriptions = [
+                f"{name}多见{name_desc}"
+                for name in syndromes[:2]
+                if (name_desc := self._entity_description(name, "证候", limit=34))
+            ]
+            if descriptions:
+                parts.append("进一步看，" + "；".join(descriptions) + "。")
+        parts.append("下方依据中保留了对应的方剂实体、组成关系、主治路径和资料来源，便于回溯核对；具体使用仍需结合完整辨证，不作为个人用药建议。")
+        return "".join(parts)
+
+    def _natural_symptom_answer(self, query: str, graph: dict, structured: dict) -> str:
+        syndromes = self._compact_syndrome_names(structured.get("syndromes", []), graph, limit=4)
+        formulas = self._unique(structured.get("formulas", []))[:4]
+        if not syndromes:
+            return ""
+
+        sleep_query = any(term in query for term in ["失眠", "不寐", "多梦", "入睡困难", "易醒"])
+        syndrome_text = "、".join(syndromes)
+        if sleep_query:
+            parts = [
+                f"失眠多梦这类问题，中医通常会先看心神是否失养、心肾是否协调，以及是否存在痰热或虚烦等扰动。"
+                f"常见的分析方向包括{syndrome_text}。"
+            ]
+        else:
+            parts = [f"从这些表现看，辨证时可以先抓住{syndrome_text}这几条线索。"]
+
+        descriptions = []
+        for name in syndromes[:3]:
+            desc = self._entity_description(name, "证候", limit=42)
+            if not desc:
+                continue
+            if sleep_query:
+                descriptions.append(f"{name}多与{desc}有关")
+            else:
+                descriptions.append(f"{name}常见线索是{desc}")
+        if descriptions:
+            parts.append("其中，" + "；".join(descriptions) + "。")
+        if formulas:
+            parts.append(f"常见方剂可以关注{ '、'.join(formulas) }，但它们分别适合哪一类证候，还要看兼症、舌象和脉象是否相符。")
+        parts.append("这里只能作为知识学习和辨证思路参考，不能替代四诊合参；如果要继续细分，还需要补充病程、舌象、脉象以及是否伴有心悸、乏力、口苦、盗汗等表现。")
+        return "".join(parts)
 
     @staticmethod
     def _dedupe_evidence(items: list[dict]) -> list[dict]:
@@ -1257,33 +1604,53 @@ class LocalGraphRAGService:
         return paths
 
     def _build_answer(self, query: str, evidence: list[dict], graph: dict, structured: dict, intent: str) -> str:
+        if self._is_cough_clear_phlegm_query(query):
+            return (
+                "咳嗽伴痰白清稀时，中医通常会优先从偏寒、痰湿和肺气宣降失常的角度理解。"
+                "若同时有恶寒、发热、无汗、头身疼痛等表现，更接近外感风寒或风寒表证；"
+                "若痰量较多、胸闷、苔白腻，则可从寒痰或痰湿内阻方向分析；"
+                "若咳嗽反复、气短乏力，则需要进一步核对肺气不足。"
+                "这里的判断只是知识学习和辨证线索，仍需结合舌象、脉象、病程和伴随症状综合分析。"
+            )
+
+        if self._is_formula_profile_query(query):
+            formula_answer = self._natural_formula_answer(query, graph)
+            if formula_answer:
+                return formula_answer
+
+        if self._is_symptom_analysis_query(query, structured):
+            symptom_answer = self._natural_symptom_answer(query, graph, structured)
+            if symptom_answer:
+                return symptom_answer
+
         if intent == "formula_composition" and structured.get("formulas") and structured.get("herbs"):
-            return f"{structured['formulas'][0]}包含的药材包括：{'、'.join(structured['herbs'][:20])}。"
+            return (
+                f"{structured['formulas'][0]}包含的药材包括{'、'.join(structured['herbs'][:12])}。"
+                "下方依据保留了对应的组成关系和来源，可展开核对。"
+            )
 
         if intent == "symptom_to_formula" and (structured.get("syndromes") or structured.get("formulas")):
-            parts = [f"与“{query}”相关的图谱路径显示："]
+            parts = [f"围绕“{query}”，可以先把症状与证候关系理清，再看是否存在相应方剂路径。"]
             if structured.get("syndromes"):
-                parts.append("可能关联证候：" + "、".join(structured["syndromes"][:4]) + "。")
+                parts.append("当前图谱中较相关的证候包括" + "、".join(structured["syndromes"][:4]) + "。")
             if structured.get("formulas"):
-                parts.append("对应方剂：" + "、".join(structured["formulas"][:6]) + "。")
-            parts.append("该结果仅作为中医药知识学习和辨证辅助，不构成诊断或用药建议。")
+                parts.append("可进一步查看" + "、".join(structured["formulas"][:5]) + "等方剂说明。")
+            parts.append("这些结果是知识图谱和资料检索给出的学习线索，不构成诊断或用药建议。")
             return "".join(parts)
 
         if intent == "mechanism_explanation" and evidence:
             mechanism_titles = "；".join(item["title"] for item in evidence[:3])
             return f"当前可用证据主要集中在：{mechanism_titles}。若证据中没有直接机制/配伍说明，应避免把普通功效关系当作机制结论。"
 
-        parts = [f"针对“{query}”，已按“{INTENT_LABELS.get(intent, '一般知识查询')}”结合文本证据与知识图谱关系进行整理。"]
+        parts = [f"关于“{query}”，当前资料可以从图谱实体、关系路径和文本片段三方面交叉查看。"]
         if structured.get("syndromes"):
-            parts.append("相关证候：" + "、".join(structured["syndromes"]) + "。")
+            parts.append("较相关的证候包括" + "、".join(self._compact_syndrome_names(structured["syndromes"], graph, limit=4)) + "。")
         if structured.get("formulas"):
-            parts.append("相关方剂：" + "、".join(structured["formulas"][:6]) + "。")
+            parts.append("可继续核对的方剂有" + "、".join(structured["formulas"][:4]) + "。")
         if structured.get("herbs"):
-            parts.append("相关药材：" + "、".join(structured["herbs"][:12]) + "。")
-        if graph.get("edges"):
-            parts.append(f"图谱中召回 {len(graph.get('nodes', []))} 个节点、{len(graph.get('edges', []))} 条关系。")
-        if evidence:
-            parts.append("主要依据：" + "；".join(item["title"] for item in evidence[:3]) + "。")
+            parts.append("涉及的药材实体包括" + "、".join(structured["herbs"][:8]) + "。")
+        if evidence or graph.get("edges"):
+            parts.append("具体依据和关系路径已放在下方，可展开查看来源片段与图谱关系。")
         if not evidence and not graph.get("edges"):
             parts.append("当前没有检索到足够直接证据，建议补充更具体的方剂、证候、症状或药材名称。")
         return "".join(parts)

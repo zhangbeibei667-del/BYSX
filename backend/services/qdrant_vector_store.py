@@ -58,7 +58,10 @@ class QdrantVectorStore:
             "EMBEDDING_BASE_URL", os.getenv("LLM_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
         ).rstrip("/")
         self.embedding_api_key = os.getenv("EMBEDDING_API_KEY", os.getenv("LLM_API_KEY", ""))
-        self.embedding_available = self.provider not in {"dashscope", "aliyun-bailian"} or bool(self.embedding_api_key)
+        self.embedding_available = (
+            self.provider not in {"dashscope", "aliyun-bailian", "siliconflow"}
+            or bool(self.embedding_api_key)
+        )
         self.batch_size = max(1, min(int(os.getenv("EMBEDDING_BATCH_SIZE", "10")), 10))
         self.concurrency = max(1, min(int(os.getenv("EMBEDDING_CONCURRENCY", "4")), 8))
         if self.provider == "fastembed":
@@ -112,17 +115,22 @@ class QdrantVectorStore:
         if self.embedding is not None:
             method = self.embedding.query_embed if query else self.embedding.embed
             return [vector.tolist() for vector in method(texts)]
-        if self.provider in {"dashscope", "aliyun-bailian"}:
+        if self.provider in {"dashscope", "aliyun-bailian", "siliconflow"}:
             if not self.embedding_api_key:
-                raise RuntimeError("阿里云向量模型已启用，但 EMBEDDING_API_KEY/LLM_API_KEY 未配置")
+                raise RuntimeError("远程向量模型已启用，但 EMBEDDING_API_KEY/LLM_API_KEY 未配置")
             batches = [texts[start:start + self.batch_size] for start in range(0, len(texts), self.batch_size)]
             with ThreadPoolExecutor(max_workers=min(self.concurrency, len(batches))) as executor:
-                embedded_batches = list(executor.map(self._dashscope_embed, batches))
+                embedded_batches = list(executor.map(self._remote_embed, batches))
             vectors = [vector for batch in embedded_batches for vector in batch]
             return vectors
         return [self._hash_embed(text) for text in texts]
 
-    def _dashscope_embed(self, texts: list[str]) -> list[list[float]]:
+    def _embedding_endpoint(self) -> str:
+        if self.embedding_base_url.endswith("/embeddings"):
+            return self.embedding_base_url
+        return f"{self.embedding_base_url}/embeddings"
+
+    def _remote_embed(self, texts: list[str]) -> list[list[float]]:
         payload = json.dumps({
             "model": self.model_name,
             "input": texts,
@@ -132,7 +140,7 @@ class QdrantVectorStore:
         last_error: Exception | None = None
         for attempt in range(5):
             request = urllib.request.Request(
-                f"{self.embedding_base_url}/embeddings",
+                self._embedding_endpoint(),
                 data=payload,
                 headers={"Authorization": f"Bearer {self.embedding_api_key}", "Content-Type": "application/json"},
                 method="POST",
@@ -143,18 +151,18 @@ class QdrantVectorStore:
                 rows = sorted(body.get("data", []), key=lambda item: int(item.get("index", 0)))
                 vectors = [row["embedding"] for row in rows]
                 if len(vectors) != len(texts) or any(len(vector) != self.dimension for vector in vectors):
-                    raise RuntimeError("阿里云向量接口返回数量或维度不匹配")
+                    raise RuntimeError("远程向量接口返回数量或维度不匹配")
                 return vectors
             except urllib.error.HTTPError as exc:
                 detail = exc.read().decode("utf-8", errors="replace")[:500]
-                last_error = RuntimeError(f"阿里云向量接口 HTTP {exc.code}: {detail}")
+                last_error = RuntimeError(f"远程向量接口 HTTP {exc.code}: {detail}")
                 if exc.code not in {429, 500, 502, 503, 504}:
                     break
             except (urllib.error.URLError, TimeoutError, RuntimeError, http.client.IncompleteRead,
                     ConnectionError, OSError) as exc:
                 last_error = exc
             time.sleep(min(8.0, 0.75 * (2 ** attempt)))
-        raise RuntimeError(f"阿里云向量化失败: {last_error}")
+        raise RuntimeError(f"远程向量化失败: {last_error}")
 
     def _hash_embed(self, text: str) -> list[float]:
         compact = re.sub(r"\s+", "", text.lower())
